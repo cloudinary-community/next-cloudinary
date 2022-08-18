@@ -17,6 +17,20 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@cloudinary/transformation-builder-sdk@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@cloudinary/transformation-builder-sdk/-/transformation-builder-sdk-1.0.0.tgz#6a21f7cc2ec7911dd402871bcc198b3344699efd"
+  integrity sha512-P7Mic/F5xmxuy2YqP8WWfYmTss6fONIITWQth6sARepvA9qky09LW12eoMivZNU0ootQVB1IZ4Gxvq/tw/5/+A==
+  dependencies:
+    "@cloudinary/url-gen" "^1.7.0"
+
+"@cloudinary/url-gen@^1.7.0", "@cloudinary/url-gen@^1.8.5":
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.8.5.tgz#cb32e41052d8ea42a0a735c277646be36857da2c"
+  integrity sha512-lOxCuEEBVvkBd2saLMJ6wZfsoP/bQXl6HWLtzptdfNOIhzM9MVJqgJjODqe4citeYUC/92xlmZJlpHkHKu3JWA==
+  dependencies:
+    "@cloudinary/transformation-builder-sdk" "^1.0.0"
+
 "@eslint/eslintrc@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.3.0.tgz#29f92c30bb3e771e4a2048c95fa6855392dfac4f"
