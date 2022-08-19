@@ -24,3 +24,8 @@ a {
     background: black;
   }
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
