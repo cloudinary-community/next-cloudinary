@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import CldImage from '../components/CldImage';
+import { CldImage } from '../../next-cloudinary';
 
 import styles from '../styles/Home.module.css'
 
