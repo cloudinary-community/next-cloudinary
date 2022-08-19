@@ -17,15 +17,9 @@ export default function Home() {
           Next Cloudinary
         </h1>
 
+        <h2>Effects</h2>
+
         <ul className={styles.images}>
-          <li>
-            <CldImage
-              width="1920"
-              height="1200"
-              src="images/turtle"
-              layout="responsive"
-            />
-          </li>
           <li>
             <CldImage
               width="1920"
@@ -34,7 +28,109 @@ export default function Home() {
               layout="responsive"
               removeBackground
             />
+            <h3 className={styles.imageTitle}>
+              Background Removal
+            </h3>
+            <pre><code>{`removeBackground`}</code></pre>
           </li>
+
+        </ul>
+
+        <h2>Placeholders</h2>
+
+        <ul className={styles.images}>
+          <li>
+            <CldImage
+              width="1920"
+              height="1200"
+              src="images/turtle"
+              layout="responsive"
+              placeholder="blur"
+            />
+            <h3 className={styles.imageTitle}>
+              Blur
+            </h3>
+            <pre><code>{`placeholder="blur"`}</code></pre>
+          </li>
+          <li>
+            <CldImage
+              width="1920"
+              height="1200"
+              src="images/turtle"
+              layout="responsive"
+              placeholder="grayscale"
+            />
+            <h3 className={styles.imageTitle}>
+              Grayscale
+            </h3>
+            <pre><code>{`placeholder="grayscale"`}</code></pre>
+          </li>
+          <li>
+            <CldImage
+              width="1920"
+              height="1200"
+              src="images/turtle"
+              layout="responsive"
+              placeholder="color:blueviolet"
+            />
+            <h3 className={styles.imageTitle}>
+              Color
+            </h3>
+            <pre><code>{`placeholder="color:blueviolet"`}</code></pre>
+          </li>
+        </ul>
+
+        <h2>Image Overlays</h2>
+
+        <ul className={styles.images}>
+          <li>
+            <CldImage
+              width="1920"
+              height="1200"
+              src="images/turtle"
+              layout="responsive"
+              overlays={[{
+                publicId: 'images/earth',
+                position: {
+                  x: 50,
+                  y: 50,
+                  gravity: 'north_west',
+                },
+                effects: [
+                  {
+                    crop: 'fill',
+                    gravity: 'auto',
+                    width: 500,
+                    height: 500
+                  }
+                ]
+              }]}
+            />
+            <h3 className={styles.imageTitle}>
+              Overlay Image by Public ID
+            </h3>
+            <pre><code>{`overlays={[{
+  publicId: 'images/earth',
+  position: {
+    x: 10,
+    y: 10,
+    gravity: 'north_west',
+  },
+  effects: [
+    {
+      crop: 'fill',
+      gravity: 'auto',
+      width: 500,
+      height: 500
+    }
+  ]
+}]}`}</code></pre>
+          </li>
+        </ul>
+
+        <h2>Image Underlays</h2>
+
+        <ul className={styles.images}>
           <li>
             <CldImage
               width="1920"
@@ -49,51 +145,41 @@ export default function Home() {
                 crop: 'fill'
               }]}
             />
+            <h3 className={styles.imageTitle}>
+              Background Removal with Underlay
+            </h3>
+            <pre><code>{`removeBackground
+underlays={[{
+  publicId: 'images/galaxy',
+  width: 1920,
+  height: 1200,
+  crop: 'fill'
+}]}`}</code></pre>
           </li>
-          <li>
-            <CldImage
-              width="1920"
-              height="1200"
-              src="images/turtle"
-              layout="responsive"
-              removeBackground
-              overlays={[{
-                publicId: 'images/earth',
-                position: {
-                  x: 10,
-                  y: 10,
-                  gravity: 'north_west',
-                },
-                effects: [
-                  {
-                    crop: 'fill',
-                    gravity: 'auto',
-                    width: 500,
-                    height: 500
-                  }
-                ]
-              }]}
-            />
-          </li>
+        </ul>
+
+        <h2>Text Overlays</h2>
+
+        <ul className={styles.images}>
           <li>
             <CldImage
               width="2670"
               height="1782"
               src="images/sneakers"
               layout="responsive"
-              removeBackground
               overlays={[{
                 width: 2670 - 20,
                 crop: 'fit',
                 position: {
-                  x: 10,
-                  y: 10,
-                  gravity: 'north_west',
+                  x: 140,
+                  y: 140,
+                  angle: -20,
+                  gravity: 'south_east',
                 },
                 text: {
                   color: 'blueviolet',
                   fontFamily: 'Source Sans Pro',
-                  fontSize: 120,
+                  fontSize: 250,
                   fontWeight: 'bold',
                   textDecoration: 'underline',
                   letterSpacing: 14,
@@ -101,6 +187,27 @@ export default function Home() {
                 }
               }]}
             />
+            <h3 className={styles.imageTitle}>
+              Text Overlay
+            </h3>
+            <pre><code>{`overlays={[{
+  width: 2670 - 20,
+  crop: 'fit',
+  position: {
+    x: 10,
+    y: 10,
+    gravity: 'north_west',
+  },
+  text: {
+    color: 'blueviolet',
+    fontFamily: 'Source Sans Pro',
+    fontSize: 120,
+    fontWeight: 'bold',
+    textDecoration: 'underline',
+    letterSpacing: 14,
+    text: 'Cool Beans'
+  }
+}]}`}</code></pre>
           </li>
         </ul>
       </main>

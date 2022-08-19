@@ -39,28 +39,31 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 }
 
 var primary = {
-  gravity: {
-    qualifier: 'g'
-  },
   crop: {
     qualifier: 'c'
   },
-  width: {
-    qualifier: 'w'
+  gravity: {
+    qualifier: 'g'
   },
   height: {
     qualifier: 'h'
+  },
+  width: {
+    qualifier: 'w'
   }
 };
 var position = {
+  angle: {
+    qualifier: 'a'
+  },
+  gravity: {
+    qualifier: 'g'
+  },
   x: {
     qualifier: 'x'
   },
   y: {
     qualifier: 'y'
-  },
-  gravity: {
-    qualifier: 'g'
   }
 };
 var text = {
@@ -68,17 +71,25 @@ var text = {
     qualifier: 'co',
     location: 'primary'
   },
-  fontFamily: {},
-  fontSize: {},
-  fontWeight: {},
-  textDecoration: {},
+  textDecoration: {
+    qualifier: false
+  },
+  fontFamily: {
+    qualifier: false
+  },
+  fontSize: {
+    qualifier: false
+  },
+  fontWeight: {
+    qualifier: false
+  },
   letterSpacing: {
     qualifier: 'letter_spacing'
   }
 };
 
 var _excluded$1 = ["publicId", "type", "position", "text", "effects"];
-var cld = new urlGen.Cloudinary({
+var cld$1 = new urlGen.Cloudinary({
   cloud: {
     cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
   }
@@ -96,7 +107,7 @@ function cloudinaryLoader(options, cldOptions) {
       removeBackground = _cldOptions$removeBac === void 0 ? false : _cldOptions$removeBac,
       _cldOptions$underlays = cldOptions.underlays,
       underlays = _cldOptions$underlays === void 0 ? [] : _cldOptions$underlays;
-  var cldImage = cld.image(src);
+  var cldImage = cld$1.image(src);
 
   if (removeBackground) {
     cldImage.effect('e_background_removal');
@@ -214,6 +225,15 @@ function cloudinaryLoader(options, cldOptions) {
 }
 
 var _excluded = ["overlays", "removeBackground", "underlays"];
+var cld = new urlGen.Cloudinary({
+  cloud: {
+    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+  },
+  url: {
+    // Used to avoid issues with SSR particularly for the blurred placeholder
+    analytics: false
+  }
+});
 
 var CldImage = function CldImage(_ref) {
   var overlays = _ref.overlays,
@@ -226,7 +246,32 @@ var CldImage = function CldImage(_ref) {
     removeBackground: removeBackground,
     underlays: underlays
   };
-  return /*#__PURE__*/jsxRuntime.jsx(Image__default["default"], _extends({}, props, {
+  var imageProps = {}; // If we see a placeholder option, configure a Cloudinary-based URL.
+  // The resulting image will always be blurred per Next.js, so we're
+  // limited on options for placeholders.
+  // https://nextjs.org/docs/api-reference/next/image#blurdataurl
+
+  if (props.placeholder) {
+    var cldBlurredImage = cld.image(props.src).resize('c_limit,w_100').delivery('q_1').format('auto');
+
+    if (props.placeholder === 'grayscale') {
+      cldBlurredImage.effect('e_grayscale');
+    }
+
+    if (props.placeholder.includes('color:')) {
+      var color = props.placeholder.split(':').splice(1).join(':');
+      cldBlurredImage.effect('e_grayscale');
+      cldBlurredImage.effect("e_colorize:60,co_" + color);
+    }
+
+    imageProps.blurDataURL = cldBlurredImage.toURL();
+
+    if (props.placeholder !== 'blur') {
+      props.placeholder = 'blur';
+    }
+  }
+
+  return /*#__PURE__*/jsxRuntime.jsx(Image__default["default"], _extends({}, imageProps, props, {
     loader: function loader(options) {
       return cloudinaryLoader(options, cldOptions);
     }

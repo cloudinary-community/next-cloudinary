@@ -1,27 +1,30 @@
 export const primary = {
+  crop: {
+    qualifier: 'c'
+  },
   gravity: {
     qualifier: 'g'
   },
-  crop: {
-    qualifier: 'c'
+  height: {
+    qualifier: 'h'
   },
   width: {
     qualifier: 'w'
   },
-  height: {
-    qualifier: 'h'
-  }
 };
 
 export const position = {
+  angle: {
+    qualifier: 'a'
+  },
+  gravity: {
+    qualifier: 'g'
+  },
   x: {
     qualifier: 'x'
   },
   y: {
     qualifier: 'y'
-  },
-  gravity: {
-    qualifier: 'g'
   },
 }
 
@@ -30,13 +33,17 @@ export const text = {
     qualifier: 'co',
     location: 'primary'
   },
+  textDecoration: {
+    qualifier: false
+  },
   fontFamily: {
+    qualifier: false
   },
   fontSize: {
+    qualifier: false
   },
   fontWeight: {
-  },
-  textDecoration: {
+    qualifier: false
   },
   letterSpacing: {
     qualifier: 'letter_spacing'
