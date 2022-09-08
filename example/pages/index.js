@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { FaExternalLinkAlt } from 'react-icons/fa';
+
 import { CldImage } from '../../next-cloudinary';
 
 import styles from '../styles/Home.module.css'
@@ -26,6 +28,11 @@ export default function Home() {
           <li>
             <a href="#examples">
               Examples
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/colbyfayock/next-cloudinary" target="_blank" rel="noreferrer">
+              GitHub <FaExternalLinkAlt />
             </a>
           </li>
         </ul>

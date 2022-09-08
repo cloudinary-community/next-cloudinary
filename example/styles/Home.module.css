@@ -38,6 +38,15 @@
   margin-right: 0;
 }
 
+.toc a {
+  display: flex;
+  align-items: center;
+}
+
+.toc a svg {
+  margin-left: .25em;
+}
+
 .section {
   margin: 3em 0;
 }
