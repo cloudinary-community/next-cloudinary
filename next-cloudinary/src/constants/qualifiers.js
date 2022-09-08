@@ -38,9 +38,6 @@ export const text = {
     qualifier: 'co',
     location: 'primary'
   },
-  textDecoration: {
-    qualifier: false
-  },
   fontFamily: {
     qualifier: false
   },
@@ -52,5 +49,8 @@ export const text = {
   },
   letterSpacing: {
     qualifier: 'letter_spacing'
+  },
+  textDecoration: {
+    qualifier: false
   }
 }

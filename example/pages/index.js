@@ -45,8 +45,6 @@ export default function Home() {
                 height="1481"
                 src="images/woman-headphones"
                 layout="responsive"
-                crop="thumb"
-                gravity="auto"
               />
               <h4 className={styles.imageTitle}>
                 Original

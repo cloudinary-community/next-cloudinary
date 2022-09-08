@@ -143,9 +143,6 @@ var text = {
     qualifier: 'co',
     location: 'primary'
   },
-  textDecoration: {
-    qualifier: false
-  },
   fontFamily: {
     qualifier: false
   },
@@ -157,6 +154,9 @@ var text = {
   },
   letterSpacing: {
     qualifier: 'letter_spacing'
+  },
+  textDecoration: {
+    qualifier: false
   }
 };
 
