@@ -17,6 +17,102 @@ export default function Home() {
           Next Cloudinary
         </h1>
 
+        <ul className={styles.toc}>
+          <li>
+            <a href="#getting-started">
+              Getting Started
+            </a>
+          </li>
+          <li>
+            <a href="#examples">
+              Examples
+            </a>
+          </li>
+        </ul>
+
+        <div className={styles.preview}>
+          <ul className={`${styles.images} ${styles.previewImages}`}>
+            <li>
+              <CldImage
+                width="987"
+                height="1481"
+                src="images/woman-headphones"
+                layout="responsive"
+                crop="thumb"
+                gravity="auto"
+              />
+              <h4 className={styles.imageTitle}>
+                Original
+              </h4>
+            </li>
+            <li>
+              <CldImage
+                width="987"
+                height="987"
+                src="images/woman-headphones"
+                layout="responsive"
+                crop="thumb"
+                gravity="faces"
+                removeBackground
+                tint="40:253f8c"
+                underlays={[{
+                  publicId: 'images/city-skyline',
+                  width: 987,
+                  height: 987,
+                  crop: 'fill'
+                }]}
+              />
+              <h4 className={styles.imageTitle}>
+                Thumbnail with Auto Gravity
+              </h4>
+              <pre><code>{`crop="thumb"
+gravity="faces"
+removeBackground
+tint="40:253f8c"
+underlays={[{
+  publicId: 'images/mountain',
+  width: 987,
+  height: 987,
+  crop: 'fill'
+}]}`}</code></pre>
+            </li>
+          </ul>
+        </div>
+
+        <h2 id="getting-started">Getting Started</h2>
+
+        <div className={styles.section}>
+          <h3 className={styles.sectionTitle}>Installation</h3>
+
+          <p>Install the package by running:</p>
+
+          <pre><code>{`yarn add next-cloudinary
+# or
+npm install next-cloudinary`}</code></pre>
+
+          <p>Add an environment variable inside of your `.env.local`, `.env`, or deployment platform:</p>
+
+          <pre><code>{`NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="<Your Cloud Name>"`}</code></pre>
+        </div>
+
+        <div className={styles.section}>
+          <h3 className={styles.sectionTitle}>Usage</h3>
+
+          <p>Then import into your project with:</p>
+
+          <pre><code>{`import { CldImage } from 'next-cloudinary';`}</code></pre>
+
+          <p>From a basic usage, you can set up your image just like the original Next.js Image component but using your cloudinray Public ID as the <code>src</code>:</p>
+
+          <pre><code>{`<CldImage
+  width="<Width>"
+  height="<Height>"
+  src="<Public ID>"
+/>`}</code></pre>
+        </div>
+
+        <h2 id="examples">Examples</h2>
+
         <ul>
           <li>
             <a href="#effects">
@@ -50,147 +146,157 @@ export default function Home() {
           </li>
         </ul>
 
-        <h2 id="effects">Effects</h2>
+        <div className={styles.section}>
+          <h3 id="effects" className={styles.sectionTitle}>Effects</h3>
 
-        <ul className={styles.images}>
-          <li>
-            <CldImage
-              width="1920"
-              height="1200"
-              src="images/turtle"
-              layout="responsive"
-              removeBackground
-            />
-            <h3 className={styles.imageTitle}>
-              Background Removal
-            </h3>
-            <pre><code>{`removeBackground`}</code></pre>
-          </li>
+          <ul className={styles.images}>
+            <li>
+              <CldImage
+                width="1920"
+                height="1200"
+                src="images/turtle"
+                layout="responsive"
+                removeBackground
+              />
+              <h4 className={styles.imageTitle}>
+                Background Removal
+              </h4>
+              <pre><code>{`removeBackground`}</code></pre>
+              <p className={styles.note}>
+                Note: Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal Add-On</a>
+              </p>
+            </li>
 
-        </ul>
+          </ul>
+        </div>
 
-        <h2 id="cropping">Cropping</h2>
+        <div className={styles.section}>
+          <h3 id="cropping" className={styles.sectionTitle}>Cropping</h3>
 
-        <ul className={styles.images}>
-          <li>
-            <CldImage
-              width="3317"
-              height="4975"
-              src="images/woman-stairs"
-              layout="responsive"
-              crop="thumb"
-              gravity="auto"
-            />
-            <h3 className={styles.imageTitle}>
-              Original
-            </h3>
-          </li>
-          <li>
-            <CldImage
-              width="1200"
-              height="1200"
-              src="images/woman-stairs"
-              layout="responsive"
-              crop="thumb"
-              gravity="auto"
-            />
-            <h3 className={styles.imageTitle}>
-              Thumbnail with Auto Gravity
-            </h3>
-            <pre><code>{`crop="thumb"
+          <ul className={styles.images}>
+            <li>
+              <CldImage
+                width="3317"
+                height="4975"
+                src="images/woman-headphones"
+                layout="responsive"
+                crop="thumb"
+                gravity="auto"
+              />
+              <h4 className={styles.imageTitle}>
+                Original
+              </h4>
+            </li>
+            <li>
+              <CldImage
+                width="1200"
+                height="1200"
+                src="images/woman-headphones"
+                layout="responsive"
+                crop="thumb"
+                gravity="auto"
+              />
+              <h4 className={styles.imageTitle}>
+                Thumbnail with Auto Gravity
+              </h4>
+              <pre><code>{`crop="thumb"
 gravity="auto"`}</code></pre>
-          </li>
-          <li>
-            <CldImage
-              width="1200"
-              height="1200"
-              src="images/woman-stairs"
-              layout="responsive"
-              crop="thumb"
-              gravity="faces"
-            />
-            <h3 className={styles.imageTitle}>
-              Thumbnail with Faces Gravity
-            </h3>
-            <pre><code>{`crop="thumb"
+            </li>
+            <li>
+              <CldImage
+                width="1200"
+                height="1200"
+                src="images/woman-headphones"
+                layout="responsive"
+                crop="thumb"
+                gravity="faces"
+              />
+              <h4 className={styles.imageTitle}>
+                Thumbnail with Faces Gravity
+              </h4>
+              <pre><code>{`crop="thumb"
 gravity="faces"`}</code></pre>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
 
-        <h2 id="placeholders">Placeholders</h2>
+        <div className={styles.section}>
+          <h3 id="placeholders" className={styles.sectionTitle}>Placeholders</h3>
 
-        <ul className={styles.images}>
-          <li>
-            <CldImage
-              width="1920"
-              height="1200"
-              src="images/turtle"
-              layout="responsive"
-              placeholder="blur"
-            />
-            <h3 className={styles.imageTitle}>
-              Blur
-            </h3>
-            <pre><code>{`placeholder="blur"`}</code></pre>
-          </li>
-          <li>
-            <CldImage
-              width="1920"
-              height="1200"
-              src="images/turtle"
-              layout="responsive"
-              placeholder="grayscale"
-            />
-            <h3 className={styles.imageTitle}>
-              Grayscale
-            </h3>
-            <pre><code>{`placeholder="grayscale"`}</code></pre>
-          </li>
-          <li>
-            <CldImage
-              width="1920"
-              height="1200"
-              src="images/turtle"
-              layout="responsive"
-              placeholder="color:blueviolet"
-            />
-            <h3 className={styles.imageTitle}>
-              Color
-            </h3>
-            <pre><code>{`placeholder="color:blueviolet"`}</code></pre>
-          </li>
-        </ul>
+          <ul className={styles.images}>
+            <li>
+              <CldImage
+                width="1920"
+                height="1200"
+                src="images/turtle"
+                layout="responsive"
+                placeholder="blur"
+              />
+              <h4 className={styles.imageTitle}>
+                Blur
+              </h4>
+              <pre><code>{`placeholder="blur"`}</code></pre>
+            </li>
+            <li>
+              <CldImage
+                width="1920"
+                height="1200"
+                src="images/turtle"
+                layout="responsive"
+                placeholder="grayscale"
+              />
+              <h4 className={styles.imageTitle}>
+                Grayscale
+              </h4>
+              <pre><code>{`placeholder="grayscale"`}</code></pre>
+            </li>
+            <li>
+              <CldImage
+                width="1920"
+                height="1200"
+                src="images/turtle"
+                layout="responsive"
+                placeholder="color:blueviolet"
+              />
+              <h4 className={styles.imageTitle}>
+                Color
+              </h4>
+              <pre><code>{`placeholder="color:blueviolet"`}</code></pre>
+            </li>
+          </ul>
+        </div>
 
-        <h2 id="image-overlays">Image Overlays</h2>
+        <div className={styles.section}>
+          <h3 id="image-overlays" className={styles.sectionTitle}>Image Overlays</h3>
 
-        <ul className={styles.images}>
-          <li>
-            <CldImage
-              width="1920"
-              height="1200"
-              src="images/turtle"
-              layout="responsive"
-              overlays={[{
-                publicId: 'images/earth',
-                position: {
-                  x: 50,
-                  y: 50,
-                  gravity: 'north_west',
-                },
-                effects: [
-                  {
-                    crop: 'fill',
-                    gravity: 'auto',
-                    width: 500,
-                    height: 500
-                  }
-                ]
-              }]}
-            />
-            <h3 className={styles.imageTitle}>
-              Overlay Image by Public ID
-            </h3>
-            <pre><code>{`overlays={[{
+          <ul className={styles.images}>
+            <li>
+              <CldImage
+                width="1920"
+                height="1200"
+                src="images/turtle"
+                layout="responsive"
+                overlays={[{
+                  publicId: 'images/earth',
+                  position: {
+                    x: 50,
+                    y: 50,
+                    gravity: 'north_west',
+                  },
+                  effects: [
+                    {
+                      crop: 'fill',
+                      gravity: 'auto',
+                      width: 500,
+                      height: 500
+                    }
+                  ]
+                }]}
+              />
+              <h4 className={styles.imageTitle}>
+                Overlay Image by Public ID
+              </h4>
+              <pre><code>{`overlays={[{
   publicId: 'images/earth',
   position: {
     x: 10,
@@ -206,72 +312,79 @@ gravity="faces"`}</code></pre>
     }
   ]
 }]}`}</code></pre>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
 
-        <h2 id="image-underlays">Image Underlays</h2>
+        <div className={styles.section}>
+          <h3 id="image-underlays" className={styles.sectionTitle}>Image Underlays</h3>
 
-        <ul className={styles.images}>
-          <li>
-            <CldImage
-              width="1920"
-              height="1200"
-              src="images/turtle"
-              layout="responsive"
-              removeBackground
-              underlays={[{
-                publicId: 'images/galaxy',
-                width: 1920,
-                height: 1200,
-                crop: 'fill'
-              }]}
-            />
-            <h3 className={styles.imageTitle}>
-              Background Removal with Underlay
-            </h3>
-            <pre><code>{`removeBackground
+          <ul className={styles.images}>
+            <li>
+              <CldImage
+                width="1920"
+                height="1200"
+                src="images/turtle"
+                layout="responsive"
+                removeBackground
+                underlays={[{
+                  publicId: 'images/galaxy',
+                  width: 1920,
+                  height: 1200,
+                  crop: 'fill'
+                }]}
+              />
+              <h4 className={styles.imageTitle}>
+                Background Removal with Underlay
+              </h4>
+              <pre><code>{`removeBackground
 underlays={[{
   publicId: 'images/galaxy',
   width: 1920,
   height: 1200,
   crop: 'fill'
 }]}`}</code></pre>
-          </li>
-        </ul>
+              <p className={styles.note}>
+                Note: Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal Add-On</a>
+              </p>
+            </li>
+          </ul>
+        </div>
 
-        <h2 id="text-overlays">Text Overlays</h2>
+        <div className={styles.section}>
+          <h3 id="text-overlays" className={styles.sectionTitle}>Text Overlays</h3>
 
-        <ul className={styles.images}>
-          <li>
-            <CldImage
-              width="2670"
-              height="1782"
-              src="images/sneakers"
-              layout="responsive"
-              overlays={[{
-                width: 2670 - 20,
-                crop: 'fit',
-                position: {
-                  x: 140,
-                  y: 140,
-                  angle: -20,
-                  gravity: 'south_east',
-                },
-                text: {
-                  color: 'blueviolet',
-                  fontFamily: 'Source Sans Pro',
-                  fontSize: 250,
-                  fontWeight: 'bold',
-                  textDecoration: 'underline',
-                  letterSpacing: 14,
-                  text: 'Cool Beans'
-                }
-              }]}
-            />
-            <h3 className={styles.imageTitle}>
-              Text Overlay
-            </h3>
-            <pre><code>{`overlays={[{
+          <ul className={styles.images}>
+            <li>
+              <CldImage
+                width="2670"
+                height="1782"
+                src="images/sneakers"
+                layout="responsive"
+                overlays={[{
+                  width: 2670 - 20,
+                  crop: 'fit',
+                  position: {
+                    x: 140,
+                    y: 140,
+                    angle: -20,
+                    gravity: 'south_east',
+                  },
+                  text: {
+                    color: 'blueviolet',
+                    fontFamily: 'Source Sans Pro',
+                    fontSize: 250,
+                    fontWeight: 'bold',
+                    textDecoration: 'underline',
+                    letterSpacing: 14,
+                    text: 'Cool Beans'
+                  }
+                }]}
+              />
+              <h4 className={styles.imageTitle}>
+                Text Overlay
+              </h4>
+              <pre><code>{`overlays={[{
   width: 2670 - 20,
   crop: 'fit',
   position: {
@@ -289,8 +402,9 @@ underlays={[{
     text: 'Cool Beans'
   }
 }]}`}</code></pre>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </main>
     </div>
   )

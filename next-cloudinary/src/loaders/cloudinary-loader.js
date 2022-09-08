@@ -3,6 +3,7 @@ import { Cloudinary } from '@cloudinary/url-gen';
 import { croppingPlugin } from '../plugins/cropping';
 import { overlaysPlugin } from '../plugins/overlays';
 import { removeBackgroundPlugin } from '../plugins/remove-background';
+import { tintPlugin } from '../plugins/tint';
 import { underlaysPlugin } from '../plugins/underlays';
 
 import {
@@ -22,6 +23,7 @@ const transformationPlugins = [
   removeBackgroundPlugin,
 
   croppingPlugin,
+  tintPlugin,
   overlaysPlugin,
   underlaysPlugin
 ];

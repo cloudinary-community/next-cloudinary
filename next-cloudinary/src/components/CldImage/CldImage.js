@@ -3,12 +3,13 @@ import Image from 'next/image';
 import { createPlaceholderUrl } from '../../lib/cloudinary';
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
-const CldImage = ({ crop, gravity, overlays, removeBackground, underlays, ...props }) => {
+const CldImage = ({ crop, gravity, overlays, removeBackground, tint, underlays, ...props }) => {
   const cldOptions = {
     crop,
     gravity,
     overlays,
     removeBackground,
+    tint,
     underlays,
   };
 

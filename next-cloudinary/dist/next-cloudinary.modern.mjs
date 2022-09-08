@@ -274,6 +274,20 @@ function removeBackgroundPlugin({
   }
 }
 
+function tintPlugin({
+  cldImage,
+  options,
+  cldOptions
+} = {}) {
+  const {
+    tint
+  } = cldOptions;
+
+  if (tint) {
+    cldImage.effect(`e_tint:${tint}`);
+  }
+}
+
 const _excluded$1 = ["publicId", "type", "position", "text", "effects"];
 function underlaysPlugin({
   cldImage,
@@ -357,7 +371,7 @@ const cld = new Cloudinary({
   }
 });
 const transformationPlugins = [// Background Removal must always come first
-removeBackgroundPlugin, croppingPlugin, overlaysPlugin, underlaysPlugin];
+removeBackgroundPlugin, croppingPlugin, tintPlugin, overlaysPlugin, underlaysPlugin];
 function cloudinaryLoader(options, cldOptions) {
   const {
     src,
@@ -376,7 +390,7 @@ function cloudinaryLoader(options, cldOptions) {
   return cldImage.format(format).delivery(`q_${quality}`).toURL();
 }
 
-const _excluded = ["crop", "gravity", "overlays", "removeBackground", "underlays"];
+const _excluded = ["crop", "gravity", "overlays", "removeBackground", "tint", "underlays"];
 
 const CldImage = _ref => {
   let {
@@ -384,6 +398,7 @@ const CldImage = _ref => {
     gravity,
     overlays,
     removeBackground,
+    tint,
     underlays
   } = _ref,
       props = _objectWithoutPropertiesLoose(_ref, _excluded);
@@ -393,6 +408,7 @@ const CldImage = _ref => {
     gravity,
     overlays,
     removeBackground,
+    tint,
     underlays
   };
   const imageProps = {}; // If we see a placeholder option, configure a Cloudinary-based URL.

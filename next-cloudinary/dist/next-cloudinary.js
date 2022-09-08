@@ -269,6 +269,18 @@ function removeBackgroundPlugin(_temp) {
   }
 }
 
+function tintPlugin(_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      cldImage = _ref.cldImage,
+      cldOptions = _ref.cldOptions;
+
+  var tint = cldOptions.tint;
+
+  if (tint) {
+    cldImage.effect("e_tint:" + tint);
+  }
+}
+
 var _excluded$1 = ["publicId", "type", "position", "text", "effects"];
 function underlaysPlugin(_temp) {
   var _ref = _temp === void 0 ? {} : _temp,
@@ -344,7 +356,7 @@ var cld = new urlGen.Cloudinary({
   }
 });
 var transformationPlugins = [// Background Removal must always come first
-removeBackgroundPlugin, croppingPlugin, overlaysPlugin, underlaysPlugin];
+removeBackgroundPlugin, croppingPlugin, tintPlugin, overlaysPlugin, underlaysPlugin];
 function cloudinaryLoader(options, cldOptions) {
   var src = options.src,
       _options$format = options.format,
@@ -362,13 +374,14 @@ function cloudinaryLoader(options, cldOptions) {
   return cldImage.format(format).delivery("q_" + quality).toURL();
 }
 
-var _excluded = ["crop", "gravity", "overlays", "removeBackground", "underlays"];
+var _excluded = ["crop", "gravity", "overlays", "removeBackground", "tint", "underlays"];
 
 var CldImage = function CldImage(_ref) {
   var crop = _ref.crop,
       gravity = _ref.gravity,
       overlays = _ref.overlays,
       removeBackground = _ref.removeBackground,
+      tint = _ref.tint,
       underlays = _ref.underlays,
       props = _objectWithoutPropertiesLoose(_ref, _excluded);
 
@@ -377,6 +390,7 @@ var CldImage = function CldImage(_ref) {
     gravity: gravity,
     overlays: overlays,
     removeBackground: removeBackground,
+    tint: tint,
     underlays: underlays
   };
   var imageProps = {}; // If we see a placeholder option, configure a Cloudinary-based URL.
