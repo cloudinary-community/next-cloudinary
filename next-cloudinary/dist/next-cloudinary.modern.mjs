@@ -155,7 +155,7 @@ const text = {
   }
 };
 
-const _excluded$2 = ["publicId", "position", "text", "effects"];
+const _excluded$1 = ["publicId", "position", "text", "effects"];
 function overlaysPlugin({
   cldImage,
   options,
@@ -173,7 +173,7 @@ function overlaysPlugin({
       text: text$1,
       effects: layerEffects = []
     } = _ref,
-        options = _objectWithoutPropertiesLoose(_ref, _excluded$2);
+        options = _objectWithoutPropertiesLoose(_ref, _excluded$1);
 
     const hasPublicId = typeof publicId === 'string';
     const hasText = typeof text$1 === 'object';
@@ -288,7 +288,7 @@ function tintPlugin({
   }
 }
 
-const _excluded$1 = ["publicId", "type", "position", "text", "effects"];
+const _excluded = ["publicId", "type", "position", "text", "effects"];
 function underlaysPlugin({
   cldImage,
   options,
@@ -305,7 +305,7 @@ function underlaysPlugin({
       position: position$1,
       effects: layerEffects = []
     } = _ref,
-        options = _objectWithoutPropertiesLoose(_ref, _excluded$1);
+        options = _objectWithoutPropertiesLoose(_ref, _excluded);
 
     const hasPublicId = typeof publicId === 'string';
     const hasPosition = typeof position$1 === 'object';
@@ -370,8 +370,8 @@ const cld = new Cloudinary({
     cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
   }
 });
-const transformationPlugins = [// Background Removal must always come first
-removeBackgroundPlugin, croppingPlugin, tintPlugin, overlaysPlugin, underlaysPlugin];
+const transformationPlugins = [removeBackgroundPlugin, // Background Removal must always come first
+croppingPlugin, tintPlugin, overlaysPlugin, underlaysPlugin];
 function cloudinaryLoader(options, cldOptions) {
   const {
     src,
@@ -390,45 +390,40 @@ function cloudinaryLoader(options, cldOptions) {
   return cldImage.format(format).delivery(`q_${quality}`).toURL();
 }
 
-const _excluded = ["crop", "gravity", "overlays", "removeBackground", "tint", "underlays"];
+const options = ['crop', 'gravity', 'overlays', 'removeBackground', 'tint', 'underlays'];
 
-const CldImage = _ref => {
-  let {
-    crop,
-    gravity,
-    overlays,
-    removeBackground,
-    tint,
-    underlays
-  } = _ref,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded);
+const CldImage = props => {
+  // Construct the base Image component props by filtering out Cloudinary-specific props
+  const imageProps = {};
+  Object.keys(props).filter(key => !options.includes(key)).forEach(key => imageProps[key] = props[key]); // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
 
-  const cldOptions = {
-    crop,
-    gravity,
-    overlays,
-    removeBackground,
-    tint,
-    underlays
-  };
-  const imageProps = {}; // If we see a placeholder option, configure a Cloudinary-based URL.
+  const cldOptions = {};
+  options.forEach(key => {
+    if (props[key]) {
+      cldOptions[key] = props[key];
+    }
+  }); // If we see a placeholder option, configure a Cloudinary-based URL.
   // The resulting image will always be blurred per Next.js, so we're
   // limited on options for placeholders.
+  //
+  // We need to do this logic here as we potentially need to mutate
+  // an Image component prop as opposed to simply the URL
+  //
   // https://nextjs.org/docs/api-reference/next/image#blurdataurl
 
-  if (props.placeholder) {
+  if (imageProps.placeholder) {
     imageProps.blurDataURL = createPlaceholderUrl({
       src: props.src,
       placeholder: props.placeholder
     });
 
-    if (props.placeholder !== 'blur') {
-      props.placeholder = 'blur';
+    if (imageProps.placeholder !== 'blur') {
+      imageProps.placeholder = 'blur';
     }
   }
 
-  return /*#__PURE__*/jsx(Image, _extends({}, imageProps, props, {
-    loader: options => cloudinaryLoader(_extends({}, props, {
+  return /*#__PURE__*/jsx(Image, _extends({}, imageProps, {
+    loader: options => cloudinaryLoader(_extends({}, imageProps, {
       options
     }), cldOptions)
   }));

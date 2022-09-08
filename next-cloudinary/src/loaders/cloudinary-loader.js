@@ -19,9 +19,7 @@ const cld = new Cloudinary({
 });
 
 const transformationPlugins = [
-  // Background Removal must always come first
-  removeBackgroundPlugin,
-
+  removeBackgroundPlugin, // Background Removal must always come first
   croppingPlugin,
   tintPlugin,
   overlaysPlugin,

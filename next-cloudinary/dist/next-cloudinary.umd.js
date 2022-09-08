@@ -161,7 +161,7 @@
     }
   };
 
-  var _excluded$2 = ["publicId", "position", "text", "effects"];
+  var _excluded$1 = ["publicId", "position", "text", "effects"];
   function overlaysPlugin(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
@@ -177,7 +177,7 @@
           text$1 = _ref2.text,
           _ref2$effects = _ref2.effects,
           layerEffects = _ref2$effects === void 0 ? [] : _ref2$effects,
-          options = _objectWithoutPropertiesLoose(_ref2, _excluded$2);
+          options = _objectWithoutPropertiesLoose(_ref2, _excluded$1);
 
       var hasPublicId = typeof publicId === 'string';
       var hasText = typeof text$1 === 'object';
@@ -282,7 +282,7 @@
     }
   }
 
-  var _excluded$1 = ["publicId", "type", "position", "text", "effects"];
+  var _excluded = ["publicId", "type", "position", "text", "effects"];
   function underlaysPlugin(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
@@ -297,7 +297,7 @@
           position$1 = _ref2.position,
           _ref2$effects = _ref2.effects,
           layerEffects = _ref2$effects === void 0 ? [] : _ref2$effects,
-          options = _objectWithoutPropertiesLoose(_ref2, _excluded$1);
+          options = _objectWithoutPropertiesLoose(_ref2, _excluded);
 
       var hasPublicId = typeof publicId === 'string';
       var hasPosition = typeof position$1 === 'object';
@@ -356,8 +356,8 @@
       cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
     }
   });
-  var transformationPlugins = [// Background Removal must always come first
-  removeBackgroundPlugin, croppingPlugin, tintPlugin, overlaysPlugin, underlaysPlugin];
+  var transformationPlugins = [removeBackgroundPlugin, // Background Removal must always come first
+  croppingPlugin, tintPlugin, overlaysPlugin, underlaysPlugin];
   function cloudinaryLoader(options, cldOptions) {
     var src = options.src,
         _options$format = options.format,
@@ -375,44 +375,45 @@
     return cldImage.format(format).delivery("q_" + quality).toURL();
   }
 
-  var _excluded = ["crop", "gravity", "overlays", "removeBackground", "tint", "underlays"];
+  var options = ['crop', 'gravity', 'overlays', 'removeBackground', 'tint', 'underlays'];
 
-  var CldImage = function CldImage(_ref) {
-    var crop = _ref.crop,
-        gravity = _ref.gravity,
-        overlays = _ref.overlays,
-        removeBackground = _ref.removeBackground,
-        tint = _ref.tint,
-        underlays = _ref.underlays,
-        props = _objectWithoutPropertiesLoose(_ref, _excluded);
+  var CldImage = function CldImage(props) {
+    // Construct the base Image component props by filtering out Cloudinary-specific props
+    var imageProps = {};
+    Object.keys(props).filter(function (key) {
+      return !options.includes(key);
+    }).forEach(function (key) {
+      return imageProps[key] = props[key];
+    }); // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
 
-    var cldOptions = {
-      crop: crop,
-      gravity: gravity,
-      overlays: overlays,
-      removeBackground: removeBackground,
-      tint: tint,
-      underlays: underlays
-    };
-    var imageProps = {}; // If we see a placeholder option, configure a Cloudinary-based URL.
+    var cldOptions = {};
+    options.forEach(function (key) {
+      if (props[key]) {
+        cldOptions[key] = props[key];
+      }
+    }); // If we see a placeholder option, configure a Cloudinary-based URL.
     // The resulting image will always be blurred per Next.js, so we're
     // limited on options for placeholders.
+    //
+    // We need to do this logic here as we potentially need to mutate
+    // an Image component prop as opposed to simply the URL
+    //
     // https://nextjs.org/docs/api-reference/next/image#blurdataurl
 
-    if (props.placeholder) {
+    if (imageProps.placeholder) {
       imageProps.blurDataURL = createPlaceholderUrl({
         src: props.src,
         placeholder: props.placeholder
       });
 
-      if (props.placeholder !== 'blur') {
-        props.placeholder = 'blur';
+      if (imageProps.placeholder !== 'blur') {
+        imageProps.placeholder = 'blur';
       }
     }
 
-    return /*#__PURE__*/jsxRuntime.jsx(Image__default["default"], _extends({}, imageProps, props, {
+    return /*#__PURE__*/jsxRuntime.jsx(Image__default["default"], _extends({}, imageProps, {
       loader: function loader(options) {
-        return cloudinaryLoader(_extends({}, props, {
+        return cloudinaryLoader(_extends({}, imageProps, {
           options: options
         }), cldOptions);
       }
