@@ -1,13 +1,15 @@
 {
   "name": "next-cloudinary",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "dist/next-cloudinary.umd.js",
   "module": "dist/next-cloudinary.module.js",
   "umd:main": "dist/next-cloudinary.umd.js",
   "source": "src/index.js",
   "scripts": {
     "build": "microbundle --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react",
-    "dev": "microbundle watch --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react"
+    "dev": "microbundle watch --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react",
+    "prepublishOnly": "cp ../README.md .",
+    "postpublish": "rm ./README.md"
   },
   "dependencies": {
     "@cloudinary/url-gen": "^1.8.5"
