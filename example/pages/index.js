@@ -65,16 +65,22 @@ export default function Home() {
               <h4 className={styles.imageTitle}>
                 Thumbnail with Auto Gravity
               </h4>
-              <pre><code>{`crop="thumb"
-gravity="faces"
-removeBackground
-tint="40:253f8c"
-underlays={[{
-  publicId: 'images/mountain',
-  width: 987,
-  height: 987,
-  crop: 'fill'
-}]}`}</code></pre>
+              <pre><code>{`<CldImage
+  width="987"
+  height="987"
+  src="images/woman-headphones"
+  layout="responsive"
+  crop="thumb"
+  gravity="faces"
+  removeBackground
+  tint="40:253f8c"
+  underlays={[{
+    publicId: 'images/city-skyline',
+    width: 987,
+    height: 987,
+    crop: 'fill'
+  }]}
+/>`}</code></pre>
             </li>
           </ul>
         </div>
