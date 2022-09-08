@@ -17,7 +17,40 @@ export default function Home() {
           Next Cloudinary
         </h1>
 
-        <h2>Effects</h2>
+        <ul>
+          <li>
+            <a href="#effects">
+              Effects
+            </a>
+          </li>
+          <li>
+            <a href="#cropping">
+              Cropping
+            </a>
+          </li>
+          <li>
+            <a href="#placeholders">
+              Placeholders
+            </a>
+          </li>
+          <li>
+            <a href="#image-overlays">
+              Image Overlays
+            </a>
+          </li>
+          <li>
+            <a href="#image-underlays">
+              Image Underlays
+            </a>
+          </li>
+          <li>
+            <a href="#text-overlays">
+              Text Overlays
+            </a>
+          </li>
+        </ul>
+
+        <h2 id="effects">Effects</h2>
 
         <ul className={styles.images}>
           <li>
@@ -36,7 +69,55 @@ export default function Home() {
 
         </ul>
 
-        <h2>Placeholders</h2>
+        <h2 id="cropping">Cropping</h2>
+
+        <ul className={styles.images}>
+          <li>
+            <CldImage
+              width="3317"
+              height="4975"
+              src="images/woman-stairs"
+              layout="responsive"
+              crop="thumb"
+              gravity="auto"
+            />
+            <h3 className={styles.imageTitle}>
+              Original
+            </h3>
+          </li>
+          <li>
+            <CldImage
+              width="1200"
+              height="1200"
+              src="images/woman-stairs"
+              layout="responsive"
+              crop="thumb"
+              gravity="auto"
+            />
+            <h3 className={styles.imageTitle}>
+              Thumbnail with Auto Gravity
+            </h3>
+            <pre><code>{`crop="thumb"
+gravity="auto"`}</code></pre>
+          </li>
+          <li>
+            <CldImage
+              width="1200"
+              height="1200"
+              src="images/woman-stairs"
+              layout="responsive"
+              crop="thumb"
+              gravity="faces"
+            />
+            <h3 className={styles.imageTitle}>
+              Thumbnail with Faces Gravity
+            </h3>
+            <pre><code>{`crop="thumb"
+gravity="faces"`}</code></pre>
+          </li>
+        </ul>
+
+        <h2 id="placeholders">Placeholders</h2>
 
         <ul className={styles.images}>
           <li>
@@ -80,7 +161,7 @@ export default function Home() {
           </li>
         </ul>
 
-        <h2>Image Overlays</h2>
+        <h2 id="image-overlays">Image Overlays</h2>
 
         <ul className={styles.images}>
           <li>
@@ -128,7 +209,7 @@ export default function Home() {
           </li>
         </ul>
 
-        <h2>Image Underlays</h2>
+        <h2 id="image-underlays">Image Underlays</h2>
 
         <ul className={styles.images}>
           <li>
@@ -158,7 +239,7 @@ underlays={[{
           </li>
         </ul>
 
-        <h2>Text Overlays</h2>
+        <h2 id="text-overlays">Text Overlays</h2>
 
         <ul className={styles.images}>
           <li>

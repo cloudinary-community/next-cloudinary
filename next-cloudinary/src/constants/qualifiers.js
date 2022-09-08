@@ -1,4 +1,9 @@
+// aspectRatio
+
 export const primary = {
+  aspectRatio: {
+    qualifier: 'ar'
+  },
   crop: {
     qualifier: 'c'
   },
