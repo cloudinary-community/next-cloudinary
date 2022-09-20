@@ -230,15 +230,6 @@ npm install next-cloudinary`}</code></pre>
               </h4>
               <pre><code>{`tint="equalize:80:blue:blueviolet"`}</code></pre>
             </li>
-            <li>
-              <CldImage
-                width="1920"
-                height="1200"
-                src="images/turtle"
-                layout="responsive"
-                art="al_dente"
-              />
-            </li>
           </ul>
 
           <p>
