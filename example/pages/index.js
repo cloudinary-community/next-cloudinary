@@ -164,8 +164,8 @@ npm install next-cloudinary`}</code></pre>
           <ul className={styles.images}>
             <li>
               <CldImage
-                width="1920"
-                height="1200"
+                width="960"
+                height="600"
                 src="images/turtle"
                 sizes="100vw"
                 removeBackground
@@ -180,8 +180,8 @@ npm install next-cloudinary`}</code></pre>
             </li>
             <li>
               <CldImage
-                width="1920"
-                height="1200"
+                width="960"
+                height="600"
                 src="images/turtle"
                 sizes="100vw"
                 zoompan="loop"
@@ -193,8 +193,8 @@ npm install next-cloudinary`}</code></pre>
             </li>
             <li>
               <CldImage
-                width="1920"
-                height="1200"
+                width="960"
+                height="600"
                 src="images/turtle"
                 sizes="100vw"
                 blur="1200"
@@ -206,8 +206,8 @@ npm install next-cloudinary`}</code></pre>
             </li>
             <li>
               <CldImage
-                width="1920"
-                height="1200"
+                width="960"
+                height="600"
                 src="images/turtle"
                 sizes="100vw"
                 pixelate
@@ -219,8 +219,8 @@ npm install next-cloudinary`}</code></pre>
             </li>
             <li>
               <CldImage
-                width="1920"
-                height="1200"
+                width="960"
+                height="600"
                 src="images/turtle"
                 sizes="100vw"
                 grayscale
@@ -232,8 +232,8 @@ npm install next-cloudinary`}</code></pre>
             </li>
             <li>
               <CldImage
-                width="1920"
-                height="1200"
+                width="960"
+                height="600"
                 src="images/turtle"
                 sizes="100vw"
                 tint="equalize:80:blue:blueviolet"
@@ -256,8 +256,8 @@ npm install next-cloudinary`}</code></pre>
           <ul className={styles.images}>
             <li>
               <CldImage
-                width="3317"
-                height="4975"
+                width="600"
+                height="900"
                 src="images/woman-headphones"
                 sizes="100vw"
                 crop="thumb"
@@ -269,8 +269,8 @@ npm install next-cloudinary`}</code></pre>
             </li>
             <li>
               <CldImage
-                width="1200"
-                height="1200"
+                width="600"
+                height="600"
                 src="images/woman-headphones"
                 sizes="100vw"
                 crop="thumb"
@@ -284,8 +284,8 @@ gravity="auto"`}</code></pre>
             </li>
             <li>
               <CldImage
-                width="1200"
-                height="1200"
+                width="600"
+                height="600"
                 src="images/woman-headphones"
                 sizes="100vw"
                 crop="thumb"
@@ -306,8 +306,8 @@ gravity="faces"`}</code></pre>
           <ul className={styles.images}>
             <li>
               <CldImage
-                width="1920"
-                height="1200"
+                width="960"
+                height="600"
                 src="images/turtle"
                 sizes="100vw"
                 placeholder="blur"
@@ -319,8 +319,8 @@ gravity="faces"`}</code></pre>
             </li>
             <li>
               <CldImage
-                width="1920"
-                height="1200"
+                width="960"
+                height="600"
                 src="images/turtle"
                 sizes="100vw"
                 placeholder="grayscale"
@@ -332,8 +332,8 @@ gravity="faces"`}</code></pre>
             </li>
             <li>
               <CldImage
-                width="1920"
-                height="1200"
+                width="960"
+                height="600"
                 src="images/turtle"
                 sizes="100vw"
                 placeholder="color:blueviolet"
@@ -352,8 +352,8 @@ gravity="faces"`}</code></pre>
           <ul className={styles.images}>
             <li>
               <CldImage
-                width="1920"
-                height="1200"
+                width="960"
+                height="600"
                 src="images/turtle"
                 sizes="100vw"
                 overlays={[{
@@ -402,8 +402,8 @@ gravity="faces"`}</code></pre>
           <ul className={styles.images}>
             <li>
               <CldImage
-                width="1920"
-                height="1200"
+                width="960"
+                height="600"
                 src="images/turtle"
                 sizes="100vw"
                 removeBackground
@@ -437,8 +437,8 @@ underlays={[{
           <ul className={styles.images}>
             <li>
               <CldImage
-                width="2670"
-                height="1782"
+                width="1335"
+                height="891"
                 src="images/sneakers"
                 sizes="100vw"
                 overlays={[{
