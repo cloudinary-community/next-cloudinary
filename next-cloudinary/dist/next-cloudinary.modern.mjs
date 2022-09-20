@@ -453,9 +453,6 @@ var underlaysPlugin = {
 };
 
 const props = ['zoompan'];
-const options = {
-  format: 'gif'
-};
 function plugin({
   cldImage,
   cldOptions
@@ -463,6 +460,7 @@ function plugin({
   const {
     zoompan = false
   } = cldOptions;
+  const options = {};
 
   if (zoompan === true) {
     cldImage.effect('e_zoompan');
@@ -493,12 +491,19 @@ function plugin({
       cldImage.effect(loopEffect);
     }
   }
+
+  if (zoompan !== false) {
+    options.format = 'gif';
+  }
+
+  return {
+    options
+  };
 }
 
 var zoompanPlugin = {
   __proto__: null,
   props: props,
-  options: options,
   plugin: plugin
 };
 
@@ -521,14 +526,15 @@ function cloudinaryLoader(defaultOptions, cldOptions) {
 
   const cldImage = cld.image(options.src);
   transformationPlugins.forEach(({
-    plugin,
-    options: pluginOptions
+    plugin
   }) => {
-    plugin({
+    const {
+      options: pluginOptions
+    } = plugin({
       cldImage,
       options,
       cldOptions
-    });
+    }) || {};
 
     if (pluginOptions != null && pluginOptions.format) {
       options.format = pluginOptions.format;

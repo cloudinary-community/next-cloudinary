@@ -41,12 +41,12 @@ export function cloudinaryLoader(defaultOptions, cldOptions) {
 
   const cldImage = cld.image(options.src);
 
-  transformationPlugins.forEach(({ plugin, options: pluginOptions }) => {
-    plugin({
+  transformationPlugins.forEach(({ plugin }) => {
+    const { options: pluginOptions } = plugin({
       cldImage,
       options,
       cldOptions
-    });
+    }) || {};
 
     if ( pluginOptions?.format ) {
       options.format = pluginOptions.format;

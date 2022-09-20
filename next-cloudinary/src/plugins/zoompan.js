@@ -1,11 +1,8 @@
 export const props = ['zoompan'];
 
-export const options = {
-  format: 'gif'
-}
-
 export function plugin({ cldImage, cldOptions } = {}) {
   const { zoompan = false } = cldOptions;
+  const options = {};
 
   if ( zoompan === true ) {
     cldImage.effect('e_zoompan');
@@ -36,5 +33,13 @@ export function plugin({ cldImage, cldOptions } = {}) {
     if ( loopEffect ) {
       cldImage.effect(loopEffect);
     }
+  }
+
+  if ( zoompan !== false ) {
+    options.format = 'gif';
+  }
+
+  return {
+    options
   }
 }
