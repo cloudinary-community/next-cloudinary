@@ -1,10 +1,10 @@
 import { Cloudinary } from '@cloudinary/url-gen';
 
-import { croppingPlugin } from '../plugins/cropping';
-import { overlaysPlugin } from '../plugins/overlays';
-import { removeBackgroundPlugin } from '../plugins/remove-background';
-import { tintPlugin } from '../plugins/tint';
-import { underlaysPlugin } from '../plugins/underlays';
+import * as croppingPlugin from '../plugins/cropping';
+import * as overlaysPlugin from '../plugins/overlays';
+import * as removeBackgroundPlugin from '../plugins/remove-background';
+import * as effectsPlugin from '../plugins/effects';
+import * as underlaysPlugin from '../plugins/underlays';
 
 import {
   primary as qualifiersPrimary,
@@ -18,10 +18,10 @@ const cld = new Cloudinary({
   },
 });
 
-const transformationPlugins = [
+export const transformationPlugins = [
   removeBackgroundPlugin, // Background Removal must always come first
   croppingPlugin,
-  tintPlugin,
+  effectsPlugin,
   overlaysPlugin,
   underlaysPlugin
 ];
@@ -36,7 +36,7 @@ export function cloudinaryLoader(options, cldOptions) {
 
   const cldImage = cld.image(src);
 
-  transformationPlugins.forEach(plugin => {
+  transformationPlugins.forEach(({ plugin }) => {
     plugin({
       cldImage,
       options,

@@ -1,6 +1,8 @@
 const cropsGravityAuto = [ 'crop', 'fill', 'lfill', 'fill_pad', 'thumb' ];
 
-export function croppingPlugin({ cldImage, options, cldOptions } = {}) {
+export const options = ['crop', 'gravity'];
+
+export function plugin({ cldImage, options, cldOptions } = {}) {
   const { width, height } = options;
   const { crop = 'limit', gravity } = cldOptions;
 

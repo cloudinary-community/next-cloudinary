@@ -4,7 +4,9 @@ import {
   position as qualifiersPosition
 } from '../constants/qualifiers';
 
-export function overlaysPlugin({ cldImage, options, cldOptions } = {}) {
+export const options = ['overlays'];
+
+export function plugin({ cldImage, options, cldOptions } = {}) {
   const { overlays = [] } = cldOptions;
 
   const type = 'overlay';

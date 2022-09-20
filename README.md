@@ -65,7 +65,7 @@ As CldImage is a wrapper around the Next.js Image component, all built-in Image 
 
 ## 🛠 Configuration
 
-### Props
+### General Props
 
 | Prop Name        | Type        | Example                      |
 |------------------|-------------|------------------------------|
@@ -73,8 +73,53 @@ As CldImage is a wrapper around the Next.js Image component, all built-in Image 
 | gravity          | string      | `"faces"`                    |
 | overlays         | array       | See Below                    |
 | removeBackground | bool/string | `true`                       |
-| tint             | string      | `"tint:100:red:blue:yellow"` |
 | underlays        | array       | See Below                    |
+
+### Effect Props
+
+| Prop Name          | Type        | Example                      |
+|------------------  |-------------|------------------------------|
+| art                | string      | `"al_dente"`                 |
+| autoBrightness     | bool/string | `true`, `"80"`               |
+| autoColor          | bool/string | `true`, `"80"`               |
+| autoContrast       | bool/string | `true`, `"80"`               |
+| assistColorblind   | bool/string | `true`, `"20"`, `"xray"`     |
+| blackwhite         | bool/string | `true`, `"40"`               |
+| blur               | bool/string | `true`, `"800"`              |
+| blurFaces          | bool/string | `true`, `"800"`              |
+| blurRegion         | bool/string | `true`, `"1000,h_425,w_550,x_600,y_400"` |
+| brightness         | bool/string | `true`, `"100"`                      |
+| brightnessHSB      | bool/string | `true`, `"100"`                      |
+| cartoonify         | bool/string | `true`, `"70:80"`            |
+| colorize           | string      | `"35,co_darkviolet"`         |
+| contrast           | bool/string | `true`, `"100"`, `"level_-70"`       |
+| distort            | string      | `"150:340:1500:10:1500:1550:50:1000"`, `"arc:180.0"` |
+| fillLight          | bool/string | `true`, `"70:20"`                    |
+| gamma              | bool/string | `true`, `"100"`                      |
+| gradientFade       | bool/string | `true`, `"symmetric:10,x_0.2,y_0.4"` |
+| grayscale          | bool        | `true`                       |
+| improve            | bool/string | `true`, `"50"`, `"indoor"`   |
+| negate             | bool        | `true`                       |
+| oilPaint           | bool/string | `true`, `"40"`               |
+| outline            | bool/string | `true`, `"40"`, `"outer:15:200"` |
+| pixelate           | bool/string | `true`, `"20"`               |
+| pixelateFaces      | bool/string | `true`, `"20"`               |
+| pixelateRegion     | bool/string | `true`, `"35,h_425,w_550,x_600,y_400"` |
+| redeye             | bool/string | `true`                       |
+| replaceColor       | string      | `"saddlebrown"`, `"2F4F4F:20"`, `"silver:55:89b8ed"` |
+| saturation         | bool/string | `true`, `"70"`                       |
+| sepia              | bool/string | `true`, `"50"`               |
+| shadow             | bool/string | `true`, `"50,x_-15,y_15"`    |
+| sharpen            | bool/string | `true`, `"100"`              |
+| shear              | string      | `"20.0:0.0"`                 |
+| simulateColorblind | bool/string | `"deuteranopia"`             |
+| tint               | bool/string | `true`, `"100:red:blue:yellow"` |
+| unsharpMask        | bool/string | `true`, `"500"`              |
+| vectorize          | bool/string | `true`, `"3:0.5"`            |
+| vibrance           | bool/string | `true`, `"70"`               |
+| vignette           | bool/string | `true`, `"30"`               |
+
+[View the Cloudinary docs](https://cloudinary.com/documentation/transformation_reference#e_effect) to see learn more about using effects.
 
 ### Background Removal
 

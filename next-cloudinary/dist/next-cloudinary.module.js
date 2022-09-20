@@ -70,7 +70,8 @@ function createPlaceholderUrl(_ref) {
 }
 
 var cropsGravityAuto = ['crop', 'fill', 'lfill', 'fill_pad', 'thumb'];
-function croppingPlugin(_temp) {
+var options$5 = ['crop', 'gravity'];
+function plugin$4(_temp) {
   var _ref = _temp === void 0 ? {} : _temp,
       cldImage = _ref.cldImage,
       options = _ref.options,
@@ -101,6 +102,12 @@ function croppingPlugin(_temp) {
 
   cldImage.resize(transformationString);
 }
+
+var croppingPlugin = {
+  __proto__: null,
+  options: options$5,
+  plugin: plugin$4
+};
 
 // aspectRatio
 var primary = {
@@ -157,7 +164,8 @@ var text = {
 };
 
 var _excluded$1 = ["publicId", "position", "text", "effects"];
-function overlaysPlugin(_temp) {
+var options$4 = ['overlays'];
+function plugin$3(_temp) {
   var _ref = _temp === void 0 ? {} : _temp,
       cldImage = _ref.cldImage,
       cldOptions = _ref.cldOptions;
@@ -252,7 +260,14 @@ function overlaysPlugin(_temp) {
   });
 }
 
-function removeBackgroundPlugin(_temp) {
+var overlaysPlugin = {
+  __proto__: null,
+  options: options$4,
+  plugin: plugin$3
+};
+
+var options$3 = ['removeBackground'];
+function plugin$2(_temp) {
   var _ref = _temp === void 0 ? {} : _temp,
       cldImage = _ref.cldImage,
       cldOptions = _ref.cldOptions;
@@ -265,20 +280,92 @@ function removeBackgroundPlugin(_temp) {
   }
 }
 
-function tintPlugin(_temp) {
+var removeBackgroundPlugin = {
+  __proto__: null,
+  options: options$3,
+  plugin: plugin$2
+};
+
+var params = ['art', {
+  prop: 'autoBrightness',
+  effect: 'auto_brightness'
+}, {
+  prop: 'autoColor',
+  effect: 'auto_color'
+}, {
+  prop: 'autoContrast',
+  effect: 'auto_contrast'
+}, {
+  prop: 'assistColorblind',
+  effect: 'assist_colorblind'
+}, 'blackwhite', 'blur', {
+  prop: 'blurFaces',
+  effect: 'blur_faces'
+}, {
+  prop: 'blurRegion',
+  effect: 'blur_region'
+}, 'brightness', {
+  prop: 'brightnessHSB',
+  effect: 'brightness_hsb'
+}, 'cartoonify', 'colorize', 'contrast', 'distort', {
+  prop: 'fillLight',
+  effect: 'fill_light'
+}, 'gamma', {
+  prop: 'gradientFade',
+  effect: 'gradient_fade'
+}, 'grayscale', 'improve', 'negate', {
+  prop: 'oilPaint',
+  effect: 'oil_paint'
+}, 'outline', 'pixelate', {
+  prop: 'pixelateFaces',
+  effect: 'pixelate_faces'
+}, {
+  prop: 'pixelateRegion',
+  effect: 'pixelate_region'
+}, 'redeye', {
+  prop: 'replaceColor',
+  effect: 'replace_color'
+}, 'saturation', 'sepia', 'shadow', 'sharpen', 'shear', {
+  prop: 'simulateColorblind',
+  effect: 'simulate_colorblind'
+}, 'tint', {
+  prop: 'unsharpMask',
+  effect: 'unsharp_mask'
+}, 'vectorize', 'vibrance', 'vignette' // 'zoompan' // requires GIF format
+];
+var options$2 = params.map(function (param) {
+  return param.prop || param;
+});
+function plugin$1(_temp) {
   var _ref = _temp === void 0 ? {} : _temp,
       cldImage = _ref.cldImage,
       cldOptions = _ref.cldOptions;
 
-  var tint = cldOptions.tint;
+  params.forEach(function (key) {
+    var prop = key.prop || key;
+    var effect = key.effect || key;
 
-  if (tint) {
-    cldImage.effect("e_tint:" + tint);
-  }
+    if (prop === 'oilPaint' && cldOptions[prop]) {
+      console.log('cldOptions[prop]', cldOptions[prop]);
+    }
+
+    if (cldOptions[prop] === true) {
+      cldImage.effect("e_" + effect);
+    } else if (typeof cldOptions[prop] === 'string') {
+      cldImage.effect("e_" + effect + ":" + cldOptions[prop]);
+    }
+  });
 }
 
+var effectsPlugin = {
+  __proto__: null,
+  options: options$2,
+  plugin: plugin$1
+};
+
 var _excluded = ["publicId", "type", "position", "text", "effects"];
-function underlaysPlugin(_temp) {
+var options$1 = ['underlays'];
+function plugin(_temp) {
   var _ref = _temp === void 0 ? {} : _temp,
       cldImage = _ref.cldImage,
       cldOptions = _ref.cldOptions;
@@ -346,13 +433,19 @@ function underlaysPlugin(_temp) {
   });
 }
 
+var underlaysPlugin = {
+  __proto__: null,
+  options: options$1,
+  plugin: plugin
+};
+
 var cld = new Cloudinary({
   cloud: {
     cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
   }
 });
 var transformationPlugins = [removeBackgroundPlugin, // Background Removal must always come first
-croppingPlugin, tintPlugin, overlaysPlugin, underlaysPlugin];
+croppingPlugin, effectsPlugin, overlaysPlugin, underlaysPlugin];
 function cloudinaryLoader(options, cldOptions) {
   var src = options.src,
       _options$format = options.format,
@@ -360,7 +453,8 @@ function cloudinaryLoader(options, cldOptions) {
       _options$quality = options.quality,
       quality = _options$quality === void 0 ? 'auto' : _options$quality;
   var cldImage = cld.image(src);
-  transformationPlugins.forEach(function (plugin) {
+  transformationPlugins.forEach(function (_ref) {
+    var plugin = _ref.plugin;
     plugin({
       cldImage: cldImage,
       options: options,
@@ -370,19 +464,31 @@ function cloudinaryLoader(options, cldOptions) {
   return cldImage.format(format).delivery("q_" + quality).toURL();
 }
 
-var options = ['crop', 'gravity', 'overlays', 'removeBackground', 'tint', 'underlays'];
+var options = [];
 
 var CldImage = function CldImage(props) {
-  // Construct the base Image component props by filtering out Cloudinary-specific props
+  var CLD_OPTIONS = [].concat(options);
+  transformationPlugins.forEach(function (_ref) {
+    var _ref$options = _ref.options,
+        options = _ref$options === void 0 ? [] : _ref$options;
+    options.forEach(function (option) {
+      if (CLD_OPTIONS.includes(option)) {
+        throw new Error("Option " + option + " already exists!");
+      }
+
+      CLD_OPTIONS.push(option);
+    });
+  }); // Construct the base Image component props by filtering out Cloudinary-specific props
+
   var imageProps = {};
   Object.keys(props).filter(function (key) {
-    return !options.includes(key);
+    return !CLD_OPTIONS.includes(key);
   }).forEach(function (key) {
     return imageProps[key] = props[key];
   }); // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
 
   var cldOptions = {};
-  options.forEach(function (key) {
+  CLD_OPTIONS.forEach(function (key) {
     if (props[key]) {
       cldOptions[key] = props[key];
     }
