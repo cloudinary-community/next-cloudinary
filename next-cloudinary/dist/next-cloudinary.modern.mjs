@@ -67,8 +67,8 @@ function createPlaceholderUrl({
 }
 
 const cropsGravityAuto = ['crop', 'fill', 'lfill', 'fill_pad', 'thumb'];
-const options$5 = ['crop', 'gravity'];
-function plugin$4({
+const props$5 = ['crop', 'gravity'];
+function plugin$5({
   cldImage,
   options,
   cldOptions
@@ -104,8 +104,8 @@ function plugin$4({
 
 var croppingPlugin = {
   __proto__: null,
-  options: options$5,
-  plugin: plugin$4
+  props: props$5,
+  plugin: plugin$5
 };
 
 // aspectRatio
@@ -163,8 +163,8 @@ const text = {
 };
 
 const _excluded$1 = ["publicId", "position", "text", "effects"];
-const options$4 = ['overlays'];
-function plugin$3({
+const props$4 = ['overlays'];
+function plugin$4({
   cldImage,
   options,
   cldOptions
@@ -270,12 +270,12 @@ function plugin$3({
 
 var overlaysPlugin = {
   __proto__: null,
-  options: options$4,
-  plugin: plugin$3
+  props: props$4,
+  plugin: plugin$4
 };
 
-const options$3 = ['removeBackground'];
-function plugin$2({
+const props$3 = ['removeBackground'];
+function plugin$3({
   cldImage,
   options,
   cldOptions
@@ -291,8 +291,8 @@ function plugin$2({
 
 var removeBackgroundPlugin = {
   __proto__: null,
-  options: options$3,
-  plugin: plugin$2
+  props: props$3,
+  plugin: plugin$3
 };
 
 const params = ['art', {
@@ -340,10 +340,9 @@ const params = ['art', {
 }, 'tint', {
   prop: 'unsharpMask',
   effect: 'unsharp_mask'
-}, 'vectorize', 'vibrance', 'vignette' // 'zoompan' // requires GIF format
-];
-const options$2 = params.map(param => param.prop || param);
-function plugin$1({
+}, 'vectorize', 'vibrance', 'vignette'];
+const props$2 = params.map(param => param.prop || param);
+function plugin$2({
   cldImage,
   cldOptions
 } = {}) {
@@ -365,13 +364,13 @@ function plugin$1({
 
 var effectsPlugin = {
   __proto__: null,
-  options: options$2,
-  plugin: plugin$1
+  props: props$2,
+  plugin: plugin$2
 };
 
 const _excluded = ["publicId", "type", "position", "text", "effects"];
-const options$1 = ['underlays'];
-function plugin({
+const props$1 = ['underlays'];
+function plugin$1({
   cldImage,
   options,
   cldOptions
@@ -449,50 +448,106 @@ function plugin({
 
 var underlaysPlugin = {
   __proto__: null,
-  options: options$1,
+  props: props$1,
+  plugin: plugin$1
+};
+
+const props = ['zoompan'];
+const options = {
+  format: 'gif'
+};
+function plugin({
+  cldImage,
+  cldOptions
+} = {}) {
+  const {
+    zoompan = false
+  } = cldOptions;
+
+  if (zoompan === true) {
+    cldImage.effect('e_zoompan');
+  } else if (typeof zoompan === 'string') {
+    if (zoompan === 'loop') {
+      cldImage.effect('e_zoompan');
+      cldImage.effect('e_loop');
+    } else {
+      cldImage.effect(`e_zoompan:${zoompan}`);
+    }
+  } else if (typeof zoompan === 'object') {
+    let zoompanEffect = 'e_zoompan';
+
+    if (typeof zoompan.options === 'string') {
+      zoompanEffect = `${zoompanEffect}${zoompan.options}`;
+    }
+
+    cldImage.effect(zoompanEffect);
+    let loopEffect;
+
+    if (zoompan.loop === true) {
+      loopEffect = 'e_loop';
+    } else if (typeof zoompan.loop === 'string') {
+      loopEffect = `e_loop${zoompan.loop}`;
+    }
+
+    if (loopEffect) {
+      cldImage.effect(loopEffect);
+    }
+  }
+}
+
+var zoompanPlugin = {
+  __proto__: null,
+  props: props,
+  options: options,
   plugin: plugin
 };
 
 const cld = new Cloudinary({
   cloud: {
     cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+  },
+  url: {
+    // Used to avoid issues with SSR particularly for the blurred placeholder
+    analytics: false
   }
 });
 const transformationPlugins = [removeBackgroundPlugin, // Background Removal must always come first
-croppingPlugin, effectsPlugin, overlaysPlugin, underlaysPlugin];
-function cloudinaryLoader(options, cldOptions) {
-  const {
-    src,
-    width,
-    format = 'auto',
-    quality = 'auto'
-  } = options;
-  const cldImage = cld.image(src);
+croppingPlugin, effectsPlugin, overlaysPlugin, underlaysPlugin, zoompanPlugin];
+function cloudinaryLoader(defaultOptions, cldOptions) {
+  const options = _extends({
+    format: 'auto',
+    quality: 'auto'
+  }, defaultOptions);
+
+  const cldImage = cld.image(options.src);
   transformationPlugins.forEach(({
-    plugin
+    plugin,
+    options: pluginOptions
   }) => {
     plugin({
       cldImage,
       options,
       cldOptions
     });
+
+    if (pluginOptions != null && pluginOptions.format) {
+      options.format = pluginOptions.format;
+    }
   });
-  return cldImage.format(format).delivery(`q_${quality}`).toURL();
+  return cldImage.format(options.format).delivery(`q_${options.quality}`).toURL();
 }
 
-const options = [];
-
 const CldImage = props => {
-  const CLD_OPTIONS = [...options];
+  const CLD_OPTIONS = [];
   transformationPlugins.forEach(({
-    options: _options = []
+    props: _props = []
   }) => {
-    _options.forEach(option => {
-      if (CLD_OPTIONS.includes(option)) {
-        throw new Error(`Option ${option} already exists!`);
+    _props.forEach(prop => {
+      if (CLD_OPTIONS.includes(prop)) {
+        throw new Error(`Option ${prop} already exists!`);
       }
 
-      CLD_OPTIONS.push(option);
+      CLD_OPTIONS.push(prop);
     });
   }); // Construct the base Image component props by filtering out Cloudinary-specific props
 

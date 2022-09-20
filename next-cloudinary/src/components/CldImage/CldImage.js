@@ -3,18 +3,16 @@ import Image from 'next/image';
 import { createPlaceholderUrl } from '../../lib/cloudinary';
 import { cloudinaryLoader, transformationPlugins } from '../../loaders/cloudinary-loader';
 
-import { options as defaultOptions } from '../../constants/options';
-
 const CldImage = props => {
 
-  const CLD_OPTIONS = [...defaultOptions];
+  const CLD_OPTIONS = [];
 
-  transformationPlugins.forEach(({ options = [] }) => {
-    options.forEach(option => {
-      if ( CLD_OPTIONS.includes(option) ) {
-        throw new Error(`Option ${option} already exists!`);
+  transformationPlugins.forEach(({ props = [] }) => {
+    props.forEach(prop => {
+      if ( CLD_OPTIONS.includes(prop) ) {
+        throw new Error(`Option ${prop} already exists!`);
       }
-      CLD_OPTIONS.push(option);
+      CLD_OPTIONS.push(prop);
     });
   })
 

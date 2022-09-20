@@ -83,10 +83,9 @@ const params = [
   'vectorize',
   'vibrance',
   'vignette',
-  // 'zoompan' // requires GIF format
 ];
 
-export const options = params.map(param => param.prop || param);
+export const props = params.map(param => param.prop || param);
 
 export function plugin({ cldImage, cldOptions } = {}) {
   params.forEach(key => {

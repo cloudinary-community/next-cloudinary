@@ -44,7 +44,7 @@ export default function Home() {
                 width="987"
                 height="1481"
                 src="images/woman-headphones"
-                layout="responsive"
+                sizes="100vw"
               />
               <h4 className={styles.imageTitle}>
                 Original
@@ -55,7 +55,7 @@ export default function Home() {
                 width="987"
                 height="987"
                 src="images/woman-headphones"
-                layout="responsive"
+                sizes="100vw"
                 crop="thumb"
                 gravity="faces"
                 removeBackground
@@ -74,7 +74,7 @@ export default function Home() {
   width="987"
   height="987"
   src="images/woman-headphones"
-  layout="responsive"
+  sizes="100vw"
   crop="thumb"
   gravity="faces"
   removeBackground
@@ -167,7 +167,7 @@ npm install next-cloudinary`}</code></pre>
                 width="1920"
                 height="1200"
                 src="images/turtle"
-                layout="responsive"
+                sizes="100vw"
                 removeBackground
               />
               <h4 className={styles.imageTitle}>
@@ -183,7 +183,20 @@ npm install next-cloudinary`}</code></pre>
                 width="1920"
                 height="1200"
                 src="images/turtle"
-                layout="responsive"
+                sizes="100vw"
+                zoompan="loop"
+              />
+              <h4 className={styles.imageTitle}>
+                Zoom &amp; Pan
+              </h4>
+              <pre><code>{`zoompan="loop"`}</code></pre>
+            </li>
+            <li>
+              <CldImage
+                width="1920"
+                height="1200"
+                src="images/turtle"
+                sizes="100vw"
                 blur="1200"
               />
               <h4 className={styles.imageTitle}>
@@ -196,7 +209,7 @@ npm install next-cloudinary`}</code></pre>
                 width="1920"
                 height="1200"
                 src="images/turtle"
-                layout="responsive"
+                sizes="100vw"
                 pixelate
               />
               <h4 className={styles.imageTitle}>
@@ -209,7 +222,7 @@ npm install next-cloudinary`}</code></pre>
                 width="1920"
                 height="1200"
                 src="images/turtle"
-                layout="responsive"
+                sizes="100vw"
                 grayscale
               />
               <h4 className={styles.imageTitle}>
@@ -222,7 +235,7 @@ npm install next-cloudinary`}</code></pre>
                 width="1920"
                 height="1200"
                 src="images/turtle"
-                layout="responsive"
+                sizes="100vw"
                 tint="equalize:80:blue:blueviolet"
               />
               <h4 className={styles.imageTitle}>
@@ -246,7 +259,7 @@ npm install next-cloudinary`}</code></pre>
                 width="3317"
                 height="4975"
                 src="images/woman-headphones"
-                layout="responsive"
+                sizes="100vw"
                 crop="thumb"
                 gravity="auto"
               />
@@ -259,7 +272,7 @@ npm install next-cloudinary`}</code></pre>
                 width="1200"
                 height="1200"
                 src="images/woman-headphones"
-                layout="responsive"
+                sizes="100vw"
                 crop="thumb"
                 gravity="auto"
               />
@@ -274,7 +287,7 @@ gravity="auto"`}</code></pre>
                 width="1200"
                 height="1200"
                 src="images/woman-headphones"
-                layout="responsive"
+                sizes="100vw"
                 crop="thumb"
                 gravity="faces"
               />
@@ -296,7 +309,7 @@ gravity="faces"`}</code></pre>
                 width="1920"
                 height="1200"
                 src="images/turtle"
-                layout="responsive"
+                sizes="100vw"
                 placeholder="blur"
               />
               <h4 className={styles.imageTitle}>
@@ -309,7 +322,7 @@ gravity="faces"`}</code></pre>
                 width="1920"
                 height="1200"
                 src="images/turtle"
-                layout="responsive"
+                sizes="100vw"
                 placeholder="grayscale"
               />
               <h4 className={styles.imageTitle}>
@@ -322,7 +335,7 @@ gravity="faces"`}</code></pre>
                 width="1920"
                 height="1200"
                 src="images/turtle"
-                layout="responsive"
+                sizes="100vw"
                 placeholder="color:blueviolet"
               />
               <h4 className={styles.imageTitle}>
@@ -342,7 +355,7 @@ gravity="faces"`}</code></pre>
                 width="1920"
                 height="1200"
                 src="images/turtle"
-                layout="responsive"
+                sizes="100vw"
                 overlays={[{
                   publicId: 'images/earth',
                   position: {
@@ -392,7 +405,7 @@ gravity="faces"`}</code></pre>
                 width="1920"
                 height="1200"
                 src="images/turtle"
-                layout="responsive"
+                sizes="100vw"
                 removeBackground
                 underlays={[{
                   publicId: 'images/galaxy',
@@ -427,7 +440,7 @@ underlays={[{
                 width="2670"
                 height="1782"
                 src="images/sneakers"
-                layout="responsive"
+                sizes="100vw"
                 overlays={[{
                   width: 2670 - 20,
                   crop: 'fit',

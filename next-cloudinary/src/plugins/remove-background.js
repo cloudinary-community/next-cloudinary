@@ -1,4 +1,4 @@
-export const options = ['removeBackground'];
+export const props = ['removeBackground'];
 
 export function plugin({ cldImage, options, cldOptions } = {}) {
   const { removeBackground = false } = cldOptions;

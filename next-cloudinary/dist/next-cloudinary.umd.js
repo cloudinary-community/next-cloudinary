@@ -75,8 +75,8 @@
   }
 
   var cropsGravityAuto = ['crop', 'fill', 'lfill', 'fill_pad', 'thumb'];
-  var options$5 = ['crop', 'gravity'];
-  function plugin$4(_temp) {
+  var props$5 = ['crop', 'gravity'];
+  function plugin$5(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
         options = _ref.options,
@@ -110,8 +110,8 @@
 
   var croppingPlugin = {
     __proto__: null,
-    options: options$5,
-    plugin: plugin$4
+    props: props$5,
+    plugin: plugin$5
   };
 
   // aspectRatio
@@ -169,8 +169,8 @@
   };
 
   var _excluded$1 = ["publicId", "position", "text", "effects"];
-  var options$4 = ['overlays'];
-  function plugin$3(_temp) {
+  var props$4 = ['overlays'];
+  function plugin$4(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
         cldOptions = _ref.cldOptions;
@@ -267,12 +267,12 @@
 
   var overlaysPlugin = {
     __proto__: null,
-    options: options$4,
-    plugin: plugin$3
+    props: props$4,
+    plugin: plugin$4
   };
 
-  var options$3 = ['removeBackground'];
-  function plugin$2(_temp) {
+  var props$3 = ['removeBackground'];
+  function plugin$3(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
         cldOptions = _ref.cldOptions;
@@ -287,8 +287,8 @@
 
   var removeBackgroundPlugin = {
     __proto__: null,
-    options: options$3,
-    plugin: plugin$2
+    props: props$3,
+    plugin: plugin$3
   };
 
   var params = ['art', {
@@ -336,12 +336,11 @@
   }, 'tint', {
     prop: 'unsharpMask',
     effect: 'unsharp_mask'
-  }, 'vectorize', 'vibrance', 'vignette' // 'zoompan' // requires GIF format
-  ];
-  var options$2 = params.map(function (param) {
+  }, 'vectorize', 'vibrance', 'vignette'];
+  var props$2 = params.map(function (param) {
     return param.prop || param;
   });
-  function plugin$1(_temp) {
+  function plugin$2(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
         cldOptions = _ref.cldOptions;
@@ -364,13 +363,13 @@
 
   var effectsPlugin = {
     __proto__: null,
-    options: options$2,
-    plugin: plugin$1
+    props: props$2,
+    plugin: plugin$2
   };
 
   var _excluded = ["publicId", "type", "position", "text", "effects"];
-  var options$1 = ['underlays'];
-  function plugin(_temp) {
+  var props$1 = ['underlays'];
+  function plugin$1(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
         cldOptions = _ref.cldOptions;
@@ -440,48 +439,105 @@
 
   var underlaysPlugin = {
     __proto__: null,
-    options: options$1,
+    props: props$1,
+    plugin: plugin$1
+  };
+
+  var props = ['zoompan'];
+  var options = {
+    format: 'gif'
+  };
+  function plugin(_temp) {
+    var _ref = _temp === void 0 ? {} : _temp,
+        cldImage = _ref.cldImage,
+        cldOptions = _ref.cldOptions;
+
+    var _cldOptions$zoompan = cldOptions.zoompan,
+        zoompan = _cldOptions$zoompan === void 0 ? false : _cldOptions$zoompan;
+
+    if (zoompan === true) {
+      cldImage.effect('e_zoompan');
+    } else if (typeof zoompan === 'string') {
+      if (zoompan === 'loop') {
+        cldImage.effect('e_zoompan');
+        cldImage.effect('e_loop');
+      } else {
+        cldImage.effect("e_zoompan:" + zoompan);
+      }
+    } else if (typeof zoompan === 'object') {
+      var zoompanEffect = 'e_zoompan';
+
+      if (typeof zoompan.options === 'string') {
+        zoompanEffect = "" + zoompanEffect + zoompan.options;
+      }
+
+      cldImage.effect(zoompanEffect);
+      var loopEffect;
+
+      if (zoompan.loop === true) {
+        loopEffect = 'e_loop';
+      } else if (typeof zoompan.loop === 'string') {
+        loopEffect = "e_loop" + zoompan.loop;
+      }
+
+      if (loopEffect) {
+        cldImage.effect(loopEffect);
+      }
+    }
+  }
+
+  var zoompanPlugin = {
+    __proto__: null,
+    props: props,
+    options: options,
     plugin: plugin
   };
 
   var cld = new urlGen.Cloudinary({
     cloud: {
       cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+    },
+    url: {
+      // Used to avoid issues with SSR particularly for the blurred placeholder
+      analytics: false
     }
   });
   var transformationPlugins = [removeBackgroundPlugin, // Background Removal must always come first
-  croppingPlugin, effectsPlugin, overlaysPlugin, underlaysPlugin];
-  function cloudinaryLoader(options, cldOptions) {
-    var src = options.src,
-        _options$format = options.format,
-        format = _options$format === void 0 ? 'auto' : _options$format,
-        _options$quality = options.quality,
-        quality = _options$quality === void 0 ? 'auto' : _options$quality;
-    var cldImage = cld.image(src);
+  croppingPlugin, effectsPlugin, overlaysPlugin, underlaysPlugin, zoompanPlugin];
+  function cloudinaryLoader(defaultOptions, cldOptions) {
+    var options = _extends({
+      format: 'auto',
+      quality: 'auto'
+    }, defaultOptions);
+
+    var cldImage = cld.image(options.src);
     transformationPlugins.forEach(function (_ref) {
-      var plugin = _ref.plugin;
+      var plugin = _ref.plugin,
+          pluginOptions = _ref.options;
       plugin({
         cldImage: cldImage,
         options: options,
         cldOptions: cldOptions
       });
+
+      if (pluginOptions != null && pluginOptions.format) {
+        options.format = pluginOptions.format;
+      }
     });
-    return cldImage.format(format).delivery("q_" + quality).toURL();
+    return cldImage.format(options.format).delivery("q_" + options.quality).toURL();
   }
 
-  var options = [];
-
   var CldImage = function CldImage(props) {
-    var CLD_OPTIONS = [].concat(options);
+    var CLD_OPTIONS = [];
     transformationPlugins.forEach(function (_ref) {
-      var _ref$options = _ref.options,
-          options = _ref$options === void 0 ? [] : _ref$options;
-      options.forEach(function (option) {
-        if (CLD_OPTIONS.includes(option)) {
-          throw new Error("Option " + option + " already exists!");
+      var _ref$props = _ref.props,
+          props = _ref$props === void 0 ? [] : _ref$props;
+      props.forEach(function (prop) {
+        if (CLD_OPTIONS.includes(prop)) {
+          throw new Error("Option " + prop + " already exists!");
         }
 
-        CLD_OPTIONS.push(option);
+        CLD_OPTIONS.push(prop);
       });
     }); // Construct the base Image component props by filtering out Cloudinary-specific props
 

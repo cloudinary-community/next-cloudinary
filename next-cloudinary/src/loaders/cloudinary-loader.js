@@ -5,6 +5,7 @@ import * as overlaysPlugin from '../plugins/overlays';
 import * as removeBackgroundPlugin from '../plugins/remove-background';
 import * as effectsPlugin from '../plugins/effects';
 import * as underlaysPlugin from '../plugins/underlays';
+import * as zoompanPlugin from '../plugins/zoompan';
 
 import {
   primary as qualifiersPrimary,
@@ -16,6 +17,10 @@ const cld = new Cloudinary({
   cloud: {
     cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
   },
+  url: {
+    // Used to avoid issues with SSR particularly for the blurred placeholder
+    analytics: false
+  }
 });
 
 export const transformationPlugins = [
@@ -23,26 +28,33 @@ export const transformationPlugins = [
   croppingPlugin,
   effectsPlugin,
   overlaysPlugin,
-  underlaysPlugin
+  underlaysPlugin,
+  zoompanPlugin
 ];
 
-export function cloudinaryLoader(options, cldOptions) {
-  const {
-    src,
-    width,
-    format = 'auto',
-    quality = 'auto',
-  } = options;
+export function cloudinaryLoader(defaultOptions, cldOptions) {
+  const options = {
+    format: 'auto',
+    quality: 'auto',
+    ...defaultOptions
+  };
 
-  const cldImage = cld.image(src);
+  const cldImage = cld.image(options.src);
 
-  transformationPlugins.forEach(({ plugin }) => {
+  transformationPlugins.forEach(({ plugin, options: pluginOptions }) => {
     plugin({
       cldImage,
       options,
       cldOptions
     });
+
+    if ( pluginOptions?.format ) {
+      options.format = pluginOptions.format;
+    }
   });
 
-  return cldImage.format(format).delivery(`q_${quality}`).toURL();
+  return cldImage
+          .format(options.format)
+          .delivery(`q_${options.quality}`)
+          .toURL();
 }
