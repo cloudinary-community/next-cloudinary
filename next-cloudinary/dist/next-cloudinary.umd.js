@@ -1,6 +1,6 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('next/image'), require('@cloudinary/url-gen'), require('react/jsx-runtime')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'next/image', '@cloudinary/url-gen', 'react/jsx-runtime'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('next/future/image'), require('@cloudinary/url-gen'), require('react/jsx-runtime')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'next/future/image', '@cloudinary/url-gen', 'react/jsx-runtime'], factory) :
   (global = global || self, factory(global.nextCloudinary = {}, global.Image, global.urlGen, global.jsxRuntime));
 })(this, (function (exports, Image, urlGen, jsxRuntime) {
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }

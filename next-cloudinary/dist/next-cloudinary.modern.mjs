@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/future/image';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { jsx } from 'react/jsx-runtime';
 

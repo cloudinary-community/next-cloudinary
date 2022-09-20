@@ -1,4 +1,4 @@
-var Image = require('next/image');
+var Image = require('next/future/image');
 var urlGen = require('@cloudinary/url-gen');
 var jsxRuntime = require('react/jsx-runtime');
 

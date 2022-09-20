@@ -6,7 +6,8 @@ const nextConfig = {
     cloudinary: {
       test: 'hey'
     }
-  }
+  },
+  experimental: { images: { allowFutureImage: true } }
 }
 
 module.exports = nextConfig
