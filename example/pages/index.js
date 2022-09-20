@@ -158,6 +158,7 @@ npm install next-cloudinary`}</code></pre>
         </ul>
 
         <div className={styles.section}>
+
           <h3 id="effects" className={styles.sectionTitle}>Effects</h3>
 
           <ul className={styles.images}>
@@ -177,8 +178,72 @@ npm install next-cloudinary`}</code></pre>
                 Note: Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal Add-On</a>
               </p>
             </li>
-
+            <li>
+              <CldImage
+                width="1920"
+                height="1200"
+                src="images/turtle"
+                layout="responsive"
+                blur="1200"
+              />
+              <h4 className={styles.imageTitle}>
+                Blur
+              </h4>
+              <pre><code>{`blur="1200"`}</code></pre>
+            </li>
+            <li>
+              <CldImage
+                width="1920"
+                height="1200"
+                src="images/turtle"
+                layout="responsive"
+                pixelate
+              />
+              <h4 className={styles.imageTitle}>
+                Pixelate
+              </h4>
+              <pre><code>{`pixelate`}</code></pre>
+            </li>
+            <li>
+              <CldImage
+                width="1920"
+                height="1200"
+                src="images/turtle"
+                layout="responsive"
+                grayscale
+              />
+              <h4 className={styles.imageTitle}>
+                Grayscale
+              </h4>
+              <pre><code>{`grayscale`}</code></pre>
+            </li>
+            <li>
+              <CldImage
+                width="1920"
+                height="1200"
+                src="images/turtle"
+                layout="responsive"
+                tint="equalize:80:blue:blueviolet"
+              />
+              <h4 className={styles.imageTitle}>
+                Tint
+              </h4>
+              <pre><code>{`tint="equalize:80:blue:blueviolet"`}</code></pre>
+            </li>
+            <li>
+              <CldImage
+                width="1920"
+                height="1200"
+                src="images/turtle"
+                layout="responsive"
+                art="al_dente"
+              />
+            </li>
           </ul>
+
+          <p>
+            <a href="https://github.com/colbyfayock/next-cloudinary">See all supported effects on github.com.</a>
+          </p>
         </div>
 
         <div className={styles.section}>
