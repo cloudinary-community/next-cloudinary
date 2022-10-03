@@ -25,14 +25,13 @@ export function getPublicId(src) {
 
     const withTransformations = src.match(regexWithTransformations)
     const withoutTransformations = src.match(regexWithoutTransformations)
-    
+
     if ( withTransformations ) {
       return withTransformations[withTransformations.length - 1]
     } else if ( withoutTransformations ) {
       return withoutTransformations[withoutTransformations.length - 1]
     } else {
       console.warn(`Not possible to retrieve the publicUrl from ${src}, make sure it's a valid cloudiary image url.`)
-      return src
     }
   }
   return src;
