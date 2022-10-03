@@ -1,4 +1,5 @@
 import { Cloudinary } from '@cloudinary/url-gen';
+import { getPublicId } from '../lib/cloudinary';
 
 import * as croppingPlugin from '../plugins/cropping';
 import * as overlaysPlugin from '../plugins/overlays';
@@ -38,15 +39,17 @@ export function cloudinaryLoader(defaultOptions, cldOptions) {
     quality: 'auto',
     ...defaultOptions
   };
+  let publicId = getPublicId(options.src);
 
-  const cldImage = cld.image(options.src);
+  const cldImage = cld.image(publicId);
 
   transformationPlugins.forEach(({ plugin }) => {
-    const { options: pluginOptions } = plugin({
-      cldImage,
-      options,
-      cldOptions
-    }) || {};
+    const { options: pluginOptions } =
+      plugin({
+        cldImage,
+        options,
+        cldOptions
+      }) || {};
 
     if ( pluginOptions?.format ) {
       options.format = pluginOptions.format;
@@ -54,7 +57,7 @@ export function cloudinaryLoader(defaultOptions, cldOptions) {
   });
 
   return cldImage
-          .format(options.format)
-          .delivery(`q_${options.quality}`)
-          .toURL();
+    .format(options.format)
+    .delivery(`q_${options.quality}`)
+    .toURL();
 }

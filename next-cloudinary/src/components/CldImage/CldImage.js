@@ -1,7 +1,10 @@
 import Image from 'next/image';
 
-import { createPlaceholderUrl } from '../../lib/cloudinary';
-import { cloudinaryLoader, transformationPlugins } from '../../loaders/cloudinary-loader';
+import { createPlaceholderUrl, getPublicId } from '../../lib/cloudinary';
+import {
+  cloudinaryLoader,
+  transformationPlugins
+} from '../../loaders/cloudinary-loader';
 
 const CldImage = props => {
 
@@ -42,10 +45,11 @@ const CldImage = props => {
   // an Image component prop as opposed to simply the URL
   //
   // https://nextjs.org/docs/api-reference/next/image#blurdataurl
+  if (imageProps.placeholder) {
+    let publicId = getPublicId(props.src);
 
-  if ( imageProps.placeholder ) {
     imageProps.blurDataURL = createPlaceholderUrl({
-      src: props.src,
+      src: publicId,
       placeholder: props.placeholder
     });
 
