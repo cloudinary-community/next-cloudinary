@@ -32,18 +32,17 @@ export function getPublicId(src) {
  */
 
 export function createPlaceholderUrl({ src, placeholder }) {
-  const cldImage = cld
-    .image(src)
-    .resize('c_limit,w_100')
-    .delivery('q_1')
-    .format('auto');
+  const cldImage = cld.image(src)
+                      .resize('c_limit,w_100')
+                      .delivery('q_1')
+                      .format('auto');
 
   if ( placeholder === 'grayscale' ) {
     cldImage.effect('e_grayscale');
   }
 
   if ( placeholder.includes('color:') ) {
-    const color = placeholder.split(':').splice(1).join(':');
+    const color = placeholder.split(':').splice(1).join(':')
     cldImage.effect('e_grayscale');
     cldImage.effect(`e_colorize:60,co_${color}`);
   }
