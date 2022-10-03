@@ -11,8 +11,8 @@ const cld = new Cloudinary({
 });
 
 /**
- * Retrieves the public id of a cloudiary image url, with or without the version, depending on the url passed.
- * Or just returns it if it is not recognized as a cloudiary image url.
+ * Retrieves the public id of a cloudiary image url. If no url is recognized it returns the parameter it self.
+ * If it's recognized that is a url and it's not possible to get the public id, it warns the user.
  *
  * @param {string} src The cloudiary url or public id.
  *
@@ -20,9 +20,20 @@ const cld = new Cloudinary({
  */
 export function getPublicId(src) {
   if ( src.includes('res.cloudinary.com') ) {
-    const urlParts = src.split('/');
-    const hasVersion = urlParts[urlParts.length - 3].match(/v[0-9]+/);
-    return urlParts.slice(hasVersion ? -3 : -2).join('/');
+    const regexWithTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(.*)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/
+    const regexWithoutTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/
+
+    const withTransformations = src.match(regexWithTransformations)
+    const withoutTransformations = src.match(regexWithoutTransformations)
+    
+    if ( withTransformations ) {
+      return withTransformations[withTransformations.length - 1]
+    } else if ( withoutTransformations ) {
+      return withoutTransformations[withoutTransformations.length - 1]
+    } else {
+      console.warn(`Not possible to retrieve the publicUrl from ${src}, make sure it's a valid cloudiary image url.`)
+      return src
+    }
   }
   return src;
 }
