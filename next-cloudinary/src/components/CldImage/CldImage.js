@@ -45,7 +45,7 @@ const CldImage = props => {
   // an Image component prop as opposed to simply the URL
   //
   // https://nextjs.org/docs/api-reference/next/image#blurdataurl
-  if (imageProps.placeholder) {
+  if ( imageProps.placeholder ) {
     let publicId = getPublicId(props.src);
 
     imageProps.blurDataURL = createPlaceholderUrl({

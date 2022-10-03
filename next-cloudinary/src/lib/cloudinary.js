@@ -19,7 +19,7 @@ const cld = new Cloudinary({
  * @return {string} The images public id
  */
 export function getPublicId(src) {
-  if ( src.includes('res.cloudinary.com' )) {
+  if ( src.includes('res.cloudinary.com') ) {
     const urlParts = src.split('/');
     const hasVersion = urlParts[urlParts.length - 3].match(/v[0-9]+/);
     return urlParts.slice(hasVersion ? -3 : -2).join('/');
