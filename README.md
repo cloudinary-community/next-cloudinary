@@ -269,7 +269,7 @@ See the examples above under Overlays to learn more about the available configur
   <tbody>
     <tr>
       <td align="center"><a href="https://colbyfayock.com/newsletter"><img src="https://avatars.githubusercontent.com/u/1045274?v=4?s=100" width="100px;" alt="Colby Fayock"/><br /><sub><b>Colby Fayock</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=colbyfayock" title="Code">💻</a> <a href="https://github.com/colbyfayock/next-cloudinary/commits?author=colbyfayock" title="Documentation">📖</a> <a href="#example-colbyfayock" title="Examples">💡</a></td>
-      <td align="center"><a href="https://github.com/danielolaviobr"><img src="https://avatars.githubusercontent.com/u/64712584?v=4?s=100" width="100px;" alt="Daniel Olavio"/><br /><sub><b>Daniel Olavio</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=danielolaviobr" title="Tests">⚠️</a> <a href="https://github.com/colbyfayock/next-cloudinary/commits?author=danielolaviobr" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/danielolaviobr"><img src="https://avatars.githubusercontent.com/u/64712584?v=4?s=100" width="100px;" alt="Daniel Olavio"/><br /><sub><b>Daniel Olavio</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=danielolaviobr" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
