@@ -34,6 +34,16 @@
       "contributions": [
         "tool"
       ]
+    },
+    {
+      "login": "kbravh",
+      "name": "Karey Higuera",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30562119?v=4",
+      "profile": "https://kbravh.dev",
+      "contributions": [
+        "test",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
