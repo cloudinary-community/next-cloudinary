@@ -31,7 +31,7 @@ export function getPublicId(src) {
     } else if ( withoutTransformations ) {
       return withoutTransformations[withoutTransformations.length - 1]
     } else {
-      console.warn(`Not possible to retrieve the publicUrl from ${src}, make sure it's a valid cloudiary image url.`)
+      console.warn(`Not possible to retrieve the publicUrl from ${src}, make sure it's a valid cloudinary image url.`)
     }
   }
   return src;
