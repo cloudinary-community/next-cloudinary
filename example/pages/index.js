@@ -485,6 +485,32 @@ underlays={[{
             </li>
           </ul>
         </div>
+
+        <div className={styles.section}>
+          <h3 id="image-overlays" className={styles.sectionTitle}>Other</h3>
+
+          <ul className={styles.images}>
+            <li>
+              <CldImage
+                width="960"
+                height="600"
+                src="images/turtle"
+                sizes="100vw"
+                rawTransformations={[
+                  'e_blur:2000',
+                  'e_tint:100:0000FF:0p:FF1493:100p'
+                ]}
+              />
+              <h4 className={styles.imageTitle}>
+                Raw Transformations
+              </h4>
+              <pre><code>{`rawTransformations={[
+  'e_blur:2000',
+  'e_tint:100:0000FF:0p:FF1493:100p'
+]}`}</code></pre>
+            </li>
+          </ul>
+        </div>
       </main>
     </div>
   )
