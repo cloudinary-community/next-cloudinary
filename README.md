@@ -71,14 +71,15 @@ As CldImage is a wrapper around the Next.js Image component, all built-in Image 
 
 ### General Props
 
-| Prop Name        | Type               | Example                      |
-|------------------|--------------------|------------------------------|
-| crop             | string             | `"thumb"`                    |
-| gravity          | string             | `"faces"`                    |
-| overlays         | array              | See Below                    |
-| removeBackground | bool/string        | `true`                       |
-| underlays        | array              | See Below                    |
-| zoompan          | bool/string/object | See Below                    |
+| Prop Name          | Type               | Example                      |
+|--------------------|--------------------|------------------------------|
+| crop               | string             | `"thumb"`                    |
+| gravity            | string             | `"faces"`                    |
+| overlays           | array              | See Below                    |
+| rawTransformations | array              | `['e_blur:2000']`            |
+| removeBackground   | bool/string        | `true`                       |
+| underlays          | array              | See Below                    |
+| zoompan            | bool/string/object | See Below                    |
 
 ### Effect Props
 

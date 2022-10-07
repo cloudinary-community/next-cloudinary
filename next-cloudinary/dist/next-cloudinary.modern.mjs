@@ -67,8 +67,8 @@ function createPlaceholderUrl({
 }
 
 const cropsGravityAuto = ['crop', 'fill', 'lfill', 'fill_pad', 'thumb'];
-const props$5 = ['crop', 'gravity'];
-function plugin$5({
+const props$6 = ['crop', 'gravity'];
+function plugin$6({
   cldImage,
   options,
   cldOptions
@@ -103,6 +103,79 @@ function plugin$5({
 }
 
 var croppingPlugin = {
+  __proto__: null,
+  props: props$6,
+  plugin: plugin$6
+};
+
+const params = ['art', {
+  prop: 'autoBrightness',
+  effect: 'auto_brightness'
+}, {
+  prop: 'autoColor',
+  effect: 'auto_color'
+}, {
+  prop: 'autoContrast',
+  effect: 'auto_contrast'
+}, {
+  prop: 'assistColorblind',
+  effect: 'assist_colorblind'
+}, 'blackwhite', 'blur', {
+  prop: 'blurFaces',
+  effect: 'blur_faces'
+}, {
+  prop: 'blurRegion',
+  effect: 'blur_region'
+}, 'brightness', {
+  prop: 'brightnessHSB',
+  effect: 'brightness_hsb'
+}, 'cartoonify', 'colorize', 'contrast', 'distort', {
+  prop: 'fillLight',
+  effect: 'fill_light'
+}, 'gamma', {
+  prop: 'gradientFade',
+  effect: 'gradient_fade'
+}, 'grayscale', 'improve', 'negate', {
+  prop: 'oilPaint',
+  effect: 'oil_paint'
+}, 'outline', 'pixelate', {
+  prop: 'pixelateFaces',
+  effect: 'pixelate_faces'
+}, {
+  prop: 'pixelateRegion',
+  effect: 'pixelate_region'
+}, 'redeye', {
+  prop: 'replaceColor',
+  effect: 'replace_color'
+}, 'saturation', 'sepia', 'shadow', 'sharpen', 'shear', {
+  prop: 'simulateColorblind',
+  effect: 'simulate_colorblind'
+}, 'tint', {
+  prop: 'unsharpMask',
+  effect: 'unsharp_mask'
+}, 'vectorize', 'vibrance', 'vignette'];
+const props$5 = params.map(param => param.prop || param);
+function plugin$5({
+  cldImage,
+  cldOptions
+} = {}) {
+  params.forEach(key => {
+    const prop = key.prop || key;
+    const effect = key.effect || key;
+
+    if (prop === 'oilPaint' && cldOptions[prop]) {
+      console.log('cldOptions[prop]', cldOptions[prop]);
+    }
+
+    if (cldOptions[prop] === true) {
+      cldImage.effect(`e_${effect}`);
+    } else if (typeof cldOptions[prop] === 'string') {
+      cldImage.effect(`e_${effect}:${cldOptions[prop]}`);
+    }
+  });
+}
+
+var effectsPlugin = {
   __proto__: null,
   props: props$5,
   plugin: plugin$5
@@ -274,8 +347,27 @@ var overlaysPlugin = {
   plugin: plugin$4
 };
 
-const props$3 = ['removeBackground'];
+const props$3 = ['rawTransformations'];
 function plugin$3({
+  cldImage,
+  cldOptions
+} = {}) {
+  const {
+    rawTransformations = []
+  } = cldOptions;
+  rawTransformations.forEach(transformation => {
+    cldImage.addTransformation(transformation);
+  });
+}
+
+var rawTransformationsPlugin = {
+  __proto__: null,
+  props: props$3,
+  plugin: plugin$3
+};
+
+const props$2 = ['removeBackground'];
+function plugin$2({
   cldImage,
   options,
   cldOptions
@@ -290,79 +382,6 @@ function plugin$3({
 }
 
 var removeBackgroundPlugin = {
-  __proto__: null,
-  props: props$3,
-  plugin: plugin$3
-};
-
-const params = ['art', {
-  prop: 'autoBrightness',
-  effect: 'auto_brightness'
-}, {
-  prop: 'autoColor',
-  effect: 'auto_color'
-}, {
-  prop: 'autoContrast',
-  effect: 'auto_contrast'
-}, {
-  prop: 'assistColorblind',
-  effect: 'assist_colorblind'
-}, 'blackwhite', 'blur', {
-  prop: 'blurFaces',
-  effect: 'blur_faces'
-}, {
-  prop: 'blurRegion',
-  effect: 'blur_region'
-}, 'brightness', {
-  prop: 'brightnessHSB',
-  effect: 'brightness_hsb'
-}, 'cartoonify', 'colorize', 'contrast', 'distort', {
-  prop: 'fillLight',
-  effect: 'fill_light'
-}, 'gamma', {
-  prop: 'gradientFade',
-  effect: 'gradient_fade'
-}, 'grayscale', 'improve', 'negate', {
-  prop: 'oilPaint',
-  effect: 'oil_paint'
-}, 'outline', 'pixelate', {
-  prop: 'pixelateFaces',
-  effect: 'pixelate_faces'
-}, {
-  prop: 'pixelateRegion',
-  effect: 'pixelate_region'
-}, 'redeye', {
-  prop: 'replaceColor',
-  effect: 'replace_color'
-}, 'saturation', 'sepia', 'shadow', 'sharpen', 'shear', {
-  prop: 'simulateColorblind',
-  effect: 'simulate_colorblind'
-}, 'tint', {
-  prop: 'unsharpMask',
-  effect: 'unsharp_mask'
-}, 'vectorize', 'vibrance', 'vignette'];
-const props$2 = params.map(param => param.prop || param);
-function plugin$2({
-  cldImage,
-  cldOptions
-} = {}) {
-  params.forEach(key => {
-    const prop = key.prop || key;
-    const effect = key.effect || key;
-
-    if (prop === 'oilPaint' && cldOptions[prop]) {
-      console.log('cldOptions[prop]', cldOptions[prop]);
-    }
-
-    if (cldOptions[prop] === true) {
-      cldImage.effect(`e_${effect}`);
-    } else if (typeof cldOptions[prop] === 'string') {
-      cldImage.effect(`e_${effect}:${cldOptions[prop]}`);
-    }
-  });
-}
-
-var effectsPlugin = {
   __proto__: null,
   props: props$2,
   plugin: plugin$2
@@ -516,8 +535,10 @@ const cld = new Cloudinary({
     analytics: false
   }
 });
-const transformationPlugins = [removeBackgroundPlugin, // Background Removal must always come first
-croppingPlugin, effectsPlugin, overlaysPlugin, underlaysPlugin, zoompanPlugin];
+const transformationPlugins = [// Background Removal must always come first
+removeBackgroundPlugin, croppingPlugin, effectsPlugin, overlaysPlugin, underlaysPlugin, zoompanPlugin, // Raw transformations needs to be last simply to make sure
+// it's always expected to applied the same way
+rawTransformationsPlugin];
 function cloudinaryLoader(defaultOptions, cldOptions) {
   const options = _extends({
     format: 'auto',

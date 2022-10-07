@@ -2,9 +2,10 @@ import { Cloudinary } from '@cloudinary/url-gen';
 import { getPublicId } from '../lib/cloudinary';
 
 import * as croppingPlugin from '../plugins/cropping';
-import * as overlaysPlugin from '../plugins/overlays';
-import * as removeBackgroundPlugin from '../plugins/remove-background';
 import * as effectsPlugin from '../plugins/effects';
+import * as overlaysPlugin from '../plugins/overlays';
+import * as rawTransformationsPlugin from '../plugins/raw-transformations';
+import * as removeBackgroundPlugin from '../plugins/remove-background';
 import * as underlaysPlugin from '../plugins/underlays';
 import * as zoompanPlugin from '../plugins/zoompan';
 
@@ -25,12 +26,19 @@ const cld = new Cloudinary({
 });
 
 export const transformationPlugins = [
-  removeBackgroundPlugin, // Background Removal must always come first
+  // Background Removal must always come first
+  removeBackgroundPlugin,
+
   croppingPlugin,
   effectsPlugin,
   overlaysPlugin,
   underlaysPlugin,
-  zoompanPlugin
+  zoompanPlugin,
+
+  // Raw transformations needs to be last simply to make sure
+  // it's always expected to applied the same way
+
+  rawTransformationsPlugin
 ];
 
 export function cloudinaryLoader(defaultOptions, cldOptions) {
