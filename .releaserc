@@ -44,7 +44,7 @@
       "@semantic-release/git",
       {
         "assets": [
-          "package.json",
+          "next-cloudinary/package.json",
           "CHANGELOG.md"
         ]
       }
