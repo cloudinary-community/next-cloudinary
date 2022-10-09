@@ -1,5 +1,7 @@
 name: Test and release
 on: [push, pull_request]
+env:
+  CI: false
 jobs:
   tests:
     name: Test
@@ -19,7 +21,7 @@ jobs:
 
   release:
     name: Release
-    if: github.event_name == "push" && env.GITHUB_REF_NAME == "main"
+    if: github.event_name == "push" && github.ref_name == 'main'
     needs: tests
     runs-on: ubuntu-latest
     steps:
