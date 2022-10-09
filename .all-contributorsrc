@@ -44,6 +44,15 @@
         "test",
         "code"
       ]
+    },
+    {
+      "login": "Azanul",
+      "name": "Azanul Haque",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42029519?v=4",
+      "profile": "https://github.com/Azanul",
+      "contributions": [
+        "tool"
+      ]
     }
   ],
   "contributorsPerLine": 7,
