@@ -1,3 +1,10 @@
+## [0.1.1](https://github.com/colbyfayock/next-cloudinary/compare/v0.1.0...v0.1.1) (2022-10-11)
+
+
+### Bug Fixes
+
+* **tests:** Seed loader tests ([#25](https://github.com/colbyfayock/next-cloudinary/issues/25)) ([bd54e48](https://github.com/colbyfayock/next-cloudinary/commit/bd54e48f008dee612116e4eff29aef7500b20621))
+
 # 1.0.0 (2022-10-09)
 
 
