@@ -15,15 +15,7 @@ import {
   position as qualifiersPosition
 } from '../constants/qualifiers';
 
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-  },
-  url: {
-    // Used to avoid issues with SSR particularly for the blurred placeholder
-    analytics: false
-  }
-});
+let cld;
 
 export const transformationPlugins = [
   // Background Removal must always come first
@@ -41,7 +33,20 @@ export const transformationPlugins = [
   rawTransformationsPlugin
 ];
 
-export function cloudinaryLoader(defaultOptions, cldOptions) {
+export function cloudinaryLoader(defaultOptions, cldOptions, cldConfig = {}) {
+  if ( !cld ) {
+    cld = new Cloudinary({
+      cloud: {
+        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+      },
+      url: {
+        // Used to avoid issues with SSR particularly for the blurred placeholder
+        analytics: false
+      },
+      ...cldConfig
+    });
+  }
+
   const options = {
     format: 'auto',
     quality: 'auto',

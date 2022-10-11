@@ -543,20 +543,28 @@ var zoompanPlugin = {
   plugin: plugin
 };
 
-var cld = new urlGen.Cloudinary({
-  cloud: {
-    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-  },
-  url: {
-    // Used to avoid issues with SSR particularly for the blurred placeholder
-    analytics: false
-  }
-});
+var cld;
 var transformationPlugins = [// Background Removal must always come first
 removeBackgroundPlugin, croppingPlugin, effectsPlugin, overlaysPlugin, underlaysPlugin, zoompanPlugin, // Raw transformations needs to be last simply to make sure
 // it's always expected to applied the same way
 rawTransformationsPlugin];
-function cloudinaryLoader(defaultOptions, cldOptions) {
+function cloudinaryLoader(defaultOptions, cldOptions, cldConfig) {
+  if (cldConfig === void 0) {
+    cldConfig = {};
+  }
+
+  if (!cld) {
+    cld = new urlGen.Cloudinary(_extends({
+      cloud: {
+        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+      },
+      url: {
+        // Used to avoid issues with SSR particularly for the blurred placeholder
+        analytics: false
+      }
+    }, cldConfig));
+  }
+
   var options = _extends({
     format: 'auto',
     quality: 'auto'
