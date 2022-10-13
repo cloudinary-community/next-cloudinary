@@ -11,7 +11,7 @@
 }
 
 .note {
-  font-size: .9em;
+  font-size: 0.9em;
   font-style: italic;
   margin-top: 1em;
 }
@@ -27,7 +27,7 @@
 
 .toc li {
   font-size: 1.2em;
-  margin: 0 .5em;
+  margin: 0 0.5em;
 }
 
 .toc li:first-child {
@@ -44,7 +44,7 @@
 }
 
 .toc a svg {
-  margin-left: .25em;
+  margin-left: 0.25em;
 }
 
 .section {
@@ -66,11 +66,24 @@
   grid-gap: 3em;
 }
 
+.widgets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-gap: 3em;
+}
+
 .imageTitle {
   font-size: 1.2em;
-  margin: .4em 0 0;
+  margin: 0.4em 0 0;
 }
 
 .previewImages {
   grid-template-columns: 1fr 1fr;
+}
+
+.uploadButton {
+  background-color: cornflowerblue;
+  color: white;
 }
