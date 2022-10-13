@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-import { CldImage, UploadWidget } from "../../next-cloudinary";
+import { CldImage, UploadWidget, UploadButton } from "../../next-cloudinary";
 
 import styles from "../styles/Home.module.css";
 
@@ -606,7 +606,7 @@ underlays={[{
             </li>
             <li>
               <UploadWidget
-                signed={false}
+                signed={true}
                 options={{
                   cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
                   uploadPreset:
@@ -636,7 +636,7 @@ underlays={[{
               <pre>
                 <code>{`
               <UploadWidget
-                signed={false}
+                signed={true}
                 options={{
                   cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME, // Ex: mycloudname
                   uploadPreset:
@@ -657,6 +657,36 @@ underlays={[{
                   );
                 }}
               </UploadWidget>`}</code>
+              </pre>
+            </li>
+            <li>
+              <UploadButton
+                signed={false}
+                options={{
+                  cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+                  uploadPreset:
+                    process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+                }}
+                onUpload={(error, result) => {
+                  /* Do Something With the Error or Result */
+                }}
+                className={styles.uploadButton}
+              />
+              <h4 className={styles.imageTitle}>Unsigned Upload Button</h4>
+              <pre>
+                <code>{`
+                <UploadButton
+                  signed={false}
+                  options={{
+                    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+                    uploadPreset:
+                      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+                  }}
+                  onUpload={(error, result) => {
+                    /* Do Something With the Error or Result */
+                  }}
+                  className={styles.uploadButton}
+                />`}</code>
               </pre>
             </li>
           </ul>
