@@ -41,12 +41,8 @@ const UploadWidget = ({ children, onUpload, options, signed }) => {
       }),
     };
 
-    if (signed && !(totalOptions.apiKey || totalOptions.uploadSignature)) {
-      return onUpload(
-        new Error("Signed Upload needs apiKey and apiSecret!"),
-        null,
-        widget?.current
-      );
+    if (signed && !totalOptions.apiKey) {
+      return new Error("Signed Upload needs apiKey and apiSecret!");
     }
 
     return cloudinary.current?.createUploadWidget(
@@ -96,6 +92,9 @@ const UploadWidget = ({ children, onUpload, options, signed }) => {
         id="cloudinary"
         src="https://widget.cloudinary.com/v2.0/global/all.js"
         onLoad={handleOnLoad}
+        onError={(e) => {
+          console.error("Script failed to load", e);
+        }}
       />
     </>
   );
