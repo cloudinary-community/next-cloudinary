@@ -102,12 +102,3 @@ const UploadWidget = ({ children, onUpload, options, signed }) => {
 };
 
 export default UploadWidget;
-
-// const options = {
-//   cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME, // Ex: mycloudname
-//   uploadPreset: process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET, // Ex: myuploadpreset
-//   ...(!!signed && {
-//     apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY, // Ex: 1234567890
-//     uploadSignature: generateSignature,
-//   }),
-// };
