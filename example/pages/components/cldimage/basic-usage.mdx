@@ -1,0 +1,39 @@
+# Getting Started with CldImage
+
+## Basic Usage
+
+The basic required props include `width`, `height`, and `src`:
+
+```
+<CldImage
+  width="600"
+  height="600"
+  src="<Public ID>"
+/>
+```
+
+You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
+
+```
+<CldImage
+  width="600"
+  height="600"
+  src="<Public ID>"
+  crop="thumb"
+  gravity="faces"
+  removeBackground
+  tint="100:blue:green:red"
+  underlays={[{
+    publicId: '<Public ID>',
+    width: 600,
+    height: 600,
+    crop: 'fill'
+  }]}
+/>
+```
+
+As CldImage is a wrapper around the Next.js Image component, all built-in Image component features will work out-of-the-box including the `layout` prop.
+
+## Learn More about CldImage
+* [Configuration](/components/cldimage/configuration)
+* [Effects](/components/cldimage/effects)

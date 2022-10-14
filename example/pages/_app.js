@@ -1,7 +1,6 @@
-import '../styles/globals.css'
+import 'nextra-theme-docs/style.css';
+import '../styles/global.scss';
 
-function MyApp({ Component, pageProps }) {
+export default function Nextra({ Component, pageProps }) {
   return <Component {...pageProps} />
 }
-
-export default MyApp

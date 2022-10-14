@@ -1,0 +1,27 @@
+import { CldImage } from '../../../next-cloudinary';
+
+# Background Removal
+
+Removing backgrounds require enabling the [Cloudinary AI Background Removal Add-On](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) which includes a free tier for getting started.
+
+Once enabled, you can simply apply the `removeBackground` parameter.
+
+**Example:**
+
+```
+<CldImage
+  width="960"
+  height="600"
+  src="images/turtle"
+  sizes="100vw"
+  removeBackground
+/>
+```
+
+<CldImage
+  width="960"
+  height="600"
+  src="images/turtle"
+  sizes="100vw"
+  removeBackground
+/>

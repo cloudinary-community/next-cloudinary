@@ -1,0 +1,44 @@
+import { CldImage } from '../../next-cloudinary';
+
+# Next Cloudinary
+
+Get the best of Cloudinary in Next.js with the CldImage component!
+
+export const ImageTable = () => {
+  return (
+    <table width="100%">
+      <tbody>
+        <tr>
+          <td>
+            <CldImage
+              width="987"
+              height="1481"
+              src="images/woman-headphones"
+              sizes="100vw"
+            />
+          </td>
+          <td>
+            <CldImage
+              width="987"
+              height="987"
+              src="images/woman-headphones"
+              sizes="100vw"
+              crop="thumb"
+              gravity="faces"
+              removeBackground
+              tint="40:253f8c"
+              underlays={[{
+                publicId: 'images/city-skyline',
+                width: 987,
+                height: 987,
+                crop: 'fill'
+              }]}
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  )
+}
+
+<ImageTable />
