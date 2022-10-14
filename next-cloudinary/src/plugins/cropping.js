@@ -2,9 +2,8 @@ const cropsGravityAuto = [ 'crop', 'fill', 'lfill', 'fill_pad', 'thumb' ];
 
 export const props = ['crop', 'gravity'];
 
-export function plugin({ cldImage, options, cldOptions } = {}) {
-  const { width, height } = options;
-  const { crop = 'limit', gravity } = cldOptions;
+export function plugin({ cldImage, options } = {}) {
+  const { width, height, crop = 'limit', gravity } = options;
 
   let transformationString = `c_${crop},w_${width}`;
 

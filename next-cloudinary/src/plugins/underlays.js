@@ -6,8 +6,8 @@ import {
 
 export const props = ['underlays'];
 
-export function plugin({ cldImage, options, cldOptions } = {}) {
-  const { underlays = [] } = cldOptions;
+export function plugin({ cldImage, options } = {}) {
+  const { underlays = [] } = options;
 
   const type = 'underlay';
   const typeQualifier = 'u';

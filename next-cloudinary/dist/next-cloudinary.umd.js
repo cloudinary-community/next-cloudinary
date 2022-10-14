@@ -43,77 +43,18 @@
     throw new TypeError("\"" + name + "\" is read-only");
   }
 
-  var cld$1 = new urlGen.Cloudinary({
-    cloud: {
-      cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-    },
-    url: {
-      // Used to avoid issues with SSR particularly for the blurred placeholder
-      analytics: false
-    }
-  });
-  /**
-   * Retrieves the public id of a cloudiary image url. If no url is recognized it returns the parameter it self.
-   * If it's recognized that is a url and it's not possible to get the public id, it warns the user.
-   *
-   * @param {string} src The cloudiary url or public id.
-   *
-   * @return {string} The images public id
-   */
-
-  function getPublicId(src) {
-    if (src.includes('res.cloudinary.com')) {
-      var regexWithTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(.*)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
-      var regexWithoutTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
-      var withTransformations = src.match(regexWithTransformations);
-      var withoutTransformations = src.match(regexWithoutTransformations);
-
-      if (withTransformations) {
-        return withTransformations[withTransformations.length - 1];
-      } else if (withoutTransformations) {
-        return withoutTransformations[withoutTransformations.length - 1];
-      } else {
-        console.warn("Not possible to retrieve the publicUrl from " + src + ", make sure it's a valid cloudinary image url.");
-      }
-    }
-
-    return src;
-  }
-  /**
-   * createPlaceholderUrl
-   */
-
-  function createPlaceholderUrl(_ref) {
-    var src = _ref.src,
-        placeholder = _ref.placeholder;
-    var cldImage = cld$1.image(src).resize('c_limit,w_100').delivery('q_1').format('auto');
-
-    if (placeholder === 'grayscale') {
-      cldImage.effect('e_grayscale');
-    }
-
-    if (placeholder.includes('color:')) {
-      var color = placeholder.split(':').splice(1).join(':');
-      cldImage.effect('e_grayscale');
-      cldImage.effect("e_colorize:60,co_" + color);
-    }
-
-    return cldImage.toURL();
-  }
-
   var cropsGravityAuto = ['crop', 'fill', 'lfill', 'fill_pad', 'thumb'];
   var props$6 = ['crop', 'gravity'];
   function plugin$6(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
-        options = _ref.options,
-        cldOptions = _ref.cldOptions;
+        options = _ref.options;
 
     var width = options.width,
-        height = options.height;
-    var _cldOptions$crop = cldOptions.crop,
-        crop = _cldOptions$crop === void 0 ? 'limit' : _cldOptions$crop,
-        gravity = cldOptions.gravity;
+        height = options.height,
+        _options$crop = options.crop,
+        crop = _options$crop === void 0 ? 'limit' : _options$crop,
+        gravity = options.gravity;
     var transformationString = "c_" + crop + ",w_" + width;
 
     if (!gravity && cropsGravityAuto.includes(crop)) {
@@ -193,20 +134,16 @@
   function plugin$5(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
-        cldOptions = _ref.cldOptions;
+        options = _ref.options;
 
     params.forEach(function (key) {
       var prop = key.prop || key;
       var effect = key.effect || key;
 
-      if (prop === 'oilPaint' && cldOptions[prop]) {
-        console.log('cldOptions[prop]', cldOptions[prop]);
-      }
-
-      if (cldOptions[prop] === true) {
+      if (options[prop] === true) {
         cldImage.effect("e_" + effect);
-      } else if (typeof cldOptions[prop] === 'string') {
-        cldImage.effect("e_" + effect + ":" + cldOptions[prop]);
+      } else if (typeof options[prop] === 'string') {
+        cldImage.effect("e_" + effect + ":" + options[prop]);
       }
     });
   }
@@ -271,15 +208,15 @@
     }
   };
 
-  var _excluded$1 = ["publicId", "position", "text", "effects"];
+  var _excluded$2 = ["publicId", "position", "text", "effects"];
   var props$4 = ['overlays'];
   function plugin$4(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
-        cldOptions = _ref.cldOptions;
+        options = _ref.options;
 
-    var _cldOptions$overlays = cldOptions.overlays,
-        overlays = _cldOptions$overlays === void 0 ? [] : _cldOptions$overlays;
+    var _options$overlays = options.overlays,
+        overlays = _options$overlays === void 0 ? [] : _options$overlays;
     var type = 'overlay';
     var typeQualifier = 'l';
     overlays.forEach(function (_ref2) {
@@ -288,7 +225,7 @@
           text$1 = _ref2.text,
           _ref2$effects = _ref2.effects,
           layerEffects = _ref2$effects === void 0 ? [] : _ref2$effects,
-          options = _objectWithoutPropertiesLoose(_ref2, _excluded$1);
+          options = _objectWithoutPropertiesLoose(_ref2, _excluded$2);
 
       var hasPublicId = typeof publicId === 'string';
       var hasText = typeof text$1 === 'object';
@@ -378,10 +315,10 @@
   function plugin$3(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
-        cldOptions = _ref.cldOptions;
+        options = _ref.options;
 
-    var _cldOptions$rawTransf = cldOptions.rawTransformations,
-        rawTransformations = _cldOptions$rawTransf === void 0 ? [] : _cldOptions$rawTransf;
+    var _options$rawTransform = options.rawTransformations,
+        rawTransformations = _options$rawTransform === void 0 ? [] : _options$rawTransform;
     rawTransformations.forEach(function (transformation) {
       cldImage.addTransformation(transformation);
     });
@@ -397,10 +334,10 @@
   function plugin$2(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
-        cldOptions = _ref.cldOptions;
+        options = _ref.options;
 
-    var _cldOptions$removeBac = cldOptions.removeBackground,
-        removeBackground = _cldOptions$removeBac === void 0 ? false : _cldOptions$removeBac;
+    var _options$removeBackgr = options.removeBackground,
+        removeBackground = _options$removeBackgr === void 0 ? false : _options$removeBackgr;
 
     if (removeBackground) {
       cldImage.effect('e_background_removal');
@@ -413,15 +350,15 @@
     plugin: plugin$2
   };
 
-  var _excluded = ["publicId", "type", "position", "text", "effects"];
+  var _excluded$1 = ["publicId", "type", "position", "text", "effects"];
   var props$1 = ['underlays'];
   function plugin$1(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
-        cldOptions = _ref.cldOptions;
+        options = _ref.options;
 
-    var _cldOptions$underlays = cldOptions.underlays,
-        underlays = _cldOptions$underlays === void 0 ? [] : _cldOptions$underlays;
+    var _options$underlays = options.underlays,
+        underlays = _options$underlays === void 0 ? [] : _options$underlays;
     var typeQualifier = 'u';
     underlays.forEach(function (_ref2) {
       var publicId = _ref2.publicId,
@@ -429,7 +366,7 @@
           position$1 = _ref2.position,
           _ref2$effects = _ref2.effects,
           layerEffects = _ref2$effects === void 0 ? [] : _ref2$effects,
-          options = _objectWithoutPropertiesLoose(_ref2, _excluded);
+          options = _objectWithoutPropertiesLoose(_ref2, _excluded$1);
 
       var hasPublicId = typeof publicId === 'string';
       var hasPosition = typeof position$1 === 'object';
@@ -493,11 +430,11 @@
   function plugin(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
-        cldOptions = _ref.cldOptions;
+        options = _ref.options;
 
-    var _cldOptions$zoompan = cldOptions.zoompan,
-        zoompan = _cldOptions$zoompan === void 0 ? false : _cldOptions$zoompan;
-    var options = {};
+    var _options$zoompan = options.zoompan,
+        zoompan = _options$zoompan === void 0 ? false : _options$zoompan;
+    var overrides = {};
 
     if (zoompan === true) {
       cldImage.effect('e_zoompan');
@@ -530,11 +467,11 @@
     }
 
     if (zoompan !== false) {
-      options.format = 'gif';
+      overrides.format = 'gif';
     }
 
     return {
-      options: options
+      options: overrides
     };
   }
 
@@ -544,15 +481,18 @@
     plugin: plugin
   };
 
-  var cld;
   var transformationPlugins = [// Background Removal must always come first
   removeBackgroundPlugin, croppingPlugin, effectsPlugin, overlaysPlugin, underlaysPlugin, zoompanPlugin, // Raw transformations needs to be last simply to make sure
   // it's always expected to applied the same way
   rawTransformationsPlugin];
-  function cloudinaryLoader(defaultOptions, cldOptions, cldConfig) {
-    if (cldConfig === void 0) {
-      cldConfig = {};
-    }
+  var cld;
+  /**
+   * constructCloudinaryUrl
+   */
+
+  function constructCloudinaryUrl(_ref) {
+    var options = _ref.options,
+        config = _ref.config;
 
     if (!cld) {
       cld = new urlGen.Cloudinary(_extends({
@@ -563,31 +503,97 @@
           // Used to avoid issues with SSR particularly for the blurred placeholder
           analytics: false
         }
-      }, cldConfig));
+      }, config));
     }
-
-    var options = _extends({
-      format: 'auto',
-      quality: 'auto'
-    }, defaultOptions);
 
     var publicId = getPublicId(options.src);
     var cldImage = cld.image(publicId);
-    transformationPlugins.forEach(function (_ref) {
-      var plugin = _ref.plugin;
+    transformationPlugins.forEach(function (_ref2) {
+      var plugin = _ref2.plugin;
 
-      var _ref2 = plugin({
+      var _ref3 = plugin({
         cldImage: cldImage,
-        options: options,
-        cldOptions: cldOptions
+        options: options
       }) || {},
-          pluginOptions = _ref2.options;
+          pluginOptions = _ref3.options;
 
       if (pluginOptions != null && pluginOptions.format) {
         options.format = pluginOptions.format;
       }
     });
-    return cldImage.format(options.format).delivery("q_" + options.quality).toURL();
+    return cldImage.format(options.format || 'auto').delivery("q_" + (options.quality || 'auto')).toURL();
+  }
+  /**
+   * Retrieves the public id of a cloudiary image url. If no url is recognized it returns the parameter it self.
+   * If it's recognized that is a url and it's not possible to get the public id, it warns the user.
+   *
+   * @param {string} src The cloudiary url or public id.
+   *
+   * @return {string} The images public id
+   */
+
+  function getPublicId(src) {
+    if (src.includes('res.cloudinary.com')) {
+      var regexWithTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(.*)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
+      var regexWithoutTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
+      var withTransformations = src.match(regexWithTransformations);
+      var withoutTransformations = src.match(regexWithoutTransformations);
+
+      if (withTransformations) {
+        return withTransformations[withTransformations.length - 1];
+      } else if (withoutTransformations) {
+        return withoutTransformations[withoutTransformations.length - 1];
+      } else {
+        console.warn("Not possible to retrieve the publicUrl from " + src + ", make sure it's a valid cloudinary image url.");
+      }
+    }
+
+    return src;
+  }
+  /**
+   * createPlaceholderUrl
+   */
+
+  function createPlaceholderUrl(_ref4) {
+    var src = _ref4.src,
+        placeholder = _ref4.placeholder;
+
+    if (!cld) {
+      cld = new urlGen.Cloudinary({
+        cloud: {
+          cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+        },
+        url: {
+          // Used to avoid issues with SSR particularly for the blurred placeholder
+          analytics: false
+        }
+      });
+    }
+
+    var cldImage = cld.image(src).resize('c_limit,w_100').delivery('q_1').format('auto');
+
+    if (placeholder === 'grayscale') {
+      cldImage.effect('e_grayscale');
+    }
+
+    if (placeholder.includes('color:')) {
+      var color = placeholder.split(':').splice(1).join(':');
+      cldImage.effect('e_grayscale');
+      cldImage.effect("e_colorize:60,co_" + color);
+    }
+
+    return cldImage.toURL();
+  }
+
+  function cloudinaryLoader(defaultOptions, cldOptions, cldConfig) {
+    if (cldConfig === void 0) {
+      cldConfig = {};
+    }
+
+    return constructCloudinaryUrl({
+      options: _extends({}, defaultOptions, cldOptions),
+      config: cldConfig
+    });
   }
 
   var CldImage = function CldImage(props) {
@@ -646,7 +652,56 @@
     }));
   };
 
+  var _excluded = ["width", "height", "excludeTags"];
+  var IMAGE_WIDTH = 2400;
+  var IMAGE_HEIGHT = 1200;
+
+  var CldOgImage = function CldOgImage(props) {
+    var _props$width = props.width,
+        width = _props$width === void 0 ? IMAGE_WIDTH : _props$width,
+        _props$height = props.height,
+        height = _props$height === void 0 ? IMAGE_HEIGHT : _props$height,
+        _props$excludeTags = props.excludeTags,
+        excludeTags = _props$excludeTags === void 0 ? [] : _props$excludeTags,
+        options = _objectWithoutPropertiesLoose(props, _excluded);
+
+    var ogImageUrl = constructCloudinaryUrl({
+      options: _extends({
+        width: width,
+        height: height,
+        src: props.src,
+        crop: props.crop || 'fill',
+        gravity: props.gravity || 'center'
+      }, options)
+    });
+    return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+      children: [/*#__PURE__*/jsxRuntime.jsx("meta", {
+        property: "og:image",
+        content: ogImageUrl
+      }), /*#__PURE__*/jsxRuntime.jsx("meta", {
+        property: "og:image:secure_url",
+        content: ogImageUrl
+      }), /*#__PURE__*/jsxRuntime.jsx("meta", {
+        property: "og:image:width",
+        content: width
+      }), /*#__PURE__*/jsxRuntime.jsx("meta", {
+        property: "og:image:height",
+        content: height
+      }), !excludeTags.includes('twitter:title') && /*#__PURE__*/jsxRuntime.jsx("meta", {
+        property: "twitter:title",
+        content: ""
+      }), /*#__PURE__*/jsxRuntime.jsx("meta", {
+        property: "twitter:card",
+        content: "summary_large_image"
+      }), /*#__PURE__*/jsxRuntime.jsx("meta", {
+        property: "twitter:image",
+        content: ogImageUrl
+      })]
+    });
+  };
+
   exports.CldImage = CldImage;
+  exports.CldOgImage = CldOgImage;
   exports.cloudinaryLoader = cloudinaryLoader;
   exports.position = position;
   exports.primary = primary;

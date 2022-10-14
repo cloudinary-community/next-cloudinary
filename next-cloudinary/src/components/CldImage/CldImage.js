@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import { createPlaceholderUrl, getPublicId } from '../../lib/cloudinary';
-import { cloudinaryLoader, transformationPlugins } from '../../loaders/cloudinary-loader';
+import { createPlaceholderUrl, getPublicId, transformationPlugins } from '../../lib/cloudinary';
+import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
 const CldImage = props => {
 

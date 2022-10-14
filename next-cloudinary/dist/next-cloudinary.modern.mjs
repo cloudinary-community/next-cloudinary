@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Cloudinary } from '@cloudinary/url-gen';
-import { jsx } from 'react/jsx-runtime';
+import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
 
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function (target) {
@@ -34,80 +34,18 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
-const cld$1 = new Cloudinary({
-  cloud: {
-    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-  },
-  url: {
-    // Used to avoid issues with SSR particularly for the blurred placeholder
-    analytics: false
-  }
-});
-/**
- * Retrieves the public id of a cloudiary image url. If no url is recognized it returns the parameter it self.
- * If it's recognized that is a url and it's not possible to get the public id, it warns the user.
- *
- * @param {string} src The cloudiary url or public id.
- *
- * @return {string} The images public id
- */
-
-function getPublicId(src) {
-  if (src.includes('res.cloudinary.com')) {
-    const regexWithTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(.*)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
-    const regexWithoutTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
-    const withTransformations = src.match(regexWithTransformations);
-    const withoutTransformations = src.match(regexWithoutTransformations);
-
-    if (withTransformations) {
-      return withTransformations[withTransformations.length - 1];
-    } else if (withoutTransformations) {
-      return withoutTransformations[withoutTransformations.length - 1];
-    } else {
-      console.warn(`Not possible to retrieve the publicUrl from ${src}, make sure it's a valid cloudinary image url.`);
-    }
-  }
-
-  return src;
-}
-/**
- * createPlaceholderUrl
- */
-
-function createPlaceholderUrl({
-  src,
-  placeholder
-}) {
-  const cldImage = cld$1.image(src).resize('c_limit,w_100').delivery('q_1').format('auto');
-
-  if (placeholder === 'grayscale') {
-    cldImage.effect('e_grayscale');
-  }
-
-  if (placeholder.includes('color:')) {
-    const color = placeholder.split(':').splice(1).join(':');
-    cldImage.effect('e_grayscale');
-    cldImage.effect(`e_colorize:60,co_${color}`);
-  }
-
-  return cldImage.toURL();
-}
-
 const cropsGravityAuto = ['crop', 'fill', 'lfill', 'fill_pad', 'thumb'];
 const props$6 = ['crop', 'gravity'];
 function plugin$6({
   cldImage,
-  options,
-  cldOptions
+  options
 } = {}) {
   const {
     width,
-    height
-  } = options;
-  const {
+    height,
     crop = 'limit',
     gravity
-  } = cldOptions;
+  } = options;
   let transformationString = `c_${crop},w_${width}`;
 
   if (!gravity && cropsGravityAuto.includes(crop)) {
@@ -184,20 +122,16 @@ const params = ['art', {
 const props$5 = params.map(param => param.prop || param);
 function plugin$5({
   cldImage,
-  cldOptions
+  options
 } = {}) {
   params.forEach(key => {
     const prop = key.prop || key;
     const effect = key.effect || key;
 
-    if (prop === 'oilPaint' && cldOptions[prop]) {
-      console.log('cldOptions[prop]', cldOptions[prop]);
-    }
-
-    if (cldOptions[prop] === true) {
+    if (options[prop] === true) {
       cldImage.effect(`e_${effect}`);
-    } else if (typeof cldOptions[prop] === 'string') {
-      cldImage.effect(`e_${effect}:${cldOptions[prop]}`);
+    } else if (typeof options[prop] === 'string') {
+      cldImage.effect(`e_${effect}:${options[prop]}`);
     }
   });
 }
@@ -262,16 +196,15 @@ const text = {
   }
 };
 
-const _excluded$1 = ["publicId", "position", "text", "effects"];
+const _excluded$2 = ["publicId", "position", "text", "effects"];
 const props$4 = ['overlays'];
 function plugin$4({
   cldImage,
-  options,
-  cldOptions
+  options
 } = {}) {
   const {
     overlays = []
-  } = cldOptions;
+  } = options;
   const type = 'overlay';
   const typeQualifier = 'l';
   overlays.forEach(_ref => {
@@ -281,7 +214,7 @@ function plugin$4({
       text: text$1,
       effects: layerEffects = []
     } = _ref,
-        options = _objectWithoutPropertiesLoose(_ref, _excluded$1);
+        options = _objectWithoutPropertiesLoose(_ref, _excluded$2);
 
     const hasPublicId = typeof publicId === 'string';
     const hasText = typeof text$1 === 'object';
@@ -377,11 +310,11 @@ var overlaysPlugin = {
 const props$3 = ['rawTransformations'];
 function plugin$3({
   cldImage,
-  cldOptions
+  options
 } = {}) {
   const {
     rawTransformations = []
-  } = cldOptions;
+  } = options;
   rawTransformations.forEach(transformation => {
     cldImage.addTransformation(transformation);
   });
@@ -396,12 +329,11 @@ var rawTransformationsPlugin = {
 const props$2 = ['removeBackground'];
 function plugin$2({
   cldImage,
-  options,
-  cldOptions
+  options
 } = {}) {
   const {
     removeBackground = false
-  } = cldOptions;
+  } = options;
 
   if (removeBackground) {
     cldImage.effect('e_background_removal');
@@ -414,16 +346,15 @@ var removeBackgroundPlugin = {
   plugin: plugin$2
 };
 
-const _excluded = ["publicId", "type", "position", "text", "effects"];
+const _excluded$1 = ["publicId", "type", "position", "text", "effects"];
 const props$1 = ['underlays'];
 function plugin$1({
   cldImage,
-  options,
-  cldOptions
+  options
 } = {}) {
   const {
     underlays = []
-  } = cldOptions;
+  } = options;
   const typeQualifier = 'u';
   underlays.forEach(_ref => {
     let {
@@ -432,7 +363,7 @@ function plugin$1({
       position: position$1,
       effects: layerEffects = []
     } = _ref,
-        options = _objectWithoutPropertiesLoose(_ref, _excluded);
+        options = _objectWithoutPropertiesLoose(_ref, _excluded$1);
 
     const hasPublicId = typeof publicId === 'string';
     const hasPosition = typeof position$1 === 'object';
@@ -501,12 +432,12 @@ var underlaysPlugin = {
 const props = ['zoompan'];
 function plugin({
   cldImage,
-  cldOptions
+  options
 } = {}) {
   const {
     zoompan = false
-  } = cldOptions;
-  const options = {};
+  } = options;
+  const overrides = {};
 
   if (zoompan === true) {
     cldImage.effect('e_zoompan');
@@ -539,11 +470,11 @@ function plugin({
   }
 
   if (zoompan !== false) {
-    options.format = 'gif';
+    overrides.format = 'gif';
   }
 
   return {
-    options
+    options: overrides
   };
 }
 
@@ -553,12 +484,19 @@ var zoompanPlugin = {
   plugin: plugin
 };
 
-let cld;
 const transformationPlugins = [// Background Removal must always come first
 removeBackgroundPlugin, croppingPlugin, effectsPlugin, overlaysPlugin, underlaysPlugin, zoompanPlugin, // Raw transformations needs to be last simply to make sure
 // it's always expected to applied the same way
 rawTransformationsPlugin];
-function cloudinaryLoader(defaultOptions, cldOptions, cldConfig = {}) {
+let cld;
+/**
+ * constructCloudinaryUrl
+ */
+
+function constructCloudinaryUrl({
+  options,
+  config
+}) {
   if (!cld) {
     cld = new Cloudinary(_extends({
       cloud: {
@@ -568,13 +506,8 @@ function cloudinaryLoader(defaultOptions, cldOptions, cldConfig = {}) {
         // Used to avoid issues with SSR particularly for the blurred placeholder
         analytics: false
       }
-    }, cldConfig));
+    }, config));
   }
-
-  const options = _extends({
-    format: 'auto',
-    quality: 'auto'
-  }, defaultOptions);
 
   const publicId = getPublicId(options.src);
   const cldImage = cld.image(publicId);
@@ -585,15 +518,82 @@ function cloudinaryLoader(defaultOptions, cldOptions, cldConfig = {}) {
       options: pluginOptions
     } = plugin({
       cldImage,
-      options,
-      cldOptions
+      options
     }) || {};
 
     if (pluginOptions != null && pluginOptions.format) {
       options.format = pluginOptions.format;
     }
   });
-  return cldImage.format(options.format).delivery(`q_${options.quality}`).toURL();
+  return cldImage.format(options.format || 'auto').delivery(`q_${options.quality || 'auto'}`).toURL();
+}
+/**
+ * Retrieves the public id of a cloudiary image url. If no url is recognized it returns the parameter it self.
+ * If it's recognized that is a url and it's not possible to get the public id, it warns the user.
+ *
+ * @param {string} src The cloudiary url or public id.
+ *
+ * @return {string} The images public id
+ */
+
+function getPublicId(src) {
+  if (src.includes('res.cloudinary.com')) {
+    const regexWithTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(.*)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
+    const regexWithoutTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
+    const withTransformations = src.match(regexWithTransformations);
+    const withoutTransformations = src.match(regexWithoutTransformations);
+
+    if (withTransformations) {
+      return withTransformations[withTransformations.length - 1];
+    } else if (withoutTransformations) {
+      return withoutTransformations[withoutTransformations.length - 1];
+    } else {
+      console.warn(`Not possible to retrieve the publicUrl from ${src}, make sure it's a valid cloudinary image url.`);
+    }
+  }
+
+  return src;
+}
+/**
+ * createPlaceholderUrl
+ */
+
+function createPlaceholderUrl({
+  src,
+  placeholder
+}) {
+  if (!cld) {
+    cld = new Cloudinary({
+      cloud: {
+        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+      },
+      url: {
+        // Used to avoid issues with SSR particularly for the blurred placeholder
+        analytics: false
+      }
+    });
+  }
+
+  const cldImage = cld.image(src).resize('c_limit,w_100').delivery('q_1').format('auto');
+
+  if (placeholder === 'grayscale') {
+    cldImage.effect('e_grayscale');
+  }
+
+  if (placeholder.includes('color:')) {
+    const color = placeholder.split(':').splice(1).join(':');
+    cldImage.effect('e_grayscale');
+    cldImage.effect(`e_colorize:60,co_${color}`);
+  }
+
+  return cldImage.toURL();
+}
+
+function cloudinaryLoader(defaultOptions, cldOptions, cldConfig = {}) {
+  return constructCloudinaryUrl({
+    options: _extends({}, defaultOptions, cldOptions),
+    config: cldConfig
+  });
 }
 
 const CldImage = props => {
@@ -646,5 +646,52 @@ const CldImage = props => {
   }));
 };
 
-export { CldImage, cloudinaryLoader, position, primary, text };
+const _excluded = ["width", "height", "excludeTags"];
+const IMAGE_WIDTH = 2400;
+const IMAGE_HEIGHT = 1200;
+
+const CldOgImage = props => {
+  const {
+    width = IMAGE_WIDTH,
+    height = IMAGE_HEIGHT,
+    excludeTags = []
+  } = props,
+        options = _objectWithoutPropertiesLoose(props, _excluded);
+
+  const ogImageUrl = constructCloudinaryUrl({
+    options: _extends({
+      width,
+      height,
+      src: props.src,
+      crop: props.crop || 'fill',
+      gravity: props.gravity || 'center'
+    }, options)
+  });
+  return /*#__PURE__*/jsxs(Fragment, {
+    children: [/*#__PURE__*/jsx("meta", {
+      property: "og:image",
+      content: ogImageUrl
+    }), /*#__PURE__*/jsx("meta", {
+      property: "og:image:secure_url",
+      content: ogImageUrl
+    }), /*#__PURE__*/jsx("meta", {
+      property: "og:image:width",
+      content: width
+    }), /*#__PURE__*/jsx("meta", {
+      property: "og:image:height",
+      content: height
+    }), !excludeTags.includes('twitter:title') && /*#__PURE__*/jsx("meta", {
+      property: "twitter:title",
+      content: ""
+    }), /*#__PURE__*/jsx("meta", {
+      property: "twitter:card",
+      content: "summary_large_image"
+    }), /*#__PURE__*/jsx("meta", {
+      property: "twitter:image",
+      content: ogImageUrl
+    })]
+  });
+};
+
+export { CldImage, CldOgImage, cloudinaryLoader, position, primary, text };
 //# sourceMappingURL=next-cloudinary.modern.mjs.map

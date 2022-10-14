@@ -6,8 +6,8 @@ import {
 
 export const props = ['overlays'];
 
-export function plugin({ cldImage, options, cldOptions } = {}) {
-  const { overlays = [] } = cldOptions;
+export function plugin({ cldImage, options } = {}) {
+  const { overlays = [] } = options;
 
   const type = 'overlay';
   const typeQualifier = 'l';
