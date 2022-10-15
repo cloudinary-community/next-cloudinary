@@ -8,10 +8,6 @@ export function plugin({ cldImage, options, cldOptions } = {}) {
 
   let transformationString = `c_${crop},w_${width}`;
 
-  if ( !['limit'].includes(crop) ) {
-    transformationString = `${transformationString},h_${height}`;
-  }
-
   if ( !gravity ) {
     if ( cropsGravityAuto.includes(crop) && !gravity ) {
     gravity = 'auto';
