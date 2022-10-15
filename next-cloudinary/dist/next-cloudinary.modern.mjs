@@ -647,13 +647,14 @@ const CldImage = props => {
   }));
 };
 
-const _excluded = ["excludeTags", "twitterCard"];
+const _excluded = ["excludeTags", "twitterTitle", "twitterCard"];
 const IMAGE_WIDTH = 2400;
 const IMAGE_HEIGHT = 1200;
 
 const CldOgImage = _ref => {
   let {
     excludeTags = [],
+    twitterTitle,
     twitterCard = 'summary_large_image'
   } = _ref,
       props = _objectWithoutPropertiesLoose(_ref, _excluded);
@@ -683,7 +684,7 @@ const CldOgImage = _ref => {
       content: options.height
     }), !excludeTags.includes('twitter:title') && /*#__PURE__*/jsx("meta", {
       property: "twitter:title",
-      content: ""
+      content: twitterTitle || ' '
     }), /*#__PURE__*/jsx("meta", {
       property: "twitter:card",
       content: twitterCard

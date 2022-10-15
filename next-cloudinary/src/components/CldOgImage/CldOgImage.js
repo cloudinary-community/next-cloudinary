@@ -3,7 +3,7 @@ const IMAGE_HEIGHT = 1200;
 
 import { constructCloudinaryUrl } from '../../lib/cloudinary';
 
-const CldOgImage = ({ excludeTags = [], twitterCard = 'summary_large_image', ...props }) => {
+const CldOgImage = ({ excludeTags = [], twitterTitle, twitterCard = 'summary_large_image', ...props }) => {
   const options = {
     ...props,
     width: props.width || IMAGE_WIDTH,
@@ -27,7 +27,7 @@ const CldOgImage = ({ excludeTags = [], twitterCard = 'summary_large_image', ...
       {/* https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image */}
 
       {!excludeTags.includes('twitter:title') && (
-        <meta property="twitter:title" content="" />
+        <meta property="twitter:title" content={twitterTitle || ' '} />
       )}
 
       <meta property="twitter:card" content={twitterCard} />

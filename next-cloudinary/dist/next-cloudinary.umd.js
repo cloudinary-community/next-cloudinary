@@ -653,13 +653,14 @@
     }));
   };
 
-  var _excluded = ["excludeTags", "twitterCard"];
+  var _excluded = ["excludeTags", "twitterTitle", "twitterCard"];
   var IMAGE_WIDTH = 2400;
   var IMAGE_HEIGHT = 1200;
 
   var CldOgImage = function CldOgImage(_ref) {
     var _ref$excludeTags = _ref.excludeTags,
         excludeTags = _ref$excludeTags === void 0 ? [] : _ref$excludeTags,
+        twitterTitle = _ref.twitterTitle,
         _ref$twitterCard = _ref.twitterCard,
         twitterCard = _ref$twitterCard === void 0 ? 'summary_large_image' : _ref$twitterCard,
         props = _objectWithoutPropertiesLoose(_ref, _excluded);
@@ -689,7 +690,7 @@
         content: options.height
       }), !excludeTags.includes('twitter:title') && /*#__PURE__*/jsxRuntime.jsx("meta", {
         property: "twitter:title",
-        content: ""
+        content: twitterTitle || ' '
       }), /*#__PURE__*/jsxRuntime.jsx("meta", {
         property: "twitter:card",
         content: twitterCard

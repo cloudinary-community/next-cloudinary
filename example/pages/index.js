@@ -25,6 +25,7 @@ export default function Home() {
               text: 'Next Cloudinary'
             }
           }]}
+          twitterTitle="Next Cloudinary"
         />
       </Head>
 
