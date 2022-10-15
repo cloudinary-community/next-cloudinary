@@ -8,16 +8,20 @@ export function plugin({ cldImage, options, cldOptions } = {}) {
 
   let transformationString = `c_${crop},w_${width}`;
 
-  if ( !gravity && cropsGravityAuto.includes(crop) ) {
-    gravity = 'auto';
-  }
-
   if ( !['limit'].includes(crop) ) {
     transformationString = `${transformationString},h_${height}`;
   }
 
+  if ( !gravity ) {
+    if ( cropsGravityAuto.includes(crop) && !gravity ) {
+    gravity = 'auto';
+    } else {
+      transformationString = `${transformationString},h_${height}`;
+    }
+  }
+  
   if ( gravity ) {
-    if ( gravity === 'auto' && !cropsGravityAuto.includes(crop) ) {
+    if ( !cropsGravityAuto.includes(crop) && gravity === 'auto' ) {
       console.warn('Auto gravity can only be used with crop, fill, lfill, fill_pad or thumb. Not applying gravity.');
     } else {
       transformationString = `${transformationString},g_${gravity}`;
