@@ -528,6 +528,10 @@ function constructCloudinaryUrl(_ref) {
  */
 
 function getPublicId(src) {
+  if (typeof src !== 'string') {
+    throw new Error("Invalid src of type " + typeof src);
+  }
+
   if (src.includes('res.cloudinary.com')) {
     var regexWithTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(.*)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
     var regexWithoutTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
@@ -551,33 +555,30 @@ function getPublicId(src) {
 
 function createPlaceholderUrl(_ref4) {
   var src = _ref4.src,
-      placeholder = _ref4.placeholder;
-
-  if (!cld) {
-    cld = new Cloudinary({
-      cloud: {
-        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-      },
-      url: {
-        // Used to avoid issues with SSR particularly for the blurred placeholder
-        analytics: false
-      }
-    });
-  }
-
-  var cldImage = cld.image(src).resize('c_limit,w_100').delivery('q_1').format('auto');
+      _ref4$placeholder = _ref4.placeholder,
+      placeholder = _ref4$placeholder === void 0 ? true : _ref4$placeholder,
+      config = _ref4.config;
+  var rawTransformations = [];
 
   if (placeholder === 'grayscale') {
-    cldImage.effect('e_grayscale');
+    rawTransformations.push('e_grayscale');
   }
 
-  if (placeholder.includes('color:')) {
+  if (typeof placeholder === 'string' && placeholder.includes('color:')) {
     var color = placeholder.split(':').splice(1).join(':');
-    cldImage.effect('e_grayscale');
-    cldImage.effect("e_colorize:60,co_" + color);
+    rawTransformations.push('e_grayscale');
+    rawTransformations.push("e_colorize:60,co_" + color);
   }
 
-  return cldImage.toURL();
+  return constructCloudinaryUrl({
+    options: {
+      src: src,
+      width: 100,
+      quality: 1,
+      rawTransformations: rawTransformations
+    },
+    config: config
+  });
 }
 
 function cloudinaryLoader(defaultOptions, cldOptions, cldConfig) {
@@ -647,27 +648,26 @@ var CldImage = function CldImage(props) {
   }));
 };
 
-var _excluded = ["width", "height", "excludeTags"];
+var _excluded = ["excludeTags", "twitterCard"];
 var IMAGE_WIDTH = 2400;
 var IMAGE_HEIGHT = 1200;
 
-var CldOgImage = function CldOgImage(props) {
-  var _props$width = props.width,
-      width = _props$width === void 0 ? IMAGE_WIDTH : _props$width,
-      _props$height = props.height,
-      height = _props$height === void 0 ? IMAGE_HEIGHT : _props$height,
-      _props$excludeTags = props.excludeTags,
-      excludeTags = _props$excludeTags === void 0 ? [] : _props$excludeTags,
-      options = _objectWithoutPropertiesLoose(props, _excluded);
+var CldOgImage = function CldOgImage(_ref) {
+  var _ref$excludeTags = _ref.excludeTags,
+      excludeTags = _ref$excludeTags === void 0 ? [] : _ref$excludeTags,
+      _ref$twitterCard = _ref.twitterCard,
+      twitterCard = _ref$twitterCard === void 0 ? 'summary_large_image' : _ref$twitterCard,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded);
+
+  var options = _extends({}, props, {
+    width: props.width || IMAGE_WIDTH,
+    height: props.height || IMAGE_HEIGHT,
+    crop: props.crop || 'fill',
+    gravity: props.gravity || 'center'
+  });
 
   var ogImageUrl = constructCloudinaryUrl({
-    options: _extends({
-      width: width,
-      height: height,
-      src: props.src,
-      crop: props.crop || 'fill',
-      gravity: props.gravity || 'center'
-    }, options)
+    options: options
   });
   return /*#__PURE__*/jsxs(Fragment, {
     children: [/*#__PURE__*/jsx("meta", {
@@ -678,16 +678,16 @@ var CldOgImage = function CldOgImage(props) {
       content: ogImageUrl
     }), /*#__PURE__*/jsx("meta", {
       property: "og:image:width",
-      content: width
+      content: options.width
     }), /*#__PURE__*/jsx("meta", {
       property: "og:image:height",
-      content: height
+      content: options.height
     }), !excludeTags.includes('twitter:title') && /*#__PURE__*/jsx("meta", {
       property: "twitter:title",
       content: ""
     }), /*#__PURE__*/jsx("meta", {
       property: "twitter:card",
-      content: "summary_large_image"
+      content: twitterCard
     }), /*#__PURE__*/jsx("meta", {
       property: "twitter:image",
       content: ogImageUrl

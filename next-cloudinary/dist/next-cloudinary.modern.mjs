@@ -537,6 +537,10 @@ function constructCloudinaryUrl({
  */
 
 function getPublicId(src) {
+  if (typeof src !== 'string') {
+    throw new Error(`Invalid src of type ${typeof src}`);
+  }
+
   if (src.includes('res.cloudinary.com')) {
     const regexWithTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(.*)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
     const regexWithoutTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
@@ -560,33 +564,30 @@ function getPublicId(src) {
 
 function createPlaceholderUrl({
   src,
-  placeholder
+  placeholder = true,
+  config
 }) {
-  if (!cld) {
-    cld = new Cloudinary({
-      cloud: {
-        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-      },
-      url: {
-        // Used to avoid issues with SSR particularly for the blurred placeholder
-        analytics: false
-      }
-    });
-  }
-
-  const cldImage = cld.image(src).resize('c_limit,w_100').delivery('q_1').format('auto');
+  const rawTransformations = [];
 
   if (placeholder === 'grayscale') {
-    cldImage.effect('e_grayscale');
+    rawTransformations.push('e_grayscale');
   }
 
-  if (placeholder.includes('color:')) {
+  if (typeof placeholder === 'string' && placeholder.includes('color:')) {
     const color = placeholder.split(':').splice(1).join(':');
-    cldImage.effect('e_grayscale');
-    cldImage.effect(`e_colorize:60,co_${color}`);
+    rawTransformations.push('e_grayscale');
+    rawTransformations.push(`e_colorize:60,co_${color}`);
   }
 
-  return cldImage.toURL();
+  return constructCloudinaryUrl({
+    options: {
+      src,
+      width: 100,
+      quality: 1,
+      rawTransformations
+    },
+    config
+  });
 }
 
 function cloudinaryLoader(defaultOptions, cldOptions, cldConfig = {}) {
@@ -646,26 +647,26 @@ const CldImage = props => {
   }));
 };
 
-const _excluded = ["width", "height", "excludeTags"];
+const _excluded = ["excludeTags", "twitterCard"];
 const IMAGE_WIDTH = 2400;
 const IMAGE_HEIGHT = 1200;
 
-const CldOgImage = props => {
-  const {
-    width = IMAGE_WIDTH,
-    height = IMAGE_HEIGHT,
-    excludeTags = []
-  } = props,
-        options = _objectWithoutPropertiesLoose(props, _excluded);
+const CldOgImage = _ref => {
+  let {
+    excludeTags = [],
+    twitterCard = 'summary_large_image'
+  } = _ref,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded);
+
+  const options = _extends({}, props, {
+    width: props.width || IMAGE_WIDTH,
+    height: props.height || IMAGE_HEIGHT,
+    crop: props.crop || 'fill',
+    gravity: props.gravity || 'center'
+  });
 
   const ogImageUrl = constructCloudinaryUrl({
-    options: _extends({
-      width,
-      height,
-      src: props.src,
-      crop: props.crop || 'fill',
-      gravity: props.gravity || 'center'
-    }, options)
+    options
   });
   return /*#__PURE__*/jsxs(Fragment, {
     children: [/*#__PURE__*/jsx("meta", {
@@ -676,16 +677,16 @@ const CldOgImage = props => {
       content: ogImageUrl
     }), /*#__PURE__*/jsx("meta", {
       property: "og:image:width",
-      content: width
+      content: options.width
     }), /*#__PURE__*/jsx("meta", {
       property: "og:image:height",
-      content: height
+      content: options.height
     }), !excludeTags.includes('twitter:title') && /*#__PURE__*/jsx("meta", {
       property: "twitter:title",
       content: ""
     }), /*#__PURE__*/jsx("meta", {
       property: "twitter:card",
-      content: "summary_large_image"
+      content: twitterCard
     }), /*#__PURE__*/jsx("meta", {
       property: "twitter:image",
       content: ogImageUrl
