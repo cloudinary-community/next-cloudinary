@@ -6,23 +6,7 @@ Underlays function very similar to overlays in terms of options, however they **
 
 See the examples above under Overlays to learn more about the available configurations.
 
-**Example:**
-
-```
-<CldImage
-  width="960"
-  height="600"
-  src="images/turtle"
-  sizes="100vw"
-  removeBackground
-  underlays={[{
-    publicId: 'images/galaxy',
-    width: 1920,
-    height: 1200,
-    crop: 'fill'
-  }]}
-/>
-```
+## Example
 
 <CldImage
   width="960"
@@ -37,3 +21,19 @@ See the examples above under Overlays to learn more about the available configur
     crop: 'fill'
   }]}
 />
+
+```jsx
+<CldImage
+  width="960"
+  height="600"
+  src="images/turtle"
+  sizes="100vw"
+  removeBackground
+  underlays={[{
+    publicId: 'images/galaxy',
+    width: 1920,
+    height: 1200,
+    crop: 'fill'
+  }]}
+/>
+```

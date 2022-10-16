@@ -4,32 +4,7 @@ import { CldImage } from '../../../next-cloudinary';
 
 You can add images on top of other images by using image-based overlays.
 
-**Example:**
-
-```
-<CldImage
-  width="960"
-  height="600"
-  src="images/turtle"
-  sizes="100vw"
-  overlays={[{
-    publicId: 'images/earth',
-    position: {
-      x: 50,
-      y: 50,
-      gravity: 'north_west',
-    },
-    effects: [
-      {
-        crop: 'fill',
-        gravity: 'auto',
-        width: 500,
-        height: 500
-      }
-    ]
-  }]}
-/>
-```
+## Example
 
 <CldImage
   width="960"
@@ -53,3 +28,28 @@ You can add images on top of other images by using image-based overlays.
     ]
   }]}
 />
+
+```jsx
+<CldImage
+  width="960"
+  height="600"
+  src="images/turtle"
+  sizes="100vw"
+  overlays={[{
+    publicId: 'images/earth',
+    position: {
+      x: 50,
+      y: 50,
+      gravity: 'north_west',
+    },
+    effects: [
+      {
+        crop: 'fill',
+        gravity: 'auto',
+        width: 500,
+        height: 500
+      }
+    ]
+  }]}
+/>
+```
