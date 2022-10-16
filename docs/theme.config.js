@@ -1,7 +1,5 @@
 import { CldOgImage } from '../next-cloudinary';
 
-console.log('CldOgImage', CldOgImage)
-
 export default {
   projectLink: 'https://github.com/colbyfayock/next-cloudinary', // GitHub link in the navbar
   docsRepositoryBase: 'https://github.com/colbyfayock/next-cloudinary/tree/main/docs',

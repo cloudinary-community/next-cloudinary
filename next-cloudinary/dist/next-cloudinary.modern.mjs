@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Cloudinary } from '@cloudinary/url-gen';
-import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
+import { jsx, jsxs } from 'react/jsx-runtime';
+import Head from 'next/head';
 
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function (target) {
@@ -198,6 +199,12 @@ const text = {
 
 const _excluded$2 = ["publicId", "position", "text", "effects"];
 const props$4 = ['overlays'];
+const DEFAULT_TEXT_OPTIONS = {
+  color: 'black',
+  fontFamily: 'Arial',
+  fontSize: 200,
+  fontWeight: 'bold'
+};
 function plugin$4({
   cldImage,
   options
@@ -217,7 +224,7 @@ function plugin$4({
         options = _objectWithoutPropertiesLoose(_ref, _excluded$2);
 
     const hasPublicId = typeof publicId === 'string';
-    const hasText = typeof text$1 === 'object';
+    const hasText = typeof text$1 === 'object' || typeof text$1 === 'string';
     const hasPosition = typeof position$1 === 'object';
 
     if (!hasPublicId && !hasText) {
@@ -259,6 +266,12 @@ function plugin$4({
     }); // Text styling
 
     if (hasText) {
+      if (typeof text$1 === 'string') {
+        text$1 = _extends({}, DEFAULT_TEXT_OPTIONS, {
+          text: text$1
+        });
+      }
+
       const textTransformations = [];
       Object.keys(text$1).forEach(key => {
         if (!text[key]) return;
@@ -304,6 +317,7 @@ function plugin$4({
 var overlaysPlugin = {
   __proto__: null,
   props: props$4,
+  DEFAULT_TEXT_OPTIONS: DEFAULT_TEXT_OPTIONS,
   plugin: plugin$4
 };
 
@@ -669,7 +683,7 @@ const CldOgImage = _ref => {
   const ogImageUrl = constructCloudinaryUrl({
     options
   });
-  return /*#__PURE__*/jsxs(Fragment, {
+  return /*#__PURE__*/jsxs(Head, {
     children: [/*#__PURE__*/jsx("meta", {
       property: "og:image",
       content: ogImageUrl

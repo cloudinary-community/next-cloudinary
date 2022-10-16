@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 const IMAGE_WIDTH = 2400;
 const IMAGE_HEIGHT = 1200;
 
@@ -16,8 +18,9 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, twitterCard = 'summary_lar
     options
   });
 
+
   return (
-    <>
+    <Head>
       <meta property="og:image" content={ogImageUrl} />
       <meta property="og:image:secure_url" content={ogImageUrl} />
       <meta property="og:image:width" content={options.width} />
@@ -32,7 +35,7 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, twitterCard = 'summary_lar
 
       <meta property="twitter:card" content={twitterCard} />
       <meta property="twitter:image" content={ogImageUrl} />
-    </>
+    </Head>
   );
 }
 

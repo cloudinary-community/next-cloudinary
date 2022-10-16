@@ -1,8 +1,25 @@
+import Head from 'next/head';
 import Bleed from 'nextra-theme-docs/bleed';
 
-import { CldImage } from '../../next-cloudinary';
+import { CldImage, CldOgImage } from '../../next-cloudinary';
 
 import ImageGrid from '../components/ImageGrid';
+
+<CldOgImage
+  src="images/turtle"
+  tint="100:0000FF:0p:FF1493:100p"
+  blur="2000"
+  overlays={[{
+    text: {
+      color: 'white',
+      fontFamily: 'Source Sans Pro',
+      fontSize: 200,
+      fontWeight: 'bold',
+      text: 'Next Cloudinary'
+    }
+  }]}
+  twitterTitle="Next Cloudinary"
+/>
 
 # Next Cloudinary
 

@@ -6,6 +6,13 @@ import {
 
 export const props = ['overlays'];
 
+export const DEFAULT_TEXT_OPTIONS = {
+  color: 'black',
+  fontFamily: 'Arial',
+  fontSize: 200,
+  fontWeight: 'bold',
+};
+
 export function plugin({ cldImage, options } = {}) {
   const { overlays = [] } = options;
 
@@ -14,7 +21,7 @@ export function plugin({ cldImage, options } = {}) {
 
   overlays.forEach(({ publicId, position, text, effects: layerEffects = [], ...options }) => {
     const hasPublicId = typeof publicId === 'string';
-    const hasText = typeof text === 'object';
+    const hasText = typeof text === 'object' || typeof text === 'string';
     const hasPosition = typeof position === 'object';
 
     if ( !hasPublicId && !hasText ) {
@@ -60,6 +67,14 @@ export function plugin({ cldImage, options } = {}) {
     // Text styling
 
     if ( hasText ) {
+      if ( typeof text === 'string' ) {
+        text = {
+          ...DEFAULT_TEXT_OPTIONS,
+          text
+        }
+      }
+
+
       const textTransformations = [];
 
       Object.keys(text).forEach(key => {
