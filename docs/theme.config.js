@@ -1,3 +1,7 @@
+import { CldOgImage } from '../next-cloudinary';
+
+console.log('CldOgImage', CldOgImage)
+
 export default {
   projectLink: 'https://github.com/colbyfayock/next-cloudinary', // GitHub link in the navbar
   docsRepositoryBase: 'https://github.com/colbyfayock/next-cloudinary/tree/main/docs',
@@ -22,6 +26,22 @@ export default {
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       <link rel="manifest" href="/site.webmanifest" />
       <meta name="theme-color" content="#000000" />
+
+      <CldOgImage
+        src="images/turtle"
+        tint="100:0000FF:0p:FF1493:100p"
+        blur="2000"
+        overlays={[{
+          text: {
+            color: 'white',
+            fontFamily: 'Source Sans Pro',
+            fontSize: 200,
+            fontWeight: 'bold',
+            text: 'Next Cloudinary'
+          }
+        }]}
+        twitterTitle="Next Cloudinary"
+      />
     </>
   ),
 }
