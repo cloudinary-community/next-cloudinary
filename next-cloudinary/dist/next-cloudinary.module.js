@@ -302,7 +302,7 @@ function plugin$4(_temp) {
 
     layerTransformation = layerTransformation + "," + primary$1.join(','); // Add all applied transformations
 
-    layerTransformation = layerTransformation + "/fl_layer_apply";
+    layerTransformation = layerTransformation + "/fl_layer_apply,fl_no_overflow";
 
     if (applied.length > 0) {
       layerTransformation = layerTransformation + "," + applied.join(',');
@@ -662,16 +662,15 @@ var CldImage = function CldImage(props) {
   }));
 };
 
-var _excluded = ["excludeTags", "twitterTitle", "twitterCard"];
+var _excluded = ["excludeTags", "twitterTitle"];
 var IMAGE_WIDTH = 2400;
 var IMAGE_HEIGHT = 1200;
+var TWITTER_CARD = 'summary_large_image';
 
 var CldOgImage = function CldOgImage(_ref) {
   var _ref$excludeTags = _ref.excludeTags,
       excludeTags = _ref$excludeTags === void 0 ? [] : _ref$excludeTags,
       twitterTitle = _ref.twitterTitle,
-      _ref$twitterCard = _ref.twitterCard,
-      twitterCard = _ref$twitterCard === void 0 ? 'summary_large_image' : _ref$twitterCard,
       props = _objectWithoutPropertiesLoose(_ref, _excluded);
 
   var options = _extends({}, props, {
@@ -683,7 +682,9 @@ var CldOgImage = function CldOgImage(_ref) {
 
   var ogImageUrl = constructCloudinaryUrl({
     options: options
-  });
+  }); // We need to include the tags within the Next.js Head component rather than
+  // direcly adding them inside of the Head otherwise we get unexpected results
+
   return /*#__PURE__*/jsxs(Head, {
     children: [/*#__PURE__*/jsx("meta", {
       property: "og:image",
@@ -697,12 +698,15 @@ var CldOgImage = function CldOgImage(_ref) {
     }), /*#__PURE__*/jsx("meta", {
       property: "og:image:height",
       content: options.height
+    }), options.alt && /*#__PURE__*/jsx("meta", {
+      property: "og:image:alt",
+      content: options.alt
     }), !excludeTags.includes('twitter:title') && /*#__PURE__*/jsx("meta", {
       property: "twitter:title",
       content: twitterTitle || ' '
     }), /*#__PURE__*/jsx("meta", {
       property: "twitter:card",
-      content: twitterCard
+      content: TWITTER_CARD
     }), /*#__PURE__*/jsx("meta", {
       property: "twitter:image",
       content: ogImageUrl

@@ -303,7 +303,7 @@ function plugin$4({
 
     layerTransformation = `${layerTransformation},${primary$1.join(',')}`; // Add all applied transformations
 
-    layerTransformation = `${layerTransformation}/fl_layer_apply`;
+    layerTransformation = `${layerTransformation}/fl_layer_apply,fl_no_overflow`;
 
     if (applied.length > 0) {
       layerTransformation = `${layerTransformation},${applied.join(',')}`;
@@ -661,15 +661,15 @@ const CldImage = props => {
   }));
 };
 
-const _excluded = ["excludeTags", "twitterTitle", "twitterCard"];
+const _excluded = ["excludeTags", "twitterTitle"];
 const IMAGE_WIDTH = 2400;
 const IMAGE_HEIGHT = 1200;
+const TWITTER_CARD = 'summary_large_image';
 
 const CldOgImage = _ref => {
   let {
     excludeTags = [],
-    twitterTitle,
-    twitterCard = 'summary_large_image'
+    twitterTitle
   } = _ref,
       props = _objectWithoutPropertiesLoose(_ref, _excluded);
 
@@ -682,7 +682,9 @@ const CldOgImage = _ref => {
 
   const ogImageUrl = constructCloudinaryUrl({
     options
-  });
+  }); // We need to include the tags within the Next.js Head component rather than
+  // direcly adding them inside of the Head otherwise we get unexpected results
+
   return /*#__PURE__*/jsxs(Head, {
     children: [/*#__PURE__*/jsx("meta", {
       property: "og:image",
@@ -696,12 +698,15 @@ const CldOgImage = _ref => {
     }), /*#__PURE__*/jsx("meta", {
       property: "og:image:height",
       content: options.height
+    }), options.alt && /*#__PURE__*/jsx("meta", {
+      property: "og:image:alt",
+      content: options.alt
     }), !excludeTags.includes('twitter:title') && /*#__PURE__*/jsx("meta", {
       property: "twitter:title",
       content: twitterTitle || ' '
     }), /*#__PURE__*/jsx("meta", {
       property: "twitter:card",
-      content: twitterCard
+      content: TWITTER_CARD
     }), /*#__PURE__*/jsx("meta", {
       property: "twitter:image",
       content: ogImageUrl

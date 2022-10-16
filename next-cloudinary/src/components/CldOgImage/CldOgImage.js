@@ -5,7 +5,9 @@ const IMAGE_HEIGHT = 1200;
 
 import { constructCloudinaryUrl } from '../../lib/cloudinary';
 
-const CldOgImage = ({ excludeTags = [], twitterTitle, twitterCard = 'summary_large_image', ...props }) => {
+const TWITTER_CARD = 'summary_large_image';
+
+const CldOgImage = ({ excludeTags = [], twitterTitle, ...props }) => {
   const options = {
     ...props,
     width: props.width || IMAGE_WIDTH,
@@ -18,6 +20,8 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, twitterCard = 'summary_lar
     options
   });
 
+  // We need to include the tags within the Next.js Head component rather than
+  // direcly adding them inside of the Head otherwise we get unexpected results
 
   return (
     <Head>
@@ -26,6 +30,10 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, twitterCard = 'summary_lar
       <meta property="og:image:width" content={options.width} />
       <meta property="og:image:height" content={options.height} />
 
+      {options.alt && (
+        <meta property="og:image:alt" content={options.alt} />
+      )}
+
       {/* Required for summary_large_image, exclude vai excludeTags */}
       {/* https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image */}
 
@@ -33,7 +41,7 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, twitterCard = 'summary_lar
         <meta property="twitter:title" content={twitterTitle || ' '} />
       )}
 
-      <meta property="twitter:card" content={twitterCard} />
+      <meta property="twitter:card" content={TWITTER_CARD} />
       <meta property="twitter:image" content={ogImageUrl} />
     </Head>
   );

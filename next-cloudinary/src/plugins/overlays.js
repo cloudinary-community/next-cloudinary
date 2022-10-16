@@ -110,7 +110,7 @@ export function plugin({ cldImage, options } = {}) {
 
     // Add all applied transformations
 
-    layerTransformation = `${layerTransformation}/fl_layer_apply`;
+    layerTransformation = `${layerTransformation}/fl_layer_apply,fl_no_overflow`;
 
     if ( applied.length > 0 ) {
       layerTransformation = `${layerTransformation},${applied.join(',')}`;

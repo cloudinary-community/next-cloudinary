@@ -1,0 +1,93 @@
+import Callout from 'nextra-theme-docs/callout';
+
+import { CldImage } from '../../../../next-cloudinary';
+
+import ImageGrid from '../../../components/ImageGrid';
+
+# CldOgImage Examples
+
+<Callout emoji={false}>
+  CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. The following examples make use of the `<CldImage>` tag to showcase what's possible.
+</Callout>
+
+## Effects
+
+<ImageGrid columns={1}>
+  <li>
+    <CldImage
+      width="2400"
+      height="1200"
+      crop="fill"
+      gravity="auto"
+      src="images/white"
+      sizes="100vw"
+      overlays={[{
+        text: 'Next Cloudinary'
+      }]}
+      alt=""
+    />
+
+    ### Text over a white background
+
+    ```jsx
+    overlays={[{
+      text: 'Next Cloudinary'
+    }]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="2400"
+      height="1200"
+      crop="fill"
+      gravity="auto"
+      src="images/turtle"
+      tint="100:0000FF:0p:FF1493:100p"
+      blur="2000"
+      backgroundRemoval
+      overlays={[{
+        text: {
+          color: 'white',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 200,
+          fontWeight: 'bold',
+          text: 'Next Cloudinary'
+        }
+      }]}
+      underlays={[{
+        publicId: 'images/galaxy',
+        width: 1920,
+        height: 1200,
+        crop: 'fill'
+      }]}
+      alt=""
+    />
+
+    ### Background removal with custom background
+
+    ```jsx
+    tint="100:0000FF:0p:FF1493:100p"
+    blur="2000"
+    backgroundRemoval
+    overlays={[{
+      text: {
+        color: 'white',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 200,
+        fontWeight: 'bold',
+        text: 'Next Cloudinary'
+      }
+    }]}
+    underlays={[{
+      publicId: 'images/galaxy',
+      width: 1920,
+      height: 1200,
+      crop: 'fill'
+    }]}
+    ```
+  </li>
+</ImageGrid>
+
+
+
+

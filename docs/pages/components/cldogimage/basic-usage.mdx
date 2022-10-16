@@ -1,0 +1,45 @@
+# Getting Started with CldOgImage
+
+## Basic Usage
+
+The basic required prop is `src`:
+
+```
+<CldOgImage
+  src="images/turtle"
+/>
+```
+
+But you can use any of the available features from [CldImage](/components/cldimage/configuration) to build your CldOgImage.
+
+You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
+
+```
+<CldOgImage
+  src="images/turtle"
+  tint="100:0000FF:0p:FF1493:100p"
+  blur="2000"
+  backgroundRemoval
+  overlays={[{
+    text: {
+      color: 'white',
+      fontFamily: 'Source Sans Pro',
+      fontSize: 200,
+      fontWeight: 'bold',
+      text: 'Next Cloudinary'
+    }
+  }]}
+  underlays={[{
+    publicId: 'images/galaxy',
+    width: 1920,
+    height: 1200,
+    crop: 'fill'
+  }]}
+  alt="Next Cloudinary over picture of a turtle on top of a galaxy"
+  twitterTitle="Next Cloudinary"
+/>
+```
+
+## Learn More about CldOgImage
+* [Configuration](/components/cldogimage/configuration)
+* [Effects](/components/cldogimage/effects)
