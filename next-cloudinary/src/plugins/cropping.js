@@ -14,14 +14,14 @@ export function plugin({ cldImage, options, cldOptions } = {}) {
   
   if ( !gravity ) {
     if ( cropsGravityAuto.includes(crop) ) {
-    gravity = 'auto';
+    cldOptions.gravity = 'auto';
     } else {
       transformationString = `${transformationString},h_${height}`;
     }
   }
   
-  if ( gravity ) {
-    if ( !cropsGravityAuto.includes(crop) && gravity === 'auto' ) {
+  if ( cldOptions.gravity ) {
+    if ( !cropsGravityAuto.includes(crop) && cldOptions.gravity === 'auto' ) {
       console.warn('Auto gravity can only be used with crop, fill, lfill, fill_pad or thumb. Not applying gravity.');
     } else {
       transformationString = `${transformationString},g_${gravity}`;
