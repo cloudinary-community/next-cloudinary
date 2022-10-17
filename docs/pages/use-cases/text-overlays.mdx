@@ -1,0 +1,61 @@
+import { CldImage } from '../../../next-cloudinary';
+
+# Text Overlays
+
+You can add text on top of your image with text-based overlays.
+
+## Example
+
+<CldImage
+  width="1335"
+  height="891"
+  src="images/sneakers"
+  sizes="100vw"
+  overlays={[{
+    width: 2670 - 20,
+    crop: 'fit',
+    position: {
+      x: 140,
+      y: 140,
+      angle: -20,
+      gravity: 'south_east',
+    },
+    text: {
+      color: 'blueviolet',
+      fontFamily: 'Source Sans Pro',
+      fontSize: 250,
+      fontWeight: 'bold',
+      textDecoration: 'underline',
+      letterSpacing: 14,
+      text: 'Cool Beans'
+    }
+  }]}
+/>
+
+```jsx
+<CldImage
+  width="1335"
+  height="891"
+  src="images/sneakers"
+  sizes="100vw"
+  overlays={[{
+    width: 2670 - 20,
+    crop: 'fit',
+    position: {
+      x: 140,
+      y: 140,
+      angle: -20,
+      gravity: 'south_east',
+    },
+    text: {
+      color: 'blueviolet',
+      fontFamily: 'Source Sans Pro',
+      fontSize: 250,
+      fontWeight: 'bold',
+      textDecoration: 'underline',
+      letterSpacing: 14,
+      text: 'Cool Beans'
+    }
+  }]}
+/>
+```
