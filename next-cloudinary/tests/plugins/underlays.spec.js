@@ -36,7 +36,7 @@ describe('Plugins', () => {
         options
       });
 
-      expect(cldImage.toURL()).toContain(`u_${publicId.replaceAll('/', ':')},w_${width},h_${height},c_${crop}/fl_layer_apply,fl_no_overflow/${TEST_PUBLIC_ID}`);
+      expect(cldImage.toURL()).toContain(`u_${publicId.replace(/\//g, ':')},w_${width},h_${height},c_${crop}/fl_layer_apply,fl_no_overflow/${TEST_PUBLIC_ID}`);
     });
 
     it('should add an underlay by string', () => {
@@ -56,7 +56,7 @@ describe('Plugins', () => {
         options
       });
 
-      expect(cldImage.toURL()).toContain(`u_${publicId.replaceAll('/', ':')},c_${crop}/fl_layer_apply,fl_no_overflow/${TEST_PUBLIC_ID}`);
+      expect(cldImage.toURL()).toContain(`u_${publicId.replace(/\//g, ':')},c_${crop}/fl_layer_apply,fl_no_overflow/${TEST_PUBLIC_ID}`);
     });
   });
 });
