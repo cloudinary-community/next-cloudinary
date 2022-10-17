@@ -1,0 +1,59 @@
+import Bleed from 'nextra-theme-docs/bleed';
+
+import { CldImage } from '../../next-cloudinary';
+
+import ImageGrid from '../components/ImageGrid';
+
+# Next Cloudinary
+
+Get the best of Cloudinary in Next.js with the CldImage component!
+
+<Bleed>
+  <ImageGrid>
+    <li>
+      <CldImage
+        width="987"
+        height="1481"
+        src="images/woman-headphones"
+        sizes="100vw"
+      />
+    </li>
+    <li>
+      <CldImage
+        width="987"
+        height="987"
+        src="images/woman-headphones"
+        sizes="100vw"
+        crop="thumb"
+        gravity="faces"
+        removeBackground
+        tint="40:253f8c"
+        underlays={[{
+          publicId: 'images/city-skyline',
+          width: 987,
+          height: 987,
+          crop: 'fill'
+        }]}
+      />
+    </li>
+  </ImageGrid>
+</Bleed>
+
+```jsx
+<CldImage
+  width="987"
+  height="987"
+  src="images/woman-headphones"
+  sizes="100vw"
+  crop="thumb"
+  gravity="faces"
+  removeBackground
+  tint="40:253f8c"
+  underlays={[{
+    publicId: 'images/city-skyline',
+    width: 987,
+    height: 987,
+    crop: 'fill'
+  }]}
+/>
+```

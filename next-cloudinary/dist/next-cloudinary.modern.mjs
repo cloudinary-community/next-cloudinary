@@ -44,6 +44,33 @@ const cld$1 = new Cloudinary({
   }
 });
 /**
+ * Retrieves the public id of a cloudiary image url. If no url is recognized it returns the parameter it self.
+ * If it's recognized that is a url and it's not possible to get the public id, it warns the user.
+ *
+ * @param {string} src The cloudiary url or public id.
+ *
+ * @return {string} The images public id
+ */
+
+function getPublicId(src) {
+  if (src.includes('res.cloudinary.com')) {
+    const regexWithTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(.*)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
+    const regexWithoutTransformations = /(https?)\:\/\/(res.cloudinary.com)\/([^\/]+)\/(image|video|raw)\/(upload|authenticated)\/(v[0-9]+)\/(.+)(?:\.[a-z]{3})?/;
+    const withTransformations = src.match(regexWithTransformations);
+    const withoutTransformations = src.match(regexWithoutTransformations);
+
+    if (withTransformations) {
+      return withTransformations[withTransformations.length - 1];
+    } else if (withoutTransformations) {
+      return withoutTransformations[withoutTransformations.length - 1];
+    } else {
+      console.warn(`Not possible to retrieve the publicUrl from ${src}, make sure it's a valid cloudinary image url.`);
+    }
+  }
+
+  return src;
+}
+/**
  * createPlaceholderUrl
  */
 
@@ -67,8 +94,8 @@ function createPlaceholderUrl({
 }
 
 const cropsGravityAuto = ['crop', 'fill', 'lfill', 'fill_pad', 'thumb'];
-const props$5 = ['crop', 'gravity'];
-function plugin$5({
+const props$6 = ['crop', 'gravity'];
+function plugin$6({
   cldImage,
   options,
   cldOptions
@@ -103,6 +130,79 @@ function plugin$5({
 }
 
 var croppingPlugin = {
+  __proto__: null,
+  props: props$6,
+  plugin: plugin$6
+};
+
+const params = ['art', {
+  prop: 'autoBrightness',
+  effect: 'auto_brightness'
+}, {
+  prop: 'autoColor',
+  effect: 'auto_color'
+}, {
+  prop: 'autoContrast',
+  effect: 'auto_contrast'
+}, {
+  prop: 'assistColorblind',
+  effect: 'assist_colorblind'
+}, 'blackwhite', 'blur', {
+  prop: 'blurFaces',
+  effect: 'blur_faces'
+}, {
+  prop: 'blurRegion',
+  effect: 'blur_region'
+}, 'brightness', {
+  prop: 'brightnessHSB',
+  effect: 'brightness_hsb'
+}, 'cartoonify', 'colorize', 'contrast', 'distort', {
+  prop: 'fillLight',
+  effect: 'fill_light'
+}, 'gamma', {
+  prop: 'gradientFade',
+  effect: 'gradient_fade'
+}, 'grayscale', 'improve', 'negate', {
+  prop: 'oilPaint',
+  effect: 'oil_paint'
+}, 'outline', 'pixelate', {
+  prop: 'pixelateFaces',
+  effect: 'pixelate_faces'
+}, {
+  prop: 'pixelateRegion',
+  effect: 'pixelate_region'
+}, 'redeye', {
+  prop: 'replaceColor',
+  effect: 'replace_color'
+}, 'saturation', 'sepia', 'shadow', 'sharpen', 'shear', {
+  prop: 'simulateColorblind',
+  effect: 'simulate_colorblind'
+}, 'tint', {
+  prop: 'unsharpMask',
+  effect: 'unsharp_mask'
+}, 'vectorize', 'vibrance', 'vignette'];
+const props$5 = params.map(param => param.prop || param);
+function plugin$5({
+  cldImage,
+  cldOptions
+} = {}) {
+  params.forEach(key => {
+    const prop = key.prop || key;
+    const effect = key.effect || key;
+
+    if (prop === 'oilPaint' && cldOptions[prop]) {
+      console.log('cldOptions[prop]', cldOptions[prop]);
+    }
+
+    if (cldOptions[prop] === true) {
+      cldImage.effect(`e_${effect}`);
+    } else if (typeof cldOptions[prop] === 'string') {
+      cldImage.effect(`e_${effect}:${cldOptions[prop]}`);
+    }
+  });
+}
+
+var effectsPlugin = {
   __proto__: null,
   props: props$5,
   plugin: plugin$5
@@ -274,8 +374,27 @@ var overlaysPlugin = {
   plugin: plugin$4
 };
 
-const props$3 = ['removeBackground'];
+const props$3 = ['rawTransformations'];
 function plugin$3({
+  cldImage,
+  cldOptions
+} = {}) {
+  const {
+    rawTransformations = []
+  } = cldOptions;
+  rawTransformations.forEach(transformation => {
+    cldImage.addTransformation(transformation);
+  });
+}
+
+var rawTransformationsPlugin = {
+  __proto__: null,
+  props: props$3,
+  plugin: plugin$3
+};
+
+const props$2 = ['removeBackground'];
+function plugin$2({
   cldImage,
   options,
   cldOptions
@@ -290,79 +409,6 @@ function plugin$3({
 }
 
 var removeBackgroundPlugin = {
-  __proto__: null,
-  props: props$3,
-  plugin: plugin$3
-};
-
-const params = ['art', {
-  prop: 'autoBrightness',
-  effect: 'auto_brightness'
-}, {
-  prop: 'autoColor',
-  effect: 'auto_color'
-}, {
-  prop: 'autoContrast',
-  effect: 'auto_contrast'
-}, {
-  prop: 'assistColorblind',
-  effect: 'assist_colorblind'
-}, 'blackwhite', 'blur', {
-  prop: 'blurFaces',
-  effect: 'blur_faces'
-}, {
-  prop: 'blurRegion',
-  effect: 'blur_region'
-}, 'brightness', {
-  prop: 'brightnessHSB',
-  effect: 'brightness_hsb'
-}, 'cartoonify', 'colorize', 'contrast', 'distort', {
-  prop: 'fillLight',
-  effect: 'fill_light'
-}, 'gamma', {
-  prop: 'gradientFade',
-  effect: 'gradient_fade'
-}, 'grayscale', 'improve', 'negate', {
-  prop: 'oilPaint',
-  effect: 'oil_paint'
-}, 'outline', 'pixelate', {
-  prop: 'pixelateFaces',
-  effect: 'pixelate_faces'
-}, {
-  prop: 'pixelateRegion',
-  effect: 'pixelate_region'
-}, 'redeye', {
-  prop: 'replaceColor',
-  effect: 'replace_color'
-}, 'saturation', 'sepia', 'shadow', 'sharpen', 'shear', {
-  prop: 'simulateColorblind',
-  effect: 'simulate_colorblind'
-}, 'tint', {
-  prop: 'unsharpMask',
-  effect: 'unsharp_mask'
-}, 'vectorize', 'vibrance', 'vignette'];
-const props$2 = params.map(param => param.prop || param);
-function plugin$2({
-  cldImage,
-  cldOptions
-} = {}) {
-  params.forEach(key => {
-    const prop = key.prop || key;
-    const effect = key.effect || key;
-
-    if (prop === 'oilPaint' && cldOptions[prop]) {
-      console.log('cldOptions[prop]', cldOptions[prop]);
-    }
-
-    if (cldOptions[prop] === true) {
-      cldImage.effect(`e_${effect}`);
-    } else if (typeof cldOptions[prop] === 'string') {
-      cldImage.effect(`e_${effect}:${cldOptions[prop]}`);
-    }
-  });
-}
-
-var effectsPlugin = {
   __proto__: null,
   props: props$2,
   plugin: plugin$2
@@ -453,9 +499,6 @@ var underlaysPlugin = {
 };
 
 const props = ['zoompan'];
-const options = {
-  format: 'gif'
-};
 function plugin({
   cldImage,
   cldOptions
@@ -463,6 +506,7 @@ function plugin({
   const {
     zoompan = false
   } = cldOptions;
+  const options = {};
 
   if (zoompan === true) {
     cldImage.effect('e_zoompan');
@@ -493,42 +537,57 @@ function plugin({
       cldImage.effect(loopEffect);
     }
   }
+
+  if (zoompan !== false) {
+    options.format = 'gif';
+  }
+
+  return {
+    options
+  };
 }
 
 var zoompanPlugin = {
   __proto__: null,
   props: props,
-  options: options,
   plugin: plugin
 };
 
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-  },
-  url: {
-    // Used to avoid issues with SSR particularly for the blurred placeholder
-    analytics: false
+let cld;
+const transformationPlugins = [// Background Removal must always come first
+removeBackgroundPlugin, croppingPlugin, effectsPlugin, overlaysPlugin, underlaysPlugin, zoompanPlugin, // Raw transformations needs to be last simply to make sure
+// it's always expected to applied the same way
+rawTransformationsPlugin];
+function cloudinaryLoader(defaultOptions, cldOptions, cldConfig = {}) {
+  if (!cld) {
+    cld = new Cloudinary(_extends({
+      cloud: {
+        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+      },
+      url: {
+        // Used to avoid issues with SSR particularly for the blurred placeholder
+        analytics: false
+      }
+    }, cldConfig));
   }
-});
-const transformationPlugins = [removeBackgroundPlugin, // Background Removal must always come first
-croppingPlugin, effectsPlugin, overlaysPlugin, underlaysPlugin, zoompanPlugin];
-function cloudinaryLoader(defaultOptions, cldOptions) {
+
   const options = _extends({
     format: 'auto',
     quality: 'auto'
   }, defaultOptions);
 
-  const cldImage = cld.image(options.src);
+  const publicId = getPublicId(options.src);
+  const cldImage = cld.image(publicId);
   transformationPlugins.forEach(({
-    plugin,
-    options: pluginOptions
+    plugin
   }) => {
-    plugin({
+    const {
+      options: pluginOptions
+    } = plugin({
       cldImage,
       options,
       cldOptions
-    });
+    }) || {};
 
     if (pluginOptions != null && pluginOptions.format) {
       options.format = pluginOptions.format;
@@ -569,8 +628,9 @@ const CldImage = props => {
   // https://nextjs.org/docs/api-reference/next/image#blurdataurl
 
   if (imageProps.placeholder) {
+    const publicId = getPublicId(props.src);
     imageProps.blurDataURL = createPlaceholderUrl({
-      src: props.src,
+      src: publicId,
       placeholder: props.placeholder
     });
 

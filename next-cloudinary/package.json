@@ -1,6 +1,6 @@
 {
   "name": "next-cloudinary",
-  "version": "0.0.9",
+  "version": "0.1.1",
   "main": "dist/next-cloudinary.umd.js",
   "module": "dist/next-cloudinary.module.js",
   "umd:main": "dist/next-cloudinary.umd.js",
@@ -9,12 +9,20 @@
     "build": "microbundle --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react",
     "dev": "microbundle watch --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react",
     "prepublishOnly": "cp ../README.md .",
-    "postpublish": "rm ./README.md"
+    "postpublish": "rm ./README.md",
+    "test": "jest"
   },
   "dependencies": {
     "@cloudinary/url-gen": "^1.8.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.3",
+    "@types/jest": "^29.1.1",
+    "babel-jest": "^29.1.2",
+    "dotenv": "^16.0.3",
+    "jest": "^29.1.2",
+    "jest-environment-jsdom": "^29.1.2",
     "microbundle": "^0.15.1"
   },
   "peerDependencies": {

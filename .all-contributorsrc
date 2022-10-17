@@ -1,0 +1,64 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "colbyfayock",
+      "name": "Colby Fayock",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1045274?v=4",
+      "profile": "https://colbyfayock.com/newsletter",
+      "contributions": [
+        "code",
+        "doc",
+        "example"
+      ]
+    },
+    {
+      "login": "danielolaviobr",
+      "name": "Daniel Olavio",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64712584?v=4",
+      "profile": "https://github.com/danielolaviobr",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "orama254",
+      "name": "ramadevsign",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50571688?v=4",
+      "profile": "http://www.ramadevsign.com",
+      "contributions": [
+        "tool"
+      ]
+    },
+    {
+      "login": "kbravh",
+      "name": "Karey Higuera",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30562119?v=4",
+      "profile": "https://kbravh.dev",
+      "contributions": [
+        "test",
+        "code"
+      ]
+    },
+    {
+      "login": "Azanul",
+      "name": "Azanul Haque",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42029519?v=4",
+      "profile": "https://github.com/Azanul",
+      "contributions": [
+        "tool"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "next-cloudinary",
+  "projectOwner": "colbyfayock"
+}
