@@ -42,4 +42,6 @@ export default {
       />
     </>
   ),
+  prevLinks: false,
+  nextLinks: false,
 }

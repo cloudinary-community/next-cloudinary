@@ -9,6 +9,8 @@
 | overlays           | array              | See Below                    |
 | rawTransformations | array              | `['e_blur:2000']`            |
 | removeBackground   | bool/string        | `true`                       |
+| text               | string             | `"Next Cloudinary"`          |
+| underlay           | string             | `"my-public-id"`             |
 | underlays          | array              | See Below                    |
 | zoompan            | bool/string/object | See Below                    |
 
@@ -62,12 +64,12 @@
 
 The `overlays` prop is an array of objects with the following configuration options:
 
-| Property Name    | Type        | Example                              |
-|------------------|-------------|--------------------------------------|
-| effects          | array       | See Below                            |
-| position         | object      | See Below                            |
-| publicId         | string      | `"thumb"`                            |
-| text             | object      | See Below                            |
+| Property Name    | Type          | Example                              |
+|------------------|---------------|--------------------------------------|
+| effects          | array         | See Below                            |
+| position         | object        | See Below                            |
+| publicId         | string        | `"thumb"`                            |
+| text             | object|string | `"Next Cloudinary"` or See Below     |
 
 The position property can include:
 

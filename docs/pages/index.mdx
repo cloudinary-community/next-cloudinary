@@ -9,7 +9,7 @@ import ImageGrid from '../components/ImageGrid';
   src="images/turtle"
   tint="100:0000FF:0p:FF1493:100p"
   blur="2000"
-  backgroundRemoval
+  removeBackground
   overlays={[{
     text: {
       color: 'white',
@@ -19,12 +19,7 @@ import ImageGrid from '../components/ImageGrid';
       text: 'Next Cloudinary'
     }
   }]}
-  underlays={[{
-    publicId: 'images/galaxy',
-    width: 1920,
-    height: 1200,
-    crop: 'fill'
-  }]}
+  underlay="images/galaxy"
   alt="Next Cloudinary over picture of a turtle"
   twitterTitle="Next Cloudinary"
 />
