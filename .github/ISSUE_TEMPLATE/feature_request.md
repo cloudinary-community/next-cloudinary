@@ -20,6 +20,6 @@ labels: "Type: Feature"
 
 <!-- A clear and concise description of any alternative solutions or features you've considered. -->
 
-### **Additional context**
+## **Additional context**
 
 <!-- Add any other context or additional information about the problem here.-->
