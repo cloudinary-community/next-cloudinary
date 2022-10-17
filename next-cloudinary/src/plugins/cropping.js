@@ -13,7 +13,7 @@ export function plugin({ cldImage, options, cldOptions } = {}) {
   }
   
   if ( !gravity ) {
-    if ( cropsGravityAuto.includes(crop) && !gravity ) {
+    if ( cropsGravityAuto.includes(crop) ) {
     gravity = 'auto';
     } else {
       transformationString = `${transformationString},h_${height}`;
