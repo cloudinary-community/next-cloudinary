@@ -198,7 +198,7 @@ const text = {
 };
 
 const _excluded$2 = ["publicId", "position", "text", "effects"];
-const props$4 = ['overlays'];
+const props$4 = ['text', 'overlays'];
 const DEFAULT_TEXT_OPTIONS = {
   color: 'black',
   fontFamily: 'Arial',
@@ -210,11 +210,33 @@ function plugin$4({
   options
 } = {}) {
   const {
+    text: text$1,
     overlays = []
   } = options;
   const type = 'overlay';
   const typeQualifier = 'l';
-  overlays.forEach(_ref => {
+
+  if (Array.isArray(overlays)) {
+    overlays.forEach(applyOverlay);
+  }
+
+  if (typeof text$1 === 'string') {
+    applyOverlay({
+      text: _extends({}, DEFAULT_TEXT_OPTIONS, {
+        text: text$1
+      })
+    });
+  } else if (typeof text$1 === 'object') {
+    applyOverlay({
+      text: _extends({}, DEFAULT_TEXT_OPTIONS, text$1)
+    });
+  }
+  /**
+   * applyOverlay
+   */
+
+
+  function applyOverlay(_ref) {
     let {
       publicId,
       position: position$1,
@@ -311,7 +333,7 @@ function plugin$4({
 
 
     cldImage.addTransformation(layerTransformation);
-  });
+  }
 }
 
 var overlaysPlugin = {
@@ -361,16 +383,43 @@ var removeBackgroundPlugin = {
 };
 
 const _excluded$1 = ["publicId", "type", "position", "text", "effects"];
-const props$1 = ['underlays'];
+const props$1 = ['underlay', 'underlays'];
 function plugin$1({
   cldImage,
   options
 } = {}) {
   const {
+    underlay,
     underlays = []
   } = options;
   const typeQualifier = 'u';
-  underlays.forEach(_ref => {
+
+  if (Array.isArray(underlays)) {
+    underlays.forEach(applyUnderlay);
+  }
+
+  if (typeof underlay === 'string') {
+    const underlayOptions = {
+      publicId: underlay,
+      crop: 'fill'
+    };
+
+    if (options.width) {
+      underlayOptions.width = options.width;
+    }
+
+    if (options.height) {
+      underlayOptions.height = options.height;
+    }
+
+    applyUnderlay(underlayOptions);
+  }
+  /**
+   * applyUnderlay
+   */
+
+
+  function applyUnderlay(_ref) {
     let {
       publicId,
       type,
@@ -426,7 +475,7 @@ function plugin$1({
 
     layerTransformation = `${layerTransformation},${primary$1.join(',')}`; // Add all applied transformations
 
-    layerTransformation = `${layerTransformation}/fl_layer_apply`;
+    layerTransformation = `${layerTransformation}/fl_layer_apply,fl_no_overflow`;
 
     if (applied.length > 0) {
       layerTransformation = `${layerTransformation},${applied.join(',')}`;
@@ -434,7 +483,7 @@ function plugin$1({
 
 
     cldImage.addTransformation(layerTransformation);
-  });
+  }
 }
 
 var underlaysPlugin = {

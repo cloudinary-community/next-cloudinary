@@ -210,7 +210,7 @@
   };
 
   var _excluded$2 = ["publicId", "position", "text", "effects"];
-  var props$4 = ['overlays'];
+  var props$4 = ['text', 'overlays'];
   var DEFAULT_TEXT_OPTIONS = {
     color: 'black',
     fontFamily: 'Arial',
@@ -222,11 +222,33 @@
         cldImage = _ref.cldImage,
         options = _ref.options;
 
-    var _options$overlays = options.overlays,
+    var text$1 = options.text,
+        _options$overlays = options.overlays,
         overlays = _options$overlays === void 0 ? [] : _options$overlays;
     var type = 'overlay';
     var typeQualifier = 'l';
-    overlays.forEach(function (_ref2) {
+
+    if (Array.isArray(overlays)) {
+      overlays.forEach(applyOverlay);
+    }
+
+    if (typeof text$1 === 'string') {
+      applyOverlay({
+        text: _extends({}, DEFAULT_TEXT_OPTIONS, {
+          text: text$1
+        })
+      });
+    } else if (typeof text$1 === 'object') {
+      applyOverlay({
+        text: _extends({}, DEFAULT_TEXT_OPTIONS, text$1)
+      });
+    }
+    /**
+     * applyOverlay
+     */
+
+
+    function applyOverlay(_ref2) {
       var publicId = _ref2.publicId,
           position$1 = _ref2.position,
           text$1 = _ref2.text,
@@ -315,7 +337,7 @@
 
 
       cldImage.addTransformation(layerTransformation);
-    });
+    }
   }
 
   var overlaysPlugin = {
@@ -365,16 +387,43 @@
   };
 
   var _excluded$1 = ["publicId", "type", "position", "text", "effects"];
-  var props$1 = ['underlays'];
+  var props$1 = ['underlay', 'underlays'];
   function plugin$1(_temp) {
     var _ref = _temp === void 0 ? {} : _temp,
         cldImage = _ref.cldImage,
         options = _ref.options;
 
-    var _options$underlays = options.underlays,
+    var underlay = options.underlay,
+        _options$underlays = options.underlays,
         underlays = _options$underlays === void 0 ? [] : _options$underlays;
     var typeQualifier = 'u';
-    underlays.forEach(function (_ref2) {
+
+    if (Array.isArray(underlays)) {
+      underlays.forEach(applyUnderlay);
+    }
+
+    if (typeof underlay === 'string') {
+      var underlayOptions = {
+        publicId: underlay,
+        crop: 'fill'
+      };
+
+      if (options.width) {
+        underlayOptions.width = options.width;
+      }
+
+      if (options.height) {
+        underlayOptions.height = options.height;
+      }
+
+      applyUnderlay(underlayOptions);
+    }
+    /**
+     * applyUnderlay
+     */
+
+
+    function applyUnderlay(_ref2) {
       var publicId = _ref2.publicId,
           type = _ref2.type,
           position$1 = _ref2.position,
@@ -423,7 +472,7 @@
 
       layerTransformation = layerTransformation + "," + primary$1.join(','); // Add all applied transformations
 
-      layerTransformation = layerTransformation + "/fl_layer_apply";
+      layerTransformation = layerTransformation + "/fl_layer_apply,fl_no_overflow";
 
       if (applied.length > 0) {
         layerTransformation = layerTransformation + "," + applied.join(',');
@@ -431,7 +480,7 @@
 
 
       cldImage.addTransformation(layerTransformation);
-    });
+    }
   }
 
   var underlaysPlugin = {

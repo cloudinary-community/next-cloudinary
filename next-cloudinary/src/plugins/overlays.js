@@ -4,7 +4,7 @@ import {
   position as qualifiersPosition
 } from '../constants/qualifiers';
 
-export const props = ['overlays'];
+export const props = ['text', 'overlays'];
 
 export const DEFAULT_TEXT_OPTIONS = {
   color: 'black',
@@ -14,12 +14,38 @@ export const DEFAULT_TEXT_OPTIONS = {
 };
 
 export function plugin({ cldImage, options } = {}) {
-  const { overlays = [] } = options;
+  const { text, overlays = [] } = options;
 
   const type = 'overlay';
   const typeQualifier = 'l';
 
-  overlays.forEach(({ publicId, position, text, effects: layerEffects = [], ...options }) => {
+  if ( Array.isArray(overlays) ) {
+    overlays.forEach(applyOverlay);
+  }
+
+  if ( typeof text === 'string' ) {
+    applyOverlay({
+      text: {
+        ...DEFAULT_TEXT_OPTIONS,
+        text
+      }
+    })
+  } else if ( typeof text === 'object' ) {
+    applyOverlay({
+      text: {
+        ...DEFAULT_TEXT_OPTIONS,
+        ...text
+      }
+    })
+  }
+
+
+
+  /**
+   * applyOverlay
+   */
+
+  function applyOverlay({ publicId, position, text, effects: layerEffects = [], ...options }) {
     const hasPublicId = typeof publicId === 'string';
     const hasText = typeof text === 'object' || typeof text === 'string';
     const hasPosition = typeof position === 'object';
@@ -119,5 +145,5 @@ export function plugin({ cldImage, options } = {}) {
     // Finally add it to the image
 
     cldImage.addTransformation(layerTransformation);
-  });
+  }
 }
