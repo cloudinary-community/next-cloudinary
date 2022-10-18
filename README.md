@@ -6,7 +6,7 @@
 &ensp;&ensp;
 <picture style="padding: 30px">
   <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/62209650/196529551-917766a7-6d73-4a0b-9f80-db31ac62358f.png" align="center" height=30>
-  <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/62209650/196529695-8c260b0b-b5e6-44ae-bf71-db3c28534b20.png" align="center" height=50>
+  <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/62209650/196529695-8c260b0b-b5e6-44ae-bf71-db3c28534b20.png" align="center" height=30>
   <img alt="Nextjs" src="https://user-images.githubusercontent.com/62209650/196529695-8c260b0b-b5e6-44ae-bf71-db3c28534b20.png" align="center" height=30>
 </picture>
 
