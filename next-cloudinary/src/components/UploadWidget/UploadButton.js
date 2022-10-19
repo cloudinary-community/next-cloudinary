@@ -1,9 +1,21 @@
 import { default as UploadWidget } from "./index";
 
-const UploadButton = ({ onUpload, options, signed, label, ...props }) => {
+const UploadButton = ({
+  onUpload,
+  options,
+  signed,
+  label,
+  children,
+  ...props
+}) => {
   return (
     <>
-      <UploadWidget signed={signed} options={options} onUpload={onUpload}>
+      <UploadWidget
+        signed={signed}
+        options={options}
+        onUpload={onUpload}
+        signatureEndpoint={signed ?? props.signatureEndpoint}
+      >
         {({ open }) => {
           function handleOnClick(e) {
             e.preventDefault();
@@ -11,7 +23,7 @@ const UploadButton = ({ onUpload, options, signed, label, ...props }) => {
           }
           return (
             <button onClick={handleOnClick} {...props}>
-              {label || "Upload an Image"}
+              {children}
             </button>
           );
         }}
