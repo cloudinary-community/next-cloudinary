@@ -143,7 +143,7 @@ As CldImage is a wrapper around the Next.js Image component, all built-in Image 
 
 Removing backgrounds require enabling the [Cloudinary AI Background Removal Add-On](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) which includes a free tier for getting started.
 
-Once enabled, you can simply apply the `removeBackground` parameter.
+Once enabled, you can simply apply the `removeBackground` prop.
 
 **Example:**
 
