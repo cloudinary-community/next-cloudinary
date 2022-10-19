@@ -1,7 +1,13 @@
 import { useRef } from "react";
 import Script from "next/script";
 
-const UploadWidget = ({ children, onUpload, options, signed }) => {
+const UploadWidget = ({
+  children,
+  onUpload,
+  options,
+  signed,
+  signatureEndpoint,
+}) => {
   const cloudinary = useRef();
   const widget = useRef();
 
@@ -11,7 +17,7 @@ const UploadWidget = ({ children, onUpload, options, signed }) => {
    */
 
   function generateSignature(callback, paramsToSign) {
-    fetch(`/api/sign-cloudinary-params`, {
+    fetch(signatureEndpoint, {
       method: "POST",
       body: JSON.stringify({
         paramsToSign,
@@ -41,8 +47,9 @@ const UploadWidget = ({ children, onUpload, options, signed }) => {
       }),
     };
 
+    // no need for apiSecret because of api/sign-cloudinary-params
     if (signed && !totalOptions.apiKey) {
-      return new Error("Signed Upload needs apiKey and apiSecret!");
+      return new Error("Signed Upload needs apiKey!");
     }
 
     return cloudinary.current?.createUploadWidget(
@@ -89,7 +96,7 @@ const UploadWidget = ({ children, onUpload, options, signed }) => {
         open,
       })}
       <Script
-        id="cloudinary"
+        id={`cloudinary-${Math.floor(Math.random() * 100)}`}
         src="https://widget.cloudinary.com/v2.0/global/all.js"
         onLoad={handleOnLoad}
         onError={(e) => {
