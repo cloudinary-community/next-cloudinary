@@ -102,15 +102,13 @@ npm install next-cloudinary`}</code>
           </pre>
 
           <p>
-            Add an environment variable inside of your `.env.local`, `.env`, or
-            deployment platform:
+            Add environment variables inside of your `.env.local`, `.env`, or
+            deployment platform like below. See the .env.example file for full
+            .env variables
           </p>
 
           <pre>
             <code>{`NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="<Your Cloud Name>"`}</code>
-            <code>{`NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="<Your Preset>"`}</code>
-            <code>{`NEXT_PUBLIC_CLOUDINARY_API_KEY="<Your Cloud API KEY>"`}</code>
-            <code>{`CLOUDINARY_API_SECRET="<Your Cloud API SECRET>"`}</code>
           </pre>
         </div>
 
@@ -607,6 +605,7 @@ underlays={[{
             <li>
               <UploadWidget
                 signed={true}
+                signingEndpoint="/api/sign-cloudinary-params"
                 options={{
                   cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
                   uploadPreset:
@@ -634,9 +633,11 @@ underlays={[{
               </UploadWidget>
               <h4 className={styles.imageTitle}>Signed Upload Widget</h4>
               <pre>
-                <code>{`
+                <code>
+                  {`
               <UploadWidget
                 signed={true}
+                signingEndpoint="/api/sign-cloudinary-params"
                 options={{
                   cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME, // Ex: mycloudname
                   uploadPreset:
@@ -656,7 +657,8 @@ underlays={[{
                     <button onClick={handleOnClick}>Upload an Image</button>
                   );
                 }}
-              </UploadWidget>`}</code>
+              </UploadWidget>`}
+                </code>
               </pre>
             </li>
             <li>
@@ -671,7 +673,9 @@ underlays={[{
                   /* Do Something With the Error or Result */
                 }}
                 className={styles.uploadButton}
-              />
+              >
+                <span>Upload Image</span>
+              </UploadButton>
               <h4 className={styles.imageTitle}>Unsigned Upload Button</h4>
               <pre>
                 <code>{`
@@ -686,7 +690,9 @@ underlays={[{
                     /* Do Something With the Error or Result */
                   }}
                   className={styles.uploadButton}
-                />`}</code>
+                >
+                  <span>Upload Image</span>
+                </UploadButton>`}</code>
               </pre>
             </li>
           </ul>
