@@ -1,7 +1,7 @@
-import { useRef } from "react";
-import Script from "next/script";
+import { useRef } from 'react';
+import Script from 'next/script';
 
-const UploadWidget = ({
+const CldUploadWidget = ({
   children,
   onUpload,
   options,
@@ -107,4 +107,4 @@ const UploadWidget = ({
   );
 };
 
-export default UploadWidget;
+export default CldUploadWidget;

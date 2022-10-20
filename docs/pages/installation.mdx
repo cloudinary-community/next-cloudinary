@@ -1,0 +1,44 @@
+import { CldImage } from '../../next-cloudinary';
+
+# Installation
+
+* Install `next-cloudinary` with:
+```
+yarn add next-cloudinary
+# or
+npm install next-cloudinary
+```
+
+* Add an environment variable with your Cloud Name:
+```
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="<Your Cloud Name>"
+```
+
+## CldImage
+
+* Import the CldImage component:
+
+```
+import { CldImage } from 'next-cloudinary';
+```
+
+* Add the CldImage component pointing to a Cloudinary public ID:
+
+```
+<CldImage
+  width="960"
+  height="600"
+  src="images/turtle"
+/>
+```
+
+<CldImage
+  width="960"
+  height="600"
+  src="images/turtle"
+/>
+
+### More Resources
+* [Basic Usage](/components/cldimage/basic-usage)
+* [Configuration](/components/cldimage/configuration)
+* [Examples](/components/cldimage/examples)

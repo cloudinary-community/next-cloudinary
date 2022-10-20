@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "example",
+    "docs",
     "next-cloudinary"
   ],
   "devDependencies": {

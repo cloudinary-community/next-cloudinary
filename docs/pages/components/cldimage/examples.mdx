@@ -1,0 +1,377 @@
+import Callout from 'nextra-theme-docs/callout';
+
+import { CldImage } from '../../../../next-cloudinary';
+
+import ImageGrid from '../../../components/ImageGrid';
+
+# CldImage Examples
+
+## Effects
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      removeBackground
+    />
+
+    ### Background Removal
+
+    ```jsx
+    removeBackground
+    ```
+
+    <Callout emoji={false}>
+      Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal</a> Add-On
+    </Callout>
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      zoompan="loop"
+    />
+
+    ### Zoom &amp; Pan
+
+    ```jsx
+    zoompan="loop"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      blur="1200"
+    />
+
+    ### Blur
+
+    ```jsx
+    blur="1200"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      pixelate
+    />
+
+    ### Pixelate
+
+    ```jsx
+    pixelate
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      grayscale
+    />
+
+    ### Grayscale
+
+    ```jsx
+    grayscale
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      tint="equalize:80:blue:blueviolet"
+    />
+
+    ### Tint
+
+    ```jsx
+    tint="equalize:80:blue:blueviolet"
+    ```
+  </li>
+</ImageGrid>
+
+<a href="https://github.com/colbyfayock/next-cloudinary">See all supported effects on github.com.</a>
+
+## Cropping
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="600"
+      height="900"
+      src="images/woman-headphones"
+      sizes="100vw"
+      crop="thumb"
+      gravity="auto"
+    />
+
+    ### Original
+
+  </li>
+  <li>
+    <CldImage
+      width="600"
+      height="600"
+      src="images/woman-headphones"
+      sizes="100vw"
+      crop="thumb"
+      gravity="auto"
+    />
+
+    ### Thumbnail with Auto Gravity
+
+    ```jsx
+    crop="thumb"
+    gravity="auto"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="600"
+      height="600"
+      src="images/woman-headphones"
+      sizes="100vw"
+      crop="thumb"
+      gravity="faces"
+    />
+
+    ### Thumbnail with Faces Gravity
+
+    ```jsx
+    crop="thumb"
+    gravity="faces"
+    ```
+  </li>
+</ImageGrid>
+
+## Placeholders
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      placeholder="blur"
+    />
+
+    ### Blur
+
+    ```jsx
+    placeholder="blur"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      placeholder="grayscale"
+    />
+
+    ### Grayscale
+
+    ```jsx
+    placeholder="grayscale"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      placeholder="color:blueviolet"
+    />
+
+    ### Color
+
+    ```jsx
+    placeholder="color:blueviolet"
+    ```
+  </li>
+</ImageGrid>
+
+## Image Overlays
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      overlays={[{
+        publicId: 'images/earth',
+        position: {
+          x: 50,
+          y: 50,
+          gravity: 'north_west',
+        },
+        effects: [
+          {
+            crop: 'fill',
+            gravity: 'auto',
+            width: 500,
+            height: 500
+          }
+        ]
+      }]}
+    />
+
+    ### Overlay Image by Public ID
+
+    ```jsx
+    overlays={[{
+      publicId: 'images/earth',
+      position: {
+        x: 10,
+        y: 10,
+        gravity: 'north_west',
+      },
+      effects: [
+        {
+          crop: 'fill',
+          gravity: 'auto',
+          width: 500,
+          height: 500
+        }
+      ]
+    }]}
+    ```
+  </li>
+</ImageGrid>
+
+## Image Underlays
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      removeBackground
+      underlays={[{
+        publicId: 'images/galaxy',
+        width: 1920,
+        height: 1200,
+        crop: 'fill'
+      }]}
+    />
+
+    ### Background Removal with Underlay
+
+    ```jsx
+    removeBackground
+    underlays={[{
+      publicId: 'images/galaxy',
+      width: 1920,
+      height: 1200,
+      crop: 'fill'
+    }]}
+    ```
+
+    <Callout emoji={false}>
+      Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal</a> Add-On
+    </Callout>
+  </li>
+</ImageGrid>
+
+## Text Overlays
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="1335"
+      height="891"
+      src="images/sneakers"
+      sizes="100vw"
+      overlays={[{
+        width: 2670 - 20,
+        crop: 'fit',
+        position: {
+          x: 140,
+          y: 140,
+          angle: -20,
+          gravity: 'south_east',
+        },
+        text: {
+          color: 'blueviolet',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 250,
+          fontWeight: 'bold',
+          textDecoration: 'underline',
+          letterSpacing: 14,
+          text: 'Cool Beans'
+        }
+      }]}
+    />
+
+    ### Text Overlay
+
+    ```jsx
+    overlays={[{
+      width: 2670 - 20,
+      crop: 'fit',
+      position: {
+        x: 10,
+        y: 10,
+        gravity: 'north_west',
+      },
+      text: {
+        color: 'blueviolet',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 120,
+        fontWeight: 'bold',
+        textDecoration: 'underline',
+        letterSpacing: 14,
+        text: 'Cool Beans'
+      }
+    }]}
+    ```
+  </li>
+</ImageGrid>
+
+## Other
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      rawTransformations={[
+        'e_blur:2000',
+        'e_tint:100:0000FF:0p:FF1493:100p'
+      ]}
+    />
+
+    ### Raw Transformations
+
+    ```jsx
+    rawTransformations={[
+      'e_blur:2000',
+      'e_tint:100:0000FF:0p:FF1493:100p'
+    ]}
+    ```
+  </li>
+</ImageGrid>

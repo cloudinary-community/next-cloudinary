@@ -1,6 +1,6 @@
-import { default as UploadWidget } from "./index";
+import CldUploadWidget from '../CldUploadWidget';
 
-const UploadButton = ({
+const CldUploadButton = ({
   onUpload,
   options,
   signed,
@@ -10,7 +10,7 @@ const UploadButton = ({
 }) => {
   return (
     <>
-      <UploadWidget
+      <CldUploadWidget
         signed={signed}
         options={options}
         onUpload={onUpload}
@@ -27,9 +27,9 @@ const UploadButton = ({
             </button>
           );
         }}
-      </UploadWidget>
+      </CldUploadWidget>
     </>
   );
 };
 
-export default UploadButton;
+export default CldUploadButton;
