@@ -62,6 +62,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "agbanusi",
+      "name": "John Agbanusi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53221092?v=4",
+      "profile": "https://github.com/agbanusi",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

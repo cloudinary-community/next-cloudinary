@@ -13,7 +13,7 @@
 ######
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Cloudinary Next.js Component
@@ -287,6 +287,7 @@ See the examples above under Overlays to learn more about the available configur
       <td align="center"><a href="https://kbravh.dev"><img src="https://avatars.githubusercontent.com/u/30562119?v=4?s=100" width="100px;" alt="Karey Higuera"/><br /><sub><b>Karey Higuera</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=kbravh" title="Tests">⚠️</a> <a href="https://github.com/colbyfayock/next-cloudinary/commits?author=kbravh" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/Azanul"><img src="https://avatars.githubusercontent.com/u/42029519?v=4?s=100" width="100px;" alt="Azanul Haque"/><br /><sub><b>Azanul Haque</b></sub></a><br /><a href="#tool-Azanul" title="Tools">🔧</a></td>
       <td align="center"><a href="https://github.com/3t8"><img src="https://avatars.githubusercontent.com/u/62209650?v=4?s=100" width="100px;" alt="3t8"/><br /><sub><b>3t8</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=3t8" title="Documentation">📖</a></td>
+      <td align="center"><a href="https://github.com/agbanusi"><img src="https://avatars.githubusercontent.com/u/53221092?v=4?s=100" width="100px;" alt="John Agbanusi"/><br /><sub><b>John Agbanusi</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=agbanusi" title="Code">💻</a> <a href="https://github.com/colbyfayock/next-cloudinary/commits?author=agbanusi" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
