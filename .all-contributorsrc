@@ -72,6 +72,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "nucliweb",
+      "name": "Joan León",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1307927?v=4",
+      "profile": "http://joanleon.dev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
