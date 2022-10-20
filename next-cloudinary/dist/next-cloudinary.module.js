@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { Cloudinary } from '@cloudinary/url-gen';
-import { jsx } from 'react/jsx-runtime';
+import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
+import { useRef } from 'react';
+import Script from 'next/script';
 
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function (target) {
@@ -266,7 +268,7 @@ var text = {
   }
 };
 
-var _excluded$1 = ["publicId", "position", "text", "effects"];
+var _excluded$2 = ["publicId", "position", "text", "effects"];
 var props$4 = ['overlays'];
 function plugin$4(_temp) {
   var _ref = _temp === void 0 ? {} : _temp,
@@ -283,7 +285,7 @@ function plugin$4(_temp) {
         text$1 = _ref2.text,
         _ref2$effects = _ref2.effects,
         layerEffects = _ref2$effects === void 0 ? [] : _ref2$effects,
-        options = _objectWithoutPropertiesLoose(_ref2, _excluded$1);
+        options = _objectWithoutPropertiesLoose(_ref2, _excluded$2);
 
     var hasPublicId = typeof publicId === 'string';
     var hasText = typeof text$1 === 'object';
@@ -408,7 +410,7 @@ var removeBackgroundPlugin = {
   plugin: plugin$2
 };
 
-var _excluded = ["publicId", "type", "position", "text", "effects"];
+var _excluded$1 = ["publicId", "type", "position", "text", "effects"];
 var props$1 = ['underlays'];
 function plugin$1(_temp) {
   var _ref = _temp === void 0 ? {} : _temp,
@@ -424,7 +426,7 @@ function plugin$1(_temp) {
         position$1 = _ref2.position,
         _ref2$effects = _ref2.effects,
         layerEffects = _ref2$effects === void 0 ? [] : _ref2$effects,
-        options = _objectWithoutPropertiesLoose(_ref2, _excluded);
+        options = _objectWithoutPropertiesLoose(_ref2, _excluded$1);
 
     var hasPublicId = typeof publicId === 'string';
     var hasPosition = typeof position$1 === 'object';
@@ -641,5 +643,135 @@ var CldImage = function CldImage(props) {
   }));
 };
 
-export { CldImage, cloudinaryLoader, position, primary, text };
+var CldUploadWidget = function CldUploadWidget(_ref) {
+  var children = _ref.children,
+      onUpload = _ref.onUpload,
+      options = _ref.options,
+      signed = _ref.signed,
+      signatureEndpoint = _ref.signatureEndpoint;
+  var cloudinary = useRef();
+  var widget = useRef();
+  /**
+   * generateSignature
+   * @description Makes a request to an endpoint to sign Cloudinary parameters as part of widget creation
+   */
+
+  function generateSignature(callback, paramsToSign) {
+    fetch(signatureEndpoint, {
+      method: "POST",
+      body: JSON.stringify({
+        paramsToSign: paramsToSign
+      })
+    }).then(function (r) {
+      return r.json();
+    }).then(function (_ref2) {
+      var signature = _ref2.signature;
+      callback(signature);
+    });
+  }
+  /**
+   * createWidget
+   * @description Creates a new instance of the Cloudinary widget and stores in a ref
+   */
+
+
+  function createWidget() {
+    var _cloudinary$current;
+
+    // When creating a signed upload, you need to provide both your Cloudinary API Key
+    // as well as a signature generator function that will sign any paramters
+    // either on page load or during the upload process. Read more about signed uploads at:
+    // https://cloudinary.com/documentation/upload_widget#signed_uploads
+    var totalOptions = _extends({}, options, !!signed && {
+      uploadSignature: generateSignature
+    }); // no need for apiSecret because of api/sign-cloudinary-params
+
+
+    if (signed && !totalOptions.apiKey) {
+      return new Error("Signed Upload needs apiKey!");
+    }
+
+    return (_cloudinary$current = cloudinary.current) == null ? void 0 : _cloudinary$current.createUploadWidget(totalOptions, function (error, result) {
+      // The callback is a bit more chatty than failed or success so
+      // only trigger when one of those are the case. You can additionally
+      // create a separate handler such as onEvent and trigger it on
+      // ever occurance
+      if (error || result.event === "success") {
+        onUpload(error, result, widget == null ? void 0 : widget.current);
+      }
+    });
+  }
+  /**
+   * open
+   * @description When triggered, uses the current widget instance to open the upload modal
+   */
+
+
+  function open() {
+    if (!(widget != null && widget.current)) {
+      widget.current = createWidget();
+    }
+
+    (widget == null ? void 0 : widget.current) && widget.current.open();
+  }
+  /**
+   * handleOnLoad
+   * @description Stores the Cloudinary window instance to a ref when the widget script loads
+   */
+
+
+  function handleOnLoad() {
+    cloudinary.current = window.cloudinary;
+  }
+
+  return /*#__PURE__*/jsxs(Fragment, {
+    children: [children({
+      cloudinary: cloudinary.current,
+      widget: widget.current,
+      open: open
+    }), /*#__PURE__*/jsx(Script, {
+      id: "cloudinary-" + Math.floor(Math.random() * 100),
+      src: "https://widget.cloudinary.com/v2.0/global/all.js",
+      onLoad: handleOnLoad,
+      onError: function onError(e) {
+        console.error("Script failed to load", e);
+      }
+    })]
+  });
+};
+
+var _excluded = ["onUpload", "options", "signed", "label", "children"];
+
+var CldUploadButton = function CldUploadButton(_ref) {
+  var onUpload = _ref.onUpload,
+      options = _ref.options,
+      signed = _ref.signed,
+      _children = _ref.children,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded);
+
+  return /*#__PURE__*/jsx(Fragment, {
+    children: /*#__PURE__*/jsx(CldUploadWidget, {
+      signed: signed,
+      options: options,
+      onUpload: onUpload,
+      signatureEndpoint: signed != null ? signed : props.signatureEndpoint,
+      children: function children(_ref2) {
+        var open = _ref2.open;
+
+        function handleOnClick(e) {
+          e.preventDefault();
+          open();
+        }
+
+        return /*#__PURE__*/jsx("button", _extends({
+          onClick: handleOnClick
+        }, props, {
+          children: _children
+        }));
+      }
+    })
+  });
+};
+
+export { CldImage, CldUploadButton, CldUploadWidget, cloudinaryLoader, position, primary, text };
 //# sourceMappingURL=next-cloudinary.module.js.map
