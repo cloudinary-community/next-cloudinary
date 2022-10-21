@@ -81,6 +81,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "timbenniks",
+      "name": "Tim Benniks",
+      "avatar_url": "https://avatars.githubusercontent.com/u/121096?v=4",
+      "profile": "http://www.timbenniks.dev",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
