@@ -6,17 +6,17 @@ export function plugin({ cldImage, options, cldOptions } = {}) {
   const { width, height } = options;
   const { crop = 'limit', gravity } = cldOptions;
 
-  let transformationString = `c_${crop},w_${width}`;
+  let transformationString = `c_${crop},w_${width},h_${height}`;
 
   if ( !['limit'].includes(crop) ) {
-    transformationString = `${transformationString},h_${height}`;
+    transformationString = `${transformationString}`;
   }
   
   if ( !gravity ) {
     if ( cropsGravityAuto.includes(crop) ) {
     cldOptions.gravity = 'auto';
     } else {
-      transformationString = `${transformationString},h_${height}`;
+      transformationString = `${transformationString}`;
     }
   }
   
