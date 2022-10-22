@@ -1,0 +1,32 @@
+import Callout from 'nextra-theme-docs/callout';
+
+import { CldUploadButton } from '../../../../next-cloudinary';
+
+import ImageGrid from '../../../components/ImageGrid';
+
+import styles from '../../../styles/Docs.module.scss';
+
+# CldUploadButton Examples
+
+## Effects
+
+<ImageGrid>
+  <li>
+    <CldUploadButton
+      signed={false}
+      options={{
+        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+        uploadPreset:
+          process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+      }}
+      onUpload={(error, result) => {
+        /* Do Something With the Error or Result */
+      }}
+      className={styles.uploadButton}
+    >
+      <span>Upload Image</span>
+    </CldUploadButton>
+
+    ### Unsigned
+  </li>
+</ImageGrid>

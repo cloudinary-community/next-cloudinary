@@ -1,0 +1,78 @@
+import Callout from 'nextra-theme-docs/callout';
+
+import { CldUploadWidget } from '../../../../next-cloudinary';
+
+import ImageGrid from '../../../components/ImageGrid';
+
+import styles from '../../../styles/Docs.module.scss';
+
+# CldUploadWidget Examples
+
+## Effects
+
+<ImageGrid>
+  <li>
+    <CldUploadWidget
+      signed={false}
+      options={{
+        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+        uploadPreset:
+          process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+      }}
+      onUpload={(error, result) => {
+        /* Do Something With the Error or Result */
+      }}
+    >
+      {({ open }) => {
+        function handleOnClick(e) {
+          e.preventDefault();
+          open();
+        }
+        return (
+          <button
+            className={styles.uploadButton}
+            onClick={handleOnClick}
+          >
+            Upload an Image
+          </button>
+        );
+      }}
+    </CldUploadWidget>
+
+    ### Unsigned
+
+  </li>
+  <li>
+    <CldUploadWidget
+      signed={true}
+      signatureEndpoint="/api/sign-cloudinary-params"
+      options={{
+        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+        uploadPreset:
+          process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+        apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+      }}
+      onUpload={(error, result) => {
+        /* Do Something With the Error or Result */
+      }}
+    >
+      {({ open }) => {
+        function handleOnClick(e) {
+          e.preventDefault();
+          open();
+        }
+        return (
+          <button
+            className={styles.uploadButton}
+            onClick={handleOnClick}
+          >
+            Upload an Image
+          </button>
+        );
+      }}
+    </CldUploadWidget>
+
+    ### Signed
+
+  </li>
+</ImageGrid>
