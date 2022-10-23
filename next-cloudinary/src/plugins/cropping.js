@@ -10,6 +10,7 @@ export function plugin({ cldImage, options, cldOptions } = {}) {
   let transformationString = `c_${crop},w_${width}`;
   } else {
     let transformationString = `c_${crop},w_${width},h_${height}`;
+  }
 
   if ( !['limit'].includes(crop) ) {
     transformationString = `${transformationString}`;
