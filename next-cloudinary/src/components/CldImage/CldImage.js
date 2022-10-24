@@ -8,10 +8,15 @@ function pollImage(imageOptions, options, cldOptions) {
     let res = fetch(cloudinaryLoader({ ...imageOptions, options }, cldOptions));
     if (res.ok) {
       return res.json();
-    } else if (res.status == 423) {
+    }
+  } catch (e) {
+    if (e.statusCode == 423) {
+      await (new Promise((resolve) => {
+        setTimeout(() => resolve(), 500);
+      }));
       return pollImage(imageOptions, options, cldOptions);
     }
-  } catch (e) {}
+  }
 }
 
 const CldImage = props => {
