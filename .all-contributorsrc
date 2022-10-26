@@ -91,6 +91,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "csgochan",
+      "name": "csgochan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/116420257?v=4",
+      "profile": "https://github.com/csgochan",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
