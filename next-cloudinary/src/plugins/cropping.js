@@ -6,6 +6,8 @@ export function plugin({ cldImage, options, cldOptions } = {}) {
   const { width, height } = options;
   const { crop = 'limit', gravity } = cldOptions;
 
+  let transformationString = `c_${crop},w_${width}`;
+  
   if ( !options.height ) {
   let transformationString = `c_${crop},w_${width}`;
   } else {
