@@ -1,7 +1,19 @@
-<img align="center" height="50" src="https://res.cloudinary.com/cloudinary-marketing/image/upload/f_auto,q_auto,h_100/v1595456749/creative_source/Logo/PNG/cloudinary_logo_blue_0720_2x.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img align="center" height="30" src="https://user-images.githubusercontent.com/1045274/189200861-1089b9db-5a78-4b43-9f6c-dfb1752c92f9.png" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/62209650/196528621-b68e9e10-7e55-4c7d-9177-904cadbb4296.png" align="center" height=50>
+  <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/62209650/196528761-a815025a-271a-4d8e-ac7e-cea833728bf9.png" align="center" height=50>
+  <img alt="Cloudinary" src="https://user-images.githubusercontent.com/62209650/196528761-a815025a-271a-4d8e-ac7e-cea833728bf9.png" align="center" height=30>
+</picture>
+&ensp;&ensp;
+<picture style="padding: 30px">
+  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/62209650/196529551-917766a7-6d73-4a0b-9f80-db31ac62358f.png" align="center" height=30>
+  <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/62209650/196529695-8c260b0b-b5e6-44ae-bf71-db3c28534b20.png" align="center" height=30>
+  <img alt="Nextjs" src="https://user-images.githubusercontent.com/62209650/196529695-8c260b0b-b5e6-44ae-bf71-db3c28534b20.png" align="center" height=30>
+</picture>
+
+######
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Cloudinary Next.js Component
@@ -131,7 +143,7 @@ As CldImage is a wrapper around the Next.js Image component, all built-in Image 
 
 Removing backgrounds require enabling the [Cloudinary AI Background Removal Add-On](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) which includes a free tier for getting started.
 
-Once enabled, you can simply apply the `removeBackground` parameter.
+Once enabled, you can simply apply the `removeBackground` prop.
 
 **Example:**
 
@@ -274,6 +286,13 @@ See the examples above under Overlays to learn more about the available configur
       <td align="center"><a href="http://www.ramadevsign.com"><img src="https://avatars.githubusercontent.com/u/50571688?v=4?s=100" width="100px;" alt="ramadevsign"/><br /><sub><b>ramadevsign</b></sub></a><br /><a href="#tool-orama254" title="Tools">🔧</a></td>
       <td align="center"><a href="https://kbravh.dev"><img src="https://avatars.githubusercontent.com/u/30562119?v=4?s=100" width="100px;" alt="Karey Higuera"/><br /><sub><b>Karey Higuera</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=kbravh" title="Tests">⚠️</a> <a href="https://github.com/colbyfayock/next-cloudinary/commits?author=kbravh" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/Azanul"><img src="https://avatars.githubusercontent.com/u/42029519?v=4?s=100" width="100px;" alt="Azanul Haque"/><br /><sub><b>Azanul Haque</b></sub></a><br /><a href="#tool-Azanul" title="Tools">🔧</a></td>
+      <td align="center"><a href="https://github.com/3t8"><img src="https://avatars.githubusercontent.com/u/62209650?v=4?s=100" width="100px;" alt="3t8"/><br /><sub><b>3t8</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=3t8" title="Documentation">📖</a></td>
+      <td align="center"><a href="https://github.com/agbanusi"><img src="https://avatars.githubusercontent.com/u/53221092?v=4?s=100" width="100px;" alt="John Agbanusi"/><br /><sub><b>John Agbanusi</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=agbanusi" title="Code">💻</a> <a href="https://github.com/colbyfayock/next-cloudinary/commits?author=agbanusi" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center"><a href="http://joanleon.dev"><img src="https://avatars.githubusercontent.com/u/1307927?v=4?s=100" width="100px;" alt="Joan León"/><br /><sub><b>Joan León</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=nucliweb" title="Documentation">📖</a></td>
+      <td align="center"><a href="http://www.timbenniks.dev"><img src="https://avatars.githubusercontent.com/u/121096?v=4?s=100" width="100px;" alt="Tim Benniks"/><br /><sub><b>Tim Benniks</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=timbenniks" title="Code">💻</a> <a href="https://github.com/colbyfayock/next-cloudinary/commits?author=timbenniks" title="Documentation">📖</a></td>
+      <td align="center"><a href="https://github.com/csgochan"><img src="https://avatars.githubusercontent.com/u/116420257?v=4?s=100" width="100px;" alt="csgochan"/><br /><sub><b>csgochan</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=csgochan" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
