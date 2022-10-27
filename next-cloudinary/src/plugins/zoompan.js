@@ -1,8 +1,8 @@
 export const props = ['zoompan'];
 
-export function plugin({ cldImage, cldOptions } = {}) {
-  const { zoompan = false } = cldOptions;
-  const options = {};
+export function plugin({ cldImage, options } = {}) {
+  const { zoompan = false } = options;
+  const overrides = {};
 
   if ( zoompan === true ) {
     cldImage.effect('e_zoompan');
@@ -36,10 +36,10 @@ export function plugin({ cldImage, cldOptions } = {}) {
   }
 
   if ( zoompan !== false ) {
-    options.format = 'gif';
+    overrides.format = 'gif';
   }
 
   return {
-    options
+    options: overrides
   }
 }

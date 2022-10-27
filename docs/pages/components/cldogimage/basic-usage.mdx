@@ -1,0 +1,52 @@
+# Getting Started with CldOgImage
+
+## Basic Usage
+
+The basic required prop is `src`:
+
+```
+<CldOgImage
+  src="images/turtle"
+/>
+```
+
+The resulting HTML will be applied to the Head of the document:
+
+```html
+<meta property="og:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1200,g_center/f_auto/q_auto/v1/images/galaxy" />
+<meta property="og:image:secure_url" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1200,g_center/f_auto/q_auto/v1/images/galaxy" />
+<meta property="og:image:width" content="2400" />
+<meta property="og:image:height" content="1200" />
+<meta property="twitter:title" content=" " />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1200,g_center/f_auto/q_auto/v1/images/galaxy" />
+```
+
+But you can use any of the available features from [CldImage](/components/cldimage/configuration) to build your CldOgImage.
+
+You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
+
+```
+<CldOgImage
+  src="images/turtle"
+  tint="100:0000FF:0p:FF1493:100p"
+  blur="2000"
+  removeBackground
+  overlays={[{
+    text: {
+      color: 'white',
+      fontFamily: 'Source Sans Pro',
+      fontSize: 200,
+      fontWeight: 'bold',
+      text: 'Next Cloudinary'
+    }
+  }]}
+  underlay="images/galaxy"
+  alt="Next Cloudinary over picture of a turtle on top of a galaxy"
+  twitterTitle="Next Cloudinary"
+/>
+```
+
+## Learn More about CldOgImage
+* [Configuration](/components/cldogimage/configuration)
+* [Effects](/components/cldogimage/effects)

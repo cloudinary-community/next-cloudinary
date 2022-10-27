@@ -18,7 +18,7 @@ describe('Plugins', () => {
 
       const cldImage = cld.image(TEST_PUBLIC_ID);
 
-      const cldOptions = {
+      const options = {
         rawTransformations: [
           'e_blur:2000'
         ]
@@ -26,17 +26,17 @@ describe('Plugins', () => {
 
       plugin({
         cldImage,
-        cldOptions
+        options
       });
 
-      expect(cldImage.toURL()).toContain(`${cldOptions.rawTransformations.join('/')}/${TEST_PUBLIC_ID}`);
+      expect(cldImage.toURL()).toContain(`${options.rawTransformations.join('/')}/${TEST_PUBLIC_ID}`);
     });
 
     it('should apply an array of raw transformations to the end of a Cloudinary URL', () => {
 
       const cldImage = cld.image(TEST_PUBLIC_ID);
 
-      const cldOptions = {
+      const options = {
         rawTransformations: [
           'e_blur:2000',
           'e_tint:100:0000FF:0p:FF1493:100p'
@@ -45,10 +45,10 @@ describe('Plugins', () => {
 
       plugin({
         cldImage,
-        cldOptions
+        options
       });
 
-      expect(cldImage.toURL()).toContain(`${cldOptions.rawTransformations.join('/')}/${TEST_PUBLIC_ID}`);
+      expect(cldImage.toURL()).toContain(`${options.rawTransformations.join('/')}/${TEST_PUBLIC_ID}`);
     })
   });
 });

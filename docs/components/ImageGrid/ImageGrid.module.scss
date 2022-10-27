@@ -1,8 +1,13 @@
 .imageGrid {
+
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(2, calc(50% - 1.5em));
   grid-gap: 3em;
+
+  &[data-column-count="2"] {
+    grid-template-columns: repeat(2, calc(50% - 1.5em));
+  }
+
 }
