@@ -269,24 +269,73 @@ import ImageGrid from '../../../components/ImageGrid';
       src="images/turtle"
       sizes="100vw"
       removeBackground
-      underlays={[{
-        publicId: 'images/galaxy',
-        width: 1920,
-        height: 1200,
-        crop: 'fill'
-      }]}
+      underlay="images/galaxy"
     />
 
-    ### Background Removal with Underlay
+    ### Background Removal with Underlay by Public ID
 
     ```jsx
     removeBackground
-    underlays={[{
-      publicId: 'images/galaxy',
-      width: 1920,
-      height: 1200,
-      crop: 'fill'
-    }]}
+    underlay="images/galaxy"
+    ```
+
+    <Callout emoji={false}>
+      Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal</a> Add-On
+    </Callout>
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      removeBackground
+      underlays={[
+        {
+          publicId: 'images/galaxy',
+          width: 480,
+          height: 600,
+          crop: 'fill',
+          position: {
+            gravity: 'north_west'
+          }
+        },
+        {
+          publicId: 'images/mountain',
+          width: 480,
+          height: 600,
+          crop: 'fill',
+          position: {
+            gravity: 'south_east'
+          }
+        },
+      ]}
+    />
+
+    ### Background Removal with Multiple Underlays
+
+    ```jsx
+    removeBackground
+    underlays={[
+      {
+        publicId: 'images/galaxy',
+        width: 480,
+        height: 600,
+        crop: 'fill',
+        position: {
+          gravity: 'north_west'
+        }
+      },
+      {
+        publicId: 'images/mountain',
+        width: 480,
+        height: 600,
+        crop: 'fill',
+        position: {
+          gravity: 'south_east'
+        }
+      },
+    ]}
     ```
 
     <Callout emoji={false}>
@@ -298,6 +347,44 @@ import ImageGrid from '../../../components/ImageGrid';
 ## Text Overlays
 
 <ImageGrid>
+  <li>
+    <CldImage
+      width="1335"
+      height="891"
+      src="images/galaxy"
+      sizes="100vw"
+      blur="2000"
+      brightness="300"
+      text="Cool Beans"
+    />
+
+    ### Text Overlay with text prop
+
+    ```jsx
+    text="Cool Beans"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="1335"
+      height="891"
+      src="images/galaxy"
+      sizes="100vw"
+      blur="2000"
+      brightness="300"
+      overlays={[{
+        text: 'Cool Beans'
+      }]}
+    />
+
+    ### Text Overlay with text string
+
+    ```jsx
+    overlays={[{
+      text: 'Cool Beans'
+    }]}
+    ```
+  </li>
   <li>
     <CldImage
       width="1335"
@@ -325,7 +412,7 @@ import ImageGrid from '../../../components/ImageGrid';
       }]}
     />
 
-    ### Text Overlay
+    ### Text Overlay with overlay configuration
 
     ```jsx
     overlays={[{

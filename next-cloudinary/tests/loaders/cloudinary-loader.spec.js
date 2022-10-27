@@ -48,18 +48,18 @@ describe('Cloudinary Loader', () => {
         gravity: 'faces',
         tint: '40:253f8c',
         underlays: [
-            {
-                publicId: 'images/city-skyline',
-                width: 987,
-                height: 987,
-                crop: 'fill'
-            }
+          {
+            publicId: 'images/city-skyline',
+            width: 987,
+            height: 987,
+            crop: 'fill'
+          }
         ]
       };
 
       const result = cloudinaryLoader({ ...imageProps, options }, cldOptions);
 
-      expect(result).toBe('https://res.cloudinary.com/test-cloud/image/upload/e_background_removal/c_thumb,w_987,h_1481,g_faces/e_tint:40:253f8c/u_images:city-skyline,w_987,h_987,c_fill/fl_layer_apply/f_auto/q_auto/v1/images/woman-headphones')
+      expect(result).toBe('https://res.cloudinary.com/test-cloud/image/upload/e_background_removal/c_thumb,w_987,h_1481,g_faces/e_tint:40:253f8c/u_images:city-skyline,w_987,h_987,c_fill/fl_layer_apply,fl_no_overflow/f_auto/q_auto/v1/images/woman-headphones')
     });
 
     it('should return a Cloudinary URL with fetch features', async () => {

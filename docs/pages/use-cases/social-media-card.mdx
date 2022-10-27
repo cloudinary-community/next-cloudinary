@@ -1,0 +1,129 @@
+import Callout from 'nextra-theme-docs/callout';
+
+import { CldImage } from '../../../next-cloudinary';
+
+# Social Media Card
+
+<Callout emoji={false}>
+  CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. The following examples make use of the `<CldImage>` tag to showcase what's possible.
+</Callout>
+
+## Example
+
+<CldImage
+  width="2400"
+  height="1200"
+  crop="fill"
+  gravity="auto"
+  src="images/white"
+  overlays={[
+    {
+      publicId: 'images/mountain',
+      position: {
+        x: 0,
+        y: 0,
+        gravity: 'north_east',
+      },
+      effects: [
+        {
+          crop: 'fill',
+          gravity: 'auto',
+          width: 800,
+          height: 1200
+        }
+      ]
+    },
+    {
+      width: 1400,
+      crop: 'fit',
+      text: {
+        color: 'black',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 150,
+        fontWeight: 'bold',
+        text: 'Next Cloudinary'
+      },
+      position: {
+        x: 100,
+        y: -100,
+        gravity: 'west',
+      },
+    },
+    {
+      width: 1400,
+      crop: 'fit',
+      text: {
+        color: 'black',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 80,
+        text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
+      },
+      position: {
+        x: 100,
+        y: 100,
+        gravity: 'west',
+      },
+    },
+  ]}
+  alt=""
+/>
+
+```jsx
+<CldOgImage
+  src="images/white"
+  overlays={[
+    {
+      publicId: 'images/mountain',
+      position: {
+        x: 0,
+        y: 0,
+        gravity: 'north_east',
+      },
+      effects: [
+        {
+          crop: 'fill',
+          gravity: 'auto',
+          width: 800,
+          height: 1200
+        }
+      ]
+    },
+    {
+      width: 1400,
+      crop: 'fit',
+      text: {
+        color: 'black',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 150,
+        fontWeight: 'bold',
+        text: 'Next Cloudinary'
+      },
+      position: {
+        x: 100,
+        y: -100,
+        gravity: 'west',
+      },
+    },
+    {
+      width: 1400,
+      crop: 'fit',
+      text: {
+        color: 'black',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 80,
+        text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
+      },
+      position: {
+        x: 100,
+        y: 100,
+        gravity: 'west',
+      },
+    },
+  ]}
+  twitterTitle="Next Cloudinary"
+  alt="Next Cloudinary with picture of a mountain"
+/>
+```
+
+## Learn More
+* [CldOgImage Configuration](/components/cldogimage/configuration)

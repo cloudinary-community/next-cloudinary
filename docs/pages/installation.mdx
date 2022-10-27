@@ -1,4 +1,14 @@
-import { CldImage } from '../../next-cloudinary';
+import Callout from 'nextra-theme-docs/callout';
+
+import { CldImage, CldOgImage } from '../../next-cloudinary';
+
+<CldOgImage
+  src="images/galaxy"
+  text={{
+    text: 'Installation',
+    color: 'white'
+  }}
+/>
 
 # Installation
 
@@ -29,6 +39,7 @@ import { CldImage } from 'next-cloudinary';
   width="960"
   height="600"
   src="images/turtle"
+  sizes="100vw"
 />
 ```
 
@@ -36,9 +47,62 @@ import { CldImage } from 'next-cloudinary';
   width="960"
   height="600"
   src="images/turtle"
+  sizes="100vw"
 />
 
 ### More Resources
 * [Basic Usage](/components/cldimage/basic-usage)
 * [Configuration](/components/cldimage/configuration)
 * [Examples](/components/cldimage/examples)
+
+## CldOgImage
+
+* Import the CldOgImage component:
+
+```
+import { CldOgImage } from 'next-cloudinary';
+```
+
+* Add the CldOgImage component in your page outside of the Head component pointing to a Cloudinary public ID:
+
+```
+<CldOgImage
+  src="images/galaxy"
+  text={{
+    text: 'Next Cloudinary',
+    color: 'white'
+  }}
+/>
+```
+
+<Callout emoji={false}>
+  CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. The following examples make use of the `<CldImage>` tag to showcase what's possible.
+</Callout>
+
+<CldImage
+  width="2400"
+  height="1200"
+  crop="fill"
+  gravity="auto"
+  src="images/galaxy"
+  text={{
+    text: 'Next Cloudinary',
+    color: 'white'
+  }}
+  sizes="100vw"
+/>
+
+```html
+<meta property="og:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1200,g_center/l_text:Arial_200_bold:Installation,co_white/fl_layer_apply,fl_no_overflow/f_auto/q_auto/v1/images/galaxy" />
+<meta property="og:image:secure_url" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1200,g_center/l_text:Arial_200_bold:Installation,co_white/fl_layer_apply,fl_no_overflow/f_auto/q_auto/v1/images/galaxy" />
+<meta property="og:image:width" content="2400" />
+<meta property="og:image:height" content="1200" />
+<meta property="twitter:title" content=" " />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1200,g_center/l_text:Arial_200_bold:Installation,co_white/fl_layer_apply,fl_no_overflow/f_auto/q_auto/v1/images/galaxy" />
+```
+
+### More Resources
+* [Basic Usage](/components/cldogimage/basic-usage)
+* [Configuration](/components/cldogimage/configuration)
+* [Examples](/components/cldogimage/examples)

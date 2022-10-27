@@ -4,15 +4,41 @@ import {
   position as qualifiersPosition
 } from '../constants/qualifiers';
 
-export const props = ['underlays'];
+export const props = ['underlay', 'underlays'];
 
-export function plugin({ cldImage, options, cldOptions } = {}) {
-  const { underlays = [] } = cldOptions;
+export function plugin({ cldImage, options } = {}) {
+  const { underlay, underlays = [] } = options;
 
   const type = 'underlay';
   const typeQualifier = 'u';
 
-  underlays.forEach(({ publicId, type, position, text, effects: layerEffects = [], ...options }) => {
+  if ( Array.isArray(underlays) ) {
+    underlays.forEach(applyUnderlay);
+  }
+
+  if ( typeof underlay === 'string' ) {
+
+    const underlayOptions = {
+      publicId: underlay,
+      crop: 'fill'
+    }
+
+    if ( options.width ) {
+      underlayOptions.width = options.width;
+    }
+
+    if ( options.height ) {
+      underlayOptions.height = options.height;
+    }
+
+    applyUnderlay(underlayOptions);
+  }
+
+  /**
+   * applyUnderlay
+   */
+
+  function applyUnderlay({ publicId, type, position, text, effects: layerEffects = [], ...options }) {
     const hasPublicId = typeof publicId === 'string';
     const hasPosition = typeof position === 'object';
 
@@ -68,7 +94,7 @@ export function plugin({ cldImage, options, cldOptions } = {}) {
 
     // Add all applied transformations
 
-    layerTransformation = `${layerTransformation}/fl_layer_apply`;
+    layerTransformation = `${layerTransformation}/fl_layer_apply,fl_no_overflow`;
 
     if ( applied.length > 0 ) {
       layerTransformation = `${layerTransformation},${applied.join(',')}`;
@@ -77,5 +103,5 @@ export function plugin({ cldImage, options, cldOptions } = {}) {
     // Finally add it to the image
 
     cldImage.addTransformation(layerTransformation);
-  });
+  }
 }

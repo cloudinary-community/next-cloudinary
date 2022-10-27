@@ -4,17 +4,50 @@ import {
   position as qualifiersPosition
 } from '../constants/qualifiers';
 
-export const props = ['overlays'];
+export const props = ['text', 'overlays'];
 
-export function plugin({ cldImage, options, cldOptions } = {}) {
-  const { overlays = [] } = cldOptions;
+export const DEFAULT_TEXT_OPTIONS = {
+  color: 'black',
+  fontFamily: 'Arial',
+  fontSize: 200,
+  fontWeight: 'bold',
+};
+
+export function plugin({ cldImage, options } = {}) {
+  const { text, overlays = [] } = options;
 
   const type = 'overlay';
   const typeQualifier = 'l';
 
-  overlays.forEach(({ publicId, position, text, effects: layerEffects = [], ...options }) => {
+  if ( Array.isArray(overlays) ) {
+    overlays.forEach(applyOverlay);
+  }
+
+  if ( typeof text === 'string' ) {
+    applyOverlay({
+      text: {
+        ...DEFAULT_TEXT_OPTIONS,
+        text
+      }
+    })
+  } else if ( typeof text === 'object' ) {
+    applyOverlay({
+      text: {
+        ...DEFAULT_TEXT_OPTIONS,
+        ...text
+      }
+    })
+  }
+
+
+
+  /**
+   * applyOverlay
+   */
+
+  function applyOverlay({ publicId, position, text, effects: layerEffects = [], ...options }) {
     const hasPublicId = typeof publicId === 'string';
-    const hasText = typeof text === 'object';
+    const hasText = typeof text === 'object' || typeof text === 'string';
     const hasPosition = typeof position === 'object';
 
     if ( !hasPublicId && !hasText ) {
@@ -60,6 +93,14 @@ export function plugin({ cldImage, options, cldOptions } = {}) {
     // Text styling
 
     if ( hasText ) {
+      if ( typeof text === 'string' ) {
+        text = {
+          ...DEFAULT_TEXT_OPTIONS,
+          text
+        }
+      }
+
+
       const textTransformations = [];
 
       Object.keys(text).forEach(key => {
@@ -95,7 +136,7 @@ export function plugin({ cldImage, options, cldOptions } = {}) {
 
     // Add all applied transformations
 
-    layerTransformation = `${layerTransformation}/fl_layer_apply`;
+    layerTransformation = `${layerTransformation}/fl_layer_apply,fl_no_overflow`;
 
     if ( applied.length > 0 ) {
       layerTransformation = `${layerTransformation},${applied.join(',')}`;
@@ -104,5 +145,5 @@ export function plugin({ cldImage, options, cldOptions } = {}) {
     // Finally add it to the image
 
     cldImage.addTransformation(layerTransformation);
-  });
+  }
 }

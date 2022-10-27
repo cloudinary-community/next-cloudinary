@@ -87,19 +87,15 @@ const params = [
 
 export const props = params.map(param => param.prop || param);
 
-export function plugin({ cldImage, cldOptions } = {}) {
+export function plugin({ cldImage, options } = {}) {
   params.forEach(key => {
-
     const prop = key.prop || key;
     const effect = key.effect || key;
 
-    if ( prop === 'oilPaint' && cldOptions[prop]) {
-      console.log('cldOptions[prop]', cldOptions[prop])
-    }
-    if ( cldOptions[prop] === true ) {
+    if ( options[prop] === true ) {
       cldImage.effect(`e_${effect}`);
-    } else if ( typeof cldOptions[prop] === 'string' ) {
-      cldImage.effect(`e_${effect}:${cldOptions[prop]}`);
+    } else if ( typeof options[prop] === 'string' ) {
+      cldImage.effect(`e_${effect}:${options[prop]}`);
     }
   });
 }
