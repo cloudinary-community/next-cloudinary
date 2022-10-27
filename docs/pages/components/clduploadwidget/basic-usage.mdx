@@ -1,0 +1,61 @@
+# Getting Started with CldUploadWidget
+
+## Basic Usage
+
+### Unsigned
+
+```jsx
+<CldUploadWidget
+    signed={false}
+    options={{
+      cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+      uploadPreset:
+        process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+    }}
+    onUpload={(error, result) => {
+      /* Do Something With the Error or Result */
+    }}
+  >
+  {({ open }) => {
+    function handleOnClick(e) {
+      e.preventDefault();
+      open();
+    }
+    return (
+      <button onClick={handleOnClick}>Upload an Image</button>
+    );
+  }}
+</CldUploadWidget>
+```
+
+### Signed
+
+```jsx
+<CldUploadWidget
+  signed={true}
+  signingEndpoint="/api/sign-cloudinary-params"
+  options={{
+    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME, // Ex: mycloudname
+    uploadPreset:
+      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET, // Ex: myuploadpreset
+      apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY, // Ex: 1234567890
+  }}
+  onUpload={(error, result) => {
+    /* Do Something With the Error or Result */
+  }}
+>
+  {({ open }) => {
+    function handleOnClick(e) {
+      e.preventDefault();
+      open();
+    }
+    return (
+      <button onClick={handleOnClick}>Upload an Image</button>
+    );
+  }}
+</CldUploadWidget>
+```
+
+## Learn More about CldUploadWidget
+* [Configuration](/components/clduploadwidget/configuration)
+* [Effects](/components/clduploadwidget/effects)

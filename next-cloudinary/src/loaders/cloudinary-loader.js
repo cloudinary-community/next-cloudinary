@@ -50,6 +50,7 @@ export function cloudinaryLoader(defaultOptions, cldOptions, cldConfig = {}) {
   const options = {
     format: 'auto',
     quality: 'auto',
+    deliveryType: 'upload',
     ...defaultOptions
   };
   const publicId = getPublicId(options.src);
@@ -69,6 +70,7 @@ export function cloudinaryLoader(defaultOptions, cldOptions, cldConfig = {}) {
   });
 
   return cldImage
+          .setDeliveryType(options.deliveryType)
           .format(options.format)
           .delivery(`q_${options.quality}`)
           .toURL();

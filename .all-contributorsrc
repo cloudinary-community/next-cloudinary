@@ -53,6 +53,63 @@
       "contributions": [
         "tool"
       ]
+    },
+    {
+      "login": "3t8",
+      "name": "3t8",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62209650?v=4",
+      "profile": "https://github.com/3t8",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "agbanusi",
+      "name": "John Agbanusi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53221092?v=4",
+      "profile": "https://github.com/agbanusi",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "nucliweb",
+      "name": "Joan León",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1307927?v=4",
+      "profile": "http://joanleon.dev",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "timbenniks",
+      "name": "Tim Benniks",
+      "avatar_url": "https://avatars.githubusercontent.com/u/121096?v=4",
+      "profile": "http://www.timbenniks.dev",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "csgochan",
+      "name": "csgochan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/116420257?v=4",
+      "profile": "https://github.com/csgochan",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "codingis4noobs2",
+      "name": "codingis4noobs2",
+      "avatar_url": "https://avatars.githubusercontent.com/u/87560178?v=4",
+      "profile": "https://github.com/codingis4noobs2",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
