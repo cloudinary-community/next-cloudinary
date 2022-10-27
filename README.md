@@ -20,7 +20,7 @@
 
 High-performance image delivery and uploading at scale in Next.js powered by Cloudinary.
 
-## 🚀 Features
+## 🧰 Features
 
 * Automatically optimize images and deliver in modern formats
 * Remove backgrounds from images
