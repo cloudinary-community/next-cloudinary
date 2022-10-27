@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.3.0...v0.4.0) (2022-10-27)
+
+
+### Features
+
+* next/future/image ([#3](https://github.com/colbyfayock/next-cloudinary/issues/3)) ([9c271ef](https://github.com/colbyfayock/next-cloudinary/commit/9c271ef47a5aba55ea168995c345bc835f22ef16))
+
 # [0.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.2.0...v0.3.0) (2022-10-27)
 
 
