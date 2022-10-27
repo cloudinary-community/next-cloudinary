@@ -24,6 +24,6 @@ describe('Cropping plugin', () => {
       height: 100
     };
     plugin({ cldImage, options, cldOptions });
-    expect(cldImage.toURL()).toBe('http://res.cloudinary.com/test-cloud-name/image/upload/c_crop,g_auto,w_100/test-public-id');
+    expect(cldImage.toURL()).toContain('c_crop,g_auto,w_100');
   });
 });
