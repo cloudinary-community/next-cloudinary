@@ -12,7 +12,7 @@
 
 ######
 
-![example workflow](https://github.com/colbyfayock/next-cloudinary/actions/workflows/test_and_release.yml/badge.svg) <a href="https://www.npmjs.com/package/next-cloudinary"><img alt="npm" src="https://img.shields.io/npm/v/next-cloudinary"></a>
+<a href="https://github.com/colbyfayock/next-cloudinary/actions/workflows/test_and_release.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/colbyfayock/next-cloudinary/Test%20&%20Release?label=Test%20%26%20Release&style=flat-square"></a> <a href="https://www.npmjs.com/package/next-cloudinary"><img alt="npm" src="https://img.shields.io/npm/v/next-cloudinary?style=flat-square"></a>
 
 # Next Cloudinary
 
