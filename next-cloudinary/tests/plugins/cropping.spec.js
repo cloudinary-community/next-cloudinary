@@ -12,51 +12,18 @@ const cld = new Cloudinary({
 
 const TEST_PUBLIC_ID = 'test-public-id';
 
-describe('Plugins', () => {
-  describe('Cropping', () => {
-    it('should apply a single crop to the end of a Cloudinary URL', () => {
-
-      const cldImage = cld.image(TEST_PUBLIC_ID);
-
-      const cldOptions = {
-        crop: 'crop',
-        width: 100,
-        height: 100
-      }
-
-      plugin({
-        cldImage,
-        cldOptions
-      });
-
-      expect(cldImage.toURL()).toContain(`${cldOptions.crop}_${cldOptions.width}_${cldOptions.height}/${TEST_PUBLIC_ID}`);
-    });
-
-    it('should apply an array of crops to the end of a Cloudinary URL', () => {
-
-      const cldImage = cld.image(TEST_PUBLIC_ID);
-
-      const cldOptions = {
-        crop: [
-          'crop',
-          'fit'
-        ],
-        width: [
-          100,
-          200
-        ],
-        height: [
-          100,
-          200
-        ]
-      }
-
-      plugin({
-        cldImage,
-        cldOptions
-      });
-
-      expect(cldImage.toURL()).toContain(`${cldOptions.crop[0]}_${cldOptions.width[0]}_${cldOptions.height[0]}/${cldOptions.crop[1]}_${cldOptions.width[1]}_${cldOptions.height[1]}/${TEST_PUBLIC_ID}`);
-    })
+describe('Cropping plugin', () => {
+  it('should apply the correct transformation string', () => {
+    const cldImage = cld.image(TEST_PUBLIC_ID);
+    const cldOptions = {
+      crop: 'crop',
+      gravity: 'auto'
+    };
+    const options = {
+      width: 100,
+      height: 100
+    };
+    plugin({ cldImage, options, cldOptions });
+    expect(cldImage.toURL()).toBe('http://res.cloudinary.com/test-cloud-name/image/upload/c_crop,g_auto,w_100/test-public-id');
   });
 });
