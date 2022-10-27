@@ -1,8 +1,8 @@
 import { Cloudinary } from '@cloudinary/url-gen';
 
-import * as croppingPlugins from '../../src/plugins/cropping';
+import * as croppingPlugin from '../../src/plugins/cropping';
 
-const { plugin } =  croppingPlugins
+const { plugin } = croppingPlugin
 
 const cld = new Cloudinary({
   cloud: {
@@ -19,7 +19,9 @@ describe('Plugins', () => {
       const cldImage = cld.image(TEST_PUBLIC_ID);
 
       const cldOptions = {
-        crop: 'scale'
+        crop: 'crop',
+        width: 100,
+        height: 100
       }
 
       plugin({
@@ -27,7 +29,7 @@ describe('Plugins', () => {
         cldOptions
       });
 
-      expect(cldImage.toURL()).toContain(`${cldOptions.crop}/${TEST_PUBLIC_ID}`);
+      expect(cldImage.toURL()).toContain(`${cldOptions.crop}_${cldOptions.width}_${cldOptions.height}/${TEST_PUBLIC_ID}`);
     });
 
     it('should apply an array of crops to the end of a Cloudinary URL', () => {
@@ -35,7 +37,18 @@ describe('Plugins', () => {
       const cldImage = cld.image(TEST_PUBLIC_ID);
 
       const cldOptions = {
-        crop: ['scale', 'crop']
+        crop: [
+          'crop',
+          'fit'
+        ],
+        width: [
+          100,
+          200
+        ],
+        height: [
+          100,
+          200
+        ]
       }
 
       plugin({
@@ -43,7 +56,7 @@ describe('Plugins', () => {
         cldOptions
       });
 
-      expect(cldImage.toURL()).toContain(`${cldOptions.crop.join(',')}/${TEST_PUBLIC_ID}`);
+      expect(cldImage.toURL()).toContain(`${cldOptions.crop[0]}_${cldOptions.width[0]}_${cldOptions.height[0]}/${cldOptions.crop[1]}_${cldOptions.width[1]}_${cldOptions.height[1]}/${TEST_PUBLIC_ID}`);
     })
   });
 });
