@@ -29,7 +29,7 @@ High-performance image delivery and uploading at scale in Next.js powered by Clo
 * Drop-in Upload Widget
 * ...all at scale with Cloudinary
 
-**This plugin is not officially supported by Cloudinary.**
+**This plugin is a community library and not officially supported by Cloudinary.**
 
 ## ⚡️ Getting Started
 
