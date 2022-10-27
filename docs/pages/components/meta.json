@@ -1,4 +1,6 @@
 {
   "cldimage": "CldImage",
-  "cldogimage": "CldOgImage"
+  "cldogimage": "CldOgImage",
+  "clduploadbutton": "CldUploadButton",
+  "clduploadwidget": "CldUploadWidget"
 }

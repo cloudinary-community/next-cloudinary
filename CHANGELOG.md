@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.1.1...v0.2.0) (2022-10-21)
+
+
+### Features
+
+* fetch delivery type ([fa7da45](https://github.com/colbyfayock/next-cloudinary/commit/fa7da4571bc5917a4afd48a5125cc6406284c835))
+
 ## [0.1.1](https://github.com/colbyfayock/next-cloudinary/compare/v0.1.0...v0.1.1) (2022-10-11)
 
 

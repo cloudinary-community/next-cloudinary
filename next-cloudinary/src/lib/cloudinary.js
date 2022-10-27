@@ -66,6 +66,7 @@ export function constructCloudinaryUrl({ options, config }) {
   });
 
   return cldImage
+          .setDeliveryType(options.deliveryType || 'upload')
           .format(options.format || 'auto')
           .delivery(`q_${options.quality || 'auto'}`)
           .toURL();

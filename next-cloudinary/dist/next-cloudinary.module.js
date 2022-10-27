@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import { Cloudinary } from '@cloudinary/url-gen';
-import { jsx, jsxs } from 'react/jsx-runtime';
+import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
 import Head from 'next/head';
+import { useRef } from 'react';
+import Script from 'next/script';
 
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function (target) {
@@ -35,10 +37,6 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
-function _readOnlyError(name) {
-  throw new TypeError("\"" + name + "\" is read-only");
-}
-
 var cropsGravityAuto = ['crop', 'fill', 'lfill', 'fill_pad', 'thumb'];
 var props$6 = ['crop', 'gravity'];
 function plugin$6(_temp) {
@@ -49,23 +47,22 @@ function plugin$6(_temp) {
   var width = options.width,
       height = options.height,
       _options$crop = options.crop,
-      crop = _options$crop === void 0 ? 'limit' : _options$crop,
-      gravity = options.gravity;
+      crop = _options$crop === void 0 ? 'limit' : _options$crop;
   var transformationString = "c_" + crop + ",w_" + width;
 
-  if (!gravity && cropsGravityAuto.includes(crop)) {
-    _readOnlyError("gravity");
+  if (!options.gravity && cropsGravityAuto.includes(crop)) {
+    options.gravity = 'auto';
   }
 
   if (!['limit'].includes(crop)) {
     transformationString = transformationString + ",h_" + height;
   }
 
-  if (gravity) {
-    if (gravity === 'auto' && !cropsGravityAuto.includes(crop)) {
+  if (options.gravity) {
+    if (options.gravity === 'auto' && !cropsGravityAuto.includes(crop)) {
       console.warn('Auto gravity can only be used with crop, fill, lfill, fill_pad or thumb. Not applying gravity.');
     } else {
-      transformationString = transformationString + ",g_" + gravity;
+      transformationString = transformationString + ",g_" + options.gravity;
     }
   }
 
@@ -204,7 +201,7 @@ var text = {
   }
 };
 
-var _excluded$2 = ["publicId", "position", "text", "effects"];
+var _excluded$3 = ["publicId", "position", "text", "effects"];
 var props$4 = ['text', 'overlays'];
 var DEFAULT_TEXT_OPTIONS = {
   color: 'black',
@@ -249,7 +246,7 @@ function plugin$4(_temp) {
         text$1 = _ref2.text,
         _ref2$effects = _ref2.effects,
         layerEffects = _ref2$effects === void 0 ? [] : _ref2$effects,
-        options = _objectWithoutPropertiesLoose(_ref2, _excluded$2);
+        options = _objectWithoutPropertiesLoose(_ref2, _excluded$3);
 
     var hasPublicId = typeof publicId === 'string';
     var hasText = typeof text$1 === 'object' || typeof text$1 === 'string';
@@ -381,7 +378,7 @@ var removeBackgroundPlugin = {
   plugin: plugin$2
 };
 
-var _excluded$1 = ["publicId", "type", "position", "text", "effects"];
+var _excluded$2 = ["publicId", "type", "position", "text", "effects"];
 var props$1 = ['underlay', 'underlays'];
 function plugin$1(_temp) {
   var _ref = _temp === void 0 ? {} : _temp,
@@ -424,7 +421,7 @@ function plugin$1(_temp) {
         position$1 = _ref2.position,
         _ref2$effects = _ref2.effects,
         layerEffects = _ref2$effects === void 0 ? [] : _ref2$effects,
-        options = _objectWithoutPropertiesLoose(_ref2, _excluded$1);
+        options = _objectWithoutPropertiesLoose(_ref2, _excluded$2);
 
     var hasPublicId = typeof publicId === 'string';
     var hasPosition = typeof position$1 === 'object';
@@ -579,7 +576,7 @@ function constructCloudinaryUrl(_ref) {
       options.format = pluginOptions.format;
     }
   });
-  return cldImage.format(options.format || 'auto').delivery("q_" + (options.quality || 'auto')).toURL();
+  return cldImage.setDeliveryType(options.deliveryType || 'upload').format(options.format || 'auto').delivery("q_" + (options.quality || 'auto')).toURL();
 }
 /**
  * Retrieves the public id of a cloudiary image url. If no url is recognized it returns the parameter it self.
@@ -711,7 +708,7 @@ var CldImage = function CldImage(props) {
   }));
 };
 
-var _excluded = ["excludeTags", "twitterTitle"];
+var _excluded$1 = ["excludeTags", "twitterTitle"];
 var IMAGE_WIDTH = 2400;
 var IMAGE_HEIGHT = 1200;
 var TWITTER_CARD = 'summary_large_image';
@@ -720,7 +717,7 @@ var CldOgImage = function CldOgImage(_ref) {
   var _ref$excludeTags = _ref.excludeTags,
       excludeTags = _ref$excludeTags === void 0 ? [] : _ref$excludeTags,
       twitterTitle = _ref.twitterTitle,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$1);
 
   var options = _extends({}, props, {
     width: props.width || IMAGE_WIDTH,
@@ -763,5 +760,135 @@ var CldOgImage = function CldOgImage(_ref) {
   });
 };
 
-export { CldImage, CldOgImage, cloudinaryLoader, position, primary, text };
+var CldUploadWidget = function CldUploadWidget(_ref) {
+  var children = _ref.children,
+      onUpload = _ref.onUpload,
+      options = _ref.options,
+      signed = _ref.signed,
+      signatureEndpoint = _ref.signatureEndpoint;
+  var cloudinary = useRef();
+  var widget = useRef();
+  /**
+   * generateSignature
+   * @description Makes a request to an endpoint to sign Cloudinary parameters as part of widget creation
+   */
+
+  function generateSignature(callback, paramsToSign) {
+    fetch(signatureEndpoint, {
+      method: "POST",
+      body: JSON.stringify({
+        paramsToSign: paramsToSign
+      })
+    }).then(function (r) {
+      return r.json();
+    }).then(function (_ref2) {
+      var signature = _ref2.signature;
+      callback(signature);
+    });
+  }
+  /**
+   * createWidget
+   * @description Creates a new instance of the Cloudinary widget and stores in a ref
+   */
+
+
+  function createWidget() {
+    var _cloudinary$current;
+
+    // When creating a signed upload, you need to provide both your Cloudinary API Key
+    // as well as a signature generator function that will sign any paramters
+    // either on page load or during the upload process. Read more about signed uploads at:
+    // https://cloudinary.com/documentation/upload_widget#signed_uploads
+    var totalOptions = _extends({}, options, !!signed && {
+      uploadSignature: generateSignature
+    }); // no need for apiSecret because of api/sign-cloudinary-params
+
+
+    if (signed && !totalOptions.apiKey) {
+      return new Error("Signed Upload needs apiKey!");
+    }
+
+    return (_cloudinary$current = cloudinary.current) == null ? void 0 : _cloudinary$current.createUploadWidget(totalOptions, function (error, result) {
+      // The callback is a bit more chatty than failed or success so
+      // only trigger when one of those are the case. You can additionally
+      // create a separate handler such as onEvent and trigger it on
+      // ever occurance
+      if (error || result.event === "success") {
+        onUpload(error, result, widget == null ? void 0 : widget.current);
+      }
+    });
+  }
+  /**
+   * open
+   * @description When triggered, uses the current widget instance to open the upload modal
+   */
+
+
+  function open() {
+    if (!(widget != null && widget.current)) {
+      widget.current = createWidget();
+    }
+
+    (widget == null ? void 0 : widget.current) && widget.current.open();
+  }
+  /**
+   * handleOnLoad
+   * @description Stores the Cloudinary window instance to a ref when the widget script loads
+   */
+
+
+  function handleOnLoad() {
+    cloudinary.current = window.cloudinary;
+  }
+
+  return /*#__PURE__*/jsxs(Fragment, {
+    children: [children({
+      cloudinary: cloudinary.current,
+      widget: widget.current,
+      open: open
+    }), /*#__PURE__*/jsx(Script, {
+      id: "cloudinary-" + Math.floor(Math.random() * 100),
+      src: "https://widget.cloudinary.com/v2.0/global/all.js",
+      onLoad: handleOnLoad,
+      onError: function onError(e) {
+        console.error("Script failed to load", e);
+      }
+    })]
+  });
+};
+
+var _excluded = ["onUpload", "options", "signed", "label", "children"];
+
+var CldUploadButton = function CldUploadButton(_ref) {
+  var onUpload = _ref.onUpload,
+      options = _ref.options,
+      signed = _ref.signed,
+      _children = _ref.children,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded);
+
+  return /*#__PURE__*/jsx(Fragment, {
+    children: /*#__PURE__*/jsx(CldUploadWidget, {
+      signed: signed,
+      options: options,
+      onUpload: onUpload,
+      signatureEndpoint: signed != null ? signed : props.signatureEndpoint,
+      children: function children(_ref2) {
+        var open = _ref2.open;
+
+        function handleOnClick(e) {
+          e.preventDefault();
+          open();
+        }
+
+        return /*#__PURE__*/jsx("button", _extends({
+          onClick: handleOnClick
+        }, props, {
+          children: _children
+        }));
+      }
+    })
+  });
+};
+
+export { CldImage, CldOgImage, CldUploadButton, CldUploadWidget, cloudinaryLoader, position, primary, text };
 //# sourceMappingURL=next-cloudinary.module.js.map

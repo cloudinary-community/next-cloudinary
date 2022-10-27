@@ -1,0 +1,24 @@
+# Getting Started with CldUploadButton
+
+## Basic Usage
+
+```jsx
+<UploadButton
+  signed={false}
+  options={{
+    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+    uploadPreset:
+      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+  }}
+  onUpload={(error, result) => {
+    /* Do Something With the Error or Result */
+  }}
+  className={styles.uploadButton}
+>
+  <span>Upload Image</span>
+</UploadButton>
+```
+
+## Learn More about CldUploadButton
+* [Configuration](/components/clduploadbutton/configuration)
+* [Effects](/components/clduploadbutton/effects)
