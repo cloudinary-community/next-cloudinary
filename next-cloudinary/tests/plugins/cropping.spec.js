@@ -24,6 +24,19 @@ describe('Cropping plugin', () => {
       height: 100
     };
     plugin({ cldImage, options, cldOptions });
-    expect(cldImage.toURL()).toEqual('https://res.cloudinary.com/test-cloud-name/image/upload/c_crop,w_100,h_100,g_auto/test-public-id?_a=ATMZxAA0');
+    expect(cldImage.toURL()).toContain(`c_${cldOptions.crop},w_${options.width},h_${options.height},g_${cldOptions.gravity}/${TEST_PUBLIC_ID}`);
+  });
+
+  it('should apply a gravity of auto by default if not set explicitly', () => {
+    const cldImage = cld.image(TEST_PUBLIC_ID);
+    const cldOptions = {
+      crop: 'fill'
+    };
+    const options = {
+      width: 100,
+      height: 100
+    };
+    plugin({ cldImage, options, cldOptions });
+    expect(cldImage.toURL()).toContain(`c_${cldOptions.crop},w_${options.width},h_${options.height},g_auto/${TEST_PUBLIC_ID}`);
   });
 });
