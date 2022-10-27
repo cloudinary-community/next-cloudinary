@@ -13,7 +13,7 @@
 ######
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Cloudinary Next.js Component
@@ -293,6 +293,7 @@ See the examples above under Overlays to learn more about the available configur
       <td align="center"><a href="http://joanleon.dev"><img src="https://avatars.githubusercontent.com/u/1307927?v=4?s=100" width="100px;" alt="Joan León"/><br /><sub><b>Joan León</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=nucliweb" title="Documentation">📖</a></td>
       <td align="center"><a href="http://www.timbenniks.dev"><img src="https://avatars.githubusercontent.com/u/121096?v=4?s=100" width="100px;" alt="Tim Benniks"/><br /><sub><b>Tim Benniks</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=timbenniks" title="Code">💻</a> <a href="https://github.com/colbyfayock/next-cloudinary/commits?author=timbenniks" title="Documentation">📖</a></td>
       <td align="center"><a href="https://github.com/csgochan"><img src="https://avatars.githubusercontent.com/u/116420257?v=4?s=100" width="100px;" alt="csgochan"/><br /><sub><b>csgochan</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=csgochan" title="Documentation">📖</a></td>
+      <td align="center"><a href="https://github.com/codingis4noobs2"><img src="https://avatars.githubusercontent.com/u/87560178?v=4?s=100" width="100px;" alt="codingis4noobs2"/><br /><sub><b>codingis4noobs2</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=codingis4noobs2" title="Code">💻</a> <a href="https://github.com/colbyfayock/next-cloudinary/commits?author=codingis4noobs2" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
 </table>
