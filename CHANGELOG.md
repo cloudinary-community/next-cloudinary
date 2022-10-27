@@ -1,3 +1,15 @@
+# [0.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.2.0...v0.3.0) (2022-10-27)
+
+
+### Bug Fixes
+
+* Fix "gravity" is read-only ([#32](https://github.com/colbyfayock/next-cloudinary/issues/32)) ([14c6cd7](https://github.com/colbyfayock/next-cloudinary/commit/14c6cd72c5a086fe0ff655654a475b8dfc6bb4ce))
+
+
+### Features
+
+* CldOgImage ([#30](https://github.com/colbyfayock/next-cloudinary/issues/30)) ([4aa5ff7](https://github.com/colbyfayock/next-cloudinary/commit/4aa5ff7e5d2e57e1c440b0e857c21c77ff5ffe2a))
+
 # [0.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.1.1...v0.2.0) (2022-10-21)
 
 
