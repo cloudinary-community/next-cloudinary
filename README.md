@@ -12,9 +12,7 @@
 
 ######
 
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+![example workflow](https://github.com/colbyfayock/next-cloudinary/actions/workflows/test_and_release.yml/badge.svg) <a href="https://www.npmjs.com/package/next-cloudinary"><img alt="npm" src="https://img.shields.io/npm/v/next-cloudinary"></a>
 
 # Next Cloudinary
 
