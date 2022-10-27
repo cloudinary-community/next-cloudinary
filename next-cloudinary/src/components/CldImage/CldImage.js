@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 
 import { createPlaceholderUrl, getPublicId } from '../../lib/cloudinary';
 import { cloudinaryLoader, transformationPlugins } from '../../loaders/cloudinary-loader';
