@@ -6,7 +6,16 @@ import { CldImage, CldOgImage } from '../../next-cloudinary';
 import OgImage from '../components/OgImage';
 import ImageGrid from '../components/ImageGrid';
 
-<OgImage title="Next Cloudinary" />
+<Head>
+  <title>Next Cloudinary</title>
+  <meta name="og:title" content="Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev`} />
+</Head>
+
+<OgImage
+  title="Next Cloudinary"
+  twitterTitle="Next Cloudinary"
+/>
 
 # Next Cloudinary
 
