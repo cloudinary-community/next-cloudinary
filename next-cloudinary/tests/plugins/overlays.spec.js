@@ -90,6 +90,8 @@ describe('Plugins', () => {
       const fontSize = 200;
       const fontWeight = 'bold';
       const text = 'Next Cloudinary';
+      const letterSpacing = 10;
+      const lineSpacing = 20;
 
       const options = {
         text: {
@@ -97,7 +99,9 @@ describe('Plugins', () => {
           fontFamily,
           fontSize,
           fontWeight,
-          text
+          text,
+          letterSpacing,
+          lineSpacing
         }
       }
 
@@ -106,7 +110,38 @@ describe('Plugins', () => {
         options
       });
 
-      expect(cldImage.toURL()).toContain(`l_text:${encodeURIComponent(fontFamily)}_${fontSize}_${fontWeight}:${encodeURIComponent(text)},co_${color}/fl_layer_apply,fl_no_overflow/${TEST_PUBLIC_ID}`);
+      expect(cldImage.toURL()).toContain(`l_text:${encodeURIComponent(fontFamily)}_${fontSize}_${fontWeight}_letter_spacing_${letterSpacing}_line_spacing_${lineSpacing}:${encodeURIComponent(text)},co_${color}/fl_layer_apply,fl_no_overflow/${TEST_PUBLIC_ID}`);
+    });
+
+    it('should add a stroke to text', () => {
+      const cldImage = cld.image(TEST_PUBLIC_ID);
+
+      const color = 'white';
+      const fontFamily = 'Source Sans Pro';
+      const fontSize = 200;
+      const fontWeight = 'bold';
+      const text = 'Next Cloudinary';
+      const border = '20px_solid_blue';
+      const stroke = true;
+
+      const options = {
+        text: {
+          color,
+          fontFamily,
+          fontSize,
+          fontWeight,
+          text,
+          border,
+          stroke
+        }
+      }
+
+      plugin({
+        cldImage,
+        options
+      });
+
+      expect(cldImage.toURL()).toContain(`l_text:${encodeURIComponent(fontFamily)}_${fontSize}_${fontWeight}_stroke:${encodeURIComponent(text)},co_${color},bo_${border}/fl_layer_apply,fl_no_overflow/${TEST_PUBLIC_ID}`);
     });
   });
 });
