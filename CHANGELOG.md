@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.4.1...v0.5.0) (2022-10-28)
+
+
+### Features
+
+* qualifiers, docs, ogimages ([dd64908](https://github.com/colbyfayock/next-cloudinary/commit/dd6490841ce8d801da36ea00c5f98ec7cab83538))
+
 ## [0.4.1](https://github.com/colbyfayock/next-cloudinary/compare/v0.4.0...v0.4.1) (2022-10-28)
 
 
