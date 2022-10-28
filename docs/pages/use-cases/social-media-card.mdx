@@ -1,8 +1,17 @@
+import Head from 'next/head';
 import Callout from 'nextra-theme-docs/callout';
+
+import OgImage from '../../components/OgImage';
 
 import { CldImage } from '../../../next-cloudinary';
 
-# Social Media Card
+<Head>
+  <title>Social Media Cards - Next Cloudinary</title>
+</Head>
+
+<OgImage title="Social Media Cards" />
+
+# Social Media Cards
 
 <Callout emoji={false}>
   CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. The following examples make use of the `<CldImage>` tag to showcase what's possible.

@@ -1,14 +1,15 @@
+import Head from 'next/head';
 import Callout from 'nextra-theme-docs/callout';
 
-import { CldImage, CldOgImage } from '../../next-cloudinary';
+import OgImage from '../components/OgImage';
 
-<CldOgImage
-  src="images/galaxy"
-  text={{
-    text: 'Installation',
-    color: 'white'
-  }}
-/>
+import { CldImage } from '../../next-cloudinary';
+
+<Head>
+  <title>Installation - Next Cloudinary</title>
+</Head>
+
+<OgImage title="Installation" />
 
 # Installation
 

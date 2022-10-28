@@ -3,26 +3,10 @@ import Bleed from 'nextra-theme-docs/bleed';
 
 import { CldImage, CldOgImage } from '../../next-cloudinary';
 
+import OgImage from '../components/OgImage';
 import ImageGrid from '../components/ImageGrid';
 
-<CldOgImage
-  src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-  tint="100:0000FF:0p:FF1493:100p"
-  blur="2000"
-  removeBackground
-  overlays={[{
-    text: {
-      color: 'white',
-      fontFamily: 'Source Sans Pro',
-      fontSize: 200,
-      fontWeight: 'bold',
-      text: 'Next Cloudinary'
-    }
-  }]}
-  underlay="images/galaxy"
-  alt="Next Cloudinary over picture of a turtle"
-  twitterTitle="Next Cloudinary"
-/>
+<OgImage title="Next Cloudinary" />
 
 # Next Cloudinary
 

@@ -34,6 +34,9 @@ export const position = {
 }
 
 export const text = {
+  alignment: {
+    qualifier: 'alignment'
+  },
   border: {
     qualifier: 'bo',
     location: 'primary'
