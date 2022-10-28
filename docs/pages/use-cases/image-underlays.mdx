@@ -11,10 +11,10 @@ See the examples above under Overlays to learn more about the available configur
 <CldImage
   width="960"
   height="600"
-  src="images/turtle"
+  src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
   sizes="100vw"
   removeBackground
-  underlays="images/galaxy"
+  underlay="images/galaxy"
 />
 
 ```jsx
@@ -24,12 +24,7 @@ See the examples above under Overlays to learn more about the available configur
   src="images/turtle"
   sizes="100vw"
   removeBackground
-  underlays={[{
-    publicId: 'images/galaxy',
-    width: 1920,
-    height: 1200,
-    crop: 'fill'
-  }]}
+  underlay="images/galaxy"
 />
 ```
 

@@ -1,0 +1,13 @@
+{
+  "name": "scripts",
+  "version": "0.0.1",
+  "scripts": {
+    "upload": "node upload-sample-images.js"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "cloudinary": "^1.32.0",
+    "dotenv": "^16.0.3"
+  }
+}
