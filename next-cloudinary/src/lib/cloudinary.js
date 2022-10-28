@@ -104,6 +104,28 @@ export function getPublicId(src) {
 
   return src;
 }
+export function getTransformations(src, useUrlTransformations) {
+  if ( typeof src !== 'string' ) {
+    throw new Error(`Invalid src of type ${typeof src}`);
+  }
+
+  if (src.includes('res.cloudinary.com') && useUrlTransformations) {
+    const regex = new RegExp(
+      "(https?)://(res.cloudinary.com)/([^/]+)/(image|video|raw)/(upload|authenticated)/(.*)/(v[0-9]+)/(.+)(?:.[a-z]{3})?",
+      "gim"
+    );
+    const groups = regex.exec(src);
+    const transformationStr = groups
+      .slice(1)
+      .find((i) => i.includes(_) && i.includes(","));
+
+    if(transformationStr){
+      return transformationStr.split(",")
+    }else{
+      return []
+    }
+  }
+}
 
 /**
  * createPlaceholderUrl
