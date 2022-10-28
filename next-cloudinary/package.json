@@ -8,7 +8,7 @@
   "scripts": {
     "build": "microbundle --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react",
     "dev": "microbundle watch --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react",
-    "prepublishOnly": "cp ../README.md .",
+    "prepublishOnly": "cp ../README.md . && yarn build",
     "postpublish": "rm ./README.md",
     "test": "jest"
   },
