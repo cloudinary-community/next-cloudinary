@@ -3,7 +3,7 @@ import { CldOgImage } from '../../../next-cloudinary';
 const OgImage = ({ title, ...props }) => {
   return (
     <CldOgImage
-      src="images/next-cloudinary-social-background"
+      src={`${process.env.EXAMPLES_DIRECTORY}/next-cloudinary-social-background`}
       overlays={[
         {
           width: 2000,
