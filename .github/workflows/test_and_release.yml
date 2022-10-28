@@ -1,4 +1,4 @@
-name: Test and release
+name: Test & Release
 on: [push, pull_request]
 env:
   CI: false

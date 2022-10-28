@@ -12,19 +12,28 @@
 
 ######
 
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+<a href="https://github.com/colbyfayock/next-cloudinary/actions/workflows/test_and_release.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/colbyfayock/next-cloudinary/Test%20&%20Release?label=Test%20%26%20Release&style=flat-square"></a> <a href="https://www.npmjs.com/package/next-cloudinary"><img alt="npm" src="https://img.shields.io/npm/v/next-cloudinary?style=flat-square"></a> <a href="https://github.com/colbyfayock/next-cloudinary/blob/main/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/colbyfayock/next-cloudinary?label=License&style=flat-square"></a>
 
-# Cloudinary Next.js Component
+# Next Cloudinary
 
-Get the best of Cloudinary in Next.js with the CldImage component!
+High-performance image delivery and uploading at scale in Next.js powered by Cloudinary.
 
-> 🚨 EXPERIMENTAL: while this should be working pretty well, it's consider experimental, so use at your own risk!
+<a href="#-features">Features</a> • <a href="#-getting-started">Getting Started</a> • <a href="#%EF%B8%8F-community--support">Community & Support</a> • <a href="#-contributing">Contributing</a>
 
-**This plugin is not officially supported by Cloudinary.**
+## ✨ Features
 
-## ⚡️ Getting Started
+* Automatically optimize images and deliver in modern formats
+* Remove backgrounds from images
+* Dynamically add image and text overlays to images
+* AI-based cropping and resizing
+* Transform images using color and effects
+* Generate Open Graph Social Media cards on the fly
+* Drop-in Upload Widget
+* ...all at scale with Cloudinary
+
+**This plugin is a community library and not officially supported by Cloudinary.**
+
+## 🚀 Getting Started
 
 ### Installation
 
@@ -40,240 +49,91 @@ npm install next-cloudinary
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="<Your Cloud Name>"
 ```
 
-* Import the CldImage component:
+### Adding an Image
+
 ```
 import { CldImage } from 'next-cloudinary';
+
+<CldImage width="600" height="600" src="<Public ID or Cloudinary URL>" />
 ```
 
-### Usage
+[Learn more about CldImage on the Next Cloudinary Docs](https://next-cloudinary.spacejelly.dev/components/cldimage/basic-usage)
 
-The basic required props include `width`, `height`, and `src`:
-
-```
-<CldImage
-  width="600"
-  height="600"
-  src="<Public ID>"
-/>
-```
-
-You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
+### Generating an Social Media Card (Open Graph)
 
 ```
-<CldImage
-  width="600"
-  height="600"
-  src="<Public ID>"
-  crop="thumb"
-  gravity="faces"
-  removeBackground
-  tint="100:blue:green:red"
-  underlays={[{
-    publicId: '<Public ID>',
-    width: 600,
-    height: 600,
-    crop: 'fill'
-  }]}
-/>
+<CldOgImage src="<Public ID or Cloudinary URL>" text="Next Cloudinary" />
 ```
 
-As CldImage is a wrapper around the Next.js Image component, all built-in Image component features will work out-of-the-box including the `layout` prop.
+> Note: The width and height is not required (or recommended) to comply with standardized social media card sizing of a 2:1 aspect ratio.
 
-## 🛠 Configuration
+[Learn more about CldOgImage on the Next Cloudinary Docs](https://next-cloudinary.spacejelly.dev/components/cldogimage/basic-usage)
 
-### General Props
+### Other Use Cases
 
-| Prop Name          | Type               | Example                      |
-|--------------------|--------------------|------------------------------|
-| crop               | string             | `"thumb"`                    |
-| gravity            | string             | `"faces"`                    |
-| overlays           | array              | See Below                    |
-| rawTransformations | array              | `['e_blur:2000']`            |
-| removeBackground   | bool/string        | `true`                       |
-| underlays          | array              | See Below                    |
-| zoompan            | bool/string/object | See Below                    |
+* [Background Removal](https://next-cloudinary.spacejelly.dev/use-cases/background-removal)
+* [Image Overlays](https://next-cloudinary.spacejelly.dev/use-cases/image-underlays)
+* [Image Underlays](https://next-cloudinary.spacejelly.dev/use-cases/image-overlays)
+* [Social Media Card](https://next-cloudinary.spacejelly.dev/use-cases/social-media-card)
+* [Text Overlays](https://next-cloudinary.spacejelly.dev/use-cases/text-overlays)
 
-### Effect Props
+## ❤️ Community & Support
 
-| Prop Name          | Type        | Example                      |
-|------------------  |-------------|------------------------------|
-| art                | string      | `"al_dente"`                 |
-| autoBrightness     | bool/string | `true`, `"80"`               |
-| autoColor          | bool/string | `true`, `"80"`               |
-| autoContrast       | bool/string | `true`, `"80"`               |
-| assistColorblind   | bool/string | `true`, `"20"`, `"xray"`     |
-| blackwhite         | bool/string | `true`, `"40"`               |
-| blur               | bool/string | `true`, `"800"`              |
-| blurFaces          | bool/string | `true`, `"800"`              |
-| blurRegion         | bool/string | `true`, `"1000,h_425,w_550,x_600,y_400"` |
-| brightness         | bool/string | `true`, `"100"`                      |
-| brightnessHSB      | bool/string | `true`, `"100"`                      |
-| cartoonify         | bool/string | `true`, `"70:80"`            |
-| colorize           | string      | `"35,co_darkviolet"`         |
-| contrast           | bool/string | `true`, `"100"`, `"level_-70"`       |
-| distort            | string      | `"150:340:1500:10:1500:1550:50:1000"`, `"arc:180.0"` |
-| fillLight          | bool/string | `true`, `"70:20"`                    |
-| gamma              | bool/string | `true`, `"100"`                      |
-| gradientFade       | bool/string | `true`, `"symmetric:10,x_0.2,y_0.4"` |
-| grayscale          | bool        | `true`                       |
-| improve            | bool/string | `true`, `"50"`, `"indoor"`   |
-| negate             | bool        | `true`                       |
-| oilPaint           | bool/string | `true`, `"40"`               |
-| outline            | bool/string | `true`, `"40"`, `"outer:15:200"` |
-| pixelate           | bool/string | `true`, `"20"`               |
-| pixelateFaces      | bool/string | `true`, `"20"`               |
-| pixelateRegion     | bool/string | `true`, `"35,h_425,w_550,x_600,y_400"` |
-| redeye             | bool/string | `true`                       |
-| replaceColor       | string      | `"saddlebrown"`, `"2F4F4F:20"`, `"silver:55:89b8ed"` |
-| saturation         | bool/string | `true`, `"70"`                       |
-| sepia              | bool/string | `true`, `"50"`               |
-| shadow             | bool/string | `true`, `"50,x_-15,y_15"`    |
-| sharpen            | bool/string | `true`, `"100"`              |
-| shear              | string      | `"20.0:0.0"`                 |
-| simulateColorblind | bool/string | `"deuteranopia"`             |
-| tint               | bool/string | `true`, `"100:red:blue:yellow"` |
-| unsharpMask        | bool/string | `true`, `"500"`              |
-| vectorize          | bool/string | `true`, `"3:0.5"`            |
-| vibrance           | bool/string | `true`, `"70"`               |
-| vignette           | bool/string | `true`, `"30"`               |
+* [GitHub: Create an Issue](https://github.com/colbyfayock/next-cloudinary/issues)
+* [Twitter: @colbyfayock](https://twitter.com/colbyfayock)
 
-[View the Cloudinary docs](https://cloudinary.com/documentation/transformation_reference#e_effect) to see learn more about using effects.
+## 🛠 Contributing
 
-### Background Removal
+Please read [CONTRIBUTING.md](https://github.com/colbyfayock/next-cloudinary/blob/main/CONTRIBUTING.md) prior to contributing.
 
-Removing backgrounds require enabling the [Cloudinary AI Background Removal Add-On](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) which includes a free tier for getting started.
+### Working Locally
 
-Once enabled, you can simply apply the `removeBackground` prop.
+#### Installation
 
-**Example:**
+This project is currently using [yarn](https://yarnpkg.com/) as a way to manage dependencies and workspaces.
+
+With the project cloned, install the dependencies from the root of the project with:
 
 ```
-<CldImage
-  ...
-  removeBackground
-/>
+yarn install
 ```
 
-### Overlays
+#### Configuration
 
-The `overlays` prop is an array of objects with the following configuration options:
-
-| Property Name    | Type        | Example                              |
-|------------------|-------------|--------------------------------------|
-| effects          | array       | See Below                            |
-| position         | object      | See Below                            |
-| publicId         | string      | `"thumb"`                            |
-| text             | object      | See Below                            |
-
-The position property can include:
-
-| Property Name    | Type        | Example                              |
-|------------------|-------------|--------------------------------------|
-| angle            | number      | `45`                                 |
-| gravity          | string      | '"north_west"'                       |
-| x                | number      | `10`                                 |
-| y                | number      | `10`                                 |
-
-Objects in the effects array can include:
-
-| Property Name    | Type        | Example                              |
-|------------------|-------------|--------------------------------------|
-| aspectRatio      | string      | `"3.0"`                              |
-| crop             | string      | `10`                                 |
-| gravity          | string      | '"north_west"'                       |
-| height           | number      | '600'                                |
-| width            | number      | '600'                                |
-
-The text property can include:
-
-| Property Name    | Type        | Example                              |
-|------------------|-------------|--------------------------------------|
-| color            | string      | `"blueviolet"`                       |
-| fontFamily       | string      | `"Open Sans"`                        |
-| fontSize         | number      | `48`                                 |
-| fontWeight       | string      | `"bold"`                             |
-| letterSpacing    | number      | `"14"`                               |
-| textDecoration   | string      | `"underline"`                        |
-
-#### Adding Images
-
-You can add images on top of other images by using image-based overlays.
-
-**Example:**
+To work on the project, you need to have an active Cloudinary account. With the account, configure a `.env.local` file inside of `docs` with:
 
 ```
-<CldImage
-  ...
-  overlays={[{
-    publicId: '<Public ID>',
-    position: {
-      x: 10,
-      y: 10,
-      gravity: 'north_west',
-    },
-    effects: [
-      {
-        crop: 'fill',
-        gravity: 'auto',
-        width: 500,
-        height: 500
-      }
-    ]
-  }]}
-/>
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="<Your Cloudinary Cloud Name>"
+NEXT_PUBLIC_CLOUDINARY_API_KEY="<Your Cloudinary API Key>"
+CLOUDINARY_API_SECRET="<Your Cloudinary API Secret>"
+NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="<Your Cloudinary Upload Preset>"
 ```
 
-#### Adding Text
+> Note: The Cloudinary account can be free, but some features may not work beyond free tier like Background Removal
 
-You can add text on top of your image with text-based overlays.
+The Cloud Name is required for all usage, where the API Key and Secret currently is only used for Upload Widget usage. The Upload Preset is additionally used for the Upload Widgets.
 
-**Example:**
+#### Running the Project
 
-```
-<CldImage
-  ...
-  overlays={[{
-    width: 2670 - 20,
-    crop: 'fit',
-    position: {
-      x: 10,
-      y: 10,
-      gravity: 'north_west',
-    },
-    text: {
-      color: 'blueviolet',
-      fontFamily: 'Source Sans Pro',
-      fontSize: 120,
-      fontWeight: 'bold',
-      textDecoration: 'underline',
-      letterSpacing: 14,
-      text: 'Text'
-    }
-  }]}
-/>
-```
-
-### Underlays
-
-Underlays function very similar to overlays in terms of options, however they **do not support text**.
-
-See the examples above under Overlays to learn more about the available configurations.
-
-**Example:**
+Once installed and configured, open two terminal tabs, navigating one to `next-cloudinary` and one to `docs`, running the following command in each:
 
 ```
-<CldImage
-  ...
-  underlays={[{
-    publicId: '<Public ID>',
-    width: 1920,
-    height: 1200,
-    crop: 'fill'
-  }]}
-/>
+yarn dev
 ```
 
-## Contributors
+The project will now be available at <https://localhost:3000> or the configured local port.
+
+### Running Tests
+
+All tests are located inside of `next-cloudinary/tests` with a directory structure that should reflect `next-cloudinary/src`.
+
+While inside `next-cloudinary`, run tests with:
+
+```
+yarn test
+```
+
+### Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
