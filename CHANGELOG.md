@@ -1,3 +1,10 @@
+## [0.4.1](https://github.com/colbyfayock/next-cloudinary/compare/v0.4.0...v0.4.1) (2022-10-28)
+
+
+### Bug Fixes
+
+* Build package before publish ([#52](https://github.com/colbyfayock/next-cloudinary/issues/52)) ([7d13602](https://github.com/colbyfayock/next-cloudinary/commit/7d13602bb4a1726e8acaf8495747f9f5a0022bc6)), closes [#51](https://github.com/colbyfayock/next-cloudinary/issues/51)
+
 # [0.4.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.3.0...v0.4.0) (2022-10-27)
 
 
