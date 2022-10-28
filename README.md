@@ -18,7 +18,7 @@
 
 High-performance image delivery and uploading at scale in Next.js powered by Cloudinary.
 
-<a href="#-features">Features</a> • <a href="#-getting-started">Getting Started</a> • <a href="#-contributing">Community & Support</a> • <a href="#-contributing">Contributing</a>
+<a href="#-features">Features</a> • <a href="#-getting-started">Getting Started</a> • <a href="#%EF%B8%8F-community--support">Community & Support</a> • <a href="#-contributing">Contributing</a>
 
 ## ✨ Features
 
@@ -83,6 +83,55 @@ import { CldImage } from 'next-cloudinary';
 * [Twitter: @colbyfayock](https://twitter.com/colbyfayock)
 
 ## 🛠 Contributing
+
+Please read [CONTRIBUTING.md](https://github.com/colbyfayock/next-cloudinary/blob/main/CONTRIBUTING.md) prior to contributing.
+
+### Working Locally
+
+#### Installation
+
+This project is currently using [yarn](https://yarnpkg.com/) as a way to manage dependencies and workspaces.
+
+With the project cloned, install the dependencies from the root of the project with:
+
+```
+yarn install
+```
+
+#### Configuration
+
+To work on the project, you need to have an active Cloudinary account. With the account, configure a `.env.local` file inside of `docs` with:
+
+```
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="<Your Cloudinary Cloud Name>"
+NEXT_PUBLIC_CLOUDINARY_API_KEY="<Your Cloudinary API Key>"
+CLOUDINARY_API_SECRET="<Your Cloudinary API Secret>"
+NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="<Your Cloudinary Upload Preset>"
+```
+
+> Note: The Cloudinary account can be free, but some features may not work beyond free tier like Background Removal
+
+The Cloud Name is required for all usage, where the API Key and Secret currently is only used for Upload Widget usage. The Upload Preset is additionally used for the Upload Widgets.
+
+#### Running the Project
+
+Once installed and configured, open two terminal tabs, navigating one to `next-cloudinary` and one to `docs`, running the following command in each:
+
+```
+yarn dev
+```
+
+The project will now be available at <https://localhost:3000> or the configured local port.
+
+### Running Tests
+
+All tests are located inside of `next-cloudinary/tests` with a directory structure that should reflect `next-cloudinary/src`.
+
+While inside `next-cloudinary`, run tests with:
+
+```
+yarn test
+```
 
 ### Contributors
 
