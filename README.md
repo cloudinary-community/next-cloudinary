@@ -117,7 +117,7 @@ The Cloud Name is required for all usage, where the API Key and Secret currently
 
 In order to run the Docs project, you need to have the images referenced available inside of your Cloudinary account.
 
-To do this, navigate to the `scripts` directory and first create a new `.env.` file with:
+To do this, navigate to the `scripts` directory and first create a new `.env` file with:
 
 ```
 CLOUDINARY_CLOUD_NAME="<Your Cloudinary Cloud Name>"
