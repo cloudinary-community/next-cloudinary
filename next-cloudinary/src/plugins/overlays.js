@@ -110,6 +110,10 @@ export function plugin({ cldImage, options } = {}) {
 
         if ( location === 'primary' ) {
           primary.push(`${qualifier}_${text[key]}`);
+        } else if ( qualifier === 'self' ) {
+          textTransformations.push(key);
+        } else if ( qualifier ) {
+          textTransformations.push(`${qualifier}_${text[key]}`);
         } else {
           textTransformations.push(text[key]);
         }

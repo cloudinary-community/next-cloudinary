@@ -34,6 +34,10 @@ export const position = {
 }
 
 export const text = {
+  border: {
+    qualifier: 'bo',
+    location: 'primary'
+  },
   color: {
     qualifier: 'co',
     location: 'primary'
@@ -49,6 +53,12 @@ export const text = {
   },
   letterSpacing: {
     qualifier: 'letter_spacing'
+  },
+  lineSpacing: {
+    qualifier: 'line_spacing'
+  },
+  stroke: {
+    qualifier: 'self'
   },
   textDecoration: {
     qualifier: false
