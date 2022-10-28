@@ -6,7 +6,8 @@
   "private": true,
   "workspaces": [
     "docs",
-    "next-cloudinary"
+    "next-cloudinary",
+    "scripts"
   ],
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.1",

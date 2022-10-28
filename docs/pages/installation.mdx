@@ -46,7 +46,7 @@ import { CldImage } from 'next-cloudinary';
 <CldImage
   width="960"
   height="600"
-  src="images/turtle"
+  src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
   sizes="100vw"
 />
 
@@ -84,7 +84,7 @@ import { CldOgImage } from 'next-cloudinary';
   height="1200"
   crop="fill"
   gravity="auto"
-  src="images/galaxy"
+  src={`${process.env.EXAMPLES_DIRECTORY}/galaxy`}
   text={{
     text: 'Next Cloudinary',
     color: 'white'

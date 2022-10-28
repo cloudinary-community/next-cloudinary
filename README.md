@@ -113,6 +113,30 @@ NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="<Your Cloudinary Upload Preset>"
 
 The Cloud Name is required for all usage, where the API Key and Secret currently is only used for Upload Widget usage. The Upload Preset is additionally used for the Upload Widgets.
 
+#### Uploading Example Images
+
+In order to run the Docs project, you need to have the images referenced available inside of your Cloudinary account.
+
+To do this, navigate to the `scripts` directory and first create a new `.env.` file with:
+
+```
+CLOUDINARY_CLOUD_NAME="<Your Cloudinary Cloud Name>"
+CLOUDINARY_API_KEY="<Your API Key>"
+CLOUDINARY_API_SECRET="<Your API Secret>"
+```
+
+Then run the upload script with:
+
+```
+yarn upload
+```
+
+By default, the images inside of `scripts/images.json` will be uploaded to the "images" directory inside of your Cloudinary account. To change the location, add the `CLOUDINARY_EXAMPLES_DIRECTORY` environment variable with your preferred directory:
+
+```
+CLOUDINARY_EXAMPLES_DIRECTORY="<Your Directory>"
+```
+
 #### Running the Project
 
 Once installed and configured, open two terminal tabs, navigating one to `next-cloudinary` and one to `docs`, running the following command in each:

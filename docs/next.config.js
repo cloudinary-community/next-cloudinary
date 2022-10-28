@@ -3,4 +3,8 @@ const withNextra = require('nextra')({
   themeConfig: './theme.config.js'
 });
 
-module.exports = withNextra();
+module.exports = withNextra({
+  env: {
+    EXAMPLES_DIRECTORY: process.env.NEXT_PUBLIC_CLOUDINARY_EXAMPLES_DIRECTORY || 'images'
+  }
+});

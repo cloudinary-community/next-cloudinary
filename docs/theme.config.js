@@ -27,7 +27,7 @@ export default {
       <meta name="theme-color" content="#000000" />
 
       <CldOgImage
-        src="images/turtle"
+        src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
         tint="100:0000FF:0p:FF1493:100p"
         blur="2000"
         overlays={[{

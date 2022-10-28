@@ -15,7 +15,7 @@ import { CldImage } from '../../../next-cloudinary';
   height="1200"
   crop="fill"
   gravity="auto"
-  src="images/white"
+  src={`${process.env.EXAMPLES_DIRECTORY}/white`}
   overlays={[
     {
       publicId: 'images/mountain',
