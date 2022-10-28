@@ -18,6 +18,7 @@ export default {
 
       <meta name="description" content="Powerful image and video APIs in Next.js with Cloudinary" />
       <meta name="og:title" content="Next Cloudinary" />
+      <meta name="og:type" content="website" />
       <meta name="og:description" content="Powerful image and video APIs in Next.js with Cloudinary" />
 
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
