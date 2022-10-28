@@ -12,13 +12,15 @@
 
 ######
 
-<a href="https://github.com/colbyfayock/next-cloudinary/actions/workflows/test_and_release.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/colbyfayock/next-cloudinary/Test%20&%20Release?label=Test%20%26%20Release&style=flat-square"></a> <a href="https://www.npmjs.com/package/next-cloudinary"><img alt="npm" src="https://img.shields.io/npm/v/next-cloudinary?style=flat-square"></a>
+<a href="https://github.com/colbyfayock/next-cloudinary/actions/workflows/test_and_release.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/colbyfayock/next-cloudinary/Test%20&%20Release?label=Test%20%26%20Release&style=flat-square"></a> <a href="https://www.npmjs.com/package/next-cloudinary"><img alt="npm" src="https://img.shields.io/npm/v/next-cloudinary?style=flat-square"></a> <a href="https://github.com/colbyfayock/next-cloudinary/blob/main/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/colbyfayock/next-cloudinary?label=License&style=flat-square"></a>
 
 # Next Cloudinary
 
 High-performance image delivery and uploading at scale in Next.js powered by Cloudinary.
 
-## 🧰 Features
+<a href="#-features">Features</a> • <a href="#-getting-started">Getting Started</a> • <a href="#-contributing">Community & Support</a> • <a href="#-contributing">Contributing</a>
+
+## ✨ Features
 
 * Automatically optimize images and deliver in modern formats
 * Remove backgrounds from images
@@ -31,7 +33,7 @@ High-performance image delivery and uploading at scale in Next.js powered by Clo
 
 **This plugin is a community library and not officially supported by Cloudinary.**
 
-## ⚡️ Getting Started
+## 🚀 Getting Started
 
 ### Installation
 
@@ -75,7 +77,14 @@ import { CldImage } from 'next-cloudinary';
 * [Social Media Card](https://next-cloudinary.spacejelly.dev/use-cases/social-media-card)
 * [Text Overlays](https://next-cloudinary.spacejelly.dev/use-cases/text-overlays)
 
-## ✨ Contributors
+## ❤️ Community & Support
+
+* [GitHub: Create an Issue](https://github.com/colbyfayock/next-cloudinary/issues)
+* [Twitter: @colbyfayock](https://twitter.com/colbyfayock)
+
+## 🛠 Contributing
+
+### Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
