@@ -3,13 +3,15 @@ import Script from 'next/script';
 
 const CldUploadWidget = ({
   children,
+  uploadPreset,
+  signatureEndpoint,
   onUpload,
   options,
-  signed,
-  signatureEndpoint,
 }) => {
   const cloudinary = useRef();
   const widget = useRef();
+
+  const signed = !!signatureEndpoint;
 
   /**
    * generateSignature
@@ -40,20 +42,25 @@ const CldUploadWidget = ({
     // either on page load or during the upload process. Read more about signed uploads at:
     // https://cloudinary.com/documentation/upload_widget#signed_uploads
 
-    const totalOptions = {
+    const uploadOptions = {
+      cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+      uploadPreset: uploadPreset || process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+      apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
       ...options,
-      ...(!!signed && {
-        uploadSignature: generateSignature,
-      }),
     };
 
-    // no need for apiSecret because of api/sign-cloudinary-params
-    if (signed && !totalOptions.apiKey) {
-      return new Error("Signed Upload needs apiKey!");
+    if ( signed ) {
+      uploadOptions.uploadSignature = generateSignature;
+
+      // No need for apiSecret here because of api/sign-cloudinary-params
+
+      if (!uploadOptions.apiKey) {
+        return new Error("Signed Upload needs apiKey!");
+      }
     }
 
     return cloudinary.current?.createUploadWidget(
-      totalOptions,
+      uploadOptions,
       function (error, result) {
         // The callback is a bit more chatty than failed or success so
         // only trigger when one of those are the case. You can additionally
@@ -99,9 +106,7 @@ const CldUploadWidget = ({
         id={`cloudinary-${Math.floor(Math.random() * 100)}`}
         src="https://widget.cloudinary.com/v2.0/global/all.js"
         onLoad={handleOnLoad}
-        onError={(e) => {
-          console.error("Script failed to load", e);
-        }}
+        onError={(e) => console.error(`Failed to load Cloudinary: ${e.message}`)}
       />
     </>
   );

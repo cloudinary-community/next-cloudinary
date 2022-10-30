@@ -1,20 +1,18 @@
 import CldUploadWidget from '../CldUploadWidget';
 
 const CldUploadButton = ({
-  onUpload,
   options,
-  signed,
-  label,
+  onUpload,
+  signatureEndpoint,
   children,
   ...props
 }) => {
   return (
     <>
       <CldUploadWidget
-        signed={signed}
         options={options}
         onUpload={onUpload}
-        signatureEndpoint={signed ?? props.signatureEndpoint}
+        signatureEndpoint={signatureEndpoint}
       >
         {({ open }) => {
           function handleOnClick(e) {
