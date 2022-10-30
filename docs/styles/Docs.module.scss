@@ -1,4 +1,11 @@
-.uploadButton {
-  background-color: cornflowerblue;
+@import "./settings/__settings";
+
+.button {
   color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: $color-cloudinary-orange;
+  padding: .6em 1.2em;
+  border: none;
+  border-radius: 999px;
 }

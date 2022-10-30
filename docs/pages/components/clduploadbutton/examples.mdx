@@ -26,16 +26,13 @@ import styles from '../../../styles/Docs.module.scss';
 <ImageGrid>
   <li>
     <CldUploadButton
-      signed={false}
       options={{
-        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-        uploadPreset:
-          process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+        uploadPreset: 'next-cloudinary-unsigned'
       }}
       onUpload={(error, result) => {
         /* Do Something With the Error or Result */
       }}
-      className={styles.uploadButton}
+      className={styles.button}
     >
       <span>Upload Image</span>
     </CldUploadButton>
