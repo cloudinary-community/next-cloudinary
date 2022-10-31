@@ -1,3 +1,10 @@
+# [0.6.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.5.0...v0.6.0) (2022-10-31)
+
+
+### Features
+
+* Upload Widget Docs & Simplification ([#55](https://github.com/colbyfayock/next-cloudinary/issues/55)) ([5b1492f](https://github.com/colbyfayock/next-cloudinary/commit/5b1492f48d9e6793e502fe3dc9ca64ddaa830522)), closes [#11](https://github.com/colbyfayock/next-cloudinary/issues/11) [#54](https://github.com/colbyfayock/next-cloudinary/issues/54)
+
 # [0.5.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.4.1...v0.5.0) (2022-10-28)
 
 
