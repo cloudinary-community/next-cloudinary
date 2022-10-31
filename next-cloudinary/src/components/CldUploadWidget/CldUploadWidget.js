@@ -3,10 +3,10 @@ import Script from 'next/script';
 
 const CldUploadWidget = ({
   children,
-  uploadPreset,
-  signatureEndpoint,
   onUpload,
   options,
+  signatureEndpoint,
+  uploadPreset,
 }) => {
   const cloudinary = useRef();
   const widget = useRef();

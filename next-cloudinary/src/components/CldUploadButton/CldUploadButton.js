@@ -1,27 +1,35 @@
 import CldUploadWidget from '../CldUploadWidget';
 
 const CldUploadButton = ({
-  options,
-  onUpload,
-  signatureEndpoint,
   children,
+  onClick,
+  onUpload,
+  options,
+  signatureEndpoint,
+  uploadPreset,
   ...props
 }) => {
   return (
     <>
       <CldUploadWidget
-        options={options}
         onUpload={onUpload}
+        options={options}
         signatureEndpoint={signatureEndpoint}
+        uploadPreset={uploadPreset}
       >
         {({ open }) => {
           function handleOnClick(e) {
             e.preventDefault();
+
             open();
+
+            if ( typeof onClick === 'function' ) {
+              onClick(e);
+            }
           }
           return (
-            <button onClick={handleOnClick} {...props}>
-              {children}
+            <button {...props} onClick={handleOnClick} >
+              {children || 'Upload'}
             </button>
           );
         }}
