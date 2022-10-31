@@ -15,23 +15,16 @@ import OgImage from '../../../components/OgImage';
 
 # Getting Started with CldUploadButton
 
+The CldUploadButton creates a button that uses an instance of the [Cloudinary Upload Widget](https://cloudinary.com/documentation/upload_widget) to give you an easy way to add upload capabilities to your Next.js app.
+
+At the core of it, CldUploadButton is a CldUploadWidget instance with a defined UI (a button). The same concepts apply, including having the option of using Signed or Unsigned uploads.
+
+[Read more about CldUploadWidget.](/components/clduploadwidget/basic-usage)
+
 ## Basic Usage
 
 ```jsx
-<UploadButton
-  signed={false}
-  options={{
-    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-    uploadPreset:
-      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
-  }}
-  onUpload={(error, result) => {
-    /* Do Something With the Error or Result */
-  }}
-  className={styles.uploadButton}
->
-  <span>Upload Image</span>
-</UploadButton>
+<UploadButton uploadPreset="next-cloudinary-unsigned" />
 ```
 
 ## Learn More about CldUploadButton

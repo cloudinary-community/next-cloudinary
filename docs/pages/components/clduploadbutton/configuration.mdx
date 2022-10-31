@@ -14,3 +14,17 @@ import OgImage from '../../../components/OgImage';
 />
 
 # CldUploadButton Configuration
+
+## Props
+
+| Prop Name          | Type               | Example                                |
+|--------------------|--------------------|----------------------------------------|
+| onClick            | function           | `function (event) { }`                 |
+| onUpload           | function           | `function (error, result, widget) { }` |
+| options            | object             | `{ encryption: {...} }`                |
+| signatureEndpoint  | string             | `"/api/sign-cloudinary-params.js"`     |
+| uploadPreset       | string             | `"my-upload-preset"`                   |
+
+`children` are rendered "as is" inside of the `<button>` element if provided, otherwise, the button will include a label of "Upload".
+
+The remaining props are spread onto the `<button>` element for full control of the UI.

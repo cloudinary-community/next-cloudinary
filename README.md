@@ -106,7 +106,6 @@ To work on the project, you need to have an active Cloudinary account. With the 
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="<Your Cloudinary Cloud Name>"
 NEXT_PUBLIC_CLOUDINARY_API_KEY="<Your Cloudinary API Key>"
 CLOUDINARY_API_SECRET="<Your Cloudinary API Secret>"
-NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="<Your Cloudinary Upload Preset>"
 ```
 
 > Note: The Cloudinary account can be free, but some features may not work beyond free tier like Background Removal
