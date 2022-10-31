@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import Callout from 'nextra-theme-docs/callout';
 
@@ -23,20 +24,60 @@ import styles from '../../../styles/Docs.module.scss';
 
 ## Effects
 
+export const UnsignedUpload = () => {
+  const [resource, setResource] = useState();
+  return (
+    <>
+      <CldUploadButton
+        className={styles.button}
+        onUpload={(error, result, widget) => {
+          setResource(result?.info);
+          widget.close();
+        }}
+        uploadPreset="next-cloudinary-unsigned"
+      />
+
+      <h3>Unsigned</h3>
+
+      <p>URL: { resource?.secure_url }</p>
+    </>
+  )
+}
+
+export const SignedUpload = () => {
+  const [resource, setResource] = useState();
+  return (
+    <>
+      <CldUploadButton
+        className={styles.button}
+        onUpload={(error, result, widget) => {
+          setResource(result?.info);
+          widget.close();
+        }}
+        signatureEndpoint="/api/sign-cloudinary-params"
+        uploadPreset="next-cloudinary-signed"
+      />
+
+      <h3>Signed</h3>
+
+      <p>URL: { resource?.secure_url }</p>
+    </>
+  )
+}
+
 <ImageGrid>
   <li>
-    <CldUploadButton
-      options={{
-        uploadPreset: 'next-cloudinary-unsigned'
-      }}
-      onUpload={(error, result) => {
-        /* Do Something With the Error or Result */
-      }}
-      className={styles.button}
-    >
-      <span>Upload Image</span>
-    </CldUploadButton>
+    <UnsignedUpload />
 
     ### Unsigned
   </li>
+  <li>
+    <SignedUpload />
+
+    ### Signed
+  </li>
 </ImageGrid>
+
+<Callout emoji={false}>
+  Button styles are not included as part of CldUploadButton and are only applied for this demo.
+</Callout>

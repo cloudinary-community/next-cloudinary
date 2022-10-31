@@ -14,3 +14,28 @@ import OgImage from '../../../components/OgImage';
 />
 
 # CldUploadWidget Configuration
+
+## Props
+
+| Prop Name          | Type               | Example                                |
+|--------------------|--------------------|----------------------------------------|
+| onUpload           | function           | `function (error, result, widget) { }` |
+| options            | object             | `{ encryption: {...} }`                |
+| signatureEndpoint  | string             | `"/api/sign-cloudinary-params.js"`     |
+| uploadPreset       | string             | `"my-upload-preset"`                   |
+
+## Composing Widget UI
+
+CldUploadWidget uses Render Props to pass options to the widget UI.
+
+To make this work, use a function as the direct child of a CldWidget Instance:
+
+```jsx
+<CldUploadWidget>
+  {({ cloudinary, widget, open }) => {
+    // UI
+  }}
+</CldUploadWidget>
+```
+
+The first and only argument is an object that contains instances of cloudinary, the widget, and an open function that controls displaying the Upload Widget UI.
