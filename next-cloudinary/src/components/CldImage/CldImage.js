@@ -56,9 +56,9 @@ const CldImage = props => {
     }
   }
 
-  if (props.src && props.useUrlTransformations) {
-    const transformations = getTransformations(props.src, props.useUrlTransformations);
-    imageProps.rawTransformations = transformations;
+  if (props.src && props.preserveTransformations) {
+    const transformations = getTransformations(props.src,props.preserveTransformations);
+    imageProps.rawTransformations = [...imageProps.rawTransformations,...transformations,];
   }
 
   return (
