@@ -3,6 +3,22 @@ import Image from 'next/image';
 import { createPlaceholderUrl, getPublicId, transformationPlugins } from '../../lib/cloudinary';
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
+function pollImage(imageOptions, options, cldOptions) {
+  try {
+    let res = fetch(cloudinaryLoader({ ...imageOptions, options }, cldOptions));
+    if (res.ok) {
+      return res.json();
+    }
+  } catch (e) {
+    if (e.statusCode == 423) {
+      await (new Promise((resolve) => {
+        setTimeout(() => resolve(), 500);
+      }));
+      return pollImage(imageOptions, options, cldOptions);
+    }
+  }
+}
+
 const CldImage = props => {
 
   const CLD_OPTIONS = [];
@@ -60,6 +76,9 @@ const CldImage = props => {
     <Image
       {...imageProps}
       loader={(options) => cloudinaryLoader({ ...imageProps, options }, cldOptions)}
+      onError={(options) => {
+        pollImage(imageProps, options, cldOptions);     
+      }}
     />
   );
 }
