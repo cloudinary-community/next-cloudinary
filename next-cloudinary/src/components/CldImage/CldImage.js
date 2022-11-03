@@ -5,7 +5,9 @@ import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
 const CldImage = props => {
 
-  const CLD_OPTIONS = [];
+  const CLD_OPTIONS = [
+    'deliveryType'
+  ];
 
   transformationPlugins.forEach(({ props = [] }) => {
     props.forEach(prop => {
