@@ -1,3 +1,10 @@
+# [0.8.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.7.0...v0.8.0) (2022-11-04)
+
+
+### Features
+
+* force feat for remote overlays ([e939175](https://github.com/colbyfayock/next-cloudinary/commit/e939175d028c2191e278c69f830c5bd3ead93af9))
+
 # [0.7.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.6.1...v0.7.0) (2022-11-04)
 
 
