@@ -61,7 +61,7 @@ const CldImage = props => {
   return (
     <Image
       {...imageProps}
-      loader={(options) => cloudinaryLoader({ ...imageProps, options }, cldOptions)}
+      loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions })}
     />
   );
 }
