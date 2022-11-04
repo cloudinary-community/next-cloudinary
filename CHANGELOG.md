@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.6.1...v0.7.0) (2022-11-04)
+
+
+### Features
+
+* force fix for responsive ([44dc4af](https://github.com/colbyfayock/next-cloudinary/commit/44dc4af3f150cf5eaf9927a3284c53147f54cd59))
+
 ## [0.6.1](https://github.com/colbyfayock/next-cloudinary/compare/v0.6.0...v0.6.1) (2022-11-03)
 
 
