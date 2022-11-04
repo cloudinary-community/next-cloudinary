@@ -1,3 +1,10 @@
+## [0.6.1](https://github.com/colbyfayock/next-cloudinary/compare/v0.6.0...v0.6.1) (2022-11-03)
+
+
+### Bug Fixes
+
+* Captures deliveryType as prop ([#58](https://github.com/colbyfayock/next-cloudinary/issues/58)) ([f4268bb](https://github.com/colbyfayock/next-cloudinary/commit/f4268bbe89455f01d0dc7dd7a6503cf3592a1e18)), closes [#57](https://github.com/colbyfayock/next-cloudinary/issues/57)
+
 # [0.6.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.5.0...v0.6.0) (2022-10-31)
 
 
