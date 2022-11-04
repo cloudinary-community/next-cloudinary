@@ -13,6 +13,26 @@ const cld = new Cloudinary({
 const TEST_PUBLIC_ID = 'test-public-id';
 
 describe('Plugins', () => {
+  describe('Image Overlays', () => {
+
+    it('should add a remote image overlay configured by overlay object', () => {
+      const cldImage = cld.image(TEST_PUBLIC_ID);
+
+      const options = {
+        overlays: [{
+          url: 'https://user-images.githubusercontent.com/1045274/199872380-ced2b84d-fce4-4fc9-9e76-48cb4a7fb35f.png'
+        }]
+      }
+
+      plugin({
+        cldImage,
+        options
+      });
+
+      expect(cldImage.toURL()).toContain(`l_fetch:aHR0cHM6Ly91c2VyLWltYWdlcy5naXRodWJ1c2VyY29udGVudC5jb20vMTA0NTI3NC8xOTk4NzIzODAtY2VkMmI4NGQtZmNlNC00ZmM5LTllNzYtNDhjYjRhN2ZiMzVmLnBuZw%3D%3D`);
+    });
+
+  })
   describe('Text Overlays', () => {
     it('should add a text overlay configured by overlay object', () => {
       const cldImage = cld.image(TEST_PUBLIC_ID);
