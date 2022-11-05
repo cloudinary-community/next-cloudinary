@@ -1,3 +1,5 @@
+import { encodeBase64 } from '../lib/util';
+
 import {
   primary as qualifiersPrimary,
   text as qualifiersText,
@@ -45,13 +47,14 @@ export function plugin({ cldImage, options } = {}) {
    * applyOverlay
    */
 
-  function applyOverlay({ publicId, position, text, effects: layerEffects = [], ...options }) {
+  function applyOverlay({ publicId, url, position, text, effects: layerEffects = [], ...options }) {
     const hasPublicId = typeof publicId === 'string';
+    const hasUrl = typeof url === 'string';
     const hasText = typeof text === 'object' || typeof text === 'string';
     const hasPosition = typeof position === 'object';
 
-    if ( !hasPublicId && !hasText ) {
-      console.warn(`An ${type} is missing Public ID or Text`);
+    if ( !hasPublicId && !hasUrl && !hasText ) {
+      console.warn(`An ${type} is missing Public ID, URL, or Text`);
       return;
     }
 
@@ -62,8 +65,10 @@ export function plugin({ cldImage, options } = {}) {
 
     if ( hasText ) {
       layerTransformation = `${typeQualifier}_text`;
-    } else {
+    } else if ( hasPublicId ) {
       layerTransformation = `${typeQualifier}_${publicId.replace(/\//g, ':')}`;
+    } else if ( hasUrl ) {
+      layerTransformation = `${typeQualifier}_fetch:${encodeBase64(url)}`;
     }
 
     // Begin organizing transformations based on what it is and the location

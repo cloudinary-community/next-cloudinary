@@ -1,3 +1,24 @@
+# [0.8.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.7.0...v0.8.0) (2022-11-04)
+
+
+### Features
+
+* force feat for remote overlays ([e939175](https://github.com/colbyfayock/next-cloudinary/commit/e939175d028c2191e278c69f830c5bd3ead93af9))
+
+# [0.7.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.6.1...v0.7.0) (2022-11-04)
+
+
+### Features
+
+* force fix for responsive ([44dc4af](https://github.com/colbyfayock/next-cloudinary/commit/44dc4af3f150cf5eaf9927a3284c53147f54cd59))
+
+## [0.6.1](https://github.com/colbyfayock/next-cloudinary/compare/v0.6.0...v0.6.1) (2022-11-03)
+
+
+### Bug Fixes
+
+* Captures deliveryType as prop ([#58](https://github.com/colbyfayock/next-cloudinary/issues/58)) ([f4268bb](https://github.com/colbyfayock/next-cloudinary/commit/f4268bbe89455f01d0dc7dd7a6503cf3592a1e18)), closes [#57](https://github.com/colbyfayock/next-cloudinary/issues/57)
+
 # [0.6.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.5.0...v0.6.0) (2022-10-31)
 
 

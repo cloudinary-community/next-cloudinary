@@ -21,7 +21,9 @@ function pollImage(imageOptions, options, cldOptions) {
 
 const CldImage = props => {
 
-  const CLD_OPTIONS = [];
+  const CLD_OPTIONS = [
+    'deliveryType'
+  ];
 
   transformationPlugins.forEach(({ props = [] }) => {
     props.forEach(prop => {
@@ -75,10 +77,10 @@ const CldImage = props => {
   return (
     <Image
       {...imageProps}
-      loader={(options) => cloudinaryLoader({ ...imageProps, options }, cldOptions)}
+      loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions })}
       onError={(options) => {
         pollImage(imageProps, options, cldOptions);     
-      }}
+      })
     />
   );
 }
