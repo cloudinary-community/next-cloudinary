@@ -1,6 +1,6 @@
 {
   "name": "next-cloudinary",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "main": "dist/next-cloudinary.umd.js",
   "module": "dist/next-cloudinary.module.js",
   "umd:main": "dist/next-cloudinary.umd.js",
