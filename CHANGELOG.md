@@ -1,3 +1,15 @@
+# [1.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.9.0...v1.0.0) (2022-11-15)
+
+
+### Features
+
+* v1.0.0 ([6facf45](https://github.com/colbyfayock/next-cloudinary/commit/6facf45c31d6ee4adb1bc500f4b6f23742597b6d))
+
+
+### BREAKING CHANGES
+
+* cutting release
+
 # [0.9.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.8.0...v0.9.0) (2022-11-09)
 
 
