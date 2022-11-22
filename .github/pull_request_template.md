@@ -4,10 +4,10 @@
 
 ## Issue Ticket Number
 
-<!-- Specify which issue this fixes by referencing the issue number (`#<ISSUE_NUMBER>`) or issue URL. -->
-<!-- Example: Fixes https://github.com/colbyfayock/next-cloudinary/issues/<ISSUE_NUMBER> -->
+Fixes #<ISSUE_NUMBER>
 
-Fixes 
+<!-- Specify above which issue this fixes by referencing the issue number (`#<ISSUE_NUMBER>`) or issue URL. -->
+<!-- Example: Fixes https://github.com/colbyfayock/next-cloudinary/issues/<ISSUE_NUMBER> -->
 
 ## Type of change
 
