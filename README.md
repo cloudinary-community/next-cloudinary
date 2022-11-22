@@ -72,8 +72,8 @@ import { CldImage } from 'next-cloudinary';
 ### Other Use Cases
 
 * [Background Removal](https://next-cloudinary.spacejelly.dev/use-cases/background-removal)
-* [Image Overlays](https://next-cloudinary.spacejelly.dev/use-cases/image-underlays)
-* [Image Underlays](https://next-cloudinary.spacejelly.dev/use-cases/image-overlays)
+* [Image Overlays](https://next-cloudinary.spacejelly.dev/use-cases/image-overlays)
+* [Image Underlays](https://next-cloudinary.spacejelly.dev/use-cases/image-underlays)
 * [Social Media Card](https://next-cloudinary.spacejelly.dev/use-cases/social-media-card)
 * [Text Overlays](https://next-cloudinary.spacejelly.dev/use-cases/text-overlays)
 
