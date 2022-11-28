@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.0.0...v1.1.0) (2022-11-28)
+
+
+### Features
+
+* Named Transformations ([#69](https://github.com/colbyfayock/next-cloudinary/issues/69)) ([3f7c8bf](https://github.com/colbyfayock/next-cloudinary/commit/3f7c8bf1b86b9aabebd390a80d150afb77ed4e29)), closes [#68](https://github.com/colbyfayock/next-cloudinary/issues/68)
+
 # [1.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.9.0...v1.0.0) (2022-11-15)
 
 
