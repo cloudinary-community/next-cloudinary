@@ -459,6 +459,25 @@ import ImageGrid from '../../../components/ImageGrid';
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
       sizes="100vw"
+      transformations={[
+        'next-cloudinary-named-transformation'
+      ]}
+    />
+
+    ### Named Transformations
+
+    ```jsx
+    transformations={[
+      'next-cloudinary-named-transformation'
+    ]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
+      sizes="100vw"
       rawTransformations={[
         'e_blur:2000',
         'e_tint:100:0000FF:0p:FF1493:100p'
