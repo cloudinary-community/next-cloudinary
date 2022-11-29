@@ -3,7 +3,7 @@ import Callout from 'nextra-theme-docs/callout';
 
 import OgImage from '../../components/OgImage';
 
-import { CldImage } from '../../../next-cloudinary';
+import { CldImage, CldOgImage } from '../../../next-cloudinary';
 
 <Head>
   <title>Social Media Cards - Next Cloudinary</title>
@@ -30,6 +30,7 @@ import { CldImage } from '../../../next-cloudinary';
   crop="fill"
   gravity="auto"
   src={`${process.env.EXAMPLES_DIRECTORY}/white`}
+  sizes="100w"
   overlays={[
     {
       publicId: 'images/mountain',
@@ -42,39 +43,39 @@ import { CldImage } from '../../../next-cloudinary';
         {
           crop: 'fill',
           gravity: 'auto',
-          width: 1280,
-          height: 1920
+          width: 800,
+          height: 1200
         }
       ]
     },
     {
-      width: 2240,
+      width: 1400,
       crop: 'fit',
       text: {
         color: 'black',
         fontFamily: 'Source Sans Pro',
-        fontSize: 240,
+        fontSize: 160,
         fontWeight: 'bold',
         text: 'Next Cloudinary'
       },
       position: {
         x: 100,
-        y: -140,
+        y: -100,
         gravity: 'west',
       },
     },
     {
-      width: 2240,
+      width: 1400,
       crop: 'fit',
       text: {
         color: 'black',
         fontFamily: 'Source Sans Pro',
-        fontSize: 128,
+        fontSize: 80,
         text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
       },
       position: {
         x: 100,
-        y: 140,
+        y: 100,
         gravity: 'west',
       },
     },
@@ -108,7 +109,7 @@ import { CldImage } from '../../../next-cloudinary';
       text: {
         color: 'black',
         fontFamily: 'Source Sans Pro',
-        fontSize: 150,
+        fontSize: 160,
         fontWeight: 'bold',
         text: 'Next Cloudinary'
       },
