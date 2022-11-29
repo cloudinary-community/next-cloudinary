@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.1.0...v1.2.0) (2022-11-29)
+
+
+### Features
+
+* Zoom ([#71](https://github.com/colbyfayock/next-cloudinary/issues/71)) ([aace374](https://github.com/colbyfayock/next-cloudinary/commit/aace374927be74fe91d853fa0c3491e28fd4790b)), closes [#70](https://github.com/colbyfayock/next-cloudinary/issues/70)
+
 # [1.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.0.0...v1.1.0) (2022-11-28)
 
 
