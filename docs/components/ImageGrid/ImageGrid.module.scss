@@ -10,4 +10,12 @@
     grid-template-columns: repeat(2, calc(50% - 1.5em));
   }
 
+  &[data-column-count="2"] {
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+
+  }
+
 }

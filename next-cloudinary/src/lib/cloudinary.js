@@ -65,7 +65,18 @@ export function constructCloudinaryUrl({ options, config }) {
     if ( pluginOptions?.format ) {
       options.format = pluginOptions.format;
     }
+
+    if ( pluginOptions?.width ) {
+      options.resize = {
+        width: pluginOptions?.width
+      };
+    }
   });
+
+  if ( options.resize ) {
+    const { width, crop = 'scale' } = options.resize;
+    cldImage.effect(`c_${crop},w_${width}`);
+  }
 
   return cldImage
           .setDeliveryType(options.deliveryType || 'upload')

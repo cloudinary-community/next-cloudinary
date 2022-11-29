@@ -80,7 +80,32 @@ describe('Cloudinary Loader', () => {
       expect(result).toBe('https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_960/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg')
     });
 
-    it('should return a responsive images with loader options different from props', async () => {
+    it('should return responsive images', async () => {
+      const imageProps = {
+        height: '2724',
+        sizes: '100vw',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg',
+        width: '4096',
+        deliveryType: 'fetch'
+      }
+
+      const cldOptions = {};
+
+      // The resulting widths should only be resized from imageProps if the value is smaller, to avoid upscaling an image
+      const loaderOptions1 = { width: 2048 };
+      const result1 = cloudinaryLoader({ loaderOptions: loaderOptions1, imageProps, cldOptions, cldConfig });
+      expect(result1).toBe(`https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_${imageProps.width}/c_scale,w_${loaderOptions1.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+
+      const loaderOptions2 = { width: 3840 };
+      const result2 = cloudinaryLoader({ loaderOptions: loaderOptions2, imageProps, cldOptions, cldConfig });
+      expect(result2).toBe(`https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_${imageProps.width}/c_scale,w_${loaderOptions2.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+
+      const loaderOptions3 = { width: 640 };
+      const result3 = cloudinaryLoader({ loaderOptions: loaderOptions3, imageProps, cldOptions, cldConfig });
+      expect(result3).toBe(`https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_${imageProps.width}/c_scale,w_${loaderOptions3.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+    });
+
+    it('should return responsive images without upscaling for smaller images', async () => {
       const imageProps = {
         height: '600',
         sizes: '100vw',
@@ -91,17 +116,22 @@ describe('Cloudinary Loader', () => {
 
       const cldOptions = {};
 
-      const result1 = cloudinaryLoader({ loaderOptions: { width: 2048 }, imageProps, cldOptions, cldConfig });
-      expect(result1).toBe('https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_2048/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg')
+      // The resulting widths should only be resized from imageProps if the value is smaller, to avoid upscaling an image
 
-      const result2 = cloudinaryLoader({ loaderOptions: { width: 3840 }, imageProps, cldOptions, cldConfig });
-      expect(result2).toBe('https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_3840/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg')
+      const loaderOptions1 = { width: 2048 };
+      const result1 = cloudinaryLoader({ loaderOptions: loaderOptions1, imageProps, cldOptions, cldConfig });
+      expect(result1).toBe(`https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_${imageProps.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
 
-      const result3 = cloudinaryLoader({ loaderOptions: { width: 640 }, imageProps, cldOptions, cldConfig });
-      expect(result3).toBe('https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_640/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg')
+      const loaderOptions2 = { width: 3840 };
+      const result2 = cloudinaryLoader({ loaderOptions: loaderOptions2, imageProps, cldOptions, cldConfig });
+      expect(result2).toBe(`https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_${imageProps.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+
+      const loaderOptions3 = { width: 640 };
+      const result3 = cloudinaryLoader({ loaderOptions: loaderOptions3, imageProps, cldOptions, cldConfig });
+      expect(result3).toBe(`https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_${imageProps.width}/c_scale,w_${loaderOptions3.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
     });
 
-    it('should return a responsive images with height when crop is not limit', async () => {
+    it('should return a responsive images with height when crop is not limit without upscaling', async () => {
       const imageProps = {
         height: '600',
         sizes: '100vw',
@@ -114,14 +144,54 @@ describe('Cloudinary Loader', () => {
         crop: 'fill'
       };
 
-      const result1 = cloudinaryLoader({ loaderOptions: { width: 2048 }, imageProps, cldOptions, cldConfig });
-      expect(result1).toBe('https://res.cloudinary.com/test-cloud/image/fetch/c_fill,w_2048,h_1280,g_auto/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg')
+      // The resulting widths should only be resized from imageProps if the value is smaller, to avoid upscaling an image
 
-      const result2 = cloudinaryLoader({ loaderOptions: { width: 3840 }, imageProps, cldOptions, cldConfig });
-      expect(result2).toBe('https://res.cloudinary.com/test-cloud/image/fetch/c_fill,w_3840,h_2400,g_auto/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg')
+      const loaderOptions1 = { width: 2048 };
+      const result1 = cloudinaryLoader({ loaderOptions: loaderOptions1, imageProps, cldOptions, cldConfig });
+      expect(result1).toBe(`https://res.cloudinary.com/test-cloud/image/fetch/c_fill,w_${imageProps.width},h_${imageProps.height},g_auto/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
 
-      const result3 = cloudinaryLoader({ loaderOptions: { width: 640 }, imageProps, cldOptions, cldConfig });
-      expect(result3).toBe('https://res.cloudinary.com/test-cloud/image/fetch/c_fill,w_640,h_400,g_auto/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg')
+      const loaderOptions2 = { width: 3840 };
+      const result2 = cloudinaryLoader({ loaderOptions: loaderOptions2, imageProps, cldOptions, cldConfig });
+      expect(result2).toBe(`https://res.cloudinary.com/test-cloud/image/fetch/c_fill,w_${imageProps.width},h_${imageProps.height},g_auto/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+
+      const loaderOptions3 = { width: 640 };
+      const result3 = cloudinaryLoader({ loaderOptions: loaderOptions3, imageProps, cldOptions, cldConfig });
+      expect(result3).toBe(`https://res.cloudinary.com/test-cloud/image/fetch/c_fill,w_${imageProps.width},h_${imageProps.height},g_auto/c_scale,w_${loaderOptions3.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+    });
+
+    it('should add any resizing after any effects are added', async () => {
+      const imageProps = {
+        height: '600',
+        sizes: '100vw',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg',
+        width: '960',
+        deliveryType: 'fetch',
+      }
+
+      const cldOptions = {
+        crop: 'fill',
+        overlays: [{
+          url: 'https://user-images.githubusercontent.com/1045274/199872380-ced2b84d-fce4-4fc9-9e76-48cb4a7fb35f.png'
+        }]
+      };
+
+      const urlBufer = Buffer.from(cldOptions.overlays[0].url);
+      const urlBase64 = urlBufer.toString('base64');
+      const urlParam = encodeURIComponent(urlBase64);
+
+      // The resulting widths should only be resized from imageProps if the value is smaller, to avoid upscaling an image
+
+      const loaderOptions1 = { width: 2048 };
+      const result1 = cloudinaryLoader({ loaderOptions: loaderOptions1, imageProps, cldOptions, cldConfig });
+      expect(result1).toBe(`https://res.cloudinary.com/test-cloud/image/fetch/c_fill,w_${imageProps.width},h_${imageProps.height},g_auto/l_fetch:${urlParam},/fl_layer_apply,fl_no_overflow/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+
+      const loaderOptions2 = { width: 3840 };
+      const result2 = cloudinaryLoader({ loaderOptions: loaderOptions2, imageProps, cldOptions, cldConfig });
+      expect(result2).toBe(`https://res.cloudinary.com/test-cloud/image/fetch/c_fill,w_${imageProps.width},h_${imageProps.height},g_auto/l_fetch:${urlParam},/fl_layer_apply,fl_no_overflow/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+
+      const loaderOptions3 = { width: 640 };
+      const result3 = cloudinaryLoader({ loaderOptions: loaderOptions3, imageProps, cldOptions, cldConfig });
+      expect(result3).toBe(`https://res.cloudinary.com/test-cloud/image/fetch/c_fill,w_${imageProps.width},h_${imageProps.height},g_auto/l_fetch:${urlParam},/fl_layer_apply,fl_no_overflow/c_scale,w_${loaderOptions3.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
     });
   })
 });

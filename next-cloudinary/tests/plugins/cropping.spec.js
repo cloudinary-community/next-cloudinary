@@ -35,4 +35,16 @@ describe('Cropping plugin', () => {
     plugin({ cldImage, options });
     expect(cldImage.toURL()).toContain(`c_${options.crop},w_${options.width},h_${options.height},g_auto/${TEST_PUBLIC_ID}`);
   });
+
+  it('should apply a zoom if set explicitly', () => {
+    const cldImage = cld.image(TEST_PUBLIC_ID);
+    const options = {
+      width: 100,
+      height: 100,
+      crop: 'fill',
+      zoom: 0.5
+    };
+    plugin({ cldImage, options });
+    expect(cldImage.toURL()).toContain(`c_${options.crop},w_${options.width},h_${options.height},g_auto,z_${options.zoom}/${TEST_PUBLIC_ID}`);
+  });
 });
