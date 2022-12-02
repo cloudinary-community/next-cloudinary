@@ -1,12 +1,17 @@
 import { CldOgImage } from '../next-cloudinary';
 
 export default {
-  github: 'https://github.com/colbyfayock/next-cloudinary', // GitHub link in the navbar
-  projectLink: 'https://github.com/colbyfayock/next-cloudinary', // GitHub link in the navbar
+  project: {
+    link: 'https://github.com/colbyfayock/next-cloudinary'
+  },
   docsRepositoryBase: 'https://github.com/colbyfayock/next-cloudinary/tree/main/docs',
   titleSuffix: ' – Next Cloudinary',
-  footerText: `MIT ${new Date().getFullYear()} © Colby Fayock`,
-  footerEditLink: 'Edit this page on GitHub',
+  footer: {
+    text: `MIT ${new Date().getFullYear()} © Colby Fayock`,
+  },
+  editLink: {
+    text: 'Edit this page on GitHub'
+  },
   logo: (
     <strong>Next Cloudinary</strong>
   ),
@@ -27,7 +32,5 @@ export default {
       <link rel="manifest" href="/site.webmanifest" />
       <meta name="theme-color" content="#000000" />
     </>
-  ),
-  prevLinks: false,
-  nextLinks: false,
+  )
 }
