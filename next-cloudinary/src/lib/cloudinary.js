@@ -3,7 +3,6 @@ import { Cloudinary } from '@cloudinary/url-gen';
 import * as croppingPlugin from '../plugins/cropping';
 import * as effectsPlugin from '../plugins/effects';
 import * as overlaysPlugin from '../plugins/overlays';
-import * as namedTransformationsPlugin from '../plugins/named-transformations';
 import * as rawTransformationsPlugin from '../plugins/raw-transformations';
 import * as removeBackgroundPlugin from '../plugins/remove-background';
 import * as underlaysPlugin from '../plugins/underlays';
@@ -22,7 +21,6 @@ export const transformationPlugins = [
   croppingPlugin,
   effectsPlugin,
   overlaysPlugin,
-  namedTransformationsPlugin,
   underlaysPlugin,
   zoompanPlugin,
 
@@ -65,18 +63,7 @@ export function constructCloudinaryUrl({ options, config }) {
     if ( pluginOptions?.format ) {
       options.format = pluginOptions.format;
     }
-
-    if ( pluginOptions?.width ) {
-      options.resize = {
-        width: pluginOptions?.width
-      };
-    }
   });
-
-  if ( options.resize ) {
-    const { width, crop = 'scale' } = options.resize;
-    cldImage.effect(`c_${crop},w_${width}`);
-  }
 
   return cldImage
           .setDeliveryType(options.deliveryType || 'upload')
@@ -116,37 +103,6 @@ export function getPublicId(src) {
   }
 
   return src;
-}
-
-/**
- * Retrieves the transformations added to a cloudiary image url. If no transformation is recognized it returns an empty array.
- *
- * @param {string} src The cloudiary url.
- *
- * @return {array} The array of transformations
- */
-
- export function getTransformations(src, preserveTransformations) {
-  if (typeof src !== "string") {
-    throw new Error(`Invalid src of type ${typeof src}`);
-  }
-
-  if (src.includes("res.cloudinary.com") && preserveTransformations) {
-    const regex = new RegExp(
-      "(https?)://(res.cloudinary.com)/([^/]+)/(image|video|raw)/(upload|authenticated)/(.*)/(v[0-9]+)/(.+)(?:.[a-z]{3})?",
-      "gi"
-    );
-    const groups = regex.exec(src);
-    const transformationStr = groups.slice(1).find((i) => i.includes("_"));
-
-    if (transformationStr) {
-      return transformationStr.split(",").join("/").split("/");
-    } else {
-      return [];
-    }
-  }
-
-  return [];
 }
 
 /**
