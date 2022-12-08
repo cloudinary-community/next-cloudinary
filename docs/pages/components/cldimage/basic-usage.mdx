@@ -48,6 +48,17 @@ You can further take advantage of Cloudinary features like background removal an
 />
 ```
 
+You can also take advantage of Cloudinary features like auto parsing of transformations from src as you can add all transformations at once like `<Cld Url>/<Transformations>/<Version>/<Public Id>`
+
+```
+<CldImage
+  width="600"
+  height="600"
+  src="<Url Containing Transformations>" 
+  preserveTransformations={true}
+/>
+```
+
 As CldImage is a wrapper around the Next.js Image component, all built-in Image component features will work out-of-the-box including the `layout` prop.
 
 ## Watch & Learn

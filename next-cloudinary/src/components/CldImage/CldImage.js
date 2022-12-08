@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { createPlaceholderUrl, getPublicId, transformationPlugins } from '../../lib/cloudinary';
+import { createPlaceholderUrl, getPublicId, transformationPlugins, getTransformations } from '../../lib/cloudinary';
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
 const CldImage = props => {
@@ -56,6 +56,11 @@ const CldImage = props => {
     if ( imageProps.placeholder !== 'blur' ) {
       imageProps.placeholder = 'blur';
     }
+  }
+
+  if (props.src && props.preserveTransformations) {
+    const transformations = getTransformations(props.src,props.preserveTransformations);
+    imageProps.rawTransformations = [...imageProps.rawTransformations,...transformations,];
   }
 
   return (
