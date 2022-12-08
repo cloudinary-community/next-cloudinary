@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.2.0...v1.3.0) (2022-12-08)
+
+
+### Features
+
+* Extract transformations and effect in url construct ([#53](https://github.com/colbyfayock/next-cloudinary/issues/53)) ([4990d9e](https://github.com/colbyfayock/next-cloudinary/commit/4990d9e3b235a21b5f7be1c41b139503fd4665d7)), closes [#9](https://github.com/colbyfayock/next-cloudinary/issues/9)
+
 # [1.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.1.0...v1.2.0) (2022-11-29)
 
 
