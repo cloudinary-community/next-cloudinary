@@ -1,23 +1,10 @@
+import { useState } from 'react';
 import Image from 'next/image';
 
-import { createPlaceholderUrl, getPublicId, transformationPlugins } from '../../lib/cloudinary';
+import { createPlaceholderUrl, getPublicId, transformationPlugins, getTransformations, pollForProcessingImage } from '../../lib/cloudinary';
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
-function pollImage(imageOptions, options, cldOptions) {
-  try {
-    let res = fetch(cloudinaryLoader({ ...imageOptions, options }, cldOptions));
-    if (res.ok) {
-      return res.json();
-    }
-  } catch (e) {
-    if (e.statusCode === 423) {
-      setTimeout(pollImage, 500, imageOptions, options, cldOptions);
-    }
-  }
-}
-
 const CldImage = props => {
-
   const CLD_OPTIONS = [
     'deliveryType'
   ];
@@ -38,6 +25,9 @@ const CldImage = props => {
   Object.keys(props)
     .filter(key => !CLD_OPTIONS.includes(key))
     .forEach(key => imageProps[key] = props[key]);
+
+  const defaultImgKey = Object.keys(imageProps).map(key => `${key}:${imageProps[key]}`).join(';');
+  const [imgKey, setImgKey] = useState(defaultImgKey);
 
   // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
 
@@ -71,11 +61,28 @@ const CldImage = props => {
     }
   }
 
+  if (props.src && props.preserveTransformations) {
+    const transformations = getTransformations(props.src,props.preserveTransformations);
+    imageProps.rawTransformations = [...imageProps.rawTransformations,...transformations,];
+  }
+
+  /**
+   * handleOnError
+   */
+
+  async function handleOnError(options) {
+    const result = await pollForProcessingImage({ src: options.target.src })
+    if ( result ) {
+      setImgKey(`${defaultImgKey};${Date.now()}`);
+    }
+  }
+
   return (
     <Image
+      key={imgKey}
       {...imageProps}
       loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions })}
-      onError={(options) => pollImage(imageProps, options, cldOptions)}
+      onError={handleOnError}
     />
   );
 }
