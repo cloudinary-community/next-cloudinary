@@ -1,0 +1,23 @@
+.video {
+  margin-left: auto;
+  margin-right: auto;
+
+  figcaption {
+    text-align: center;
+    margin-top: 1em;
+  }
+}
+
+.videoContainer {
+  position: relative;
+  overflow: hidden;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}

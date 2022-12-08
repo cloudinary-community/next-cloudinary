@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Callout from 'nextra-theme-docs/callout';
+import { Callout } from 'nextra-theme-docs';
 
 import { CldImage } from '../../../../next-cloudinary';
 
@@ -27,7 +27,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       removeBackground
     />
 
@@ -46,7 +46,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       zoompan="loop"
     />
 
@@ -61,7 +61,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       blur="1200"
     />
 
@@ -76,7 +76,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       pixelate
     />
 
@@ -91,7 +91,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       grayscale
     />
 
@@ -106,7 +106,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       tint="equalize:80:blue:blueviolet"
     />
 
@@ -128,7 +128,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="600"
       height="900"
       src={`${process.env.EXAMPLES_DIRECTORY}/woman-headphones`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       crop="thumb"
       gravity="auto"
     />
@@ -141,7 +141,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="600"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/woman-headphones`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       crop="thumb"
       gravity="auto"
     />
@@ -158,7 +158,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="600"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/woman-headphones`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       crop="thumb"
       gravity="faces"
     />
@@ -168,6 +168,25 @@ import ImageGrid from '../../../components/ImageGrid';
     ```jsx
     crop="thumb"
     gravity="faces"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="600"
+      height="600"
+      src={`${process.env.EXAMPLES_DIRECTORY}/woman-headphones`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      crop="thumb"
+      gravity="faces"
+      zoom="0.5"
+    />
+
+    ### Thumbnail with Faces Gravity and Zoom
+
+    ```jsx
+    crop="thumb"
+    gravity="faces"
+    zoom="0.5"
     ```
   </li>
 </ImageGrid>
@@ -180,7 +199,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       placeholder="blur"
     />
 
@@ -195,7 +214,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       placeholder="grayscale"
     />
 
@@ -210,7 +229,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       placeholder="color:blueviolet"
     />
 
@@ -230,9 +249,9 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       overlays={[{
-        publicId: 'images/earth',
+        publicId: `${process.env.EXAMPLES_DIRECTORY}/earth`,
         position: {
           x: 50,
           y: 50,
@@ -253,7 +272,7 @@ import ImageGrid from '../../../components/ImageGrid';
 
     ```jsx
     overlays={[{
-      publicId: 'images/earth',
+      publicId: `images/earth`,
       position: {
         x: 10,
         y: 10,
@@ -280,7 +299,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       removeBackground
       underlay="images/galaxy"
     />
@@ -301,7 +320,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       removeBackground
       underlays={[
         {
@@ -365,7 +384,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="1335"
       height="891"
       src={`${process.env.EXAMPLES_DIRECTORY}/galaxy`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       blur="2000"
       brightness="300"
       text="Cool Beans"
@@ -382,7 +401,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="1335"
       height="891"
       src={`${process.env.EXAMPLES_DIRECTORY}/galaxy`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       blur="2000"
       brightness="300"
       overlays={[{
@@ -403,7 +422,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="1335"
       height="891"
       src={`${process.env.EXAMPLES_DIRECTORY}/sneakers`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
       overlays={[{
         width: 2670 - 20,
         crop: 'fit',
@@ -416,7 +435,7 @@ import ImageGrid from '../../../components/ImageGrid';
         text: {
           color: 'blueviolet',
           fontFamily: 'Source Sans Pro',
-          fontSize: 250,
+          fontSize: 160,
           fontWeight: 'bold',
           textDecoration: 'underline',
           letterSpacing: 14,
@@ -439,7 +458,7 @@ import ImageGrid from '../../../components/ImageGrid';
       text: {
         color: 'blueviolet',
         fontFamily: 'Source Sans Pro',
-        fontSize: 120,
+        fontSize: 160,
         fontWeight: 'bold',
         textDecoration: 'underline',
         letterSpacing: 14,
@@ -458,7 +477,26 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="100vw"
+      sizes="(max-width: 480px) 100vw, 50vw"
+      transformations={[
+        'next-cloudinary-named-transformation'
+      ]}
+    />
+
+    ### Named Transformations
+
+    ```jsx
+    transformations={[
+      'next-cloudinary-named-transformation'
+    ]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
       rawTransformations={[
         'e_blur:2000',
         'e_tint:100:0000FF:0p:FF1493:100p'
@@ -473,5 +511,16 @@ import ImageGrid from '../../../components/ImageGrid';
       'e_tint:100:0000FF:0p:FF1493:100p'
     ]}
     ```
+  </li>
+</ImageGrid>
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.EXAMPLES_DIRECTORY}/c_fill,h_300,w_250/e_blur:300/turtle`}
+      preserveTransformations
+    />
   </li>
 </ImageGrid>

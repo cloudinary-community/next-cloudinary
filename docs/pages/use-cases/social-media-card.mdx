@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import Callout from 'nextra-theme-docs/callout';
+import { Callout } from 'nextra-theme-docs';
 
 import OgImage from '../../components/OgImage';
 
-import { CldImage } from '../../../next-cloudinary';
+import { CldImage, CldOgImage } from '../../../next-cloudinary';
 
 <Head>
   <title>Social Media Cards - Next Cloudinary</title>
@@ -30,6 +30,7 @@ import { CldImage } from '../../../next-cloudinary';
   crop="fill"
   gravity="auto"
   src={`${process.env.EXAMPLES_DIRECTORY}/white`}
+  sizes="100w"
   overlays={[
     {
       publicId: 'images/mountain',
@@ -53,7 +54,7 @@ import { CldImage } from '../../../next-cloudinary';
       text: {
         color: 'black',
         fontFamily: 'Source Sans Pro',
-        fontSize: 150,
+        fontSize: 160,
         fontWeight: 'bold',
         text: 'Next Cloudinary'
       },
@@ -108,7 +109,7 @@ import { CldImage } from '../../../next-cloudinary';
       text: {
         color: 'black',
         fontFamily: 'Source Sans Pro',
-        fontSize: 150,
+        fontSize: 160,
         fontWeight: 'bold',
         text: 'Next Cloudinary'
       },

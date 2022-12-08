@@ -1,3 +1,43 @@
+# [1.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.2.0...v1.3.0) (2022-12-08)
+
+
+### Features
+
+* Extract transformations and effect in url construct ([#53](https://github.com/colbyfayock/next-cloudinary/issues/53)) ([4990d9e](https://github.com/colbyfayock/next-cloudinary/commit/4990d9e3b235a21b5f7be1c41b139503fd4665d7)), closes [#9](https://github.com/colbyfayock/next-cloudinary/issues/9)
+
+# [1.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.1.0...v1.2.0) (2022-11-29)
+
+
+### Features
+
+* Zoom ([#71](https://github.com/colbyfayock/next-cloudinary/issues/71)) ([aace374](https://github.com/colbyfayock/next-cloudinary/commit/aace374927be74fe91d853fa0c3491e28fd4790b)), closes [#70](https://github.com/colbyfayock/next-cloudinary/issues/70)
+
+# [1.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.0.0...v1.1.0) (2022-11-28)
+
+
+### Features
+
+* Named Transformations ([#69](https://github.com/colbyfayock/next-cloudinary/issues/69)) ([3f7c8bf](https://github.com/colbyfayock/next-cloudinary/commit/3f7c8bf1b86b9aabebd390a80d150afb77ed4e29)), closes [#68](https://github.com/colbyfayock/next-cloudinary/issues/68)
+
+# [1.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.9.0...v1.0.0) (2022-11-15)
+
+
+### Features
+
+* v1.0.0 ([6facf45](https://github.com/colbyfayock/next-cloudinary/commit/6facf45c31d6ee4adb1bc500f4b6f23742597b6d))
+
+
+### BREAKING CHANGES
+
+* cutting release
+
+# [0.9.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.8.0...v0.9.0) (2022-11-09)
+
+
+### Features
+
+* React peer dependencies ([#65](https://github.com/colbyfayock/next-cloudinary/issues/65)) ([5a084d5](https://github.com/colbyfayock/next-cloudinary/commit/5a084d5bee603fbb64727819ffcaf0ac0ea1b9bd)), closes [#64](https://github.com/colbyfayock/next-cloudinary/issues/64)
+
 # [0.8.0](https://github.com/colbyfayock/next-cloudinary/compare/v0.7.0...v0.8.0) (2022-11-04)
 
 
