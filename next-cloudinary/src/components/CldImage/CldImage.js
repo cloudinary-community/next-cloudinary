@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import Image from 'next/image';
 
-import { createPlaceholderUrl, getPublicId, transformationPlugins, getTransformations } from '../../lib/cloudinary';
+import { createPlaceholderUrl, getPublicId, transformationPlugins, getTransformations, pollForProcessingImage } from '../../lib/cloudinary';
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
 const CldImage = props => {
-
   const CLD_OPTIONS = [
     'deliveryType'
   ];
@@ -25,6 +25,9 @@ const CldImage = props => {
   Object.keys(props)
     .filter(key => !CLD_OPTIONS.includes(key))
     .forEach(key => imageProps[key] = props[key]);
+
+  const defaultImgKey = Object.keys(imageProps).map(key => `${key}:${imageProps[key]}`).join(';');
+  const [imgKey, setImgKey] = useState(defaultImgKey);
 
   // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
 
@@ -63,10 +66,23 @@ const CldImage = props => {
     imageProps.rawTransformations = [...imageProps.rawTransformations,...transformations,];
   }
 
+  /**
+   * handleOnError
+   */
+
+  async function handleOnError(options) {
+    const result = await pollForProcessingImage({ src: options.target.src })
+    if ( result ) {
+      setImgKey(`${defaultImgKey};${Date.now()}`);
+    }
+  }
+
   return (
     <Image
+      key={imgKey}
       {...imageProps}
       loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions })}
+      onError={handleOnError}
     />
   );
 }
