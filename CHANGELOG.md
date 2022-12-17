@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.3.0...v1.4.0) (2022-12-17)
+
+
+### Features
+
+* Implement error polling for image processing with timeout ([#56](https://github.com/colbyfayock/next-cloudinary/issues/56)) ([85efc54](https://github.com/colbyfayock/next-cloudinary/commit/85efc54fec0c56cc40fa8cb499a7133efda56407)), closes [#11](https://github.com/colbyfayock/next-cloudinary/issues/11) [#1](https://github.com/colbyfayock/next-cloudinary/issues/1)
+
 # [1.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.2.0...v1.3.0) (2022-12-08)
 
 
