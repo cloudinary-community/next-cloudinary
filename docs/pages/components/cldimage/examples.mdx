@@ -29,6 +29,7 @@ import ImageGrid from '../../../components/ImageGrid';
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
       sizes="(max-width: 480px) 100vw, 50vw"
       removeBackground
+      alt="Background Removal"
     />
 
     ### Background Removal
@@ -48,6 +49,7 @@ import ImageGrid from '../../../components/ImageGrid';
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
       sizes="(max-width: 480px) 100vw, 50vw"
       zoompan="loop"
+      alt="Zoom &amp; Pan"
     />
 
     ### Zoom &amp; Pan
@@ -63,6 +65,7 @@ import ImageGrid from '../../../components/ImageGrid';
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
       sizes="(max-width: 480px) 100vw, 50vw"
       blur="1200"
+      alt="Blur"
     />
 
     ### Blur
@@ -78,6 +81,7 @@ import ImageGrid from '../../../components/ImageGrid';
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
       sizes="(max-width: 480px) 100vw, 50vw"
       pixelate
+      alt="Pixelate"
     />
 
     ### Pixelate
@@ -93,6 +97,7 @@ import ImageGrid from '../../../components/ImageGrid';
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
       sizes="(max-width: 480px) 100vw, 50vw"
       grayscale
+      alt="Grayscale"
     />
 
     ### Grayscale
@@ -108,12 +113,43 @@ import ImageGrid from '../../../components/ImageGrid';
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
       sizes="(max-width: 480px) 100vw, 50vw"
       tint="equalize:80:blue:blueviolet"
+      alt="Tint"
     />
 
     ### Tint
 
     ```jsx
     tint="equalize:80:blue:blueviolet"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
+      opacity="50"
+      alt="Opacity"
+    />
+
+    ### Opacity
+
+    ```jsx
+    opacity="50"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
+      shear="40:0"
+      alt="Shear"
+    />
+
+    ### Shear
+
+    ```jsx
+    shear="40:0"
     ```
   </li>
 </ImageGrid>
@@ -131,6 +167,7 @@ import ImageGrid from '../../../components/ImageGrid';
       sizes="(max-width: 480px) 100vw, 50vw"
       crop="thumb"
       gravity="auto"
+      alt="Original"
     />
 
     ### Original
@@ -144,6 +181,7 @@ import ImageGrid from '../../../components/ImageGrid';
       sizes="(max-width: 480px) 100vw, 50vw"
       crop="thumb"
       gravity="auto"
+      alt="Thumbnail with Auto Gravity"
     />
 
     ### Thumbnail with Auto Gravity
@@ -161,6 +199,7 @@ import ImageGrid from '../../../components/ImageGrid';
       sizes="(max-width: 480px) 100vw, 50vw"
       crop="thumb"
       gravity="faces"
+      alt="Thumbnail with Faces Gravity"
     />
 
     ### Thumbnail with Faces Gravity
@@ -179,6 +218,7 @@ import ImageGrid from '../../../components/ImageGrid';
       crop="thumb"
       gravity="faces"
       zoom="0.5"
+      alt="Thumbnail with Faces Gravity and Zoom"
     />
 
     ### Thumbnail with Faces Gravity and Zoom
@@ -201,6 +241,7 @@ import ImageGrid from '../../../components/ImageGrid';
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
       sizes="(max-width: 480px) 100vw, 50vw"
       placeholder="blur"
+      alt="Blur"
     />
 
     ### Blur
@@ -216,6 +257,7 @@ import ImageGrid from '../../../components/ImageGrid';
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
       sizes="(max-width: 480px) 100vw, 50vw"
       placeholder="grayscale"
+      alt="Grayscale"
     />
 
     ### Grayscale
@@ -231,6 +273,7 @@ import ImageGrid from '../../../components/ImageGrid';
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
       sizes="(max-width: 480px) 100vw, 50vw"
       placeholder="color:blueviolet"
+      alt="Color"
     />
 
     ### Color
@@ -266,6 +309,7 @@ import ImageGrid from '../../../components/ImageGrid';
           }
         ]
       }]}
+      alt="Overlay Image by Public ID"
     />
 
     ### Overlay Image by Public ID
@@ -302,6 +346,7 @@ import ImageGrid from '../../../components/ImageGrid';
       sizes="(max-width: 480px) 100vw, 50vw"
       removeBackground
       underlay="images/galaxy"
+      alt="Background Removal with Underlay by Public ID"
     />
 
     ### Background Removal with Underlay by Public ID
@@ -342,6 +387,7 @@ import ImageGrid from '../../../components/ImageGrid';
           }
         },
       ]}
+      alt="Background Removal with Multiple Underlays"
     />
 
     ### Background Removal with Multiple Underlays
@@ -388,6 +434,7 @@ import ImageGrid from '../../../components/ImageGrid';
       blur="2000"
       brightness="300"
       text="Cool Beans"
+      alt="Text Overlay with text prop"
     />
 
     ### Text Overlay with text prop
@@ -407,6 +454,7 @@ import ImageGrid from '../../../components/ImageGrid';
       overlays={[{
         text: 'Cool Beans'
       }]}
+      alt="Text Overlay with text string"
     />
 
     ### Text Overlay with text string
@@ -442,6 +490,7 @@ import ImageGrid from '../../../components/ImageGrid';
           text: 'Cool Beans'
         }
       }]}
+      alt="Text Overlay with overlay configuration"
     />
 
     ### Text Overlay with overlay configuration
@@ -467,6 +516,50 @@ import ImageGrid from '../../../components/ImageGrid';
     }]}
     ```
   </li>
+  <li>
+    <CldImage
+      width="1335"
+      height="891"
+      src={`${process.env.EXAMPLES_DIRECTORY}/galaxy`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      overlays={[{
+        text: {
+          color: 'white',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 160,
+          fontWeight: 'bold',
+          text: 'Cool Beans'
+        },
+        effects: [
+          {
+            shear: '40:0',
+            opacity: 50
+          }
+        ]
+      }]}
+      alt="Text Overlay with Effects"
+    />
+
+    ### Text Overlay with Effects
+
+    ```jsx
+    overlays={[{
+      text: {
+        color: 'white',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 160,
+        fontWeight: 'bold',
+        text: 'Cool Beans'
+      },
+      effects: [
+        {
+          shear: '40:0',
+          opacity: 50
+        }
+      ]
+    }]}
+    ```
+  </li>
 </ImageGrid>
 
 ## Other
@@ -481,6 +574,7 @@ import ImageGrid from '../../../components/ImageGrid';
       transformations={[
         'next-cloudinary-named-transformation'
       ]}
+      alt="Named Transformations"
     />
 
     ### Named Transformations
@@ -501,6 +595,7 @@ import ImageGrid from '../../../components/ImageGrid';
         'e_blur:2000',
         'e_tint:100:0000FF:0p:FF1493:100p'
       ]}
+      alt="Raw Transformations"
     />
 
     ### Raw Transformations
@@ -521,6 +616,7 @@ import ImageGrid from '../../../components/ImageGrid';
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/c_fill,h_300,w_250/e_blur:300/turtle`}
       preserveTransformations
+      alt="Preserve Transformations"
     />
   </li>
 </ImageGrid>

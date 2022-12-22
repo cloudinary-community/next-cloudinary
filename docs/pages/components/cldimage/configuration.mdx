@@ -66,6 +66,7 @@ import OgImage from '../../../components/OgImage';
 | improve            | bool/string | `true`, `"50"`, `"indoor"`                           |
 | negate             | bool        | `true`                                               |
 | oilPaint           | bool/string | `true`, `"40"`                                       |
+| opacity            | number/string | `40`, `"40"`                                       |
 | outline            | bool/string | `true`, `"40"`, `"outer:15:200"`                     |
 | pixelate           | bool/string | `true`, `"20"`                                       |
 | pixelateFaces      | bool/string | `true`, `"20"`                                       |
@@ -107,7 +108,7 @@ The position property can include:
 | x             | number | `10`           |
 | y             | number | `10`           |
 
-Objects in the effects array can include:
+Objects in the effects array can include everything in the effects options above as well as:
 
 | Property Name | Type   | Example        |
 | ------------- | ------ | -------------- |

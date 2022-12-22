@@ -67,3 +67,165 @@ export const text = {
     qualifier: false
   }
 }
+
+export const effects = {
+  art: {
+    prefix: 'e',
+    qualifier: 'art',
+  },
+  autoBrightness: {
+    prefix: 'e',
+    qualifier: 'auto_brightness',
+  },
+  autoColor: {
+    prefix: 'e',
+    qualifier: 'auto_color',
+  },
+  autoContrast: {
+    prefix: 'e',
+    qualifier: 'auto_contrast',
+  },
+  assistColorblind: {
+    prefix: 'e',
+    qualifier: 'assist_colorblind',
+  },
+  blackwhite: {
+    prefix: 'e',
+    qualifier: 'blackwhite',
+  },
+  blur: {
+    prefix: 'e',
+    qualifier: 'blur',
+  },
+  blurFaces: {
+    prefix: 'e',
+    qualifier: 'blur_faces',
+  },
+  blurRegion: {
+    prefix: 'e',
+    qualifier: 'blur_region',
+  },
+  brightness: {
+    prefix: 'e',
+    qualifier: 'brightness',
+  },
+  brightnessHSB: {
+    prefix: 'e',
+    qualifier: 'brightness_hsb',
+  },
+  cartoonify: {
+    prefix: 'e',
+    qualifier: 'cartoonify',
+  },
+  colorize: {
+    prefix: 'e',
+    qualifier: 'colorize',
+  },
+  contrast: {
+    prefix: 'e',
+    qualifier: 'contrast',
+  },
+  distort: {
+    prefix: 'e',
+    qualifier: 'distort',
+  },
+  fillLight: {
+    prefix: 'e',
+    qualifier: 'fill_light',
+  },
+  gamma: {
+    prefix: 'e',
+    qualifier: 'gamma',
+  },
+  gradientFade: {
+    prefix: 'e',
+    qualifier: 'gradient_fade',
+  },
+  grayscale: {
+    prefix: 'e',
+    qualifier: 'grayscale',
+  },
+  improve: {
+    prefix: 'e',
+    qualifier: 'improve',
+  },
+  negate: {
+    prefix: 'e',
+    qualifier: 'negate',
+  },
+  oilPaint: {
+    prefix: 'e',
+    qualifier: 'oil_paint',
+  },
+  opacity: {
+    qualifier: 'o'
+  },
+  outline: {
+    prefix: 'e',
+    qualifier: 'outline',
+  },
+  pixelate: {
+    prefix: 'e',
+    qualifier: 'pixelate',
+  },
+  pixelateFaces: {
+    prefix: 'e',
+    qualifier: 'pixelate_faces',
+  },
+  pixelateRegion: {
+    prefix: 'e',
+    qualifier: 'pixelate_region',
+  },
+  redeye: {
+    prefix: 'e',
+    qualifier: 'redeye',
+  },
+  replaceColor: {
+    prefix: 'e',
+    qualifier: 'replace_color',
+  },
+  saturation: {
+    prefix: 'e',
+    qualifier: 'saturation',
+  },
+  sepia: {
+    prefix: 'e',
+    qualifier: 'sepia',
+  },
+  shadow: {
+    prefix: 'e',
+    qualifier: 'shadow',
+  },
+  sharpen: {
+    prefix: 'e',
+    qualifier: 'sharpen',
+  },
+  shear: {
+    prefix: 'e',
+    qualifier: 'shear',
+  },
+  simulateColorblind: {
+    prefix: 'e',
+    qualifier: 'simulate_colorblind',
+  },
+  tint: {
+    prefix: 'e',
+    qualifier: 'tint',
+  },
+  unsharpMask: {
+    prefix: 'e',
+    qualifier: 'unsharp_mask',
+  },
+  vectorize: {
+    prefix: 'e',
+    qualifier: 'vectorize',
+  },
+  vibrance: {
+    prefix: 'e',
+    qualifier: 'vibrance',
+  },
+  vignette: {
+    prefix: 'e',
+    qualifier: 'vignette',
+  },
+}

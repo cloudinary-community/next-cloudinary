@@ -1,9 +1,10 @@
 import { encodeBase64 } from '../lib/util';
 
 import {
+  effects as qualifiersEffects,
+  position as qualifiersPosition,
   primary as qualifiersPrimary,
   text as qualifiersText,
-  position as qualifiersPosition
 } from '../constants/qualifiers';
 
 export const props = ['text', 'overlays'];
@@ -86,12 +87,33 @@ export function plugin({ cldImage, options } = {}) {
     });
 
     // Layer effects
+    // For layer effects we allow both the standard effects to be applied as well
+    // as the primary ones like width and height as those can be used to modify
+    // the layer after it's created
 
     layerEffects.forEach(effect => {
       Object.keys(effect).forEach(key => {
-        if ( !qualifiersPrimary[key] ) return;
-        const { qualifier } = qualifiersPrimary[key];
-        primary.push(`${qualifier}_${effect[key]}`);
+        if ( qualifiersPrimary[key] ) {
+          const { qualifier } = qualifiersPrimary[key];
+          primary.push(`${qualifier}_${effect[key]}`);
+        } else if ( qualifiersEffects[key] ) {
+          const { qualifier, prefix } = qualifiersEffects[key];
+          let transformation = '';
+
+          if ( prefix ) {
+            transformation = `${prefix}_`;
+          }
+
+          if ( effect[key] === true ) {
+            primary.push(`${transformation}${qualifier}`);
+          } else if ( typeof effect[key] === 'string' || typeof effect[key] === 'number' ) {
+            if ( prefix ) {
+              primary.push(`${transformation}${qualifier}:${effect[key]}`);
+            } else {
+              primary.push(`${qualifier}_${effect[key]}`);
+            }
+          }
+        }
       });
     });
 
