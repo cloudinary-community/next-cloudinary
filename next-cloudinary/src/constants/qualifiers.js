@@ -89,6 +89,9 @@ export const effects = {
     prefix: 'e',
     qualifier: 'assist_colorblind',
   },
+  background: {
+    qualifier: 'b',
+  },
   blackwhite: {
     prefix: 'e',
     qualifier: 'blackwhite',
@@ -105,6 +108,9 @@ export const effects = {
     prefix: 'e',
     qualifier: 'blur_region',
   },
+  border: {
+    qualifier: 'bo',
+  },
   brightness: {
     prefix: 'e',
     qualifier: 'brightness',
@@ -116,6 +122,9 @@ export const effects = {
   cartoonify: {
     prefix: 'e',
     qualifier: 'cartoonify',
+  },
+  color: {
+    qualifier: 'co',
   },
   colorize: {
     prefix: 'e',
