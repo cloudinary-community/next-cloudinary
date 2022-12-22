@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.5.0...v1.6.0) (2022-12-22)
+
+
+### Features
+
+* Top Level Effects Array, Background Effect ([#84](https://github.com/colbyfayock/next-cloudinary/issues/84)) ([0f36ca2](https://github.com/colbyfayock/next-cloudinary/commit/0f36ca27b5da4b7db23fe51516ddc4d973f6653c)), closes [#81](https://github.com/colbyfayock/next-cloudinary/issues/81)
+
 # [1.5.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.4.0...v1.5.0) (2022-12-22)
 
 
