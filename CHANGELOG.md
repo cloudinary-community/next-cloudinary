@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.4.0...v1.5.0) (2022-12-22)
+
+
+### Features
+
+* Overlay Effects, Add Opacity ([#83](https://github.com/colbyfayock/next-cloudinary/issues/83)) ([25cc4f0](https://github.com/colbyfayock/next-cloudinary/commit/25cc4f0a0a643cca71e40fd7f561602b8755e7a9)), closes [#80](https://github.com/colbyfayock/next-cloudinary/issues/80)
+
 # [1.4.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.3.0...v1.4.0) (2022-12-17)
 
 
