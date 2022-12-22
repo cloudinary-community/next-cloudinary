@@ -6,8 +6,7 @@ import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
 const CldImage = props => {
   const CLD_OPTIONS = [
-    'deliveryType',
-    'preserveTransformations'
+    'deliveryType'
   ];
 
   transformationPlugins.forEach(({ props = [] }) => {
@@ -63,7 +62,7 @@ const CldImage = props => {
   }
 
   if (props.src && props.preserveTransformations) {
-    const transformations = getTransformations(props.src, props.preserveTransformations);
+    const transformations = getTransformations(props.src,props.preserveTransformations);
     imageProps.rawTransformations = [...imageProps.rawTransformations,...transformations,];
   }
 
