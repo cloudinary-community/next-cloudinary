@@ -1,101 +1,24 @@
-const params = [
-  'art',
-  {
-    prop: 'autoBrightness',
-    effect: 'auto_brightness',
-  },
-  {
-    prop: 'autoColor',
-    effect: 'auto_color',
-  },
-  {
-    prop: 'autoContrast',
-    effect: 'auto_contrast',
-  },
-  {
-    prop: 'assistColorblind',
-    effect: 'assist_colorblind',
-  },
-  'blackwhite',
-  'blur',
-  {
-    prop: 'blurFaces',
-    effect: 'blur_faces',
-  },
-  {
-    prop: 'blurRegion',
-    effect: 'blur_region',
-  },
-  'brightness',
-  {
-    prop: 'brightnessHSB',
-    effect: 'brightness_hsb',
-  },
-  'cartoonify',
-  'colorize',
-  'contrast',
-  'distort',
-  {
-    prop: 'fillLight',
-    effect: 'fill_light',
-  },
-  'gamma',
-  {
-    prop: 'gradientFade',
-    effect: 'gradient_fade',
-  },
-  'grayscale',
-  'improve',
-  'negate',
-  {
-    prop: 'oilPaint',
-    effect: 'oil_paint',
-  },
-  'outline',
-  'pixelate',
-  {
-    prop: 'pixelateFaces',
-    effect: 'pixelate_faces',
-  },
-  {
-    prop: 'pixelateRegion',
-    effect: 'pixelate_region',
-  },
-  'redeye',
-  {
-    prop: 'replaceColor',
-    effect: 'replace_color',
-  },
-  'saturation',
-  'sepia',
-  'shadow',
-  'sharpen',
-  'shear',
-  {
-    prop: 'simulateColorblind',
-    effect: 'simulate_colorblind',
-  },
-  'tint',
-  {
-    prop: 'unsharpMask',
-    effect: 'unsharp_mask',
-  },
-  'vectorize',
-  'vibrance',
-  'vignette',
-];
+import { effects } from '../constants/qualifiers';
 
-export const props = params.map(param => param.prop || param);
+export const props = Object.keys(effects);
 
 export function plugin({ cldImage, options } = {}) {
-  params.forEach(key => {
-    const prop = key.prop || key;
-    const effect = key.effect || key;
+  Object.keys(effects).forEach(key => {
+    const { prefix, qualifier } = effects[key];
+    let transformation = '';
 
-    if ( options[prop] === true ) {
-      cldImage.effect(`e_${effect}`);
-    } else if ( typeof options[prop] === 'string' ) {
-      cldImage.effect(`e_${effect}:${options[prop]}`);
+    if ( prefix ) {
+      transformation = `${prefix}_`;
+    }
+
+    if ( options[key] === true ) {
+      cldImage.effect(`${transformation}${qualifier}`);
+    } else if ( typeof options[key] === 'string' ) {
+      if ( prefix ) {
+        cldImage.effect(`${transformation}${qualifier}:${options[key]}`);
+      } else {
+        cldImage.effect(`${qualifier}_${options[key]}`);
+      }
     }
   });
 }
