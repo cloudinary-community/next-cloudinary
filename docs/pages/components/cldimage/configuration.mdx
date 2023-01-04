@@ -68,16 +68,19 @@ import OgImage from '../../../components/OgImage';
 | gradientFade       | bool/string | `true`, `"symmetric:10,x_0.2,y_0.4"`                 |
 | grayscale          | bool        | `true`                                               |
 | improve            | bool/string | `true`, `"50"`, `"indoor"`                           |
+| multiply           | bool        | `true`                                               |
 | negate             | bool        | `true`                                               |
 | oilPaint           | bool/string | `true`, `"40"`                                       |
 | opacity            | number/string | `40`, `"40"`                                       |
 | outline            | bool/string | `true`, `"40"`, `"outer:15:200"`                     |
+| overlay            | bool        | `true`                                               |
 | pixelate           | bool/string | `true`, `"20"`                                       |
 | pixelateFaces      | bool/string | `true`, `"20"`                                       |
 | pixelateRegion     | bool/string | `true`, `"35,h_425,w_550,x_600,y_400"`               |
 | redeye             | bool/string | `true`                                               |
 | replaceColor       | string      | `"saddlebrown"`, `"2F4F4F:20"`, `"silver:55:89b8ed"` |
 | saturation         | bool/string | `true`, `"70"`                                       |
+| screen             | bool        | `true`                                               |
 | sepia              | bool/string | `true`, `"50"`                                       |
 | shadow             | bool/string | `true`, `"50,x_-15,y_15"`                            |
 | sharpen            | bool/string | `true`, `"100"`                                      |
@@ -97,6 +100,7 @@ The `overlays` prop is an array of objects with the following configuration opti
 
 | Property Name    | Type          | Example                              |
 |------------------|---------------|--------------------------------------|
+| appliedEffects   | array         | Same as effects, added as applied transformation |
 | effects          | array         | See Below                            |
 | position         | object        | See Below                            |
 | publicId         | string        | `"thumb"`                            |

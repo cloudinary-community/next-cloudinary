@@ -400,6 +400,149 @@ import ImageGrid from '../../../components/ImageGrid';
     }]}
     ```
   </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      crop="fill"
+      src={`${process.env.EXAMPLES_DIRECTORY}/white`}
+      colorize="100,co_darkviolet"
+      overlays={[{
+        publicId: `images/earth`,
+        effects: [
+          {
+            crop: 'fill',
+            gravity: 'auto',
+            width: 960,
+            height: 600
+          }
+        ],
+        appliedEffects: [
+          {
+            multiply: true
+          }
+        ]
+      }]}
+      alt=""
+    />
+
+    ### Overlay with Multiply Effect
+
+    ```jsx
+    overlays={[{
+      publicId: `images/earth`,
+      effects: [
+        {
+          crop: 'fill',
+          gravity: 'auto',
+          width: 960,
+          height: 600
+        }
+      ],
+      appliedEffects: [
+        {
+          multiply: true
+        }
+      ]
+    }]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      crop="fill"
+      src={`${process.env.EXAMPLES_DIRECTORY}/white`}
+      colorize="100,co_darkviolet"
+      overlays={[{
+        publicId: `images/earth`,
+        effects: [
+          {
+            crop: 'fill',
+            gravity: 'auto',
+            width: 960,
+            height: 600
+          }
+        ],
+        appliedEffects: [
+          {
+            screen: true
+          }
+        ]
+      }]}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      alt=""
+    />
+
+    ### Overlay with Screen Effect
+
+    ```jsx
+    overlays={[{
+      publicId: `images/earth`,
+      effects: [
+        {
+          crop: 'fill',
+          gravity: 'auto',
+          width: 960,
+          height: 600
+        }
+      ],
+      appliedEffects: [
+        {
+          screen: true
+        }
+      ]
+    }]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      crop="fill"
+      src={`${process.env.EXAMPLES_DIRECTORY}/white`}
+      colorize="100,co_darkviolet"
+      overlays={[{
+        publicId: `images/earth`,
+        effects: [
+          {
+            crop: 'fill',
+            gravity: 'auto',
+            width: 960,
+            height: 600
+          }
+        ],
+        appliedEffects: [
+          {
+            overlay: true
+          }
+        ]
+      }]}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      alt=""
+    />
+
+    ### Overlay with Overlay Effect
+
+    ```jsx
+    overlays={[{
+      publicId: `images/earth`,
+      effects: [
+        {
+          crop: 'fill',
+          gravity: 'auto',
+          width: 960,
+          height: 600
+        }
+      ],
+      appliedEffects: [
+        {
+          overlay: true
+        }
+      ]
+    }]}
+    ```
+  </li>
 </ImageGrid>
 
 ## Image Underlays

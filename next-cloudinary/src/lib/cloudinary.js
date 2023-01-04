@@ -126,7 +126,7 @@ export function getPublicId(src) {
  * @return {array} The array of transformations
  */
 
- export function getTransformations(src, preserveTransformations) {
+export function getTransformations(src, preserveTransformations) {
   if (typeof src !== "string") {
     throw new Error(`Invalid src of type ${typeof src}`);
   }
@@ -200,4 +200,28 @@ export async function pollForProcessingImage(options) {
     return false;
   }
   return true;
+}
+
+/**
+ * constructTransformation
+ */
+
+export function constructTransformation({ prefix, qualifier, value }) {
+  let transformation = '';
+
+  if ( prefix ) {
+    transformation = `${prefix}_`;
+  }
+
+  if ( value === true || value === 'true' ) {
+    return `${transformation}${qualifier}`;
+  }
+
+  if ( typeof value === 'string' || typeof value === 'number' ) {
+    if ( prefix ) {
+      return `${transformation}${qualifier}:${value}`;
+    } else {
+      return `${qualifier}_${value}`;
+    }
+  }
 }
