@@ -1,0 +1,38 @@
+import Head from 'next/head';
+
+import OgImage from '../../../components/OgImage';
+
+<Head>
+  <title>constructCloudinaryUrl Configuration - Next Cloudinary</title>
+  <meta name="og:title" content="constructCloudinaryUrl Configuration - Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/helpers/constructcloudinaryurl/configuration`} />
+</Head>
+
+<OgImage
+  title="constructCloudinaryUrl Configuration"
+  twitterTitle="constructCloudinaryUrl Configuration"
+/>
+
+# constructCloudinaryUrl Configuration
+
+## Basic Settings
+
+| Prop Name          | Type               | Example                      |
+|--------------------|--------------------|------------------------------|
+| settings           | object             | `{ options, config }`        |
+
+## Options
+
+The options property uses same API as [cldImage](/components/cldimage/basic-usage).
+
+
+## Config
+
+| Prop Name          | Type               | Example                      |
+|--------------------|--------------------|------------------------------|
+| cloud              | object             | `{ cloudName: '<Cloud Name>' }` |
+
+The `config` object gets passed along to the [Cloudinary URL Gen SDK](https://github.com/cloudinary/js-url-gen) which allows for more advanced configuration such as private CDNs and CNAMEs.
+
+[See more available parameters](https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters).
+
