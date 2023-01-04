@@ -1,4 +1,5 @@
 import { effects as qualifiersEffects } from '../constants/qualifiers';
+import { constructTransformation } from '../lib/cloudinary';
 
 export const props = [...Object.keys(qualifiersEffects), 'effects'];
 
@@ -24,33 +25,12 @@ export function plugin({ cldImage, options } = {}) {
     });
   }
 
-  /**
-   * constructEffect
-   */
-
-  function constructEffect({ effect, value }) {
-    const { prefix, qualifier } = effect;
-      let transformation = '';
-
-      if ( prefix ) {
-        transformation = `${prefix}_`;
-      }
-
-      if ( value === true ) {
-        return `${transformation}${qualifier}`;
-      } else if ( typeof value === 'string' || typeof value === 'number' ) {
-        if ( prefix ) {
-          return `${transformation}${qualifier}:${value}`;
-        } else {
-          return `${qualifier}_${value}`;
-        }
-      }
-  }
-
   function constructTransformationString({ effects, options }) {
     return Object.keys(effects).map(key => {
-      return constructEffect({
-        effect: effects[key],
+      const { prefix, qualifier } = effects[key];
+      return constructTransformation({
+        qualifier,
+        prefix,
         value: options[key]
       });
     })

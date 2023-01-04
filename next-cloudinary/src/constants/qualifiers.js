@@ -158,6 +158,10 @@ export const effects = {
     prefix: 'e',
     qualifier: 'improve',
   },
+  multiply: {
+    prefix: 'e',
+    qualifier: 'multiply',
+  },
   negate: {
     prefix: 'e',
     qualifier: 'negate',
@@ -172,6 +176,10 @@ export const effects = {
   outline: {
     prefix: 'e',
     qualifier: 'outline',
+  },
+  overlay: {
+    prefix: 'e',
+    qualifier: 'overlay',
   },
   pixelate: {
     prefix: 'e',
@@ -196,6 +204,10 @@ export const effects = {
   saturation: {
     prefix: 'e',
     qualifier: 'saturation',
+  },
+  screen: {
+    prefix: 'e',
+    qualifier: 'screen',
   },
   sepia: {
     prefix: 'e',

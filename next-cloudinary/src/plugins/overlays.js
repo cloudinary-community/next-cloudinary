@@ -1,4 +1,5 @@
 import { encodeBase64 } from '../lib/util';
+import { constructTransformation } from '../lib/cloudinary';
 
 import {
   effects as qualifiersEffects,
@@ -42,13 +43,11 @@ export function plugin({ cldImage, options } = {}) {
     })
   }
 
-
-
   /**
    * applyOverlay
    */
 
-  function applyOverlay({ publicId, url, position, text, effects: layerEffects = [], ...options }) {
+  function applyOverlay({ publicId, url, position, text, effects: layerEffects = [], appliedEffects = [], ...options }) {
     const hasPublicId = typeof publicId === 'string';
     const hasUrl = typeof url === 'string';
     const hasText = typeof text === 'object' || typeof text === 'string';
@@ -82,8 +81,15 @@ export function plugin({ cldImage, options } = {}) {
 
     Object.keys(options).forEach(key => {
       if ( !qualifiersPrimary[key] ) return;
+
       const { qualifier } = qualifiersPrimary[key];
-      primary.push(`${qualifier}_${options[key]}`);
+
+      const transformation = constructTransformation({
+        qualifier,
+        value: options[key]
+      });
+
+      primary.push(transformation);
     });
 
     // Layer effects
@@ -93,29 +99,37 @@ export function plugin({ cldImage, options } = {}) {
 
     layerEffects.forEach(effect => {
       Object.keys(effect).forEach(key => {
-        if ( qualifiersPrimary[key] ) {
-          const { qualifier } = qualifiersPrimary[key];
-          primary.push(`${qualifier}_${effect[key]}`);
-        } else if ( qualifiersEffects[key] ) {
-          const { qualifier, prefix } = qualifiersEffects[key];
-          let transformation = '';
+        const { qualifier, prefix } = qualifiersPrimary[key] || qualifiersEffects[key] || {};
 
-          if ( prefix ) {
-            transformation = `${prefix}_`;
-          }
+        const transformation = constructTransformation({
+          qualifier,
+          prefix,
+          value: effect[key]
+        });
 
-          if ( effect[key] === true ) {
-            primary.push(`${transformation}${qualifier}`);
-          } else if ( typeof effect[key] === 'string' || typeof effect[key] === 'number' ) {
-            if ( prefix ) {
-              primary.push(`${transformation}${qualifier}:${effect[key]}`);
-            } else {
-              primary.push(`${qualifier}_${effect[key]}`);
-            }
-          }
-        }
+        primary.push(transformation);
       });
     });
+
+    // Applied Layer effects
+    // Similar to layer effects but they get appended to an additional transformation
+    // along with fl_layer_applied
+
+    appliedEffects.forEach(effect => {
+      Object.keys(effect).forEach(key => {
+        const { qualifier, prefix } = qualifiersPrimary[key] || qualifiersEffects[key] || {};
+
+        const transformation = constructTransformation({
+          qualifier,
+          prefix,
+          value: effect[key]
+        });
+
+        applied.push(transformation);
+      });
+    });
+
+
 
     // Text styling
 
@@ -157,7 +171,12 @@ export function plugin({ cldImage, options } = {}) {
 
         const { qualifier } = qualifiersPosition[key];
 
-        applied.push(`${qualifier}_${position[key]}`);
+        const transformation = constructTransformation({
+          qualifier,
+          value: position[key]
+        });
+
+        applied.push(transformation);
       });
     }
 

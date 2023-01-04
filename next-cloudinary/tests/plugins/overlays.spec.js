@@ -65,6 +65,38 @@ describe('Plugins', () => {
       expect(cldImage.toURL()).toContain(`l_${publicId.replace(/\//g, ':')},w_${width},h_${height},e_shear:${shear},o_${opacity}/fl_layer_apply,fl_no_overflow`);
     });
 
+    it('should apply applied effects to an overlay', () => {
+      const cldImage = cld.image(TEST_PUBLIC_ID);
+
+      const publicId = 'images/my-cool-image'
+      const width = 100;
+      const height = 200;
+
+      const options = {
+        overlays: [{
+          publicId,
+          effects: [
+            {
+              width,
+              height,
+            }
+          ],
+          appliedEffects: [
+            {
+              screen: true
+            }
+          ]
+        }]
+      }
+
+      plugin({
+        cldImage,
+        options
+      });
+
+      expect(cldImage.toURL()).toContain(`l_${publicId.replace(/\//g, ':')},w_${width},h_${height}/fl_layer_apply,fl_no_overflow,e_screen`);
+    });
+
   })
   describe('Text Overlays', () => {
     it('should add a text overlay configured by overlay object', () => {
