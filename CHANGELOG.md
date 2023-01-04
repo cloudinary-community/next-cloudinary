@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/colbyfayock/next-cloudinary/compare/v1.8.0...v1.8.1) (2023-01-04)
+
+
+### Bug Fixes
+
+* Fixes Extra Comma in Overlay Transformation ([#91](https://github.com/colbyfayock/next-cloudinary/issues/91)) ([7d1fd1c](https://github.com/colbyfayock/next-cloudinary/commit/7d1fd1cde4833be33d6a0d100f5abb1ee755424d)), closes [#87](https://github.com/colbyfayock/next-cloudinary/issues/87)
+
 # [1.8.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.7.0...v1.8.0) (2023-01-04)
 
 
