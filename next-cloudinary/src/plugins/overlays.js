@@ -182,7 +182,9 @@ export function plugin({ cldImage, options } = {}) {
 
     // Add all primary transformations
 
-    layerTransformation = `${layerTransformation},${primary.join(',')}`;
+    if ( primary.length > 0 ) {
+      layerTransformation = `${layerTransformation},${primary.join(',')}`;
+    }
 
     // Add all applied transformations
 

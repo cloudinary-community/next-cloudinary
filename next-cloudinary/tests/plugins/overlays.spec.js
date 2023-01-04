@@ -36,6 +36,25 @@ describe('Plugins', () => {
       const cldImage = cld.image(TEST_PUBLIC_ID);
 
       const publicId = 'images/my-cool-image'
+
+      const options = {
+        overlays: [{
+          publicId
+        }]
+      }
+
+      plugin({
+        cldImage,
+        options
+      });
+
+      expect(cldImage.toURL()).toContain(`l_${publicId.replace(/\//g, ':')}/fl_layer_apply,fl_no_overflow`);
+    });
+
+    it('should apply effects to an overlay', () => {
+      const cldImage = cld.image(TEST_PUBLIC_ID);
+
+      const publicId = 'images/my-cool-image'
       const width = 100;
       const height = 200;
       const shear = '40:0';
