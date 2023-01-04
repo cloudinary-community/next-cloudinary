@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.6.0...v1.7.0) (2023-01-04)
+
+
+### Features
+
+* Overlay Effects ([#88](https://github.com/colbyfayock/next-cloudinary/issues/88)) ([69590f3](https://github.com/colbyfayock/next-cloudinary/commit/69590f3b26907936db49d2db6ce6579b16e7b76a)), closes [#85](https://github.com/colbyfayock/next-cloudinary/issues/85)
+
 # [1.6.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.5.0...v1.6.0) (2022-12-22)
 
 
