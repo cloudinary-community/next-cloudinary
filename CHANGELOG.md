@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.7.0...v1.8.0) (2023-01-04)
+
+
+### Features
+
+* constructCloudinaryUrl ([#90](https://github.com/colbyfayock/next-cloudinary/issues/90)) ([34bb37f](https://github.com/colbyfayock/next-cloudinary/commit/34bb37f0503af3d92ce857871f1e9a963e27c435)), closes [#89](https://github.com/colbyfayock/next-cloudinary/issues/89)
+
 # [1.7.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.6.0...v1.7.0) (2023-01-04)
 
 
