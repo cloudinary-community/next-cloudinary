@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-import { createPlaceholderUrl, getPublicId, transformationPlugins, getTransformations, pollForProcessingImage } from '../../lib/cloudinary';
+import { createPlaceholderUrl, getPublicId, transformationPlugins, pollForProcessingImage } from '../../lib/cloudinary';
+import { getTransformations } from '../../lib/transformations';
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
 const CldImage = props => {

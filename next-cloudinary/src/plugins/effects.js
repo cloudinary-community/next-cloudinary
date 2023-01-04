@@ -1,5 +1,5 @@
 import { effects as qualifiersEffects } from '../constants/qualifiers';
-import { constructTransformation } from '../lib/cloudinary';
+import { constructTransformation } from '../lib/transformations';
 
 export const props = [...Object.keys(qualifiersEffects), 'effects'];
 

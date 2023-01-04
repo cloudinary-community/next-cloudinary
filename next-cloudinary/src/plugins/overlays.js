@@ -1,5 +1,5 @@
 import { encodeBase64 } from '../lib/util';
-import { constructTransformation } from '../lib/cloudinary';
+import { constructTransformation } from '../lib/transformations';
 
 import {
   effects as qualifiersEffects,
