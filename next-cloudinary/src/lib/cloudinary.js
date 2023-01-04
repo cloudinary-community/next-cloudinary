@@ -9,12 +9,6 @@ import * as removeBackgroundPlugin from '../plugins/remove-background';
 import * as underlaysPlugin from '../plugins/underlays';
 import * as zoompanPlugin from '../plugins/zoompan';
 
-import {
-  primary as qualifiersPrimary,
-  text as qualifiersText,
-  position as qualifiersPosition
-} from '../constants/qualifiers';
-
 export const transformationPlugins = [
   // Background Removal must always come first
   removeBackgroundPlugin,
