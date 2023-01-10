@@ -32,7 +32,7 @@ let cld;
  * constructCloudinaryUrl
  */
 
-export function constructCloudinaryUrl({ options, config }) {
+export function constructCloudinaryUrl({ options, config }: { options?: any; config?: any }): string {
   if ( !cld ) {
     cld = new Cloudinary({
       cloud: {
@@ -51,6 +51,7 @@ export function constructCloudinaryUrl({ options, config }) {
   const cldImage = cld.image(publicId);
 
   transformationPlugins.forEach(({ plugin }) => {
+    // @ts-ignore
     const { options: pluginOptions } = plugin({
       cldImage,
       options
@@ -116,7 +117,7 @@ export function getPublicId(src) {
  * createPlaceholderUrl
  */
 
-export function createPlaceholderUrl({ src, placeholder = true, config }) {
+export function createPlaceholderUrl({ src, placeholder = true, config }: { src?: any, placeholder?: boolean | string, config?: any }) {
   const rawTransformations = [];
 
   if ( placeholder === 'grayscale' ) {
@@ -137,7 +138,7 @@ export function createPlaceholderUrl({ src, placeholder = true, config }) {
       rawTransformations,
     },
     config
-  });;
+  });
 }
 
 /**

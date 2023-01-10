@@ -13,7 +13,8 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, ...props }) => {
     width: props.width || IMAGE_WIDTH,
     height: props.height || IMAGE_HEIGHT,
     crop: props.crop || 'fill',
-    gravity: props.gravity || 'center'
+    gravity: props.gravity || 'center',
+    alt: props.alt
   }
 
   const ogImageUrl = constructCloudinaryUrl({
@@ -23,7 +24,7 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, ...props }) => {
   // We need to include the tags within the Next.js Head component rather than
   // direcly adding them inside of the Head otherwise we get unexpected results
 
-  return (
+    return (
     <Head>
       <meta property="og:image" content={ogImageUrl} />
       <meta property="og:image:secure_url" content={ogImageUrl} />

@@ -23,7 +23,11 @@ const CldImage = props => {
 
   // Construct the base Image component props by filtering out Cloudinary-specific props
 
-  const imageProps = {};
+  const imageProps: {
+      rawTransformations?: string[];
+      blurDataURL?: String;
+      placeholder?: String;
+  } = {};
 
   Object.keys(props)
     .filter(key => !CLD_OPTIONS.includes(key))
