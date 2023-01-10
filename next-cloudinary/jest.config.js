@@ -4,4 +4,10 @@ module.exports = {
 
   // The test environment that will be used for testing
   testEnvironment: "jsdom",
+
+  preset: 'ts-jest',
+  transform: {
+    '^.+\\.(ts|tsx)?$': 'ts-jest',
+    "^.+\\.(js|jsx)$": "babel-jest",
+  }
 };
