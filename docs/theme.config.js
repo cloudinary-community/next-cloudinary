@@ -1,11 +1,18 @@
-import { CldOgImage } from '../next-cloudinary';
+import { useRouter } from 'next/router';
 
 export default {
   project: {
     link: 'https://github.com/colbyfayock/next-cloudinary'
   },
   docsRepositoryBase: 'https://github.com/colbyfayock/next-cloudinary/tree/main/docs',
-  titleSuffix: ' – Next Cloudinary',
+  useNextSeoProps() {
+    const { route } = useRouter()
+    if (route !== '/') {
+      return {
+        titleTemplate: '%s – Next Cloudinary'
+      }
+    }
+  },
   footer: {
     text: `MIT ${new Date().getFullYear()} © Colby Fayock`,
   },
@@ -19,10 +26,7 @@ export default {
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <title>Next Cloudinary</title>
-
       <meta name="description" content="Powerful image and video APIs in Next.js with Cloudinary" />
-      <meta name="og:title" content="Next Cloudinary" />
       <meta name="og:type" content="website" />
       <meta name="og:description" content="Powerful image and video APIs in Next.js with Cloudinary" />
 
