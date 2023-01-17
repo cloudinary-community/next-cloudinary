@@ -1,3 +1,11 @@
+## [1.8.2](https://github.com/colbyfayock/next-cloudinary/compare/v1.8.1...v1.8.2) (2023-01-17)
+
+
+### Bug Fixes
+
+* Added `'use client';` to CldImage component ([#98](https://github.com/colbyfayock/next-cloudinary/issues/98)) ([387f6e3](https://github.com/colbyfayock/next-cloudinary/commit/387f6e32307a93d787408828a59a302967bb8c23)), closes [#97](https://github.com/colbyfayock/next-cloudinary/issues/97)
+* forcing patch ([c1b9ef8](https://github.com/colbyfayock/next-cloudinary/commit/c1b9ef81fe2bfec772f9e078b57f809153ff44ae))
+
 ## [1.8.1](https://github.com/colbyfayock/next-cloudinary/compare/v1.8.0...v1.8.1) (2023-01-04)
 
 
