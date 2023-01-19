@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
 
 import OgImage from '../../../components/OgImage';
 import Video from '../../../components/Video';
@@ -25,6 +26,13 @@ The basic required prop is `src`:
   src="images/turtle"
 />
 ```
+
+Place this anywhere outside of the Head component.
+
+<Callout emoji={false}>
+  The CldOgImage component must be placed outside of the Next.js Head component as the Head component does not accept React components as children.
+</Callout>
+
 
 The resulting HTML will be applied to the Head of the document:
 
