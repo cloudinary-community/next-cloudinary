@@ -1,3 +1,17 @@
+# [1.9.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.8.3...v1.9.0) (2023-01-19)
+
+
+### Features
+
+* Analytics ID ([#102](https://github.com/colbyfayock/next-cloudinary/issues/102)) ([c9ea705](https://github.com/colbyfayock/next-cloudinary/commit/c9ea705eefef6273a98f14e23ebff1a4ef0763c8))
+
+## [1.8.3](https://github.com/colbyfayock/next-cloudinary/compare/v1.8.2...v1.8.3) (2023-01-19)
+
+
+### Bug Fixes
+
+* Fixes Underlay Sizing ([#101](https://github.com/colbyfayock/next-cloudinary/issues/101)) ([0345d92](https://github.com/colbyfayock/next-cloudinary/commit/0345d920ade0a19b568d1c6dd415684e989f93a5)), closes [#100](https://github.com/colbyfayock/next-cloudinary/issues/100)
+
 ## [1.8.2](https://github.com/colbyfayock/next-cloudinary/compare/v1.8.1...v1.8.2) (2023-01-17)
 
 

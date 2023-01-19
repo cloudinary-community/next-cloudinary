@@ -1,4 +1,5 @@
 import { Cloudinary } from '@cloudinary/url-gen';
+import nextPkg from 'next/package.json';
 
 import * as croppingPlugin from '../plugins/cropping';
 import * as effectsPlugin from '../plugins/effects';
@@ -8,6 +9,10 @@ import * as rawTransformationsPlugin from '../plugins/raw-transformations';
 import * as removeBackgroundPlugin from '../plugins/remove-background';
 import * as underlaysPlugin from '../plugins/underlays';
 import * as zoompanPlugin from '../plugins/zoompan';
+
+import { NEXT_CLOUDINARY_ANALYTICS_ID } from '../constants/analytics';
+
+import pkg from '../../package.json';
 
 export const transformationPlugins = [
   // Background Removal must always come first
@@ -37,10 +42,6 @@ export function constructCloudinaryUrl({ options, config }: { options?: any; con
     cld = new Cloudinary({
       cloud: {
         cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-      },
-      url: {
-        // Used to avoid issues with SSR particularly for the blurred placeholder
-        analytics: false
       },
       ...config
     });
@@ -77,7 +78,13 @@ export function constructCloudinaryUrl({ options, config }: { options?: any; con
           .setDeliveryType(options.deliveryType || 'upload')
           .format(options.format || 'auto')
           .delivery(`q_${options.quality || 'auto'}`)
-          .toURL();
+          .toURL({
+            trackedAnalytics: {
+              sdkCode: NEXT_CLOUDINARY_ANALYTICS_ID,
+              sdkSemver: pkg.version,
+              techVersion: nextPkg.version
+            }
+          });
 }
 
 /**
