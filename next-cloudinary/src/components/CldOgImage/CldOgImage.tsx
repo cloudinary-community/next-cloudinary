@@ -7,7 +7,7 @@ import { constructCloudinaryUrl } from '../../lib/cloudinary';
 
 const TWITTER_CARD = 'summary_large_image';
 
-const CldOgImage = ({ excludeTags = [], twitterTitle, ...props }) => {
+const CldOgImage = ({ excludeTags = [] as string[], twitterTitle, ...props }) => {
   const options = {
     ...props,
     width: props.width || IMAGE_WIDTH,
