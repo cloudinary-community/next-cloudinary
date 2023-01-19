@@ -1,1 +1,0 @@
-export const NEXT_CLOUDINARY_ANALYTICS_ID = 'V';
