@@ -43,8 +43,8 @@ describe('Plugins', () => {
       const cldImage = cld.image(TEST_PUBLIC_ID);
 
       const publicId = 'images/galaxy';
-      const width = 1920;
-      const height = 1200;
+      const width = '1.0';
+      const height = '1.0';
       const crop = 'fill';
 
       const options = {
@@ -56,7 +56,7 @@ describe('Plugins', () => {
         options
       });
 
-      expect(cldImage.toURL()).toContain(`u_${publicId.replace(/\//g, ':')},c_${crop}/fl_layer_apply,fl_no_overflow/${TEST_PUBLIC_ID}`);
+      expect(cldImage.toURL()).toContain(`u_${publicId.replace(/\//g, ':')},c_${crop},w_${width},h_${height},fl_relative/fl_layer_apply,fl_no_overflow/${TEST_PUBLIC_ID}`);
     });
   });
 });
