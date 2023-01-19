@@ -1,4 +1,5 @@
 import { constructCloudinaryUrl, getPublicId, createPlaceholderUrl } from '../../src/lib/cloudinary';
+import { NEXT_CLOUDINARY_ANALYTICS_ID } from '../../src/constants/analytics';
 
 // Mock console.warn() so we can see when it's called
 global.console = {
@@ -27,7 +28,7 @@ describe('Cloudinary', () => {
           }
         }
       });
-      expect(url).toBe(`https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_100/f_auto/q_auto/turtle`);
+      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_100/f_auto/q_auto/turtle`);
     });
 
     it('should create a Cloudinary URL with custom quality and format options', () => {
@@ -48,7 +49,24 @@ describe('Cloudinary', () => {
           }
         }
       });
-      expect(url).toBe(`https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_100/f_${format}/q_${quality}/turtle`);
+      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_100/f_${format}/q_${quality}/turtle`);
+    });
+
+    it('should include an analytics ID at the end of the URL', () => {
+      const cloudName = 'customtestcloud';
+      const url = constructCloudinaryUrl({
+        options: {
+          src: 'turtle',
+        },
+        config: {
+          cloud: {
+            cloudName
+          }
+        }
+      });
+      // Only match the analytics version (A) and the ID as the rest is determined
+      // dynamically by SDK and Next.js version
+      expect(url).toContain(`?_a=A${NEXT_CLOUDINARY_ANALYTICS_ID}`);
     });
   });
 
@@ -95,7 +113,7 @@ describe('Cloudinary', () => {
           }
         }
       });
-      expect(url).toBe(`https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_100/f_auto/q_1/turtle`);
+      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_100/f_auto/q_1/turtle`);
     });
 
     it('should create a placeholder URL in grayscale', () => {
@@ -109,7 +127,7 @@ describe('Cloudinary', () => {
           }
         }
       });
-      expect(url).toBe(`https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_100/e_grayscale/f_auto/q_1/turtle`);
+      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_100/e_grayscale/f_auto/q_1/turtle`);
     });
 
     it('should create a placeholder URL with a color', () => {
@@ -123,7 +141,7 @@ describe('Cloudinary', () => {
           }
         }
       });
-      expect(url).toBe(`https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_100/e_grayscale/e_colorize:60,co_blueviolet/f_auto/q_1/turtle`);
+      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_100/e_grayscale/e_colorize:60,co_blueviolet/f_auto/q_1/turtle`);
     });
   });
 })
