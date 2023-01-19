@@ -1,6 +1,6 @@
 import {
+  flags as qualifiersFlags,
   primary as qualifiersPrimary,
-  text as qualifiersText,
   position as qualifiersPosition
 } from '../constants/qualifiers';
 
@@ -20,15 +20,10 @@ export function plugin({ cldImage, options } = {}) {
 
     const underlayOptions = {
       publicId: underlay,
-      crop: 'fill'
-    }
-
-    if ( options.width ) {
-      underlayOptions.width = options.width;
-    }
-
-    if ( options.height ) {
-      underlayOptions.height = options.height;
+      crop: 'fill',
+      width: '1.0',
+      height: '1.0',
+      flags: ['relative']
     }
 
     applyUnderlay(underlayOptions);
@@ -38,7 +33,7 @@ export function plugin({ cldImage, options } = {}) {
    * applyUnderlay
    */
 
-  function applyUnderlay({ publicId, type, position, text, effects: layerEffects = [], ...options }) {
+  function applyUnderlay({ publicId, type, position, text, effects: layerEffects = [], flags = [], ...options }) {
     const hasPublicId = typeof publicId === 'string';
     const hasPosition = typeof position === 'object';
 
@@ -87,6 +82,16 @@ export function plugin({ cldImage, options } = {}) {
         applied.push(`${qualifier}_${position[key]}`);
       });
     }
+
+    // Positioning
+
+    flags.forEach(key => {
+      if ( !qualifiersFlags[key] ) return;
+
+      const { qualifier, prefix } = qualifiersFlags[key];
+
+      primary.push(`${prefix}_${qualifier}`);
+    });
 
     // Add all primary transformations
 

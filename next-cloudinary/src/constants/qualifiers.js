@@ -250,3 +250,11 @@ export const effects = {
     qualifier: 'vignette',
   },
 }
+
+export const flags = {
+  relative: {
+    prefix: 'fl',
+    qualifier: 'relative',
+    location: 'primary'
+  }
+}
