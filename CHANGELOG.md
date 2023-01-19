@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.8.3...v1.9.0) (2023-01-19)
+
+
+### Features
+
+* Analytics ID ([#102](https://github.com/colbyfayock/next-cloudinary/issues/102)) ([c9ea705](https://github.com/colbyfayock/next-cloudinary/commit/c9ea705eefef6273a98f14e23ebff1a4ef0763c8))
+
 ## [1.8.3](https://github.com/colbyfayock/next-cloudinary/compare/v1.8.2...v1.8.3) (2023-01-19)
 
 
