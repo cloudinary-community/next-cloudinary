@@ -118,7 +118,7 @@ export function getPublicId(src) {
  */
 
 export function createPlaceholderUrl({ src, placeholder = true, config }: { src?: any, placeholder?: boolean | string, config?: any }) {
-  const rawTransformations = [];
+  const rawTransformations = [] as string[];
 
   if ( placeholder === 'grayscale' ) {
     rawTransformations.push('e_grayscale');
@@ -157,7 +157,7 @@ export async function pollForProcessingImage(options) {
         resolve(res);
       });
     });
-  } catch(e) {
+  } catch(e: any) {
     if ( e.status === 423 ) {
       return await pollForProcessingImage(options);
     }

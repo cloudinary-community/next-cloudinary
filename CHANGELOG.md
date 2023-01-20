@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.9.0...v1.10.0) (2023-01-19)
+
+
+### Features
+
+* Revert "Analytics ID" ([#103](https://github.com/colbyfayock/next-cloudinary/issues/103)) ([61bf1d2](https://github.com/colbyfayock/next-cloudinary/commit/61bf1d2e3c63a95bc74792a27ccc000c83ca15ab)), closes [colbyfayock/next-cloudinary#102](https://github.com/colbyfayock/next-cloudinary/issues/102)
+
 # [1.9.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.8.3...v1.9.0) (2023-01-19)
 
 
