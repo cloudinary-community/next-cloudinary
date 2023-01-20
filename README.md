@@ -179,6 +179,7 @@ yarn test
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/codingis4noobs2"><img src="https://avatars.githubusercontent.com/u/87560178?v=4?s=100" width="100px;" alt="codingis4noobs2"/><br /><sub><b>codingis4noobs2</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=codingis4noobs2" title="Code">💻</a> <a href="https://github.com/colbyfayock/next-cloudinary/commits?author=codingis4noobs2" title="Tests">⚠️</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/michizhou"><img src="https://avatars.githubusercontent.com/u/33012425?v=4?s=100" width="100px;" alt="michizhou"/><br /><sub><b>michizhou</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=michizhou" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://leeconlin.co.uk"><img src="https://avatars.githubusercontent.com/u/1023581?v=4?s=100" width="100px;" alt="Lee Conlin"/><br /><sub><b>Lee Conlin</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=hades200082" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://wannabe-polyglot.com"><img src="https://avatars.githubusercontent.com/u/1134611?v=4?s=100" width="100px;" alt="Ryan Smith"/><br /><sub><b>Ryan Smith</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=tanzoniteblack" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
