@@ -7,6 +7,8 @@ import { createPlaceholderUrl, getPublicId, transformationPlugins, pollForProces
 import { getTransformations } from '../../lib/transformations';
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
+declare type PlaceholderValue = 'blur' | 'empty'; // this is from next/image, but isn't exported
+
 const CldImage = props => {
   const CLD_OPTIONS = [
     'deliveryType'
@@ -23,7 +25,16 @@ const CldImage = props => {
 
   // Construct the base Image component props by filtering out Cloudinary-specific props
 
-  const imageProps = {};
+  const imageProps: {
+      rawTransformations?: string[];
+      blurDataURL?: string;
+      placeholder?: PlaceholderValue;
+      alt: string;
+      src: string;
+  } = {
+    alt: props.alt,
+    src: props.src
+  };
 
   Object.keys(props)
     .filter(key => !CLD_OPTIONS.includes(key))
@@ -66,7 +77,8 @@ const CldImage = props => {
 
   if (props.src && props.preserveTransformations) {
     const transformations = getTransformations(props.src,props.preserveTransformations);
-    imageProps.rawTransformations = [...imageProps.rawTransformations,...transformations,];
+    const rawTransformations = imageProps.rawTransformations ? [...imageProps.rawTransformations] : []
+    imageProps.rawTransformations = [...rawTransformations,...transformations,];
   }
 
   /**

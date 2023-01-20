@@ -59,6 +59,7 @@ const CldUploadWidget = ({
       }
     }
 
+    // @ts-ignore
     return cloudinary.current?.createUploadWidget(
       uploadOptions,
       function (error, result) {
@@ -83,6 +84,7 @@ const CldUploadWidget = ({
       widget.current = createWidget();
     }
 
+    // @ts-ignore
     widget?.current && widget.current.open();
   }
 
@@ -92,6 +94,7 @@ const CldUploadWidget = ({
    */
 
   function handleOnLoad() {
+    // @ts-ignore
     cloudinary.current = window.cloudinary;
   }
 
