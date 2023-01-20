@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.10.0...v1.11.0) (2023-01-20)
+
+
+### Features
+
+* Ryan/typescript ([#93](https://github.com/colbyfayock/next-cloudinary/issues/93)) ([1028df2](https://github.com/colbyfayock/next-cloudinary/commit/1028df286ca5a94a9c6734eba00b8f95d9a36ba0)), closes [#77](https://github.com/colbyfayock/next-cloudinary/issues/77)
+
 # [1.10.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.9.0...v1.10.0) (2023-01-19)
 
 
