@@ -8,6 +8,7 @@ import * as rawTransformationsPlugin from '../plugins/raw-transformations';
 import * as removeBackgroundPlugin from '../plugins/remove-background';
 import * as underlaysPlugin from '../plugins/underlays';
 import * as zoompanPlugin from '../plugins/zoompan';
+import ICloudinaryConfigurations from '@cloudinary/url-gen/config/interfaces/Config/ICloudinaryConfigurations';
 
 export const transformationPlugins = [
   // Background Removal must always come first
@@ -26,13 +27,31 @@ export const transformationPlugins = [
   rawTransformationsPlugin
 ];
 
-let cld;
+let cld: any;
+
+interface ImageUrlOptions{
+  src?: string;
+  width?: number;
+  quality?: number;
+  deliveryType?: string;
+  format?: string;
+  rawTransformations?: string[];
+  resize?: {
+    crop?: string;
+    width?: number;
+  }
+}
+
+interface ConstructUrlProps {
+  options?: ImageUrlOptions;
+  config?: ICloudinaryConfigurations;
+}
 
 /**
  * constructCloudinaryUrl
  */
 
-export function constructCloudinaryUrl({ options, config }: { options?: any; config?: any }): string {
+export function constructCloudinaryUrl({ options, config }: ConstructUrlProps): string {
   if ( !cld ) {
     cld = new Cloudinary({
       cloud: {
@@ -46,7 +65,7 @@ export function constructCloudinaryUrl({ options, config }: { options?: any; con
     });
   }
 
-  const publicId = getPublicId(options.src);
+  const publicId = getPublicId(options?.src);
 
   const cldImage = cld.image(publicId);
 
@@ -57,26 +76,26 @@ export function constructCloudinaryUrl({ options, config }: { options?: any; con
       options
     }) || {};
 
-    if ( pluginOptions?.format ) {
+    if ( pluginOptions?.format && options ) {
       options.format = pluginOptions.format;
     }
 
-    if ( pluginOptions?.width ) {
+    if ( pluginOptions?.width && options ) {
       options.resize = {
         width: pluginOptions?.width
       };
     }
   });
 
-  if ( options.resize ) {
+  if ( options?.resize ) {
     const { width, crop = 'scale' } = options.resize;
     cldImage.effect(`c_${crop},w_${width}`);
   }
 
   return cldImage
-          .setDeliveryType(options.deliveryType || 'upload')
-          .format(options.format || 'auto')
-          .delivery(`q_${options.quality || 'auto'}`)
+          .setDeliveryType(options?.deliveryType || 'upload')
+          .format(options?.format || 'auto')
+          .delivery(`q_${options?.quality || 'auto'}`)
           .toURL();
 }
 
@@ -89,7 +108,7 @@ export function constructCloudinaryUrl({ options, config }: { options?: any; con
  * @return {string} The images public id
  */
 
-export function getPublicId(src) {
+export function getPublicId(src): string {
   if ( typeof src !== 'string' ) {
     throw new Error(`Invalid src of type ${typeof src}`);
   }
@@ -118,7 +137,7 @@ export function getPublicId(src) {
  */
 
 export function createPlaceholderUrl({ src, placeholder = true, config }: { src?: any, placeholder?: boolean | string, config?: any }) {
-  const rawTransformations = [] as string[];
+  const rawTransformations: string[] = [];
 
   if ( placeholder === 'grayscale' ) {
     rawTransformations.push('e_grayscale');
@@ -145,7 +164,7 @@ export function createPlaceholderUrl({ src, placeholder = true, config }: { src?
  * pollForProcessingImage
  */
 
-export async function pollForProcessingImage(options) {
+export async function pollForProcessingImage(options): Promise<boolean> {
   const { src } = options;
   try {
     await new Promise((resolve, reject) => {
