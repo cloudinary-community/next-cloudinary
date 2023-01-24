@@ -24,7 +24,8 @@ const CldOgImage = ({ excludeTags = [] as string[], twitterTitle, ...props }) =>
   // We need to include the tags within the Next.js Head component rather than
   // direcly adding them inside of the Head otherwise we get unexpected results
 
-  return (
+    return (
+    // @ts-ignore
     <Head>
       <meta property="og:image" content={ogImageUrl} />
       <meta property="og:image:secure_url" content={ogImageUrl} />

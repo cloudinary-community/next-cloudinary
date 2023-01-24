@@ -8,7 +8,6 @@
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "noImplicitAny": false,
     "esModuleInterop": true,
     "module": "esnext",
@@ -21,6 +20,12 @@
       {
         "name": "next"
       }
-    ]
-  }
+    ],
+    "rootDir": "./src",
+    "composite": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true,
+  },
+  "include": ["src/**/*"],
 }

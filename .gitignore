@@ -2,3 +2,5 @@ node_modules
 .vscode
 .env
 next-cloudinary/dist
+.idea
+tsconfig.tsbuildinfo

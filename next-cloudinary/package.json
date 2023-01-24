@@ -5,7 +5,6 @@
   "module": "dist/next-cloudinary.module.js",
   "umd:main": "dist/next-cloudinary.umd.js",
   "source": "src/index.ts",
-  "types": "dist/index.d.ts",
   "scripts": {
     "build": "microbundle --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react",
     "dev": "microbundle watch --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react",
