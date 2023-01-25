@@ -1,3 +1,10 @@
+## [1.12.2](https://github.com/colbyfayock/next-cloudinary/compare/v1.12.1...v1.12.2) (2023-01-25)
+
+
+### Bug Fixes
+
+* TSConfig Fix ([e802818](https://github.com/colbyfayock/next-cloudinary/commit/e8028188b854bb21bc152117c23e058ed42e766a))
+
 ## [1.12.1](https://github.com/colbyfayock/next-cloudinary/compare/v1.12.0...v1.12.1) (2023-01-25)
 
 
