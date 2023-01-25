@@ -8,7 +8,7 @@ const CldUploadWidget = ({
   signatureEndpoint,
   uploadPreset,
 }) => {
-  const cloudinary = useRef();
+  const cloudinary = useRef<any>();
   const widget = useRef();
 
   const signed = !!signatureEndpoint;
@@ -59,14 +59,13 @@ const CldUploadWidget = ({
       }
     }
 
-    // @ts-ignore
     return cloudinary.current?.createUploadWidget(
       uploadOptions,
       function (error, result) {
         // The callback is a bit more chatty than failed or success so
         // only trigger when one of those are the case. You can additionally
         // create a separate handler such as onEvent and trigger it on
-        // ever occurance
+        // ever occurrence
         if (error || result.event === "success") {
           onUpload(error, result, widget?.current);
         }
@@ -107,6 +106,7 @@ const CldUploadWidget = ({
       })}
       <Script
         id={`cloudinary-${Math.floor(Math.random() * 100)}`}
+        // @ts-ignore
         src="https://widget.cloudinary.com/v2.0/global/all.js"
         onLoad={handleOnLoad}
         onError={(e) => console.error(`Failed to load Cloudinary: ${e.message}`)}

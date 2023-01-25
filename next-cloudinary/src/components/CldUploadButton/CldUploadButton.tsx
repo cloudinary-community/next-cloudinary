@@ -11,6 +11,7 @@ const CldUploadButton = ({
 }) => {
   return (
     <>
+      {/*  @ts-ignore */}
       <CldUploadWidget
         onUpload={onUpload}
         options={options}
