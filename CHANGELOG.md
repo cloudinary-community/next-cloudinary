@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/colbyfayock/next-cloudinary/compare/v1.12.0...v1.12.1) (2023-01-25)
+
+
+### Bug Fixes
+
+* Make `tsc` directly emit typescript declarations ([#109](https://github.com/colbyfayock/next-cloudinary/issues/109)) ([ce77c76](https://github.com/colbyfayock/next-cloudinary/commit/ce77c76f30bce4bd5ecfd70505d549732eb196bf)), closes [#106](https://github.com/colbyfayock/next-cloudinary/issues/106)
+
 # [1.12.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.11.0...v1.12.0) (2023-01-25)
 
 
