@@ -25,7 +25,6 @@
     "composite": true,
     "declaration": true,
     "declarationDir": "dist",
-    "emitDeclarationOnly": true,
   },
   "include": ["src/**/*"],
 }

@@ -8,7 +8,7 @@ const CldUploadWidget = ({
   signatureEndpoint,
   uploadPreset,
 }) => {
-  const cloudinary = useRef();
+  const cloudinary = useRef<any>();
   const widget = useRef();
 
   const signed = !!signatureEndpoint;
@@ -65,7 +65,7 @@ const CldUploadWidget = ({
         // The callback is a bit more chatty than failed or success so
         // only trigger when one of those are the case. You can additionally
         // create a separate handler such as onEvent and trigger it on
-        // ever occurance
+        // ever occurrence
         if (error || result.event === "success") {
           onUpload(error, result, widget?.current);
         }
