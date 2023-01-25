@@ -21,10 +21,10 @@
         "name": "next"
       }
     ],
-    "rootDir": "./src",
+    "rootDir": ".",
     "composite": true,
     "declaration": true,
     "declarationDir": "dist",
   },
-  "include": ["src/**/*"],
+  "include": ["./package.json", "src/**/*"],
 }
