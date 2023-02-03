@@ -1,4 +1,6 @@
-import { constructCloudinaryUrl } from '../lib/cloudinary';
+import { constructCloudinaryUrl } from '@cloudinary-util/url-loader';
+
+import { NEXT_CLOUDINARY_ANALYTICS_ID, NEXT_CLOUDINARY_VERSION, NEXT_VERSION } from '../constants/analytics';
 
 export function cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig = {} }) {
   const options = {
@@ -22,6 +24,17 @@ export function cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldCon
 
   return constructCloudinaryUrl({
     options,
-    config: cldConfig
+    config: {
+      cloud: {
+        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+      },
+      ...cldConfig
+    },
+    analytics: {
+      sdkCode: NEXT_CLOUDINARY_ANALYTICS_ID,
+      sdkSemver: NEXT_CLOUDINARY_VERSION,
+      techVersion: NEXT_VERSION,
+      feature: ''
+    }
   });
 }

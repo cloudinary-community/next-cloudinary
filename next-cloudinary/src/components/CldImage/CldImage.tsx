@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { getTransformations, getPublicId } from '@cloudinary-util/util';
+import { transformationPlugins } from '@cloudinary-util/url-loader';
 
-import { createPlaceholderUrl, getPublicId, transformationPlugins, pollForProcessingImage } from '../../lib/cloudinary';
-import { getTransformations } from '../../lib/transformations';
+import { createPlaceholderUrl, pollForProcessingImage } from '../../lib/cloudinary';
+
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
 declare type PlaceholderValue = 'blur' | 'empty'; // this is from next/image, but isn't exported
@@ -63,7 +65,17 @@ const CldImage = props => {
   // https://nextjs.org/docs/api-reference/next/image#blurdataurl
 
   if ( imageProps.placeholder ) {
-    const publicId = getPublicId(props.src);
+    let publicId;
+
+    if ( props.src.startsWith('https://') ) {
+      try {
+        publicId = getPublicId(props.src);
+      } catch(e) {}
+    }
+
+    if ( !publicId ) {
+      publicId = props.src;
+    }
 
     imageProps.blurDataURL = createPlaceholderUrl({
       src: publicId,
