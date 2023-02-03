@@ -822,11 +822,11 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.EXAMPLES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
       rawTransformations={[
         'e_blur:2000',
         'e_tint:100:0000FF:0p:FF1493:100p'
       ]}
+      sizes="(max-width: 480px) 100vw, 50vw"
       alt=""
     />
 
@@ -839,16 +839,23 @@ import ImageGrid from '../../../components/ImageGrid';
     ]}
     ```
   </li>
-</ImageGrid>
-
-<ImageGrid>
   <li>
     <CldImage
       width="960"
       height="600"
-      src={`${process.env.EXAMPLES_DIRECTORY}/c_fill,h_300,w_250/e_blur:300/turtle`}
+      src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_fill,h_300,w_250/e_blur:1000/v1/${process.env.EXAMPLES_DIRECTORY}/turtle`}
       preserveTransformations
+      tint="equalize:80:blue:blueviolet"
+      sizes="(max-width: 480px) 100vw, 50vw"
       alt=""
     />
+
+    ### Preserve Transformations
+
+    ```jsx
+    src={`https://res.cloudinary.com/<Cloud Name>/image/upload/c_fill,h_300,w_250/e_blur:1000/v1/<Public ID>`}
+    preserveTransformations
+    tint="equalize:80:blue:blueviolet"
+    ```
   </li>
 </ImageGrid>
