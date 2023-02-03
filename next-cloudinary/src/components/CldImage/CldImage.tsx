@@ -9,11 +9,10 @@ import { createPlaceholderUrl, pollForProcessingImage } from '../../lib/cloudina
 
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
-declare type PlaceholderValue = 'blur' | 'empty'; // this is from next/image, but isn't exported
-
 const CldImage = props => {
   const CLD_OPTIONS = [
-    'deliveryType'
+    'deliveryType',
+    'preserveTransformations'
   ];
 
   transformationPlugins.forEach(({ props = [] }) => {
@@ -27,13 +26,14 @@ const CldImage = props => {
 
   // Construct the base Image component props by filtering out Cloudinary-specific props
 
-  const imageProps: {
-      rawTransformations?: string[];
-      blurDataURL?: string;
-      placeholder?: PlaceholderValue;
-      alt: string;
-      src: string;
-  } = {
+  interface ImageProps {
+    alt: string;
+    blurDataURL?: string;
+    placeholder?: 'blur' | 'empty'; // this is from next/image, but isn't exported
+    src: string;
+  }
+
+  const imageProps: ImageProps = {
     alt: props.alt,
     src: props.src
   };
@@ -47,11 +47,15 @@ const CldImage = props => {
 
   // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
 
-  const cldOptions = {};
+  interface CldOptions {
+    rawTransformations?: string[];
+  }
+
+  const cldOptions: CldOptions = {};
 
   CLD_OPTIONS.forEach(key => {
     if ( props[key] ) {
-      cldOptions[key] = props[key];
+      cldOptions[key] = props[key] || undefined;
     }
   });
 
@@ -87,10 +91,17 @@ const CldImage = props => {
     }
   }
 
-  if (props.src && props.preserveTransformations) {
-    const transformations = getTransformations(props.src,props.preserveTransformations);
-    const rawTransformations = imageProps.rawTransformations ? [...imageProps.rawTransformations] : []
-    imageProps.rawTransformations = [...rawTransformations,...transformations,];
+  // Try to preserve the original transformations from the Cloudinary URL passed in
+  // to the component. This only works if the URL has a version number on it and otherwise
+  // will fail to load
+
+  if (props.preserveTransformations) {
+    try {
+      const transformations = getTransformations(props.src);
+      cldOptions.rawTransformations = [...transformations.flat(), ...(props.rawTransformations || [])];
+    } catch(e) {
+      console.warn(`Failed to preserve transformations: ${(e as Error).message}`)
+    }
   }
 
   /**

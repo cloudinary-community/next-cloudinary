@@ -1018,10 +1018,15 @@
     "@cloudinary-util/util" "1.1.1"
     "@cloudinary/url-gen" "^1.8.7"
 
-"@cloudinary-util/util@1.1.1", "@cloudinary-util/util@^1.1.1":
+"@cloudinary-util/util@1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-1.1.1.tgz#29fe85c26acc710143044484f12332672ec520d0"
   integrity sha512-Yt7BobX2BsetzLNNtVl8Mo4qdt2XWoU7k3O1Y39kIaLLMX2/E6Heqc3FkXwGm3FRe/t6ZIk9ZR9ePGNcoEGPMw==
+
+"@cloudinary-util/util@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-1.2.0.tgz#4b6064ac9c1032bd1ef31f28f1524d552e1b021b"
+  integrity sha512-x4qzKuTUM2RfOFdhLZQfgipheWUmHrjd0b0KynjmhjPsBtJe1FKwHE4Mjze0JGYyOyHP5W8v9DMPpr8UQ61SEA==
 
 "@cloudinary/transformation-builder-sdk@^1.0.0":
   version "1.1.0"
