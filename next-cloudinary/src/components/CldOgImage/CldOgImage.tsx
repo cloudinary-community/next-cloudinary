@@ -1,24 +1,37 @@
 import Head from 'next/head';
+import { constructCloudinaryUrl } from '@cloudinary-util/url-loader';
+
+import { NEXT_CLOUDINARY_ANALYTICS_ID, NEXT_CLOUDINARY_VERSION, NEXT_VERSION } from '../../constants/analytics';
 
 const IMAGE_WIDTH = 2400;
 const IMAGE_HEIGHT = 1200;
-
-import { constructCloudinaryUrl } from '../../lib/cloudinary';
 
 const TWITTER_CARD = 'summary_large_image';
 
 const CldOgImage = ({ excludeTags = [] as string[], twitterTitle, ...props }) => {
   const options = {
     ...props,
-    width: props.width || IMAGE_WIDTH,
-    height: props.height || IMAGE_HEIGHT,
+    alt: props.alt,
     crop: props.crop || 'fill',
     gravity: props.gravity || 'center',
-    alt: props.alt
+    height: props.height || IMAGE_HEIGHT,
+    src: props.src,
+    width: props.width || IMAGE_WIDTH,
   }
 
   const ogImageUrl = constructCloudinaryUrl({
-    options
+    options,
+    config: {
+      cloud: {
+        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+      }
+    },
+    analytics: {
+      sdkCode: NEXT_CLOUDINARY_ANALYTICS_ID,
+      sdkSemver: NEXT_CLOUDINARY_VERSION,
+      techVersion: NEXT_VERSION,
+      feature: ''
+    }
   });
 
   // We need to include the tags within the Next.js Head component rather than

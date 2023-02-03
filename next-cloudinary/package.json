@@ -13,6 +13,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "@cloudinary-util/url-loader": "^1.2.4",
+    "@cloudinary-util/util": "^1.1.1",
     "@cloudinary/url-gen": "^1.8.6"
   },
   "devDependencies": {
