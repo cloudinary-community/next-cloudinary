@@ -1,3 +1,10 @@
+## [1.12.3](https://github.com/colbyfayock/next-cloudinary/compare/v1.12.2...v1.12.3) (2023-02-03)
+
+
+### Bug Fixes
+
+* Support fill=true by not applying a width if not set ([#113](https://github.com/colbyfayock/next-cloudinary/issues/113)) ([cfd14d0](https://github.com/colbyfayock/next-cloudinary/commit/cfd14d083180ea2720b5c54fada7753658166234)), closes [#110](https://github.com/colbyfayock/next-cloudinary/issues/110)
+
 ## [1.12.2](https://github.com/colbyfayock/next-cloudinary/compare/v1.12.1...v1.12.2) (2023-01-25)
 
 
