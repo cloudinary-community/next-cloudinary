@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.12.3...v2.0.0) (2023-02-03)
+
+
+### Features
+
+* Cloudinary Loader as External Dependency ([#112](https://github.com/colbyfayock/next-cloudinary/issues/112)) ([56cde4c](https://github.com/colbyfayock/next-cloudinary/commit/56cde4ce131a787355672d56efd7cc4d6d66b404)), closes [#111](https://github.com/colbyfayock/next-cloudinary/issues/111)
+
+
+### BREAKING CHANGES
+
+* this removes the exports of constructoCloudinaryUrl and qualifiers from the Next Cloudinary package
+
 ## [1.12.3](https://github.com/colbyfayock/next-cloudinary/compare/v1.12.2...v1.12.3) (2023-02-03)
 
 
