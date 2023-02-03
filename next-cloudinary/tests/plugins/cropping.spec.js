@@ -47,4 +47,11 @@ describe('Cropping plugin', () => {
     plugin({ cldImage, options });
     expect(cldImage.toURL()).toContain(`c_${options.crop},w_${options.width},h_${options.height},g_auto,z_${options.zoom}/${TEST_PUBLIC_ID}`);
   });
+
+  it('should not include a width if not set', () => {
+    const cldImage = cld.image(TEST_PUBLIC_ID);
+    const options = {};
+    plugin({ cldImage, options });
+    expect(cldImage.toURL()).toContain(`image/upload/${TEST_PUBLIC_ID}`);
+  });
 });

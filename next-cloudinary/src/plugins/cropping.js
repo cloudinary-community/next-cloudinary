@@ -10,9 +10,13 @@ export const props = [
 export function plugin({ cldImage, options } = {}) {
   const overrides = {};
 
-  const { width, height, widthResize, heightResize, crop = 'limit' } = options;
+  const { width, height, widthResize, crop = 'limit' } = options;
 
-  let transformationString = `c_${crop},w_${width}`;
+  let transformationString = '';
+
+  if ( width ) {
+    transformationString = `c_${crop},w_${width}`;
+  }
 
   if ( !options.gravity && cropsGravityAuto.includes(crop) ) {
     options.gravity = 'auto';
