@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/colbyfayock/next-cloudinary/compare/v2.0.0...v2.0.1) (2023-02-03)
+
+
+### Bug Fixes
+
+* Fixes preserveTransformations ([#114](https://github.com/colbyfayock/next-cloudinary/issues/114)) ([d2070f3](https://github.com/colbyfayock/next-cloudinary/commit/d2070f32b6fcad208efdb0e1d3e868e051d6fe6e)), closes [#82](https://github.com/colbyfayock/next-cloudinary/issues/82)
+
 # [2.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v1.12.3...v2.0.0) (2023-02-03)
 
 
