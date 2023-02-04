@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v2.0.1...v2.1.0) (2023-02-04)
+
+
+### Features
+
+* Create UploadWidget instance when browser is idle ([#118](https://github.com/colbyfayock/next-cloudinary/issues/118)) ([92637d6](https://github.com/colbyfayock/next-cloudinary/commit/92637d67de386f5f6a5b96480bc036ef9d717ec1)), closes [#117](https://github.com/colbyfayock/next-cloudinary/issues/117)
+
 ## [2.0.1](https://github.com/colbyfayock/next-cloudinary/compare/v2.0.0...v2.0.1) (2023-02-03)
 
 
