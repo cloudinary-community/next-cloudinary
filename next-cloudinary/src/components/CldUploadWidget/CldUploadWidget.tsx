@@ -1,5 +1,7 @@
-import { useRef } from 'react';
 import Script from 'next/script';
+
+let cloudinary;
+let widget;
 
 const CldUploadWidget = ({
   children,
@@ -8,10 +10,27 @@ const CldUploadWidget = ({
   signatureEndpoint,
   uploadPreset,
 }) => {
-  const cloudinary = useRef<any>();
-  const widget = useRef();
-
   const signed = !!signatureEndpoint;
+
+  /**
+   * handleOnLoad
+   * @description Stores the Cloudinary window instance to a ref when the widget script loads
+   */
+
+  function handleOnLoad() {
+    if ( !cloudinary ) {
+      cloudinary = (window as any).cloudinary;
+    }
+
+    // To help improve load time of the widget on first instance, use requestIdleCallback
+    // to trigger widget creation. Optional.
+
+    requestIdleCallback(() => {
+      if ( !widget ) {
+        widget = createWidget();
+      }
+    });
+  }
 
   /**
    * generateSignature
@@ -20,7 +39,7 @@ const CldUploadWidget = ({
 
   function generateSignature(callback, paramsToSign) {
     fetch(signatureEndpoint, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({
         paramsToSign,
       }),
@@ -59,7 +78,7 @@ const CldUploadWidget = ({
       }
     }
 
-    return cloudinary.current?.createUploadWidget(
+    return cloudinary?.createUploadWidget(
       uploadOptions,
       function (error, result) {
         // The callback is a bit more chatty than failed or success so
@@ -67,7 +86,7 @@ const CldUploadWidget = ({
         // create a separate handler such as onEvent and trigger it on
         // ever occurrence
         if (error || result.event === "success") {
-          onUpload(error, result, widget?.current);
+          onUpload(error, result, widget);
         }
       }
     );
@@ -79,34 +98,21 @@ const CldUploadWidget = ({
    */
 
   function open() {
-    if (!widget?.current) {
-      widget.current = createWidget();
+    if (!widget) {
+      widget = createWidget();
     }
-
-    // @ts-ignore
-    widget?.current && widget.current.open();
-  }
-
-  /**
-   * handleOnLoad
-   * @description Stores the Cloudinary window instance to a ref when the widget script loads
-   */
-
-  function handleOnLoad() {
-    // @ts-ignore
-    cloudinary.current = window.cloudinary;
+    widget && widget.open();
   }
 
   return (
     <>
       {children({
-        cloudinary: cloudinary.current,
-        widget: widget.current,
+        cloudinary,
+        widget,
         open,
       })}
       <Script
         id={`cloudinary-${Math.floor(Math.random() * 100)}`}
-        // @ts-ignore
         src="https://widget.cloudinary.com/v2.0/global/all.js"
         onLoad={handleOnLoad}
         onError={(e) => console.error(`Failed to load Cloudinary: ${e.message}`)}
