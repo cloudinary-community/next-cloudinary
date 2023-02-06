@@ -1,5 +1,7 @@
 import Script from 'next/script';
 
+import { triggerOnIdle } from '../../lib/util';
+
 let cloudinary;
 let widget;
 
@@ -25,7 +27,7 @@ const CldUploadWidget = ({
     // To help improve load time of the widget on first instance, use requestIdleCallback
     // to trigger widget creation. Optional.
 
-    requestIdleCallback(() => {
+    triggerOnIdle(() => {
       if ( !widget ) {
         widget = createWidget();
       }
