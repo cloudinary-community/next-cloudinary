@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { getTransformations, getPublicId } from '@cloudinary-util/util';
+import { getTransformations } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
 
-import { createPlaceholderUrl, pollForProcessingImage } from '../../lib/cloudinary';
+import { pollForProcessingImage } from '../../lib/cloudinary';
 
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
@@ -29,7 +29,6 @@ const CldImage = props => {
   interface ImageProps {
     alt: string;
     blurDataURL?: string;
-    placeholder?: 'blur' | 'empty'; // this is from next/image, but isn't exported
     src: string;
   }
 
@@ -58,38 +57,6 @@ const CldImage = props => {
       cldOptions[key] = props[key] || undefined;
     }
   });
-
-  // If we see a placeholder option, configure a Cloudinary-based URL.
-  // The resulting image will always be blurred per Next.js, so we're
-  // limited on options for placeholders.
-  //
-  // We need to do this logic here as we potentially need to mutate
-  // an Image component prop as opposed to simply the URL
-  //
-  // https://nextjs.org/docs/api-reference/next/image#blurdataurl
-
-  if ( imageProps.placeholder ) {
-    let publicId;
-
-    if ( props.src.startsWith('https://') ) {
-      try {
-        publicId = getPublicId(props.src);
-      } catch(e) {}
-    }
-
-    if ( !publicId ) {
-      publicId = props.src;
-    }
-
-    imageProps.blurDataURL = createPlaceholderUrl({
-      src: publicId,
-      placeholder: props.placeholder
-    });
-
-    if ( imageProps.placeholder !== 'blur' ) {
-      imageProps.placeholder = 'blur';
-    }
-  }
 
   // Try to preserve the original transformations from the Cloudinary URL passed in
   // to the component. This only works if the URL has a version number on it and otherwise
