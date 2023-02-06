@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/colbyfayock/next-cloudinary/compare/v2.1.0...v2.1.1) (2023-02-06)
+
+
+### Bug Fixes
+
+* Adds requestIdleCallback fallback ([#122](https://github.com/colbyfayock/next-cloudinary/issues/122)) ([27aac1a](https://github.com/colbyfayock/next-cloudinary/commit/27aac1af2b87b46aa4c891c79620288985bd56e5)), closes [#121](https://github.com/colbyfayock/next-cloudinary/issues/121)
+
 # [2.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v2.0.1...v2.1.0) (2023-02-04)
 
 
