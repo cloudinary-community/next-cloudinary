@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/colbyfayock/next-cloudinary/compare/v2.1.1...v2.1.2) (2023-02-07)
+
+
+### Bug Fixes
+
+* Improve Text Handling ([#123](https://github.com/colbyfayock/next-cloudinary/issues/123)) ([94be084](https://github.com/colbyfayock/next-cloudinary/commit/94be084aa07590d1d0fd98b60107e35ad1798b86)), closes [#107](https://github.com/colbyfayock/next-cloudinary/issues/107)
+
 ## [2.1.1](https://github.com/colbyfayock/next-cloudinary/compare/v2.1.0...v2.1.1) (2023-02-06)
 
 
