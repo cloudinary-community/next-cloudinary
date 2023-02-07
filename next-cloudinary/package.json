@@ -13,7 +13,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@cloudinary-util/url-loader": "^1.2.7",
+    "@cloudinary-util/url-loader": "^1.2.8",
     "@cloudinary-util/util": "^1.2.0",
     "@cloudinary/url-gen": "^1.8.6"
   },
