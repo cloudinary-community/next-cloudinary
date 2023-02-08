@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v2.1.2...v2.2.0) (2023-02-08)
+
+
+### Features
+
+* Updates Text Style Parameters ([#125](https://github.com/colbyfayock/next-cloudinary/issues/125)) ([a5cc717](https://github.com/colbyfayock/next-cloudinary/commit/a5cc717fe75a6b960b5140e001ae4ec6d0caf701)), closes [#108](https://github.com/colbyfayock/next-cloudinary/issues/108)
+
 ## [2.1.2](https://github.com/colbyfayock/next-cloudinary/compare/v2.1.1...v2.1.2) (2023-02-07)
 
 
