@@ -5,6 +5,7 @@ const withNextra = require('nextra')({
 
 module.exports = withNextra({
   env: {
-    EXAMPLES_DIRECTORY: process.env.NEXT_PUBLIC_CLOUDINARY_EXAMPLES_DIRECTORY || 'images'
+    IMAGES_DIRECTORY: process.env.NEXT_PUBLIC_CLOUDINARY_IMAGES_DIRECTORY || 'images',
+    VIDEOS_DIRECTORY: process.env.NEXT_PUBLIC_CLOUDINARY_VIDEOS_DIRECTORY || 'videos'
   }
 });

@@ -131,10 +131,10 @@ Then run the upload script with:
 yarn upload
 ```
 
-By default, the images inside of `scripts/images.json` will be uploaded to the "images" directory inside of your Cloudinary account. To change the location, add the `CLOUDINARY_EXAMPLES_DIRECTORY` environment variable with your preferred directory:
+By default, the images inside of `scripts/images.json` will be uploaded to the "images" directory inside of your Cloudinary account. To change the location, add the `CLOUDINARY_IMAGES_DIRECTORY` environment variable with your preferred directory:
 
 ```
-CLOUDINARY_EXAMPLES_DIRECTORY="<Your Directory>"
+CLOUDINARY_IMAGES_DIRECTORY="<Your Directory>"
 ```
 
 #### Running the Project

@@ -2,5 +2,6 @@
   "cldimage": "CldImage",
   "cldogimage": "CldOgImage",
   "clduploadbutton": "CldUploadButton",
-  "clduploadwidget": "CldUploadWidget"
+  "clduploadwidget": "CldUploadWidget",
+  "cldvideoplayer": "CldVideoPlayer"
 }

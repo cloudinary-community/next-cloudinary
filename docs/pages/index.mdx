@@ -35,7 +35,7 @@ High-performance image delivery and uploading at scale in Next.js powered by Clo
     <CldImage
       width="987"
       height="1481"
-      src={`${process.env.EXAMPLES_DIRECTORY}/woman-headphones`}
+      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
       sizes="50vw"
       alt="Original image of woman with headphones"
     />
@@ -44,13 +44,13 @@ High-performance image delivery and uploading at scale in Next.js powered by Clo
     <CldImage
       width="987"
       height="987"
-      src={`${process.env.EXAMPLES_DIRECTORY}/woman-headphones`}
+      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
       sizes="50vw"
       crop="thumb"
       gravity="faces"
       removeBackground
       tint="40:253f8c"
-      underlay={`${process.env.EXAMPLES_DIRECTORY}/city-skyline`}
+      underlay={`${process.env.IMAGES_DIRECTORY}/city-skyline`}
       overlays={[
         {
           position: {

@@ -1,0 +1,73 @@
+import Head from 'next/head';
+
+import OgImage from '../../../components/OgImage';
+import Video from '../../../components/Video';
+
+<Head>
+  <title>CldVideoPlayer - Next Cloudinary</title>
+  <meta name="og:title" content="Getting Started with CldVideoPlayer - Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/components/CldVideoPlayer/basic-usage`} />
+</Head>
+
+<OgImage
+  title="CldVideoPlayer"
+  twitterTitle="Getting Started with CldVideoPlayer"
+/>
+
+# Getting Started with CldVideoPlayer
+
+## Basic Usage
+
+The basic required props include `width`, `height`, and `src`:
+
+```
+<CldVideoPlayer
+  width="600"
+  height="600"
+  src="<Public ID>"
+/>
+```
+
+You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
+
+```
+<CldVideoPlayer
+  width="600"
+  height="600"
+  src="<Public ID>"
+  crop="thumb"
+  gravity="faces"
+  removeBackground
+  tint="100:blue:green:red"
+  underlays={[{
+    publicId: '<Public ID>',
+    width: 600,
+    height: 600,
+    crop: 'fill'
+  }]}
+/>
+```
+
+You can also take advantage of Cloudinary features like auto parsing of transformations from src as you can add all transformations at once like `<Cld Url>/<Transformations>/<Version>/<Public Id>`
+
+```
+<CldVideoPlayer
+  width="600"
+  height="600"
+  src="<Url Containing Transformations>"
+  preserveTransformations={true}
+/>
+```
+
+As CldVideoPlayer is a wrapper around the Next.js Image component, all built-in Image component features will work out-of-the-box including the `layout` prop.
+
+## Watch & Learn
+
+<Video
+  title="Automatic Image Optimization & Dynamic Cropping in Next.js with Next Cloudinary"
+  url="https://www.youtube.com/watch?v=oj2-BcZ8szk"
+/>
+
+## Learn More about CldVideoPlayer
+* [Configuration](/components/CldVideoPlayer/configuration)
+* [Effects](/components/CldVideoPlayer/examples)
