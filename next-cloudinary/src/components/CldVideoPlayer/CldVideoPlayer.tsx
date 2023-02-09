@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 const DEFAULT_PLAYER_VERSION = '1.9.4';
 
-const CldVideoPlayer = ({ id, src, version = DEFAULT_PLAYER_VERSION, ...props }) => {
+const CldVideoPlayer = ({ id, src, autoPlay, version = DEFAULT_PLAYER_VERSION, ...props }) => {
   const cloudinaryRef = useRef<any>();
   const videoRef = useRef<HTMLVideoElement>();
   const playerRef = useRef<any>();
@@ -37,9 +37,9 @@ const CldVideoPlayer = ({ id, src, version = DEFAULT_PLAYER_VERSION, ...props })
           ref={videoRef as RefObject<HTMLVideoElement>}
           id={playerId}
           className="cld-video-player cld-fluid"
-          controls
-          autoPlay
+          data-cld-autoplay-mode={autoPlay}
           data-cld-public-id={src}
+          controls
           {...props}
         />
         <Script
