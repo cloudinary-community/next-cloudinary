@@ -27,7 +27,6 @@ import ImageGrid from '../../../components/ImageGrid';
       width="1620"
       height="1080"
       src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
-      alt=""
     />
 
     ### Default
@@ -38,7 +37,48 @@ import ImageGrid from '../../../components/ImageGrid';
     src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
     ```
   </li>
+  <li>
+    <CldVideoPlayer
+      width="4096"
+      height="2160"
+      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+      colors={{
+        accent: '#ff0000',
+        base: '#00ff00',
+        text: '#0000ff'
+      }}
+      fontFace="Source Serif Pro"
+    />
 
+    ### Custom Player Colors & Font
+
+    ```jsx
+    colors={{
+      accent: '#ff0000',
+      base: '#00ff00',
+      text: '#0000ff'
+    }}
+    fontFace="Source Serif Pro"
+    ```
+  </li>
+  <li>
+    <CldVideoPlayer
+      width="4096"
+      height="2160"
+      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+      logo={{
+        imageUrl: 'https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/assets/space-jelly-cosmo.svg',
+        onClickUrl: 'https://spacejelly.dev'
+      }}
+    />
+
+    ### Custom Logo
+
+    ```jsx
+    logo={{
+      imageUrl: 'https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/assets/space-jelly-cosmo.svg',
+      onClickUrl: 'https://spacejelly.dev'
+    }}
+    ```
+  </li>
 </ImageGrid>
-
-<a href="https://github.com/colbyfayock/next-cloudinary">See all supported effects on github.com.</a>
