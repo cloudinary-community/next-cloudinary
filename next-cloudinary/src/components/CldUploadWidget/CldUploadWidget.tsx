@@ -2,8 +2,26 @@ import Script from 'next/script';
 
 import { triggerOnIdle } from '../../lib/util';
 
-let cloudinary;
-let widget;
+let cloudinary: any;
+let widget: any;
+
+export interface CldUploadWidgetPropsOptions {
+  uploadSignature?: Function;
+}
+
+export interface CldUploadWidgetPropsChildren {
+  cloudinary: any;
+  widget: any;
+  open: Function;
+}
+
+export interface CldUploadWidgetProps {
+  children?: ({ cloudinary, widget, open }: CldUploadWidgetPropsChildren) => JSX.Element;
+  onUpload?: Function;
+  options?: CldUploadWidgetPropsOptions;
+  signatureEndpoint?: URL | RequestInfo;
+  uploadPreset?: string;
+}
 
 const CldUploadWidget = ({
   children,
@@ -11,7 +29,7 @@ const CldUploadWidget = ({
   options,
   signatureEndpoint,
   uploadPreset,
-}) => {
+}: CldUploadWidgetProps) => {
   const signed = !!signatureEndpoint;
 
   /**
@@ -39,7 +57,10 @@ const CldUploadWidget = ({
    * @description Makes a request to an endpoint to sign Cloudinary parameters as part of widget creation
    */
 
-  function generateSignature(callback, paramsToSign) {
+  function generateSignature(callback: Function, paramsToSign: object) {
+    if ( typeof signatureEndpoint === 'undefined' ) {
+      throw Error('Failed to generate signature: signatureEndpoint undefined.')
+    }
     fetch(signatureEndpoint, {
       method: 'POST',
       body: JSON.stringify({
@@ -80,14 +101,18 @@ const CldUploadWidget = ({
       }
     }
 
+    interface CreateUploadWidgetCallbackResult {
+      event: string;
+    }
+
     return cloudinary?.createUploadWidget(
       uploadOptions,
-      function (error, result) {
+      function (error: any, result: CreateUploadWidgetCallbackResult) {
         // The callback is a bit more chatty than failed or success so
         // only trigger when one of those are the case. You can additionally
         // create a separate handler such as onEvent and trigger it on
         // ever occurrence
-        if (error || result.event === "success") {
+        if ((error || result.event === "success") && typeof onUpload === 'function') {
           onUpload(error, result, widget);
         }
       }
@@ -108,7 +133,7 @@ const CldUploadWidget = ({
 
   return (
     <>
-      {children({
+      {typeof children === 'function' && children({
         cloudinary,
         widget,
         open,
