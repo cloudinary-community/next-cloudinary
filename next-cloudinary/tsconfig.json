@@ -1,30 +1,36 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Next.js",
+  "display": "Next Cloudinary",
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
+    "target": "es6",
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitAny": false,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "ES2015"
+    ],
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "rootDir": ".",
-    "composite": true,
-    "declaration": true,
-    "declarationDir": "dist",
+    "jsx": "react-jsx"
+
   },
-  "include": ["./package.json", "src/**/*"],
+  "exclude": ["node_modules"]
 }

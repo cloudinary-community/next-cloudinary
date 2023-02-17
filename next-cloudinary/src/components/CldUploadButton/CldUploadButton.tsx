@@ -1,4 +1,9 @@
-import CldUploadWidget from '../CldUploadWidget';
+import CldUploadWidget, { CldUploadWidgetProps } from '../CldUploadWidget';
+
+export interface CldUploadButtonProps extends Omit<CldUploadWidgetProps, 'children'> {
+  children?: JSX.Element | string | Array<JSX.Element|string>;
+  onClick?: Function;
+}
 
 const CldUploadButton = ({
   children,
@@ -8,10 +13,9 @@ const CldUploadButton = ({
   signatureEndpoint,
   uploadPreset,
   ...props
-}) => {
+}: CldUploadButtonProps) => {
   return (
     <>
-      {/*  @ts-ignore */}
       <CldUploadWidget
         onUpload={onUpload}
         options={options}
@@ -19,7 +23,7 @@ const CldUploadButton = ({
         uploadPreset={uploadPreset}
       >
         {({ open }) => {
-          function handleOnClick(e) {
+          function handleOnClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
             e.preventDefault();
 
             open();
