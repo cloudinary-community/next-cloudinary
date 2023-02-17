@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v2.2.0...v2.3.0) (2023-02-17)
+
+
+### Features
+
+* Migrate to tsup, Fix Types Exports ([#131](https://github.com/colbyfayock/next-cloudinary/issues/131)) ([c51d54f](https://github.com/colbyfayock/next-cloudinary/commit/c51d54fd499c8bfd62a00502d79be0ec458b7822)), closes [#130](https://github.com/colbyfayock/next-cloudinary/issues/130)
+
 # [2.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v2.1.2...v2.2.0) (2023-02-08)
 
 
