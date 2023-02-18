@@ -933,10 +933,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cloudinary-util/url-loader@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-1.3.0.tgz#5ab63d8be5844f0b03ce9fe4cc7277bf775a62d1"
-  integrity sha512-ISyFOXRURMRrGyQ/FMMiLRq+698JWTNJpgFdL9t10ZemhOJT/d3ssfas9rcFLOKeHKqb6fAAY+NuYFNUtvpJqw==
+"@cloudinary-util/url-loader@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-1.4.0.tgz#6a20f75f9c4e362ac36ae6e518091e20e4136ba1"
+  integrity sha512-iB2W/j9/Ftp/PF7+38WYPRNPZY4bRdIYFMbLoDvsI5VLHYQwPoktDWkyzftoVH3akBvbh113Pil7JJFGt78E3g==
   dependencies:
     "@cloudinary-util/util" "1.2.2"
     "@cloudinary/url-gen" "^1.8.7"

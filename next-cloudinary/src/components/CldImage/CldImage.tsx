@@ -4,16 +4,14 @@ import { useState } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { getTransformations } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
-
+import type { ImageOptions } from '@cloudinary-util/url-loader';
 import { pollForProcessingImage } from '../../lib/cloudinary';
 
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
-export interface CldImageProps extends Omit<ImageProps, 'src'> {
-  src: string;
+export type CldImageProps = ImageProps & ImageOptions & {
   preserveTransformations?: boolean;
-  rawTransformations?: Array<string>;
-}
+};
 
 const CldImage = (props: CldImageProps) => {
   const CLD_OPTIONS = [
