@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/colbyfayock/next-cloudinary/compare/v2.3.0...v2.3.1) (2023-02-18)
+
+
+### Bug Fixes
+
+* Import CldImageProps from URL Loader ([#134](https://github.com/colbyfayock/next-cloudinary/issues/134)) ([e443b05](https://github.com/colbyfayock/next-cloudinary/commit/e443b0535f8daaba10fb5822622fa95930fb980d)), closes [#133](https://github.com/colbyfayock/next-cloudinary/issues/133)
+
 # [2.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v2.2.0...v2.3.0) (2023-02-17)
 
 
