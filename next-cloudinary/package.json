@@ -10,7 +10,8 @@
     "dev": "tsup src/index.ts --watch --dts",
     "prepublishOnly": "cp ../README.md . && yarn build",
     "postpublish": "rm ./README.md",
-    "test": "jest"
+    "test": "jest && yarn test:app",
+    "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" cd tests/nextjs-app && yarn build"
   },
   "dependencies": {
     "@cloudinary-util/url-loader": "^1.4.0",
