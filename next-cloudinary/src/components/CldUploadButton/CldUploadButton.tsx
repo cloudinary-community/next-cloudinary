@@ -1,3 +1,4 @@
+import React from 'react';
 import CldUploadWidget, { CldUploadWidgetProps } from '../CldUploadWidget';
 
 export interface CldUploadButtonProps extends Omit<CldUploadWidgetProps, 'children'> {

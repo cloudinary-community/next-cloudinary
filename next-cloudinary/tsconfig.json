@@ -29,7 +29,7 @@
         "name": "next"
       }
     ],
-    "jsx": "react-jsx"
+    "jsx": "react"
 
   },
   "exclude": ["node_modules"]
