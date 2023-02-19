@@ -10,7 +10,7 @@
     "dev": "tsup src/index.ts --watch --dts",
     "prepublishOnly": "cp ../README.md . && yarn build",
     "postpublish": "rm ./README.md",
-    "test": "jest && yarn test:app",
+    "test": "jest",
     "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" cd tests/nextjs-app && yarn build"
   },
   "dependencies": {

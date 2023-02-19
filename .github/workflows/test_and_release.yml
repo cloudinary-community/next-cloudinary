@@ -18,6 +18,8 @@ jobs:
         working-directory: ./next-cloudinary
       - run: yarn test
         working-directory: ./next-cloudinary
+      - run: yarn test:app
+        working-directory: ./next-cloudinary
 
   release:
     name: Release
