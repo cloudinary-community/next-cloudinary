@@ -6,11 +6,12 @@
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --external react",
-    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react",
+    "build": "tsup src/index.ts --dts",
+    "dev": "tsup src/index.ts --watch --dts",
     "prepublishOnly": "cp ../README.md . && yarn build",
     "postpublish": "rm ./README.md",
-    "test": "jest"
+    "test": "jest",
+    "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" yarn build && cd tests/nextjs-app && yarn build"
   },
   "dependencies": {
     "@cloudinary-util/url-loader": "^1.4.0",
