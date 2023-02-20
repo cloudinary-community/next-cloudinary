@@ -1,3 +1,10 @@
+## [2.3.2](https://github.com/colbyfayock/next-cloudinary/compare/v2.3.1...v2.3.2) (2023-02-20)
+
+
+### Bug Fixes
+
+* Fix Next 13 Use Client Directive ([#136](https://github.com/colbyfayock/next-cloudinary/issues/136)) ([9ee962d](https://github.com/colbyfayock/next-cloudinary/commit/9ee962d3db20a69482e2509123521f1422a9d318)), closes [#135](https://github.com/colbyfayock/next-cloudinary/issues/135)
+
 ## [2.3.1](https://github.com/colbyfayock/next-cloudinary/compare/v2.3.0...v2.3.1) (2023-02-18)
 
 
