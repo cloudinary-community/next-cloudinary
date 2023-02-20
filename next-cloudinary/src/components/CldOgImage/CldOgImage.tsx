@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import { constructCloudinaryUrl } from '@cloudinary-util/url-loader';
 
@@ -8,7 +9,18 @@ const IMAGE_HEIGHT = 1200;
 
 const TWITTER_CARD = 'summary_large_image';
 
-const CldOgImage = ({ excludeTags = [] as string[], twitterTitle, ...props }) => {
+export interface CldOgImageProps {
+  alt: string;
+  crop?: string;
+  excludeTags?: Array<string>;
+  gravity?: string;
+  height: string | number;
+  src: string;
+  twitterTitle?: string;
+  width: string | number;
+}
+
+const CldOgImage = ({ excludeTags = [], twitterTitle, ...props }: CldOgImageProps) => {
   const options = {
     ...props,
     alt: props.alt,
@@ -38,12 +50,11 @@ const CldOgImage = ({ excludeTags = [] as string[], twitterTitle, ...props }) =>
   // direcly adding them inside of the Head otherwise we get unexpected results
 
     return (
-    // @ts-ignore
     <Head>
       <meta property="og:image" content={ogImageUrl} />
       <meta property="og:image:secure_url" content={ogImageUrl} />
-      <meta property="og:image:width" content={options.width} />
-      <meta property="og:image:height" content={options.height} />
+      <meta property="og:image:width" content={`${options.width}`} />
+      <meta property="og:image:height" content={`${options.height}`} />
 
       {options.alt && (
         <meta property="og:image:alt" content={options.alt} />
