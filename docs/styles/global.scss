@@ -16,3 +16,7 @@ p {
   }
 
 }
+
+pre {
+  display: grid; // Hack to prevent overflow
+}

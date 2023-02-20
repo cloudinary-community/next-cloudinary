@@ -11,6 +11,7 @@ export { default as CldUploadWidget } from './components/CldUploadWidget';
 export type { CldUploadWidgetProps, CldUploadWidgetPropsOptions } from './components/CldUploadWidget';
 
 export { default as CldVideoPlayer } from './components/CldVideoPlayer';
+export type { CldVideoPlayerPropsColors, CldVideoPlayerPropsLogo, CldVideoPlayerProps } from './components/CldVideoPlayer';
 
 export { cloudinaryLoader } from './loaders/cloudinary-loader';
 export type { CloudinaryLoader, CloudinaryLoaderLoaderOptions, CloudinaryLoaderCldOptions } from './loaders/cloudinary-loader';

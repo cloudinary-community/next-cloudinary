@@ -1,19 +1,19 @@
-import { RefObject, useRef } from 'react';
+import React, { RefObject, useRef } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 
-interface CldVideoPlayerPropsColors {
+export interface CldVideoPlayerPropsColors {
   accent?: string;
   base?: string;
   text?: string;
 }
 
-interface CldVideoPlayerPropsLogo {
+export interface CldVideoPlayerPropsLogo {
   imageUrl?: string;
   onClickUrl?: string;
 }
 
-interface CldVideoPlayerProps {
+export interface CldVideoPlayerProps {
   autoPlay?: string;
   colors?: CldVideoPlayerPropsColors;
   controls?: boolean;
