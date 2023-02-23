@@ -37,7 +37,7 @@ export const UnsignedUpload = () => {
     <>
       <CldUploadWidget
         uploadPreset="next-cloudinary-unsigned"
-        onUpload={(error, result, widget) => {
+        onUpload={(result, widget) => {
           setResource(result?.info);
           widget.close();
         }}
