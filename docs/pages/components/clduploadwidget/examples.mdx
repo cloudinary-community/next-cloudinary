@@ -70,7 +70,7 @@ export const SignedUpload = () => {
       <CldUploadWidget
         signatureEndpoint="/api/sign-cloudinary-params"
         uploadPreset="next-cloudinary-signed"
-        onUpload={(error, result, widget) => {
+        onUpload={(result, widget) => {
           setResource(result?.info);
           widget.close();
         }}

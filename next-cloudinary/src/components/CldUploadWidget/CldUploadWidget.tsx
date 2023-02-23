@@ -152,7 +152,7 @@ const CldUploadWidget = ({
   }
 
   return (
-    <React.Fragment key={Date.now()}>
+    <>
       {typeof children === 'function' && children({
         cloudinary: cloudinary.current,
         widget: widget.current,
@@ -164,7 +164,7 @@ const CldUploadWidget = ({
         onLoad={handleOnLoad}
         onError={(e) => console.error(`Failed to load Cloudinary: ${e.message}`)}
       />
-    </React.Fragment>
+    </>
   );
 };
 
