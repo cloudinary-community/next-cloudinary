@@ -29,7 +29,7 @@ export const MyDynamicButton = () => {
 
 # CldUploadWidget Examples
 
-## Effects
+## Examples
 
 export const UnsignedUpload = () => {
   const [resource, setResource] = useState();
@@ -37,7 +37,7 @@ export const UnsignedUpload = () => {
     <>
       <CldUploadWidget
         uploadPreset="next-cloudinary-unsigned"
-        onUpload={(error, result, widget) => {
+        onUpload={(result, widget) => {
           setResource(result?.info);
           widget.close();
         }}
@@ -70,7 +70,7 @@ export const SignedUpload = () => {
       <CldUploadWidget
         signatureEndpoint="/api/sign-cloudinary-params"
         uploadPreset="next-cloudinary-signed"
-        onUpload={(error, result, widget) => {
+        onUpload={(result, widget) => {
           setResource(result?.info);
           widget.close();
         }}

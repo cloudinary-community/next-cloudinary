@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 
 import { triggerOnIdle } from '../../lib/util';
@@ -18,6 +18,7 @@ export interface CldUploadWidgetPropsChildren {
 
 export interface CldUploadWidgetProps {
   children?: ({ cloudinary, widget, open }: CldUploadWidgetPropsChildren) => JSX.Element;
+  onError?: Function;
   onUpload?: Function;
   options?: CldUploadWidgetPropsOptions;
   signatureEndpoint?: URL | RequestInfo;
@@ -27,11 +28,31 @@ export interface CldUploadWidgetProps {
 const CldUploadWidget = ({
   children,
   onUpload,
+  onError,
   options,
   signatureEndpoint,
   uploadPreset,
 }: CldUploadWidgetProps) => {
+  const cloudinary: any = useRef();
+  const widget: any = useRef();
+
   const signed = !!signatureEndpoint;
+
+  const [error, setError] = useState(undefined);
+  const [results, setResults] = useState(undefined);
+
+  useEffect(() => {
+    if ( error && typeof onError === 'function' ) {
+      onError(error, widget.current);
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if ( results && typeof onUpload === 'function' ) {
+      onUpload(results, widget.current);
+    }
+  }, [results]);
+
 
   /**
    * handleOnLoad
@@ -39,16 +60,16 @@ const CldUploadWidget = ({
    */
 
   function handleOnLoad() {
-    if ( !cloudinary ) {
-      cloudinary = (window as any).cloudinary;
+    if ( !cloudinary.current ) {
+      cloudinary.current = (window as any).cloudinary;
     }
 
     // To help improve load time of the widget on first instance, use requestIdleCallback
     // to trigger widget creation. Optional.
 
     triggerOnIdle(() => {
-      if ( !widget ) {
-        widget = createWidget();
+      if ( !widget.current ) {
+        widget.current = createWidget();
       }
     });
   }
@@ -102,22 +123,20 @@ const CldUploadWidget = ({
       }
     }
 
-    interface CreateUploadWidgetCallbackResult {
-      event: string;
-    }
+    return cloudinary.current?.createUploadWidget(uploadOptions, (uploadError: any, uploadResult: any) => {
+      // The callback is a bit more chatty than failed or success so
+      // only trigger when one of those are the case. You can additionally
+      // create a separate handler such as onEvent and trigger it on
+      // ever occurrence
 
-    return cloudinary?.createUploadWidget(
-      uploadOptions,
-      function (error: any, result: CreateUploadWidgetCallbackResult) {
-        // The callback is a bit more chatty than failed or success so
-        // only trigger when one of those are the case. You can additionally
-        // create a separate handler such as onEvent and trigger it on
-        // ever occurrence
-        if ((error || result.event === "success") && typeof onUpload === 'function') {
-          onUpload(error, result, widget);
-        }
+      if ( typeof uploadError !== 'undefined' ) {
+        setError(uploadError);
       }
-    );
+
+      if ( uploadResult?.event === 'success' ) {
+        setResults(uploadResult);
+      }
+    });
   }
 
   /**
@@ -126,17 +145,17 @@ const CldUploadWidget = ({
    */
 
   function open() {
-    if (!widget) {
-      widget = createWidget();
+    if (!widget.current) {
+      widget.current = createWidget();
     }
-    widget && widget.open();
+    widget.current && widget.current.open();
   }
 
   return (
     <>
       {typeof children === 'function' && children({
-        cloudinary,
-        widget,
+        cloudinary: cloudinary.current,
+        widget: widget.current,
         open,
       })}
       <Script
