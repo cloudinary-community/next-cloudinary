@@ -9,6 +9,7 @@ export interface CldUploadButtonProps extends Omit<CldUploadWidgetProps, 'childr
 const CldUploadButton = ({
   children,
   onClick,
+  onError,
   onUpload,
   options,
   signatureEndpoint,
@@ -18,6 +19,7 @@ const CldUploadButton = ({
   return (
     <>
       <CldUploadWidget
+        onError={onError}
         onUpload={onUpload}
         options={options}
         signatureEndpoint={signatureEndpoint}
