@@ -19,7 +19,8 @@ import OgImage from '../../../components/OgImage';
 
 | Prop Name          | Type               | Example                                |
 |--------------------|--------------------|----------------------------------------|
-| onUpload           | function           | `function (error, result, widget) { }` |
+| onError            | function           | `function (error, widget) { }`         |
+| onUpload           | function           | `function (result, widget) { }`        |
 | options            | object             | `{ encryption: {...} }`                |
 | signatureEndpoint  | string             | `"/api/sign-cloudinary-params.js"`     |
 | uploadPreset       | string             | `"my-upload-preset"`                   |

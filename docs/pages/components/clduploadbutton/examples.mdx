@@ -22,7 +22,7 @@ import styles from '../../../styles/Docs.module.scss';
 
 # CldUploadButton Examples
 
-## Effects
+## Examples
 
 export const UnsignedUpload = () => {
   const [resource, setResource] = useState();
@@ -30,7 +30,7 @@ export const UnsignedUpload = () => {
     <>
       <CldUploadButton
         className={styles.button}
-        onUpload={(error, result, widget) => {
+        onUpload={(result, widget) => {
           setResource(result?.info);
           widget.close();
         }}
@@ -68,13 +68,9 @@ export const SignedUpload = () => {
 <ImageGrid>
   <li>
     <UnsignedUpload />
-
-    ### Unsigned
   </li>
   <li>
     <SignedUpload />
-
-    ### Signed
   </li>
 </ImageGrid>
 
