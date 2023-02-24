@@ -3,27 +3,7 @@ import Script from 'next/script';
 
 import { triggerOnIdle } from '../../lib/util';
 
-let cloudinary: any;
-let widget: any;
-
-export interface CldUploadWidgetPropsOptions {
-  uploadSignature?: Function;
-}
-
-export interface CldUploadWidgetPropsChildren {
-  cloudinary: any;
-  widget: any;
-  open: Function;
-}
-
-export interface CldUploadWidgetProps {
-  children?: ({ cloudinary, widget, open }: CldUploadWidgetPropsChildren) => JSX.Element;
-  onError?: Function;
-  onUpload?: Function;
-  options?: CldUploadWidgetPropsOptions;
-  signatureEndpoint?: URL | RequestInfo;
-  uploadPreset?: string;
-}
+import { CldUploadWidgetProps } from './CldUploadWidget.types';
 
 const CldUploadWidget = ({
   children,
