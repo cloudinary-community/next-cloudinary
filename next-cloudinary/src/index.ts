@@ -8,7 +8,7 @@ export { default as CldUploadButton } from './components/CldUploadButton';
 export type { CldUploadButtonProps } from './components/CldUploadButton';
 
 export { default as CldUploadWidget } from './components/CldUploadWidget';
-export type { CldUploadWidgetProps, CldUploadWidgetPropsOptions } from './components/CldUploadWidget';
+export type { CldUploadWidgetProps, CldUploadWidgetPropsChildren, CldUploadWidgetPropsOptions, CldUploadWidgetResults } from './components/CldUploadWidget';
 
 export { cloudinaryLoader } from './loaders/cloudinary-loader';
 export type { CloudinaryLoader, CloudinaryLoaderLoaderOptions, CloudinaryLoaderCldOptions } from './loaders/cloudinary-loader';

@@ -1,2 +1,2 @@
 export { default } from './CldUploadWidget';
-export type { CldUploadWidgetProps, CldUploadWidgetPropsChildren, CldUploadWidgetPropsOptions } from './CldUploadWidget.types';
+export type { CldUploadWidgetProps, CldUploadWidgetPropsChildren, CldUploadWidgetPropsOptions, CldUploadWidgetResults } from './CldUploadWidget.types';

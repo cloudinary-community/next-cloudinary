@@ -1,3 +1,22 @@
+export interface CldUploadWidgetProps {
+  children?: ({ cloudinary, widget, open, results, error }: CldUploadWidgetPropsChildren) => JSX.Element;
+  onClose?: Function;
+  onError?: Function;
+  onOpen?: Function;
+  onUpload?: Function;
+  options?: CldUploadWidgetPropsOptions;
+  signatureEndpoint?: URL | RequestInfo;
+  uploadPreset?: string;
+}
+
+export interface CldUploadWidgetPropsChildren {
+  cloudinary: any;
+  widget: any;
+  open: Function;
+  results?: object;
+  error?: any;
+}
+
 // Parameters sourced from:
 // https://cloudinary.com/documentation/upload_widget_reference#parameters
 
@@ -91,17 +110,7 @@ export interface CldUploadWidgetPropsOptions {
   singleUploadAutoClose?: boolean;
 }
 
-export interface CldUploadWidgetPropsChildren {
-  cloudinary: any;
-  widget: any;
-  open: Function;
-}
-
-export interface CldUploadWidgetProps {
-  children?: ({ cloudinary, widget, open }: CldUploadWidgetPropsChildren) => JSX.Element;
-  onError?: Function;
-  onUpload?: Function;
-  options?: CldUploadWidgetPropsOptions;
-  signatureEndpoint?: URL | RequestInfo;
-  uploadPreset?: string;
+export interface CldUploadWidgetResults {
+  event: string;
+  info: string;
 }
