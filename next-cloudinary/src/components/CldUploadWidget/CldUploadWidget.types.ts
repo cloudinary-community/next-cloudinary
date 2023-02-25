@@ -30,7 +30,20 @@ export interface CldUploadWidgetPropsOptions {
   defaultSource?: string;
   maxFiles?: number;
   multiple?: boolean;
-  sources?: Array<string>;
+  sources?: Array<
+    "local"
+    | "url"
+    | "camera"
+    | "dropbox"
+    | "image_search"
+    | "facebook"
+    | "instagram"
+    | "shutterstock"
+    | "gettyimages"
+    | "istock"
+    | "unsplash"
+    | "google_drive"
+  >;
 
   // Cropping
 
@@ -108,6 +121,10 @@ export interface CldUploadWidgetPropsOptions {
   showPoweredBy?: boolean;
   showUploadMoreButton?: boolean;
   singleUploadAutoClose?: boolean;
+}
+
+enum CldUploadWidgetPropsOptionsSources {
+
 }
 
 export interface CldUploadWidgetResults {
