@@ -123,10 +123,6 @@ export interface CldUploadWidgetPropsOptions {
   singleUploadAutoClose?: boolean;
 }
 
-enum CldUploadWidgetPropsOptionsSources {
-
-}
-
 export interface CldUploadWidgetResults {
   event: string;
   info: string;
