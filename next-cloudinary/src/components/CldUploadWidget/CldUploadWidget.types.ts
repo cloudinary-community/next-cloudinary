@@ -31,18 +31,18 @@ export interface CldUploadWidgetPropsOptions {
   maxFiles?: number;
   multiple?: boolean;
   sources?: Array<
-    "local"
-    | "url"
-    | "camera"
+    "camera"
     | "dropbox"
-    | "image_search"
     | "facebook"
-    | "instagram"
-    | "shutterstock"
     | "gettyimages"
-    | "istock"
-    | "unsplash"
     | "google_drive"
+    | "image_search"
+    | "instagram"
+    | "istock"
+    | "local"
+    | "shutterstock"
+    | "unsplash"
+    | "url"
   >;
 
   // Cropping
