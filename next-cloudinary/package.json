@@ -1,6 +1,6 @@
 {
   "name": "next-cloudinary",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -14,8 +14,8 @@
     "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" yarn build && cd tests/nextjs-app && yarn build"
   },
   "dependencies": {
-    "@cloudinary-util/url-loader": "^1.4.0",
-    "@cloudinary-util/util": "^1.2.0",
+    "@cloudinary-util/url-loader": "^1.4.1",
+    "@cloudinary-util/util": "^1.2.3",
     "@cloudinary/url-gen": "^1.8.6"
   },
   "devDependencies": {

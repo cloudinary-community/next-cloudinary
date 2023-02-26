@@ -933,23 +933,18 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cloudinary-util/url-loader@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-1.4.0.tgz#6a20f75f9c4e362ac36ae6e518091e20e4136ba1"
-  integrity sha512-iB2W/j9/Ftp/PF7+38WYPRNPZY4bRdIYFMbLoDvsI5VLHYQwPoktDWkyzftoVH3akBvbh113Pil7JJFGt78E3g==
+"@cloudinary-util/url-loader@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-1.4.1.tgz#c3fcace60e9cc409bbda773a75f2b6b80878e52a"
+  integrity sha512-CagORFwkt9kMrRrOegsdXYVgbEZutykVLKVvEV65lu/+ml0naYzRiuiocWRmD68tcZqbdDSQkS3BozMoWXG/Ew==
   dependencies:
-    "@cloudinary-util/util" "1.2.2"
+    "@cloudinary-util/util" "1.2.3"
     "@cloudinary/url-gen" "^1.8.7"
 
-"@cloudinary-util/util@1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-1.2.2.tgz#af205a3b8ce2e8cec14bb9bf9f504b1d0151c3e4"
-  integrity sha512-xtXLfjsLoAKTsFUKDS0P/RPfgfnWs6iSkSBYZoG9uxAgK0MutWUZECX6wfN9FDa/3Yr+Z8oTRxxQuFBasyAqDg==
-
-"@cloudinary-util/util@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-1.2.0.tgz#4b6064ac9c1032bd1ef31f28f1524d552e1b021b"
-  integrity sha512-x4qzKuTUM2RfOFdhLZQfgipheWUmHrjd0b0KynjmhjPsBtJe1FKwHE4Mjze0JGYyOyHP5W8v9DMPpr8UQ61SEA==
+"@cloudinary-util/util@1.2.3", "@cloudinary-util/util@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-1.2.3.tgz#7dffeb146533c446f26b37f2489284ea2178ae8a"
+  integrity sha512-EgDCst6zrOX/EPVCoiupsil6FbKHVXW/bBncSQKLp6wHPnshnTp/rUdtgOIwV5fCt7ptK9PIwklOFMyjso0zuw==
 
 "@cloudinary/transformation-builder-sdk@^1.0.0":
   version "1.1.0"

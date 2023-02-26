@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v3.0.0...v3.1.0) (2023-02-26)
+
+
+### Features
+
+* Fixes query parameter breaking CldImage parsing ([#143](https://github.com/colbyfayock/next-cloudinary/issues/143)) ([483c31e](https://github.com/colbyfayock/next-cloudinary/commit/483c31e2845fcf3f04aa6b4bb0de2a64cd0bc406)), closes [#142](https://github.com/colbyfayock/next-cloudinary/issues/142)
+
 # [3.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v2.3.2...v3.0.0) (2023-02-23)
 
 
