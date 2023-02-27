@@ -182,6 +182,9 @@ yarn test
       <td align="center" valign="top" width="14.28%"><a href="https://leeconlin.co.uk"><img src="https://avatars.githubusercontent.com/u/1023581?v=4?s=100" width="100px;" alt="Lee Conlin"/><br /><sub><b>Lee Conlin</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=hades200082" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://wannabe-polyglot.com"><img src="https://avatars.githubusercontent.com/u/1134611?v=4?s=100" width="100px;" alt="Ryan Smith"/><br /><sub><b>Ryan Smith</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=tanzoniteblack" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/mtliendo"><img src="https://avatars.githubusercontent.com/u/5106417?v=4?s=100" width="100px;" alt="Michael Liendo"/><br /><sub><b>Michael Liendo</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=mtliendo" title="Documentation">📖</a></td>
+    </tr>
   </tbody>
 </table>
 

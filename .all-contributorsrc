@@ -137,6 +137,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "mtliendo",
+      "name": "Michael Liendo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5106417?v=4",
+      "profile": "https://github.com/mtliendo",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
