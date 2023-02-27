@@ -3,32 +3,19 @@ import Script from 'next/script';
 
 import { triggerOnIdle } from '../../lib/util';
 
-let cloudinary: any;
-let widget: any;
+import { CldUploadWidgetProps, CldUploadWidgetResults } from './CldUploadWidget.types';
 
-export interface CldUploadWidgetPropsOptions {
-  uploadSignature?: Function;
-}
-
-export interface CldUploadWidgetPropsChildren {
-  cloudinary: any;
-  widget: any;
-  open: Function;
-}
-
-export interface CldUploadWidgetProps {
-  children?: ({ cloudinary, widget, open }: CldUploadWidgetPropsChildren) => JSX.Element;
-  onError?: Function;
-  onUpload?: Function;
-  options?: CldUploadWidgetPropsOptions;
-  signatureEndpoint?: URL | RequestInfo;
-  uploadPreset?: string;
-}
+const WIDGET_WATCHED_EVENTS = [
+  'success',
+  'display-changed'
+];
 
 const CldUploadWidget = ({
   children,
-  onUpload,
+  onClose,
   onError,
+  onOpen,
+  onUpload,
   options,
   signatureEndpoint,
   uploadPreset,
@@ -39,20 +26,33 @@ const CldUploadWidget = ({
   const signed = !!signatureEndpoint;
 
   const [error, setError] = useState(undefined);
-  const [results, setResults] = useState(undefined);
+  const [results, setResults] = useState<CldUploadWidgetResults | undefined>(undefined);
+
+  // Read the results and handle component callbacks based on
+  // the the event. The results should only be updated based
+  // on the watched event IDs in WIDGET_WATCHED_EVENTS to avoid
+  // too many repetitive state changes (consequently skipping some)
+
+  useEffect(() => {
+    if ( typeof results === 'undefined' ) return;
+
+    const isSuccess = results.event === 'success';
+    const isClosed = results.event === 'display-changed' && results.info === 'hidden';
+
+    if ( isSuccess && typeof onUpload === 'function' ) {
+      onUpload(results, widget.current);
+    }
+
+    if ( isClosed && typeof onClose === 'function' ) {
+      onClose(widget.current);
+    }
+  }, [results])
 
   useEffect(() => {
     if ( error && typeof onError === 'function' ) {
       onError(error, widget.current);
     }
   }, [error]);
-
-  useEffect(() => {
-    if ( results && typeof onUpload === 'function' ) {
-      onUpload(results, widget.current);
-    }
-  }, [results]);
-
 
   /**
    * handleOnLoad
@@ -133,7 +133,7 @@ const CldUploadWidget = ({
         setError(uploadError);
       }
 
-      if ( uploadResult?.event === 'success' ) {
+      if ( WIDGET_WATCHED_EVENTS.includes(uploadResult?.event) ) {
         setResults(uploadResult);
       }
     });
@@ -148,7 +148,12 @@ const CldUploadWidget = ({
     if (!widget.current) {
       widget.current = createWidget();
     }
-    widget.current && widget.current.open();
+
+    widget?.current.open();
+
+    if ( typeof onOpen === 'function' ) {
+      onOpen(widget.current);
+    }
   }
 
   return (
@@ -157,6 +162,8 @@ const CldUploadWidget = ({
         cloudinary: cloudinary.current,
         widget: widget.current,
         open,
+        results,
+        error
       })}
       <Script
         id={`cloudinary-uploadwidget-${Math.floor(Math.random() * 100)}`}
