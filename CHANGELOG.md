@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v3.2.0...v3.3.0) (2023-02-27)
+
+
+### Features
+
+* Add More CldUploadWidget Types ([#141](https://github.com/colbyfayock/next-cloudinary/issues/141)) ([f414312](https://github.com/colbyfayock/next-cloudinary/commit/f41431299c70f2c6704d23786d4c8340e2111043)), closes [#140](https://github.com/colbyfayock/next-cloudinary/issues/140)
+
 # [3.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v3.1.0...v3.2.0) (2023-02-27)
 
 
