@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v3.1.0...v3.2.0) (2023-02-27)
+
+
+### Features
+
+* Fixes SEO parsing, Sanitize SVG by Default ([#146](https://github.com/colbyfayock/next-cloudinary/issues/146)) ([cfee825](https://github.com/colbyfayock/next-cloudinary/commit/cfee825ef4f7cd9b2d64531f377713d59e98d5f0)), closes [#145](https://github.com/colbyfayock/next-cloudinary/issues/145) [#92](https://github.com/colbyfayock/next-cloudinary/issues/92)
+
 # [3.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v3.0.0...v3.1.0) (2023-02-26)
 
 
