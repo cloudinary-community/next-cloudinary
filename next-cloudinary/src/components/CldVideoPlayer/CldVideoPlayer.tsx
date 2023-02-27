@@ -2,43 +2,9 @@ import React, { useRef, MutableRefObject } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 
-export interface CldVideoPlayerPropsColors {
-  accent?: string;
-  base?: string;
-  text?: string;
-}
+import { CldVideoPlayerProps } from './CldVideoPlayer.types';
+import { CloudinaryVideoPlayer } from '../../types/player';
 
-export interface CldVideoPlayerPropsLogo {
-  imageUrl?: string;
-  onClickUrl?: string;
-}
-
-export interface CldVideoPlayerPlayer {
-  on: Function
-}
-
-export interface CldVideoPlayerProps {
-  autoPlay?: string;
-  colors?: CldVideoPlayerPropsColors;
-  controls?: boolean;
-  fontFace?: string;
-  height: string | number;
-  id?: string;
-  logo?: boolean | CldVideoPlayerPropsLogo;
-  loop?: boolean;
-  muted?: boolean;
-  onDataLoad?: Function;
-  onError?: Function;
-  onMetadataLoad?: Function;
-  onPause?: Function;
-  onPlay?: Function;
-  onEnded?: Function;
-  playerRef?: MutableRefObject<CldVideoPlayerPlayer | null>;
-  src: string;
-  version?: string;
-  videoRef?: MutableRefObject<HTMLVideoElement | null>;
-  width: string | number;
-}
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const {
@@ -68,7 +34,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const cloudinaryRef = useRef<any>();
   const defaultVideoRef = useRef() as MutableRefObject<HTMLVideoElement | null>;
   const videoRef = props.videoRef || defaultVideoRef;
-  const defaultPlayerRef = useRef()as MutableRefObject<CldVideoPlayerPlayer | null>;
+  const defaultPlayerRef = useRef()as MutableRefObject<CloudinaryVideoPlayer | null>;
   const playerRef = props.playerRef || defaultPlayerRef;
 
   const playerId = id || `player-${src.replace('/', '-')}`;
