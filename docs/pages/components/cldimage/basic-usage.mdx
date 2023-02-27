@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
 
 import OgImage from '../../../components/OgImage';
 import Video from '../../../components/Video';
@@ -18,15 +19,26 @@ import Video from '../../../components/Video';
 
 ## Basic Usage
 
-The basic required props include `width`, `height`, and `src`:
+The basic required props include `width`, `height`, `src`, and `alt`:
 
 ```
 <CldImage
   width="600"
   height="600"
   src="<Public ID>"
+  alt="Description of my image"
 />
 ```
+
+<Callout emoji={false}>
+  If using the Next.js 13 `app` directory, you must add the `use client;` directive at the top of your file.
+</Callout>
+
+The `src` property takes in a Cloudinary Public ID which includes the folder path along with the ID of the image itself.
+
+<Callout emoji={false}>
+  Tip: You can alternatively pass in a full Cloudinary URL as the `src`, however, it must include a version number (ex: `/v1234/`).
+</Callout>
 
 You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
 
@@ -45,21 +57,25 @@ You can further take advantage of Cloudinary features like background removal an
     height: 600,
     crop: 'fill'
   }]}
+  alt="Description of my image"
 />
 ```
 
-You can also take advantage of Cloudinary features like auto parsing of transformations from src as you can add all transformations at once like `<Cld Url>/<Transformations>/<Version>/<Public Id>`
+If using a full Cloudinary URL, you might already have transformations applied to your image.
+
+To preserve those transformations, you can apply the `preserveTransformations` property:
 
 ```
 <CldImage
   width="600"
   height="600"
-  src="<Url Containing Transformations>"
-  preserveTransformations={true}
+  src="<Cloudinary URL>"
+  preserveTransformations
+  alt="Description of my image"
 />
 ```
 
-As CldImage is a wrapper around the Next.js Image component, all built-in Image component features will work out-of-the-box including the `layout` prop.
+As CldImage is a wrapper around the Next.js Image component, all built-in Image component features will work out-of-the-box.
 
 ## Watch & Learn
 

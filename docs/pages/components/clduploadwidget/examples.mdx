@@ -29,18 +29,19 @@ export const MyDynamicButton = () => {
 
 # CldUploadWidget Examples
 
-## Effects
+## Examples
 
-export const UnsignedUpload = () => {
+export const UnsignedUpload = ({ options }) => {
   const [resource, setResource] = useState();
   return (
     <>
       <CldUploadWidget
         uploadPreset="next-cloudinary-unsigned"
-        onUpload={(error, result, widget) => {
+        onUpload={(result, widget) => {
           setResource(result?.info);
           widget.close();
         }}
+        options={options}
       >
         {({ open }) => {
           function handleOnClick(e) {
@@ -55,8 +56,6 @@ export const UnsignedUpload = () => {
           );
         }}
       </CldUploadWidget>
-
-      <h3>Unsigned</h3>
 
       <p>URL: { resource?.secure_url }</p>
     </>
@@ -70,7 +69,7 @@ export const SignedUpload = () => {
       <CldUploadWidget
         signatureEndpoint="/api/sign-cloudinary-params"
         uploadPreset="next-cloudinary-signed"
-        onUpload={(error, result, widget) => {
+        onUpload={(result, widget) => {
           setResource(result?.info);
           widget.close();
         }}
@@ -89,8 +88,6 @@ export const SignedUpload = () => {
         }}
       </CldUploadWidget>
 
-      <h3>Signed</h3>
-
       <p>URL: { resource?.secure_url }</p>
     </>
   )
@@ -99,9 +96,32 @@ export const SignedUpload = () => {
 <ImageGrid>
   <li>
     <UnsignedUpload />
+
+    ### Unsigned
+
+    ```
+    uploadPreset="next-cloudinary-unsigned"
+    ```
   </li>
   <li>
     <SignedUpload />
+
+    ### Signed
+    ```
+    signatureEndpoint="/api/sign-cloudinary-params"
+    ```
+  </li>
+  <li>
+    <UnsignedUpload options={{
+      sources: ['local']
+    }} />
+
+    ### Custom Sources
+    ```
+    options={{
+      sources: ['local']
+    }}
+    ```
   </li>
 </ImageGrid>
 

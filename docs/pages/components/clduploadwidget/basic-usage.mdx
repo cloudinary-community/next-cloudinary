@@ -56,6 +56,10 @@ Use the following to generate an unsigned upload widget:
 </CldUploadWidget>
 ```
 
+<Callout emoji={false}>
+  If using the Next.js 13 `app` directory, you must add the `use client;` directive at the top of your file.
+</Callout>
+
 ### Signed
 
 Signing upload requests requires passing in an endpoint to the component.
@@ -79,6 +83,10 @@ Use the following to generate an signed upload widget:
   }}
 </CldUploadWidget>
 ```
+
+<Callout emoji={false}>
+  If using the Next.js 13 `app` directory, you must add the `use client;` directive at the top of your file.
+</Callout>
 
 Here's an example of how you could process the signature in an API endpoint that signs a request:
 

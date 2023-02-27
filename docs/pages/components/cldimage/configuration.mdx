@@ -17,31 +17,35 @@ import OgImage from '../../../components/OgImage';
 
 ## General Props
 
-| Prop Name          | Type               | Example                      |
-|--------------------|--------------------|------------------------------|
-| crop               | string             | `"thumb"`                    |
-| effects            | array              | `[{ background: 'blue' }]`   |
-| gravity            | string             | `"faces"`                    |
-| overlays           | array              | See Below                    |
-| rawTransformations | array              | `['e_blur:2000']`            |
-| removeBackground   | bool/string        | `true`                       |
-| text               | string             | `"Next Cloudinary"`          |
-| transformations    | string/array       | `['my-named-transformation']`|
-| underlay           | string             | `"my-public-id"`             |
-| underlays          | array              | See Below                    |
-| zoom               | string             | `0.5`                        |
-| zoompan            | bool/string/object | See Below                    |
+| Prop Name          | Type               | Default    | Example                      |
+|--------------------|--------------------|------------|------------------------------|
+| crop               | string             | `"limit"`  | `"thumb"`                    |
+| deliveryType       | string             | `"upload"` | `"fetch"`                    |
+| effects            | array              | -          | `[{ background: 'blue' }]`   |
+| format             | string             | `"auto"`   | `"webp"`                     |
+| gravity            | string             | `"auto"`   | `"faces"`                    |
+| height             | number/string      | -          | `600`                        |
+| overlays           | array              | -          | See Below                    |
+| preserveTransformations | string        | `false`    | `true`                       |
+| quality            | string             | `"auto"`   | `"90"`                       |
+| rawTransformations | array              | -          | `['e_blur:2000']`            |
+| removeBackground   | bool/string        | `false`    | `true`                       |
+| sanitize           | bool               | `true` if svg | `true` (Applies only to SVG) |
+| seoSuffix          | string             | -          | `my-image-content`           |
+| src                | string             | -          | `"my-public-id"`             |
+| text               | string             | -          | `"Next Cloudinary"`          |
+| transformations    | string/array       | -          | `['my-named-transformation']`|
+| underlay           | string             | -          | `"my-public-id"`             |
+| underlays          | array              | -          | See Below                    |
+| version            | number             | -          | `1234`                       |
+| width              | number/string      | -          | `600`                        |
+| zoom               | string             | -          | `0.5`                        |
+| zoompan            | bool/string/object | -          | See Below                    |
 
-## Misc props
-
-| Prop Name    | Type   | Default    | Example   |
-| ------------ | ------ | ---------- | --------- |
-| quality      | string | `"auto"`   | `"90"`    |
-| format       | string | `"auto"`   | `"webp"`  |
-| deliveryType | string | `"upload"` | `"fetch"` |
-| preserveTransformations | string | `false` | `true` |
 
 ## Effect Props
+
+All effect props are disabled by default.
 
 | Prop Name          | Type        | Example                                              |
 | ------------------ | ----------- | ---------------------------------------------------- |

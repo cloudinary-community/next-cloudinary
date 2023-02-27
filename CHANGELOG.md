@@ -1,3 +1,29 @@
+# [3.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v3.1.0...v3.2.0) (2023-02-27)
+
+
+### Features
+
+* Fixes SEO parsing, Sanitize SVG by Default ([#146](https://github.com/colbyfayock/next-cloudinary/issues/146)) ([cfee825](https://github.com/colbyfayock/next-cloudinary/commit/cfee825ef4f7cd9b2d64531f377713d59e98d5f0)), closes [#145](https://github.com/colbyfayock/next-cloudinary/issues/145) [#92](https://github.com/colbyfayock/next-cloudinary/issues/92)
+
+# [3.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v3.0.0...v3.1.0) (2023-02-26)
+
+
+### Features
+
+* Fixes query parameter breaking CldImage parsing ([#143](https://github.com/colbyfayock/next-cloudinary/issues/143)) ([483c31e](https://github.com/colbyfayock/next-cloudinary/commit/483c31e2845fcf3f04aa6b4bb0de2a64cd0bc406)), closes [#142](https://github.com/colbyfayock/next-cloudinary/issues/142)
+
+# [3.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v2.3.2...v3.0.0) (2023-02-23)
+
+
+### Bug Fixes
+
+* Fix Handling CldUploadWidget Callback Updates to State ([#138](https://github.com/colbyfayock/next-cloudinary/issues/138)) ([f847db3](https://github.com/colbyfayock/next-cloudinary/commit/f847db31aada6fb4ec71c182c64084a711919902)), closes [#128](https://github.com/colbyfayock/next-cloudinary/issues/128)
+
+
+### BREAKING CHANGES
+
+* CldUploadWidget onUpload property no longer passes an error object as the first argument. The first argument is now the result object. A separate onError property was added to handle errors.
+
 ## [2.3.2](https://github.com/colbyfayock/next-cloudinary/compare/v2.3.1...v2.3.2) (2023-02-20)
 
 

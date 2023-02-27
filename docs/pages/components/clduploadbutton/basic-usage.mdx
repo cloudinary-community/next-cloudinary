@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
 
 import OgImage from '../../../components/OgImage';
 
@@ -26,6 +27,10 @@ At the core of it, CldUploadButton is a CldUploadWidget instance with a defined 
 ```jsx
 <CldUploadButton uploadPreset="next-cloudinary-unsigned" />
 ```
+
+<Callout emoji={false}>
+  If using the Next.js 13 `app` directory, you must add the `use client;` directive at the top of your file.
+</Callout>
 
 ## Learn More about CldUploadButton
 * [Configuration](/components/clduploadbutton/configuration)
