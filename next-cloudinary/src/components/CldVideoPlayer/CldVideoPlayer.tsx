@@ -1,4 +1,4 @@
-import React, { RefObject, useRef } from 'react';
+import React, { useRef, MutableRefObject } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 
@@ -13,6 +13,10 @@ export interface CldVideoPlayerPropsLogo {
   onClickUrl?: string;
 }
 
+export interface CldVideoPlayerPlayer {
+  on: Function
+}
+
 export interface CldVideoPlayerProps {
   autoPlay?: string;
   colors?: CldVideoPlayerPropsColors;
@@ -23,8 +27,16 @@ export interface CldVideoPlayerProps {
   logo?: boolean | CldVideoPlayerPropsLogo;
   loop?: boolean;
   muted?: boolean;
+  onDataLoad?: Function;
+  onError?: Function;
+  onMetadataLoad?: Function;
+  onPause?: Function;
+  onPlay?: Function;
+  onEnded?: Function;
+  playerRef?: MutableRefObject<CldVideoPlayerPlayer | null>;
   src: string;
   version?: string;
+  videoRef?: MutableRefObject<HTMLVideoElement | null>;
   width: string | number;
 }
 
@@ -39,16 +51,49 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     logo = true,
     loop = false,
     muted = false,
+    onDataLoad,
+    onError,
+    onMetadataLoad,
+    onPause,
+    onPlay,
+    onEnded,
     src,
     version = '1.9.4',
     width,
   } = props as CldVideoPlayerProps;
 
+  // Setup the refs and allow for the caller to pass through their
+  // own ref instance
+
   const cloudinaryRef = useRef<any>();
-  const videoRef = useRef<HTMLVideoElement>();
-  const playerRef = useRef<any>();
+  const defaultVideoRef = useRef() as MutableRefObject<HTMLVideoElement | null>;
+  const videoRef = props.videoRef || defaultVideoRef;
+  const defaultPlayerRef = useRef()as MutableRefObject<CldVideoPlayerPlayer | null>;
+  const playerRef = props.playerRef || defaultPlayerRef;
 
   const playerId = id || `player-${src.replace('/', '-')}`;
+
+  const events: Record<string, Function|undefined> = {
+    error: onError,
+    loadeddata: onDataLoad,
+    loadedmetadata: onMetadataLoad,
+    pause: onPause,
+    play: onPlay,
+    ended: onEnded
+  };
+
+  /**
+   * handleEvent
+   * @description Event handler for all player events
+   */
+
+  function handleEvent(event: { type: 'string' }) {
+    const activeEvent = events[event.type];
+
+    if ( typeof activeEvent === 'function' ) {
+      activeEvent(getPlayerRefs());
+    }
+  }
 
   /**
    * handleOnLoad
@@ -90,6 +135,23 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         secure: true,
         ...logoOptions
       });
+
+      Object.keys(events).forEach((key) => {
+        if ( typeof events[key] === 'function' ) {
+          playerRef.current?.on(key, handleEvent);
+        }
+      });
+    }
+  }
+
+  /**
+   *
+   */
+
+  function getPlayerRefs() {
+    return {
+      player: playerRef.current,
+      video: videoRef.current
     }
   }
 
@@ -100,7 +162,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
       </Head>
       <div style={{ width: '100%', aspectRatio: `${props.width} / ${props.height}`}}>
         <video
-          ref={videoRef as RefObject<HTMLVideoElement>}
+          ref={videoRef}
           id={playerId}
           className="cld-video-player cld-fluid"
           width={width}
