@@ -38,8 +38,15 @@ export const UnsignedUpload = ({ options }) => {
       <CldUploadWidget
         uploadPreset="next-cloudinary-unsigned"
         onUpload={(result, widget) => {
+          console.log('UnsignedUpload:widget:upload', result);
           setResource(result?.info);
           widget.close();
+        }}
+        onOpen={(widget) => {
+          console.log('UnsignedUpload:widget:open', widget);
+        }}
+        onClose={(widget) => {
+          console.log('UnsignedUpload:widget:close', widget);
         }}
         options={options}
       >
@@ -70,8 +77,15 @@ export const SignedUpload = () => {
         signatureEndpoint="/api/sign-cloudinary-params"
         uploadPreset="next-cloudinary-signed"
         onUpload={(result, widget) => {
+          console.log('SignedUpload:widget:upload', result);
           setResource(result?.info);
           widget.close();
+        }}
+        onOpen={(widget) => {
+          console.log('SignedUpload:widget:open', widget);
+        }}
+        onClose={(widget) => {
+          console.log('SignedUpload:widget:close', widget);
         }}
       >
         {({ open }) => {
