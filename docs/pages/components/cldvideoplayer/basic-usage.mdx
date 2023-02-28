@@ -22,52 +22,44 @@ The basic required props include `width`, `height`, and `src`:
 
 ```
 <CldVideoPlayer
-  width="600"
-  height="600"
+  width="1920"
+  height="1080"
   src="<Public ID>"
 />
 ```
 
-You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
+You can further take advantage of features like customizing your player:
 
 ```
 <CldVideoPlayer
   width="600"
   height="600"
   src="<Public ID>"
-  crop="thumb"
-  gravity="faces"
-  removeBackground
-  tint="100:blue:green:red"
-  underlays={[{
-    publicId: '<Public ID>',
-    width: 600,
-    height: 600,
-    crop: 'fill'
-  }]}
+  colors={{
+    accent: '#ff0000',
+    base: '#00ff00',
+    text: '#0000ff'
+  }}
+  fontFace="Source Serif Pro"
 />
 ```
 
-You can also take advantage of Cloudinary features like auto parsing of transformations from src as you can add all transformations at once like `<Cld Url>/<Transformations>/<Version>/<Public Id>`
+Or listening to player events for advanced interactions with:
 
 ```
 <CldVideoPlayer
   width="600"
   height="600"
   src="<Url Containing Transformations>"
-  preserveTransformations={true}
+  onMetadataLoad={({ player }) => {
+    console.log(`duration: ${player.duration()}`);
+  }}
+  onPause={({ player }) => {
+    console.log(`current time: ${player.currentTime()}`);
+  }}
 />
 ```
 
-As CldVideoPlayer is a wrapper around the Next.js Image component, all built-in Image component features will work out-of-the-box including the `layout` prop.
-
-## Watch & Learn
-
-<Video
-  title="Automatic Image Optimization & Dynamic Cropping in Next.js with Next Cloudinary"
-  url="https://www.youtube.com/watch?v=oj2-BcZ8szk"
-/>
-
 ## Learn More about CldVideoPlayer
-* [Configuration](/components/CldVideoPlayer/configuration)
-* [Effects](/components/CldVideoPlayer/examples)
+* [Configuration](/components/cldvideoplayer/configuration)
+* [Examples](/components/cldvideoplayer/examples)
