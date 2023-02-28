@@ -9,7 +9,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-const folder = process.env.CLOUDINARY_EXAMPLES_DIRECTORY || 'images';
+const folder = process.env.CLOUDINARY_IMAGES_DIRECTORY || 'images';
 
 (async function run() {
   console.log(`Uploading ${images.length} images to cloud "${process.env.CLOUDINARY_CLOUD_NAME}"...`);
