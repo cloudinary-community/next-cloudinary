@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/colbyfayock/next-cloudinary/compare/v3.3.0...v3.4.0) (2023-02-28)
+
+
+### Features
+
+* CldVideoPlayer Component ([#126](https://github.com/colbyfayock/next-cloudinary/issues/126)) ([feb8c72](https://github.com/colbyfayock/next-cloudinary/commit/feb8c729212db22ab802a54cb1a9aee6b4658f1d))
+
 # [3.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v3.2.0...v3.3.0) (2023-02-27)
 
 
