@@ -769,10 +769,7 @@ import ImageGrid from '../../../components/ImageGrid';
       width="960"
       height="600"
       src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      rawTransformations={[
-        'e_blur:2000',
-        'e_tint:100:0000FF:0p:FF1493:100p'
-      ]}
+      rawTransformations={['c_crop,h_359,w_517,x_1200,y_100/c_scale,h_359,w_517/f_auto,q_auto']}
       sizes="(max-width: 480px) 100vw, 50vw"
       alt=""
     />
@@ -781,8 +778,8 @@ import ImageGrid from '../../../components/ImageGrid';
 
     ```jsx
     rawTransformations={[
-      'e_blur:2000',
-      'e_tint:100:0000FF:0p:FF1493:100p'
+      // Example from Cloudinary Media Editor widget
+      'c_crop,h_359,w_517,x_1483,y_0/c_scale,h_359,w_517/f_auto,q_auto'
     ]}
     ```
   </li>
