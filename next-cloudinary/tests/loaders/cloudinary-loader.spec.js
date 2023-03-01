@@ -193,6 +193,30 @@ describe('Cloudinary Loader', () => {
       const result3 = cloudinaryLoader({ loaderOptions: loaderOptions3, imageProps, cldOptions, cldConfig });
       expect(result3).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_fill,w_${imageProps.width},h_${imageProps.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_scale,w_${loaderOptions3.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
     });
+
+    it('should add any resizing after raw transformations', async () => {
+
+      const imageProps = {
+        height: '600',
+        sizes: '100vw',
+        src: 'images/turtle',
+        width: '960',
+      }
+
+      const loaderOptions = {
+        quality: 75,
+        src: 'images/turtle',
+        width: 960,
+      }
+
+      const cldOptions = {
+        rawTransformations: ['c_crop,h_359,w_517,x_1483,y_0/c_scale,h_359,w_517/f_auto,q_auto']
+      };
+
+      const result = cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig });
+
+      expect(result).toContain(`image/upload/${cldOptions.rawTransformations.join('/')}/c_limit,w_${imageProps.width}/f_auto/q_auto/v1/${imageProps.src}`)
+    });
   })
 });
 
