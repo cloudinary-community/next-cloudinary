@@ -3,6 +3,7 @@ import { Callout } from 'nextra-theme-docs';
 
 import OgImage from '../../../components/OgImage';
 import Video from '../../../components/Video';
+import Playground from '../../../components/Playground';
 
 <Head>
   <title>CldImage - Next Cloudinary</title>
@@ -21,14 +22,22 @@ import Video from '../../../components/Video';
 
 The basic required props include `width`, `height`, `src`, and `alt`:
 
-```
-<CldImage
-  width="600"
-  height="600"
-  src="<Public ID>"
-  alt="Description of my image"
-/>
-```
+<Playground filename="/pages/index.js">
+  {
+`import { CldImage } from 'next-cloudinary';
+
+export default function Home({ data }) {
+  return (
+    <CldImage
+      width="960"
+      height="600"
+      src={\`${process.env.IMAGES_DIRECTORY}/turtle\`}
+      alt="Turtle surfing the tide"
+    />
+  );
+}`
+  }
+</Playground>
 
 <Callout emoji={false}>
   If using the Next.js 13 `app` directory, you must add the `use client;` directive at the top of your file.
@@ -42,24 +51,27 @@ The `src` property takes in a Cloudinary Public ID which includes the folder pat
 
 You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
 
-```
-<CldImage
-  width="600"
-  height="600"
-  src="<Public ID>"
-  crop="thumb"
-  gravity="faces"
-  removeBackground
-  tint="100:blue:green:red"
-  underlays={[{
-    publicId: '<Public ID>',
-    width: 600,
-    height: 600,
-    crop: 'fill'
-  }]}
-  alt="Description of my image"
-/>
-```
+<Playground filename="/pages/index.js">
+  {
+`import { CldImage } from 'next-cloudinary';
+
+export default function Home({ data }) {
+  return (
+    <CldImage
+      width="600"
+      height="600"
+      gravity="auto"
+      crop="thumb"
+      gravity="faces"
+      src={\`${process.env.IMAGES_DIRECTORY}/turtle\`}
+      removeBackground
+      underlay={\`${process.env.IMAGES_DIRECTORY}/galaxy\`}
+      alt="Turtle surfing the stars"
+    />
+  );
+}`
+  }
+</Playground>
 
 If using a full Cloudinary URL, you might already have transformations applied to your image.
 
