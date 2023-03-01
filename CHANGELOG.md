@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v3.4.0...v4.0.0) (2023-03-01)
+
+
+### bug
+
+* Fixes Raw Transformations Conflicting with Resizing ([#151](https://github.com/colbyfayock/next-cloudinary/issues/151)) ([a64e8ca](https://github.com/colbyfayock/next-cloudinary/commit/a64e8cac60577b1c209336ece0bed9f02310c453)), closes [#149](https://github.com/colbyfayock/next-cloudinary/issues/149)
+
+
+### BREAKING CHANGES
+
+* this changes where the rawTransformations property gets applied in the transformation chain to avoid conflicting with transformations performed by 3rd party tooling.
+
 # [3.4.0](https://github.com/colbyfayock/next-cloudinary/compare/v3.3.0...v3.4.0) (2023-02-28)
 
 
