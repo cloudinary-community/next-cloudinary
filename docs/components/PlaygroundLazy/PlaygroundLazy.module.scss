@@ -1,0 +1,12 @@
+.block {
+  display: block;
+  padding: 1em;
+  border: solid 1px lightgray;
+  opacity: 0;
+}
+
+.line {
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+}

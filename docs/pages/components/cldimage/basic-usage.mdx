@@ -2,8 +2,8 @@ import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
 import OgImage from '../../../components/OgImage';
-import Video from '../../../components/Video';
-import Playground from '../../../components/Playground';
+import VideoLazy from '../../../components/VideoLazy';
+import PlaygroundLazy from '../../../components/PlaygroundLazy';
 
 <Head>
   <title>CldImage - Next Cloudinary</title>
@@ -22,7 +22,7 @@ import Playground from '../../../components/Playground';
 
 The basic required props include `width`, `height`, `src`, and `alt`:
 
-<Playground filename="/pages/index.js">
+<PlaygroundLazy filename="/pages/index.js">
   {
 `import { CldImage } from '@internals/next-cloudinary';
 
@@ -31,13 +31,13 @@ export default function Home({ data }) {
     <CldImage
       width="960"
       height="600"
-      src={\`${process.env.IMAGES_DIRECTORY}/turtle\`}
+      src="${process.env.IMAGES_DIRECTORY}/turtle"
       alt="Turtle surfing the tide"
     />
   );
 }`
   }
-</Playground>
+</PlaygroundLazy>
 
 <Callout emoji={false}>
   If using the Next.js 13 `app` directory, you must add the `use client;` directive at the top of your file.
@@ -51,9 +51,9 @@ The `src` property takes in a Cloudinary Public ID which includes the folder pat
 
 You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
 
-<Playground filename="/pages/index.js">
+<PlaygroundLazy filename="/pages/index.js">
   {
-`import { CldImage } from 'next-cloudinary';
+`import { CldImage } from '@internals/next-cloudinary';
 
 export default function Home({ data }) {
   return (
@@ -63,21 +63,21 @@ export default function Home({ data }) {
       gravity="auto"
       crop="thumb"
       gravity="faces"
-      src={\`${process.env.IMAGES_DIRECTORY}/turtle\`}
+      src="${process.env.IMAGES_DIRECTORY}/turtle"
       removeBackground
-      underlay={\`${process.env.IMAGES_DIRECTORY}/galaxy\`}
+      underlay="${process.env.IMAGES_DIRECTORY}/galaxy"
       alt="Turtle surfing the stars"
     />
   );
 }`
   }
-</Playground>
+</PlaygroundLazy>
 
 If using a full Cloudinary URL, you might already have transformations applied to your image.
 
 To preserve those transformations, you can apply the `preserveTransformations` property:
 
-```
+```JSX
 <CldImage
   width="600"
   height="600"
@@ -91,7 +91,7 @@ As CldImage is a wrapper around the Next.js Image component, all built-in Image 
 
 ## Watch & Learn
 
-<Video
+<VideoLazy
   title="Automatic Image Optimization & Dynamic Cropping in Next.js with Next Cloudinary"
   url="https://www.youtube.com/watch?v=oj2-BcZ8szk"
 />
