@@ -55,7 +55,7 @@ NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="<Your Cloud Name>"
 ```
 import { CldImage } from 'next-cloudinary';
 
-<CldImage width="600" height="600" src="<Public ID or Cloudinary URL>" />
+<CldImage width="600" height="600" src="<Public ID or Cloudinary URL>" alt="<Alt Text>" />
 ```
 
 [Learn more about CldImage on the Next Cloudinary Docs](https://next-cloudinary.spacejelly.dev/components/cldimage/basic-usage)
