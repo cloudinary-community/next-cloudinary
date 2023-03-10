@@ -8,49 +8,50 @@ import { pollForProcessingImage } from '../../lib/cloudinary';
 
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
-export type CldImageProps = Omit<ImageProps, 'src'> & ImageOptions & {
-  src: string;
-  preserveTransformations?: boolean;
-};
+export type CldImageProps = Omit<ImageProps, 'src'> &
+  ImageOptions & {
+    src: string;
+    preserveTransformations?: boolean;
+  };
 
 const CldImage = (props: CldImageProps) => {
-  const CLD_OPTIONS = [
-    'deliveryType',
-    'preserveTransformations'
-  ];
+  const CLD_OPTIONS = ['deliveryType', 'preserveTransformations'];
 
   transformationPlugins.forEach(({ props = [] }) => {
-    props.forEach(prop => {
-      if ( CLD_OPTIONS.includes(prop) ) {
+    props.forEach((prop) => {
+      if (CLD_OPTIONS.includes(prop)) {
         throw new Error(`Option ${prop} already exists!`);
       }
       CLD_OPTIONS.push(prop);
     });
-  })
+  });
 
   // Construct the base Image component props by filtering out Cloudinary-specific props
 
   const imageProps = {
     alt: props.alt,
-    src: props.src
+    src: props.src,
   };
 
   (Object.keys(props) as Array<keyof typeof props>)
-    .filter(key => !CLD_OPTIONS.includes(key))
+    .filter((key) => !CLD_OPTIONS.includes(key))
     // @ts-expect-error
-    .forEach(key => imageProps[key] = props[key]);
+    .forEach((key) => (imageProps[key] = props[key]));
 
-
-  const defaultImgKey = (Object.keys(imageProps) as Array<keyof typeof imageProps>).map(key => `${key}:${imageProps[key]}`).join(';');
+  const defaultImgKey = (
+    Object.keys(imageProps) as Array<keyof typeof imageProps>
+  )
+    .map((key) => `${key}:${imageProps[key]}`)
+    .join(';');
   const [imgKey, setImgKey] = useState(defaultImgKey);
 
   // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
 
   const cldOptions = {};
 
-  CLD_OPTIONS.forEach(key => {
+  CLD_OPTIONS.forEach((key) => {
     // @ts-expect-error
-    if ( props[key] ) {
+    if (props[key]) {
       // @ts-expect-error
       cldOptions[key] = props[key] || undefined;
     }
@@ -64,9 +65,14 @@ const CldImage = (props: CldImageProps) => {
     try {
       const transformations = getTransformations(props.src);
       // @ts-expect-error
-      cldOptions.rawTransformations = [...transformations.flat(), ...(props.rawTransformations || [])];
-    } catch(e) {
-      console.warn(`Failed to preserve transformations: ${(e as Error).message}`)
+      cldOptions.rawTransformations = [
+        ...transformations.flat(),
+        ...(props.rawTransformations || []),
+      ];
+    } catch (e) {
+      console.warn(
+        `Failed to preserve transformations: ${(e as Error).message}`
+      );
     }
   }
 
@@ -79,9 +85,21 @@ const CldImage = (props: CldImageProps) => {
   }
 
   async function handleOnError(options: HandleOnError) {
-    const result = await pollForProcessingImage({ src: options.target.src })
-    if ( result ) {
+    const result = await pollForProcessingImage({ src: options.target.src });
+    if (result) {
       setImgKey(`${defaultImgKey};${Date.now()}`);
+    }
+  }
+
+  function handleOnLoadingComplete(img: HTMLImageElement) {
+    if (props.onLoadingComplete) {
+      props.onLoadingComplete(img);
+    }
+  }
+
+  function handleOnLoad(event: React.SyntheticEvent<HTMLImageElement, Event>) {
+    if (props.onLoad) {
+      props.onLoad(event);
     }
   }
 
@@ -89,10 +107,14 @@ const CldImage = (props: CldImageProps) => {
     <Image
       key={imgKey}
       {...imageProps}
-      loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions })}
+      loader={(loaderOptions) =>
+        cloudinaryLoader({ loaderOptions, imageProps, cldOptions })
+      }
       onError={handleOnError}
+      onLoadingComplete={handleOnLoadingComplete}
+      onLoad={handleOnLoad}
     />
   );
-}
+};
 
 export default CldImage;
