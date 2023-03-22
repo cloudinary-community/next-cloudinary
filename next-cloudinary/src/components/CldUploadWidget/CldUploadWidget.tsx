@@ -10,11 +10,6 @@ const WIDGET_WATCHED_EVENTS = [
   'display-changed'
 ];
 
-const ENV_DEPENDENCIES = [
-  'NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME',
-  'NEXT_PUBLIC_CLOUDINARY_API_KEY',
-]
-
 const CldUploadWidget = ({
   children,
   onClose,
