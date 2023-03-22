@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.0.0...v4.0.1) (2023-03-22)
+
+
+### Bug Fixes
+
+* Help reduce Signed Upload errors ([#160](https://github.com/colbyfayock/next-cloudinary/issues/160)) ([d323e33](https://github.com/colbyfayock/next-cloudinary/commit/d323e33c80e74f0a864e6478422d4407d732d47a)), closes [#158](https://github.com/colbyfayock/next-cloudinary/issues/158)
+
 # [4.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v3.4.0...v4.0.0) (2023-03-01)
 
 
