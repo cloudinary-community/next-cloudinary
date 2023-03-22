@@ -10,6 +10,11 @@ const WIDGET_WATCHED_EVENTS = [
   'display-changed'
 ];
 
+const ENV_DEPENDENCIES = [
+  'NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME',
+  'NEXT_PUBLIC_CLOUDINARY_API_KEY',
+]
+
 const CldUploadWidget = ({
   children,
   onClose,
@@ -28,10 +33,27 @@ const CldUploadWidget = ({
   const [error, setError] = useState(undefined);
   const [results, setResults] = useState<CldUploadWidgetResults | undefined>(undefined);
 
-  // Read the results and handle component callbacks based on
-  // the the event. The results should only be updated based
-  // on the watched event IDs in WIDGET_WATCHED_EVENTS to avoid
-  // too many repetitive state changes (consequently skipping some)
+  // When creating a signed upload, you need to provide both your Cloudinary API Key
+  // as well as a signature generator function that will sign any paramters
+  // either on page load or during the upload process. Read more about signed uploads at:
+  // https://cloudinary.com/documentation/upload_widget#signed_uploads
+
+  const uploadOptions = {
+    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+    uploadPreset: uploadPreset || process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+    apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+    ...options,
+  };
+
+  if ( signed ) {
+    uploadOptions.uploadSignature = generateSignature;
+
+    if (!uploadOptions.apiKey) {
+      console.warn(`Missing dependency: Signed Upload requires an API key`);
+    }
+  }
+
+  // Handle result states and callbacks
 
   useEffect(() => {
     if ( typeof results === 'undefined' ) return;
@@ -101,28 +123,6 @@ const CldUploadWidget = ({
    */
 
   function createWidget() {
-    // When creating a signed upload, you need to provide both your Cloudinary API Key
-    // as well as a signature generator function that will sign any paramters
-    // either on page load or during the upload process. Read more about signed uploads at:
-    // https://cloudinary.com/documentation/upload_widget#signed_uploads
-
-    const uploadOptions = {
-      cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-      uploadPreset: uploadPreset || process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
-      apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
-      ...options,
-    };
-
-    if ( signed ) {
-      uploadOptions.uploadSignature = generateSignature;
-
-      // No need for apiSecret here because of api/sign-cloudinary-params
-
-      if (!uploadOptions.apiKey) {
-        return new Error("Signed Upload needs apiKey!");
-      }
-    }
-
     return cloudinary.current?.createUploadWidget(uploadOptions, (uploadError: any, uploadResult: any) => {
       // The callback is a bit more chatty than failed or success so
       // only trigger when one of those are the case. You can additionally
