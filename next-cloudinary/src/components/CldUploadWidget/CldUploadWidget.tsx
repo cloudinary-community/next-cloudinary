@@ -145,11 +145,14 @@ const CldUploadWidget = ({
    */
 
   function open() {
+    console.log('open')
+    console.log('widget.currentbefore', widget.current)
     if (!widget.current) {
       widget.current = createWidget();
     }
+    console.log('widget.currentafter', widget.current)
 
-    widget?.current.open();
+    widget.current?.open();
 
     if ( typeof onOpen === 'function' ) {
       onOpen(widget.current);
