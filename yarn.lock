@@ -933,18 +933,18 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cloudinary-util/url-loader@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-3.0.0.tgz#ba7b3538c60a6718dd3e2d49a9ec3bb33f27c494"
-  integrity sha512-WIpVpt7eSHU3zZux4PSOb7qY1vCF9/0BNFP0qKlQsD/71r7hrzZZx2cHNNk8VSdYY7iNtXgsFmn3LXYaNdkC4Q==
+"@cloudinary-util/url-loader@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-3.0.1.tgz#a05889b628813e11b4ae527b304c1758db9e63f6"
+  integrity sha512-lJ3e+J3hrI8Q24Thg1Gdj+538YxZMP9cUs5AzUvIjGDrBObrRCovJ2xFi5AVGZXLcVY6nSXi+iCbtd8bCg8FZA==
   dependencies:
-    "@cloudinary-util/util" "2.0.0"
+    "@cloudinary-util/util" "2.0.1"
     "@cloudinary/url-gen" "^1.8.7"
 
-"@cloudinary-util/util@2.0.0", "@cloudinary-util/util@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-2.0.0.tgz#264278576edb6bc3840e6dff2fa859007c2bdfac"
-  integrity sha512-7WHFR7uIizW+MRLk+RhLVFQ6jzPKYrBZGICqy6s38hakj+zpXd4nISmMfKbZgwFTBp53oHRi8dW9G2kzXmVe3w==
+"@cloudinary-util/util@2.0.1", "@cloudinary-util/util@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-2.0.1.tgz#0797d2dd96f91971184b2f94da768c15922ea33d"
+  integrity sha512-d2imgUjYTLjv8ZhZPMAts/uPbMvIE71X4I/5hwdY/7vM4BuFQoJMSyq+h2pW1z1MyGG9BOWBm70vp082lSrbEQ==
 
 "@cloudinary/transformation-builder-sdk@^1.0.0":
   version "1.1.0"
