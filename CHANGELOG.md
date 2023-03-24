@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/colbyfayock/next-cloudinary/compare/v4.0.1...v4.0.2) (2023-03-24)
+
+
+### Bug Fixes
+
+* Upgrades Cloudinary Util to fix parsing public IDs with a . ([#165](https://github.com/colbyfayock/next-cloudinary/issues/165)) ([d108d02](https://github.com/colbyfayock/next-cloudinary/commit/d108d02493ae174000312ded525a91613eec6b5a)), closes [#164](https://github.com/colbyfayock/next-cloudinary/issues/164)
+
 ## [4.0.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.0.0...v4.0.1) (2023-03-22)
 
 
