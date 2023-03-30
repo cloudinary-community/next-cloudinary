@@ -13,11 +13,11 @@ const TWITTER_CARD = 'summary_large_image';
 
 export type CldOgImageProps = CldImageProps & {
   excludeTags?: Array<string>;
-  keys: object;
+  keys?: object;
   twitterTitle?: string;
 }
 
-const CldOgImage = ({ excludeTags = [], twitterTitle, keys, ...props }: CldOgImageProps) => {
+const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: CldOgImageProps) => {
   const { alt } = props;
 
   const options: ImageOptions = {
