@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.0.3...v4.1.0) (2023-03-30)
+
+
+### Features
+
+* Add keys to CldOgImage to prevent excessive meta tag rendering ([#171](https://github.com/colbyfayock/next-cloudinary/issues/171)) ([4e60da5](https://github.com/colbyfayock/next-cloudinary/commit/4e60da585d587ac6ab1811c2a32a089d62b212a8)), closes [#167](https://github.com/colbyfayock/next-cloudinary/issues/167)
+
 ## [4.0.3](https://github.com/colbyfayock/next-cloudinary/compare/v4.0.2...v4.0.3) (2023-03-30)
 
 
