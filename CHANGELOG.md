@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/colbyfayock/next-cloudinary/compare/v4.0.2...v4.0.3) (2023-03-30)
+
+
+### Bug Fixes
+
+* CldOgImage Types Missing Definitions ([#168](https://github.com/colbyfayock/next-cloudinary/issues/168)) ([34a4044](https://github.com/colbyfayock/next-cloudinary/commit/34a4044c0634d2da43f348645bcf5a761675bd73)), closes [#166](https://github.com/colbyfayock/next-cloudinary/issues/166)
+
 ## [4.0.2](https://github.com/colbyfayock/next-cloudinary/compare/v4.0.1...v4.0.2) (2023-03-24)
 
 
