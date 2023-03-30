@@ -13,10 +13,11 @@ const TWITTER_CARD = 'summary_large_image';
 
 export type CldOgImageProps = CldImageProps & {
   excludeTags?: Array<string>;
+  keys: object;
   twitterTitle?: string;
 }
 
-const CldOgImage = ({ excludeTags = [], twitterTitle, ...props }: CldOgImageProps) => {
+const CldOgImage = ({ excludeTags = [], twitterTitle, keys, ...props }: CldOgImageProps) => {
   const { alt } = props;
 
   const options: ImageOptions = {
@@ -26,6 +27,18 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, ...props }: CldOgImageProp
     height: props.height || IMAGE_HEIGHT,
     src: props.src,
     width: props.width || IMAGE_WIDTH,
+  }
+
+  const metaKeys = {
+    'og:image': 'og-image',
+    'og:image:secure_url': 'og-image-secureurl',
+    'og:image:width': 'og-image-width',
+    'og:image:height': 'og-image-height',
+    'og:image:alt': 'og-image-alt',
+    'twitter:title': 'twitter-title',
+    'twitter:card': 'twitter-card',
+    'twitter:image': 'twitter-image',
+    ...keys
   }
 
   const ogImageUrl = constructCloudinaryUrl({
@@ -48,24 +61,24 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, ...props }: CldOgImageProp
 
     return (
     <Head>
-      <meta property="og:image" content={ogImageUrl} />
-      <meta property="og:image:secure_url" content={ogImageUrl} />
-      <meta property="og:image:width" content={`${options.width}`} />
-      <meta property="og:image:height" content={`${options.height}`} />
+      <meta key={metaKeys['og:image']} property="og:image" content={ogImageUrl} />
+      <meta key={metaKeys['og:image:secure_url']} property="og:image:secure_url" content={ogImageUrl} />
+      <meta key={metaKeys['og:image:width']} property="og:image:width" content={`${options.width}`} />
+      <meta key={metaKeys['og:image:height']} property="og:image:height" content={`${options.height}`} />
 
       {alt && (
-        <meta property="og:image:alt" content={alt} />
+        <meta key={metaKeys['og:image:alt']} property="og:image:alt" content={alt} />
       )}
 
       {/* Required for summary_large_image, exclude vai excludeTags */}
       {/* https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image */}
 
       {!excludeTags.includes('twitter:title') && (
-        <meta property="twitter:title" content={twitterTitle || ' '} />
+        <meta key={metaKeys['twitter:title']} property="twitter:title" content={twitterTitle || ' '} />
       )}
 
-      <meta property="twitter:card" content={TWITTER_CARD} />
-      <meta property="twitter:image" content={ogImageUrl} />
+      <meta key={metaKeys['twitter:card']} property="twitter:card" content={TWITTER_CARD} />
+      <meta key={metaKeys['twitter:image']} property="twitter:image" content={ogImageUrl} />
     </Head>
   );
 }
