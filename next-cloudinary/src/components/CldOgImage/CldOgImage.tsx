@@ -11,7 +11,7 @@ const IMAGE_HEIGHT = 1200;
 
 const TWITTER_CARD = 'summary_large_image';
 
-export type CldOgImageProps = Omit<CldImageProps, 'width, height' > & {
+export type CldOgImageProps = CldImageProps & {
   excludeTags?: Array<string>;
   twitterTitle?: string;
 }
