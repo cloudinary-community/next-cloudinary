@@ -26,6 +26,7 @@ See [CldImage](/components/cldimage/configuration) for all image transformations
 |--------------------|--------|------------------------------|
 | alt                | string | `"Next Cloudinary"`          |
 | excludeTags        | array  | `['twitter:title']`          |
+| keys               | object | `{'og:image': 'my-og-image'}`|
 | twitterTitle       | string | `"Next Cloudinary"`          |
 
 ## Excluding Tags
@@ -38,6 +39,30 @@ The `summary_large_image` Twitter card type requires the inclusion of a `twitter
 
 To exclude this tag to manage it on your own, use the `excludeTags` prop:
 
-```
+```jsx
 excludeTags={['twitter:title']}
+```
+
+## Keys
+
+By default, CldOgImage includes static keys on each meta tag rendered to help avoid duplication in the DOM.
+
+To allow customization and control in the event you want to minimize duplication with existing meta tags, you can specify custom keys for each tag.
+
+For instance, by default `og:image` tag will effectively render with:
+
+```jsx
+<meta key="og-image" property="og:image" content="..." />
+```
+
+Where if you pass in the `keys` prop with the following:
+
+```jsx
+keys={{'og:image': 'my-og-image'}}
+```
+
+The tag will render with:
+
+```jsx
+<meta key="og-image" property="my-og-image" content="..." />
 ```
