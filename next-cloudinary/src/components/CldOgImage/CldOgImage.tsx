@@ -1,29 +1,26 @@
 import React from 'react';
 import Head from 'next/head';
 import { constructCloudinaryUrl } from '@cloudinary-util/url-loader';
+import type { ImageOptions } from '@cloudinary-util/url-loader';
 
 import { NEXT_CLOUDINARY_ANALYTICS_ID, NEXT_CLOUDINARY_VERSION, NEXT_VERSION } from '../../constants/analytics';
+import { CldImageProps } from '../CldImage/CldImage';
 
 const IMAGE_WIDTH = 2400;
 const IMAGE_HEIGHT = 1200;
 
 const TWITTER_CARD = 'summary_large_image';
 
-export interface CldOgImageProps {
-  alt: string;
-  crop?: string;
+export type CldOgImageProps = Omit<CldImageProps, 'width, height' > & {
   excludeTags?: Array<string>;
-  gravity?: string;
-  height: string | number;
-  src: string;
   twitterTitle?: string;
-  width: string | number;
 }
 
 const CldOgImage = ({ excludeTags = [], twitterTitle, ...props }: CldOgImageProps) => {
-  const options = {
+  const { alt } = props;
+
+  const options: ImageOptions = {
     ...props,
-    alt: props.alt,
     crop: props.crop || 'fill',
     gravity: props.gravity || 'center',
     height: props.height || IMAGE_HEIGHT,
@@ -56,8 +53,8 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, ...props }: CldOgImageProp
       <meta property="og:image:width" content={`${options.width}`} />
       <meta property="og:image:height" content={`${options.height}`} />
 
-      {options.alt && (
-        <meta property="og:image:alt" content={options.alt} />
+      {alt && (
+        <meta property="og:image:alt" content={alt} />
       )}
 
       {/* Required for summary_large_image, exclude vai excludeTags */}
