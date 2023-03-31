@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.1.0...v4.1.1) (2023-03-31)
+
+
+### Bug Fixes
+
+* Keys Optional for ClgOgImage ([#172](https://github.com/colbyfayock/next-cloudinary/issues/172)) ([fda6e4c](https://github.com/colbyfayock/next-cloudinary/commit/fda6e4cc56bb90205682a8f9627ff17f51b717f5))
+
 # [4.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.0.3...v4.1.0) (2023-03-30)
 
 
