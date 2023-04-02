@@ -16,4 +16,4 @@ export type { CldVideoPlayerProps, CldVideoPlayerPropsColors, CldVideoPlayerProp
 export { cloudinaryLoader } from './loaders/cloudinary-loader';
 export type { CloudinaryLoader, CloudinaryLoaderLoaderOptions, CloudinaryLoaderCldOptions } from './loaders/cloudinary-loader';
 
-export type { CloudinaryVideoPlayer } from './types/player';
+export type { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsColors, CloudinaryVideoPlayerOptionsLogo } from './types/player';

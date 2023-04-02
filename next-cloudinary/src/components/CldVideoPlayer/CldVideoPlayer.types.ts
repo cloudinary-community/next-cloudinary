@@ -1,17 +1,12 @@
 import { MutableRefObject } from 'react';
 
-import { CloudinaryVideoPlayer } from '../../types/player';
+import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsColors, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
 
-export interface CldVideoPlayerProps {
+export type CldVideoPlayerProps = Pick<CloudinaryVideoPlayerOptions, "colors" | "controls" | "fontFace" | "loop" | "muted"> & {
   autoPlay?: string;
-  colors?: CldVideoPlayerPropsColors;
-  controls?: boolean;
-  fontFace?: string;
   height: string | number;
   id?: string;
   logo?: boolean | CldVideoPlayerPropsLogo;
-  loop?: boolean;
-  muted?: boolean;
   onDataLoad?: Function;
   onError?: Function;
   onMetadataLoad?: Function;
@@ -25,13 +20,12 @@ export interface CldVideoPlayerProps {
   width: string | number;
 }
 
-export interface CldVideoPlayerPropsColors {
-  accent?: string;
-  base?: string;
-  text?: string;
-}
+// Maintain for backwards compatibility
+
+export interface CldVideoPlayerPropsColors extends CloudinaryVideoPlayerOptionsColors {}
 
 export interface CldVideoPlayerPropsLogo {
-  imageUrl?: string;
-  onClickUrl?: string;
+  imageUrl?: CloudinaryVideoPlayerOptionsLogo['logoImageUrl'];
+  logo?: boolean;
+  onClickUrl?: CloudinaryVideoPlayerOptionsLogo['logoOnclickUrl'];
 }
