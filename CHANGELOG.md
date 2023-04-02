@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.1.1...v4.2.0) (2023-04-02)
+
+
+### Features
+
+* Fixes colors property not working ([#174](https://github.com/colbyfayock/next-cloudinary/issues/174)) ([9a862d9](https://github.com/colbyfayock/next-cloudinary/commit/9a862d9ffcb58fc0a2ce3744e8f3e22fa1507c20)), closes [#173](https://github.com/colbyfayock/next-cloudinary/issues/173)
+
 ## [4.1.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.1.0...v4.1.1) (2023-03-31)
 
 
