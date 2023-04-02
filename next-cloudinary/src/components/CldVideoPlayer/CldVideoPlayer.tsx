@@ -3,10 +3,15 @@ import Script from 'next/script';
 import Head from 'next/head';
 
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
-import { CloudinaryVideoPlayer } from '../../types/player';
-
+import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
+  // If no ID is passed in - we want to be able to ensure that we are using
+  // unique IDs for each player. We can do this by generating a random number
+  // and using that as the ID. We use a ref here so that we can ensure that
+  // the ID is only generated once.
+  const idRef = useRef(Math.ceil(Math.random() * 100000));
+
   const {
     autoPlay = 'never',
     colors,
@@ -37,7 +42,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const defaultPlayerRef = useRef()as MutableRefObject<CloudinaryVideoPlayer | null>;
   const playerRef = props.playerRef || defaultPlayerRef;
 
-  const playerId = id || `player-${src.replace('/', '-')}`;
+  const playerId = id || `player-${src.replace('/', '-')}-${idRef.current}`;
 
   const events: Record<string, Function|undefined> = {
     error: onError,
@@ -70,13 +75,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     if ( 'cloudinary' in window ) {
       cloudinaryRef.current = window.cloudinary;
 
-      interface LogoOptions {
-        logoImageUrl?: string;
-        logoOnclickUrl?: string;
-        showLogo?: boolean;
-      }
-
-      let logoOptions: LogoOptions = {};
+      let logoOptions: CloudinaryVideoPlayerOptionsLogo = {};
 
       if ( typeof logo === 'boolean' ) {
         logoOptions.showLogo = logo;
@@ -89,10 +88,9 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         }
       }
 
-      playerRef.current = cloudinaryRef.current.videoPlayer(videoRef.current, {
+      let playerOptions: CloudinaryVideoPlayerOptions = {
         autoplayMode: autoPlay,
         cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-        color: colors,
         controls,
         fontFace: fontFace || '',
         loop,
@@ -100,7 +98,13 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         publicId: src,
         secure: true,
         ...logoOptions
-      });
+      };
+
+      if ( typeof colors === 'object' ) {
+        playerOptions.colors = colors;
+      }
+
+      playerRef.current = cloudinaryRef.current.videoPlayer(videoRef.current, playerOptions);
 
       Object.keys(events).forEach((key) => {
         if ( typeof events[key] === 'function' ) {
@@ -111,7 +115,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   }
 
   /**
-   *
+   *getPlayerRefs
    */
 
   function getPlayerRefs() {
