@@ -21,9 +21,7 @@ export interface CloudinaryLoader {
 
 export function cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig = {} }: CloudinaryLoader) {
   const options = {
-    height: imageProps.height,
-    width: imageProps.width,
-    src: imageProps.src as string,
+    ...imageProps,
     ...cldOptions
   }
 
@@ -45,5 +43,6 @@ export function cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldCon
     }
   }
 
+  // @ts-ignore
   return getCldImageUrl(options, cldConfig);
 }
