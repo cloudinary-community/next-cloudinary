@@ -1,8 +1,30 @@
+import { getCldImageUrl } from '../../src/lib/cloudinary';
+
 describe('Cloudinary', () => {
-  describe('pollForProcessingImage', () => {
-    // TODO: write tests for pollForProcessingImage
+  const OLD_ENV = process.env;
+
+  beforeEach(() => {
+    jest.resetModules()
+    process.env = { ...OLD_ENV };
+  });
+
+  afterAll(() => {
+    process.env = OLD_ENV;
+  });
+
+  describe('getCldImage', () => {
     it('should pass', () => {
-      expect(true).toEqual(true);
+      const cloudName = 'customtestcloud';
+
+      process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME = cloudName;
+
+      const url = getCldImageUrl({
+        src: 'turtle',
+        width: 100,
+        height: 100
+      });
+
+      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_100/f_auto/q_auto/turtle`);
     });
   });
 })

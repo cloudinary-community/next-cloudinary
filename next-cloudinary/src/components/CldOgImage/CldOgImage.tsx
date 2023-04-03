@@ -1,10 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
-import { constructCloudinaryUrl } from '@cloudinary-util/url-loader';
 import type { ImageOptions } from '@cloudinary-util/url-loader';
 
-import { NEXT_CLOUDINARY_ANALYTICS_ID, NEXT_CLOUDINARY_VERSION, NEXT_VERSION } from '../../constants/analytics';
 import { CldImageProps } from '../CldImage/CldImage';
+import { getCldImageUrl } from '../../lib/cloudinary';
 
 const IMAGE_WIDTH = 2400;
 const IMAGE_HEIGHT = 1200;
@@ -41,20 +40,7 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: Cld
     ...keys
   }
 
-  const ogImageUrl = constructCloudinaryUrl({
-    options,
-    config: {
-      cloud: {
-        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-      }
-    },
-    analytics: {
-      sdkCode: NEXT_CLOUDINARY_ANALYTICS_ID,
-      sdkSemver: NEXT_CLOUDINARY_VERSION,
-      techVersion: NEXT_VERSION,
-      feature: ''
-    }
-  });
+  const ogImageUrl = getCldImageUrl(options);
 
   // We need to include the tags within the Next.js Head component rather than
   // direcly adding them inside of the Head otherwise we get unexpected results
