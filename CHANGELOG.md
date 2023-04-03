@@ -1,3 +1,10 @@
+# [4.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.2.0...v4.3.0) (2023-04-03)
+
+
+### Features
+
+* Create and export getCldImageUrl ([#175](https://github.com/colbyfayock/next-cloudinary/issues/175)) ([f9373ee](https://github.com/colbyfayock/next-cloudinary/commit/f9373eefa702efe912a98adcd89210ca9627ea5e)), closes [#170](https://github.com/colbyfayock/next-cloudinary/issues/170)
+
 # [4.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.1.1...v4.2.0) (2023-04-02)
 
 
