@@ -7,6 +7,16 @@ import { NEXT_CLOUDINARY_ANALYTICS_ID, NEXT_CLOUDINARY_VERSION, NEXT_VERSION } f
  * getCldImage
  */
 
+export interface GetCldImageUrlOptions extends ImageOptions {};
+export interface GetCldImageUrlConfig extends ConfigOptions {};
+export interface GetCldImageUrlAnalytics extends AnalyticsOptions {};
+
+export interface GetCldImageUrl {
+  options: GetCldImageUrlOptions;
+  config?: GetCldImageUrlConfig;
+  analytics?: GetCldImageUrlAnalytics;
+}
+
 export function getCldImageUrl(options: ImageOptions, config?: ConfigOptions, analytics?: AnalyticsOptions) {
   return constructCloudinaryUrl({
     options,
@@ -28,7 +38,7 @@ export function getCldImageUrl(options: ImageOptions, config?: ConfigOptions, an
  * pollForProcessingImage
  */
 
-interface PollForProcessingImageOptions {
+export interface PollForProcessingImageOptions {
   src: string;
 }
 
