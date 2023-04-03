@@ -3,23 +3,23 @@ import Head from 'next/head';
 import OgImage from '../../../components/OgImage';
 
 <Head>
-  <title>CldImage Configuration - Next Cloudinary</title>
-  <meta name="og:title" content="CldImage Configuration - Next Cloudinary" />
-  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/components/cldimage/configuration`} />
+  <title>getCldImageUrl Configuration - Next Cloudinary</title>
+  <meta name="og:title" content="getCldImageUrl Configuration - Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/components/getcldimageurl/configuration`} />
 </Head>
 
 <OgImage
-  title="CldImage Configuration"
-  twitterTitle="CldImage Configuration"
+  title="getCldImageUrl Configuration"
+  twitterTitle="getCldImageUrl Configuration"
 />
 
-# CldImage Configuration
+# getCldImageUrl Configuration
 
-Configuration for CldImage is the same as [getCldImageUrl](/helpers/getcldimageurl/configuration), which both use the same underlying API.
+Configuration for getCldImageUrl is the same as [CldImage](/components/cldimage/configuration), which both use the same underlying API [@cloudinary-util/url-loader](https://github.com/colbyfayock/cloudinary-util/tree/main/packages/url-loader).
 
-## General Props
+## General Options
 
-| Prop Name          | Type               | Default    | Example                      |
+| Option Name        | Type               | Default    | Example                      |
 |--------------------|--------------------|------------|------------------------------|
 | crop               | string             | `"limit"`  | `"thumb"`                    |
 | deliveryType       | string             | `"upload"` | `"fetch"`                    |
@@ -45,11 +45,11 @@ Configuration for CldImage is the same as [getCldImageUrl](/helpers/getcldimageu
 | zoompan            | bool/string/object | -          | See Below                    |
 
 
-## Effect Props
+## Effect Options
 
 All effect props are disabled by default.
 
-| Prop Name          | Type        | Example                                              |
+| Option Name        | Type        | Example                                              |
 | ------------------ | ----------- | ---------------------------------------------------- |
 | art                | string      | `"al_dente"`                                         |
 | autoBrightness     | bool/string | `true`, `"80"`                                       |
@@ -100,7 +100,7 @@ All effect props are disabled by default.
 
 [View the Cloudinary docs](https://cloudinary.com/documentation/transformation_reference#e_effect) to see learn more about using effects.
 
-### Overlay Props
+### Overlay Options
 
 The `overlays` prop is an array of objects with the following configuration options:
 

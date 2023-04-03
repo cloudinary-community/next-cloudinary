@@ -1,0 +1,58 @@
+import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
+
+import OgImage from '../../../components/OgImage';
+import Video from '../../../components/Video';
+
+<Head>
+  <title>getCldImageUrl - Next Cloudinary</title>
+  <meta name="og:title" content="Getting Started with getCldImageUrl - Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/components/getcldimageurl/basic-usage`} />
+</Head>
+
+<OgImage
+  title="getCldImageUrl"
+  twitterTitle="Getting Started with getCldImageUrl"
+/>
+
+# Getting Started with getCldImageUrl
+
+## Basic Usage
+
+The basic required options include `width`, `height`, and `src`:
+
+```js
+const url = getCldImageUrl({
+  width: 600,
+  height: 600,
+  src: '<Public ID>'
+});
+```
+
+<Callout emoji={false}>
+  getCldImageUrl uses the same API as [CldImage](/components/cldimage/basic-usage). They're both wrappers around [@cloudinary-util/url-loader](https://github.com/colbyfayock/cloudinary-util/tree/main/packages/url-loader) which provide a simpler way to generate images and Cloudinary URLs.
+</Callout>
+
+You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
+
+```js
+const url = getCldImageUrl({
+  width: 600,
+  height: 600,
+  src: '<Public ID>',
+  crop: 'thumb',
+  gravity: 'faces',
+  removeBackground: true,
+  tint: '100:blue:green:red',
+  underlays: [{
+    publicId: '<Public ID>',
+    width: 600,
+    height: 600,
+    crop: 'fill'
+  }]
+});
+```
+
+## Learn More about getCldImageUrl
+* [Configuration](/components/getcldimageurl/configuration)
+* [Examples](/components/getcldimageurl/examples)
