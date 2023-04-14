@@ -184,6 +184,7 @@ yarn test
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mtliendo"><img src="https://avatars.githubusercontent.com/u/5106417?v=4?s=100" width="100px;" alt="Michael Liendo"/><br /><sub><b>Michael Liendo</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=mtliendo" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jackblatch"><img src="https://avatars.githubusercontent.com/u/98260549?v=4?s=100" width="100px;" alt="Jack"/><br /><sub><b>Jack</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=jackblatch" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

@@ -146,6 +146,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "jackblatch",
+      "name": "Jack",
+      "avatar_url": "https://avatars.githubusercontent.com/u/98260549?v=4",
+      "profile": "https://github.com/jackblatch",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
