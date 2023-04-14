@@ -1,3 +1,10 @@
+# [4.4.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.3.0...v4.4.0) (2023-04-14)
+
+
+### Features
+
+* Add isLoading to CldUploadWidget and CldUploadButton ([#178](https://github.com/colbyfayock/next-cloudinary/issues/178)) ([df174bd](https://github.com/colbyfayock/next-cloudinary/commit/df174bd83b0af168f6fcdb2db47659a911adc493)), closes [#176](https://github.com/colbyfayock/next-cloudinary/issues/176)
+
 # [4.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.2.0...v4.3.0) (2023-04-03)
 
 
