@@ -15,6 +15,7 @@ export interface CldUploadWidgetPropsChildren {
   open: Function;
   results?: object;
   error?: any;
+  isLoading?: boolean;
 }
 
 // Parameters sourced from:

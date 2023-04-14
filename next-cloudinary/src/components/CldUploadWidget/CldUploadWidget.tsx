@@ -27,6 +27,7 @@ const CldUploadWidget = ({
 
   const [error, setError] = useState(undefined);
   const [results, setResults] = useState<CldUploadWidgetResults | undefined>(undefined);
+  const [isScriptLoading, setIsScriptLoading] = useState(true);
 
   // When creating a signed upload, you need to provide both your Cloudinary API Key
   // as well as a signature generator function that will sign any paramters
@@ -77,6 +78,7 @@ const CldUploadWidget = ({
    */
 
   function handleOnLoad() {
+    setIsScriptLoading(false);
     if ( !cloudinary.current ) {
       cloudinary.current = (window as any).cloudinary;
     }
@@ -158,8 +160,9 @@ const CldUploadWidget = ({
         widget: widget.current,
         open,
         results,
-        error
-      })}
+        error,
+        isLoading: isScriptLoading,
+        })}
       <Script
         id={`cloudinary-uploadwidget-${Math.floor(Math.random() * 100)}`}
         src="https://widget.cloudinary.com/v2.0/global/all.js"

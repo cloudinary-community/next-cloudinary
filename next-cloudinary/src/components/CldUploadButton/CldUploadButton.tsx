@@ -16,6 +16,7 @@ const CldUploadButton = ({
   uploadPreset,
   ...props
 }: CldUploadButtonProps) => {
+
   return (
     <>
       <CldUploadWidget
@@ -25,7 +26,7 @@ const CldUploadButton = ({
         signatureEndpoint={signatureEndpoint}
         uploadPreset={uploadPreset}
       >
-        {({ open }) => {
+        {({ open, isLoading }) => {
           function handleOnClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
             e.preventDefault();
 
@@ -36,7 +37,7 @@ const CldUploadButton = ({
             }
           }
           return (
-            <button {...props} onClick={handleOnClick} >
+            <button {...props} onClick={handleOnClick} disabled={isLoading} >
               {children || 'Upload'}
             </button>
           );
