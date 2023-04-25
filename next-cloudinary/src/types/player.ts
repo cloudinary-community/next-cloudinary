@@ -1,5 +1,6 @@
 export interface CloudinaryVideoPlayer {
-  on: Function
+  dispose: Function;
+  on: Function;
 }
 
 export interface CloudinaryVideoPlayerOptions {

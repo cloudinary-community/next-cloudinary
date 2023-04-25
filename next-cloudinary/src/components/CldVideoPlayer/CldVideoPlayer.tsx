@@ -1,17 +1,10 @@
-import React, { useRef, MutableRefObject } from 'react';
-import Script from 'next/script';
+import React, { useRef, useEffect, useState, MutableRefObject,  } from 'react';
 import Head from 'next/head';
 
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
-  // If no ID is passed in - we want to be able to ensure that we are using
-  // unique IDs for each player. We can do this by generating a random number
-  // and using that as the ID. We use a ref here so that we can ensure that
-  // the ID is only generated once.
-  const idRef = useRef(Math.ceil(Math.random() * 100000));
-
   const {
     autoPlay = 'never',
     colors,
@@ -36,13 +29,10 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   // Setup the refs and allow for the caller to pass through their
   // own ref instance
 
-  const cloudinaryRef = useRef<any>();
   const defaultVideoRef = useRef() as MutableRefObject<HTMLVideoElement | null>;
   const videoRef = props.videoRef || defaultVideoRef;
   const defaultPlayerRef = useRef()as MutableRefObject<CloudinaryVideoPlayer | null>;
   const playerRef = props.playerRef || defaultPlayerRef;
-
-  const playerId = id || `player-${src.replace('/', '-')}-${idRef.current}`;
 
   const events: Record<string, Function|undefined> = {
     error: onError,
@@ -52,6 +42,73 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     play: onPlay,
     ended: onEnded
   };
+
+  let logoOptions: CloudinaryVideoPlayerOptionsLogo = {};
+
+  if ( typeof logo === 'boolean' ) {
+    logoOptions.showLogo = logo;
+  } else if ( typeof logo === 'object' ) {
+    logoOptions = {
+      ...logoOptions,
+      showLogo: true,
+      logoImageUrl: logo.imageUrl,
+      logoOnclickUrl: logo.onClickUrl
+    }
+  }
+
+  let playerOptions: CloudinaryVideoPlayerOptions = {
+    autoplayMode: autoPlay,
+    cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+    controls,
+    fontFace: fontFace || '',
+    loop,
+    muted,
+    publicId: src,
+    secure: true,
+    ...logoOptions
+  };
+
+  if ( typeof colors === 'object' ) {
+    playerOptions.colors = colors;
+  }
+
+  // If no ID is passed in - we want to be able to ensure that we are using
+  // unique IDs for each player to avoid conflicts. We can do this by generating
+  // a random number and using that as the ID. We use a ref here so that we can
+  // ensure that the ID is only generated once.
+
+  const idRef = useRef(Math.ceil(Math.random() * 100000));
+  const [playerId, setPlayerId] = useState(id);
+
+  useEffect(() => {
+    if ( typeof id !== 'undefined' ) return;
+    setPlayerId(`player-${src.replace('/', '-')}-${idRef.current}`);
+  }, [])
+
+  // Initialize the player
+
+  useEffect(() => {
+    if ( !playerId ) return;
+
+    (async function run() {
+      // @ts-ignore
+      const { videoPlayer } = await import('cloudinary-video-player');
+
+      playerRef.current = videoPlayer(videoRef.current, playerOptions);
+
+      Object.keys(events).forEach((key) => {
+        if ( typeof events[key] === 'function' ) {
+          playerRef.current?.on(key, handleEvent);
+        }
+      });
+    })();
+
+    return () => {
+      if ( playerRef.current ) {
+        playerRef.current.dispose();
+      }
+    }
+  }, [playerId])
 
   /**
    * handleEvent
@@ -63,54 +120,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
     if ( typeof activeEvent === 'function' ) {
       activeEvent(getPlayerRefs());
-    }
-  }
-
-  /**
-   * handleOnLoad
-   * @description Stores the Cloudinary window instance to a ref when the widget script loads
-   */
-
-  function handleOnLoad() {
-    if ( 'cloudinary' in window ) {
-      cloudinaryRef.current = window.cloudinary;
-
-      let logoOptions: CloudinaryVideoPlayerOptionsLogo = {};
-
-      if ( typeof logo === 'boolean' ) {
-        logoOptions.showLogo = logo;
-      } else if ( typeof logo === 'object' ) {
-        logoOptions = {
-          ...logoOptions,
-          showLogo: true,
-          logoImageUrl: logo.imageUrl,
-          logoOnclickUrl: logo.onClickUrl
-        }
-      }
-
-      let playerOptions: CloudinaryVideoPlayerOptions = {
-        autoplayMode: autoPlay,
-        cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-        controls,
-        fontFace: fontFace || '',
-        loop,
-        muted,
-        publicId: src,
-        secure: true,
-        ...logoOptions
-      };
-
-      if ( typeof colors === 'object' ) {
-        playerOptions.colors = colors;
-      }
-
-      playerRef.current = cloudinaryRef.current.videoPlayer(videoRef.current, playerOptions);
-
-      Object.keys(events).forEach((key) => {
-        if ( typeof events[key] === 'function' ) {
-          playerRef.current?.on(key, handleEvent);
-        }
-      });
     }
   }
 
@@ -137,12 +146,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
           className="cld-video-player cld-fluid"
           width={width}
           height={height}
-        />
-        <Script
-          id={`cloudinary-videoplayer-${Math.floor(Math.random() * 100)}`}
-          src={`https://unpkg.com/cloudinary-video-player@${version}/dist/cld-video-player.min.js`}
-          onLoad={handleOnLoad}
-          onError={(e) => console.error(`Failed to load Cloudinary Video Player: ${e.message}`)}
         />
       </div>
     </>
