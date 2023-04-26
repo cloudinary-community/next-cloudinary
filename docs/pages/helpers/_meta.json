@@ -1,3 +1,4 @@
 {
-  "getcldimageurl": "getCldImageUrl"
+  "getcldimageurl": "getCldImageUrl",
+  "getcldogimageurl": "getCldOgImageUrl"
 }

@@ -25,10 +25,30 @@ By default, Next Cloudinary has full support when using the included components 
 
 # App Directory (Experimental)
 
+### General
+
 Using Next Cloudinary in the `app` directory currently requires marking the parent page or component as a Client Component.
 
 At the top of the file, add:
 
 ```
 use client;
+```
+
+### OG Images
+
+The Head component is not supported in the Next.js App directory, meaning, the [CldOgImage](/components/cldogimage/basic-usage) component will not function.
+
+Instead, you can easily generate OG image URLs using [getCldOgImageUrl](/helpers/getcldogimageurl/basic-usage) in your metadata configuration:
+
+
+```
+export const metadata = {
+  openGraph: {
+    ...
+    images: getCldOgImageUrl({
+      src: '<Public ID>'
+    })
+  },
+};
 ```

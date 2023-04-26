@@ -1,4 +1,4 @@
-import { getCldImageUrl } from '../../src/lib/cloudinary';
+import { getCldImageUrl } from '../../src/helpers/getCldImageUrl';
 
 describe('Cloudinary', () => {
   const OLD_ENV = process.env;

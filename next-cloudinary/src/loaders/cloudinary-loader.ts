@@ -1,6 +1,6 @@
 import { ImageProps } from 'next/image';
 
-import { getCldImageUrl } from '../lib/cloudinary';
+import { getCldImageUrl } from '../helpers/getCldImageUrl';
 
 export interface CloudinaryLoaderCldOptions {
   heightResize?: string | number;
