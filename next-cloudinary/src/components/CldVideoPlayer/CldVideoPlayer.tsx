@@ -1,14 +1,18 @@
 import React, { useRef, useEffect, useState, MutableRefObject,  } from 'react';
 import Head from 'next/head';
+import pkg from '../../../package.json'
 
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
+  const version = pkg.dependencies['cloudinary-video-player'];
+
   const {
     autoPlay = 'never',
     colors,
     controls = true,
+    excludeExternalStylesheet = false,
     fontFace,
     height,
     id,
@@ -22,7 +26,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     onPlay,
     onEnded,
     src,
-    version = '1.9.4',
     width,
   } = props as CldVideoPlayerProps;
 
@@ -136,9 +139,17 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
   return (
     <>
-      <Head>
-        <link href={`https://unpkg.com/cloudinary-video-player@${version}/dist/cld-video-player.min.css`} rel="stylesheet" />
-      </Head>
+      {/**
+       * There's not a reliable way (?) to include the stylesheet without impacting the rest
+       * of the components and not requirin the developer to include it themselves, so add
+       * it to head by default. If using Next.js 13 App, where Head is not supported, they
+       * would likely need to still add it themselves
+       */}
+      {!excludeExternalStylesheet && (
+        <Head>
+          <link href={`https://unpkg.com/cloudinary-video-player@${version}/dist/cld-video-player.min.css`} rel="stylesheet" />
+        </Head>
+      )}
       <div style={{ width: '100%', aspectRatio: `${props.width} / ${props.height}`}}>
         <video
           ref={videoRef}
