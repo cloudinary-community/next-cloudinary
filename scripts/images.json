@@ -1,38 +1,46 @@
 [
   {
-    "public_id": "city-skyline",
+    "publicId": "city-skyline",
     "url": "https://user-images.githubusercontent.com/1045274/198430381-45a4e8ce-a153-46b4-8033-f308efda680e.jpeg"
   },
   {
-    "public_id": "earth",
+    "publicId": "cloudinary-white",
+    "url": "https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/v1666934571/images/cloudinary-white.svg"
+  },
+  {
+    "publicId": "earth",
     "url": "https://user-images.githubusercontent.com/1045274/198430383-2d91bc89-63a8-448c-b322-37ead1fc3be2.jpeg"
   },
   {
-    "public_id": "galaxy",
+    "publicId": "galaxy",
     "url": "https://user-images.githubusercontent.com/1045274/198429472-f6dbc643-13bb-4fea-9597-8ca5c691997f.jpg"
   },
   {
-    "public_id": "mountain",
+    "publicId": "mountain",
     "url": "https://user-images.githubusercontent.com/1045274/198429478-3372fb00-3641-46b1-be6f-d9ec372a340d.jpg"
   },
   {
-    "public_id": "next-cloudinary-social-background",
+    "publicId": "next-cloudinary-social-background",
     "url": "https://user-images.githubusercontent.com/1045274/198507882-59802c05-ca72-4d8a-b630-ff38574dbd9b.png"
   },
   {
-    "public_id": "sneakers",
+    "publicId": "nextjs-white",
+    "url": "https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/v1666934571/images/nextjs-white.svg"
+  },
+  {
+    "publicId": "sneakers",
     "url": "https://user-images.githubusercontent.com/1045274/198430384-59e3773d-8b62-4c7b-8632-e768385739ed.jpeg"
   },
   {
-    "public_id": "turtle",
+    "publicId": "turtle",
     "url": "https://user-images.githubusercontent.com/1045274/198430387-09596747-29fe-4e02-a577-99aee29a2b3f.jpeg"
   },
   {
-    "public_id": "white",
+    "publicId": "white",
     "url": "https://user-images.githubusercontent.com/1045274/198429482-5c938801-d6af-4d8f-b579-8032d4f12071.png"
   },
   {
-    "public_id": "woman-headphones",
+    "publicId": "woman-headphones",
     "url": "https://user-images.githubusercontent.com/1045274/198430389-778e5118-0e08-44f0-817e-44ba4a5de411.jpeg"
   }
 ]
