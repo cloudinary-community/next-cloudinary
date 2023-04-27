@@ -1,3 +1,10 @@
+# [4.8.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.7.0...v4.8.0) (2023-04-27)
+
+
+### Features
+
+* Social Image Format & Size ([#190](https://github.com/colbyfayock/next-cloudinary/issues/190)) ([65f6a8b](https://github.com/colbyfayock/next-cloudinary/commit/65f6a8b9152a01d0f6f2b00c2607d25a063c22fd)), closes [#189](https://github.com/colbyfayock/next-cloudinary/issues/189)
+
 # [4.7.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.6.0...v4.7.0) (2023-04-27)
 
 
