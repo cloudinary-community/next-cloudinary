@@ -20,7 +20,6 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: Cld
   const options: ImageOptions = {
     ...props,
     crop: props.crop || 'fill',
-    format: props.format || 'jpg',
     gravity: props.gravity || 'center',
     height: props.height || OG_IMAGE_HEIGHT,
     src: props.src,
@@ -37,6 +36,20 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: Cld
     height = ( options.width / OG_IMAGE_WIDTH_RESIZE ) * height;
   }
 
+  // Render the final URLs. We use two different format versions to deliver
+  // webp for Twitter as it supports it (and we can control with tags) where
+  // other platforms may not support webp, so we deliver jpg
+
+  const ogImageUrl = getCldImageUrl({
+    ...options,
+    format: props.format || 'jpg',
+  });
+
+  const twitterImageUrl = getCldImageUrl({
+    ...options,
+    format: props.format || 'webp',
+  });
+
   const metaKeys = {
     'og:image': 'og-image',
     'og:image:secure_url': 'og-image-secureurl',
@@ -48,8 +61,6 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: Cld
     'twitter:image': 'twitter-image',
     ...keys
   }
-
-  const ogImageUrl = getCldImageUrl(options);
 
   // We need to include the tags within the Next.js Head component rather than
   // direcly adding them inside of the Head otherwise we get unexpected results
@@ -73,7 +84,7 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: Cld
       )}
 
       <meta key={metaKeys['twitter:card']} property="twitter:card" content={TWITTER_CARD} />
-      <meta key={metaKeys['twitter:image']} property="twitter:image" content={ogImageUrl} />
+      <meta key={metaKeys['twitter:image']} property="twitter:image" content={twitterImageUrl} />
     </Head>
   );
 }
