@@ -1,3 +1,10 @@
+# [4.7.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.6.0...v4.7.0) (2023-04-27)
+
+
+### Features
+
+* Adding transformation property to player ([#188](https://github.com/colbyfayock/next-cloudinary/issues/188)) ([5916598](https://github.com/colbyfayock/next-cloudinary/commit/59165989a23bf017b87c53ac108396d539f8b0bb)), closes [#186](https://github.com/colbyfayock/next-cloudinary/issues/186)
+
 # [4.6.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.5.0...v4.6.0) (2023-04-27)
 
 
