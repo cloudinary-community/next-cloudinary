@@ -20,7 +20,7 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: Cld
   const options: ImageOptions = {
     ...props,
     crop: props.crop || 'fill',
-    format: props.format || 'webp',
+    format: props.format || 'jpg',
     gravity: props.gravity || 'center',
     height: props.height || OG_IMAGE_HEIGHT,
     src: props.src,
