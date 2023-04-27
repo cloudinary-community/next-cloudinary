@@ -4,7 +4,7 @@ import type { ImageOptions } from '@cloudinary-util/url-loader';
 
 import { CldImageProps } from '../CldImage/CldImage';
 import { getCldImageUrl } from '../../helpers/getCldImageUrl';
-import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../constants/sizes';
+import { OG_IMAGE_WIDTH, OG_IMAGE_WIDTH_RESIZE, OG_IMAGE_HEIGHT } from '../../constants/sizes';
 
 const TWITTER_CARD = 'summary_large_image';
 
@@ -20,10 +20,21 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: Cld
   const options: ImageOptions = {
     ...props,
     crop: props.crop || 'fill',
+    format: props.format || 'webp',
     gravity: props.gravity || 'center',
     height: props.height || OG_IMAGE_HEIGHT,
     src: props.src,
     width: props.width || OG_IMAGE_WIDTH,
+    widthResize: props.width || OG_IMAGE_WIDTH_RESIZE
+  }
+
+  const width = typeof options.width === 'string' ? parseInt(options.width) : options.width;
+  let height = typeof options.height === 'string' ? parseInt(options.height) : options.height;
+
+  // Resize the height based on the widthResize property
+
+  if ( typeof height === 'number' && typeof options.width === 'number' ) {
+    height = ( options.width / OG_IMAGE_WIDTH_RESIZE ) * height;
   }
 
   const metaKeys = {
@@ -47,8 +58,8 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: Cld
     <Head>
       <meta key={metaKeys['og:image']} property="og:image" content={ogImageUrl} />
       <meta key={metaKeys['og:image:secure_url']} property="og:image:secure_url" content={ogImageUrl} />
-      <meta key={metaKeys['og:image:width']} property="og:image:width" content={`${options.width}`} />
-      <meta key={metaKeys['og:image:height']} property="og:image:height" content={`${options.height}`} />
+      <meta key={metaKeys['og:image:width']} property="og:image:width" content={`${width}`} />
+      <meta key={metaKeys['og:image:height']} property="og:image:height" content={`${height}`} />
 
       {alt && (
         <meta key={metaKeys['og:image:alt']} property="og:image:alt" content={alt} />

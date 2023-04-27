@@ -29,6 +29,24 @@ See [CldImage](/components/cldimage/configuration) for all image transformations
 | keys               | object | `{'og:image': 'my-og-image'}`|
 | twitterTitle       | string | `"Next Cloudinary"`          |
 
+## Image Size
+
+By default, the image canvas is based upon 2400x1200, but resized down to 1200x600, meaning, you can design the image as if it were a 2400x1200 image, but the ersulting image will be sized down to 1200x600 to avoid an overly large image.
+
+This provides backwards compatibility for existing usage as well as a way to maintain a consistent "canvas" size when designing a social image card.
+
+You can use the `width` and the `height` to control the canvas and `widthResize` to change the final size the image is scaled to.
+
+The height is ultimately calculated using the `width` value and the `widthResize` values to maintain the correct ratio.
+
+## Image Format
+
+While Cloudinary's `f_auto` parameter (format of auto) is great for websites and mobile apps, having more control over the format helps to reduce initial encoding time, which is more critical for a social network to recognize the image and load it on first share.
+
+The default 
+
+https://www.ctrl.blog/entry/webp-ogp.html
+
 ## Excluding Tags
 
 The `summary_large_image` Twitter card type requires the inclusion of a `twitter:title` card. Because of this, the component includes it by default for simplified use along with a prop to change the value.
