@@ -33,7 +33,7 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: Cld
   // Resize the height based on the widthResize property
 
   if ( typeof height === 'number' && typeof options.width === 'number' ) {
-    height = ( options.width / OG_IMAGE_WIDTH_RESIZE ) * height;
+    height = ( OG_IMAGE_WIDTH_RESIZE / options.width ) * height;
   }
 
   // Render the final URLs. We use two different format versions to deliver
