@@ -14,6 +14,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
   const {
     autoPlay = 'never',
+    className,
     colors,
     controls = true,
     fontFace,
@@ -43,6 +44,11 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const playerRef = props.playerRef || defaultPlayerRef;
 
   const playerId = id || `player-${src.replace('/', '-')}-${idRef.current}`;
+  let playerClassName = 'cld-video-player cld-fluid';
+
+  if ( className ) {
+    playerClassName = `${playerClassName} ${className}`;
+  }
 
   const events: Record<string, Function|undefined> = {
     error: onError,
@@ -134,7 +140,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         <video
           ref={videoRef}
           id={playerId}
-          className="cld-video-player cld-fluid"
+          className={playerClassName}
           width={width}
           height={height}
         />
