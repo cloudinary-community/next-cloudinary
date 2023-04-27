@@ -12,6 +12,7 @@ export interface CloudinaryVideoPlayerOptions {
   muted?: boolean;
   publicId: string;
   secure?: boolean;
+  transformation?: Array<object> | object;
 }
 
 export interface CloudinaryVideoPlayerOptionsColors {
