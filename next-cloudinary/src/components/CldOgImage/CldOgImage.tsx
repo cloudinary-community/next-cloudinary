@@ -3,10 +3,8 @@ import Head from 'next/head';
 import type { ImageOptions } from '@cloudinary-util/url-loader';
 
 import { CldImageProps } from '../CldImage/CldImage';
-import { getCldImageUrl } from '../../lib/cloudinary';
-
-const IMAGE_WIDTH = 2400;
-const IMAGE_HEIGHT = 1200;
+import { getCldImageUrl } from '../../helpers/getCldImageUrl';
+import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../constants/sizes';
 
 const TWITTER_CARD = 'summary_large_image';
 
@@ -23,9 +21,9 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: Cld
     ...props,
     crop: props.crop || 'fill',
     gravity: props.gravity || 'center',
-    height: props.height || IMAGE_HEIGHT,
+    height: props.height || OG_IMAGE_HEIGHT,
     src: props.src,
-    width: props.width || IMAGE_WIDTH,
+    width: props.width || OG_IMAGE_WIDTH,
   }
 
   const metaKeys = {

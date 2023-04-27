@@ -1,0 +1,93 @@
+import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
+
+import { CldImage, getCldOgImageUrl } from '../../../../next-cloudinary';
+
+import OgImage from '../../../components/OgImage';
+import ImageGrid from '../../../components/ImageGrid';
+
+<Head>
+  <title>getCldOgImageUrl Examples - Next Cloudinary</title>
+  <meta name="og:title" content="getCldOgImageUrl Examples - Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/helpers/getcldogimageurl/examples`} />
+</Head>
+
+<OgImage
+  title="getCldOgImageUrl Examples"
+  twitterTitle="getCldOgImageUrl Examples"
+/>
+
+# getCldOgImageUrl Examples
+
+<Callout emoji={false}>
+  The below examples use the CldImage component to render the images. This is not required, you can use the URL returned by getCldOgImageUrl in any way you like.
+</Callout>
+
+<ImageGrid>
+  <li>
+    <CldImage
+      src={getCldOgImageUrl({
+        src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
+      })}
+      width="2400"
+      height="1200"
+      sizes="(max-width: 480px) 100vw, 50vw"
+      alt=""
+      preserveTransformations
+    />
+
+    ### Basic
+
+    ```js
+    getCldOgImageUrl({
+      src: 'images/galaxy',
+    })
+    ```
+  </li>
+  <li>
+    <CldImage
+      src={getCldOgImageUrl({
+        src: `${process.env.IMAGES_DIRECTORY}/turtle`,
+        removeBackground: true,
+        underlay: `${process.env.IMAGES_DIRECTORY}/galaxy`,
+      })}
+      width="2400"
+      height="1200"
+      sizes="(max-width: 480px) 100vw, 50vw"
+      alt=""
+      preserveTransformations
+    />
+
+    ### Background Removal & Underlay
+
+    ```js
+    getCldOgImageUrl({
+      src: 'images/turtle',
+      removeBackground: true,
+      underlay: 'images/galaxy'
+    })
+    ```
+  </li>
+  <li>
+    <CldImage
+      src={getCldOgImageUrl({
+        src: `${process.env.IMAGES_DIRECTORY}/white`,
+        text: 'Next Cloudinary'
+      })}
+      width="2400"
+      height="1200"
+      sizes="(max-width: 480px) 100vw, 50vw"
+      alt=""
+      preserveTransformations
+    />
+
+    ### Basic Text
+
+    ```js
+    getCldOgImageUrl({
+      src: 'images/white',
+      text: 'Next Cloudinary'
+    })
+    ```
+  </li>
+</ImageGrid>

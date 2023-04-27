@@ -1,0 +1,38 @@
+import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
+
+import OgImage from '../../../components/OgImage';
+import Video from '../../../components/Video';
+
+<Head>
+  <title>getCldOgImageUrl - Next Cloudinary</title>
+  <meta name="og:title" content="Getting Started with getCldOgImageUrl - Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/helpers/getcldogimageurl/basic-usage`} />
+</Head>
+
+<OgImage
+  title="getCldOgImageUrl"
+  twitterTitle="Getting Started with getCldOgImageUrl"
+/>
+
+# Getting Started with getCldOgImageUrl
+
+## Basic Usage
+
+getCldOgImage is intended to be a helper that extends [getCldImageUrl](/helpers/getcldimageurl/configuration) with basic defaults for social media usage.
+
+The only required prop is `src`:
+
+```js
+const url = getCldOgImageUrl({
+  src: '<Public ID>'
+});
+```
+
+Which would simply return the URL for the image public ID provided.
+
+Find out how else you can customize your Cloudinary image over on [getCldImageUrl configuration](/helpers/getcldimageurl/configuration).
+
+## Learn More about getCldOgImageUrl
+* [Configuration](/helpers/getcldogimageurl/configuration)
+* [Examples](/helpers/getcldogimageurl/examples)
