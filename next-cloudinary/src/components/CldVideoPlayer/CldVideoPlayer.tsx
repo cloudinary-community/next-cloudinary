@@ -44,7 +44,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const playerRef = props.playerRef || defaultPlayerRef;
 
   const playerId = id || `player-${src.replace('/', '-')}-${idRef.current}`;
-  let playerClassName = '';
+  let playerClassName = 'cld-video-player cld-fluid';
 
   if ( className ) {
     playerClassName = `${playerClassName} ${className}`;
