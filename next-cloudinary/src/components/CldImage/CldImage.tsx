@@ -62,7 +62,7 @@ const CldImage = (props: CldImageProps) => {
 
   if (props.preserveTransformations) {
     try {
-      const transformations = getTransformations(props.src);
+      const transformations = getTransformations(props.src).map(t => t.join(','));
       // @ts-expect-error
       cldOptions.rawTransformations = [...transformations.flat(), ...(props.rawTransformations || [])];
     } catch(e) {
