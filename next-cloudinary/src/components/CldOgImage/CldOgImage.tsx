@@ -27,14 +27,16 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: Cld
     widthResize: props.width || OG_IMAGE_WIDTH_RESIZE
   }
 
-  const width = typeof options.width === 'string' ? parseInt(options.width) : options.width;
+  let width = typeof options.width === 'string' ? parseInt(options.width) : options.width;
   let height = typeof options.height === 'string' ? parseInt(options.height) : options.height;
 
   // Resize the height based on the widthResize property
 
-  if ( typeof height === 'number' && typeof options.width === 'number' ) {
-    height = ( OG_IMAGE_WIDTH_RESIZE / options.width ) * height;
+  if ( typeof height === 'number' && typeof width === 'number' ) {
+    height = ( OG_IMAGE_WIDTH_RESIZE / width ) * height;
   }
+
+  width = OG_IMAGE_WIDTH_RESIZE;
 
   // Render the final URLs. We use two different format versions to deliver
   // webp for Twitter as it supports it (and we can control with tags) where
