@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
 import { CldImage } from '../../../../next-cloudinary';
+import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../../../next-cloudinary/src/constants/sizes';
 
 import OgImage from '../../../components/OgImage';
 import ImageGrid from '../../../components/ImageGrid';
@@ -28,8 +29,8 @@ import ImageGrid from '../../../components/ImageGrid';
 <ImageGrid columns={1}>
   <li>
     <CldImage
-      width="2400"
-      height="1200"
+      width={OG_IMAGE_WIDTH}
+      height={OG_IMAGE_HEIGHT}
       crop="fill"
       gravity="auto"
       src={`${process.env.IMAGES_DIRECTORY}/white`}
@@ -46,8 +47,8 @@ import ImageGrid from '../../../components/ImageGrid';
   </li>
   <li>
     <CldImage
-      width="2400"
-      height="1200"
+      width={OG_IMAGE_WIDTH}
+      height={OG_IMAGE_HEIGHT}
       crop="fill"
       gravity="auto"
       src={`${process.env.IMAGES_DIRECTORY}/turtle`}
