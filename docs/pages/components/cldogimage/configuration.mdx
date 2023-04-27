@@ -31,9 +31,11 @@ See [CldImage](/components/cldimage/configuration) for all image transformations
 
 ## Image Size
 
-By default, the image canvas is based upon 2400x1200, but resized down to 1200x600, meaning, you can design the image as if it were a 2400x1200 image, but the ersulting image will be sized down to 1200x600 to avoid an overly large image.
+By default, the image canvas is based upon 2400x1254, but resized down to 1200x627, meaning, you can design the image as if it were a 2400x1254 image, but the resulting image will be sized down to 1200x627 to avoid an overly large image.
 
-This provides backwards compatibility for existing usage as well as a way to maintain a consistent "canvas" size when designing a social image card.
+627 (with a canvas of 1254) is used to satisfy the 1.91:1 ratio requirement and minimum size [requirement from linkedin](https://www.linkedin.com/help/linkedin/answer/a521928/make-your-website-shareable-on-linkedin).
+
+The resizing mechanism provides backwards compatibility for existing usage as well as a way to maintain a consistent "canvas" size when designing a social image card.
 
 You can use the `width` and the `height` to control the canvas and `widthResize` to change the final size the image is scaled to.
 
