@@ -30,6 +30,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     onPlay,
     onEnded,
     src,
+    transformation,
     version = '1.9.4',
     width,
   } = props as CldVideoPlayerProps;
@@ -108,6 +109,10 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
       if ( typeof colors === 'object' ) {
         playerOptions.colors = colors;
+      }
+
+      if ( Array.isArray(transformation) || typeof transformation === 'object' ) {
+        playerOptions.transformation = transformation;
       }
 
       playerRef.current = cloudinaryRef.current.videoPlayer(videoRef.current, playerOptions);
