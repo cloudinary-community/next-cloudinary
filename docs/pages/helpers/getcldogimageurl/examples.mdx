@@ -69,7 +69,7 @@ import ImageGrid from '../../../components/ImageGrid';
     ```
   </li>
   <li>
-    <img
+    <CldImage
       src={getCldOgImageUrl({
         src: `${process.env.IMAGES_DIRECTORY}/white`,
         text: 'Next Cloudinary'
@@ -78,6 +78,7 @@ import ImageGrid from '../../../components/ImageGrid';
       height="1200"
       sizes="(max-width: 480px) 100vw, 50vw"
       alt=""
+      preserveTransformations
     />
 
     ### Basic Text
