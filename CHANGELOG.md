@@ -1,3 +1,10 @@
+# [4.5.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.4.0...v4.5.0) (2023-04-27)
+
+
+### Features
+
+* getCldOgImageUrl & Docs with Next.js 13 App Usage ([#183](https://github.com/colbyfayock/next-cloudinary/issues/183)) ([199c5bb](https://github.com/colbyfayock/next-cloudinary/commit/199c5bbd808bfadb7ebc4cc8433744d89af86ecc)), closes [#169](https://github.com/colbyfayock/next-cloudinary/issues/169)
+
 # [4.4.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.3.0...v4.4.0) (2023-04-14)
 
 
