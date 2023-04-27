@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
 import { CldImage, getCldOgImageUrl } from '../../../../next-cloudinary';
+import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../../../next-cloudinary/src/constants/sizes';
 
 import OgImage from '../../../components/OgImage';
 import ImageGrid from '../../../components/ImageGrid';
@@ -29,8 +30,8 @@ import ImageGrid from '../../../components/ImageGrid';
       src={getCldOgImageUrl({
         src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
       })}
-      width="2400"
-      height="1200"
+      width={OG_IMAGE_WIDTH}
+      height={OG_IMAGE_HEIGHT}
       sizes="(max-width: 480px) 100vw, 50vw"
       alt=""
       preserveTransformations
@@ -51,8 +52,8 @@ import ImageGrid from '../../../components/ImageGrid';
         removeBackground: true,
         underlay: `${process.env.IMAGES_DIRECTORY}/galaxy`,
       })}
-      width="2400"
-      height="1200"
+      width={OG_IMAGE_WIDTH}
+      height={OG_IMAGE_HEIGHT}
       sizes="(max-width: 480px) 100vw, 50vw"
       alt=""
       preserveTransformations
@@ -74,8 +75,8 @@ import ImageGrid from '../../../components/ImageGrid';
         src: `${process.env.IMAGES_DIRECTORY}/white`,
         text: 'Next Cloudinary'
       })}
-      width="2400"
-      height="1200"
+      width={OG_IMAGE_WIDTH}
+      height={OG_IMAGE_HEIGHT}
       sizes="(max-width: 480px) 100vw, 50vw"
       alt=""
       preserveTransformations

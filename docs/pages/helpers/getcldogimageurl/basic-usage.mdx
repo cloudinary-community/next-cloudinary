@@ -31,6 +31,40 @@ const url = getCldOgImageUrl({
 
 Which would simply return the URL for the image public ID provided.
 
+## Image Size
+
+By default, the image canvas is based upon 2400x1254, but resized down to 1200x627, meaning, you can design the image as if it were a 2400x1254 image, but the resulting image will be sized down to 1200x627 to avoid an overly large image.
+
+627 (with a canvas of 1254) is used to satisfy the 1.91:1 ratio requirement and minimum size [requirement from linkedin](https://www.linkedin.com/help/linkedin/answer/a521928/make-your-website-shareable-on-linkedin).
+
+The resizing mechanism provides backwards compatibility for existing usage as well as a way to maintain a consistent "canvas" size when designing a social image card.
+
+You can use the `width` and the `height` to control the canvas and `widthResize` to change the final size the image is scaled to.
+
+The height is ultimately calculated using the `width` value and the `widthResize` values to maintain the correct ratio.
+
+## Image Format
+
+While Cloudinary's `f_auto` parameter (format of auto) is great for websites and mobile apps, having more control over the format helps to reduce initial encoding time, which is more critical for a social network to recognize the image and load it on first share.
+
+The safe default format for most use cases is then jpg, as webp does not have broad support (likely nor does AVIF).
+
+Read more about webp support: https://www.ctrl.blog/entry/webp-ogp.html
+
+If you have the control in your application to produce multiple image sources, such has having a separate `og:image` and `twitter:image`, you can generate two (or more) URLs to produce as optimized a format as you can for the platform:
+
+```
+const ogImageUrl = getCldImageUrl({
+  ...options,
+  format: 'jpg',
+});
+
+const twitterImageUrl = getCldImageUrl({
+  ...options,
+  format: 'webp',
+});
+```
+
 Find out how else you can customize your Cloudinary image over on [getCldImageUrl configuration](/helpers/getcldimageurl/configuration).
 
 ## Learn More about getCldOgImageUrl

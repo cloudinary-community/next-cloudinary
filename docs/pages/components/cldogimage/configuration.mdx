@@ -45,9 +45,11 @@ The height is ultimately calculated using the `width` value and the `widthResize
 
 While Cloudinary's `f_auto` parameter (format of auto) is great for websites and mobile apps, having more control over the format helps to reduce initial encoding time, which is more critical for a social network to recognize the image and load it on first share.
 
-The default format then is jpg, as webp does not have broad support (likely nor does AVIF).
+The default format for most use cases is then jpg, as webp does not have broad support (likely nor does AVIF).
 
 Read more about webp support: https://www.ctrl.blog/entry/webp-ogp.html
+
+However, Twitter does support webp, so we're able to customize the format using the Twitter specific tag, and generally a separate webp version for that platform to optimize where we can.
 
 ## Excluding Tags
 
