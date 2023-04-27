@@ -1,3 +1,10 @@
+# [4.6.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.5.0...v4.6.0) (2023-04-27)
+
+
+### Features
+
+* Video Player ClassName ([#185](https://github.com/colbyfayock/next-cloudinary/issues/185)) ([0ceb591](https://github.com/colbyfayock/next-cloudinary/commit/0ceb59134dbc30546f2d3581d5b93e88738e8c67)), closes [#184](https://github.com/colbyfayock/next-cloudinary/issues/184)
+
 # [4.5.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.4.0...v4.5.0) (2023-04-27)
 
 
