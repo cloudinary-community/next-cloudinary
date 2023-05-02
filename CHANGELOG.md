@@ -1,3 +1,10 @@
+# [4.9.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.8.0...v4.9.0) (2023-05-02)
+
+
+### Features
+
+* Trim Effect ([#195](https://github.com/colbyfayock/next-cloudinary/issues/195)) ([d4ab006](https://github.com/colbyfayock/next-cloudinary/commit/d4ab0065ecb58b4a95acfd3f942e418af2ae2cad)), closes [#194](https://github.com/colbyfayock/next-cloudinary/issues/194)
+
 # [4.8.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.7.0...v4.8.0) (2023-04-27)
 
 
