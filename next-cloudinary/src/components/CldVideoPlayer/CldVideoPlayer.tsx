@@ -32,7 +32,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     src,
     transformation,
     version = '1.9.4',
-    quality,
+    quality = 'auto',
     width,
   } = props as CldVideoPlayerProps;
 
