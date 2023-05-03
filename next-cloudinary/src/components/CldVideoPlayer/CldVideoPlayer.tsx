@@ -32,8 +32,17 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     src,
     transformation,
     version = '1.9.4',
+    quality = 'auto',
     width,
   } = props as CldVideoPlayerProps;
+
+  const playerTransformations = Array.isArray(transformation) ? transformation : [transformation];
+
+  // Set default transformations for the player
+
+  playerTransformations.unshift({
+    quality
+  });
 
   // Setup the refs and allow for the caller to pass through their
   // own ref instance
@@ -104,15 +113,12 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         muted,
         publicId: src,
         secure: true,
+        transformation: playerTransformations,
         ...logoOptions
       };
 
       if ( typeof colors === 'object' ) {
         playerOptions.colors = colors;
-      }
-
-      if ( Array.isArray(transformation) || typeof transformation === 'object' ) {
-        playerOptions.transformation = transformation;
       }
 
       playerRef.current = cloudinaryRef.current.videoPlayer(videoRef.current, playerOptions);
