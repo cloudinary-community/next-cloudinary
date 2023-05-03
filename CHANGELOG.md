@@ -1,3 +1,10 @@
+## [4.9.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.9.0...v4.9.1) (2023-05-03)
+
+
+### Bug Fixes
+
+* Fixes duplicate effects error ([#199](https://github.com/colbyfayock/next-cloudinary/issues/199)) ([f8ab79e](https://github.com/colbyfayock/next-cloudinary/commit/f8ab79e2eaa06dedf73da7883b349dd50715759e)), closes [#198](https://github.com/colbyfayock/next-cloudinary/issues/198)
+
 # [4.9.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.8.0...v4.9.0) (2023-05-02)
 
 
