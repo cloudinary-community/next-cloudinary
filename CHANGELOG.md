@@ -1,3 +1,10 @@
+# [4.10.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.9.1...v4.10.0) (2023-05-03)
+
+
+### Features
+
+* Quality Auto ([#196](https://github.com/colbyfayock/next-cloudinary/issues/196)) ([fa6fa51](https://github.com/colbyfayock/next-cloudinary/commit/fa6fa51deb236ad37b8e3fdfc003375dd7d81a5e)), closes [#191](https://github.com/colbyfayock/next-cloudinary/issues/191)
+
 ## [4.9.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.9.0...v4.9.1) (2023-05-03)
 
 
