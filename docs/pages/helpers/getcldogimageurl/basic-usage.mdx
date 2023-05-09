@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
+import { CldImage, getCldImageUrl } from '../../../../next-cloudinary';
+
 import OgImage from '../../../components/OgImage';
 import Video from '../../../components/Video';
 
@@ -17,19 +19,36 @@ import Video from '../../../components/Video';
 
 # Getting Started with getCldOgImageUrl
 
-## Basic Usage
+You can use the getCldOgImageUrl helper function to generate Cloudinary URLs for Open Graph images (or social cards) without the component wrapper. CldOgImage uses getCldOgImageUrl to generate its images, meaning you can expect the same API from CldOgImage.
 
-getCldOgImage is intended to be a helper that extends [getCldImageUrl](/helpers/getcldimageurl/configuration) with basic defaults for social media usage.
+getCldOgImageUrl is a deritive of getCldImageUrl meaning it generally has the same API, but provides a few defaults for Open Graph images like sizes.
+
+## Basic Usage
 
 The only required prop is `src`:
 
 ```js
+import { getCldOgImageUrl } from 'next-cloudinary';
+
 const url = getCldOgImageUrl({
   src: '<Public ID>'
 });
 ```
 
 Which would simply return the URL for the image public ID provided.
+
+<CldImage
+  src={getCldImageUrl({
+    src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
+    width: 960,
+    height: 600,
+  })}
+  width="960"
+  height="600"
+  sizes="(max-width: 480px) 100vw, 50vw"
+  alt=""
+  preserveTransformations
+/>
 
 ## Image Size
 

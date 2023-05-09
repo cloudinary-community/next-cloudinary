@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import { Callout } from 'nextra-theme-docs';
+import { Callout, Steps, Tab, Tabs } from 'nextra-theme-docs';
+
 
 import OgImage from '../components/OgImage';
 
@@ -19,106 +20,55 @@ import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../next-cloudinary/src/const
 
 # Installing Next Cloudinary
 
-* Install `next-cloudinary` with:
-```
-yarn add next-cloudinary
-# or
-npm install next-cloudinary
-```
+## Getting Started
 
-* Add an environment variable with your Cloud Name:
+<Steps>
+
+### Installation
+
+<Tabs items={['npm', 'pnpm', 'yarn']}>
+  <Tab>
+    ```
+    npm install next-cloudinary
+    ```
+  </Tab>
+  <Tab>
+    ```
+    pnpm install next-cloudinary
+    ```
+  </Tab>
+  <Tab>
+    ```
+    yarn add next-cloudinary
+    ```
+  </Tab>
+</Tabs>
+
+### Configuration
+
+Add the following variable to your `.env.local` or `.env` file.
+
 ```
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="<Your Cloud Name>"
 ```
 
-The `CldUploadButton` and `CldUploadWidget` make use of an prop called `uploadPreset`. If new to upload presets, or are looking for guidance on how to edit/retrieve your existing preset(s), refer to this [guide](https://cloudinary.com/documentation/upload_presets#managing_upload_presets_using_the_settings_ui).
-
 <Callout emoji={false}>
-Don't have a Cloudinary account? <a href="https://cloudinary.com/users/register_free?utm_campaign=devx_nextcloudinary&utm_medium=referral&utm_source=nextcloudinary">Sign up for free</a>!
+Don't have a Cloudinary account? <a href="https://cloudinary.com/users/register_free?utm_campaign=devx_nextcloudinary&utm_medium=referral&utm_source=nextcloudinary">Sign up for free</a> on cloudinary.com!
 </Callout>
 
-## CldImage
+</Steps>
 
-* Import the CldImage component:
+## Using Next Cloudinary
 
-```
-import { CldImage } from 'next-cloudinary';
-```
+Learn how to add one of the Next Cloudinary components:
 
-* Add the CldImage component pointing to a Cloudinary public ID:
+* [CldImage](/components/cldimage/basic-usage)
+* [CldOgImage](/components/cldogimage/basic-usage)
+* [CldUploadButton](/components/clduploadbutton/basic-usage)
+* [CldUploadWidget](/components/clduploadwidget/basic-usage)
+* [CldVideoPlayer](/components/cldvideoplayer/basic-usage)
 
-```
-<CldImage
-  width="960"
-  height="600"
-  src="images/turtle"
-  sizes="100vw"
-  alt="Turtle in the ocean"
-/>
-```
+Or use the helper methods to generate URLs:
 
-<CldImage
-  width="960"
-  height="600"
-  src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-  sizes="100vw"
-  alt="Turtle in the ocean"
-/>
-
-### More Resources
-* [Basic Usage](/components/cldimage/basic-usage)
-* [Configuration](/components/cldimage/configuration)
-* [Examples](/components/cldimage/examples)
-
-## CldOgImage
-
-* Import the CldOgImage component:
-
-```
-import { CldOgImage } from 'next-cloudinary';
-```
-
-* Add the CldOgImage component in your page outside of the Head component pointing to a Cloudinary public ID:
-
-```
-<CldOgImage
-  src="images/galaxy"
-  text={{
-    text: 'Next Cloudinary',
-    color: 'white'
-  }}
-/>
-```
-
-<Callout emoji={false}>
-  CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. The following examples make use of the `<CldImage>` tag to showcase what's possible.
-</Callout>
-
-<CldImage
-  width={OG_IMAGE_WIDTH}
-  height={OG_IMAGE_HEIGHT}
-  crop="fill"
-  gravity="auto"
-  src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
-  text={{
-    text: 'Next Cloudinary',
-    color: 'white'
-  }}
-  sizes="100vw"
-  alt="Galaxy with Next Cloudinary"
-/>
-
-```html
-<meta property="og:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1254,g_center/l_text:Arial_200_bold:Installation,co_white/fl_layer_apply,fl_no_overflow/c_scale,w_1200/f_jpg/q_auto/v1/images/galaxy" />
-<meta property="og:image:secure_url" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1254,g_center/l_text:Arial_200_bold:Installation,co_white/fl_layer_apply,fl_no_overflow/c_scale,w_1200/f_jpg/q_auto/v1/images/galaxy" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="627" />
-<meta property="twitter:title" content=" " />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1254,g_center/l_text:Arial_200_bold:Installation,co_white/fl_layer_apply,fl_no_overflow/c_scale,w_1200/f_webp/q_auto/v1/images/galaxy" />
-```
-
-### More Resources
-* [Basic Usage](/components/cldogimage/basic-usage)
-* [Configuration](/components/cldogimage/configuration)
-* [Examples](/components/cldogimage/examples)
+* [getCldImageUrl](/helpers/getcldimageurl/basic-usage)
+* [getCldOgImageUrl](/helpers/getcldogimageurl/basic-usage)

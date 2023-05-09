@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
+import { CldImage } from '../../../../next-cloudinary';
+
 import OgImage from '../../../components/OgImage';
 import Video from '../../../components/Video';
 
@@ -17,13 +19,21 @@ import Video from '../../../components/Video';
 
 # Getting Started with CldOgImage
 
+The CldOgImageComponent give you the ability to use the same CldImage API to easily generate Open Graph images (or social cards) inside of Next.js.
+
+<Callout emoji={false}>
+  Using the Next.js 13 App Router? This component is only supported in the Pages directory. Try the [getCldOgImageUrl](/helpers/getcldogimageurl/basic-usage) helper inside of your metadata configuration.
+</Callout>
+
 ## Basic Usage
 
 The basic required prop is `src`:
 
 ```jsx
+import { CldOgImage } from 'next-cloudinary';
+
 <CldOgImage
-  src="images/turtle"
+  src="<Public ID>"
 />
 ```
 
@@ -32,7 +42,6 @@ Place the CldOgImage component anywhere outside of the Head component.
 <Callout emoji={false}>
   The CldOgImage component must be placed outside of the Next.js Head component as the Head component does not accept React components as children.
 </Callout>
-
 
 The resulting HTML will be applied to the Head of the document:
 
@@ -46,30 +55,75 @@ The resulting HTML will be applied to the Head of the document:
 <meta property="twitter:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1254,g_center/c_scale,w_1200/f_webp/q_auto/v1/images/galaxy" />
 ```
 
-But you can use any of the available features from [CldImage](/components/cldimage/configuration) to build your CldOgImage.
+<p className="nx-mt-6">
+<CldImage
+  width="1200"
+  height="627"
+  src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+  crop="fill"
+  sizes="100vw"
+  alt="Turtle in the ocean"
+/>
+</p>
 
-You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
+<Callout emoji={false}>
+  CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. This example makes use of the `<CldImage>` tag to showcase what's possible.
+</Callout>
+
+## Transformations
+
+You can further take advantage of Cloudinary features like background removal and overlays by adding additional props.
+
+The CldOgImage component uses the same API as [CldImage](/components/cldimage/configuration), meaning you can use the same transformations and effects.
 
 ```jsx
 <CldOgImage
-  src="images/turtle"
-  tint="100:0000FF:0p:FF1493:100p"
-  blur="2000"
+  src="<Public ID>"
+  tint="100:0762a0"
   removeBackground
+  opacity="40"
   overlays={[{
     text: {
       color: 'white',
       fontFamily: 'Source Sans Pro',
       fontSize: 200,
       fontWeight: 'bold',
+      text: '<Text>'
+    }
+  }]}
+  underlay="<Public ID>"
+  alt="<Description>"
+  twitterTitle="<Title>"
+/>
+```
+
+<p className="nx-mt-6">
+<CldImage
+  width="1200"
+  height="627"
+  src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+  crop="fill"
+  tint="100:0762a0"
+  removeBackground
+  opacity="40"
+  overlays={[{
+    text: {
+      color: 'white',
+      fontFamily: 'Source Sans Pro',
+      fontSize: 80,
+      fontWeight: 'bold',
       text: 'Next Cloudinary'
     }
   }]}
-  underlay="images/galaxy"
-  alt="Next Cloudinary over picture of a turtle on top of a galaxy"
-  twitterTitle="Next Cloudinary"
+  underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
+  sizes="100vw"
+  alt="Turtle in the ocean"
 />
-```
+</p>
+
+<Callout emoji={false}>
+  CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. This example makes use of the `<CldImage>` tag to showcase what's possible.
+</Callout>
 
 ## Watch & Learn
 
