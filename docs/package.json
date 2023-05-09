@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@semantic-release/changelog": "^6.0.3",
     "@vercel/analytics": "^1.0.1",
     "cloudinary": "^1.36.4",
     "next": "^13.4.1",
@@ -18,7 +17,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
-    "sass": "^1.62.1",
-    "semantic-release": "^21.0.2"
+    "sass": "^1.62.1"
   }
 }
