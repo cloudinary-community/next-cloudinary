@@ -16,6 +16,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: yarn install --frozen-lockfile
         working-directory: ./next-cloudinary
+      - run: yarn remove semantic-release # Incompatible with Node 16 - not needed for testing
       - run: yarn test
         working-directory: ./next-cloudinary
       - run: yarn test:app
