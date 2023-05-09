@@ -16,7 +16,6 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: yarn install --frozen-lockfile
         working-directory: ./next-cloudinary
-      - run: yarn remove semantic-release # Incompatible with Node 16 - not needed for testing
       - run: yarn test
         working-directory: ./next-cloudinary
       - run: yarn test:app
@@ -36,6 +35,8 @@ jobs:
           node-version: '18'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+        # Semantic Release is incompatible with node 16 - so add these only on release
+      - run: yarn add @semantic-release/changelog @semantic-release/git semantic-release -W
       - name: Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
