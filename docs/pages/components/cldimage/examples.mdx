@@ -758,6 +758,28 @@ import ImageGrid from '../../../components/ImageGrid';
   </li>
 </ImageGrid>
 
+## Flags
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      flags={['keep_iptc']}
+      quality={70}
+      alt=""
+    />
+
+    ### Named Transformations
+
+    ```jsx
+    flags={['keep_iptc']}
+    ```
+  </li>
+</ImageGrid>
+
 ## Other
 
 <ImageGrid>

@@ -26,20 +26,19 @@ const CldImage = (props: CldImageProps) => {
       }
       CLD_OPTIONS.push(prop);
     });
-  })
+  });
 
   // Construct the base Image component props by filtering out Cloudinary-specific props
 
   const imageProps = {
     alt: props.alt,
-    src: props.src
+    src: props.src,
   };
 
   (Object.keys(props) as Array<keyof typeof props>)
     .filter(key => !CLD_OPTIONS.includes(key))
     // @ts-expect-error
     .forEach(key => imageProps[key] = props[key]);
-
 
   const defaultImgKey = (Object.keys(imageProps) as Array<keyof typeof imageProps>).map(key => `${key}:${imageProps[key]}`).join(';');
   const [imgKey, setImgKey] = useState(defaultImgKey);
