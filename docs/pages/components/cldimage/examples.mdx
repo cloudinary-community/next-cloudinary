@@ -768,7 +768,7 @@ import ImageGrid from '../../../components/ImageGrid';
       src={`${process.env.IMAGES_DIRECTORY}/turtle`}
       sizes="(max-width: 480px) 100vw, 50vw"
       flags={['keep_iptc']}
-      quality={70}
+      quality="default"
       alt=""
     />
 
@@ -776,7 +776,12 @@ import ImageGrid from '../../../components/ImageGrid';
 
     ```jsx
     flags={['keep_iptc']}
+    quality="default"
     ```
+
+    <Callout emoji={false}>
+      The `keep_iptc` flag requires not including a quality of auto. Using `quality="default"` avoids setting the quality flag in the URL.
+    </Callout>
   </li>
 </ImageGrid>
 
