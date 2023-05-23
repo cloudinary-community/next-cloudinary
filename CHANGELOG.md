@@ -1,3 +1,10 @@
+# [4.11.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.10.1...v4.11.0) (2023-05-23)
+
+
+### Features
+
+* Flags ([#205](https://github.com/colbyfayock/next-cloudinary/issues/205)) ([8fe78a5](https://github.com/colbyfayock/next-cloudinary/commit/8fe78a5bcc6566fb916b9691e78fa853bf447514)), closes [#203](https://github.com/colbyfayock/next-cloudinary/issues/203)
+
 ## [4.10.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.10.0...v4.10.1) (2023-05-18)
 
 
