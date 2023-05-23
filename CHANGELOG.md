@@ -1,3 +1,10 @@
+## [4.10.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.10.0...v4.10.1) (2023-05-18)
+
+
+### Bug Fixes
+
+* Fixes rerenders caused by parent renders ([#207](https://github.com/colbyfayock/next-cloudinary/issues/207)) ([ead0b89](https://github.com/colbyfayock/next-cloudinary/commit/ead0b899025b19ea405f817a1e54914a0e320599)), closes [#206](https://github.com/colbyfayock/next-cloudinary/issues/206)
+
 # [4.10.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.9.1...v4.10.0) (2023-05-03)
 
 

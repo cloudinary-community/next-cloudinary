@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { getTransformations } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
@@ -77,12 +77,14 @@ const CldImage = (props: CldImageProps) => {
     target: any;
   }
 
-  async function handleOnError(options: HandleOnError) {
+  async function onError(options: HandleOnError) {
     const result = await pollForProcessingImage({ src: options.target.src })
     if ( result ) {
       setImgKey(`${defaultImgKey};${Date.now()}`);
     }
   }
+
+  const handleOnError = useCallback(onError, [pollForProcessingImage, defaultImgKey]);
 
   return (
     <Image
