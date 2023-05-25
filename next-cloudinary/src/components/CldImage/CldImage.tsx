@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { getTransformations } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
-import type { ImageOptions } from '@cloudinary-util/url-loader';
+import type { ImageOptions, ConfigOptions } from '@cloudinary-util/url-loader';
 
 import { pollForProcessingImage } from '../../lib/cloudinary';
 
@@ -11,6 +11,7 @@ import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 export type CldImageProps = Omit<ImageProps, 'src'> & ImageOptions & {
   src: string;
   preserveTransformations?: boolean;
+  config?: ConfigOptions;
 };
 
 const CldImage = (props: CldImageProps) => {
@@ -90,7 +91,7 @@ const CldImage = (props: CldImageProps) => {
     <Image
       key={imgKey}
       {...imageProps}
-      loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions })}
+      loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig: props.config })}
       onError={handleOnError}
     />
   );
