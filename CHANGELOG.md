@@ -1,3 +1,10 @@
+# [4.12.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.11.0...v4.12.0) (2023-05-25)
+
+
+### Features
+
+* Custom Configuration ([#210](https://github.com/colbyfayock/next-cloudinary/issues/210)) ([94c1e8f](https://github.com/colbyfayock/next-cloudinary/commit/94c1e8fae6d12fd61838229ebf1ad71684f8c092)), closes [#209](https://github.com/colbyfayock/next-cloudinary/issues/209)
+
 # [4.11.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.10.1...v4.11.0) (2023-05-23)
 
 
