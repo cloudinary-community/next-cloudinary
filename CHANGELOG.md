@@ -1,3 +1,10 @@
+# [4.13.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.12.0...v4.13.0) (2023-06-21)
+
+
+### Features
+
+* onError Callback ([#220](https://github.com/colbyfayock/next-cloudinary/issues/220)) ([b834c26](https://github.com/colbyfayock/next-cloudinary/commit/b834c264df4acf5a71ca5f0cf766b085b0e9b99c)), closes [#216](https://github.com/colbyfayock/next-cloudinary/issues/216)
+
 # [4.12.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.11.0...v4.12.0) (2023-05-25)
 
 
