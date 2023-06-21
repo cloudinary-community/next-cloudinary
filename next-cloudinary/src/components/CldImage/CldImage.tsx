@@ -74,12 +74,27 @@ const CldImage = (props: CldImageProps) => {
    * handleOnError
    */
 
-  interface HandleOnError {
-    target: any;
-  }
+  async function onError(options: React.SyntheticEvent<HTMLImageElement, Event>) {
+    let pollForImage = true;
 
-  async function onError(options: HandleOnError) {
-    const result = await pollForProcessingImage({ src: options.target.src })
+    if ( typeof props.onError === 'function' ) {
+      const onErrorResult = props.onError(options);
+
+      if ( typeof onErrorResult === 'boolean' && onErrorResult === false ) {
+        pollForImage = false;
+      }
+    } else if ( typeof props.onError === 'boolean' && props.onError === false ) {
+      pollForImage = false;
+    }
+
+    // Give an escape hatch in case the user wants to handle the error themselves
+    // or if they want to disable polling for the image
+
+    if ( pollForImage === false ) return;
+
+    const image = options.target as HTMLImageElement
+    const result = await pollForProcessingImage({ src: image.src })
+
     if ( result ) {
       setImgKey(`${defaultImgKey};${Date.now()}`);
     }
