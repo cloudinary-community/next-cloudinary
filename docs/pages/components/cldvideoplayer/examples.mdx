@@ -56,6 +56,31 @@ export const VideoPlayerWithRef = (props) => {
     ```
   </li>
   <li>
+    <div style={{ maxWidth: 500, margin: '0 auto' }}>
+      <CldVideoPlayer
+        width="500"
+        height="500"
+        src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+        transformation={{
+          width: 500,
+          height: 500,
+          crop: 'fill',
+          gravity: 'auto'
+        }}
+      />
+    </div>
+
+    ### Crop & Resize
+
+    Basic settings to display a video.
+
+    ```jsx
+    width="1620"
+    height="1080"
+    src="videos/dog-running-snow"
+    ```
+  </li>
+  <li>
     <CldVideoPlayer
       width="1620"
       height="1080"
