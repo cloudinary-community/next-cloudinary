@@ -26,7 +26,7 @@ import OgImage from '../../../components/OgImage';
 | fontFace           | string         | -               | Player UI font. Uses Google Fonts.       | `"Source Serif Pro"`         |
 | height             | string/number  | -               | **Required**: Player height              | `1080`                       |
 | id                 | string         | -               | Video instance ID, defaults to src value | `"my-video"`                 |
-| logo               | boolean|object | See Below       | Logo to display in Player UI             | See Logo Below               |
+| logo               | boolean/object | See Below       | Logo to display in Player UI             | See Logo Below               |
 | loop               | boolean        | `false`         | Loop the video                           | `true`                       |
 | muted              | boolean        | `false`         | Load muted by default                    | `true`                       |
 | onDataLoad         | Function       | -               | Triggered when video metadata is loaded  | See Events Below             |
@@ -38,7 +38,7 @@ import OgImage from '../../../components/OgImage';
 | playerRef          | Ref            | -               | React ref to access Player instance      | See Refs Below               |
 | showLogo           | boolea         | `true`          | Show the Cloudinary logo on Player       | `false`                      |
 | src                | string         | -               | **Required**: Video public ID            | `"videos/my-video"`          |
-| transformation     | object|array   | -               | Transformations to apply to the video    | `{ width: 200, height: 200, crop: 'fill' }` |
+| transformation     | object/array   | -               | Transformations to apply to the video    | `{ width: 200, height: 200, crop: 'fill' }` |
 | version            | string         | `"1.9.4"`       | Cloudinary Video Player version          | `"1.9.4"`                    |
 | videoRef           | Ref            | -               | React ref to access video element        | See Refs Below              |
 | width              | string/number  | -               | **Required**: Player width               | `1920`                       |
