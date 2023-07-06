@@ -1,0 +1,77 @@
+import Head from 'next/head';
+
+import OgImage from '../components/OgImage';
+
+import { CldImage } from '../../next-cloudinary';
+
+<Head>
+  <title>Image Overlays - Next Cloudinary</title>
+  <meta name="og:title" content="Overlaying Images - Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/use-cases/image-overlays`} />
+</Head>
+
+<OgImage
+  title="Image Overlays"
+  twitterTitle="Overlaying Images"
+/>
+
+# Overlaying Images
+
+You can add images on top of other images by using image-based overlays.
+
+## Example
+
+<CldImage
+  width="960"
+  height="600"
+  src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+  sizes="100vw"
+  overlays={[{
+    publicId: 'images/earth',
+    position: {
+      x: 50,
+      y: 50,
+      gravity: 'north_west',
+    },
+    effects: [
+      {
+        crop: 'fill',
+        gravity: 'auto',
+        width: 500,
+        height: 500
+      }
+    ]
+  }]}
+  alt="Turtle with earth"
+/>
+
+```jsx
+import { CldImage } from 'next-cloudinary';
+
+<CldImage
+  width="960"
+  height="600"
+  src="images/turtle"
+  sizes="100vw"
+  overlays={[{
+    publicId: 'images/earth',
+    position: {
+      x: 50,
+      y: 50,
+      gravity: 'north_west',
+    },
+    effects: [
+      {
+        crop: 'fill',
+        gravity: 'auto',
+        width: 500,
+        height: 500
+      }
+    ]
+  }]}
+  alt="Turtle with earth"
+/>
+```
+
+## Learn More
+* [CldImage Configuration](/components/cldimage/configuration)

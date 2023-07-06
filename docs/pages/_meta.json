@@ -1,9 +1,36 @@
 {
   "index": "Getting Started",
   "installation": "Installation",
-  "components": "Components",
-  "helpers": "Helpers",
-  "use-cases": "Use Cases",
-  "guides": "Guides",
-  "resources": "Resources"
+  "nextjs-13": "Next.js 13",
+  "Components": {
+    "type": "separator",
+    "title": "Components"
+  },
+  "cldimage": "<CldImage />",
+  "cldogimage": "<CldOgImage />",
+  "clduploadbutton": "<CldUploadButton />",
+  "clduploadwidget": "<CldUploadWidget />",
+  "cldvideoplayer": "<CldVideoPlayer />",
+  "Helpers": {
+    "type": "separator",
+    "title": "Helpers"
+  },
+  "getcldimageurl": "getCldImageUrl",
+  "getcldogimageurl": "getCldOgImageUrl",
+  "Guides": {
+    "type": "separator",
+    "title": "Guides"
+  },
+  "background-removal": "Background Removal",
+  "image-overlays": "Image Overlays",
+  "image-underlays": "Image Underlays",
+  "responsive-images": "Responsive Images",
+  "social-media-card": "Social Media Card",
+  "text-overlays": "Text Overlays",
+  "uploading-images-and-videos": "Uploading Images & Videos",
+  "Resources": {
+    "type": "separator",
+    "title": "Resources"
+  },
+  "tutorials": "Tutorials"
 }

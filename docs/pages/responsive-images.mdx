@@ -1,0 +1,82 @@
+import Head from 'next/head';
+
+import OgImage from '../components/OgImage';
+
+import { CldImage } from '../../next-cloudinary';
+
+<Head>
+  <title>Responsive Images - Next Cloudinary</title>
+  <meta name="og:title" content="How Responsive Images Work in Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/guides/responsive-images`} />
+</Head>
+
+<OgImage
+  title="Responsive Images"
+  twitterTitle="How Responsive Images Work in Next Cloudinary"
+/>
+
+# Responsive Images
+
+The [CldImage](/components/cldimage/basic-usage) component takes advantage of responsive images generated using the [Next Image component](https://nextjs.org/docs/api-reference/next/image).
+
+Using the `sizes` prop, you can configure exactly the sizes you need for your application, such as a similar example to the Next.js docs:
+
+
+```
+<CldImage
+  ...
+  sizes="(max-width: 768px) 100vw,
+          (max-width: 1200px) 50vw,
+          33vw"
+```
+
+Which would give you roughly full width images on mobile, a 2-column layout on tablets, and 3-column layout on desktop views.
+
+To ensure that the responsive images can effectively determine all appropriate sizes for the images, use the actual image width and height when specifying the dimension props.
+
+### Responsive Images & CldImage
+
+The only caveat to this is when using cropping modes in Cloudinary.
+
+In an example such as:
+
+```
+<CldImage
+  ...
+  width="600"
+  height="600"
+  sizes="(max-width: 480px) 100vw, 50vw"
+  crop="thumb"
+  gravity="faces"
+/>
+```
+
+Using cropping, we're setting a width of 600px and a height of 600px, telling Cloudinary we want to take our original image, crop it to that size, then position the focal point to the face in the image detected using AI.
+
+From a responsive standpoint, we're stating that we want full width images on anything less than 480px and half-width images on anything above.
+
+The challenge here is when cropping the image, we're cropping it to 600px, which is smaller than some of the sizes we want to responsively serve. We don't want to responsively change that cropped size, otherwise we would change the cropping results due to the crop attempting to grab different portions of the image depending on the size.
+
+To avoid attempting to load upscaled images, resulting in blurry or grainy images as well as more bandwidth used on a device, any responsive size that is greater than the set width will not be generated and instead, we'll deliver an image at the size specifiy (in this example, 600x600).
+
+For instance, in the above, the resulting responive image in the HTML may look like:
+
+```
+<img
+  sizes="(max-width: 480px) 100vw, 50vw"
+  srcset="
+    https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_thumb,w_600,h_600,g_faces/c_scale,w_384/f_auto/q_auto/v1/images/woman-headphones 384w,
+    https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_thumb,w_600,h_600,g_faces/f_auto/q_auto/v1/images/woman-headphones 640w,
+    https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_thumb,w_600,h_600,g_faces/f_auto/q_auto/v1/images/woman-headphones 750w,
+    https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_thumb,w_600,h_600,g_faces/f_auto/q_auto/v1/images/woman-headphones 828w,
+    https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_thumb,w_600,h_600,g_faces/f_auto/q_auto/v1/images/woman-headphones 1080w,
+    https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_thumb,w_600,h_600,g_faces/f_auto/q_auto/v1/images/woman-headphones 1200w,
+    https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_thumb,w_600,h_600,g_faces/f_auto/q_auto/v1/images/woman-headphones 1920w,
+    https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_thumb,w_600,h_600,g_faces/f_auto/q_auto/v1/images/woman-headphones 2048w,
+    https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_thumb,w_600,h_600,g_faces/f_auto/q_auto/v1/images/woman-headphones 3840w
+  " ... />
+```
+
+Notice that all of the URLs are the same except for the first one, as it's smaller than 600px.
+
+When the browser attempts to load these responsive images, it will effectively ignore the same URLs, only having loaded it once if resizing the browser.

@@ -1,0 +1,31 @@
+import Head from 'next/head';
+
+import OgImage from '../../components/OgImage';
+
+<Head>
+  <title>CldUploadButton Configuration - Next Cloudinary</title>
+  <meta name="og:title" content="CldUploadButton Configuration - Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/components/clduploadbutton/configuration`} />
+</Head>
+
+<OgImage
+  title="CldUploadButton Configuration"
+  twitterTitle="CldUploadButton Configuration"
+/>
+
+# CldUploadButton Configuration
+
+## Props
+
+| Prop Name          | Type               | Example                                |
+|--------------------|--------------------|----------------------------------------|
+| onClick            | function           | `function (event) { }`                 |
+| onError            | function           | `function (error, widget) { }`         |
+| onUpload           | function           | `function (result, widget) { }`        |
+| options            | object             | `{ encryption: {...} }`                |
+| signatureEndpoint  | string             | `"/api/sign-cloudinary-params.js"`     |
+| uploadPreset       | string             | `"my-upload-preset"`                   |
+
+`children` are rendered "as is" inside of the `<button>` element if provided, otherwise, the button will include a label of "Upload".
+
+The remaining props are spread onto the `<button>` element for full control of the UI.

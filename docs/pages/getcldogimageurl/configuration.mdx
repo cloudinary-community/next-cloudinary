@@ -1,0 +1,31 @@
+import Head from 'next/head';
+
+import OgImage from '../../components/OgImage';
+
+<Head>
+  <title>getCldOgImageUrl Configuration - Next Cloudinary</title>
+  <meta name="og:title" content="getCldOgImageUrl Configuration - Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/helpers/getcldogimageurl/configuration`} />
+</Head>
+
+<OgImage
+  title="getCldOgImageUrl Configuration"
+  twitterTitle="getCldOgImageUrl Configuration"
+/>
+
+# getCldOgImageUrl Configuration
+
+Configuration for getCldOgImageUrl is the same as [getCldImageUrl](/helpers/getcldimageurl/configuration).
+
+The only difference is getCldOgImageUrl provides the following default settings to make generating an OG image URL simpler:
+
+## General Options
+
+| Option Name        | Type               | Default    | Example                      |
+|--------------------|--------------------|------------|------------------------------|
+| crop               | string             | `"fill"`   | `"scale"`                    |
+| gravity            | string             | `"center"` | `"auto"`                     |
+| height             | number             | `1254`     | `1254`                       |
+| width              | number             | `2400`     | `2400`                       |
+
+Find more configuration settings over at [getCldImageUrl configuration](/helpers/getcldimageurl/configuration).

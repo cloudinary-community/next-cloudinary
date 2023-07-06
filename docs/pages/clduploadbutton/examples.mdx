@@ -1,0 +1,79 @@
+import { useState } from 'react';
+import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
+
+import { CldUploadButton } from '../../../next-cloudinary';
+
+import OgImage from '../../components/OgImage';
+import ImageGrid from '../../components/ImageGrid';
+
+import styles from '../../styles/Docs.module.scss';
+
+<Head>
+  <title>CldUploadButton Examples - Next Cloudinary</title>
+  <meta name="og:title" content="CldUploadButton Examples - Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/components/clduploadbutton/examples`} />
+</Head>
+
+<OgImage
+  title="CldUploadButton Examples"
+  twitterTitle="CldUploadButton Examples"
+/>
+
+# CldUploadButton Examples
+
+## Examples
+
+export const UnsignedUpload = () => {
+  const [resource, setResource] = useState();
+  return (
+    <>
+      <CldUploadButton
+        className={styles.button}
+        onUpload={(result, widget) => {
+          setResource(result?.info);
+          widget.close();
+        }}
+        uploadPreset="next-cloudinary-unsigned"
+      />
+
+      <h3>Unsigned</h3>
+
+      <p>URL: { resource?.secure_url }</p>
+    </>
+  )
+}
+
+export const SignedUpload = () => {
+  const [resource, setResource] = useState();
+  return (
+    <>
+      <CldUploadButton
+        className={styles.button}
+        onUpload={(result, widget) => {
+          setResource(result?.info);
+          widget.close();
+        }}
+        signatureEndpoint="/api/sign-cloudinary-params"
+        uploadPreset="next-cloudinary-signed"
+      />
+
+      <h3>Signed</h3>
+
+      <p>URL: { resource?.secure_url }</p>
+    </>
+  )
+}
+
+<ImageGrid>
+  <li>
+    <UnsignedUpload />
+  </li>
+  <li>
+    <SignedUpload />
+  </li>
+</ImageGrid>
+
+<Callout emoji={false}>
+  Button styles are not included as part of CldUploadButton and are only applied for this demo.
+</Callout>

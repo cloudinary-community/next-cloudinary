@@ -1,0 +1,54 @@
+import Head from 'next/head';
+
+import OgImage from '../components/OgImage';
+
+import { CldImage } from '../../next-cloudinary';
+
+<Head>
+  <title>Next.js 13 - Next Cloudinary</title>
+  <meta name="og:title" content="Using Next Cloudinary with Next.js 13" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/guides/responsive-images`} />
+</Head>
+
+<OgImage
+  title="Next.js 13"
+  twitterTitle="Using Next Cloudinary with Next.js 13"
+/>
+
+# Next.js 13
+
+Next.js 13 brings a new fundamental way of building Next.js apps with the `app` directory. Part of that includes using React.js technology such as server components that have different requirements when bundling applications.
+
+## Pages Router (/src)
+
+By default, Next Cloudinary has full support when using the included components in the `src` directory with no further actions.
+
+## App Router (/app)
+
+### General
+
+Using Next Cloudinary in the `app` directory currently requires marking the parent page or component as a Client Component.
+
+At the top of the file, add:
+
+```
+use client;
+```
+
+### OG Images
+
+The Head component is not supported in the Next.js App directory, meaning, the [CldOgImage](/components/cldogimage/basic-usage) component will not function.
+
+Instead, you can easily generate OG image URLs using [getCldOgImageUrl](/helpers/getcldogimageurl/basic-usage) in your metadata configuration:
+
+
+```
+export const metadata = {
+  openGraph: {
+    ...
+    images: getCldOgImageUrl({
+      src: '<Public ID>'
+    })
+  },
+};
+```
