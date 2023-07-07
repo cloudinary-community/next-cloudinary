@@ -938,18 +938,18 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cloudinary-util/url-loader@^3.8.1":
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-3.8.1.tgz#c819e6c305293333ba4bb5b72b640d1f386d821b"
-  integrity sha512-cBAPiAulWIG5M6HkFDvHhWVo0BJfWnZrr3jz7mIvdVrhKJl3CgK6p9kzSWKC62Ib9SUHMzKBC9R2B8jn+ZCBKA==
+"@cloudinary-util/url-loader@^3.8.2":
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-3.8.2.tgz#df618e11071b99d5f5132900ac13fa13b0070cd3"
+  integrity sha512-f/U2be4EfYb58fN1U8W4DqXvwB3XftfKQqaAvp3NBz6G/Y4rYDVNP9ac4vvcD4+mR/6N4NDtqAE7lRoCODnycg==
   dependencies:
-    "@cloudinary-util/util" "2.0.1"
+    "@cloudinary-util/util" "2.1.0"
     "@cloudinary/url-gen" "^1.10.1"
 
-"@cloudinary-util/util@2.0.1", "@cloudinary-util/util@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-2.0.1.tgz#0797d2dd96f91971184b2f94da768c15922ea33d"
-  integrity sha512-d2imgUjYTLjv8ZhZPMAts/uPbMvIE71X4I/5hwdY/7vM4BuFQoJMSyq+h2pW1z1MyGG9BOWBm70vp082lSrbEQ==
+"@cloudinary-util/util@2.1.0", "@cloudinary-util/util@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-2.1.0.tgz#1f8152b228cdd92e8ccc1fa0200d4eeeb6ef73ae"
+  integrity sha512-PGjVxyhhOP8IaD6uawXzfDnI8ArPqpiLfIXc8TEjhv3CGhDFBAM3dCT3xeAgg+92sQsx/AN74j+qckdWPfoO6w==
 
 "@cloudinary/transformation-builder-sdk@^1.2.7":
   version "1.2.8"
@@ -965,7 +965,7 @@
   dependencies:
     "@cloudinary/transformation-builder-sdk" "^1.2.7"
 
-"@cloudinary/url-gen@^1.7.0", "@cloudinary/url-gen@^1.8.6":
+"@cloudinary/url-gen@^1.7.0":
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.10.0.tgz#cdf64add1833fb616289bc96fbf97d20c8a953c1"
   integrity sha512-J3V+gzT6Tepw9bMrR3prWVbW22cIFJtPS8Wkt1WFSZVHWpZx8/vv9ACHaxUmRqaSkjhX8ErsuzDY5YxdWnaCbw==
