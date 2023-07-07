@@ -17,7 +17,7 @@ import { CldImage } from '../../next-cloudinary';
 
 # Next.js 13
 
-Next.js 13 brings a new fundamental way of building Next.js apps with the `app` directory. Part of that includes using React.js technology such as server components that have different requirements when bundling applications.
+Next.js 13 brings a new fundamental way of building Next.js apps with the App Router (`/app` directory). Part of that includes using React.js technology such as server components that have different requirements when bundling applications.
 
 ## Pages Router (/src)
 
@@ -29,20 +29,23 @@ By default, Next Cloudinary has full support when using the included components 
 
 Using Next Cloudinary in the `app` directory currently requires marking the parent page or component as a Client Component.
 
-At the top of the file, add:
+At the top of the file, simply add:
 
 ```
-use client;
+"use client;"
 ```
 
-### OG Images
+### Open Graph (OG) Images
 
-The Head component is not supported in the Next.js App directory, meaning, the [CldOgImage](/components/cldogimage/basic-usage) component will not function.
+The CldOgImage component utilizes the Next.js Head component to add metadata tags to the HTML document's `<head>`.
 
-Instead, you can easily generate OG image URLs using [getCldOgImageUrl](/getcldogimageurl/basic-usage) in your metadata configuration:
+In the App Router, the Head component is no longer supported, instead opting for [configuration-based control of metadata](https://nextjs.org/docs/app/building-your-application/optimizing/metadata).
 
+You can still easily generate OG images and social card URLs using [getCldOgImageUrl](/getcldogimageurl/basic-usage) in your metadata configuration.
 
 ```
+import { getCldOgImageUrl } from 'next-cloudinary';
+
 export const metadata = {
   openGraph: {
     ...
@@ -52,3 +55,5 @@ export const metadata = {
   },
 };
 ```
+
+Find more examples of [Social Media Cards](/guides/social-media-card).

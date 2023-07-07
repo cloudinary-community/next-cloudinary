@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Callout } from 'nextra-theme-docs';
+import { Callout, Tab, Tabs } from 'nextra-theme-docs';
 
 import OgImage from '../../components/OgImage';
 
@@ -83,64 +83,127 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
   alt="Next Cloudinary with picture of a mountain"
 />
 
-```jsx
-import { CldOgImage } from 'next-cloudinary';
 
-<CldOgImage
-  src="images/white"
-  overlays={[
-    {
-      publicId: 'images/mountain',
-      position: {
-        x: 0,
-        y: 0,
-        gravity: 'north_east',
-      },
-      effects: [
+<Tabs items={['Pages', 'App']}>
+  <Tab>
+    ```jsx
+    import { CldOgImage } from 'next-cloudinary';
+
+    <CldOgImage
+      src="images/white"
+      overlays={[
         {
-          crop: 'fill',
-          gravity: 'auto',
-          width: 800,
-          height: 1200
-        }
+          publicId: 'images/mountain',
+          position: {
+            x: 0,
+            y: 0,
+            gravity: 'north_east',
+          },
+          effects: [
+            {
+              crop: 'fill',
+              gravity: 'auto',
+              width: 800,
+              height: 1200
+            }
+          ]
+        },
+        {
+          width: 1400,
+          crop: 'fit',
+          text: {
+            color: 'black',
+            fontFamily: 'Source Sans Pro',
+            fontSize: 160,
+            fontWeight: 'bold',
+            text: 'Next Cloudinary'
+          },
+          position: {
+            x: 100,
+            y: -100,
+            gravity: 'west',
+          },
+        },
+        {
+          width: 1400,
+          crop: 'fit',
+          text: {
+            color: 'black',
+            fontFamily: 'Source Sans Pro',
+            fontSize: 80,
+            text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
+          },
+          position: {
+            x: 100,
+            y: 100,
+            gravity: 'west',
+          },
+        },
+      ]}
+      twitterTitle="Next Cloudinary"
+      alt="Next Cloudinary with picture of a mountain"
+    />
+    ```
+  </Tab>
+  <Tab>
+    ```jsx
+    import { getCldOgImageUrl } from 'next-cloudinary';
+
+    getCldOgImageUrl({
+      src: 'images/white',
+      overlays: [
+        {
+          publicId: 'images/mountain',
+          position: {
+            x: 0,
+            y: 0,
+            gravity: 'north_east',
+          },
+          effects: [
+            {
+              crop: 'fill',
+              gravity: 'auto',
+              width: 800,
+              height: 1200
+            }
+          ]
+        },
+        {
+          width: 1400,
+          crop: 'fit',
+          text: {
+            color: 'black',
+            fontFamily: 'Source Sans Pro',
+            fontSize: 160,
+            fontWeight: 'bold',
+            text: 'Next Cloudinary'
+          },
+          position: {
+            x: 100,
+            y: -100,
+            gravity: 'west',
+          },
+        },
+        {
+          width: 1400,
+          crop: 'fit',
+          text: {
+            color: 'black',
+            fontFamily: 'Source Sans Pro',
+            fontSize: 80,
+            text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
+          },
+          position: {
+            x: 100,
+            y: 100,
+            gravity: 'west',
+          },
+        },
       ]
-    },
-    {
-      width: 1400,
-      crop: 'fit',
-      text: {
-        color: 'black',
-        fontFamily: 'Source Sans Pro',
-        fontSize: 160,
-        fontWeight: 'bold',
-        text: 'Next Cloudinary'
-      },
-      position: {
-        x: 100,
-        y: -100,
-        gravity: 'west',
-      },
-    },
-    {
-      width: 1400,
-      crop: 'fit',
-      text: {
-        color: 'black',
-        fontFamily: 'Source Sans Pro',
-        fontSize: 80,
-        text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
-      },
-      position: {
-        x: 100,
-        y: 100,
-        gravity: 'west',
-      },
-    },
-  ]}
-  twitterTitle="Next Cloudinary"
-  alt="Next Cloudinary with picture of a mountain"
-/>
-```
+    });
+    ```
+  </Tab>
+</Tabs>
 
 ## Learn More
 * [CldOgImage Configuration](/components/cldogimage/configuration)
