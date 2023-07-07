@@ -1,3 +1,10 @@
+## [4.13.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.13.0...v4.13.1) (2023-07-07)
+
+
+### Bug Fixes
+
+* Fixes non-secure URL parsing ([#225](https://github.com/colbyfayock/next-cloudinary/issues/225)) ([d18c4cf](https://github.com/colbyfayock/next-cloudinary/commit/d18c4cf61204079e882cda8965c416ee03f399b4)), closes [#224](https://github.com/colbyfayock/next-cloudinary/issues/224)
+
 # [4.13.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.12.0...v4.13.0) (2023-06-21)
 
 
