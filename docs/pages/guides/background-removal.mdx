@@ -1,13 +1,14 @@
 import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
 
-import OgImage from '../components/OgImage';
+import OgImage from '../../components/OgImage';
 
-import { CldImage } from '../../next-cloudinary';
+import { CldImage } from '../../../next-cloudinary';
 
 <Head>
   <title>Background Removal - Next Cloudinary</title>
   <meta name="og:title" content="Removing a Background from an Image - Next Cloudinary" />
-  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/background-removal`} />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/guides/background-removal`} />
 </Head>
 
 <OgImage
@@ -17,9 +18,11 @@ import { CldImage } from '../../next-cloudinary';
 
 # Removing a Background from an Image
 
-Removing backgrounds require enabling the [Cloudinary AI Background Removal Add-On](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) which includes a free tier for getting started.
+The CldImage component allows you to easily remove backgrounds from images using the `removeBackground` prop.
 
-Once enabled, you can simply apply the `removeBackground` parameter.
+<Callout emoji={false}>
+  Removing backgrounds require enabling the [Cloudinary AI Background Removal Add-On](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) which includes a free tier for getting started.
+</Callout>
 
 ## Example
 
@@ -46,4 +49,4 @@ import { CldImage } from 'next-cloudinary';
 ```
 
 ## Learn More
-* [CldImage Configuration](/cldimage/configuration)
+* [CldImage Configuration](/components/cldimage/configuration)

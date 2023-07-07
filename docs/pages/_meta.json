@@ -17,20 +17,9 @@
   },
   "getcldimageurl": "getCldImageUrl",
   "getcldogimageurl": "getCldOgImageUrl",
-  "Guides": {
-    "type": "separator",
-    "title": "Guides"
-  },
-  "background-removal": "Background Removal",
-  "image-overlays": "Image Overlays",
-  "image-underlays": "Image Underlays",
-  "responsive-images": "Responsive Images",
-  "social-media-card": "Social Media Card",
-  "text-overlays": "Text Overlays",
-  "uploading-images-and-videos": "Uploading Images & Videos",
   "Resources": {
     "type": "separator",
     "title": "Resources"
   },
-  "tutorials": "Tutorials"
+  "guides": "Guides"
 }

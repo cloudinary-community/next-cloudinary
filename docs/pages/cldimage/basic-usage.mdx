@@ -24,7 +24,7 @@ The CldImage component provides an easy way to deliver images from Cloudinary wi
 
 With it comes access to more advanced features like dynamic cropping, background removal, overlays, and other Cloudinary transformations.
 
-As CldImage is a wrapper around the Next.js Image component, you also gain access to all built-in Image component features will work out-of-the-box like [Responsive Sizing](/responsive-images).
+As CldImage is a wrapper around the Next.js Image component, you also gain access to all built-in Image component features will work out-of-the-box like [Responsive Sizing](/guides/responsive-images).
 
 ## Basic Usage
 
@@ -42,7 +42,7 @@ import { CldImage } from 'next-cloudinary';
 />
 ```
 
-The `sizes` prop is optional, but recommended for [Responsive Sizing](/responsive-images).
+The `sizes` prop is optional, but recommended for [Responsive Sizing](/guides/responsive-images).
 
 <Callout emoji={false}>
   Using the Next.js 13 App Router? Add the `use client;` directive at the top of your file.
@@ -116,5 +116,5 @@ To preserve those transformations, you can apply the `preserveTransformations` p
 />
 
 ## Learn More about CldImage
-* [Configuration](/cldimage/configuration)
-* [Examples](/cldimage/examples)
+* [Configuration](/components/cldimage/configuration)
+* [Examples](/components/cldimage/examples)
