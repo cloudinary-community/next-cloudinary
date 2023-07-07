@@ -35,59 +35,9 @@ High-performance image delivery and uploading at scale in Next.js powered by Clo
     <CldImage
       width="987"
       height="1481"
-      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      src="http://res.cloudinary.com/next-cloudinary/image/upload/c_limit,w_987/f_auto/q_auto/v1/images/woman-headphones"
       sizes="50vw"
       alt="Original image of woman with headphones"
-    />
-  </li>
-  <li>
-    <CldImage
-      width="987"
-      height="987"
-      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
-      sizes="50vw"
-      crop="thumb"
-      gravity="faces"
-      removeBackground
-      tint="40:253f8c"
-      underlay={`${process.env.IMAGES_DIRECTORY}/city-skyline`}
-      overlays={[
-        {
-          position: {
-            gravity: 'north',
-            y: 60
-          },
-          text: {
-            color: 'rgb:52a4ff80',
-            fontFamily: 'Source Sans Pro',
-            fontSize: 320,
-            fontWeight: 'black',
-            text: 'MUSIC',
-            letterSpacing: -10,
-            lineSpacing: -100,
-            stroke: true,
-            border: '20px_solid_rgb:2d0eff99',
-          }
-        },
-        {
-          position: {
-            gravity: 'south',
-            y: 60
-          },
-          text: {
-            color: 'rgb:52a4ff80',
-            fontFamily: 'Source Sans Pro',
-            fontSize: 320,
-            fontWeight: 'black',
-            text: 'IS LIFE',
-            letterSpacing: -10,
-            lineSpacing: -100,
-            stroke: true,
-            border: '20px_solid_rgb:2d0eff99',
-          }
-        }
-      ]}
-      alt="Image of woman with headphones transformed with Cloudinary"
     />
   </li>
 </ImageGrid>
