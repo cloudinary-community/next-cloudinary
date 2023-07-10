@@ -14,7 +14,7 @@
     "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" yarn build && cd tests/nextjs-app && yarn build"
   },
   "dependencies": {
-    "@cloudinary-util/url-loader": "^3.8.2",
+    "@cloudinary-util/url-loader": "^3.9.0",
     "@cloudinary-util/util": "^2.1.0",
     "@cloudinary/url-gen": "^1.10.1"
   },
