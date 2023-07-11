@@ -1,3 +1,10 @@
+## [4.14.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.14.0...v4.14.1) (2023-07-11)
+
+
+### Bug Fixes
+
+* Temporary Fix for next/image Error Element Type is Invalid ([#229](https://github.com/colbyfayock/next-cloudinary/issues/229)) ([f83c298](https://github.com/colbyfayock/next-cloudinary/commit/f83c298d8d9cd120b9639acd62d965644af27dbf)), closes [#227](https://github.com/colbyfayock/next-cloudinary/issues/227)
+
 # [4.14.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.13.1...v4.14.0) (2023-07-11)
 
 
