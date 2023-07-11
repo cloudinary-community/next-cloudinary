@@ -1,3 +1,10 @@
+# [4.14.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.13.1...v4.14.0) (2023-07-11)
+
+
+### Features
+
+* Add Generative Fill ([#228](https://github.com/colbyfayock/next-cloudinary/issues/228)) ([fcd83d6](https://github.com/colbyfayock/next-cloudinary/commit/fcd83d622dc4d25545111c97a5050b45f089251b)), closes [#222](https://github.com/colbyfayock/next-cloudinary/issues/222)
+
 ## [4.13.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.13.0...v4.13.1) (2023-07-07)
 
 
