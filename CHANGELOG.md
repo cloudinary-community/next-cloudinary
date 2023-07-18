@@ -1,3 +1,10 @@
+# [4.15.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.14.1...v4.15.0) (2023-07-18)
+
+
+### Features
+
+* Fixes encoding and missing signature characters ([#232](https://github.com/colbyfayock/next-cloudinary/issues/232)) ([4b520ce](https://github.com/colbyfayock/next-cloudinary/commit/4b520ce2816b3795a3154a6a6ec83932523fa71f)), closes [#219](https://github.com/colbyfayock/next-cloudinary/issues/219)
+
 ## [4.14.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.14.0...v4.14.1) (2023-07-11)
 
 
