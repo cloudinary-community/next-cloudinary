@@ -9,12 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@codemirror/lang-javascript": "^6.1.9",
-    "@uiw/codemirror-theme-tokyo-night": "^4.21.7",
-    "@uiw/react-codemirror": "^4.21.7",
     "@vercel/analytics": "^1.0.1",
     "cloudinary": "^1.37.3",
-    "html-react-parser": "^4.0.0",
     "next": "^13.4.9",
     "nextra": "^2.9.0",
     "nextra-theme-docs": "^2.9.0",

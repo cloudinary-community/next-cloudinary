@@ -6,7 +6,6 @@ import { CldImage } from '../../../next-cloudinary';
 import ImageGrid from '../../components/ImageGrid';
 import OgImage from '../../components/OgImage';
 import Video from '../../components/Video';
-import VisualEditor from '../../components/VisualEditor';
 
 <Head>
   <title>CldImage - Next Cloudinary</title>
@@ -30,19 +29,6 @@ As CldImage is a wrapper around the Next.js Image component, you also gain acces
 ## Basic Usage
 
 The basic required props include `width`, `height`, `src`, and `alt`:
-
-<VisualEditor
-  defaultCode={`
-<CldImage
-  width="960"
-  height="600"
-  src="images/galaxy"
-  sizes="(max-width: 480px) 100vw, 50vw"
-  removeBackground
-  alt=""
-/>
-  `}
-/>
 
 ```jsx
 import { CldImage } from 'next-cloudinary';
