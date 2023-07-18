@@ -24,67 +24,69 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
 
 ## Example
 
-<CldImage
-  width="2400"
-  height="1200"
-  crop="fill"
-  gravity="auto"
-  src={`${process.env.IMAGES_DIRECTORY}/white`}
-  sizes="100w"
-  overlays={[
-    {
-      publicId: 'images/mountain',
-      position: {
-        x: 0,
-        y: 0,
-        gravity: 'north_east',
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <CldImage
+    width="2400"
+    height="1200"
+    crop="fill"
+    gravity="auto"
+    src={`${process.env.IMAGES_DIRECTORY}/white`}
+    sizes="100w"
+    overlays={[
+      {
+        publicId: 'images/mountain',
+        position: {
+          x: 0,
+          y: 0,
+          gravity: 'north_east',
+        },
+        effects: [
+          {
+            crop: 'fill',
+            gravity: 'auto',
+            width: 800,
+            height: 1200
+          }
+        ]
       },
-      effects: [
-        {
-          crop: 'fill',
-          gravity: 'auto',
-          width: 800,
-          height: 1200
-        }
-      ]
-    },
-    {
-      width: 1400,
-      crop: 'fit',
-      text: {
-        color: 'black',
-        fontFamily: 'Source Sans Pro',
-        fontSize: 160,
-        fontWeight: 'bold',
-        text: 'Next Cloudinary'
+      {
+        width: 1400,
+        crop: 'fit',
+        text: {
+          color: 'black',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 160,
+          fontWeight: 'bold',
+          text: 'Next Cloudinary'
+        },
+        position: {
+          x: 100,
+          y: -100,
+          gravity: 'west',
+        },
       },
-      position: {
-        x: 100,
-        y: -100,
-        gravity: 'west',
+      {
+        width: 1400,
+        crop: 'fit',
+        text: {
+          color: 'black',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 80,
+          text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
+        },
+        position: {
+          x: 100,
+          y: 100,
+          gravity: 'west',
+        },
       },
-    },
-    {
-      width: 1400,
-      crop: 'fit',
-      text: {
-        color: 'black',
-        fontFamily: 'Source Sans Pro',
-        fontSize: 80,
-        text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
-      },
-      position: {
-        x: 100,
-        y: 100,
-        gravity: 'west',
-      },
-    },
-  ]}
-  alt="Next Cloudinary with picture of a mountain"
-/>
+    ]}
+    alt="Next Cloudinary with picture of a mountain"
+  />
+</div>
 
 
-<Tabs items={['Pages', 'App']}>
+<Tabs items={['CldOgImage (Pages)', 'getCldOgImageUrl (App)']}>
   <Tab>
     ```jsx
     import { CldOgImage } from 'next-cloudinary';
@@ -206,4 +208,4 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
 </Tabs>
 
 ## Learn More
-* [CldOgImage Configuration](/components/cldogimage/configuration)
+* [CldOgImage Configuration](/cldogimage/configuration)

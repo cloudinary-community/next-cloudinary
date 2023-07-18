@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Callout } from 'nextra-theme-docs';
+import { Callout, Tab, Tabs } from 'nextra-theme-docs';
 
 import OgImage from '../../components/OgImage';
 import Video from '../../components/Video';
@@ -25,25 +25,42 @@ You can further optimize delivery by using [responsive sizing](/guides/responsiv
 
 ## Example
 
-<CldImage
-  width="960"
-  height="600"
-  src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-  sizes="100vw"
-  alt="Turtle"
-/>
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    alt="Turtle"
+  />
+</div>
 
-```jsx
-import { CldImage } from 'next-cloudinary';
+<Tabs items={['CldImage', 'getCldImageUrl']}>
+  <Tab>
+    ```jsx
+    import { CldImage } from 'next-cloudinary';
 
-<CldImage
-  width="960"
-  height="600"
-  src="images/turtle"
-  sizes="100vw"
-  alt="Turtle"
-/>
-```
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      alt="Turtle"
+    />
+    ```
+  </Tab>
+  <Tab>
+    ```jsx
+    import { getCldImageUrl } from 'next-cloudinary';
+
+    getCldImageUrl({
+      width: 960,
+      height: 600,
+      src: 'images/turtle'
+    });
+    ```
+  </Tab>
+</Tabs>
 
 ## Watch & Learn
 
@@ -54,3 +71,5 @@ import { CldImage } from 'next-cloudinary';
 
 ## Learn More
 * [Responsive Images](/guides/responsive-images)
+* [CldImage](/cldimage/basic-usage)
+* [getCldImageUrl](/getcldimageurl/basic-usage)
