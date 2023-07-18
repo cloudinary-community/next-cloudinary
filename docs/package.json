@@ -13,14 +13,14 @@
     "@uiw/codemirror-theme-tokyo-night": "^4.21.7",
     "@uiw/react-codemirror": "^4.21.7",
     "@vercel/analytics": "^1.0.1",
-    "cloudinary": "^1.36.4",
+    "cloudinary": "^1.37.3",
     "html-react-parser": "^4.0.0",
-    "next": "^13.4.1",
-    "nextra": "^2.8.0",
-    "nextra-theme-docs": "^2.5.0",
+    "next": "^13.4.9",
+    "nextra": "^2.9.0",
+    "nextra-theme-docs": "^2.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0",
-    "sass": "^1.62.1"
+    "react-icons": "^4.10.1",
+    "sass": "^1.63.6"
   }
 }

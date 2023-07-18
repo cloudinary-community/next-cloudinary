@@ -1,3 +1,31 @@
+# [4.15.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.14.1...v4.15.0) (2023-07-18)
+
+
+### Features
+
+* Fixes encoding and missing signature characters ([#232](https://github.com/colbyfayock/next-cloudinary/issues/232)) ([4b520ce](https://github.com/colbyfayock/next-cloudinary/commit/4b520ce2816b3795a3154a6a6ec83932523fa71f)), closes [#219](https://github.com/colbyfayock/next-cloudinary/issues/219)
+
+## [4.14.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.14.0...v4.14.1) (2023-07-11)
+
+
+### Bug Fixes
+
+* Temporary Fix for next/image Error Element Type is Invalid ([#229](https://github.com/colbyfayock/next-cloudinary/issues/229)) ([f83c298](https://github.com/colbyfayock/next-cloudinary/commit/f83c298d8d9cd120b9639acd62d965644af27dbf)), closes [#227](https://github.com/colbyfayock/next-cloudinary/issues/227)
+
+# [4.14.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.13.1...v4.14.0) (2023-07-11)
+
+
+### Features
+
+* Add Generative Fill ([#228](https://github.com/colbyfayock/next-cloudinary/issues/228)) ([fcd83d6](https://github.com/colbyfayock/next-cloudinary/commit/fcd83d622dc4d25545111c97a5050b45f089251b)), closes [#222](https://github.com/colbyfayock/next-cloudinary/issues/222)
+
+## [4.13.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.13.0...v4.13.1) (2023-07-07)
+
+
+### Bug Fixes
+
+* Fixes non-secure URL parsing ([#225](https://github.com/colbyfayock/next-cloudinary/issues/225)) ([d18c4cf](https://github.com/colbyfayock/next-cloudinary/commit/d18c4cf61204079e882cda8965c416ee03f399b4)), closes [#224](https://github.com/colbyfayock/next-cloudinary/issues/224)
+
 # [4.13.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.12.0...v4.13.0) (2023-06-21)
 
 
