@@ -48,15 +48,17 @@ The `sizes` prop is optional, but recommended for [Responsive Sizing](/guides/re
   Using the Next.js 13 App Router? Add the `"use client"` directive at the top of your file.
 </Callout>
 
-<p className="nx-mt-6">
-<CldImage
-  width="960"
-  height="600"
-  src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-  sizes="100vw"
-  alt="Turtle in the ocean"
-/>
-</p>
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <p className="nx-mt-6">
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    alt="Turtle in the ocean"
+  />
+  </p>
+</div>
 
 The `src` property takes in a Cloudinary Public ID which includes the folder path along with the ID of the image itself.
 
@@ -78,17 +80,19 @@ You can further take advantage of Cloudinary features like background removal an
 />
 ```
 
-<CldImage
-  width="1200"
-  height="1200"
-  src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-  crop="thumb"
-  removeBackground
-  tint="70:blue:green:purple"
-  underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
-  sizes="100vw"
-  alt="Turtle in the ocean"
-/>
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <CldImage
+    width="1200"
+    height="1200"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    crop="thumb"
+    removeBackground
+    tint="70:blue:green:purple"
+    underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
+    sizes="100vw"
+    alt="Turtle in the ocean"
+  />
+</div>
 
 ## Using Cloudinary URLs
 

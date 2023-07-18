@@ -55,16 +55,18 @@ The resulting HTML will be applied to the Head of the document:
 <meta property="twitter:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1254,g_center/c_scale,w_1200/f_webp/q_auto/v1/images/galaxy" />
 ```
 
-<p className="nx-mt-6">
-<CldImage
-  width="1200"
-  height="627"
-  src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-  crop="fill"
-  sizes="100vw"
-  alt="Turtle in the ocean"
-/>
-</p>
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <p className="nx-mt-6">
+  <CldImage
+    width="1200"
+    height="627"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    crop="fill"
+    sizes="100vw"
+    alt="Turtle in the ocean"
+  />
+  </p>
+</div>
 
 <Callout emoji={false}>
   CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. This example makes use of the `<CldImage>` tag to showcase what's possible.
@@ -97,29 +99,31 @@ The CldOgImage component uses the same API as [CldImage](/cldimage/configuration
 />
 ```
 
-<p className="nx-mt-6">
-<CldImage
-  width="1200"
-  height="627"
-  src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-  crop="fill"
-  tint="100:0762a0"
-  removeBackground
-  opacity="40"
-  overlays={[{
-    text: {
-      color: 'white',
-      fontFamily: 'Source Sans Pro',
-      fontSize: 80,
-      fontWeight: 'bold',
-      text: 'Next Cloudinary'
-    }
-  }]}
-  underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
-  sizes="100vw"
-  alt="Turtle in the ocean"
-/>
-</p>
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <p className="nx-mt-6">
+  <CldImage
+    width="1200"
+    height="627"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    crop="fill"
+    tint="100:0762a0"
+    removeBackground
+    opacity="40"
+    overlays={[{
+      text: {
+        color: 'white',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 80,
+        fontWeight: 'bold',
+        text: 'Next Cloudinary'
+      }
+    }]}
+    underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
+    sizes="100vw"
+    alt="Turtle in the ocean"
+  />
+  </p>
+</div>
 
 <Callout emoji={false}>
   CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. This example makes use of the `<CldImage>` tag to showcase what's possible.

@@ -35,18 +35,20 @@ const url = getCldImageUrl({
 });
 ```
 
-<CldImage
-  src={getCldImageUrl({
-    src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
-    width: 960,
-    height: 600,
-  })}
-  width="960"
-  height="600"
-  sizes="(max-width: 480px) 100vw, 50vw"
-  alt=""
-  preserveTransformations
-/>
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <CldImage
+    src={getCldImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
+      width: 960,
+      height: 600,
+    })}
+    width="960"
+    height="600"
+    sizes="(max-width: 480px) 100vw, 50vw"
+    alt=""
+    preserveTransformations
+  />
+</div>
 
 <Callout emoji={false}>
   getCldImageUrl uses the same API as [CldImage](/cldimage/basic-usage). They're both wrappers around [@cloudinary-util/url-loader](https://github.com/colbyfayock/cloudinary-util/tree/main/packages/url-loader) which provide a simpler way to generate images and Cloudinary URLs.
@@ -67,21 +69,23 @@ const url = getCldImageUrl({
 });
 ```
 
-<CldImage
-  src={getCldImageUrl({
-    src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
-    width: 600,
-    height: 600,
-    crop: 'thumb',
-    tint: '50:blue:green:red',
-    blur: 1000,
-  })}
-  width="600"
-  height="600"
-  sizes="(max-width: 480px) 100vw, 50vw"
-  alt=""
-  preserveTransformations
-/>
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <CldImage
+    src={getCldImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
+      width: 600,
+      height: 600,
+      crop: 'thumb',
+      tint: '50:blue:green:red',
+      blur: 1000,
+    })}
+    width="600"
+    height="600"
+    sizes="(max-width: 480px) 100vw, 50vw"
+    alt=""
+    preserveTransformations
+  />
+</div>
 
 ## Learn More about getCldImageUrl
 * [Configuration](/getcldimageurl/configuration)

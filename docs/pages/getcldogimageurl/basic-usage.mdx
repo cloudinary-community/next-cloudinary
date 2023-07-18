@@ -37,18 +37,20 @@ const url = getCldOgImageUrl({
 
 Which would simply return the URL for the image public ID provided.
 
-<CldImage
-  src={getCldImageUrl({
-    src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
-    width: 960,
-    height: 600,
-  })}
-  width="960"
-  height="600"
-  sizes="(max-width: 480px) 100vw, 50vw"
-  alt=""
-  preserveTransformations
-/>
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <CldImage
+    src={getCldImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
+      width: 960,
+      height: 600,
+    })}
+    width="960"
+    height="600"
+    sizes="(max-width: 480px) 100vw, 50vw"
+    alt=""
+    preserveTransformations
+  />
+</div>
 
 ## Image Size
 
