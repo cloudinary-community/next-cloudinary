@@ -6,10 +6,11 @@ import { CldVideoPlayerProps } from './CldVideoPlayer.types';
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
-  const version = pkg.dependencies['cloudinary-video-player'];
+  const version: string = pkg.dependencies['cloudinary-video-player'];
 
   const {
     autoPlay = 'never',
+    className,
     colors,
     controls = true,
     excludeExternalStylesheet = false,
@@ -26,8 +27,18 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     onPlay,
     onEnded,
     src,
-    width,
+    transformation,
+    quality = 'auto',
+    width
   } = props as CldVideoPlayerProps;
+
+  const playerTransformations = Array.isArray(transformation) ? transformation : [transformation];
+
+  // Set default transformations for the player
+
+  playerTransformations.unshift({
+    quality
+  });
 
   // Setup the refs and allow for the caller to pass through their
   // own ref instance
@@ -36,6 +47,13 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const videoRef = props.videoRef || defaultVideoRef;
   const defaultPlayerRef = useRef()as MutableRefObject<CloudinaryVideoPlayer | null>;
   const playerRef = props.playerRef || defaultPlayerRef;
+
+  let playerClassName = 'cld-video-player cld-fluid';
+
+  if ( className ) {
+    playerClassName = `${playerClassName} ${className}`;
+  }
+
 
   const events: Record<string, Function|undefined> = {
     error: onError,
@@ -154,7 +172,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         <video
           ref={videoRef}
           id={playerId}
-          className="cld-video-player cld-fluid"
+          className={playerClassName}
           width={width}
           height={height}
         />

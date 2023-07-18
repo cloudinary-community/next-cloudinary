@@ -217,6 +217,38 @@ describe('Cloudinary Loader', () => {
 
       expect(result).toContain(`image/upload/${cldOptions.rawTransformations.join('/')}/c_limit,w_${imageProps.width}/f_auto/q_auto/v1/${imageProps.src}`)
     });
+
+    describe('Config', () => {
+      it('should add a custom cname via secureDistribution', async () => {
+        const imageProps = {
+          height: '600',
+          sizes: '100vw',
+          src: 'images/turtle',
+          width: '960',
+        }
+
+        const loaderOptions = {
+          quality: 75,
+          src: 'images/turtle',
+          width: 960,
+        }
+
+        const config = {
+          url: {
+            secureDistribution: 'spacejelly.dev'
+          }
+        }
+
+        const result = cloudinaryLoader({
+          loaderOptions,
+          imageProps,
+          cldConfig: Object.assign({}, cldConfig, config)
+        });
+
+        expect(result).toContain(`https://${config.url.secureDistribution}/${cldConfig.cloud.cloudName}/image/upload`)
+      });
+
+    });
   })
 });
 

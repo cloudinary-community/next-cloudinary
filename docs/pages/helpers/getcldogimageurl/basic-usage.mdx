@@ -1,0 +1,91 @@
+import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
+
+import { CldImage, getCldImageUrl } from '../../../../next-cloudinary';
+
+import OgImage from '../../../components/OgImage';
+import Video from '../../../components/Video';
+
+<Head>
+  <title>getCldOgImageUrl - Next Cloudinary</title>
+  <meta name="og:title" content="Getting Started with getCldOgImageUrl - Next Cloudinary" />
+  <meta name="og:url" content={`https://next-cloudinary.spacejelly.dev/helpers/getcldogimageurl/basic-usage`} />
+</Head>
+
+<OgImage
+  title="getCldOgImageUrl"
+  twitterTitle="Getting Started with getCldOgImageUrl"
+/>
+
+# Getting Started with getCldOgImageUrl
+
+You can use the getCldOgImageUrl helper function to generate Cloudinary URLs for Open Graph images (or social cards) without the component wrapper. CldOgImage uses getCldOgImageUrl to generate its images, meaning you can expect the same API from CldOgImage.
+
+getCldOgImageUrl is a deritive of getCldImageUrl meaning it generally has the same API, but provides a few defaults for Open Graph images like sizes.
+
+## Basic Usage
+
+The only required prop is `src`:
+
+```js
+import { getCldOgImageUrl } from 'next-cloudinary';
+
+const url = getCldOgImageUrl({
+  src: '<Public ID>'
+});
+```
+
+Which would simply return the URL for the image public ID provided.
+
+<CldImage
+  src={getCldImageUrl({
+    src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
+    width: 960,
+    height: 600,
+  })}
+  width="960"
+  height="600"
+  sizes="(max-width: 480px) 100vw, 50vw"
+  alt=""
+  preserveTransformations
+/>
+
+## Image Size
+
+By default, the image canvas is based upon 2400x1254, but resized down to 1200x627, meaning, you can design the image as if it were a 2400x1254 image, but the resulting image will be sized down to 1200x627 to avoid an overly large image.
+
+627 (with a canvas of 1254) is used to satisfy the 1.91:1 ratio requirement and minimum size [requirement from linkedin](https://www.linkedin.com/help/linkedin/answer/a521928/make-your-website-shareable-on-linkedin).
+
+The resizing mechanism provides backwards compatibility for existing usage as well as a way to maintain a consistent "canvas" size when designing a social image card.
+
+You can use the `width` and the `height` to control the canvas and `widthResize` to change the final size the image is scaled to.
+
+The height is ultimately calculated using the `width` value and the `widthResize` values to maintain the correct ratio.
+
+## Image Format
+
+While Cloudinary's `f_auto` parameter (format of auto) is great for websites and mobile apps, having more control over the format helps to reduce initial encoding time, which is more critical for a social network to recognize the image and load it on first share.
+
+The safe default format for most use cases is then jpg, as webp does not have broad support (likely nor does AVIF).
+
+Read more about webp support: https://www.ctrl.blog/entry/webp-ogp.html
+
+If you have the control in your application to produce multiple image sources, such has having a separate `og:image` and `twitter:image`, you can generate two (or more) URLs to produce as optimized a format as you can for the platform:
+
+```
+const ogImageUrl = getCldImageUrl({
+  ...options,
+  format: 'jpg',
+});
+
+const twitterImageUrl = getCldImageUrl({
+  ...options,
+  format: 'webp',
+});
+```
+
+Find out how else you can customize your Cloudinary image over on [getCldImageUrl configuration](/helpers/getcldimageurl/configuration).
+
+## Learn More about getCldOgImageUrl
+* [Configuration](/helpers/getcldogimageurl/configuration)
+* [Examples](/helpers/getcldogimageurl/examples)

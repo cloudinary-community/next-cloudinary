@@ -9,14 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@vercel/analytics": "^0.1.5",
-    "cloudinary": "^1.32.0",
-    "next": "^13.0.6",
-    "nextra": "^2.0.0",
-    "nextra-theme-docs": "^2.0.0",
+    "@vercel/analytics": "^1.0.1",
+    "cloudinary": "^1.37.3",
+    "next": "^13.4.9",
+    "nextra": "^2.9.0",
+    "nextra-theme-docs": "^2.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.7.1",
-    "sass": "^1.56.1"
+    "react-icons": "^4.10.1",
+    "sass": "^1.63.6"
   }
 }

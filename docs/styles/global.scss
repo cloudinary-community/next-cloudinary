@@ -20,3 +20,7 @@ p {
 pre {
   display: grid; // Hack to prevent overflow
 }
+
+.nextra-callout a {
+  text-decoration: underline;
+}

@@ -32,9 +32,11 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+        # Semantic Release is incompatible with node 16 - so add these only on release
+      - run: yarn add @semantic-release/changelog @semantic-release/git semantic-release -W
       - name: Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

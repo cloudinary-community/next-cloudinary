@@ -46,6 +46,30 @@ import ImageGrid from '../../../components/ImageGrid';
     <CldImage
       width="960"
       height="600"
+      crop="pad"
+      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      fillBackground
+      alt=""
+    />
+
+    ### Generative Fill
+
+    ```jsx
+    width="960"
+    height="600" // Original 1440
+    crop="pad" // Returns the given size with padding
+    fillBackground // Uses AI to extend image
+    ```
+
+    <Callout emoji={false}>
+      The generative fill transformation is currently in Beta. <a href="https://cloudinary.com/documentation/effects_and_artistic_enhancements#generative_fill">Learn more</a>.
+    </Callout>
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
       src={`${process.env.IMAGES_DIRECTORY}/turtle`}
       sizes="(max-width: 480px) 100vw, 50vw"
       zoompan="loop"
@@ -182,6 +206,23 @@ import ImageGrid from '../../../components/ImageGrid';
     ```jsx
     removeBackground
     background="blue"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      removeBackground
+      trim
+      alt=""
+    />
+
+    ### Trim
+
+    ```jsx
+    removeBackground
+    trim
     ```
   </li>
   <li>
@@ -738,6 +779,33 @@ import ImageGrid from '../../../components/ImageGrid';
     ...
     fill={true}
     ```
+  </li>
+</ImageGrid>
+
+## Flags
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      flags={['keep_iptc']}
+      quality="default"
+      alt=""
+    />
+
+    ### Keep IPTC
+
+    ```jsx
+    flags={['keep_iptc']}
+    quality="default"
+    ```
+
+    <Callout emoji={false}>
+      The `keep_iptc` flag requires not including a quality of auto. Using `quality="default"` avoids setting the quality flag in the URL.
+    </Callout>
   </li>
 </ImageGrid>
 

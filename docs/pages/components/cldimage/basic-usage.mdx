@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
+import { CldImage } from '../../../../next-cloudinary';
+
+import ImageGrid from '../../../components/ImageGrid';
 import OgImage from '../../../components/OgImage';
 import Video from '../../../components/Video';
 
@@ -17,49 +20,77 @@ import Video from '../../../components/Video';
 
 # Getting Started with CldImage
 
+The CldImage component provides an easy way to deliver images from Cloudinary with the same experience you'd expect inside of a Next.js app.
+
+With it comes access to more advanced features like dynamic cropping, background removal, overlays, and other Cloudinary transformations.
+
+As CldImage is a wrapper around the Next.js Image component, you also gain access to all built-in Image component features will work out-of-the-box like [Responsive Sizing](/guides/responsive-images).
+
 ## Basic Usage
 
 The basic required props include `width`, `height`, `src`, and `alt`:
 
 ```jsx
+import { CldImage } from 'next-cloudinary';
+
 <CldImage
-  width="600"
+  width="960"
   height="600"
   src="<Public ID>"
+  sizes="100vw"
   alt="Description of my image"
 />
 ```
 
+The `sizes` prop is optional, but recommended for [Responsive Sizing](/guides/responsive-images).
+
 <Callout emoji={false}>
-  If using the Next.js 13 `app` directory, you must add the `use client;` directive at the top of your file.
+  Using the Next.js 13 App Router? Add the `"use client"` directive at the top of your file.
 </Callout>
+
+<p className="nx-mt-6">
+<CldImage
+  width="960"
+  height="600"
+  src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+  sizes="100vw"
+  alt="Turtle in the ocean"
+/>
+</p>
 
 The `src` property takes in a Cloudinary Public ID which includes the folder path along with the ID of the image itself.
 
-<Callout emoji={false}>
-  Tip: You can alternatively pass in a full Cloudinary URL as the `src`, however, it must include a version number (ex: `/v1234/`).
-</Callout>
+## Transformations
 
 You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
 
 ```jsx
 <CldImage
-  width="600"
-  height="600"
+  width="1200"
+  height="1200"
   src="<Public ID>"
   crop="thumb"
-  gravity="faces"
   removeBackground
-  tint="100:blue:green:red"
-  underlays={[{
-    publicId: '<Public ID>',
-    width: 600,
-    height: 600,
-    crop: 'fill'
-  }]}
+  tint="70:blue:green:purple"
+  underlay="<Public ID>"
+  sizes="100vw"
   alt="Description of my image"
 />
 ```
+
+<CldImage
+  width="1200"
+  height="1200"
+  src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+  crop="thumb"
+  removeBackground
+  tint="70:blue:green:purple"
+  underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
+  sizes="100vw"
+  alt="Turtle in the ocean"
+/>
+
+## Using Cloudinary URLs
 
 If using a full Cloudinary URL, you might already have transformations applied to your image.
 
@@ -75,7 +106,7 @@ To preserve those transformations, you can apply the `preserveTransformations` p
 />
 ```
 
-As CldImage is a wrapper around the Next.js Image component, all built-in Image component features will work out-of-the-box.
+*Note: Cloudinary URLs must include a version number (/v1234) in order to be correctly parsed.*
 
 ## Watch & Learn
 

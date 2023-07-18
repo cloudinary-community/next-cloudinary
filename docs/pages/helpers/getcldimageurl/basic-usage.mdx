@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
+import { CldImage, getCldImageUrl } from '../../../../next-cloudinary';
+
 import OgImage from '../../../components/OgImage';
 import Video from '../../../components/Video';
 
@@ -17,21 +19,40 @@ import Video from '../../../components/Video';
 
 # Getting Started with getCldImageUrl
 
+You can use the getCldImageUrl helper function to generate Cloudinary URLs without the component wrapper. CldImage and other image-based components use getCldImageUrl or a derivitive of it to generate their images, meaning you can expect the same API from CldImage.
+
 ## Basic Usage
 
 The basic required options include `width`, `height`, and `src`:
 
 ```js
+import { getCldImageUrl } from 'next-cloudinary';
+
 const url = getCldImageUrl({
-  width: 600,
+  width: 960,
   height: 600,
   src: '<Public ID>'
 });
 ```
 
+<CldImage
+  src={getCldImageUrl({
+    src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
+    width: 960,
+    height: 600,
+  })}
+  width="960"
+  height="600"
+  sizes="(max-width: 480px) 100vw, 50vw"
+  alt=""
+  preserveTransformations
+/>
+
 <Callout emoji={false}>
   getCldImageUrl uses the same API as [CldImage](/components/cldimage/basic-usage). They're both wrappers around [@cloudinary-util/url-loader](https://github.com/colbyfayock/cloudinary-util/tree/main/packages/url-loader) which provide a simpler way to generate images and Cloudinary URLs.
 </Callout>
+
+## Transformations
 
 You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
 
@@ -41,17 +62,26 @@ const url = getCldImageUrl({
   height: 600,
   src: '<Public ID>',
   crop: 'thumb',
-  gravity: 'faces',
-  removeBackground: true,
   tint: '100:blue:green:red',
-  underlays: [{
-    publicId: '<Public ID>',
-    width: 600,
-    height: 600,
-    crop: 'fill'
-  }]
+  blur: 1000,
 });
 ```
+
+<CldImage
+  src={getCldImageUrl({
+    src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
+    width: 600,
+    height: 600,
+    crop: 'thumb',
+    tint: '50:blue:green:red',
+    blur: 1000,
+  })}
+  width="600"
+  height="600"
+  sizes="(max-width: 480px) 100vw, 50vw"
+  alt=""
+  preserveTransformations
+/>
 
 ## Learn More about getCldImageUrl
 * [Configuration](/helpers/getcldimageurl/configuration)

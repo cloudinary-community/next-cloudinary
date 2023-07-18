@@ -47,10 +47,68 @@ export const VideoPlayerWithRef = (props) => {
 
     ### Default
 
+    Basic settings to display a video.
+
     ```jsx
     width="1620"
     height="1080"
-    src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
+    src="videos/mountain-stars"
+    ```
+  </li>
+  <li>
+    <div style={{ maxWidth: 500, margin: '0 auto' }}>
+      <CldVideoPlayer
+        width="500"
+        height="500"
+        src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+        transformation={{
+          width: 500,
+          height: 500,
+          crop: 'fill',
+          gravity: 'auto'
+        }}
+      />
+    </div>
+
+    ### Crop & Resize
+
+    Basic settings to display a video.
+
+    ```jsx
+    width="1620"
+    height="1080"
+    src="videos/dog-running-snow"
+    ```
+  </li>
+  <li>
+    <CldVideoPlayer
+      width="1620"
+      height="1080"
+      src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
+      transformation={{
+        overlay: `${process.env.ASSETS_DIRECTORY}:space-jelly-cosmo-helmet`,
+        width: 150,
+        gravity: "south_east",
+        x: 50,
+        y: 50,
+        opacity: 80
+      }}
+    />
+
+    ### Transformation: overlay
+
+    Adding a watermark to a video.
+
+    ```jsx
+    src="videos/mountain-stars"
+    transformation={{
+      overlay: "assets:space-jelly-cosmo-helmet",
+      width: 150,
+      gravity: "south_east",
+      x: 50,
+      y: 50,
+      opacity: 40
+    }}
     ```
   </li>
   <li>
@@ -67,6 +125,8 @@ export const VideoPlayerWithRef = (props) => {
     />
 
     ### Custom Player Colors & Font
+
+    Changing the player theme using colors and fonts
 
     ```jsx
     colors={{
@@ -90,6 +150,8 @@ export const VideoPlayerWithRef = (props) => {
 
     ### Custom Logo
 
+    Adding a custom logo to the player chrome
+
     ```jsx
     logo={{
       imageUrl: 'https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/v1676058142/assets/space-jelly-cosmo-helmet.svg',
@@ -105,6 +167,8 @@ export const VideoPlayerWithRef = (props) => {
     />
 
     ### With Ref on Callback
+
+    Using a ref to access the player instance
 
     ```jsx
     playerRef={myPlayerRef}

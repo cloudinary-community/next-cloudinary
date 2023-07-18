@@ -55,7 +55,10 @@ export const SignedUpload = () => {
 
 <SignedUpload />
 
+
 ```jsx
+import { CldUploadButton } from 'next-cloudinary';
+
 <CldUploadButton
   className={styles.button}
   onUpload={(error, result, widget) => {

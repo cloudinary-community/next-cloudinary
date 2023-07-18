@@ -2,9 +2,10 @@ import { MutableRefObject } from 'react';
 
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsColors, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
 
-export type CldVideoPlayerProps = Pick<CloudinaryVideoPlayerOptions, "colors" | "controls" | "fontFace" | "loop" | "muted"> & {
+export type CldVideoPlayerProps = Pick<CloudinaryVideoPlayerOptions, "colors" | "controls" | "fontFace" | "loop" | "muted" | "transformation"> & {
   autoPlay?: string;
   excludeExternalStylesheet?: boolean;
+  className?: string;
   height: string | number;
   id?: string;
   logo?: boolean | CldVideoPlayerPropsLogo;
@@ -18,6 +19,7 @@ export type CldVideoPlayerProps = Pick<CloudinaryVideoPlayerOptions, "colors" | 
   src: string;
   version?: string;
   videoRef?: MutableRefObject<HTMLVideoElement | null>;
+  quality: string | number;
   width: string | number;
 }
 

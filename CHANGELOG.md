@@ -1,3 +1,101 @@
+## [4.14.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.14.0...v4.14.1) (2023-07-11)
+
+
+### Bug Fixes
+
+* Temporary Fix for next/image Error Element Type is Invalid ([#229](https://github.com/colbyfayock/next-cloudinary/issues/229)) ([f83c298](https://github.com/colbyfayock/next-cloudinary/commit/f83c298d8d9cd120b9639acd62d965644af27dbf)), closes [#227](https://github.com/colbyfayock/next-cloudinary/issues/227)
+
+# [4.14.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.13.1...v4.14.0) (2023-07-11)
+
+
+### Features
+
+* Add Generative Fill ([#228](https://github.com/colbyfayock/next-cloudinary/issues/228)) ([fcd83d6](https://github.com/colbyfayock/next-cloudinary/commit/fcd83d622dc4d25545111c97a5050b45f089251b)), closes [#222](https://github.com/colbyfayock/next-cloudinary/issues/222)
+
+## [4.13.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.13.0...v4.13.1) (2023-07-07)
+
+
+### Bug Fixes
+
+* Fixes non-secure URL parsing ([#225](https://github.com/colbyfayock/next-cloudinary/issues/225)) ([d18c4cf](https://github.com/colbyfayock/next-cloudinary/commit/d18c4cf61204079e882cda8965c416ee03f399b4)), closes [#224](https://github.com/colbyfayock/next-cloudinary/issues/224)
+
+# [4.13.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.12.0...v4.13.0) (2023-06-21)
+
+
+### Features
+
+* onError Callback ([#220](https://github.com/colbyfayock/next-cloudinary/issues/220)) ([b834c26](https://github.com/colbyfayock/next-cloudinary/commit/b834c264df4acf5a71ca5f0cf766b085b0e9b99c)), closes [#216](https://github.com/colbyfayock/next-cloudinary/issues/216)
+
+# [4.12.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.11.0...v4.12.0) (2023-05-25)
+
+
+### Features
+
+* Custom Configuration ([#210](https://github.com/colbyfayock/next-cloudinary/issues/210)) ([94c1e8f](https://github.com/colbyfayock/next-cloudinary/commit/94c1e8fae6d12fd61838229ebf1ad71684f8c092)), closes [#209](https://github.com/colbyfayock/next-cloudinary/issues/209)
+
+# [4.11.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.10.1...v4.11.0) (2023-05-23)
+
+
+### Features
+
+* Flags ([#205](https://github.com/colbyfayock/next-cloudinary/issues/205)) ([8fe78a5](https://github.com/colbyfayock/next-cloudinary/commit/8fe78a5bcc6566fb916b9691e78fa853bf447514)), closes [#203](https://github.com/colbyfayock/next-cloudinary/issues/203)
+
+## [4.10.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.10.0...v4.10.1) (2023-05-18)
+
+
+### Bug Fixes
+
+* Fixes rerenders caused by parent renders ([#207](https://github.com/colbyfayock/next-cloudinary/issues/207)) ([ead0b89](https://github.com/colbyfayock/next-cloudinary/commit/ead0b899025b19ea405f817a1e54914a0e320599)), closes [#206](https://github.com/colbyfayock/next-cloudinary/issues/206)
+
+# [4.10.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.9.1...v4.10.0) (2023-05-03)
+
+
+### Features
+
+* Quality Auto ([#196](https://github.com/colbyfayock/next-cloudinary/issues/196)) ([fa6fa51](https://github.com/colbyfayock/next-cloudinary/commit/fa6fa51deb236ad37b8e3fdfc003375dd7d81a5e)), closes [#191](https://github.com/colbyfayock/next-cloudinary/issues/191)
+
+## [4.9.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.9.0...v4.9.1) (2023-05-03)
+
+
+### Bug Fixes
+
+* Fixes duplicate effects error ([#199](https://github.com/colbyfayock/next-cloudinary/issues/199)) ([f8ab79e](https://github.com/colbyfayock/next-cloudinary/commit/f8ab79e2eaa06dedf73da7883b349dd50715759e)), closes [#198](https://github.com/colbyfayock/next-cloudinary/issues/198)
+
+# [4.9.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.8.0...v4.9.0) (2023-05-02)
+
+
+### Features
+
+* Trim Effect ([#195](https://github.com/colbyfayock/next-cloudinary/issues/195)) ([d4ab006](https://github.com/colbyfayock/next-cloudinary/commit/d4ab0065ecb58b4a95acfd3f942e418af2ae2cad)), closes [#194](https://github.com/colbyfayock/next-cloudinary/issues/194)
+
+# [4.8.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.7.0...v4.8.0) (2023-04-27)
+
+
+### Features
+
+* Social Image Format & Size ([#190](https://github.com/colbyfayock/next-cloudinary/issues/190)) ([65f6a8b](https://github.com/colbyfayock/next-cloudinary/commit/65f6a8b9152a01d0f6f2b00c2607d25a063c22fd)), closes [#189](https://github.com/colbyfayock/next-cloudinary/issues/189)
+
+# [4.7.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.6.0...v4.7.0) (2023-04-27)
+
+
+### Features
+
+* Adding transformation property to player ([#188](https://github.com/colbyfayock/next-cloudinary/issues/188)) ([5916598](https://github.com/colbyfayock/next-cloudinary/commit/59165989a23bf017b87c53ac108396d539f8b0bb)), closes [#186](https://github.com/colbyfayock/next-cloudinary/issues/186)
+
+# [4.6.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.5.0...v4.6.0) (2023-04-27)
+
+
+### Features
+
+* Video Player ClassName ([#185](https://github.com/colbyfayock/next-cloudinary/issues/185)) ([0ceb591](https://github.com/colbyfayock/next-cloudinary/commit/0ceb59134dbc30546f2d3581d5b93e88738e8c67)), closes [#184](https://github.com/colbyfayock/next-cloudinary/issues/184)
+
+# [4.5.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.4.0...v4.5.0) (2023-04-27)
+
+
+### Features
+
+* getCldOgImageUrl & Docs with Next.js 13 App Usage ([#183](https://github.com/colbyfayock/next-cloudinary/issues/183)) ([199c5bb](https://github.com/colbyfayock/next-cloudinary/commit/199c5bbd808bfadb7ebc4cc8433744d89af86ecc)), closes [#169](https://github.com/colbyfayock/next-cloudinary/issues/169)
+
 # [4.4.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.3.0...v4.4.0) (2023-04-14)
 
 
