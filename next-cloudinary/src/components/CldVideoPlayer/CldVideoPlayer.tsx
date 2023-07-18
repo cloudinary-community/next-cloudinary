@@ -86,6 +86,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     muted,
     publicId: src,
     secure: true,
+    transformation: playerTransformations,
     ...logoOptions
   };
 
