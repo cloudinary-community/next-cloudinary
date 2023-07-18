@@ -1,4 +1,10 @@
 {
-  "nextjs-13": "Next.js 13",
-  "responsive-images": "Responsive Images"
+  "background-removal": "Background Removal",
+  "image-optimization": "Image Optimization",
+  "image-overlays": "Image Overlays",
+  "image-underlays": "Image Underlays",
+  "responsive-images": "Responsive Images",
+  "social-media-card": "Social Media Card",
+  "text-overlays": "Text Overlays",
+  "uploading-images-and-videos": "Uploading Images & Videos"
 }
