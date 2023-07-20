@@ -1,7 +1,23 @@
 {
-  "index": "Getting Started",
-  "installation": "Installation",
-  "nextjs-13": "Next.js 13",
+  "index": {
+    "title": "Getting Started",
+    "theme": {
+      "breadcrumb": false,
+      "toc": false
+    }
+  },
+  "installation": {
+    "title": "Installation",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "nextjs-13": {
+    "title": "Next.js 13",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
   "Components": {
     "type": "separator",
     "title": "Components"
