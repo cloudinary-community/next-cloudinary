@@ -24,56 +24,72 @@ import styles from '../../styles/Docs.module.scss';
 
 ## Examples
 
+<Callout type="info" emoji={false}>
+  Button styles are not included as part of CldUploadButton and are only applied for this demo.
+</Callout>
+
+### Unsigned
+
 export const UnsignedUpload = () => {
   const [resource, setResource] = useState();
   return (
     <>
-      <CldUploadButton
-        className={styles.button}
-        onUpload={(result, widget) => {
-          setResource(result?.info);
-          widget.close();
-        }}
-        uploadPreset="next-cloudinary-unsigned"
-      />
+      <p>
+        <CldUploadButton
+          className={styles.button}
+          onUpload={(result, widget) => {
+            setResource(result?.info);
+            widget.close();
+          }}
+          uploadPreset="next-cloudinary-unsigned"
+        />
+      </p>
 
-      <h3>Unsigned</h3>
-
-      <p>URL: { resource?.secure_url }</p>
+      <p><strong>URL:</strong> { resource?.secure_url || 'Upload to see example result.' }</p>
     </>
   )
 }
+
+<UnsignedUpload />
+
+```
+<CldUploadButton
+  uploadPreset="<Upload Preset>"
+/>
+```
+
+<Callout emoji={false}>
+  The Upload Preset must have unsigned uploads enabled.  Learn more about <a href="https://cloudinary.com/documentation/upload_images#unauthenticated_requests">unauthenticated requests</a>.
+</Callout>
+
+### Signed
 
 export const SignedUpload = () => {
   const [resource, setResource] = useState();
   return (
     <>
-      <CldUploadButton
-        className={styles.button}
-        onUpload={(result, widget) => {
-          setResource(result?.info);
-          widget.close();
-        }}
-        signatureEndpoint="/api/sign-cloudinary-params"
-        uploadPreset="next-cloudinary-signed"
-      />
+      <p>
+        <CldUploadButton
+          className={styles.button}
+          onUpload={(result, widget) => {
+            setResource(result?.info);
+            widget.close();
+          }}
+          signatureEndpoint="/api/sign-cloudinary-params"
+          uploadPreset="next-cloudinary-signed"
+        />
+      </p>
 
-      <h3>Signed</h3>
-
-      <p>URL: { resource?.secure_url }</p>
+      <p><strong>URL:</strong> { resource?.secure_url || 'Upload to see example result.' }</p>
     </>
   )
 }
 
-<ImageGrid>
-  <li>
-    <UnsignedUpload />
-  </li>
-  <li>
-    <SignedUpload />
-  </li>
-</ImageGrid>
+<SignedUpload />
 
-<Callout emoji={false}>
-  Button styles are not included as part of CldUploadButton and are only applied for this demo.
-</Callout>
+```
+<CldUploadButton
+  signatureEndpoint="<Endpoint (ex: /api/sign-cloudinary-params)>"
+  uploadPreset="<Upload Preset>"
+/>
+```
