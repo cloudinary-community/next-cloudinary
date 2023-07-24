@@ -1,3 +1,10 @@
+## [4.16.2](https://github.com/colbyfayock/next-cloudinary/compare/v4.16.1...v4.16.2) (2023-07-24)
+
+
+### Bug Fixes
+
+* Fixes encoding issues not pulled in from dependency update ([#240](https://github.com/colbyfayock/next-cloudinary/issues/240)) ([df48538](https://github.com/colbyfayock/next-cloudinary/commit/df48538fea1fcf356dd59196b5a25fb30c8ecc5c)), closes [#235](https://github.com/colbyfayock/next-cloudinary/issues/235)
+
 ## [4.16.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.16.0...v4.16.1) (2023-07-24)
 
 
