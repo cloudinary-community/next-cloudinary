@@ -1,3 +1,10 @@
+# [4.16.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.15.0...v4.16.0) (2023-07-24)
+
+
+### Features
+
+* CldVideoPlayer URL src ([#237](https://github.com/colbyfayock/next-cloudinary/issues/237)) ([dc662b8](https://github.com/colbyfayock/next-cloudinary/commit/dc662b86d8117785d3543cc6ac95dba1d43776f8)), closes [#236](https://github.com/colbyfayock/next-cloudinary/issues/236)
+
 # [4.15.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.14.1...v4.15.0) (2023-07-18)
 
 
