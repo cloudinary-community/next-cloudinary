@@ -943,20 +943,15 @@
   resolved "https://registry.yarnpkg.com/@braintree/sanitize-url/-/sanitize-url-6.0.2.tgz#6110f918d273fe2af8ea1c4398a88774bb9fc12f"
   integrity sha512-Tbsj02wXCbqGmzdnXNk0SOF19ChhRU70BsroIi4Pm6Ehp56in6vch94mfbdQ17DozxkL3BAVjbZ4Qc1a0HFRAg==
 
-"@cloudinary-util/url-loader@^3.9.1":
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-3.9.1.tgz#71456ceb289de08c27bb8688b3733066a1ec5654"
-  integrity sha512-5j91AbiNIIyWz24hzrpKKEZut08j9px5xGTSwqFS1c2aadBOirOAOY8C23SzJSQNmuBDDZnHgH83EWfrZj3leA==
+"@cloudinary-util/url-loader@^3.10.0":
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-3.10.0.tgz#30dbed4d60968687c9161a60b246da62d42c3e33"
+  integrity sha512-RNp6WayU6e5ikA7yCRqNhp0lOwLl82vLco9EwpES2si6Hb+g9yEaeTYvobD44ISQeJUnPl6e1c/AEYVSjfzwrg==
   dependencies:
-    "@cloudinary-util/util" "2.2.0"
-    "@cloudinary/url-gen" "^1.10.1"
+    "@cloudinary-util/util" "2.2.1"
+    "@cloudinary/url-gen" "^1.10.2"
 
-"@cloudinary-util/util@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-2.2.0.tgz#754f474d69f878249478fb98e1217a219063f482"
-  integrity sha512-FCEwoswGO9z5BmSY0iJLos8U4bmNGIy7Ap8KoJRJ3Vn2STqx+ilDzYMPJTQ8FVcYD1iDajMs52xg00oWO99pNg==
-
-"@cloudinary-util/util@^2.2.1":
+"@cloudinary-util/util@2.2.1", "@cloudinary-util/util@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-2.2.1.tgz#c482d9321d37d921b347858a121c161b68782bd3"
   integrity sha512-MEIqn5WtPP3mxSMTNNfpqlGS1UquAXcjmVdY/t/edD/ZWVjI85viBiOMIuF0W6n6UF5gTstLymfQNYx0YO/GZg==
@@ -968,10 +963,10 @@
   dependencies:
     "@cloudinary/url-gen" "^1.7.0"
 
-"@cloudinary/url-gen@^1.10.1":
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.10.1.tgz#b5b49e03252a90bba17038024f206328482eac96"
-  integrity sha512-6pBmapnL7G231NbNWhKbi+08HcpNASci7M3OmZWaUCQWUfdmo3au27HT3Zqg9NMsisfyer3t7o0RXzPQ4XlmMg==
+"@cloudinary/url-gen@^1.10.2":
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.10.2.tgz#ac538d01473ba523271ff4a72fca97856d49954d"
+  integrity sha512-0iQcowRGxbRMuWijr3gkWajyrtocXyO5va6b2f5AIuA8K5Utd3IEq17DGR93kpOOLU439JBSjORuWifyphGduA==
   dependencies:
     "@cloudinary/transformation-builder-sdk" "^1.2.7"
 

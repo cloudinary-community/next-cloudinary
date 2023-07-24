@@ -218,6 +218,31 @@ describe('Cloudinary Loader', () => {
       expect(result).toContain(`image/upload/${cldOptions.rawTransformations.join('/')}/c_limit,w_${imageProps.width}/f_auto/q_auto/v1/${imageProps.src}`)
     });
 
+    it('should return a Cloudinary URL from a Cloudinary URL source with spaces', async () => {
+
+      const publicId = 'images/woman%20headphones';
+      const src = `https://res.cloudinary.com/next-cloudinary/image/upload/c_limit,w_987/f_auto/q_auto/v1/${publicId}`;
+
+      const imageProps = {
+        height: '600',
+        sizes: '100vw',
+        src,
+        width: '960',
+      }
+
+      const loaderOptions = {
+        quality: 75,
+        src: 'images/turtle',
+        width: 960,
+      }
+
+      const cldOptions = {};
+
+      const result = cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig });
+
+      expect(result).toContain(`image/upload/c_limit,w_${imageProps.width}/f_auto/q_auto/v1/${publicId}`)
+    });
+
     describe('Config', () => {
       it('should add a custom cname via secureDistribution', async () => {
         const imageProps = {
