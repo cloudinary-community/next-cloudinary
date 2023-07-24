@@ -18,7 +18,7 @@ export type CldVideoPlayerProps = Pick<CloudinaryVideoPlayerOptions, "colors" | 
   src: string;
   version?: string;
   videoRef?: MutableRefObject<HTMLVideoElement | null>;
-  quality: string | number;
+  quality?: string | number;
   width: string | number;
 }
 
