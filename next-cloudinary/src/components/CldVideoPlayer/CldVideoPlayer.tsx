@@ -1,6 +1,7 @@
 import React, { useRef, MutableRefObject } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
+import { parseUrl } from '@cloudinary-util/util';
 
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
@@ -37,6 +38,19 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   } = props as CldVideoPlayerProps;
 
   const playerTransformations = Array.isArray(transformation) ? transformation : [transformation];
+  let publicId = src;
+
+  // If the publicId/src is a URL, attempt to parse it as a Cloudinary URL
+  // to get the public ID alone
+
+  if ( publicId.startsWith('http') ) {
+    try {
+      const parts = parseUrl(src);
+      if ( typeof parts?.publicId === 'string' ) {
+        publicId = parts?.publicId;
+      }
+    } catch(e) {}
+  }
 
   // Set default transformations for the player
 
@@ -53,7 +67,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const defaultPlayerRef = useRef()as MutableRefObject<CloudinaryVideoPlayer | null>;
   const playerRef = props.playerRef || defaultPlayerRef;
 
-  const playerId = id || `player-${src.replace('/', '-')}-${idRef.current}`;
+  const playerId = id || `player-${publicId.replace('/', '-')}-${idRef.current}`;
   let playerClassName = 'cld-video-player cld-fluid';
 
   if ( className ) {
@@ -111,7 +125,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         fontFace: fontFace || '',
         loop,
         muted,
-        publicId: src,
+        publicId,
         secure: true,
         transformation: playerTransformations,
         ...logoOptions
