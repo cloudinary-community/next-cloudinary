@@ -1,3 +1,10 @@
+## [4.16.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.16.0...v4.16.1) (2023-07-24)
+
+
+### Bug Fixes
+
+* Fixes CldVideoPlayer quality prop as required, should be optional ([#239](https://github.com/colbyfayock/next-cloudinary/issues/239)) ([52abb1c](https://github.com/colbyfayock/next-cloudinary/commit/52abb1ce2b73ff6c4b5118fe5c2434e9425c830b)), closes [#238](https://github.com/colbyfayock/next-cloudinary/issues/238)
+
 # [4.16.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.15.0...v4.16.0) (2023-07-24)
 
 
