@@ -58,7 +58,7 @@ import { CldImage } from 'next-cloudinary';
 <CldImage width="600" height="600" src="<Public ID or Cloudinary URL>" alt="<Alt Text>" />
 ```
 
-[Learn more about CldImage on the Next Cloudinary Docs](https://next-cloudinary.spacejelly.dev/cldimage/basic-usage)
+[Learn more about CldImage on the Next Cloudinary Docs](https://next.cloudinary.dev/cldimage/basic-usage)
 
 ### Generating an Social Media Card (Open Graph)
 
@@ -68,15 +68,15 @@ import { CldImage } from 'next-cloudinary';
 
 > Note: The width and height is not required (or recommended) to comply with standardized social media card sizing of a 2:1 aspect ratio.
 
-[Learn more about CldOgImage on the Next Cloudinary Docs](https://next-cloudinary.spacejelly.dev/cldogimage/basic-usage)
+[Learn more about CldOgImage on the Next Cloudinary Docs](https://next.cloudinary.dev/cldogimage/basic-usage)
 
 ### Other Use Cases
 
-* [Background Removal](https://next-cloudinary.spacejelly.dev/background-removal)
-* [Image Overlays](https://next-cloudinary.spacejelly.dev/image-overlays)
-* [Image Underlays](https://next-cloudinary.spacejelly.dev/image-underlays)
-* [Social Media Card](https://next-cloudinary.spacejelly.dev/social-media-card)
-* [Text Overlays](https://next-cloudinary.spacejelly.dev/text-overlays)
+* [Background Removal](https://next.cloudinary.dev/guides/background-removal)
+* [Image Overlays](https://next.cloudinary.dev/guides/image-overlays)
+* [Image Underlays](https://next.cloudinary.dev/guides/image-underlays)
+* [Social Media Card](https://next.cloudinary.dev/guides/social-media-card)
+* [Text Overlays](https://next.cloudinary.dev/guides/text-overlays)
 
 ## ❤️ Community & Support
 
