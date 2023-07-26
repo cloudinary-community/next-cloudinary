@@ -2,11 +2,13 @@ import React from 'react';
 import CldUploadWidget, { CldUploadWidgetProps } from '../CldUploadWidget';
 
 export interface CldUploadButtonProps extends Omit<CldUploadWidgetProps, 'children'> {
+  className?: string;
   children?: JSX.Element | string | Array<JSX.Element|string>;
   onClick?: Function;
 }
 
 const CldUploadButton = ({
+  className,
   children,
   onClick,
   onError,
@@ -37,7 +39,7 @@ const CldUploadButton = ({
             }
           }
           return (
-            <button {...props} onClick={handleOnClick} disabled={isLoading} >
+            <button {...props} className={className || ''} onClick={handleOnClick} disabled={isLoading} >
               {children || 'Upload'}
             </button>
           );
