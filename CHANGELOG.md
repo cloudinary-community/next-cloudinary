@@ -1,3 +1,10 @@
+## [4.16.3](https://github.com/colbyfayock/next-cloudinary/compare/v4.16.2...v4.16.3) (2023-07-26)
+
+
+### Bug Fixes
+
+* Fixes CldUploadButton className type ([#246](https://github.com/colbyfayock/next-cloudinary/issues/246)) ([c31104c](https://github.com/colbyfayock/next-cloudinary/commit/c31104c5f0bc37e5c1f480fefe9aef84096a5769)), closes [#241](https://github.com/colbyfayock/next-cloudinary/issues/241)
+
 ## [4.16.2](https://github.com/colbyfayock/next-cloudinary/compare/v4.16.1...v4.16.2) (2023-07-24)
 
 
