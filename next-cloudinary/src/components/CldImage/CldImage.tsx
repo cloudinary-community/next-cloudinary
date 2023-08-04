@@ -75,6 +75,7 @@ const CldImage = (props: CldImageProps) => {
   // via responsive sizing. When passing this in, it also prevents the `loader` from running, thus
   // breaking this component. This rewrites the `src` to construct a fully formed Cloudinary URL
   // that also disables format and quality transformations, to deliver it as unoptimized
+  // See about unoptimized not working with loader: https://github.com/vercel/next.js/issues/50764
 
   if ( props.unoptimized === true ) {
     imageProps.src = getCldImageUrl({
