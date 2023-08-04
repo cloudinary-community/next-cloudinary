@@ -5,13 +5,15 @@ import { transformationPlugins } from '@cloudinary-util/url-loader';
 import type { ImageOptions, ConfigOptions } from '@cloudinary-util/url-loader';
 
 import { pollForProcessingImage } from '../../lib/cloudinary';
+import { getCldImageUrl } from '../../helpers/getCldImageUrl';
 
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
 export type CldImageProps = Omit<ImageProps, 'src'> & ImageOptions & {
-  src: string;
-  preserveTransformations?: boolean;
   config?: ConfigOptions;
+  preserveTransformations?: boolean;
+  src: string;
+  unoptimized?: boolean;
 };
 
 const CldImage = (props: CldImageProps) => {
@@ -31,7 +33,7 @@ const CldImage = (props: CldImageProps) => {
 
   // Construct the base Image component props by filtering out Cloudinary-specific props
 
-  const imageProps = {
+  const imageProps: ImageProps = {
     alt: props.alt,
     src: props.src,
   };
@@ -46,7 +48,7 @@ const CldImage = (props: CldImageProps) => {
 
   // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
 
-  const cldOptions = {};
+  const cldOptions: Omit<ImageOptions, 'src'> = {};
 
   CLD_OPTIONS.forEach(key => {
     // @ts-expect-error
@@ -63,11 +65,25 @@ const CldImage = (props: CldImageProps) => {
   if (props.preserveTransformations) {
     try {
       const transformations = getTransformations(props.src).map(t => t.join(','));
-      // @ts-expect-error
       cldOptions.rawTransformations = [...transformations.flat(), ...(props.rawTransformations || [])];
     } catch(e) {
       console.warn(`Failed to preserve transformations: ${(e as Error).message}`)
     }
+  }
+
+  // The unoptimized flag is intended to remove all optimizations including quality, format, and sizing
+  // via responsive sizing. When passing this in, it also prevents the `loader` from running, thus
+  // breaking this component. This rewrites the `src` to construct a fully formed Cloudinary URL
+  // that also disables format and quality transformations, to deliver it as unoptimized
+  // See about unoptimized not working with loader: https://github.com/vercel/next.js/issues/50764
+
+  if ( props.unoptimized === true ) {
+    imageProps.src = getCldImageUrl({
+      ...cldOptions,
+      format: 'default',
+      quality: 'default',
+      src: imageProps.src as string
+    }, props.config);
   }
 
   /**
