@@ -52,20 +52,8 @@ Configuration for CldImage is the same as [getCldImageUrl](/getcldimageurl/confi
 
 The Next.js Image component provides the ability to pass in an [unoptimized](https://nextjs.org/docs/pages/api-reference/components/image#unoptimized)
 flag as a way to deliver the raw image URL without any quality, format, or size changes. When using
-this, the CldImage component performs the same treatment by not adding the f_auto or q_auto parameters
-as well as not subjecting the image to any resizing.
-
-However, this only works when configuring `unoptimized` at the prop level. The `unoptimized` flag
-can also be configured at the global level inside next.config.js, however there's not a reliable
-way to access this configuration, meaning at this point in time, the CldImage would not work.
-
-To get around this, consider using `unoptimized` if desired at the component level and to avoid
-having to specify this on each instance, create a light wrapper around the CldImage component.
-
-```
-const MyCldImage = (props) => <CldImage {...props} unoptimized />;
-```
-
+this or the global option, the CldImage component performs the same treatment by not adding the
+f_auto or q_auto parameters as well as not subjecting the image to any resizing.
 
 ## Effect Props
 
