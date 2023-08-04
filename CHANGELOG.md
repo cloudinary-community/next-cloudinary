@@ -1,3 +1,10 @@
+## [4.17.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.17.0...v4.17.1) (2023-08-04)
+
+
+### Bug Fixes
+
+* Fixes global unoptimized flag from breaking URLs ([#253](https://github.com/colbyfayock/next-cloudinary/issues/253)) ([2a503c9](https://github.com/colbyfayock/next-cloudinary/commit/2a503c9ae2f17f784d4ae0c32815350a9f6f9462)), closes [#252](https://github.com/colbyfayock/next-cloudinary/issues/252)
+
 # [4.17.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.16.3...v4.17.0) (2023-08-04)
 
 
