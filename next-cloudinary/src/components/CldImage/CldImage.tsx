@@ -77,12 +77,16 @@ const CldImage = (props: CldImageProps) => {
   // that also disables format and quality transformations, to deliver it as unoptimized
   // See about unoptimized not working with loader: https://github.com/vercel/next.js/issues/50764
 
-  if ( props.unoptimized === true ) {
+  const IMAGE_OPTIONS: { unoptimized?: boolean } = (process.env.__NEXT_IMAGE_OPTS || {}) as unknown as object;
+
+  if ( props.unoptimized === true || IMAGE_OPTIONS?.unoptimized === true ) {
     imageProps.src = getCldImageUrl({
       ...cldOptions,
+      width: imageProps.width,
+      height: imageProps.height,
+      src: imageProps.src as string,
       format: 'default',
       quality: 'default',
-      src: imageProps.src as string
     }, props.config);
   }
 
