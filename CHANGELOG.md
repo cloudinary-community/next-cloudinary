@@ -1,3 +1,10 @@
+# [4.17.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.16.3...v4.17.0) (2023-08-04)
+
+
+### Features
+
+* Remove optimizations with unoptimized prop ([#250](https://github.com/colbyfayock/next-cloudinary/issues/250)) ([fed264f](https://github.com/colbyfayock/next-cloudinary/commit/fed264f6a2f1b0803809f30d7de2f9b9f387ce97)), closes [#245](https://github.com/colbyfayock/next-cloudinary/issues/245)
+
 ## [4.16.3](https://github.com/colbyfayock/next-cloudinary/compare/v4.16.2...v4.16.3) (2023-07-26)
 
 
