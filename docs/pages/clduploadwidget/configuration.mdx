@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
 
 import OgImage from '../../components/OgImage';
 
@@ -19,15 +20,32 @@ import OgImage from '../../components/OgImage';
 
 | Prop Name          | Type               | Example                                |
 |--------------------|--------------------|----------------------------------------|
-| onError            | function           | `function (error, widget) { }`         |
-| onUpload           | function           | `function (result, widget) { }`        |
+| children           | function           | `{ (options) => {} }`                  |
+| onError            | function           | `(error, widget) => { }`               |
+| onOpen             | function           | `(widget) => { }`                      |
+| onUpload           | function           | `(result, widget) => { }`              |
+| onAbort            | function           | `(result, options) => { }`             |
+| onBatchCancelled   | function           | `(result, options) => { }`             |
+| onClose            | function           | `(widget) => { }`                      |
+| onDisplayChanged   | function           | `(result, options) => { }`             |
+| onPublicId         | function           | `(result, options) => { }`             |
+| onQueuesEnd        | function           | `(result, options) => { }`             |
+| onQueuesStart      | function           | `(result, options) => { }`             |
+| onRetry            | function           | `(result, options) => { }`             |
+| onShowCompleted    | function           | `(result, options) => { }`             |
+| onSourceChanged    | function           | `(result, options) => { }`             |
+| onSuccess          | function           | `(result, options) => { }`             |
+| onTags             | function           | `(result, options) => { }`             |
+| onUploadAdded      | function           | `(result, options) => { }`             |
 | options            | object             | `{ encryption: {...} }`                |
 | signatureEndpoint  | string             | `"/api/sign-cloudinary-params.js"`     |
 | uploadPreset       | string             | `"my-upload-preset"`                   |
 
+To learn more about the event callbacks and when they trigger, see: https://cloudinary.com/documentation/upload_widget_reference#events
+
 ## Composing Widget UI
 
-CldUploadWidget uses Render Props to pass options to the widget UI.
+CldUploadWidget uses Function as a Child component to pass options to the widget UI.
 
 To make this work, use a function as the direct child of a CldWidget Instance:
 
@@ -39,4 +57,45 @@ To make this work, use a function as the direct child of a CldWidget Instance:
 </CldUploadWidget>
 ```
 
-The first and only argument is an object that contains instances of cloudinary, the widget, and an open function that controls displaying the Upload Widget UI.
+The first and only argument is an object that contains instances of cloudinary, the widget, various instance methods that can control the widget, and other data.
+
+## Callback Options
+
+Most of the callbacks provide a set of options that give access to the widget instance and allow more interaction.
+
+<Callout emoji={false}>
+Future releases will work to create a more consistent interface between older methods and more recently added methods.
+</Callout>
+
+| Name               | Type               | Description                            |
+|--------------------|--------------------|----------------------------------------|
+| widget             | Widget             | The widget instance attached to the current component. |
+| [Instance Methods] | function           | See below.                             |
+
+## Child Function
+
+By passing in a function as the child of the Upload Widget, you're able to gain access to the widget, results, and instance methods to interface directly with the widget.
+
+| Name               | Type               | Description                            |
+|--------------------|--------------------|----------------------------------------|
+| cloudinary         | Cloudinary         | The Cloudinary instance which creates and manages the Widget instance. |
+| error              | string             | The error, if any, produced by an upload widget action. |
+| isLoading          | boolean            | Designates whether the upload widget is loading and initializing. |
+| results            | object             | The event that triggered the results and information related to that event, which can include upload results. |
+| widget             | Widget             | The widget instance attached to the current component. |
+| [Instance Methods] | function           | See below.                             |
+
+## Instance Methods
+
+| Name           | Type               | Description                            |
+|----------------|--------------------|----------------------------------------|
+| close          | function           | Closes and resets the widget to its initial state without removing it from memory. |
+| destroy        | function           | Hides a previously rendered widget while retaining its current state in memory. |
+| hide           | Promise            | Closes the widget and completely removes it from the DOM. Returns a promise that resolves upon cleanup completion. |
+| isDestroyed    | function           | Returns whether the destroy method was called on this instance. |
+| isMinimized    | function           | Returns whether the widget is currently minimized. |
+| isShowing      | function           | Returns whether the widget is currently visible. |
+| minimize       | function           | Minimizes the widget.                  |
+| open           | function           | Renders an existing widget currently in memory, but that is not currently displayed.
+| show           | function           | Renders a previously hidden widget.    |
+| update         | function           | Updates a widget currently in memory with new options. |
