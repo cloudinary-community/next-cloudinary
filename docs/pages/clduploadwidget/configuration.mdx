@@ -16,11 +16,19 @@ import OgImage from '../../components/OgImage';
 
 # CldUploadWidget Configuration
 
-## Props
+## General Props
 
 | Prop Name          | Type               | Example                                |
 |--------------------|--------------------|----------------------------------------|
 | children           | function           | `{ (options) => {} }`                  |
+| options            | object             | `{ encryption: {...} }`                |
+| signatureEndpoint  | string             | `"/api/sign-cloudinary-params.js"`     |
+| uploadPreset       | string             | `"my-upload-preset"`                   |
+
+## Event Props
+
+| Prop Name          | Type               | Example                                |
+|--------------------|--------------------|----------------------------------------|
 | onError            | function           | `(error, widget) => { }`               |
 | onOpen             | function           | `(widget) => { }`                      |
 | onUpload           | function           | `(result, widget) => { }`              |
@@ -37,11 +45,21 @@ import OgImage from '../../components/OgImage';
 | onSuccess          | function           | `(result, options) => { }`             |
 | onTags             | function           | `(result, options) => { }`             |
 | onUploadAdded      | function           | `(result, options) => { }`             |
-| options            | object             | `{ encryption: {...} }`                |
-| signatureEndpoint  | string             | `"/api/sign-cloudinary-params.js"`     |
-| uploadPreset       | string             | `"my-upload-preset"`                   |
 
 To learn more about the event callbacks and when they trigger, see: https://cloudinary.com/documentation/upload_widget_reference#events
+
+### Callback Options
+
+Most of the callbacks provide a set of options that give access to the widget instance and allow more interaction.
+
+<Callout emoji={false}>
+Future releases will work to create a more consistent interface between older methods and more recently added methods.
+</Callout>
+
+| Name               | Type               | Description                            |
+|--------------------|--------------------|----------------------------------------|
+| widget             | Widget             | The widget instance attached to the current component. |
+| [Instance Methods] | function           | See below.                             |
 
 ## Composing Widget UI
 
@@ -59,20 +77,7 @@ To make this work, use a function as the direct child of a CldWidget Instance:
 
 The first and only argument is an object that contains instances of cloudinary, the widget, various instance methods that can control the widget, and other data.
 
-## Callback Options
-
-Most of the callbacks provide a set of options that give access to the widget instance and allow more interaction.
-
-<Callout emoji={false}>
-Future releases will work to create a more consistent interface between older methods and more recently added methods.
-</Callout>
-
-| Name               | Type               | Description                            |
-|--------------------|--------------------|----------------------------------------|
-| widget             | Widget             | The widget instance attached to the current component. |
-| [Instance Methods] | function           | See below.                             |
-
-## Child Function
+### Child Function Options
 
 By passing in a function as the child of the Upload Widget, you're able to gain access to the widget, results, and instance methods to interface directly with the widget.
 
