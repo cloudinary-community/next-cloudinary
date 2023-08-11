@@ -1,3 +1,10 @@
+# [4.18.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.17.1...v4.18.0) (2023-08-11)
+
+
+### Features
+
+* CldUploadWidget Events & Instance Methods ([#255](https://github.com/colbyfayock/next-cloudinary/issues/255)) ([c45455f](https://github.com/colbyfayock/next-cloudinary/commit/c45455f6283900a8b295484b30a13e299cfe85c7)), closes [#251](https://github.com/colbyfayock/next-cloudinary/issues/251)
+
 ## [4.17.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.17.0...v4.17.1) (2023-08-04)
 
 
