@@ -42,6 +42,9 @@ export const UnsignedUpload = ({ options }) => {
           setResource(result?.info);
           widget.close();
         }}
+        onQueuesStart={(result, { widget, minimize }) => {
+          console.log('UnsignedUpload:widget:queues-start', widget);
+        }}
         onOpen={(widget) => {
           console.log('UnsignedUpload:widget:open', widget);
         }}
