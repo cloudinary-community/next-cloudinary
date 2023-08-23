@@ -153,7 +153,7 @@ const CldUploadWidget = ({
     }
 
     if ( typeof widget?.current[method] === 'function' ) {
-      widget.current[method](widget.current);
+      widget.current[method]();
     }
   }
 
