@@ -1,3 +1,10 @@
+## [4.18.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.18.0...v4.18.1) (2023-08-23)
+
+
+### Bug Fixes
+
+* Fixes CldUploadWidget post message error ([#261](https://github.com/colbyfayock/next-cloudinary/issues/261)) ([279b497](https://github.com/colbyfayock/next-cloudinary/commit/279b497c657ae4100baec3f999e879e2453e849f)), closes [#259](https://github.com/colbyfayock/next-cloudinary/issues/259)
+
 # [4.18.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.17.1...v4.18.0) (2023-08-11)
 
 
