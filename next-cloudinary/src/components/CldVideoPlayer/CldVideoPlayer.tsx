@@ -6,9 +6,10 @@ import pkg from '../../../package.json'
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
 
-const CldVideoPlayer = (props: CldVideoPlayerProps) => {
-  const version: string = pkg.dependencies['cloudinary-video-player'];
+// @ts-ignore
+const version: string = pkg.dependencies['cloudinary-video-player'];
 
+const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const {
     autoPlay = 'never',
     className,
@@ -30,8 +31,12 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     src,
     transformation,
     quality = 'auto',
-    width
+    width,
   } = props as CldVideoPlayerProps;
+
+  if ( typeof props.version !== 'undefined' ) {
+    console.warn('The version prop no longer controls the video player version and thus is no longer available for use.');
+  }
 
   const playerTransformations = Array.isArray(transformation) ? transformation : [transformation];
   let publicId = src;
@@ -67,7 +72,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   if ( className ) {
     playerClassName = `${playerClassName} ${className}`;
   }
-
 
   const events: Record<string, Function|undefined> = {
     error: onError,
@@ -124,19 +128,21 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   // Initialize the player
 
   useEffect(() => {
-    if ( !playerId ) return;
+    if ( !playerId || playerRef.current ) return;
 
     (async function run() {
       // @ts-ignore
       const { videoPlayer } = await import('cloudinary-video-player');
 
-      playerRef.current = videoPlayer(videoRef.current, playerOptions);
+      if ( !playerRef.current ) {
+        playerRef.current = videoPlayer(videoRef.current, playerOptions);
 
-      Object.keys(events).forEach((key) => {
-        if ( typeof events[key] === 'function' ) {
-          playerRef.current?.on(key, handleEvent);
-        }
-      });
+        Object.keys(events).forEach((key) => {
+          if ( typeof events[key] === 'function' ) {
+            playerRef.current?.on(key, handleEvent);
+          }
+        });
+      }
     })();
 
     return () => {

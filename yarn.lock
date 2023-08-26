@@ -2240,7 +2240,7 @@ chalk@^2.0.0:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chalk@^4.0.0:
+chalk@^4.0.0, chalk@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
@@ -2273,7 +2273,7 @@ character-reference-invalid@^2.0.0:
   resolved "https://registry.npmjs.org/character-reference-invalid/-/character-reference-invalid-2.0.1.tgz"
   integrity sha512-iBZ4F4wRbyORVsu0jPV7gXkOsGYjGHPmAyv+HiHG8gi5PtC9KI2j1+v8/tlibRvjoWX027ypmG/n0HtO5t7unw==
 
-"chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.1:
+"chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.1, chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.npmjs.org/chokidar/-/chokidar-3.5.3.tgz"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
@@ -2986,6 +2986,16 @@ es6-promise@^4.2.8:
   resolved "https://registry.npmjs.org/es6-promise/-/es6-promise-4.2.8.tgz"
   integrity sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w==
 
+esbuild-plugin-copy@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/esbuild-plugin-copy/-/esbuild-plugin-copy-2.1.1.tgz#638308ecfd679e4c7c76b71c62f7dd9a4cc7f901"
+  integrity sha512-Bk66jpevTcV8KMFzZI1P7MZKZ+uDcrZm2G2egZ2jNIvVnivDpodZI+/KnpL3Jnap0PBdIHU7HwFGB8r+vV5CVw==
+  dependencies:
+    chalk "^4.1.2"
+    chokidar "^3.5.3"
+    fs-extra "^10.0.1"
+    globby "^11.0.3"
+
 esbuild@^0.17.6:
   version "0.17.18"
   resolved "https://registry.npmjs.org/esbuild/-/esbuild-0.17.18.tgz"
@@ -3264,6 +3274,15 @@ form-data@^4.0.0:
     asynckit "^0.4.0"
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
+
+fs-extra@^10.0.1:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.1.0.tgz#02873cfbc4084dde127eaa5f9905eef2325d1abf"
+  integrity sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==
+  dependencies:
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
 
 fs-extra@^8.1.0:
   version "8.1.0"
@@ -4383,6 +4402,15 @@ jsonfile@^4.0.0:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
+jsonfile@^6.0.1:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-6.1.0.tgz#bc55b2634793c679ec6403094eb13698a6ec0aae"
+  integrity sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==
+  dependencies:
+    universalify "^2.0.0"
+  optionalDependencies:
+    graceful-fs "^4.1.6"
+
 katex@^0.16.0:
   version "0.16.7"
   resolved "https://registry.npmjs.org/katex/-/katex-0.16.7.tgz"
@@ -5264,6 +5292,11 @@ minimatch@^3.0.4, minimatch@^3.1.1:
   integrity sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==
   dependencies:
     brace-expansion "^1.1.7"
+
+mkdirp@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-3.0.1.tgz#e44e4c5607fb279c168241713cc6e0fea9adcb50"
+  integrity sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==
 
 mpd-parser@0.22.1, mpd-parser@^0.22.1:
   version "0.22.1"
@@ -6725,6 +6758,11 @@ universalify@^0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/universalify/-/universalify-0.2.0.tgz"
   integrity sha512-CJ1QgKmNg3CwvAv/kOFmtnEN05f0D/cn9QntgNOQlQF9dgvVTHj3t+8JPdjqawCHk7V/KA+fbUqzZ9XWhcqPUg==
+
+universalify@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
+  integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
 
 unpipe@1.0.0:
   version "1.0.0"
