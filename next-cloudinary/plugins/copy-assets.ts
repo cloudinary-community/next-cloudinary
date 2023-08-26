@@ -4,7 +4,7 @@ import { createWriteStream } from 'fs';
 import { mkdirp } from 'mkdirp';
 import https from 'https';
 
-const version = '1.9.4';
+const version = '1.9.14';
 
 const assets = [
   `https://unpkg.com/cloudinary-video-player@${version}/dist/cld-video-player.css`,
