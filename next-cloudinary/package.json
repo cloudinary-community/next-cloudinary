@@ -16,7 +16,7 @@
   "dependencies": {
     "@cloudinary-util/url-loader": "^3.10.0",
     "@cloudinary-util/util": "^2.2.1",
-    "cloudinary-video-player": "^1.9.11"
+    "cloudinary-video-player": "^1.9.14"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
