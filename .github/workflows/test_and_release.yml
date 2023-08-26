@@ -23,7 +23,7 @@ jobs:
 
   release:
     name: Release
-    if: github.event_name == 'push' && github.ref_name == 'main'
+    if: ${{ github.event_name == 'push' && (github.ref_name == 'main' || github.ref_name == 'beta') }}
     needs: tests
     runs-on: ubuntu-latest
     steps:
