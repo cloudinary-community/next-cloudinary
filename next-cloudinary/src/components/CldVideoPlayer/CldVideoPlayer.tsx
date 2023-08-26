@@ -2,6 +2,7 @@ import React, { useRef, MutableRefObject } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import { parseUrl } from '@cloudinary-util/util';
+import config from '../../../config.json';
 
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';

@@ -1,6 +1,8 @@
 "use client";
 
-import { CldImage, CldUploadWidget } from '../../../';
+import { CldImage, CldUploadWidget, CldVideoPlayer } from '../../../';
+
+import '../../../dist/cld-video-player.css';
 
 export default function Home() {
   return (
@@ -11,6 +13,12 @@ export default function Home() {
         options={{
           sources: ['local', 'camera']
         }}
+      />
+      <CldVideoPlayer
+        id="test"
+        width="1620"
+        height="1080"
+        src={`videos/mountain-stars`}
       />
     </>
   )
