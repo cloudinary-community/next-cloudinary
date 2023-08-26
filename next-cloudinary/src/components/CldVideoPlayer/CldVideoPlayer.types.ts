@@ -4,6 +4,7 @@ import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPla
 
 export type CldVideoPlayerProps = Pick<CloudinaryVideoPlayerOptions, "colors" | "controls" | "fontFace" | "loop" | "muted" | "transformation"> & {
   autoPlay?: string;
+  excludeExternalStylesheet?: boolean;
   className?: string;
   height: string | number;
   id?: string;
