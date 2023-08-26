@@ -1,0 +1,71 @@
+import Head from 'next/head';
+import { Callout, Tab, Tabs } from 'nextra-theme-docs';
+
+import OgImage from '../../components/OgImage';
+
+import { CldImage } from '../../../next-cloudinary';
+
+<Head>
+  <title>Background Removal - Next Cloudinary</title>
+  <meta name="og:title" content="Removing a Background from an Image - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/guides/background-removal`} />
+</Head>
+
+<OgImage
+  title="Background Removal"
+  twitterTitle="Removing a Background from an Image"
+/>
+
+# Removing a Background from an Image
+
+The CldImage component allows you to easily remove backgrounds from images using the `removeBackground` prop.
+
+<Callout emoji={false}>
+  Removing backgrounds require enabling the [Cloudinary AI Background Removal Add-On](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) which includes a free tier for getting started.
+</Callout>
+
+## Example
+
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    removeBackground
+    alt="Turtle"
+  />
+</div>
+
+<Tabs items={['CldImage', 'getCldImageUrl']}>
+  <Tab>
+    ```jsx
+    import { CldImage } from 'next-cloudinary';
+
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      removeBackground
+      alt="Turtle"
+    />
+    ```
+  </Tab>
+  <Tab>
+    ```jsx
+    import { getCldImageUrl } from 'next-cloudinary';
+
+    getCldImageUrl({
+      width: 960,
+      height: 600,
+      src: 'images/turtle',
+      removeBackground: true
+    })
+    ```
+  </Tab>
+</Tabs>
+
+## Learn More
+* [CldImage](/cldimage/basic-usage)
+* [getCldImageUrl](/getcldimageurl/basic-usage)

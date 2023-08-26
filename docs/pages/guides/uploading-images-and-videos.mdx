@@ -1,0 +1,77 @@
+import { useState } from 'react';
+import Head from 'next/head';
+import { Tab, Tabs } from 'nextra-theme-docs';
+
+import OgImage from '../../components/OgImage';
+
+import { CldImage, CldUploadButton } from '../../../next-cloudinary';
+
+import styles from '../../styles/Docs.module.scss';
+
+<Head>
+  <title>Background Removal - Next Cloudinary</title>
+  <meta name="og:title" content="Removing a Background from an Image - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/guides/background-removal`} />
+</Head>
+
+<OgImage
+  title="Background Removal"
+  twitterTitle="Removing a Background from an Image"
+/>
+
+# Uploading Images & Videos
+
+Use the [CldUploadButton](/clduploadbutton/basic-usage) or [CldUploadWidget](/clduploadwidget/basic-usage) components to add upload capabilities to your app.
+
+The components utilize the [Cloudinary Upload Widget](https://cloudinary.com/documentation/upload_widget), built for Next.js.
+
+## Example
+
+export const SignedUpload = () => {
+  const [resource, setResource] = useState();
+  return (
+    <>
+      <CldUploadButton
+        className={styles.button}
+        onUpload={(error, result, widget) => {
+          setResource(result?.info);
+          widget.close();
+        }}
+        signatureEndpoint="/api/sign-cloudinary-params"
+        uploadPreset="next-cloudinary-signed"
+      >
+        Upload to Cloudinary
+      </CldUploadButton>
+
+      {resource?.resource_type === 'image' && (
+        <CldImage width={resource.width} height={resource.height} src={resource?.public_id} alt="Uploaded Asset" />
+      )}
+
+      {resource?.resource_type === 'video' && (
+        <video controls width={resource.width} height={resource.height} src={resource?.secure_url} alt="Uploaded Asset" />
+      )}
+    </>
+  )
+}
+
+<SignedUpload />
+
+
+```jsx
+import { CldUploadButton } from 'next-cloudinary';
+
+<CldUploadButton
+  className={styles.button}
+  onUpload={(error, result, widget) => {
+    setResource(result?.info); // Updating local state with asset details
+    widget.close(); // Close widget immediately after successful upload
+  }}
+  signatureEndpoint="/api/sign-cloudinary-params"
+  uploadPreset="next-cloudinary-signed"
+>
+  Upload to Cloudinary
+</CldUploadButton>
+```
+
+## Learn More
+* [CldUploadButton](/clduploadbutton/basic-usage)

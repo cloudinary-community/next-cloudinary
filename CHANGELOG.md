@@ -1,3 +1,66 @@
+## [4.18.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.18.0...v4.18.1) (2023-08-23)
+
+
+### Bug Fixes
+
+* Fixes CldUploadWidget post message error ([#261](https://github.com/colbyfayock/next-cloudinary/issues/261)) ([279b497](https://github.com/colbyfayock/next-cloudinary/commit/279b497c657ae4100baec3f999e879e2453e849f)), closes [#259](https://github.com/colbyfayock/next-cloudinary/issues/259)
+
+# [4.18.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.17.1...v4.18.0) (2023-08-11)
+
+
+### Features
+
+* CldUploadWidget Events & Instance Methods ([#255](https://github.com/colbyfayock/next-cloudinary/issues/255)) ([c45455f](https://github.com/colbyfayock/next-cloudinary/commit/c45455f6283900a8b295484b30a13e299cfe85c7)), closes [#251](https://github.com/colbyfayock/next-cloudinary/issues/251)
+
+## [4.17.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.17.0...v4.17.1) (2023-08-04)
+
+
+### Bug Fixes
+
+* Fixes global unoptimized flag from breaking URLs ([#253](https://github.com/colbyfayock/next-cloudinary/issues/253)) ([2a503c9](https://github.com/colbyfayock/next-cloudinary/commit/2a503c9ae2f17f784d4ae0c32815350a9f6f9462)), closes [#252](https://github.com/colbyfayock/next-cloudinary/issues/252)
+
+# [4.17.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.16.3...v4.17.0) (2023-08-04)
+
+
+### Features
+
+* Remove optimizations with unoptimized prop ([#250](https://github.com/colbyfayock/next-cloudinary/issues/250)) ([fed264f](https://github.com/colbyfayock/next-cloudinary/commit/fed264f6a2f1b0803809f30d7de2f9b9f387ce97)), closes [#245](https://github.com/colbyfayock/next-cloudinary/issues/245)
+
+## [4.16.3](https://github.com/colbyfayock/next-cloudinary/compare/v4.16.2...v4.16.3) (2023-07-26)
+
+
+### Bug Fixes
+
+* Fixes CldUploadButton className type ([#246](https://github.com/colbyfayock/next-cloudinary/issues/246)) ([c31104c](https://github.com/colbyfayock/next-cloudinary/commit/c31104c5f0bc37e5c1f480fefe9aef84096a5769)), closes [#241](https://github.com/colbyfayock/next-cloudinary/issues/241)
+
+## [4.16.2](https://github.com/colbyfayock/next-cloudinary/compare/v4.16.1...v4.16.2) (2023-07-24)
+
+
+### Bug Fixes
+
+* Fixes encoding issues not pulled in from dependency update ([#240](https://github.com/colbyfayock/next-cloudinary/issues/240)) ([df48538](https://github.com/colbyfayock/next-cloudinary/commit/df48538fea1fcf356dd59196b5a25fb30c8ecc5c)), closes [#235](https://github.com/colbyfayock/next-cloudinary/issues/235)
+
+## [4.16.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.16.0...v4.16.1) (2023-07-24)
+
+
+### Bug Fixes
+
+* Fixes CldVideoPlayer quality prop as required, should be optional ([#239](https://github.com/colbyfayock/next-cloudinary/issues/239)) ([52abb1c](https://github.com/colbyfayock/next-cloudinary/commit/52abb1ce2b73ff6c4b5118fe5c2434e9425c830b)), closes [#238](https://github.com/colbyfayock/next-cloudinary/issues/238)
+
+# [4.16.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.15.0...v4.16.0) (2023-07-24)
+
+
+### Features
+
+* CldVideoPlayer URL src ([#237](https://github.com/colbyfayock/next-cloudinary/issues/237)) ([dc662b8](https://github.com/colbyfayock/next-cloudinary/commit/dc662b86d8117785d3543cc6ac95dba1d43776f8)), closes [#236](https://github.com/colbyfayock/next-cloudinary/issues/236)
+
+# [4.15.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.14.1...v4.15.0) (2023-07-18)
+
+
+### Features
+
+* Fixes encoding and missing signature characters ([#232](https://github.com/colbyfayock/next-cloudinary/issues/232)) ([4b520ce](https://github.com/colbyfayock/next-cloudinary/commit/4b520ce2816b3795a3154a6a6ec83932523fa71f)), closes [#219](https://github.com/colbyfayock/next-cloudinary/issues/219)
+
 ## [4.14.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.14.0...v4.14.1) (2023-07-11)
 
 

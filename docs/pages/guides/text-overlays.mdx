@@ -1,0 +1,121 @@
+import Head from 'next/head';
+import { Tab, Tabs } from 'nextra-theme-docs';
+
+import OgImage from '../../components/OgImage';
+
+import { CldImage } from '../../../next-cloudinary';
+
+<Head>
+  <title>Text Overlays - Next Cloudinary</title>
+  <meta name="og:title" content="Adding Text to an Image - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/guides/text-overlays`} />
+</Head>
+
+<OgImage
+  title="Text Overlays"
+  twitterTitle="Adding Text to an Image"
+/>
+
+# Adding Text to an Image
+
+You can add text on top of your image with text-based overlays.
+
+## Example
+
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <CldImage
+    width="1335"
+    height="891"
+    src={`${process.env.IMAGES_DIRECTORY}/sneakers`}
+    sizes="100vw"
+    overlays={[{
+      width: 2670 - 20,
+      crop: 'fit',
+      position: {
+        x: 140,
+        y: 140,
+        angle: -20,
+        gravity: 'south_east',
+      },
+      text: {
+        color: 'blueviolet',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 160,
+        fontWeight: 'bold',
+        textDecoration: 'underline',
+        letterSpacing: 14,
+        text: 'Cool Beans'
+      }
+    }]}
+    alt="Sneakers with Cool Beans"
+  />
+</div>
+
+<Tabs items={['CldImage', 'getCldImageUrl']}>
+  <Tab>
+    ```jsx
+    import { CldImage } from 'next-cloudinary';
+
+    <CldImage
+      width="1335"
+      height="891"
+      src="images/sneakers"
+      sizes="100vw"
+      overlays={[{
+        width: 2670 - 20,
+        crop: 'fit',
+        position: {
+          x: 140,
+          y: 140,
+          angle: -20,
+          gravity: 'south_east',
+        },
+        text: {
+          color: 'blueviolet',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 160,
+          fontWeight: 'bold',
+          textDecoration: 'underline',
+          letterSpacing: 14,
+          text: 'Cool Beans'
+        }
+      }]}
+      alt="Sneakers with Cool Beans"
+    />
+    ```
+  </Tab>
+  <Tab>
+    ```jsx
+    import { getCldImageUrl } from 'next-cloudinary';
+
+    getCldImageUrl({
+      width: 1335,
+      height: 891,
+      src: 'images/sneakers',
+      overlays: [{
+        width: 2670 - 20,
+        crop: 'fit',
+        position: {
+          x: 140,
+          y: 140,
+          angle: -20,
+          gravity: 'south_east',
+        },
+        text: {
+          color: 'blueviolet',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 160,
+          fontWeight: 'bold',
+          textDecoration: 'underline',
+          letterSpacing: 14,
+          text: 'Cool Beans'
+        }
+      }]
+    })
+    ```
+  </Tab>
+</Tabs>
+
+## Learn More
+* [CldImage](/cldimage/basic-usage)
+* [getCldImageUrl](/getcldimageurl/basic-usage)

@@ -1,0 +1,75 @@
+import Head from 'next/head';
+import { Callout, Tab, Tabs } from 'nextra-theme-docs';
+
+import OgImage from '../../components/OgImage';
+import Video from '../../components/Video';
+
+import { CldImage } from '../../../next-cloudinary';
+
+<Head>
+  <title>Image Optimization - Next Cloudinary</title>
+  <meta name="og:title" content="Image Optimization - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/guides/image-overlays`} />
+</Head>
+
+<OgImage
+  title="Image Optimization"
+  twitterTitle="Optimizing Images in Next.js"
+/>
+
+# Optimizing Images in Next.js
+
+Automatically optimize images using the CldImage component. By default, CldImage opts you in to automatic optimization including delivering the most optimal format for the browser (WebP, AVIF).
+
+You can further optimize delivery by using [responsive sizing](/guides/responsive-images) by using the `sizes` prop.
+
+## Example
+
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    alt="Turtle"
+  />
+</div>
+
+<Tabs items={['CldImage', 'getCldImageUrl']}>
+  <Tab>
+    ```jsx
+    import { CldImage } from 'next-cloudinary';
+
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      alt="Turtle"
+    />
+    ```
+  </Tab>
+  <Tab>
+    ```jsx
+    import { getCldImageUrl } from 'next-cloudinary';
+
+    getCldImageUrl({
+      width: 960,
+      height: 600,
+      src: 'images/turtle'
+    });
+    ```
+  </Tab>
+</Tabs>
+
+## Watch & Learn
+
+<Video
+  title="Optimize Images, Responsive Sizing, & AI Cropping in Next.js with Next Cloudinary"
+  url="https://www.youtube.com/watch?v=82gACPNBkaM"
+/>
+
+## Learn More
+* [Responsive Images](/guides/responsive-images)
+* [CldImage](/cldimage/basic-usage)
+* [getCldImageUrl](/getcldimageurl/basic-usage)

@@ -1,0 +1,72 @@
+import Head from 'next/head';
+import { Tab, Tabs } from 'nextra-theme-docs';
+
+import OgImage from '../../components/OgImage';
+
+import { CldImage } from '../../../next-cloudinary';
+
+<Head>
+  <title>Image Underlays - Next Cloudinary</title>
+  <meta name="og:title" content="Adding Layers Under Images - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/guides/image-underlays`} />
+</Head>
+
+<OgImage
+  title="Image Underlays"
+  twitterTitle="Adding Layers Under Images"
+/>
+
+# Adding Layers Under Images
+
+Underlays function very similar to overlays in terms of options, however they **do not support text**.
+
+See the examples above under Overlays to learn more about the available configurations.
+
+## Example
+
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    removeBackground
+    underlay="images/galaxy"
+    alt="Turtle swimming in a galaxy"
+  />
+</div>
+
+<Tabs items={['CldImage', 'getCldImageUrl']}>
+  <Tab>
+    ```jsx
+    import { CldImage } from 'next-cloudinary';
+
+    <CldImage
+      width="960"
+      height="600"
+      src="images/turtle"
+      sizes="100vw"
+      removeBackground
+      underlay="images/galaxy"
+      alt="Turtle swimming in a galaxy"
+    />
+    ```
+  </Tab>
+  <Tab>
+    ```jsx
+    import { getCldImageUrl } from 'next-cloudinary';
+
+    getCldImageUrl({
+      width: 960,
+      height: 600,
+      src: 'images/turtle',
+      removeBackground: true,
+      underlay: 'images/galaxy'
+    })
+    ```
+  </Tab>
+</Tabs>
+
+## Learn More
+* [CldImage](/cldimage/basic-usage)
+* [getCldImageUrl](/getcldimageurl/basic-usage)

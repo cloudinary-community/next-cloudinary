@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState, MutableRefObject,  } from 'react';
+import { parseUrl } from '@cloudinary-util/util';
 import Head from 'next/head';
 import pkg from '../../../package.json'
 
@@ -33,6 +34,19 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   } = props as CldVideoPlayerProps;
 
   const playerTransformations = Array.isArray(transformation) ? transformation : [transformation];
+  let publicId = src;
+
+  // If the publicId/src is a URL, attempt to parse it as a Cloudinary URL
+  // to get the public ID alone
+
+  if ( publicId.startsWith('http') ) {
+    try {
+      const parts = parseUrl(src);
+      if ( typeof parts?.publicId === 'string' ) {
+        publicId = parts?.publicId;
+      }
+    } catch(e) {}
+  }
 
   // Set default transformations for the player
 
@@ -147,7 +161,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
   /**
    *getPlayerRefs
-   */
+  */
 
   function getPlayerRefs() {
     return {

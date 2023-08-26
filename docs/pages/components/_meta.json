@@ -1,7 +1,0 @@
-{
-  "cldimage": "<CldImage />",
-  "cldogimage": "<CldOgImage />",
-  "clduploadbutton": "<CldUploadButton />",
-  "clduploadwidget": "<CldUploadWidget />",
-  "cldvideoplayer": "<CldVideoPlayer />"
-}

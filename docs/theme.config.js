@@ -36,5 +36,8 @@ export default {
       <link rel="manifest" href="/site.webmanifest" />
       <meta name="theme-color" content="#000000" />
     </>
-  )
+  ),
+  sidebar: {
+    defaultMenuCollapseLevel: 1
+  }
 }

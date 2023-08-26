@@ -1,0 +1,873 @@
+import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
+
+import { CldImage } from '../../../next-cloudinary';
+
+import OgImage from '../../components/OgImage';
+import ImageGrid from '../../components/ImageGrid';
+
+<Head>
+  <title>CldImage Examples - Next Cloudinary</title>
+  <meta name="og:title" content="CldImage Examples - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/cldimage/examples`} />
+</Head>
+
+<OgImage
+  title="CldImage Examples"
+  twitterTitle="CldImage Examples"
+/>
+
+# CldImage Examples
+
+## Effects
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      removeBackground
+      alt=""
+    />
+
+    ### Background Removal
+
+    ```jsx
+    removeBackground
+    ```
+
+    <Callout emoji={false}>
+      Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal</a> Add-On
+    </Callout>
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      crop="pad"
+      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      fillBackground
+      alt=""
+    />
+
+    ### Generative Fill
+
+    ```jsx
+    width="960"
+    height="600" // Original 1440
+    crop="pad" // Returns the given size with padding
+    fillBackground // Uses AI to extend image
+    ```
+
+    <Callout emoji={false}>
+      The generative fill transformation is currently in Beta. <a href="https://cloudinary.com/documentation/effects_and_artistic_enhancements#generative_fill">Learn more</a>.
+    </Callout>
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      zoompan="loop"
+      alt=""
+    />
+
+    ### Zoom &amp; Pan
+
+    ```jsx
+    zoompan="loop"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      blur="1200"
+      alt=""
+    />
+
+    ### Blur
+
+    ```jsx
+    blur="1200"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      pixelate
+      alt=""
+    />
+
+    ### Pixelate
+
+    ```jsx
+    pixelate
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      grayscale
+      alt=""
+    />
+
+    ### Grayscale
+
+    ```jsx
+    grayscale
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      tint="equalize:80:blue:blueviolet"
+      alt=""
+    />
+
+    ### Tint
+
+    ```jsx
+    tint="equalize:80:blue:blueviolet"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      opacity="50"
+      alt=""
+    />
+
+    ### Opacity
+
+    ```jsx
+    opacity="50"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      shear="40:0"
+      alt=""
+    />
+
+    ### Shear
+
+    ```jsx
+    shear="40:0"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      border="40px_solid_purple"
+      alt=""
+    />
+
+    ### Border
+
+    ```jsx
+    border="40px_solid_purple"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      removeBackground
+      background="blue"
+      alt=""
+    />
+
+    ### Background
+
+    ```jsx
+    removeBackground
+    background="blue"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      removeBackground
+      trim
+      alt=""
+    />
+
+    ### Trim
+
+    ```jsx
+    removeBackground
+    trim
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      effects={[
+        {
+          background: 'green'
+        },
+        {
+          gradientFade: true
+        },
+        {
+          gradientFade: 'symetric,x_0.5'
+        }
+      ]}
+      alt=""
+    />
+
+    ### Multiple Effects
+
+    ```jsx
+    effects={[
+      {
+        background: 'green'
+      },
+      {
+        gradientFade: true
+      },
+      {
+        gradientFade: 'symetric,x_0.5'
+      }
+    ]}
+    ```
+  </li>
+</ImageGrid>
+
+<a href="https://github.com/colbyfayock/next-cloudinary">See all supported effects on github.com.</a>
+
+## Cropping
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="600"
+      height="900"
+      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      crop="thumb"
+      gravity="auto"
+      alt=""
+    />
+
+    ### Original
+
+  </li>
+  <li>
+    <CldImage
+      width="600"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      crop="thumb"
+      gravity="auto"
+      alt=""
+    />
+
+    ### Thumbnail with Auto Gravity
+
+    ```jsx
+    crop="thumb"
+    gravity="auto"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="600"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      crop="thumb"
+      gravity="faces"
+      alt=""
+    />
+
+    ### Thumbnail with Faces Gravity
+
+    ```jsx
+    crop="thumb"
+    gravity="faces"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="600"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      crop="thumb"
+      gravity="faces"
+      zoom="0.5"
+      alt=""
+    />
+
+    ### Thumbnail with Faces Gravity and Zoom
+
+    ```jsx
+    crop="thumb"
+    gravity="faces"
+    zoom="0.5"
+    ```
+  </li>
+</ImageGrid>
+
+## Image Overlays
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      overlays={[{
+        publicId: `${process.env.IMAGES_DIRECTORY}/earth`,
+        position: {
+          x: 50,
+          y: 50,
+          gravity: 'north_west',
+        },
+        effects: [
+          {
+            crop: 'fill',
+            gravity: 'auto',
+            width: 500,
+            height: 500
+          }
+        ]
+      }]}
+      alt=""
+    />
+
+    ### Overlay Image by Public ID
+
+    ```jsx
+    overlays={[{
+      publicId: `images/earth`,
+      position: {
+        x: 10,
+        y: 10,
+        gravity: 'north_west',
+      },
+      effects: [
+        {
+          crop: 'fill',
+          gravity: 'auto',
+          width: 500,
+          height: 500
+        }
+      ]
+    }]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      crop="fill"
+      src={`${process.env.IMAGES_DIRECTORY}/white`}
+      colorize="100,co_darkviolet"
+      overlays={[{
+        publicId: `images/earth`,
+        effects: [
+          {
+            crop: 'fill',
+            gravity: 'auto',
+            width: 960,
+            height: 600
+          }
+        ],
+        appliedEffects: [
+          {
+            multiply: true
+          }
+        ]
+      }]}
+      alt=""
+    />
+
+    ### Overlay with Multiply Effect
+
+    ```jsx
+    overlays={[{
+      publicId: `images/earth`,
+      effects: [
+        {
+          crop: 'fill',
+          gravity: 'auto',
+          width: 960,
+          height: 600
+        }
+      ],
+      appliedEffects: [
+        {
+          multiply: true
+        }
+      ]
+    }]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      crop="fill"
+      src={`${process.env.IMAGES_DIRECTORY}/white`}
+      colorize="100,co_darkviolet"
+      overlays={[{
+        publicId: `images/earth`,
+        effects: [
+          {
+            crop: 'fill',
+            gravity: 'auto',
+            width: 960,
+            height: 600
+          }
+        ],
+        appliedEffects: [
+          {
+            screen: true
+          }
+        ]
+      }]}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      alt=""
+    />
+
+    ### Overlay with Screen Effect
+
+    ```jsx
+    overlays={[{
+      publicId: `images/earth`,
+      effects: [
+        {
+          crop: 'fill',
+          gravity: 'auto',
+          width: 960,
+          height: 600
+        }
+      ],
+      appliedEffects: [
+        {
+          screen: true
+        }
+      ]
+    }]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      crop="fill"
+      src={`${process.env.IMAGES_DIRECTORY}/white`}
+      colorize="100,co_darkviolet"
+      overlays={[{
+        publicId: `images/earth`,
+        effects: [
+          {
+            crop: 'fill',
+            gravity: 'auto',
+            width: 960,
+            height: 600
+          }
+        ],
+        appliedEffects: [
+          {
+            overlay: true
+          }
+        ]
+      }]}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      alt=""
+    />
+
+    ### Overlay with Overlay Effect
+
+    ```jsx
+    overlays={[{
+      publicId: `images/earth`,
+      effects: [
+        {
+          crop: 'fill',
+          gravity: 'auto',
+          width: 960,
+          height: 600
+        }
+      ],
+      appliedEffects: [
+        {
+          overlay: true
+        }
+      ]
+    }]}
+    ```
+  </li>
+</ImageGrid>
+
+## Image Underlays
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      removeBackground
+      underlay="images/galaxy"
+      alt=""
+    />
+
+    ### Background Removal with Underlay by Public ID
+
+    ```jsx
+    removeBackground
+    underlay="images/galaxy"
+    ```
+
+    <Callout emoji={false}>
+      Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal</a> Add-On
+    </Callout>
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      removeBackground
+      underlays={[
+        {
+          publicId: 'images/galaxy',
+          width: 480,
+          height: 600,
+          crop: 'fill',
+          position: {
+            gravity: 'north_west'
+          }
+        },
+        {
+          publicId: 'images/mountain',
+          width: 480,
+          height: 600,
+          crop: 'fill',
+          position: {
+            gravity: 'south_east'
+          }
+        },
+      ]}
+      alt=""
+    />
+
+    ### Background Removal with Multiple Underlays
+
+    ```jsx
+    removeBackground
+    underlays={[
+      {
+        publicId: 'images/galaxy',
+        width: 480,
+        height: 600,
+        crop: 'fill',
+        position: {
+          gravity: 'north_west'
+        }
+      },
+      {
+        publicId: 'images/mountain',
+        width: 480,
+        height: 600,
+        crop: 'fill',
+        position: {
+          gravity: 'south_east'
+        }
+      },
+    ]}
+    ```
+
+    <Callout emoji={false}>
+      Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal</a> Add-On
+    </Callout>
+  </li>
+</ImageGrid>
+
+## Text Overlays
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="1335"
+      height="891"
+      src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      blur="2000"
+      brightness="300"
+      text="Cool Beans"
+      alt=""
+    />
+
+    ### Text Overlay with text prop
+
+    ```jsx
+    text="Cool Beans"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="1335"
+      height="891"
+      src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      blur="2000"
+      brightness="300"
+      overlays={[{
+        text: 'Cool Beans'
+      }]}
+      alt=""
+    />
+
+    ### Text Overlay with text string
+
+    ```jsx
+    overlays={[{
+      text: 'Cool Beans'
+    }]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="1335"
+      height="891"
+      src={`${process.env.IMAGES_DIRECTORY}/sneakers`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      overlays={[{
+        width: 2670 - 20,
+        crop: 'fit',
+        position: {
+          x: 140,
+          y: 140,
+          angle: -20,
+          gravity: 'south_east',
+        },
+        text: {
+          color: 'blueviolet',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 160,
+          fontWeight: 'bold',
+          textDecoration: 'underline',
+          letterSpacing: 14,
+          text: 'Cool Beans'
+        }
+      }]}
+      alt=""
+    />
+
+    ### Text Overlay with overlay configuration
+
+    ```jsx
+    overlays={[{
+      width: 2670 - 20,
+      crop: 'fit',
+      position: {
+        x: 10,
+        y: 10,
+        gravity: 'north_west',
+      },
+      text: {
+        color: 'blueviolet',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 160,
+        fontWeight: 'bold',
+        textDecoration: 'underline',
+        letterSpacing: 14,
+        text: 'Cool Beans'
+      }
+    }]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="1335"
+      height="891"
+      src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      overlays={[{
+        text: {
+          color: 'white',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 160,
+          fontWeight: 'bold',
+          text: 'Cool Beans'
+        },
+        effects: [
+          {
+            shear: '40:0',
+            opacity: 50
+          }
+        ]
+      }]}
+      alt=""
+    />
+
+    ### Text Overlay with Effects
+
+    ```jsx
+    overlays={[{
+      text: {
+        color: 'white',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 160,
+        fontWeight: 'bold',
+        text: 'Cool Beans'
+      },
+      effects: [
+        {
+          shear: '40:0',
+          opacity: 50
+        }
+      ]
+    }]}
+    ```
+  </li>
+</ImageGrid>
+
+## Next Image Features
+
+<ImageGrid>
+  <li>
+    <div style={{ position: 'relative', height: '10em' }}>
+      <CldImage
+        src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+        fill={true}
+        alt=""
+      />
+    </div>
+
+    ### Fill
+
+    ```jsx
+    <div style={{ position: 'relative', height: '10em' }}>
+    ...
+    fill={true}
+    ```
+  </li>
+</ImageGrid>
+
+## Flags
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      flags={['keep_iptc']}
+      quality="default"
+      alt=""
+    />
+
+    ### Keep IPTC
+
+    ```jsx
+    flags={['keep_iptc']}
+    quality="default"
+    ```
+
+    <Callout emoji={false}>
+      The `keep_iptc` flag requires not including a quality of auto. Using `quality="default"` avoids setting the quality flag in the URL.
+    </Callout>
+  </li>
+</ImageGrid>
+
+## Other
+
+<ImageGrid>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      transformations={[
+        'next-cloudinary-named-transformation'
+      ]}
+      alt=""
+    />
+
+    ### Named Transformations
+
+    ```jsx
+    transformations={[
+      'next-cloudinary-named-transformation'
+    ]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      rawTransformations={['c_crop,h_359,w_517,x_1200,y_100/c_scale,h_359,w_517/f_auto,q_auto']}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      alt=""
+    />
+
+    ### Raw Transformations
+
+    ```jsx
+    rawTransformations={[
+      // Example from Cloudinary Media Editor widget
+      'c_crop,h_359,w_517,x_1483,y_0/c_scale,h_359,w_517/f_auto,q_auto'
+    ]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_fill,h_300,w_250/e_blur:1000/v1/${process.env.IMAGES_DIRECTORY}/turtle`}
+      preserveTransformations
+      tint="equalize:80:blue:blueviolet"
+      sizes="(max-width: 480px) 100vw, 50vw"
+      alt=""
+    />
+
+    ### Preserve Transformations
+
+    ```jsx
+    src={`https://res.cloudinary.com/<Cloud Name>/image/upload/c_fill,h_300,w_250/e_blur:1000/v1/<Public ID>`}
+    preserveTransformations
+    tint="equalize:80:blue:blueviolet"
+    ```
+  </li>
+</ImageGrid>

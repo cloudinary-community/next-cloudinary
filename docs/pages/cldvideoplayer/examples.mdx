@@ -1,0 +1,192 @@
+import { useRef } from 'react';
+import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
+
+import { CldVideoPlayer } from '../../../next-cloudinary';
+
+import OgImage from '../../components/OgImage';
+import ImageGrid from '../../components/ImageGrid';
+
+export const VideoPlayerWithRef = (props) => {
+  const myPlayerRef = useRef();
+  return (
+    <CldVideoPlayer
+      playerRef={myPlayerRef}
+      onDataLoad={() => console.log('VideoPlayerWithRef:data-loaded')}
+      onMetadataLoad={() => {
+        console.log('VideoPlayerWithRef:metadata-loaded');
+        console.log(`VideoPlayerWithRef:duration: ${myPlayerRef.current.duration()}`);
+      }}
+      {...props}
+    />
+  );
+}
+
+<Head>
+  <title>CldVideoPlayer Examples - Next Cloudinary</title>
+  <meta name="og:title" content="CldVideoPlayer Examples - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/CldVideoPlayer/examples`} />
+</Head>
+
+<OgImage
+  title="CldVideoPlayer Examples"
+  twitterTitle="CldVideoPlayer Examples"
+/>
+
+# CldVideoPlayer Examples
+
+## Effects
+
+<ImageGrid columns={1}>
+  <li>
+    <CldVideoPlayer
+      width="1620"
+      height="1080"
+      src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
+    />
+
+    ### Default
+
+    Basic settings to display a video.
+
+    ```jsx
+    width="1620"
+    height="1080"
+    src="videos/mountain-stars"
+    ```
+  </li>
+  <li>
+    <div style={{ maxWidth: 500, margin: '0 auto' }}>
+      <CldVideoPlayer
+        width="500"
+        height="500"
+        src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+        transformation={{
+          width: 500,
+          height: 500,
+          crop: 'fill',
+          gravity: 'auto'
+        }}
+      />
+    </div>
+
+    ### Crop & Resize
+
+    Basic settings to display a video.
+
+    ```jsx
+    width="1620"
+    height="1080"
+    src="videos/dog-running-snow"
+    ```
+  </li>
+  <li>
+    <CldVideoPlayer
+      width="1620"
+      height="1080"
+      src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
+      transformation={{
+        overlay: `${process.env.ASSETS_DIRECTORY}:space-jelly-cosmo-helmet`,
+        width: 150,
+        gravity: "south_east",
+        x: 50,
+        y: 50,
+        opacity: 80
+      }}
+    />
+
+    ### Transformation: overlay
+
+    Adding a watermark to a video.
+
+    ```jsx
+    src="videos/mountain-stars"
+    transformation={{
+      overlay: "assets:space-jelly-cosmo-helmet",
+      width: 150,
+      gravity: "south_east",
+      x: 50,
+      y: 50,
+      opacity: 40
+    }}
+    ```
+  </li>
+  <li>
+    <CldVideoPlayer
+      width="4096"
+      height="2160"
+      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+      colors={{
+        accent: '#ff0000',
+        base: '#00ff00',
+        text: '#0000ff'
+      }}
+      fontFace="Source Serif Pro"
+    />
+
+    ### Custom Player Colors & Font
+
+    Changing the player theme using colors and fonts
+
+    ```jsx
+    colors={{
+      accent: '#ff0000',
+      base: '#00ff00',
+      text: '#0000ff'
+    }}
+    fontFace="Source Serif Pro"
+    ```
+  </li>
+  <li>
+    <CldVideoPlayer
+      width="4096"
+      height="2160"
+      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+      logo={{
+        imageUrl: 'https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/v1676058142/assets/space-jelly-cosmo-helmet.svg',
+        onClickUrl: 'https://spacejelly.dev'
+      }}
+    />
+
+    ### Custom Logo
+
+    Adding a custom logo to the player chrome
+
+    ```jsx
+    logo={{
+      imageUrl: 'https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/v1676058142/assets/space-jelly-cosmo-helmet.svg',
+      onClickUrl: 'https://spacejelly.dev'
+    }}
+    ```
+  </li>
+  <li>
+    <VideoPlayerWithRef
+      width="4096"
+      height="2160"
+      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+    />
+
+    ### With Ref on Callback
+
+    Using a ref to access the player instance
+
+    ```jsx
+    playerRef={myPlayerRef}
+    onMetadataLoad={() => {
+      console.log('metadata-loaded');
+      console.log(`duration: ${myPlayerRef.current.duration()}`);
+    }}
+    ```
+
+    <Callout emoji={false}>
+      Note: the `player` instance is also passed in the callback function:
+    </Callout>
+
+    ```jsx
+    onMetadataLoad={({ player }) => {
+      console.log('metadata-loaded');
+      console.log(`duration: ${player.duration()}`);
+    }}
+    ```
+  </li>
+</ImageGrid>

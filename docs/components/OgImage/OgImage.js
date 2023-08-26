@@ -44,7 +44,7 @@ const OgImage = ({ title, ...props }) => {
             fontFamily: 'Source Sans Pro',
             fontSize: 60,
             fontWeight: 'bold',
-            text: 'next-cloudinary.spacejelly.dev'
+            text: 'next.cloudinary.dev'
           }
         }
       ]}

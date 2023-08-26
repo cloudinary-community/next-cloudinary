@@ -1,0 +1,93 @@
+import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
+
+import { CldImage } from '../../../next-cloudinary';
+import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../../next-cloudinary/src/constants/sizes';
+
+import OgImage from '../../components/OgImage';
+import ImageGrid from '../../components/ImageGrid';
+
+<Head>
+  <title>CldOgImage Examples - Next Cloudinary</title>
+  <meta name="og:title" content="CldOgImage Examples - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/cldogimage/examples`} />
+</Head>
+
+<OgImage
+  title="CldOgImage Examples"
+  twitterTitle="CldOgImage Examples"
+/>
+
+# CldOgImage Examples
+
+<Callout emoji={false}>
+  CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. The following examples make use of the `<CldImage>` tag to showcase what's possible.
+</Callout>
+
+## Effects
+
+<ImageGrid columns={1}>
+  <li>
+    <CldImage
+      width={OG_IMAGE_WIDTH}
+      height={OG_IMAGE_HEIGHT}
+      crop="fill"
+      gravity="auto"
+      src={`${process.env.IMAGES_DIRECTORY}/white`}
+      sizes="100vw"
+      text="Next Cloudinary"
+      alt="Next Cloudinary"
+    />
+
+    ### Text over a white background
+
+    ```jsx
+    text="Next Cloudinary"
+    ```
+  </li>
+  <li>
+    <CldImage
+      width={OG_IMAGE_WIDTH}
+      height={OG_IMAGE_HEIGHT}
+      crop="fill"
+      gravity="auto"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      tint="100:0000FF:0p:FF1493:100p"
+      blur="2000"
+      removeBackground
+      overlays={[{
+        text: {
+          color: 'white',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 200,
+          fontWeight: 'bold',
+          text: 'Next Cloudinary'
+        }
+      }]}
+      underlay="images/galaxy"
+      alt="Next Cloudinary on a Galaxy"
+    />
+
+    ### Background removal with custom background
+
+    ```jsx
+    tint="100:0000FF:0p:FF1493:100p"
+    blur="2000"
+    removeBackground
+    overlays={[{
+      text: {
+        color: 'white',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 200,
+        fontWeight: 'bold',
+        text: 'Next Cloudinary'
+      }
+    }]}
+    underlay="images/galaxy"
+    ```
+  </li>
+</ImageGrid>
+
+
+
+

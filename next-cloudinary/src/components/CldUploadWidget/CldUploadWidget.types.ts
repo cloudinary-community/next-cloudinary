@@ -1,21 +1,56 @@
+// TODO: widget needs to be typed
+
+export type CldUploadWidgetCloudinaryInstance = any;
+export type CldUploadWidgetWidgetInstance = any;
+
+export interface CldUploadWidgetResults {
+  event?: string;
+  info?: string | object;
+}
+
+export type CldUploadWidgetError = string | null;
+
 export interface CldUploadWidgetProps {
   children?: ({ cloudinary, widget, open, results, error }: CldUploadWidgetPropsChildren) => JSX.Element;
-  onClose?: Function;
-  onError?: Function;
-  onOpen?: Function;
-  onUpload?: Function;
+  onError?: CldUploadEventCallbackError;
+  onOpen?: CldUploadEventCallbackWidgetOnly;
+  onUpload?: CldUploadEventCallbackNoOptions;
+  onAbort?: CldUploadEventCallback;
+  onBatchCancelled?: CldUploadEventCallback;
+  onClose?: CldUploadEventCallbackWidgetOnly;
+  onDisplayChanged?: CldUploadEventCallback;
+  onPublicId?: CldUploadEventCallback;
+  onQueuesEnd?: CldUploadEventCallback;
+  onQueuesStart?: CldUploadEventCallback;
+  onRetry?: CldUploadEventCallback;
+  onShowCompleted?: CldUploadEventCallback;
+  onSourceChanged?: CldUploadEventCallback;
+  onSuccess?: CldUploadEventCallback;
+  onTags?: CldUploadEventCallback;
+  onUploadAdded?: CldUploadEventCallback;
   options?: CldUploadWidgetPropsOptions;
   signatureEndpoint?: URL | RequestInfo;
   uploadPreset?: string;
 }
 
 export interface CldUploadWidgetPropsChildren {
-  cloudinary: any;
-  widget: any;
-  open: Function;
-  results?: object;
-  error?: any;
+  cloudinary: CldUploadWidgetCloudinaryInstance;
+  widget: CldUploadWidgetWidgetInstance;
+
+  error?: CldUploadWidgetError;
   isLoading?: boolean;
+  results?: CldUploadWidgetResults;
+
+  close: Function;
+  destroy: Function;
+  hide: Function;
+  isDestroyed: Function;
+  isMinimized: Function;
+  isShowing: Function;
+  minimize: Function;
+  open: Function;
+  show: Function;
+  update: Function;
 }
 
 // Parameters sourced from:
@@ -124,7 +159,21 @@ export interface CldUploadWidgetPropsOptions {
   singleUploadAutoClose?: boolean;
 }
 
-export interface CldUploadWidgetResults {
-  event: string;
-  info: string;
+export type CldUploadEventCallback = (results: CldUploadWidgetResults, widget: CldUploadEventCallbackWidget) => void;
+export type CldUploadEventCallbackNoOptions = (results: CldUploadWidgetResults, widget: CldUploadWidgetWidgetInstance) => void;
+export type CldUploadEventCallbackWidgetOnly = (widget: CldUploadWidgetWidgetInstance) => void;
+export type CldUploadEventCallbackError = (error: CldUploadWidgetError, widget: CldUploadWidgetWidgetInstance) => void;
+
+export interface CldUploadEventCallbackWidget {
+  close: Function;
+  destroy: Function;
+  hide: Function;
+  isDestroyed: Function;
+  isMinimized: Function;
+  isShowing: Function;
+  minimize: Function;
+  open: Function;
+  show: Function;
+  update: Function;
+  widget: CldUploadWidgetWidgetInstance;
 }

@@ -3,12 +3,38 @@ import Script from 'next/script';
 
 import { triggerOnIdle } from '../../lib/util';
 
-import { CldUploadWidgetProps, CldUploadWidgetResults } from './CldUploadWidget.types';
+import {
+  CldUploadEventCallback,
+  CldUploadWidgetCloudinaryInstance,
+  CldUploadWidgetError,
+  CldUploadWidgetProps,
+  CldUploadWidgetResults,
+  CldUploadWidgetWidgetInstance,
+} from './CldUploadWidget.types';
 
 const WIDGET_WATCHED_EVENTS = [
   'success',
   'display-changed'
 ];
+
+const WIDGET_EVENTS: { [key: string]: string } = {
+  'abort': 'onAbort',
+  'batch-cancelled': 'onBatchCancelled',
+  // 'close': 'onClose', // TODO: should follow other event patterns
+  'display-changed': 'onDisplayChanged',
+  'publicid': 'onPublicId',
+  'queues-end': 'onQueuesEnd',
+  'queues-start': 'onQueuesStart',
+  'retry': 'onRetry',
+  'show-completed': 'onShowCompleted',
+  'source-changed': 'onSourceChanged',
+  'success': 'onSuccess',
+  'tags': 'onTags',
+  'upload-added': 'onUploadAdded',
+}
+
+// TODO: update onError to follow CldUploadEventCallback pattern
+// TODO: update onClose to follow CldUploadEventCallback pattern
 
 const CldUploadWidget = ({
   children,
@@ -19,13 +45,14 @@ const CldUploadWidget = ({
   options,
   signatureEndpoint,
   uploadPreset,
+  ...props
 }: CldUploadWidgetProps) => {
-  const cloudinary: any = useRef();
-  const widget: any = useRef();
+  const cloudinary: CldUploadWidgetCloudinaryInstance = useRef();
+  const widget: CldUploadWidgetWidgetInstance = useRef();
 
   const signed = !!signatureEndpoint;
 
-  const [error, setError] = useState(undefined);
+  const [error, setError] = useState<CldUploadWidgetError | undefined>(undefined);
   const [results, setResults] = useState<CldUploadWidgetResults | undefined>(undefined);
   const [isScriptLoading, setIsScriptLoading] = useState(true);
 
@@ -115,42 +142,105 @@ const CldUploadWidget = ({
   }
 
   /**
+   * Instance Methods
+   * Gives the ability to interface directly with the Upload Widget instance methods like open and close
+   * https://cloudinary.com/documentation/upload_widget_reference#instance_methods
+   */
+
+  function invokeInstanceMethod(method: string) {
+    if (!widget.current) {
+      widget.current = createWidget();
+    }
+
+    if ( typeof widget?.current[method] === 'function' ) {
+      widget.current[method]();
+    }
+  }
+
+  function close() {
+    invokeInstanceMethod('close');
+  }
+
+  function destroy() {
+    invokeInstanceMethod('destroy');
+  }
+  
+  function hide() {
+    invokeInstanceMethod('hide');
+  }
+  
+  function isDestroyed() {
+    invokeInstanceMethod('isDestroyed');
+  }
+  
+  function isMinimized() {
+    invokeInstanceMethod('isMinimized');
+  }
+  
+  function isShowing() {
+    invokeInstanceMethod('isShowing');
+  }
+
+  function minimize() {
+    invokeInstanceMethod('minimize');
+  }
+
+  function open() {
+    invokeInstanceMethod('open');
+
+    if ( typeof onOpen === 'function' ) {
+      onOpen(widget.current);
+    }
+  }
+
+  function show() {
+    invokeInstanceMethod('show');
+  }
+
+  function update() {
+    invokeInstanceMethod('update');
+  }
+
+  const instanceMethods = {
+    close,
+    destroy,
+    hide,
+    isDestroyed,
+    isMinimized,
+    isShowing,
+    minimize,
+    open,
+    show,
+    update,
+  }
+
+  /**
    * createWidget
    * @description Creates a new instance of the Cloudinary widget and stores in a ref
    */
 
   function createWidget() {
-    return cloudinary.current?.createUploadWidget(uploadOptions, (uploadError: any, uploadResult: any) => {
-      // The callback is a bit more chatty than failed or success so
-      // only trigger when one of those are the case. You can additionally
-      // create a separate handler such as onEvent and trigger it on
-      // ever occurrence
-
-      if ( typeof uploadError !== 'undefined' ) {
+    return cloudinary.current?.createUploadWidget(uploadOptions, (uploadError: CldUploadWidgetError, uploadResult: CldUploadWidgetResults) => {
+      if ( typeof uploadError == 'string' ) {
         setError(uploadError);
       }
 
-      if ( WIDGET_WATCHED_EVENTS.includes(uploadResult?.event) ) {
-        setResults(uploadResult);
+      if ( typeof uploadResult?.event === 'string' ) {
+        if ( WIDGET_WATCHED_EVENTS.includes(uploadResult?.event) ) {
+          setResults(uploadResult);
+        }
+
+        const widgetEvent = WIDGET_EVENTS[uploadResult.event] as keyof typeof props;
+
+        if ( typeof widgetEvent === 'string' && typeof props[widgetEvent] === 'function' && typeof props[widgetEvent] ) {
+          const callback = props[widgetEvent] as CldUploadEventCallback;
+          callback(uploadResult, {
+            widget: widget.current,
+            ...instanceMethods
+          });
+        }
       }
     });
-  }
-
-  /**
-   * open
-   * @description When triggered, uses the current widget instance to open the upload modal
-   */
-
-  function open() {
-    if (!widget.current) {
-      widget.current = createWidget();
-    }
-
-    widget?.current.open();
-
-    if ( typeof onOpen === 'function' ) {
-      onOpen(widget.current);
-    }
   }
 
   return (
@@ -158,10 +248,10 @@ const CldUploadWidget = ({
       {typeof children === 'function' && children({
         cloudinary: cloudinary.current,
         widget: widget.current,
-        open,
         results,
         error,
         isLoading: isScriptLoading,
+        ...instanceMethods,
         })}
       <Script
         id={`cloudinary-uploadwidget-${Math.floor(Math.random() * 100)}`}
