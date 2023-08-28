@@ -1,3 +1,10 @@
+# [4.19.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.18.1...v4.19.0) (2023-08-28)
+
+
+### Features
+
+* CldVideoPlayer support for Next.js 13 App Router ([#265](https://github.com/colbyfayock/next-cloudinary/issues/265)) ([8674b95](https://github.com/colbyfayock/next-cloudinary/commit/8674b95a8a105bb0d2b995542f1e9f59f7d4a9ae)), closes [#181](https://github.com/colbyfayock/next-cloudinary/issues/181) [#248](https://github.com/colbyfayock/next-cloudinary/issues/248)
+
 ## [4.18.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.18.0...v4.18.1) (2023-08-23)
 
 
