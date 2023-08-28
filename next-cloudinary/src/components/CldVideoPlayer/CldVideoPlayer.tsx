@@ -32,13 +32,17 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     onEnded,
     src,
     transformation,
-    version = '1.9.4',
+    version = '1.9.14',
     quality = 'auto',
     width,
   } = props as CldVideoPlayerProps;
 
   const playerTransformations = Array.isArray(transformation) ? transformation : [transformation];
   let publicId = src;
+
+  if ( typeof props.version === 'string' ) {
+    console.warn('The version prop will no longer be supported in future versions due to the unreliability of coordinating assets');
+  }
 
   // If the publicId/src is a URL, attempt to parse it as a Cloudinary URL
   // to get the public ID alone

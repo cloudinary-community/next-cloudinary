@@ -1,4 +1,5 @@
 import { defineConfig } from 'tsup'
+import { plugin as CopyAssetsPlugin } from './plugins/copy-assets';
 
 export default defineConfig({
   minify: true,
@@ -6,5 +7,6 @@ export default defineConfig({
   external: ['react'],
   sourcemap: true,
   dts: true,
-  format: ['esm', 'cjs']
+  format: ['esm', 'cjs'],
+  esbuildPlugins: [CopyAssetsPlugin]
 })
