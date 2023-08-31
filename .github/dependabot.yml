@@ -9,3 +9,10 @@ updates:
     directory: "/next-cloudinary"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-name: "@cloudinary-util/url-loader"
+      - dependency-name: "@cloudinary-util/util"
