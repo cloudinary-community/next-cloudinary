@@ -1,3 +1,10 @@
+# [4.20.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.19.0...v4.20.0) (2023-08-31)
+
+
+### Features
+
+* Dependabot Patches ([#274](https://github.com/colbyfayock/next-cloudinary/issues/274)) ([c130fb5](https://github.com/colbyfayock/next-cloudinary/commit/c130fb51424400e08b659d12e39ab52712d7ffcd))
+
 # [4.19.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.18.1...v4.19.0) (2023-08-28)
 
 
