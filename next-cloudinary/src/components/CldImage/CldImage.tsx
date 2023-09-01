@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, forwardRef } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { getTransformations } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
@@ -16,7 +16,7 @@ export type CldImageProps = Omit<ImageProps, 'src'> & ImageOptions & {
   unoptimized?: boolean;
 };
 
-const CldImage = (props: CldImageProps) => {
+const CldImage = forwardRef<HTMLImageElement, CldImageProps>((props, ref) => {
   const CLD_OPTIONS = [
     'deliveryType',
     'preserveTransformations'
@@ -138,8 +138,11 @@ const CldImage = (props: CldImageProps) => {
       {...imageProps}
       loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig: props.config })}
       onError={handleOnError}
+      ref={ref}
     />
   );
-}
+});
+
+CldImage.displayName = 'CldImage';
 
 export default CldImage;
