@@ -12,6 +12,7 @@
     "@vercel/analytics": "^1.0.1",
     "cloudinary": "^1.37.3",
     "next": "^13.4.9",
+    "nextjs-google-analytics": "^2.3.3",
     "nextra": "^2.9.0",
     "nextra-theme-docs": "^2.9.0",
     "react": "^18.2.0",
