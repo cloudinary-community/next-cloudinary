@@ -1,3 +1,10 @@
+# [4.21.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.20.0...v4.21.0) (2023-09-07)
+
+
+### Features
+
+* Update CldImage to support forwardRef. ([#276](https://github.com/colbyfayock/next-cloudinary/issues/276)) ([7895737](https://github.com/colbyfayock/next-cloudinary/commit/789573757bca0c7a46d186f16bf52ad412943bc2)), closes [#275](https://github.com/colbyfayock/next-cloudinary/issues/275)
+
 # [4.20.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.19.0...v4.20.0) (2023-08-31)
 
 
