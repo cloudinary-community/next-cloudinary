@@ -1,3 +1,10 @@
+# [4.22.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.21.0...v4.22.0) (2023-09-15)
+
+
+### Features
+
+* Upgrade Video Player to 1.9.16 ([#280](https://github.com/colbyfayock/next-cloudinary/issues/280)) ([5bc4988](https://github.com/colbyfayock/next-cloudinary/commit/5bc498875225fb36ac0ba75b656a7bd6ac880517))
+
 # [4.21.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.20.0...v4.21.0) (2023-09-07)
 
 
