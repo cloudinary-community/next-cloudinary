@@ -38,7 +38,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   } = props as CldVideoPlayerProps;
 
   const playerTransformations = Array.isArray(transformation) ? transformation : [transformation];
-  let publicId = src;
+  let publicId: string = src || "";
 
   if ( typeof props.version === 'string' ) {
     console.warn('The version prop will no longer be supported in future versions due to the unreliability of coordinating assets');
