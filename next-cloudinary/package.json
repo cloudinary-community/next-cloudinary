@@ -1,6 +1,6 @@
 {
   "name": "next-cloudinary",
-  "version": "4.22.0",
+  "version": "4.22.1",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

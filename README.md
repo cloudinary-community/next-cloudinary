@@ -91,7 +91,7 @@ Please read [CONTRIBUTING.md](https://github.com/colbyfayock/next-cloudinary/blo
 
 #### Installation
 
-This project is currently using [yarn](https://yarnpkg.com/) as a way to manage dependencies and workspaces.
+This project is using [yarn](https://yarnpkg.com/) as a way to manage dependencies and workspaces.
 
 With the project cloned, install the dependencies from the root of the project with:
 
