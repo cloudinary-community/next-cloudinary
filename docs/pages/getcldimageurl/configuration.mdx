@@ -17,6 +17,15 @@ import OgImage from '../../components/OgImage';
 
 Configuration for getCldImageUrl is the same as [CldImage](/cldimage/configuration), which both use the same underlying API [@cloudinary-util/url-loader](https://github.com/colbyfayock/cloudinary-util/tree/main/packages/url-loader).
 
+The function takes two main arguments: options and config.
+
+| Option Name        | Type               | Default    | Example                      |
+|--------------------|--------------------|------------|------------------------------|
+| options            | object             | -          | { src: 'myimage', ... }      |
+| config             | object             | -          | { cloud: { cloudName: 'name' } } |
+
+The function also accepts a third argument of `analytics` that's intended to be used configure analytics properties for usage statistics.
+
 ## General Options
 
 | Option Name        | Type               | Default    | Example                      |
