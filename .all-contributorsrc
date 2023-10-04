@@ -173,6 +173,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "PfisterFactor",
+      "name": "Eric Pfister",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9849849?v=4",
+      "profile": "https://www.linkedin.com/in/ericpfister55/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
