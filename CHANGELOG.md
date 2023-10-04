@@ -1,3 +1,10 @@
+# [4.23.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.22.1...v4.23.0) (2023-10-04)
+
+
+### Features
+
+* Allow user to dynamically specify cloud name ([#291](https://github.com/colbyfayock/next-cloudinary/issues/291)) ([6ea8fe0](https://github.com/colbyfayock/next-cloudinary/commit/6ea8fe0291a51181853853a16e13d42e92faf1f3))
+
 ## [4.22.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.22.0...v4.22.1) (2023-10-03)
 
 
