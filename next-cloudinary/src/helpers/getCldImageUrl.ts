@@ -18,11 +18,12 @@ export interface GetCldImageUrl {
 }
 
 export function getCldImageUrl(options: ImageOptions, config?: ConfigOptions, analytics?: AnalyticsOptions) {
+  const cloudName = config?.cloud?.cloudName ?? process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
   return constructCloudinaryUrl({
     options,
     config: Object.assign({
       cloud: {
-        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+        cloudName: cloudName
       },
     }, config),
     analytics: Object.assign({
