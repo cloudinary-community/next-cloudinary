@@ -187,6 +187,7 @@ yarn test
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jackblatch"><img src="https://avatars.githubusercontent.com/u/98260549?v=4?s=100" width="100px;" alt="Jack"/><br /><sub><b>Jack</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=jackblatch" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mcgois"><img src="https://avatars.githubusercontent.com/u/1241779?v=4?s=100" width="100px;" alt="Matheus Cabral"/><br /><sub><b>Matheus Cabral</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=mcgois" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Elegidoadedo"><img src="https://avatars.githubusercontent.com/u/26023012?v=4?s=100" width="100px;" alt="Jose Morales"/><br /><sub><b>Jose Morales</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=Elegidoadedo" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/ericpfister55/"><img src="https://avatars.githubusercontent.com/u/9849849?v=4?s=100" width="100px;" alt="Eric Pfister"/><br /><sub><b>Eric Pfister</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=PfisterFactor" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
