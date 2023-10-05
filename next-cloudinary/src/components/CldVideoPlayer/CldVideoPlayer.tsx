@@ -181,7 +181,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
           height={height}
         />
         <Script
-          id={`cloudinary-videoplayer-${Math.floor(Math.random() * 100)}`}
+          id={`cloudinary-videoplayer-${playerId}`}
           src={`https://unpkg.com/cloudinary-video-player@${version}/dist/cld-video-player.min.js`}
           onLoad={handleOnLoad}
           onError={(e) => console.error(`Failed to load Cloudinary Video Player: ${e.message}`)}
