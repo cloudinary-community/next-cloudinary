@@ -1,3 +1,10 @@
+## [4.23.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.23.0...v4.23.1) (2023-10-05)
+
+
+### Bug Fixes
+
+* Fixes no responsive sizing when using Fill ([#297](https://github.com/colbyfayock/next-cloudinary/issues/297)) ([dee1e41](https://github.com/colbyfayock/next-cloudinary/commit/dee1e419194a9e4578d95be5a901890271a5ce76)), closes [#295](https://github.com/colbyfayock/next-cloudinary/issues/295)
+
 # [4.23.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.22.1...v4.23.0) (2023-10-04)
 
 
