@@ -6,7 +6,7 @@ import { parseUrl } from '@cloudinary-util/util';
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
 
-let playerInstances: Record<string, string> = {};
+let playerInstances: string[] = [];
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
@@ -75,12 +75,14 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     playerClassName = `${playerClassName} ${className}`;
   }
 
-  if (playerInstances[playerId]) {
+  // Check if the same id is being used for multiple video instances.
+  const checkForMultipleInstance = playerInstances.filter((id) => id === playerId).length > 1
+  if (checkForMultipleInstance) {
     console.warn(`Multiple instances of the same video detected on the
      page which may cause some features to not work. 
     Try adding a unique id to each player.`)
   } else {
-    playerInstances[playerId] = playerId
+    playerInstances.push(playerId)
   }
 
   const events: Record<string, Function|undefined> = {
