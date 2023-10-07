@@ -22,8 +22,7 @@ jobs:
         working-directory: ./next-cloudinary
 
   release:
-    name: Release
-    if: ${{ github.event_name == 'push' && (github.ref_name == 'main' || github.ref_name == 'beta') }}
+    name: Release    
     needs: tests
     runs-on: ubuntu-latest
     steps:
@@ -36,9 +35,16 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
         # Semantic Release is incompatible with node 16 - so add these only on release
-      - run: yarn add @semantic-release/changelog @semantic-release/git semantic-release -W
-      - name: Release
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v4
+        with:
+          dry_run: true
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release --branches main
+      # - run: yarn add @semantic-release/changelog @semantic-release/git semantic-release -W
+      # - name: Release
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #   run: npx semantic-release --branches main
