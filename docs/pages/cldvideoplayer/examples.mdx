@@ -40,6 +40,7 @@ export const VideoPlayerWithRef = (props) => {
 <ImageGrid columns={1}>
   <li>
     <CldVideoPlayer
+      id="default"
       width="1620"
       height="1080"
       src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
@@ -58,6 +59,7 @@ export const VideoPlayerWithRef = (props) => {
   <li>
     <div style={{ maxWidth: 500, margin: '0 auto' }}>
       <CldVideoPlayer
+        id="crop-resize"
         width="500"
         height="500"
         src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
@@ -82,6 +84,7 @@ export const VideoPlayerWithRef = (props) => {
   </li>
   <li>
     <CldVideoPlayer
+      id="transformation-overlay"
       width="1620"
       height="1080"
       src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
@@ -113,6 +116,7 @@ export const VideoPlayerWithRef = (props) => {
   </li>
   <li>
     <CldVideoPlayer
+      id="custom-colors-font"
       width="4096"
       height="2160"
       src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
@@ -139,6 +143,7 @@ export const VideoPlayerWithRef = (props) => {
   </li>
   <li>
     <CldVideoPlayer
+      id="custom-logo"
       width="4096"
       height="2160"
       src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
@@ -161,6 +166,7 @@ export const VideoPlayerWithRef = (props) => {
   </li>
   <li>
     <VideoPlayerWithRef
+      id="with-ref"
       width="4096"
       height="2160"
       src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}

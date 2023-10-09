@@ -6,12 +6,9 @@ import { parseUrl } from '@cloudinary-util/util';
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
 
+let playerInstances: string[] = [];
+
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
-  // If no ID is passed in - we want to be able to ensure that we are using
-  // unique IDs for each player. We can do this by generating a random number
-  // and using that as the ID. We use a ref here so that we can ensure that
-  // the ID is only generated once.
-  const idRef = useRef(Math.ceil(Math.random() * 100000));
 
   const {
     autoPlay = 'never',
@@ -71,11 +68,21 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const defaultPlayerRef = useRef()as MutableRefObject<CloudinaryVideoPlayer | null>;
   const playerRef = props.playerRef || defaultPlayerRef;
 
-  const playerId = id || `player-${publicId.replace('/', '-')}-${idRef.current}`;
+  const playerId = id || `player-${publicId.replace('/', '-')}`;
   let playerClassName = 'cld-video-player cld-fluid';
 
   if ( className ) {
     playerClassName = `${playerClassName} ${className}`;
+  }
+
+  // Check if the same id is being used for multiple video instances.
+  const checkForMultipleInstance = playerInstances.filter((id) => id === playerId).length > 1
+  if (checkForMultipleInstance) {
+    console.warn(`Multiple instances of the same video detected on the
+     page which may cause some features to not work. 
+    Try adding a unique id to each player.`)
+  } else {
+    playerInstances.push(playerId)
   }
 
   const events: Record<string, Function|undefined> = {
@@ -174,7 +181,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
           height={height}
         />
         <Script
-          id={`cloudinary-videoplayer-${Math.floor(Math.random() * 100)}`}
+          id={`cloudinary-videoplayer-${playerId}`}
           src={`https://unpkg.com/cloudinary-video-player@${version}/dist/cld-video-player.min.js`}
           onLoad={handleOnLoad}
           onError={(e) => console.error(`Failed to load Cloudinary Video Player: ${e.message}`)}

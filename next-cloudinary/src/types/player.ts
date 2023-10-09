@@ -13,6 +13,9 @@ export interface CloudinaryVideoPlayerOptions {
   publicId: string;
   secure?: boolean;
   transformation?: Array<object> | object;
+  showLogo?: boolean;
+  logoImageUrl?: string;
+  logoOnclickUrl?: string;
 }
 
 export interface CloudinaryVideoPlayerOptionsColors {
