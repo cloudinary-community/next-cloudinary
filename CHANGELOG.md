@@ -1,3 +1,10 @@
+# [4.24.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.23.1...v4.24.0) (2023-10-09)
+
+
+### Features
+
+* Stop generating CldVideoPlayer ID using Math.random. ([#294](https://github.com/colbyfayock/next-cloudinary/issues/294)) ([c9510ad](https://github.com/colbyfayock/next-cloudinary/commit/c9510ad96acdfbbaec15dfbf5006e15ce6e80694)), closes [#281](https://github.com/colbyfayock/next-cloudinary/issues/281) [#281](https://github.com/colbyfayock/next-cloudinary/issues/281)
+
 ## [4.23.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.23.0...v4.23.1) (2023-10-05)
 
 
