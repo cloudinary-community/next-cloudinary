@@ -41,6 +41,14 @@ export function cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldCon
     if ( typeof options.height === 'number' ) {
       options.heightResize = Math.round(options.height * multiplier);
     }
+  } else if ( typeof loaderOptions?.width === 'number' && typeof options?.width !== 'number' ) {
+    // If we don't have a width on the options object, this may mean that the component is using
+    // the fill option: https://nextjs.org/docs/pages/api-reference/components/image#fill
+    // The Fill option does not allow someone to pass in a width or a height
+    // If this is the case, we still need to define a width for sizing optimization but also
+    // for responsive sizing to take effect, so we can utilize the loader width for the base width
+    options.width = loaderOptions.width;
+    options.widthResize = loaderOptions.width;
   }
 
   // @ts-ignore
