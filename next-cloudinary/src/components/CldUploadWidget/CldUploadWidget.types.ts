@@ -8,6 +8,39 @@ export interface CldUploadWidgetResults {
   info?: string | object;
 }
 
+type CldUploadWidgetDetsroyInstanceMethodOptions = {
+  removeThumbnails?: boolean;
+}
+
+type CldUploadWidgetCloseInstanceMethodOptions = {
+  quiet?: boolean;
+}
+
+type CldUploadWidgetOpenInstanceMethodOptions = {
+  files?: URL[];
+}
+
+type CldUploadWidgetUpdateInstanceMethodOptions = Omit<
+  CldUploadWidgetPropsOptions,
+  "secure" | "uploadSignature" | "getTags" | "preBatch" | "inlineContainer" | "fieldName"
+> & {
+  cloudName: string;
+  uploadPreset: string;
+}
+
+export interface CldUploadWidgetInstanceMethods {
+  close: (options?: CldUploadWidgetCloseInstanceMethodOptions) => void;
+  destroy: (options?: CldUploadWidgetDetsroyInstanceMethodOptions) => Promise<void>;
+  hide: () => void;
+  isDestroyed: () => boolean;
+  isMinimized: () => boolean;
+  isShowing: () => boolean;
+  minimize: () => void;
+  open: (_: null, options?: CldUploadWidgetOpenInstanceMethodOptions) => void;
+  show: () => void;
+  update: (options: CldUploadWidgetUpdateInstanceMethodOptions) => void;
+}
+
 export type CldUploadWidgetError = string | null;
 
 export interface CldUploadWidgetProps {
@@ -33,24 +66,13 @@ export interface CldUploadWidgetProps {
   uploadPreset?: string;
 }
 
-export interface CldUploadWidgetPropsChildren {
+export interface CldUploadWidgetPropsChildren extends CldUploadWidgetInstanceMethods {
   cloudinary: CldUploadWidgetCloudinaryInstance;
   widget: CldUploadWidgetWidgetInstance;
 
   error?: CldUploadWidgetError;
   isLoading?: boolean;
   results?: CldUploadWidgetResults;
-
-  close: Function;
-  destroy: Function;
-  hide: Function;
-  isDestroyed: Function;
-  isMinimized: Function;
-  isShowing: Function;
-  minimize: Function;
-  open: Function;
-  show: Function;
-  update: Function;
 }
 
 // Parameters sourced from:
@@ -164,16 +186,7 @@ export type CldUploadEventCallbackNoOptions = (results: CldUploadWidgetResults, 
 export type CldUploadEventCallbackWidgetOnly = (widget: CldUploadWidgetWidgetInstance) => void;
 export type CldUploadEventCallbackError = (error: CldUploadWidgetError, widget: CldUploadWidgetWidgetInstance) => void;
 
-export interface CldUploadEventCallbackWidget {
-  close: Function;
-  destroy: Function;
-  hide: Function;
-  isDestroyed: Function;
-  isMinimized: Function;
-  isShowing: Function;
-  minimize: Function;
-  open: Function;
-  show: Function;
-  update: Function;
+export interface CldUploadEventCallbackWidget
+  extends CldUploadWidgetInstanceMethods {
   widget: CldUploadWidgetWidgetInstance;
 }
