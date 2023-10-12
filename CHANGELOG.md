@@ -1,3 +1,10 @@
+## [4.24.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.24.0...v4.24.1) (2023-10-12)
+
+
+### Bug Fixes
+
+* Fixes infinite error loop when user agent spoofing causes unsupported image to load ([#305](https://github.com/colbyfayock/next-cloudinary/issues/305)) ([4a8779f](https://github.com/colbyfayock/next-cloudinary/commit/4a8779fe17908323f6d80a7f0d45adedb2c8ac7e)), closes [#303](https://github.com/colbyfayock/next-cloudinary/issues/303)
+
 # [4.24.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.23.1...v4.24.0) (2023-10-09)
 
 
