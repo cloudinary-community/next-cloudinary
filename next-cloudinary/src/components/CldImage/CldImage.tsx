@@ -17,6 +17,8 @@ export type CldImageProps = Omit<ImageProps, 'src'> & ImageOptions & {
 };
 
 const CldImage = forwardRef<HTMLImageElement, CldImageProps>((props, ref) => {
+  let hasThrownError = false;
+
   const CLD_OPTIONS = [
     'deliveryType',
     'preserveTransformations'
@@ -96,6 +98,17 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>((props, ref) => {
 
   async function onError(options: React.SyntheticEvent<HTMLImageElement, Event>) {
     let pollForImage = true;
+
+    // The onError function should never fire more than once. The use case for tracking it
+    // at all outside of the standard Next Image flow is for scenarios like when Cloudinary
+    // is processing an image where we want to try to update the UI upon completion.
+    // If this fires a second time, it is likely because of another issue, which will end
+    // up triggering an infinite loop if the resulting image keeps erroring and
+    // this function sets a key using the current time to force refresh the UI
+
+    if ( hasThrownError ) return;
+
+    hasThrownError = true;
 
     if ( typeof props.onError === 'function' ) {
       const onErrorResult = props.onError(options);
