@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@vercel/analytics": "^1.0.1",
@@ -19,5 +20,9 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "sass": "^1.63.6"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^13.5.4",
+    "cross-env": "^7.0.3"
   }
 }
