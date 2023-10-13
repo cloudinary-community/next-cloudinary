@@ -28,6 +28,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     onPlay,
     onEnded,
     src,
+    sourceTypes,
     transformation,
     version = '1.9.16',
     quality = 'auto',
@@ -141,6 +142,10 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         transformation: playerTransformations,
         ...logoOptions
       };
+
+      if ( Array.isArray(sourceTypes) ) {
+        playerOptions.sourceTypes = sourceTypes;
+      }
 
       if ( typeof colors === 'object' ) {
         playerOptions.colors = colors;
