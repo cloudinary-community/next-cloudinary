@@ -1,3 +1,10 @@
+# [4.25.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.24.1...v4.25.0) (2023-10-13)
+
+
+### Features
+
+* Adaptive Streaming for CldVideoPlayer ([#310](https://github.com/colbyfayock/next-cloudinary/issues/310)) ([1d798aa](https://github.com/colbyfayock/next-cloudinary/commit/1d798aa97f82901ac27a1331e12af21b08aacec2)), closes [#302](https://github.com/colbyfayock/next-cloudinary/issues/302)
+
 ## [4.24.1](https://github.com/colbyfayock/next-cloudinary/compare/v4.24.0...v4.24.1) (2023-10-12)
 
 
