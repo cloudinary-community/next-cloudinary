@@ -14,6 +14,7 @@ export interface CloudinaryVideoPlayerOptions {
   secure?: boolean;
   transformation?: Array<object> | object;
   showLogo?: boolean;
+  sourceTypes?: Array<string>;
   logoImageUrl?: string;
   logoOnclickUrl?: string;
 }

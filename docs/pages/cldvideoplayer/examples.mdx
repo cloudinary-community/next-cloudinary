@@ -35,7 +35,7 @@ export const VideoPlayerWithRef = (props) => {
 
 # CldVideoPlayer Examples
 
-## Effects
+## Examples
 
 <ImageGrid columns={1}>
   <li>
@@ -54,6 +54,32 @@ export const VideoPlayerWithRef = (props) => {
     width="1620"
     height="1080"
     src="videos/mountain-stars"
+    ```
+  </li>
+  <li>
+    <CldVideoPlayer
+      id="adaptive-streaming"
+      width="1620"
+      height="1080"
+      src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
+      transformation={{
+        streaming_profile: 'hd',
+      }}
+      sourceTypes={['hls']}
+    />
+
+    ### Adaptive Streaming
+
+    Basic settings to display a video.
+
+    ```jsx
+    width="1620"
+    height="1080"
+    src="videos/mountain-stars"
+    transformation={{
+      streaming_profile: 'hd',
+    }}
+    sourceTypes={['hls']}
     ```
   </li>
   <li>
