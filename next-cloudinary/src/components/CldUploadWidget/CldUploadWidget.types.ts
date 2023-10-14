@@ -81,14 +81,14 @@ export interface CldUploadWidgetProps {
   uploadPreset?: string;
 }
 
-export interface CldUploadWidgetPropsChildren extends CldUploadWidgetInstanceMethods {
+export type CldUploadWidgetPropsChildren = {
   cloudinary: CldUploadWidgetCloudinaryInstance;
   widget: CldUploadWidgetWidgetInstance;
 
   error?: CldUploadWidgetError;
   isLoading?: boolean;
   results?: CldUploadWidgetResults;
-}
+} & CldUploadWidgetInstanceMethods;
 
 // Parameters sourced from:
 // https://cloudinary.com/documentation/upload_widget_reference#parameters
@@ -201,7 +201,6 @@ export type CldUploadEventCallbackNoOptions = (results: CldUploadWidgetResults, 
 export type CldUploadEventCallbackWidgetOnly = (widget: CldUploadWidgetWidgetInstance) => void;
 export type CldUploadEventCallbackError = (error: CldUploadWidgetError, widget: CldUploadWidgetWidgetInstance) => void;
 
-export interface CldUploadEventCallbackWidget
-  extends CldUploadWidgetInstanceMethods {
+export type CldUploadEventCallbackWidget = {
   widget: CldUploadWidgetWidgetInstance;
-}
+} & CldUploadWidgetInstanceMethods;
