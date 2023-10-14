@@ -5,8 +5,13 @@ import { triggerOnIdle } from '../../lib/util';
 
 import {
   CldUploadEventCallback,
+  CldUploadWidgetCloseInstanceMethodOptions,
   CldUploadWidgetCloudinaryInstance,
+  CldUploadWidgetDetsroyInstanceMethodOptions,
   CldUploadWidgetError,
+  CldUploadWidgetInstanceMethods,
+  CldUploadWidgetOpenInstanceMethodOptions,
+  CldUploadWidgetOpenWidgetSources,
   CldUploadWidgetProps,
   CldUploadWidgetResults,
   CldUploadWidgetWidgetInstance,
@@ -147,22 +152,29 @@ const CldUploadWidget = ({
    * https://cloudinary.com/documentation/upload_widget_reference#instance_methods
    */
 
-  function invokeInstanceMethod(method: string) {
+  function invokeInstanceMethod<
+    TMethod extends keyof CldUploadWidgetInstanceMethods
+  >(
+    method: TMethod,
+    options: Parameters<
+      CldUploadWidgetInstanceMethods[TMethod]
+    > = [] as Parameters<CldUploadWidgetInstanceMethods[TMethod]>
+  ) {
     if (!widget.current) {
       widget.current = createWidget();
     }
 
-    if ( typeof widget?.current[method] === 'function' ) {
-      widget.current[method]();
+    if (typeof widget?.current[method] === "function") {
+      return widget.current[method](...options);
     }
   }
 
-  function close() {
-    invokeInstanceMethod('close');
+  function close(options?: CldUploadWidgetCloseInstanceMethodOptions) {
+    invokeInstanceMethod('close', [options]);
   }
 
-  function destroy() {
-    invokeInstanceMethod('destroy');
+  function destroy(options?: CldUploadWidgetDetsroyInstanceMethodOptions) {
+    return invokeInstanceMethod('destroy', [options]);
   }
   
   function hide() {
@@ -170,23 +182,23 @@ const CldUploadWidget = ({
   }
   
   function isDestroyed() {
-    invokeInstanceMethod('isDestroyed');
+    return invokeInstanceMethod('isDestroyed');
   }
-  
+
   function isMinimized() {
-    invokeInstanceMethod('isMinimized');
+    return invokeInstanceMethod('isMinimized');
   }
   
   function isShowing() {
-    invokeInstanceMethod('isShowing');
+    return invokeInstanceMethod('isShowing');
   }
 
   function minimize() {
     invokeInstanceMethod('minimize');
   }
 
-  function open() {
-    invokeInstanceMethod('open');
+  function open(widgetSource?: CldUploadWidgetOpenWidgetSources, options?: CldUploadWidgetOpenInstanceMethodOptions) {
+    invokeInstanceMethod('open', [widgetSource, options]);
 
     if ( typeof onOpen === 'function' ) {
       onOpen(widget.current);
@@ -201,7 +213,7 @@ const CldUploadWidget = ({
     invokeInstanceMethod('update');
   }
 
-  const instanceMethods = {
+  const instanceMethods: CldUploadWidgetInstanceMethods = {
     close,
     destroy,
     hide,

@@ -8,17 +8,32 @@ export interface CldUploadWidgetResults {
   info?: string | object;
 }
 
-type CldUploadWidgetDetsroyInstanceMethodOptions = {
-  removeThumbnails?: boolean;
+export type CldUploadWidgetDetsroyInstanceMethodOptions = {
+  removeThumbnails: boolean;
 }
 
-type CldUploadWidgetCloseInstanceMethodOptions = {
-  quiet?: boolean;
+export type CldUploadWidgetCloseInstanceMethodOptions = {
+  quiet: boolean;
 }
 
-type CldUploadWidgetOpenInstanceMethodOptions = {
-  files?: URL[];
+export type CldUploadWidgetOpenInstanceMethodOptions = {
+  files: URL[];
 }
+
+export type CldUploadWidgetOpenWidgetSources =
+  | 'local'
+  | 'url'
+  | 'camera'
+  | 'image_search'
+  | 'google_drive'
+  | 'dropbox'
+  | 'facebook'
+  | 'instagram'
+  | 'shutterstock'
+  | 'getty'
+  | 'istock'
+  | 'unsplash' 
+  | null;
 
 type CldUploadWidgetUpdateInstanceMethodOptions = Omit<
   CldUploadWidgetPropsOptions,
@@ -36,7 +51,7 @@ export interface CldUploadWidgetInstanceMethods {
   isMinimized: () => boolean;
   isShowing: () => boolean;
   minimize: () => void;
-  open: (_: null, options?: CldUploadWidgetOpenInstanceMethodOptions) => void;
+  open: (widgetSource?: CldUploadWidgetOpenWidgetSources, options?: CldUploadWidgetOpenInstanceMethodOptions) => void;
   show: () => void;
   update: (options: CldUploadWidgetUpdateInstanceMethodOptions) => void;
 }
