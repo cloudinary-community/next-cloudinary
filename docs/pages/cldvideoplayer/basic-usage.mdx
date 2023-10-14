@@ -24,7 +24,7 @@ The CldVideoPlayer component helps to embed Cloudinary videos using the [Cloudin
 
 The basic required props include `width`, `height`, and `src`:
 
-```jsx
+```jsx copy
 import { CldVideoPlayer } from 'next-cloudinary';
 
 <CldVideoPlayer
@@ -36,7 +36,7 @@ import { CldVideoPlayer } from 'next-cloudinary';
 
 If you're using the Next.js 13 App Router, you must additionally import the Cloudinary Video Player stylesheet:
 
-```jsx
+```jsx copy
 import 'next-cloudinary/dist/cld-video-player.css';
 ```
 
@@ -51,7 +51,7 @@ import 'next-cloudinary/dist/cld-video-player.css';
 
 You can further take advantage of features like customizing your player:
 
-```jsx
+```jsx copy
 <CldVideoPlayer
   width="1620"
   height="1080"
@@ -82,7 +82,7 @@ You can further take advantage of features like customizing your player:
 
 Or listening to player events for advanced interactions with:
 
-```jsx
+```jsx copy
 <CldVideoPlayer
   width="600"
   height="600"

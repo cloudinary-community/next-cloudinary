@@ -9,5 +9,7 @@
     "next-cloudinary",
     "scripts"
   ],
-  "devDependencies": {}
+  "dependencies": {
+    "react": "^18.2.0"
+  }
 }

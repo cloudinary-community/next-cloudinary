@@ -64,7 +64,7 @@ The event props allow you to pass in a function that is called whenever the asso
 
 For instance, in order to trigger an event whenever a video is paused:
 
-```jsx
+```jsx copy
 <CldVideoPlayer onPause={({ player }) => {
   const duration = player.duration();
 }} ... />
@@ -91,7 +91,7 @@ The `playerRef` and `videoRef` props give you the ability to pass in your own re
 
 To do this, create a new Ref instance and pass that in as the value of the prop:
 
-```jsx
+```jsx copy
 const myVideoRef = useRef();
 ...
 <CldVideoPlayer videoRef={myVideoRef} ... />

@@ -34,7 +34,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Background Removal
 
-    ```jsx
+    ```jsx copy
     removeBackground
     ```
 
@@ -55,7 +55,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Generative Fill
 
-    ```jsx
+    ```jsx copy
     width="960"
     height="600" // Original 1440
     crop="pad" // Returns the given size with padding
@@ -78,7 +78,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Zoom &amp; Pan
 
-    ```jsx
+    ```jsx copy
     zoompan="loop"
     ```
   </li>
@@ -94,7 +94,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Blur
 
-    ```jsx
+    ```jsx copy
     blur="1200"
     ```
   </li>
@@ -110,7 +110,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Pixelate
 
-    ```jsx
+    ```jsx copy
     pixelate
     ```
   </li>
@@ -126,7 +126,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Grayscale
 
-    ```jsx
+    ```jsx copy
     grayscale
     ```
   </li>
@@ -142,7 +142,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Tint
 
-    ```jsx
+    ```jsx copy
     tint="equalize:80:blue:blueviolet"
     ```
   </li>
@@ -157,7 +157,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Opacity
 
-    ```jsx
+    ```jsx copy
     opacity="50"
     ```
   </li>
@@ -172,7 +172,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Shear
 
-    ```jsx
+    ```jsx copy
     shear="40:0"
     ```
   </li>
@@ -187,7 +187,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Border
 
-    ```jsx
+    ```jsx copy
     border="40px_solid_purple"
     ```
   </li>
@@ -203,7 +203,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Background
 
-    ```jsx
+    ```jsx copy
     removeBackground
     background="blue"
     ```
@@ -220,7 +220,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Trim
 
-    ```jsx
+    ```jsx copy
     removeBackground
     trim
     ```
@@ -246,7 +246,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Multiple Effects
 
-    ```jsx
+    ```jsx copy
     effects={[
       {
         background: 'green'
@@ -294,7 +294,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Thumbnail with Auto Gravity
 
-    ```jsx
+    ```jsx copy
     crop="thumb"
     gravity="auto"
     ```
@@ -312,7 +312,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Thumbnail with Faces Gravity
 
-    ```jsx
+    ```jsx copy
     crop="thumb"
     gravity="faces"
     ```
@@ -331,7 +331,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Thumbnail with Faces Gravity and Zoom
 
-    ```jsx
+    ```jsx copy
     crop="thumb"
     gravity="faces"
     zoom="0.5"
@@ -369,7 +369,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Overlay Image by Public ID
 
-    ```jsx
+    ```jsx copy
     overlays={[{
       publicId: `images/earth`,
       position: {
@@ -416,7 +416,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Overlay with Multiply Effect
 
-    ```jsx
+    ```jsx copy
     overlays={[{
       publicId: `images/earth`,
       effects: [
@@ -464,7 +464,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Overlay with Screen Effect
 
-    ```jsx
+    ```jsx copy
     overlays={[{
       publicId: `images/earth`,
       effects: [
@@ -512,7 +512,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Overlay with Overlay Effect
 
-    ```jsx
+    ```jsx copy
     overlays={[{
       publicId: `images/earth`,
       effects: [
@@ -549,7 +549,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Background Removal with Underlay by Public ID
 
-    ```jsx
+    ```jsx copy
     removeBackground
     underlay="images/galaxy"
     ```
@@ -590,7 +590,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Background Removal with Multiple Underlays
 
-    ```jsx
+    ```jsx copy
     removeBackground
     underlays={[
       {
@@ -637,7 +637,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Text Overlay with text prop
 
-    ```jsx
+    ```jsx copy
     text="Cool Beans"
     ```
   </li>
@@ -657,7 +657,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Text Overlay with text string
 
-    ```jsx
+    ```jsx copy
     overlays={[{
       text: 'Cool Beans'
     }]}
@@ -693,7 +693,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Text Overlay with overlay configuration
 
-    ```jsx
+    ```jsx copy
     overlays={[{
       width: 2670 - 20,
       crop: 'fit',
@@ -740,7 +740,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Text Overlay with Effects
 
-    ```jsx
+    ```jsx copy
     overlays={[{
       text: {
         color: 'white',
@@ -774,7 +774,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Fill
 
-    ```jsx
+    ```jsx copy
     <div style={{ position: 'relative', height: '10em' }}>
     ...
     fill={true}
@@ -798,7 +798,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Keep IPTC
 
-    ```jsx
+    ```jsx copy
     flags={['keep_iptc']}
     quality="default"
     ```
@@ -826,7 +826,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Named Transformations
 
-    ```jsx
+    ```jsx copy
     transformations={[
       'next-cloudinary-named-transformation'
     ]}
@@ -844,7 +844,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Raw Transformations
 
-    ```jsx
+    ```jsx copy
     rawTransformations={[
       // Example from Cloudinary Media Editor widget
       'c_crop,h_359,w_517,x_1483,y_0/c_scale,h_359,w_517/f_auto,q_auto'
@@ -864,7 +864,7 @@ import ImageGrid from '../../components/ImageGrid';
 
     ### Preserve Transformations
 
-    ```jsx
+    ```jsx copy
     src={`https://res.cloudinary.com/<Cloud Name>/image/upload/c_fill,h_300,w_250/e_blur:1000/v1/<Public ID>`}
     preserveTransformations
     tint="equalize:80:blue:blueviolet"

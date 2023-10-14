@@ -30,7 +30,7 @@ As CldImage is a wrapper around the Next.js Image component, you also gain acces
 
 The basic required props include `width`, `height`, `src`, and `alt`:
 
-```jsx
+```jsx copy
 import { CldImage } from 'next-cloudinary';
 
 <CldImage
@@ -66,7 +66,7 @@ The `src` property takes in a Cloudinary Public ID which includes the folder pat
 
 You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
 
-```jsx
+```jsx copy
 <CldImage
   width="1200"
   height="1200"
@@ -100,7 +100,7 @@ If using a full Cloudinary URL, you might already have transformations applied t
 
 To preserve those transformations, you can apply the `preserveTransformations` property:
 
-```jsx
+```jsx copy
 <CldImage
   width="600"
   height="600"

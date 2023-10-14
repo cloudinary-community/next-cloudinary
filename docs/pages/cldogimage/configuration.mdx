@@ -57,7 +57,7 @@ The [Summary Card with Large Image](https://developer.twitter.com/en/docs/twitte
 
 To exclude this tag to manage it on your own, use the `excludeTags` prop:
 
-```jsx
+```jsx copy
 excludeTags={['twitter:title']}
 ```
 
@@ -69,18 +69,18 @@ To allow customization and control in the event you want to minimize duplication
 
 For instance, by default `og:image` tag will effectively render with:
 
-```jsx
+```jsx copy
 <meta key="og-image" property="og:image" content="..." />
 ```
 
 Where if you pass in the `keys` prop with the following:
 
-```jsx
+```jsx copy
 keys={{'og:image': 'my-og-image'}}
 ```
 
 The tag will render with:
 
-```jsx
+```jsx copy
 <meta key="my-og-image" property="og:image" content="..." />
 ```

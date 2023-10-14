@@ -29,7 +29,7 @@ The CldOgImageComponent give you the ability to use the same CldImage API to eas
 
 The basic required prop is `src`:
 
-```jsx
+```jsx copy
 import { CldOgImage } from 'next-cloudinary';
 
 <CldOgImage
@@ -45,7 +45,7 @@ Place the CldOgImage component anywhere outside of the Head component.
 
 The resulting HTML will be applied to the Head of the document:
 
-```html
+```html copy
 <meta property="og:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1254,g_center/c_scale,w_1200/f_jpg/q_auto/v1/images/galaxy" />
 <meta property="og:image:secure_url" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1254,g_center/c_scale,w_1200/f_jpg/q_auto/v1/images/galaxy" />
 <meta property="og:image:width" content="1200" />
@@ -78,7 +78,7 @@ You can further take advantage of Cloudinary features like background removal an
 
 The CldOgImage component uses the same API as [CldImage](/cldimage/configuration), meaning you can use the same transformations and effects.
 
-```jsx
+```jsx copy
 <CldOgImage
   src="<Public ID>"
   tint="100:0762a0"
