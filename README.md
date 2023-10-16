@@ -189,6 +189,7 @@ yarn test
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Elegidoadedo"><img src="https://avatars.githubusercontent.com/u/26023012?v=4?s=100" width="100px;" alt="Jose Morales"/><br /><sub><b>Jose Morales</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=Elegidoadedo" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/ericpfister55/"><img src="https://avatars.githubusercontent.com/u/9849849?v=4?s=100" width="100px;" alt="Eric Pfister"/><br /><sub><b>Eric Pfister</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=PfisterFactor" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/JoshuaRotimi"><img src="https://avatars.githubusercontent.com/u/62189959?v=4?s=100" width="100px;" alt="Joshua Olorunnipa"/><br /><sub><b>Joshua Olorunnipa</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=JoshuaRotimi" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://harindra.netlify.app"><img src="https://avatars.githubusercontent.com/u/92938055?v=4?s=100" width="100px;" alt="Hari"/><br /><sub><b>Hari</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=NateNear" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
