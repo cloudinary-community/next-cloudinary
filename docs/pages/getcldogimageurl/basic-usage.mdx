@@ -27,7 +27,7 @@ getCldOgImageUrl is a deritive of getCldImageUrl meaning it generally has the sa
 
 The only required prop is `src`:
 
-```js
+```js copy
 import { getCldOgImageUrl } from 'next-cloudinary';
 
 const url = getCldOgImageUrl({
@@ -74,7 +74,7 @@ Read more about webp support: https://www.ctrl.blog/entry/webp-ogp.html
 
 If you have the control in your application to produce multiple image sources, such has having a separate `og:image` and `twitter:image`, you can generate two (or more) URLs to produce as optimized a format as you can for the platform:
 
-```
+```js copy
 const ogImageUrl = getCldImageUrl({
   ...options,
   format: 'jpg',

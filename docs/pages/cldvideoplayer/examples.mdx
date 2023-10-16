@@ -50,7 +50,7 @@ export const VideoPlayerWithRef = (props) => {
 
     Basic settings to display a video.
 
-    ```jsx
+    ```jsx copy
     width="1620"
     height="1080"
     src="videos/mountain-stars"
@@ -72,7 +72,7 @@ export const VideoPlayerWithRef = (props) => {
 
     Basic settings to display a video.
 
-    ```jsx
+    ```jsx copy
     width="1620"
     height="1080"
     src="videos/mountain-stars"
@@ -102,7 +102,7 @@ export const VideoPlayerWithRef = (props) => {
 
     Basic settings to display a video.
 
-    ```jsx
+    ```jsx copy
     width="1620"
     height="1080"
     src="videos/dog-running-snow"
@@ -128,7 +128,7 @@ export const VideoPlayerWithRef = (props) => {
 
     Adding a watermark to a video.
 
-    ```jsx
+    ```jsx copy
     src="videos/mountain-stars"
     transformation={{
       overlay: "assets:space-jelly-cosmo-helmet",
@@ -158,7 +158,7 @@ export const VideoPlayerWithRef = (props) => {
 
     Changing the player theme using colors and fonts
 
-    ```jsx
+    ```jsx copy
     colors={{
       accent: '#ff0000',
       base: '#00ff00',
@@ -183,7 +183,7 @@ export const VideoPlayerWithRef = (props) => {
 
     Adding a custom logo to the player chrome
 
-    ```jsx
+    ```jsx copy
     logo={{
       imageUrl: 'https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/v1676058142/assets/space-jelly-cosmo-helmet.svg',
       onClickUrl: 'https://spacejelly.dev'
@@ -202,7 +202,7 @@ export const VideoPlayerWithRef = (props) => {
 
     Using a ref to access the player instance
 
-    ```jsx
+    ```jsx copy
     playerRef={myPlayerRef}
     onMetadataLoad={() => {
       console.log('metadata-loaded');
@@ -214,7 +214,7 @@ export const VideoPlayerWithRef = (props) => {
       Note: the `player` instance is also passed in the callback function:
     </Callout>
 
-    ```jsx
+    ```jsx copy
     onMetadataLoad={({ player }) => {
       console.log('metadata-loaded');
       console.log(`duration: ${player.duration()}`);

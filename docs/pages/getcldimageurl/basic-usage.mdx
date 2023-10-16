@@ -25,7 +25,7 @@ You can use the getCldImageUrl helper function to generate Cloudinary URLs witho
 
 The basic required options include `width`, `height`, and `src`:
 
-```js
+```js copy
 import { getCldImageUrl } from 'next-cloudinary';
 
 const url = getCldImageUrl({
@@ -58,7 +58,7 @@ const url = getCldImageUrl({
 
 You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
 
-```js
+```js copy
 const url = getCldImageUrl({
   width: 600,
   height: 600,

@@ -31,7 +31,7 @@ Using Next Cloudinary in the `app` directory currently requires marking the pare
 
 At the top of the file, simply add:
 
-```
+```ansi copy
 "use client";
 ```
 
@@ -43,7 +43,7 @@ In the App Router, the Head component is no longer supported, instead opting for
 
 You can still easily generate OG images and social card URLs using [getCldOgImageUrl](/getcldogimageurl/basic-usage) in your metadata configuration.
 
-```
+```jsx copy
 import { getCldOgImageUrl } from 'next-cloudinary';
 
 export const metadata = {

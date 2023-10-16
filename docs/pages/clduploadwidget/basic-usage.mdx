@@ -43,7 +43,7 @@ To give unsigned access for upload, provide an upload preset as part of the comp
 
 Use the following to generate an unsigned upload widget:
 
-```jsx
+```jsx copy
 import { CldUploadWidget } from 'next-cloudinary';
 
 <CldUploadWidget uploadPreset="<Upload Preset>">
@@ -106,7 +106,7 @@ You can do this by creating a serverless function that reads the parameters as t
 
 Use the following to generate an signed upload widget:
 
-```jsx
+```jsx copy
 import { CldUploadWidget } from 'next-cloudinary';
 
 <CldUploadWidget signatureEndpoint="<API Endpoint (ex: /api/sign-cloudinary-params)>">
@@ -130,7 +130,7 @@ import { CldUploadWidget } from 'next-cloudinary';
 
 Here's an example of how you could process the signature in an API endpoint that signs a request:
 
-```js
+```js copy
 import { v2 as cloudinary } from 'cloudinary';
 // const cloudinary = require('cloudinary').v2;
 

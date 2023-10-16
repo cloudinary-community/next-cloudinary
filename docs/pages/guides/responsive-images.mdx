@@ -22,7 +22,7 @@ The [CldImage](/cldimage/basic-usage) component takes advantage of responsive im
 Using the `sizes` prop, you can configure exactly the sizes you need for your application, such as a similar example to the Next.js docs:
 
 
-```
+```jsx copy
 <CldImage
   ...
   sizes="(max-width: 768px) 100vw,
@@ -40,7 +40,7 @@ The only caveat to this is when using cropping modes in Cloudinary.
 
 In an example such as:
 
-```
+```jsx copy
 <CldImage
   ...
   width="600"
@@ -61,7 +61,7 @@ To avoid attempting to load upscaled images, resulting in blurry or grainy image
 
 For instance, in the above, the resulting responive image in the HTML may look like:
 
-```
+```jsx copy
 <img
   sizes="(max-width: 480px) 100vw, 50vw"
   srcset="
