@@ -191,6 +191,9 @@ yarn test
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/JoshuaRotimi"><img src="https://avatars.githubusercontent.com/u/62189959?v=4?s=100" width="100px;" alt="Joshua Olorunnipa"/><br /><sub><b>Joshua Olorunnipa</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=JoshuaRotimi" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://harindra.netlify.app"><img src="https://avatars.githubusercontent.com/u/92938055?v=4?s=100" width="100px;" alt="Hari"/><br /><sub><b>Hari</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=NateNear" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://msk4862.github.io"><img src="https://avatars.githubusercontent.com/u/24875366?v=4?s=100" width="100px;" alt="Shoaib Asgar"/><br /><sub><b>Shoaib Asgar</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=msk4862" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
