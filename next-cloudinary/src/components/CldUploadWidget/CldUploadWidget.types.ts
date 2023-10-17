@@ -3,6 +3,8 @@
 export type CldUploadWidgetCloudinaryInstance = any;
 export type CldUploadWidgetWidgetInstance = any;
 
+type CustomURL = `https://${string}.${string}`;
+
 export interface CldUploadWidgetResults {
   event?: string;
   info?: string | object;
@@ -17,7 +19,7 @@ export type CldUploadWidgetCloseInstanceMethodOptions = {
 }
 
 export type CldUploadWidgetOpenInstanceMethodOptions = {
-  files: URL[];
+  files: CustomURL[];
 }
 
 export type CldUploadWidgetOpenWidgetSources =
