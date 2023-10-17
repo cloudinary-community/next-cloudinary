@@ -1,3 +1,10 @@
+# [4.26.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.25.0...v4.26.0) (2023-10-17)
+
+
+### Features
+
+* DPR ([#314](https://github.com/colbyfayock/next-cloudinary/issues/314)) ([d3080b2](https://github.com/colbyfayock/next-cloudinary/commit/d3080b27ffd9113e3004871a0c5386f6b792a445)), closes [#313](https://github.com/colbyfayock/next-cloudinary/issues/313)
+
 # [4.25.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.24.1...v4.25.0) (2023-10-13)
 
 
