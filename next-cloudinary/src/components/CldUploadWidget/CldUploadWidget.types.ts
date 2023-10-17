@@ -3,9 +3,59 @@
 export type CldUploadWidgetCloudinaryInstance = any;
 export type CldUploadWidgetWidgetInstance = any;
 
+type CustomURL = `https://${string}.${string}`;
+
 export interface CldUploadWidgetResults {
   event?: string;
   info?: string | object;
+}
+
+export type CldUploadWidgetDetsroyInstanceMethodOptions = {
+  removeThumbnails: boolean;
+}
+
+export type CldUploadWidgetCloseInstanceMethodOptions = {
+  quiet: boolean;
+}
+
+export type CldUploadWidgetOpenInstanceMethodOptions = {
+  files: CustomURL[];
+}
+
+export type CldUploadWidgetOpenWidgetSources =
+  | 'local'
+  | 'url'
+  | 'camera'
+  | 'image_search'
+  | 'google_drive'
+  | 'dropbox'
+  | 'facebook'
+  | 'instagram'
+  | 'shutterstock'
+  | 'getty'
+  | 'istock'
+  | 'unsplash' 
+  | null;
+
+type CldUploadWidgetUpdateInstanceMethodOptions = Omit<
+  CldUploadWidgetPropsOptions,
+  "secure" | "uploadSignature" | "getTags" | "preBatch" | "inlineContainer" | "fieldName"
+> & {
+  cloudName: string;
+  uploadPreset: string;
+}
+
+export interface CldUploadWidgetInstanceMethods {
+  close: (options?: CldUploadWidgetCloseInstanceMethodOptions) => void;
+  destroy: (options?: CldUploadWidgetDetsroyInstanceMethodOptions) => Promise<void>;
+  hide: () => void;
+  isDestroyed: () => boolean;
+  isMinimized: () => boolean;
+  isShowing: () => boolean;
+  minimize: () => void;
+  open: (widgetSource?: CldUploadWidgetOpenWidgetSources, options?: CldUploadWidgetOpenInstanceMethodOptions) => void;
+  show: () => void;
+  update: (options: CldUploadWidgetUpdateInstanceMethodOptions) => void;
 }
 
 export type CldUploadWidgetError = string | null;
@@ -33,25 +83,14 @@ export interface CldUploadWidgetProps {
   uploadPreset?: string;
 }
 
-export interface CldUploadWidgetPropsChildren {
+export type CldUploadWidgetPropsChildren = {
   cloudinary: CldUploadWidgetCloudinaryInstance;
   widget: CldUploadWidgetWidgetInstance;
 
   error?: CldUploadWidgetError;
   isLoading?: boolean;
   results?: CldUploadWidgetResults;
-
-  close: Function;
-  destroy: Function;
-  hide: Function;
-  isDestroyed: Function;
-  isMinimized: Function;
-  isShowing: Function;
-  minimize: Function;
-  open: Function;
-  show: Function;
-  update: Function;
-}
+} & CldUploadWidgetInstanceMethods;
 
 // Parameters sourced from:
 // https://cloudinary.com/documentation/upload_widget_reference#parameters
@@ -164,16 +203,6 @@ export type CldUploadEventCallbackNoOptions = (results: CldUploadWidgetResults, 
 export type CldUploadEventCallbackWidgetOnly = (widget: CldUploadWidgetWidgetInstance) => void;
 export type CldUploadEventCallbackError = (error: CldUploadWidgetError, widget: CldUploadWidgetWidgetInstance) => void;
 
-export interface CldUploadEventCallbackWidget {
-  close: Function;
-  destroy: Function;
-  hide: Function;
-  isDestroyed: Function;
-  isMinimized: Function;
-  isShowing: Function;
-  minimize: Function;
-  open: Function;
-  show: Function;
-  update: Function;
+export type CldUploadEventCallbackWidget = {
   widget: CldUploadWidgetWidgetInstance;
-}
+} & CldUploadWidgetInstanceMethods;
