@@ -200,6 +200,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "msk4862",
+      "name": "Shoaib Asgar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24875366?v=4",
+      "profile": "https://msk4862.github.io",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
