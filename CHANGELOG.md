@@ -1,3 +1,10 @@
+# [4.27.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.26.0...v4.27.0) (2023-10-17)
+
+
+### Features
+
+* Adds types for widget instance methods ([#306](https://github.com/colbyfayock/next-cloudinary/issues/306)) ([79d8b85](https://github.com/colbyfayock/next-cloudinary/commit/79d8b85446a3b6aa5202b5bf0ee1276fd4bdb2c5)), closes [#262](https://github.com/colbyfayock/next-cloudinary/issues/262)
+
 # [4.26.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.25.0...v4.26.0) (2023-10-17)
 
 
