@@ -1,4 +1,4 @@
-import React, { useRef, MutableRefObject } from 'react';
+import React, {useRef, MutableRefObject, useEffect} from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import { parseUrl } from '@cloudinary-util/util';
@@ -160,6 +160,16 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
       });
     }
   }
+
+  useEffect(() => {
+    handleOnLoad();
+
+    return () => {
+      defaultVideoRef.current = null;
+      defaultPlayerRef.current = null;
+      playerInstances = playerInstances.filter((id) => id !== playerId)
+    }
+  }, []);
 
   /**
    *getPlayerRefs
