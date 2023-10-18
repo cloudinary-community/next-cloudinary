@@ -1,0 +1,415 @@
+import Head from 'next/head';
+import { Callout, Tab, Tabs } from 'nextra-theme-docs';
+
+import OgImage from '../../components/OgImage';
+import HeaderImage from '../../components/HeaderImage';
+import CodeBlock from '../../components/CodeBlock';
+
+import { CldImage, CldOgImage } from '../../../next-cloudinary';
+
+<Head>
+  <title>Social Media Cards - Next Cloudinary</title>
+  <meta name="og:title" content="Generating Social Media Cards - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/use-cases/social-media-cards`} />
+</Head>
+
+<OgImage
+  title="Social Media Cards"
+  twitterTitle="Social Media Card Templates"
+/>
+
+# Social Media Card Templates
+
+## One Third
+
+<HeaderImage>
+  <CldImage
+    width="2400"
+    height="1200"
+    crop="fill"
+    src={`${process.env.IMAGES_DIRECTORY}/mountain`}
+    colorize="100,co_white"
+    sizes="100w"
+    overlays={[
+      {
+        publicId: 'images/mountain',
+        position: {
+          gravity: 'north_east',
+        },
+        effects: [
+          {
+            crop: 'fill',
+            gravity: 'auto',
+            width: 800,
+            height: 1200
+          }
+        ]
+      },
+      {
+        width: 1300,
+        crop: 'fit',
+        text: {
+          color: 'black',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 160,
+          fontWeight: 'bold',
+          text: 'Next Cloudinary'
+        },
+        position: {
+          x: 200,
+          y: -100,
+          gravity: 'west',
+        },
+      },
+      {
+        width: 1300,
+        crop: 'fit',
+        text: {
+          color: 'black',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 74,
+          text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
+        },
+        position: {
+          x: 200,
+          y: 100,
+          gravity: 'west',
+        },
+      },
+    ]}
+    alt="Next Cloudinary with picture of a mountain"
+  />
+</HeaderImage>
+
+<Tabs items={['getCldOgImageUrl (App)', 'CldOgImage (Pages)']}>
+  <Tab>
+    Update the Cloudinary public ID, headline, body, and alt with your own values and add
+    the following code when defining metadata for a page.
+
+    > Note: you can alternatively use this function to pass dynamic values using the
+    [generateMetadata function](https://nextjs.org/docs/app/api-reference/functions/generate-metadata).
+
+    <CodeBlock>
+      ```jsx copy showLineNumbers
+      import { getCldOgImageUrl } from 'next-cloudinary';
+
+      const publicId = 'images/mountain';
+      const headline = 'Next Cloudinary';
+      const body = 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!';
+
+      export const metadata: Metadata = {
+        openGraph: {
+          images: [
+            getCldOgImageUrl({
+              src: 'images/white',
+              colorize: '100,co_white',
+              overlays: [
+                {
+                  publicId,
+                  position: {
+                    gravity: 'north_east',
+                  },
+                  effects: [
+                    {
+                      crop: 'fill',
+                      gravity: 'auto',
+                      width: 800,
+                      height: 1200
+                    }
+                  ]
+                },
+                {
+                  width: 1300,
+                  crop: 'fit',
+                  text: {
+                    color: 'black',
+                    fontFamily: 'Source Sans Pro',
+                    fontSize: 160,
+                    fontWeight: 'bold',
+                    text: headline
+                  },
+                  position: {
+                    x: 200,
+                    y: -100,
+                    gravity: 'west',
+                  },
+                },
+                {
+                  width: 1300,
+                  crop: 'fit',
+                  text: {
+                    color: 'black',
+                    fontFamily: 'Source Sans Pro',
+                    fontSize: 74,
+                    text: body
+                  },
+                  position: {
+                    x: 200,
+                    y: 100,
+                    gravity: 'west',
+                  },
+                },
+              ]
+            })
+          ]
+        }
+      }
+      ```
+    </CodeBlock>
+  </Tab>
+  <Tab>
+    Update the Cloudinary public ID, headline, body, and alt with your own values and add
+    the following code anywhere on any page, outside of the Next Head component.
+
+    <CodeBlock>
+      ```jsx copy showLineNumbers
+      import { CldOgImage } from 'next-cloudinary';
+
+      const publicId = 'images/mountain';
+      const headline = 'Next Cloudinary';
+      const body = 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!';
+      const alt = 'Next Cloudinary with picture of a mountain';
+
+      <CldOgImage
+        src={publicId}
+        colorize="100,co_white"
+        overlays={[
+          {
+            publicId,
+            position: {
+              gravity: 'north_east',
+            },
+            effects: [
+              {
+                crop: 'fill',
+                gravity: 'auto',
+                width: 800,
+                height: 1200
+              }
+            ]
+          },
+          {
+            width: 1300,
+            crop: 'fit',
+            text: {
+              color: 'black',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 160,
+              fontWeight: 'bold',
+              text: headline
+            },
+            position: {
+              x: 200,
+              y: -100,
+              gravity: 'west',
+            },
+          },
+          {
+            width: 1300,
+            crop: 'fit',
+            text: {
+              color: 'black',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 74,
+              text: body
+            },
+            position: {
+              x: 200,
+              y: 100,
+              gravity: 'west',
+            },
+          },
+        ]}
+        twitterTitle={headline}
+        alt={alt}
+      />
+      ```
+    </CodeBlock>
+  </Tab>
+</Tabs>
+
+## Full
+
+<HeaderImage>
+  <CldImage
+    width="2400"
+    height="1200"
+    crop="fill"
+    src={`${process.env.IMAGES_DIRECTORY}/mountain`}
+    colorize="100,co_black"
+    sizes="100w"
+    overlays={[
+      {
+        width: 2400,
+        height: 1200,
+        publicId: 'images/mountain',
+        effects: [{ opacity: 60 }]
+      },
+      {
+        width: 1400,
+        crop: 'fit',
+        text: {
+          alignment: 'center',
+          color: 'white',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 160,
+          fontWeight: 'bold',
+          text: 'Next Cloudinary'
+        },
+        position: {
+          y: -100,
+        },
+      },
+      {
+        width: 1400,
+        crop: 'fit',
+        text: {
+          alignment: 'center',
+          color: 'white',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 74,
+          text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
+        },
+        position: {
+          y: 100,
+        },
+      },
+    ]}
+    alt="Next Cloudinary with picture of a mountain"
+  />
+</HeaderImage>
+
+<Tabs items={['getCldOgImageUrl (App)', 'CldOgImage (Pages)']}>
+  <Tab>
+    Update the Cloudinary public ID, headline, body, and alt with your own values and add
+    the following code when defining metadata for a page.
+
+    > Note: you can alternatively use this function to pass dynamic values using the
+    [generateMetadata function](https://nextjs.org/docs/app/api-reference/functions/generate-metadata).
+
+    <CodeBlock>
+      ```jsx copy showLineNumbers
+      import { getCldOgImageUrl } from 'next-cloudinary';
+
+      const publicId = 'images/mountain';
+      const headline = 'Next Cloudinary';
+      const body = 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!';
+
+      export const metadata: Metadata = {
+        openGraph: {
+          images: [
+            getCldOgImageUrl({
+              src: publicId,
+              colorize: '100,co_black',
+              overlays: [
+                {
+                  width: 2400,
+                  height: 1200,
+                  publicId,
+                  effects: [{
+                    opacity: 60
+                  }]
+                },
+                {
+                  width: 1400,
+                  crop: 'fit',
+                  text: {
+                    alignment: 'center',
+                    color: 'white',
+                    fontFamily: 'Source Sans Pro',
+                    fontSize: 160,
+                    fontWeight: 'bold',
+                    text: headline
+                  },
+                  position: {
+                    y: -100,
+                  },
+                },
+                {
+                  width: 1400,
+                  crop: 'fit',
+                  text: {
+                    alignment: 'center',
+                    color: 'white',
+                    fontFamily: 'Source Sans Pro',
+                    fontSize: 74,
+                    text: body
+                  },
+                  position: {
+                    y: 100,
+                  },
+                },
+              ]
+            })
+          ]
+        }
+      }
+      ```
+    </CodeBlock>
+  </Tab>
+  <Tab>
+    Update the Cloudinary public ID, headline, body, and alt with your own values and add
+    the following code anywhere on any page, outside of the Next Head component.
+
+    <CodeBlock>
+      ```jsx copy showLineNumbers
+      import { CldOgImage } from 'next-cloudinary';
+
+      const publicId = 'images/mountain';
+      const headline = 'Next Cloudinary';
+      const body = 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!';
+      const alt = 'Next Cloudinary with picture of a mountain';
+
+      <CldOgImage
+        src={publicId}
+        colorize="100,co_black"
+        overlays={[
+          {
+            width: 2400,
+            height: 1200,
+            publicId,
+            effects: [{
+              opacity: 60
+            }]
+          },
+          {
+            width: 1400,
+            crop: 'fit',
+            text: {
+              alignment: 'center',
+              color: 'white',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 160,
+              fontWeight: 'bold',
+              text: headline
+            },
+            position: {
+              y: -100,
+            },
+          },
+          {
+            width: 1400,
+            crop: 'fit',
+            text: {
+              alignment: 'center',
+              color: 'white',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 74,
+              text: body
+            },
+            position: {
+              y: 100,
+            },
+          },
+        ]}
+        twitterTitle={headline}
+        alt={alt}
+      />
+      ```
+    </CodeBlock>
+  </Tab>
+</Tabs>
+
+## Learn More
+* [getCldOgImageUrl Configuration](/getcldogimageurl/configuration)
+* [CldOgImage Configuration](/cldogimage/configuration)
