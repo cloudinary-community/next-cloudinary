@@ -102,7 +102,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
           images: [
             getCldOgImageUrl({
               src: publicId,
-              colorize: '100,co_white',
+              effects: [{ colorize: '100,co_white' }],
               overlays: [
                 {
                   publicId,
@@ -300,7 +300,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
           images: [
             getCldOgImageUrl({
               src: publicId,
-              colorize: '100,co_black',
+              effects: [{ colorize: '100,co_black' }],
               overlays: [
                 {
                   width: 2400,
