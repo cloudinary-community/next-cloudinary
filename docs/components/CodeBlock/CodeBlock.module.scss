@@ -1,7 +1,6 @@
 .codeBlock {
-
   position: relative;
-
+  margin: 1.5em 0;
 }
 
 .codeBlockCode {
@@ -23,7 +22,7 @@
   &:after {
     display: block;
     content: '';
-    position: absolute;
+    position: sticky;
     bottom: 0;
     width: 100%;
     height: 2em;
