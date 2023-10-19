@@ -25,7 +25,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
 <HeaderImage>
   <CldImage
     width="2400"
-    height="1200"
+    height="1254"
     crop="fill"
     src={`${process.env.IMAGES_DIRECTORY}/mountain`}
     colorize="100,co_white"
@@ -41,12 +41,12 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
             crop: 'fill',
             gravity: 'auto',
             width: 800,
-            height: 1200
+            height: 1254
           }
         ]
       },
       {
-        width: 1300,
+        width: 1250,
         crop: 'fit',
         text: {
           color: 'black',
@@ -62,7 +62,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
         },
       },
       {
-        width: 1300,
+        width: 1250,
         crop: 'fit',
         text: {
           color: 'black',
@@ -71,7 +71,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
           text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
         },
         position: {
-          x: 200,
+          x: 250,
           y: 100,
           gravity: 'west',
         },
@@ -114,12 +114,12 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
                       crop: 'fill',
                       gravity: 'auto',
                       width: 800,
-                      height: 1200
+                      height: 1254
                     }
                   ]
                 },
                 {
-                  width: 1300,
+                  width: 1250,
                   crop: 'fit',
                   text: {
                     color: 'black',
@@ -135,7 +135,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
                   },
                 },
                 {
-                  width: 1300,
+                  width: 1250,
                   crop: 'fit',
                   text: {
                     color: 'black',
@@ -184,12 +184,12 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
                 crop: 'fill',
                 gravity: 'auto',
                 width: 800,
-                height: 1200
+                height: 1254
               }
             ]
           },
           {
-            width: 1300,
+            width: 1250,
             crop: 'fit',
             text: {
               color: 'black',
@@ -199,13 +199,13 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
               text: headline
             },
             position: {
-              x: 200,
+              x: 250,
               y: -100,
               gravity: 'west',
             },
           },
           {
-            width: 1300,
+            width: 1250,
             crop: 'fit',
             text: {
               color: 'black',
@@ -214,7 +214,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
               text: body
             },
             position: {
-              x: 200,
+              x: 250,
               y: 100,
               gravity: 'west',
             },
@@ -233,16 +233,17 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
 <HeaderImage>
   <CldImage
     width="2400"
-    height="1200"
+    height="1254"
     crop="fill"
     src={`${process.env.IMAGES_DIRECTORY}/mountain`}
     colorize="100,co_black"
     sizes="100w"
     overlays={[
       {
-        width: 2400,
-        height: 1200,
         publicId: 'images/mountain',
+        width: 2400,
+        height: 1254,
+        crop: 'fill',
         effects: [{ opacity: 60 }]
       },
       {
@@ -303,9 +304,10 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
               effects: [{ colorize: '100,co_black' }],
               overlays: [
                 {
-                  width: 2400,
-                  height: 1200,
                   publicId,
+                  width: 2400,
+                  height: 1254,
+                  crop: 'fill',
                   effects: [{
                     opacity: 60
                   }]
@@ -365,9 +367,10 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
         colorize="100,co_black"
         overlays={[
           {
-            width: 2400,
-            height: 1200,
             publicId,
+            width: 2400,
+            height: 1254,
+            crop: 'fill',
             effects: [{
               opacity: 60
             }]
