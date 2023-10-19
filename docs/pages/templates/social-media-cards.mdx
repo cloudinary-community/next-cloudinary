@@ -27,7 +27,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
     width="2400"
     height="1254"
     crop="fill"
-    src={`${process.env.IMAGES_DIRECTORY}/white`}
+    src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
     sizes="100w"
     effects={[
       {
@@ -38,10 +38,19 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
         colorize: '100'
       },
       {
-        gradientFade: 'symmetric:2'
+        gradientFade: 'symmetric'
       }
     ]}
     overlays={[
+      {
+        publicId: `${process.env.IMAGES_DIRECTORY}/galaxy`,
+        width: 2400,
+        height: 1254,
+        crop: 'fill',
+        effects: [
+          { opacity: 20 }
+        ]
+      },
       {
         width: 2000,
         crop: 'fit',
@@ -61,7 +70,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
         },
       },
       {
-        publicId: `${process.env.IMAGES_DIRECTORY}/white`,
+        publicId: `${process.env.IMAGES_DIRECTORY}/galaxy`,
         width: 2000,
         height: 4,
         effects: [{
@@ -118,9 +127,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
       import { Metadata } from 'next';
       import { getCldOgImageUrl } from 'next-cloudinary';
 
-      // The public ID can be any available asset, even a 1x1 pixel. It's used as the underlaying basis
-      // to create an image with a gradient dynamically
-      const publicId = 'images/white';
+      const publicId = 'images/galaxy';
       const headline = 'High-Performance Image & Video Delivery at Scale in Next.js';
       const tagline = 'Next Cloudinary';
       const logoPublicId = 'images/cloudinary-logo-white';
@@ -144,10 +151,19 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
                     colorize: '100'
                   },
                   {
-                    gradientFade: 'symmetric:2'
+                    gradientFade: 'symmetric'
                   }
                 ],
                 overlays: [
+                  {
+                    publicId,
+                    width: 2400,
+                    height: 1254,
+                    crop: 'fill',
+                    effects: [
+                      { opacity: 20 }
+                    ]
+                  },
                   {
                     width: 2000,
                     crop: 'fit',
@@ -156,6 +172,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
                       fontFamily: 'Lato',
                       fontSize: 130,
                       fontWeight: 'black',
+                      lineSpacing: 20,
                       lineSpacing: 20,
                       text: headline
                     },
@@ -222,9 +239,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
       ```jsx copy showLineNumbers
       import { CldOgImage } from 'next-cloudinary';
 
-      // The public ID can be any available asset, even a 1x1 pixel. It's used as the underlaying basis
-      // to create an image with a gradient dynamically
-      const publicId = 'images/white';
+      const publicId = 'images/galaxy';
       const headline = 'High-Performance Image & Video Delivery at Scale in Next.js';
       const tagline = 'Next Cloudinary';
       const logoPublicId = 'images/cloudinary-logo-white';
@@ -241,10 +256,19 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
             colorize: '100'
           },
           {
-            gradientFade: 'symmetric:2'
+            gradientFade: 'symmetric'
           }
         ]}
         overlays={[
+          {
+            publicId,
+            width: 2400,
+            height: 1254,
+            crop: 'fill',
+            effects: [
+              { opacity: 20 }
+            ]
+          },
           {
             width: 2000,
             crop: 'fit',
