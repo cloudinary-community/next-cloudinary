@@ -8,76 +8,100 @@ import CodeBlock from '../../components/CodeBlock';
 import { CldImage, CldOgImage } from '../../../next-cloudinary';
 
 <Head>
-  <title>Social Media Cards - Next Cloudinary</title>
-  <meta name="og:title" content="Generating Social Media Cards - Next Cloudinary" />
+  <title>Social Card Images - Next Cloudinary</title>
+  <meta name="og:title" content="Generating Social Card Images - Next Cloudinary" />
   <meta name="og:url" content={`https://next.cloudinary.dev/use-cases/social-media-cards`} />
 </Head>
 
 <OgImage
-  title="Social Media Cards"
-  twitterTitle="Social Media Card Templates"
+  title="Social Card Images"
+  twitterTitle="Social Card Image Templates"
 />
 
-# Social Media Card Templates
+# Social Card Image Templates
 
-## One Third
+## Article
 
 <HeaderImage>
   <CldImage
     width="2400"
     height="1254"
     crop="fill"
-    src={`${process.env.IMAGES_DIRECTORY}/mountain`}
-    colorize="100,co_white"
+    src={`${process.env.IMAGES_DIRECTORY}/white`}
     sizes="100w"
-    overlays={[
+    effects={[
       {
-        publicId: 'images/mountain',
-        position: {
-          gravity: 'north_east',
-        },
-        effects: [
-          {
-            crop: 'fill',
-            gravity: 'auto',
-            width: 800,
-            height: 1254
-          }
-        ]
+        background: 'rgb:010A44'
       },
       {
-        width: 1250,
+        color: 'rgb:2A005F',
+        colorize: '100'
+      },
+      {
+        gradientFade: 'symmetric:2'
+      }
+    ]}
+    overlays={[
+      {
+        width: 2000,
         crop: 'fit',
         text: {
-          color: 'black',
-          fontFamily: 'Source Sans Pro',
-          fontSize: 160,
+          color: 'white',
+          fontFamily: 'Lato',
+          fontSize: 130,
+          fontWeight: 'black',
+          lineSpacing: 20,
+          lineSpacing: 20,
+          text: 'High-Performance Image & Video Delivery at Scale in Next.js'
+        },
+        position: {
+          x: 200,
+          y: 200,
+          gravity: 'north_west'
+        },
+      },
+      {
+        publicId: `${process.env.IMAGES_DIRECTORY}/white`,
+        width: 2000,
+        height: 4,
+        effects: [{
+          colorize: '100,co_white',
+          opacity: 70
+        }],
+        position: {
+          x: 200,
+          y: 350,
+          gravity: 'south_west'
+        },
+      },
+      {
+        width: 120,
+        crop: 'fit',
+        publicId: `${process.env.IMAGES_DIRECTORY}/cloudinary-logo-white`,
+        position: {
+          x: 200,
+          y: 205,
+          gravity: 'south_west'
+        },
+      },
+      {
+        width: 1400,
+        crop: 'fit',
+        text: {
+          color: 'white',
+          fontFamily: 'Lato',
+          fontSize: 74,
           fontWeight: 'bold',
           text: 'Next Cloudinary'
         },
         position: {
-          x: 250,
-          y: -100,
-          gravity: 'west',
-        },
-      },
-      {
-        width: 1250,
-        crop: 'fit',
-        text: {
-          color: 'black',
-          fontFamily: 'Source Sans Pro',
-          fontSize: 74,
-          text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
-        },
-        position: {
-          x: 250,
-          y: 100,
-          gravity: 'west',
+          x: 360,
+          y: 200,
+          gravity: 'south_west'
         },
       },
     ]}
-    alt="Next Cloudinary with picture of a mountain"
+    alt="Next Cloudinary High-Performance Image & Video Delivery at Scale in Next.js over picture of a mountain"
   />
 </HeaderImage>
 
@@ -91,66 +115,99 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
 
     <CodeBlock>
       ```jsx copy showLineNumbers
+      import { Metadata } from 'next';
       import { getCldOgImageUrl } from 'next-cloudinary';
 
-      const publicId = 'images/mountain';
-      const headline = 'Next Cloudinary';
-      const body = 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!';
+      // The public ID can be any available asset, even a 1x1 pixel. It's used as the underlaying basis
+      // to create an image with a gradient dynamically
+      const publicId = 'images/white';
+      const headline = 'High-Performance Image & Video Delivery at Scale in Next.js';
+      const tagline = 'Next Cloudinary';
+      const logoPublicId = 'images/cloudinary-logo-white';
 
       export const metadata: Metadata = {
         openGraph: {
           images: [
-            getCldOgImageUrl({
-              src: publicId,
-              effects: [{ colorize: '100,co_white' }],
-              overlays: [
-                {
-                  publicId,
-                  position: {
-                    gravity: 'north_east',
+            {
+              // Prefer a different size? Be sure to update the width and height of the
+              // metadata as well as the image configuration of getCldOgImageUrl
+              width: 1200,
+              height: 627,
+              getCldOgImageUrl({
+                src: publicId,
+                effects: [
+                  {
+                    background: 'rgb:010A44'
                   },
-                  effects: [
-                    {
-                      crop: 'fill',
-                      gravity: 'auto',
-                      width: 800,
-                      height: 1254
-                    }
-                  ]
-                },
-                {
-                  width: 1250,
-                  crop: 'fit',
-                  text: {
-                    color: 'black',
-                    fontFamily: 'Source Sans Pro',
-                    fontSize: 160,
-                    fontWeight: 'bold',
-                    text: headline
+                  {
+                    color: 'rgb:2A005F',
+                    colorize: '100'
                   },
-                  position: {
-                    x: 250,
-                    y: -100,
-                    gravity: 'west',
+                  {
+                    gradientFade: 'symmetric:2'
+                  }
+                ],
+                overlays: [
+                  {
+                    width: 2000,
+                    crop: 'fit',
+                    text: {
+                      color: 'white',
+                      fontFamily: 'Lato',
+                      fontSize: 130,
+                      fontWeight: 'black',
+                      lineSpacing: 20,
+                      text: headline
+                    },
+                    position: {
+                      x: 200,
+                      y: 200,
+                      gravity: 'north_west'
+                    },
                   },
-                },
-                {
-                  width: 1250,
-                  crop: 'fit',
-                  text: {
-                    color: 'black',
-                    fontFamily: 'Source Sans Pro',
-                    fontSize: 74,
-                    text: body
+                  {
+                    publicId,
+                    width: 2000,
+                    height: 4,
+                    effects: [{
+                      colorize: '100,co_white',
+                      opacity: 70
+                    }],
+                    position: {
+                      x: 200,
+                      y: 350,
+                      gravity: 'south_west'
+                    },
                   },
-                  position: {
-                    x: 250,
-                    y: 100,
-                    gravity: 'west',
+                  {
+                    width: 120,
+                    crop: 'fit',
+                    publicId: logoPublicId,
+                    position: {
+                      x: 200,
+                      y: 205,
+                      gravity: 'south_west'
+                    },
                   },
-                },
-              ]
-            })
+                  {
+                    width: 1400,
+                    crop: 'fit',
+                    text: {
+                      color: 'white',
+                      fontFamily: 'Lato',
+                      fontSize: 74,
+                      fontWeight: 'bold',
+                      text: tagline
+                    },
+                    position: {
+                      x: 360,
+                      y: 200,
+                      gravity: 'south_west'
+                    },
+                  },
+                ]
+              })
+            }
           ]
         }
       }
@@ -165,58 +222,84 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
       ```jsx copy showLineNumbers
       import { CldOgImage } from 'next-cloudinary';
 
-      const publicId = 'images/mountain';
-      const headline = 'Next Cloudinary';
-      const body = 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!';
-      const alt = 'Next Cloudinary with picture of a mountain';
+      // The public ID can be any available asset, even a 1x1 pixel. It's used as the underlaying basis
+      // to create an image with a gradient dynamically
+      const publicId = 'images/white';
+      const headline = 'High-Performance Image & Video Delivery at Scale in Next.js';
+      const tagline = 'Next Cloudinary';
+      const logoPublicId = 'images/cloudinary-logo-white';
+      const alt = 'Next Cloudinary High-Performance Image & Video Delivery at Scale in Next.js over picture of a mountain';
 
       <CldOgImage
         src={publicId}
-        colorize="100,co_white"
-        overlays={[
+        effects={[
           {
-            publicId,
-            position: {
-              gravity: 'north_east',
-            },
-            effects: [
-              {
-                crop: 'fill',
-                gravity: 'auto',
-                width: 800,
-                height: 1254
-              }
-            ]
+            background: 'rgb:010A44'
           },
           {
-            width: 1250,
+            color: 'rgb:2A005F',
+            colorize: '100'
+          },
+          {
+            gradientFade: 'symmetric:2'
+          }
+        ]}
+        overlays={[
+          {
+            width: 2000,
             crop: 'fit',
             text: {
-              color: 'black',
-              fontFamily: 'Source Sans Pro',
-              fontSize: 160,
-              fontWeight: 'bold',
+              color: 'white',
+              fontFamily: 'Lato',
+              fontSize: 130,
+              fontWeight: 'black',
+              lineSpacing: 20,
               text: headline
             },
             position: {
-              x: 250,
-              y: -100,
-              gravity: 'west',
+              x: 200,
+              y: 200,
+              gravity: 'north_west'
             },
           },
           {
-            width: 1250,
+            publicId,
+            width: 2000,
+            height: 4,
+            effects: [{
+              colorize: '100,co_white',
+              opacity: 70
+            }],
+            position: {
+              x: 200,
+              y: 350,
+              gravity: 'south_west'
+            },
+          },
+          {
+            width: 120,
+            crop: 'fit',
+            publicId: logoPublicId,
+            position: {
+              x: 200,
+              y: 205,
+              gravity: 'south_west'
+            },
+          },
+          {
+            width: 1400,
             crop: 'fit',
             text: {
-              color: 'black',
-              fontFamily: 'Source Sans Pro',
+              color: 'white',
+              fontFamily: 'Lato',
               fontSize: 74,
-              text: body
+              fontWeight: 'bold',
+              text: tagline
             },
             position: {
-              x: 250,
-              y: 100,
-              gravity: 'west',
+              x: 360,
+              y: 200,
+              gravity: 'south_west'
             },
           },
         ]}
@@ -290,6 +373,7 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
 
     <CodeBlock>
       ```jsx copy showLineNumbers
+      import { Metadata } from 'next';
       import { getCldOgImageUrl } from 'next-cloudinary';
 
       const publicId = 'images/mountain';
@@ -299,50 +383,56 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
       export const metadata: Metadata = {
         openGraph: {
           images: [
-            getCldOgImageUrl({
-              src: publicId,
-              effects: [{ colorize: '100,co_black' }],
-              overlays: [
-                {
-                  publicId,
-                  width: 2400,
-                  height: 1254,
-                  crop: 'fill',
-                  effects: [{
-                    opacity: 60
-                  }]
-                },
-                {
-                  width: 1400,
-                  crop: 'fit',
-                  text: {
-                    alignment: 'center',
-                    color: 'white',
-                    fontFamily: 'Source Sans Pro',
-                    fontSize: 160,
-                    fontWeight: 'bold',
-                    text: headline
+            {
+              // Prefer a different size? Be sure to update the width and height of the
+              // metadata as well as the image configuration of getCldOgImageUrl
+              width: 1200,
+              height: 627,
+              getCldOgImageUrl({
+                src: publicId,
+                effects: [{ colorize: '100,co_black' }],
+                overlays: [
+                  {
+                    publicId,
+                    width: 2400,
+                    height: 1254,
+                    crop: 'fill',
+                    effects: [{
+                      opacity: 60
+                    }]
                   },
-                  position: {
-                    y: -100,
+                  {
+                    width: 1400,
+                    crop: 'fit',
+                    text: {
+                      alignment: 'center',
+                      color: 'white',
+                      fontFamily: 'Source Sans Pro',
+                      fontSize: 160,
+                      fontWeight: 'bold',
+                      text: headline
+                    },
+                    position: {
+                      y: -100,
+                    },
                   },
-                },
-                {
-                  width: 1400,
-                  crop: 'fit',
-                  text: {
-                    alignment: 'center',
-                    color: 'white',
-                    fontFamily: 'Source Sans Pro',
-                    fontSize: 74,
-                    text: body
+                  {
+                    width: 1400,
+                    crop: 'fit',
+                    text: {
+                      alignment: 'center',
+                      color: 'white',
+                      fontFamily: 'Source Sans Pro',
+                      fontSize: 74,
+                      text: body
+                    },
+                    position: {
+                      y: 100,
+                    },
                   },
-                  position: {
-                    y: 100,
-                  },
-                },
-              ]
-            })
+                ]
+              })
+            }
           ]
         }
       }
@@ -402,6 +492,221 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
             },
             position: {
               y: 100,
+            },
+          },
+        ]}
+        twitterTitle={headline}
+        alt={alt}
+      />
+      ```
+    </CodeBlock>
+  </Tab>
+</Tabs>
+
+## One Third
+
+<HeaderImage>
+  <CldImage
+    width="2400"
+    height="1254"
+    crop="fill"
+    src={`${process.env.IMAGES_DIRECTORY}/mountain`}
+    colorize="100,co_white"
+    sizes="100w"
+    overlays={[
+      {
+        publicId: 'images/mountain',
+        position: {
+          gravity: 'north_east',
+        },
+        effects: [
+          {
+            crop: 'fill',
+            gravity: 'auto',
+            width: 800,
+            height: 1254
+          }
+        ]
+      },
+      {
+        width: 1250,
+        crop: 'fit',
+        text: {
+          color: 'black',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 160,
+          fontWeight: 'bold',
+          text: 'Next Cloudinary'
+        },
+        position: {
+          x: 250,
+          y: -100,
+          gravity: 'west',
+        },
+      },
+      {
+        width: 1250,
+        crop: 'fit',
+        text: {
+          color: 'black',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 74,
+          text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
+        },
+        position: {
+          x: 250,
+          y: 100,
+          gravity: 'west',
+        },
+      },
+    ]}
+    alt="Next Cloudinary with picture of a mountain"
+  />
+</HeaderImage>
+
+<Tabs items={['getCldOgImageUrl (App)', 'CldOgImage (Pages)']}>
+  <Tab>
+    Update the Cloudinary public ID, headline, body, and alt with your own values and add
+    the following code when defining metadata for a page.
+
+    > Note: you can alternatively use this function to pass dynamic values using the
+    [generateMetadata function](https://nextjs.org/docs/app/api-reference/functions/generate-metadata).
+
+    <CodeBlock>
+      ```jsx copy showLineNumbers
+      import { Metadata } from 'next';
+      import { getCldOgImageUrl } from 'next-cloudinary';
+
+      const publicId = 'images/mountain';
+      const headline = 'Next Cloudinary';
+      const body = 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!';
+
+      export const metadata: Metadata = {
+        openGraph: {
+          images: [
+            {
+              // Prefer a different size? Be sure to update the width and height of the
+              // metadata as well as the image configuration of getCldOgImageUrl
+              width: 1200,
+              height: 627,
+              url: getCldOgImageUrl({
+                src: publicId,
+                effects: [{ colorize: '100,co_white' }],
+                overlays: [
+                  {
+                    publicId,
+                    position: {
+                      gravity: 'north_east',
+                    },
+                    effects: [
+                      {
+                        crop: 'fill',
+                        gravity: 'auto',
+                        width: 800,
+                        height: 1254
+                      }
+                    ]
+                  },
+                  {
+                    width: 1250,
+                    crop: 'fit',
+                    text: {
+                      color: 'black',
+                      fontFamily: 'Source Sans Pro',
+                      fontSize: 160,
+                      fontWeight: 'bold',
+                      text: headline
+                    },
+                    position: {
+                      x: 250,
+                      y: -100,
+                      gravity: 'west',
+                    },
+                  },
+                  {
+                    width: 1250,
+                    crop: 'fit',
+                    text: {
+                      color: 'black',
+                      fontFamily: 'Source Sans Pro',
+                      fontSize: 74,
+                      text: body
+                    },
+                    position: {
+                      x: 250,
+                      y: 100,
+                      gravity: 'west',
+                    },
+                  },
+                ]
+              }),
+            }
+          ]
+        }
+      }
+      ```
+    </CodeBlock>
+  </Tab>
+  <Tab>
+    Update the Cloudinary public ID, headline, body, and alt with your own values and add
+    the following code anywhere on any page, outside of the Next Head component.
+
+    <CodeBlock>
+      ```jsx copy showLineNumbers
+      import { CldOgImage } from 'next-cloudinary';
+
+      const publicId = 'images/mountain';
+      const headline = 'Next Cloudinary';
+      const body = 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!';
+      const alt = 'Next Cloudinary with picture of a mountain';
+
+      <CldOgImage
+        src={publicId}
+        colorize="100,co_white"
+        overlays={[
+          {
+            publicId,
+            position: {
+              gravity: 'north_east',
+            },
+            effects: [
+              {
+                crop: 'fill',
+                gravity: 'auto',
+                width: 800,
+                height: 1254
+              }
+            ]
+          },
+          {
+            width: 1250,
+            crop: 'fit',
+            text: {
+              color: 'black',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 160,
+              fontWeight: 'bold',
+              text: headline
+            },
+            position: {
+              x: 250,
+              y: -100,
+              gravity: 'west',
+            },
+          },
+          {
+            width: 1250,
+            crop: 'fit',
+            text: {
+              color: 'black',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 74,
+              text: body
+            },
+            position: {
+              x: 250,
+              y: 100,
+              gravity: 'west',
             },
           },
         ]}
