@@ -1,3 +1,10 @@
+# [4.28.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.27.0...v4.28.0) (2023-10-24)
+
+
+### Features
+
+* Add license to npm package ([#323](https://github.com/colbyfayock/next-cloudinary/issues/323)) ([8d4f32e](https://github.com/colbyfayock/next-cloudinary/commit/8d4f32e485414c70d5d8bb37341dcb3064f60681)), closes [#321](https://github.com/colbyfayock/next-cloudinary/issues/321)
+
 # [4.27.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.26.0...v4.27.0) (2023-10-17)
 
 
