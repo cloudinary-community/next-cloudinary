@@ -1,6 +1,7 @@
 {
   "name": "next-cloudinary",
   "version": "4.27.0",
+  "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -8,8 +9,8 @@
   "scripts": {
     "build": "tsup src/index.ts --dts",
     "dev": "tsup src/index.ts --watch --dts",
-    "prepublishOnly": "cp ../README.md . && yarn build",
-    "postpublish": "rm ./README.md",
+    "prepublishOnly": "cp ../README.md . && cp ../LICENSE . && yarn build",
+    "postpublish": "rm ./README.md && rm ./LICENSE",
     "test": "jest",
     "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" yarn build && cd tests/nextjs-app && yarn build"
   },
