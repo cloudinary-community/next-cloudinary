@@ -34,7 +34,7 @@
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "next": "^12 || ^13",
+    "next": "^12 || ^13 || ^14",
     "react": "^17 || ^18"
   }
 }
