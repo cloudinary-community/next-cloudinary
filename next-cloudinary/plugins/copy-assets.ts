@@ -4,15 +4,15 @@ import { createWriteStream } from 'fs';
 import { mkdirp } from 'mkdirp';
 import https from 'https';
 
-const version = '1.9.16';
+const PLAYER_VERSION = '1.10.1';
 
 const assets = [
-  `https://unpkg.com/cloudinary-video-player@${version}/dist/cld-video-player.css`,
+  `https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.css`,
   {
     directory: 'fonts',
     assets: [
-      `https://unpkg.com/cloudinary-video-player@${version}/dist/fonts/cloudinary_icon_for_black_bg.svg`,
-      `https://unpkg.com/cloudinary-video-player@${version}/dist/fonts/cloudinary_icon_for_white_bg.svg`,
+      `https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/fonts/cloudinary_icon_for_black_bg.svg`,
+      `https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/fonts/cloudinary_icon_for_white_bg.svg`,
     ]
   }
 ];
