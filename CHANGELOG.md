@@ -1,3 +1,15 @@
+# [5.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.28.0...v5.0.0) (2023-10-30)
+
+
+### Features
+
+* Next.js 14 ([#329](https://github.com/colbyfayock/next-cloudinary/issues/329)) ([a430fff](https://github.com/colbyfayock/next-cloudinary/commit/a430fff13886a16995c3ec57a81e3526116a380b)), closes [#328](https://github.com/colbyfayock/next-cloudinary/issues/328)
+
+
+### BREAKING CHANGES
+
+* Updates package to support Next.js 14
+
 # [4.28.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.27.0...v4.28.0) (2023-10-24)
 
 
