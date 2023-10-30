@@ -1,4 +1,4 @@
-import React, { useState, useCallback, forwardRef } from 'react';
+import * as React from 'react';
 import Image, { ImageProps } from 'next/image';
 import { getTransformations } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
@@ -16,7 +16,7 @@ export type CldImageProps = Omit<ImageProps, 'src'> & ImageOptions & {
   unoptimized?: boolean;
 };
 
-const CldImage = forwardRef<HTMLImageElement, CldImageProps>((props, ref) => {
+const CldImage = React.forwardRef<HTMLImageElement, CldImageProps>(function CldImage(props, ref) {
   let hasThrownError = false;
 
   const CLD_OPTIONS = [
@@ -46,7 +46,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>((props, ref) => {
     .forEach(key => imageProps[key] = props[key]);
 
   const defaultImgKey = (Object.keys(imageProps) as Array<keyof typeof imageProps>).map(key => `${key}:${imageProps[key]}`).join(';');
-  const [imgKey, setImgKey] = useState(defaultImgKey);
+  const [imgKey, setImgKey] = React.useState(defaultImgKey);
 
   // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
 
@@ -133,7 +133,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>((props, ref) => {
     }
   }
 
-  const handleOnError = useCallback(onError, [pollForProcessingImage, defaultImgKey]);
+  const handleOnError = React.useCallback(onError, [pollForProcessingImage, defaultImgKey]);
 
   // Copypasta from https://github.com/prismicio/prismic-next/pull/79/files
   // Thanks Angelo!
@@ -155,7 +155,5 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>((props, ref) => {
     />
   );
 });
-
-CldImage.displayName = 'CldImage';
 
 export default CldImage;
