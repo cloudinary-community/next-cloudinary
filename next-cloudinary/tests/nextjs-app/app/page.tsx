@@ -18,7 +18,7 @@ export default function Home() {
       }}>
         <h2>CldUploadWidget</h2>
         <CldUploadWidget
-          uploadPreset="test-preset"
+          uploadPreset="next-cloudinary-unsigned"
           options={{
             sources: ['local', 'camera']
           }}
@@ -34,7 +34,7 @@ export default function Home() {
         marginBottom: '2em'
       }}>
         <h2>CldUploadButton</h2>
-        <CldUploadButton uploadPreset="test-preset" />
+        <CldUploadButton uploadPreset="next-cloudinary-unsigned" />
       </div>
       <div style={{
         marginBottom: '2em'

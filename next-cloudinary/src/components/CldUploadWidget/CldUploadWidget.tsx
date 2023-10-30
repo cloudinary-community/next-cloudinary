@@ -267,7 +267,7 @@ const CldUploadWidget = ({
         })}
       <Script
         id={`cloudinary-uploadwidget-${Math.floor(Math.random() * 100)}`}
-        src="https://widget.cloudinary.com/v2.0/global/all.js"
+        src="https://upload-widget.cloudinary.com/global/all.js"
         onLoad={handleOnLoad}
         onError={(e) => console.error(`Failed to load Cloudinary Upload Widget: ${e.message}`)}
       />
