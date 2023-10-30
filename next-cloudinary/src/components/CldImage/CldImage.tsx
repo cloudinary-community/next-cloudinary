@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useCallback, forwardRef, SyntheticEvent } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { getTransformations } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
@@ -16,7 +16,7 @@ export type CldImageProps = Omit<ImageProps, 'src'> & ImageOptions & {
   unoptimized?: boolean;
 };
 
-const CldImage = React.forwardRef<HTMLImageElement, CldImageProps>(function CldImage(props, ref) {
+const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(props, ref) {
   let hasThrownError = false;
 
   const CLD_OPTIONS = [
@@ -46,7 +46,7 @@ const CldImage = React.forwardRef<HTMLImageElement, CldImageProps>(function CldI
     .forEach(key => imageProps[key] = props[key]);
 
   const defaultImgKey = (Object.keys(imageProps) as Array<keyof typeof imageProps>).map(key => `${key}:${imageProps[key]}`).join(';');
-  const [imgKey, setImgKey] = React.useState(defaultImgKey);
+  const [imgKey, setImgKey] = useState(defaultImgKey);
 
   // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
 
@@ -96,7 +96,7 @@ const CldImage = React.forwardRef<HTMLImageElement, CldImageProps>(function CldI
    * handleOnError
    */
 
-  async function onError(options: React.SyntheticEvent<HTMLImageElement, Event>) {
+  async function onError(options: SyntheticEvent<HTMLImageElement, Event>) {
     let pollForImage = true;
 
     // The onError function should never fire more than once. The use case for tracking it
@@ -133,7 +133,7 @@ const CldImage = React.forwardRef<HTMLImageElement, CldImageProps>(function CldI
     }
   }
 
-  const handleOnError = React.useCallback(onError, [pollForProcessingImage, defaultImgKey]);
+  const handleOnError = useCallback(onError, [pollForProcessingImage, defaultImgKey]);
 
   // Copypasta from https://github.com/prismicio/prismic-next/pull/79/files
   // Thanks Angelo!
