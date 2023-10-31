@@ -43,7 +43,7 @@ Place the CldOgImage component anywhere outside of the Head component.
   The CldOgImage component must be placed outside of the Next.js Head component as the Head component does not accept React components as children.
 </Callout>
 
-The resulting HTML will be applied to the Head of the document:
+The resulting HTML will be applied to the Head of the document including all applicable [open graph tags](https://ogp.me/):
 
 ```html copy
 <meta property="og:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1254,g_center/c_scale,w_1200/f_jpg/q_auto/v1/images/galaxy" />
