@@ -116,7 +116,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   function handleOnLoad() {
     if ( 'cloudinary' in window ) {
       cloudinaryRef.current = window.cloudinary;
-
       let logoOptions: CloudinaryVideoPlayerOptionsLogo = {};
 
       if ( typeof logo === 'boolean' ) {
@@ -162,11 +161,10 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   }
 
   useEffect(() => {
-    handleOnLoad();
 
     return () => {
-      defaultVideoRef.current = null;
-      defaultPlayerRef.current = null;
+      //@ts-ignore
+      playerRef.current?.videojs.cloudinary.dispose();
       playerInstances = playerInstances.filter((id) => id !== playerId)
     }
   }, []);
@@ -196,7 +194,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
           height={height}
         />
         <Script
-          id={`cloudinary-videoplayer-${playerId}`}
+            id={`cloudinary-videoplayer-${playerId}-${Math.floor(Math.random() * 100)}`}
           src={`https://unpkg.com/cloudinary-video-player@${version}/dist/cld-video-player.min.js`}
           onLoad={handleOnLoad}
           onError={(e) => console.error(`Failed to load Cloudinary Video Player: ${e.message}`)}

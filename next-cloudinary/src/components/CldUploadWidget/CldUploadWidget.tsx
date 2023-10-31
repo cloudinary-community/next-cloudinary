@@ -126,7 +126,6 @@ const CldUploadWidget = ({
   }
 
   useEffect(() => {
-    handleOnLoad();
 
     return () => {
       widget.current.destroy();
