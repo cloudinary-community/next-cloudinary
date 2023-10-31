@@ -8,6 +8,8 @@ import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPla
 
 let playerInstances: string[] = [];
 
+const PLAYER_VERSION = '1.10.1';
+
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
   const {
@@ -30,7 +32,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     src,
     sourceTypes,
     transformation,
-    version = '1.9.16',
     quality = 'auto',
     width,
   } = props as CldVideoPlayerProps;
@@ -38,9 +39,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const playerTransformations = Array.isArray(transformation) ? transformation : [transformation];
   let publicId: string = src || "";
 
-  if ( typeof props.version === 'string' ) {
-    console.warn('The version prop will no longer be supported in future versions due to the unreliability of coordinating assets');
-  }
 
   // If the publicId/src is a URL, attempt to parse it as a Cloudinary URL
   // to get the public ID alone
@@ -183,7 +181,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   return (
     <>
       <Head>
-        <link href={`https://unpkg.com/cloudinary-video-player@${version}/dist/cld-video-player.min.css`} rel="stylesheet" />
+        <link href={`https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.min.css`} rel="stylesheet" />
       </Head>
       <div style={{ width: '100%', aspectRatio: `${props.width} / ${props.height}`}}>
         <video
@@ -195,9 +193,9 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         />
         <Script
             id={`cloudinary-videoplayer-${playerId}-${Math.floor(Math.random() * 100)}`}
-          src={`https://unpkg.com/cloudinary-video-player@${version}/dist/cld-video-player.min.js`}
-          onLoad={handleOnLoad}
-          onError={(e) => console.error(`Failed to load Cloudinary Video Player: ${e.message}`)}
+            src={`https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.min.js`}
+            onLoad={handleOnLoad}
+            onError={(e) => console.error(`Failed to load Cloudinary Video Player: ${e.message}`)}
         />
       </div>
     </>

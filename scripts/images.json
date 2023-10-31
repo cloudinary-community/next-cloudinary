@@ -8,6 +8,10 @@
     "url": "https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/v1666934571/images/cloudinary-white.svg"
   },
   {
+    "publicId": "cloudinary-logo-white",
+    "url": "https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/images/cloudinary-logo-white.svg"
+  },
+  {
     "publicId": "earth",
     "url": "https://user-images.githubusercontent.com/1045274/198430383-2d91bc89-63a8-448c-b322-37ead1fc3be2.jpeg"
   },

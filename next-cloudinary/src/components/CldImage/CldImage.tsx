@@ -1,4 +1,4 @@
-import React, { useState, useCallback, forwardRef } from 'react';
+import React, { useState, useCallback, forwardRef, SyntheticEvent } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { getTransformations } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
@@ -16,7 +16,7 @@ export type CldImageProps = Omit<ImageProps, 'src'> & ImageOptions & {
   unoptimized?: boolean;
 };
 
-const CldImage = forwardRef<HTMLImageElement, CldImageProps>((props, ref) => {
+const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(props, ref) {
   let hasThrownError = false;
 
   const CLD_OPTIONS = [
@@ -96,7 +96,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>((props, ref) => {
    * handleOnError
    */
 
-  async function onError(options: React.SyntheticEvent<HTMLImageElement, Event>) {
+  async function onError(options: SyntheticEvent<HTMLImageElement, Event>) {
     let pollForImage = true;
 
     // The onError function should never fire more than once. The use case for tracking it
@@ -155,7 +155,5 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>((props, ref) => {
     />
   );
 });
-
-CldImage.displayName = 'CldImage';
 
 export default CldImage;

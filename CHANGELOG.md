@@ -1,3 +1,22 @@
+# [5.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.28.0...v5.0.0) (2023-10-30)
+
+
+### Features
+
+* Next.js 14 ([#329](https://github.com/colbyfayock/next-cloudinary/issues/329)) ([a430fff](https://github.com/colbyfayock/next-cloudinary/commit/a430fff13886a16995c3ec57a81e3526116a380b)), closes [#328](https://github.com/colbyfayock/next-cloudinary/issues/328)
+
+
+### BREAKING CHANGES
+
+* Updates package to support Next.js 14
+
+# [4.28.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.27.0...v4.28.0) (2023-10-24)
+
+
+### Features
+
+* Add license to npm package ([#323](https://github.com/colbyfayock/next-cloudinary/issues/323)) ([8d4f32e](https://github.com/colbyfayock/next-cloudinary/commit/8d4f32e485414c70d5d8bb37341dcb3064f60681)), closes [#321](https://github.com/colbyfayock/next-cloudinary/issues/321)
+
 # [4.27.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.26.0...v4.27.0) (2023-10-17)
 
 

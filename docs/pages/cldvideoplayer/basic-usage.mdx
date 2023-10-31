@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
 
 import { CldVideoPlayer } from '../../../next-cloudinary';
 
@@ -34,7 +35,9 @@ import { CldVideoPlayer } from 'next-cloudinary';
 />
 ```
 
-If you're using the Next.js 13 App Router, you must additionally import the Cloudinary Video Player stylesheet:
+<Callout emoji={false}>
+  Using the App Router in Next.js 13+? Add the `"use client"` directive at the top of your file.
+</Callout>
 
 ```jsx copy
 import 'next-cloudinary/dist/cld-video-player.css';
