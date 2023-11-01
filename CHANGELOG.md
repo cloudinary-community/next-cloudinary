@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.0.0...v5.1.0) (2023-11-01)
+
+
+### Features
+
+* Generative Replace ([f9d1de2](https://github.com/colbyfayock/next-cloudinary/commit/f9d1de209d06553be77310f72192b0e9253d5772))
+
 # [5.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.28.0...v5.0.0) (2023-10-30)
 
 
