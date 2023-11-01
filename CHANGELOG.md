@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.1.0...v5.2.0) (2023-11-01)
+
+
+### Features
+
+* Strict Transformations ([#336](https://github.com/colbyfayock/next-cloudinary/issues/336)) ([6ca2a2a](https://github.com/colbyfayock/next-cloudinary/commit/6ca2a2a6044f45462c0e73f725c2f0e7a12a5033)), closes [#324](https://github.com/colbyfayock/next-cloudinary/issues/324)
+
 # [5.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.0.0...v5.1.0) (2023-11-01)
 
 
