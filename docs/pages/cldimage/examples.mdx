@@ -63,7 +63,28 @@ import ImageGrid from '../../components/ImageGrid';
     ```
 
     <Callout emoji={false}>
-      The generative fill transformation is currently in Beta. <a href="https://cloudinary.com/documentation/effects_and_artistic_enhancements#generative_fill">Learn more</a>.
+      The generative fill transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#b_gen_fill">Learn more</a>.
+    </Callout>
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      crop="fill"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      sizes="(max-width: 480px) 100vw, 50vw"
+      replace={['turtle', 'shark']}
+      alt=""
+    />
+
+    ### Generative Replace
+
+    ```jsx copy
+    replace={['turtle', 'shark']}
+    ```
+
+    <Callout emoji={false}>
+      The generative replace transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">Learn more</a>.
     </Callout>
   </li>
   <li>
@@ -849,6 +870,21 @@ import ImageGrid from '../../components/ImageGrid';
       // Example from Cloudinary Media Editor widget
       'c_crop,h_359,w_517,x_1483,y_0/c_scale,h_359,w_517/f_auto,q_auto'
     ]}
+    ```
+  </li>
+  <li>
+    <CldImage
+      width="960"
+      height="600"
+      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+      strictTransformations
+      alt=""
+    />
+
+    ### Strict Transformations
+
+    ```jsx copy
+    strictTransformations
     ```
   </li>
   <li>
