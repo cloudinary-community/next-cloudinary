@@ -34,6 +34,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     transformation,
     quality = 'auto',
     width,
+    ...otherCldVidPlayerOptions
   } = props as CldVideoPlayerProps;
 
   const playerTransformations = Array.isArray(transformation) ? transformation : [transformation];
@@ -138,7 +139,8 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         publicId,
         secure: true,
         transformation: playerTransformations,
-        ...logoOptions
+        ...logoOptions,
+        ...otherCldVidPlayerOptions
       };
 
       if ( Array.isArray(sourceTypes) ) {
