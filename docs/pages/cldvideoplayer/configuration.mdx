@@ -36,6 +36,7 @@ import OgImage from '../../components/OgImage';
 | onPlay             | Function       | -               | Triggered on video play                  | See Events Below             |
 | onEnded            | Function       | -               | Triggered when video has ended play      | See Events Below             |
 | playerRef          | Ref            | -               | React ref to access Player instance      | See Refs Below               |
+| poster             | string/object  | -               | Customize the video's poster             | See Refs Below               |
 | showLogo           | boolea         | `true`          | Show the Cloudinary logo on Player       | `false`                      |
 | src                | string         | -               | **Required**: Video public ID            | `"videos/my-video"`          |
 | sourceTypes        | array          | -               | Streaming format                         | `['hls']`                    |
@@ -83,6 +84,18 @@ To customize the logo, the following options are available in the form of an obj
 |--------------------|---------------|----------------|------------------------------------------|
 | imageUrl           | string        | -              | Image URL for player logo.               |
 | onClickUrl         | string        | -              | URL to browse to on logo click.          |
+
+## Customizing a Video's Poster
+
+The `poster` prop optionally takes a string or object to customize the generated poster.
+
+When passing a string, you can either pass a Cloudinary Public ID or a remote URL to rendered the desired image.
+
+When passing an object, use same configuration and API as [getCldImageUrl](/getcldimageurl/configuration) to customize the image.
+You can either specify a `src` option with a custom public ID or omit the `src`, which will use the video's
+ID to render an automatically generated preview image.
+
+[View examples](/cldvideoplayer/examples#poster).
 
 ## Ref Props
 

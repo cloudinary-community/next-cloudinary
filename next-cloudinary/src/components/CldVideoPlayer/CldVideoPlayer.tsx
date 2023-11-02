@@ -5,6 +5,8 @@ import { parseUrl } from '@cloudinary-util/util';
 
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
+import { getCldImageUrl } from '../../helpers/getCldImageUrl';
+import { getCldVideoUrl } from '../../helpers/getCldVideoUrl';
 
 let playerInstances: string[] = [];
 
@@ -29,6 +31,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     onPause,
     onPlay,
     onEnded,
+    poster,
     src,
     sourceTypes,
     transformation,
@@ -147,6 +150,26 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
       if ( typeof colors === 'object' ) {
         playerOptions.colors = colors;
+      }
+
+      if ( typeof poster === 'string' ) {
+        playerOptions.posterOptions = {
+          publicId: poster
+        };
+      } else if ( typeof poster === 'object' ) {
+        if ( typeof poster.src !== 'string' ) {
+          playerOptions.posterOptions = {
+            publicId: getCldVideoUrl({
+              ...poster,
+              src: publicId,
+              format: 'auto:image',
+            })
+          };
+        } else {
+          playerOptions.posterOptions = {
+            publicId: getCldImageUrl(poster)
+          };
+        }
       }
 
       playerRef.current = cloudinaryRef.current.videoPlayer(videoRef.current, playerOptions);

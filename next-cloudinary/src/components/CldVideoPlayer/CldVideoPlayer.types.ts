@@ -1,6 +1,7 @@
 import { MutableRefObject } from 'react';
 
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsColors, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
+import { GetCldImageUrlOptions } from '../../helpers/getCldImageUrl';
 
 export type CldVideoPlayerProps = Pick<CloudinaryVideoPlayerOptions, "colors" | "controls" | "fontFace" | "loop" | "muted" | "sourceTypes" | "transformation"> & {
   autoPlay?: string;
@@ -15,6 +16,7 @@ export type CldVideoPlayerProps = Pick<CloudinaryVideoPlayerOptions, "colors" | 
   onPlay?: Function;
   onEnded?: Function;
   playerRef?: MutableRefObject<CloudinaryVideoPlayer | null>;
+  poster?: string | GetCldImageUrlOptions;
   src: string;
   videoRef?: MutableRefObject<HTMLVideoElement | null>;
   quality?: string | number;
