@@ -1,0 +1,86 @@
+import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
+
+import { CldImage, getCldVideoUrl } from '../../../next-cloudinary';
+
+import OgImage from '../../components/OgImage';
+import Video from '../../components/Video';
+
+<Head>
+  <title>getCldVideoUrl - Next Cloudinary</title>
+  <meta name="og:title" content="Getting Started with getCldVideoUrl - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/getcldvideourl/basic-usage`} />
+</Head>
+
+<OgImage
+  title="getCldVideoUrl"
+  twitterTitle="Getting Started with getCldVideoUrl"
+/>
+
+# Getting Started with getCldVideoUrl
+
+You can use the getCldVideoUrl helper function to generate Cloudinary URLs without the component wrapper.
+
+getCldOgImageUrl is a deritive of [getCldImageUrl](/getcldimageurl/basic-usage) meaning it generally has the same API, but provides a few defaults for videos in particular, setting the asset type to video and doesn't make available image-specific transformations.
+
+## Basic Usage
+
+The basic required options include `width`, `height`, and `src`:
+
+```js copy
+import { getCldVideoUrl } from 'next-cloudinary';
+
+const url = getCldVideoUrl({
+  width: 960,
+  height: 600,
+  src: '<Public ID>'
+});
+```
+
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <video
+    width="1620"
+    height="1080"
+    src={getCldVideoUrl({
+      src: `${process.env.VIDEOS_DIRECTORY}/dog-running-snow`,
+      width: 1620,
+      height: 1080,
+    })}
+    controls
+    muted
+  />
+</div>
+
+## Transformations
+
+You can further take advantage of Cloudinary features like dynamically cropping and resizing:
+
+```js copy
+const url = getCldVideoUrl({
+  src: '<Public ID>',
+  width: 1080,
+  height: 1080,
+  crop: 'fill',
+  gravity: 'auto'
+});
+```
+
+<div style={{ maxWidth: 500, margin: '0 auto' }}>
+  <video
+    width="1080"
+    height="1080"
+    src={getCldVideoUrl({
+      src: `${process.env.VIDEOS_DIRECTORY}/dog-running-snow`,
+      width: 1080,
+      height: 1080,
+      crop: 'fill',
+      gravity: 'auto'
+    })}
+    controls
+    muted
+  />
+</div>
+
+## Learn More about getCldVideoUrl
+* [Configuration](/getcldvideourl/configuration)
+* [Examples](/getcldvideourl/examples)
