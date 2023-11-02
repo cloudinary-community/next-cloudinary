@@ -4,7 +4,7 @@ import type { VideoOptions, ConfigOptions, AnalyticsOptions } from '@cloudinary-
 import { NEXT_CLOUDINARY_ANALYTICS_ID, NEXT_CLOUDINARY_VERSION, NEXT_VERSION } from '../constants/analytics';
 
 /**
- * getCldImage
+ * getCldVideoUrl
  */
 
 export interface GetCldVideoUrlOptions extends VideoOptions {};

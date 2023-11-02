@@ -153,10 +153,17 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
       }
 
       if ( typeof poster === 'string' ) {
+        // If poster is a string, assume it's either a public ID
+        // or a remote URL, in either case pass to `publicId`
         playerOptions.posterOptions = {
           publicId: poster
         };
       } else if ( typeof poster === 'object' ) {
+        // If poster is an object, we can either customize the
+        // automatically generated image from the video or generate
+        // a completely new image from a separate public ID, so look
+        // to see if the src is explicitly set to determine whether 
+        // or not to use the video's ID or just pass things along
         if ( typeof poster.src !== 'string' ) {
           playerOptions.posterOptions = {
             publicId: getCldVideoUrl({
