@@ -1,6 +1,7 @@
-"use client";
+// "use client";
 
-import { CldImage, CldUploadWidget, CldUploadButton, CldVideoPlayer } from '../../../';
+import { CldImage } from '../../..';
+// import { CldImage, CldUploadWidget, CldUploadButton, CldVideoPlayer } from '../../../';
 
 import '../../../dist/cld-video-player.css';
 
@@ -13,7 +14,7 @@ export default function Home() {
         <h2>CldImage</h2>
         <CldImage src="images/woman-headphones" width="100" height="100" alt="test" />
       </div>
-      <div style={{
+      {/* <div style={{
         marginBottom: '2em'
       }}>
         <h2>CldUploadWidget</h2>
@@ -46,7 +47,7 @@ export default function Home() {
           height="1080"
           src={`videos/mountain-stars`}
         />
-      </div>
+      </div> */}
     </>
   )
 }
