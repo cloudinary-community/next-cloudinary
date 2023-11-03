@@ -30,6 +30,7 @@ import OgImage from '../../components/OgImage';
 | onPlay             | Function       | -               | Triggered on video play                  | See Events Below             |
 | onEnded            | Function       | -               | Triggered when video has ended play      | See Events Below             |
 | playerRef          | Ref            | -               | React ref to access Player instance      | See Refs Below               |
+| poster             | string/object  | -               | Customize the video's poster             | See Poster Below             |
 | src                | string         | -               | **Required**: Video public ID            | `"videos/my-video"`          |
 | videoRef           | Ref            | -               | React ref to access video element        | See Refs Below               |
 | width              | string/number  | -               | **Required**: Player width               | `1920`                       |
@@ -91,31 +92,9 @@ import OgImage from '../../components/OgImage';
 
 Missing an option from the [Video Player docs](https://cloudinary.com/documentation/video_player_api_reference) you'd like to see? [Create an issue](https://github.com/colbyfayock/next-cloudinary/issues/new?assignees=&labels=Type%3A+Feature&template=feature_request.md&title=%5BFeature%5D+)!
 
-## Colors Prop
+## Customization
 
-The `colors` prop takes an object that can control what colors are used in the player:
-
-| Prop Name          | Type          | Default        | Description                              |
-|--------------------|---------------|----------------|------------------------------------------|
-| accent             | string        | `"#FF620C"`    | Seek bar, volume control and for highlighting interactions. |
-| base               | string        | `"#000000"`    | Player controls bar, information bar, central play button, and right-click context menu. |
-| text               | string        | `"#FFFFFF"`    | All the text and icons that are present within the video player UI. |
-
-Learn more about the color scheme options and how they're used [on the Cloudinary docs](https://cloudinary.com/documentation/video_player_customization#color_scheme).
-
-## Event Props
-
-The event props allow you to pass in a function that is called whenever the associated event occurs.
-
-For instance, in order to trigger an event whenever a video is paused:
-
-```jsx copy
-<CldVideoPlayer onPause={({ player }) => {
-  const duration = player.duration();
-}} ... />
-```
-
-## Logo Prop
+### Logo
 
 The `logo` prop gives the option to customize the player's logo.
 
@@ -130,7 +109,44 @@ To customize the logo, the following options are available in the form of an obj
 | imageUrl           | string        | -              | Image URL for player logo.               |
 | onClickUrl         | string        | -              | URL to browse to on logo click.          |
 
-## Ref Props
+### Poster
+
+The `poster` prop optionally takes a string or object to customize the generated poster.
+
+When passing a string, you can either pass a Cloudinary Public ID or a remote URL to rendered the desired image.
+
+When passing an object, use same configuration and API as [getCldImageUrl](/getcldimageurl/configuration) to customize the image.
+You can either specify a `src` option with a custom public ID or omit the `src`, which will use the video's
+ID to render an automatically generated preview image.
+
+[View examples](/cldvideoplayer/examples#poster).
+### Theme Colors
+
+The `colors` prop takes an object that can control what colors are used in the player:
+
+| Prop Name          | Type          | Default        | Description                              |
+|--------------------|---------------|----------------|------------------------------------------|
+| accent             | string        | `"#FF620C"`    | Seek bar, volume control and for highlighting interactions. |
+| base               | string        | `"#000000"`    | Player controls bar, information bar, central play button, and right-click context menu. |
+| text               | string        | `"#FFFFFF"`    | All the text and icons that are present within the video player UI. |
+
+Learn more about the color scheme options and how they're used [on the Cloudinary docs](https://cloudinary.com/documentation/video_player_customization#color_scheme).
+
+## Player APIs
+
+### Event Handlers
+
+The event props allow you to pass in a function that is called whenever the associated event occurs.
+
+For instance, in order to trigger an event whenever a video is paused:
+
+```jsx copy
+<CldVideoPlayer onPause={({ player }) => {
+  const duration = player.duration();
+}} ... />
+```
+
+### Refs
 
 The `playerRef` and `videoRef` props give you the ability to pass in your own ref to gain access to both the Player instance as well as the HTML video element on which the player is mounted.
 

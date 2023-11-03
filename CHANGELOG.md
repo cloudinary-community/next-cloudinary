@@ -1,3 +1,10 @@
+# [5.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.2.0...v5.3.0) (2023-11-03)
+
+
+### Features
+
+* Video Poster ([#337](https://github.com/colbyfayock/next-cloudinary/issues/337)) ([077abcf](https://github.com/colbyfayock/next-cloudinary/commit/077abcf4b73aac07e578060cd3a572f247a8aac1)), closes [#2](https://github.com/colbyfayock/next-cloudinary/issues/2) [#322](https://github.com/colbyfayock/next-cloudinary/issues/322)
+
 # [5.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.1.0...v5.2.0) (2023-11-01)
 
 

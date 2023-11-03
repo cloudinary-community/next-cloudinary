@@ -7,9 +7,12 @@ import type { GetCldImageUrl, GetCldImageUrlOptions } from './getCldImageUrl';
  * getCldImageUrl
  */
 
+// @deprecated GetCldOgImageUrl
 export interface GetCldOgImageUrl extends GetCldImageUrl {}
 
-export function getCldOgImageUrl(options: GetCldImageUrlOptions) {
+export interface GetCldOgImageUrlOptions extends GetCldImageUrlOptions {};
+
+export function getCldOgImageUrl(options: GetCldOgImageUrlOptions) {
   return getCldImageUrl({
     ...options,
     crop: options.crop || 'fill',

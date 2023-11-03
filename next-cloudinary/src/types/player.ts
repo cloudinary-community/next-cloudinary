@@ -22,7 +22,7 @@ export interface CloudinaryVideoPlayerOptions {
     direction?: string;
     total?: string
   };
-  posterOptions?: object;
+  posterOptions?: CloudinaryVideoPlayerOptionPosterOptions;
   showJumpControls?: boolean;
   // showLogo?: boolean; // Comment This Out cause it seems to be a duplicate of "CldVideoPlayerPropsLogo"
   // logoImageUrl?: string; // Comment This Out cause it seems to be a duplicate of "CldVideoPlayerPropsLogo"
@@ -80,4 +80,8 @@ export interface CloudinaryVideoPlayerOptionsLogo {
   logoImageUrl?: string;
   logoOnclickUrl?: string;
   showLogo?: boolean;
+}
+
+export interface CloudinaryVideoPlayerOptionPosterOptions {
+  publicId: string;
 }

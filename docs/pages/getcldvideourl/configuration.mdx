@@ -1,0 +1,28 @@
+import Head from 'next/head';
+
+import OgImage from '../../components/OgImage';
+
+<Head>
+  <title>getCldImageUrl Configuration - Next Cloudinary</title>
+  <meta name="og:title" content="getCldImageUrl Configuration - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/getcldimageurl/configuration`} />
+</Head>
+
+<OgImage
+  title="getCldImageUrl Configuration"
+  twitterTitle="getCldImageUrl Configuration"
+/>
+
+# getCldImageUrl Configuration
+
+Configuration for getCldVideoUrl is the same as [getCldImageUrl](/getcldimageurl/configuration).
+
+The only difference is getCldVideoUrl provides the following default settings:
+
+| Option Name        | Type               | Default    |
+|--------------------|--------------------|------------|
+| assetType          | string             | `"video"`  |
+
+Additionally, the transformations do not have access to image-specific transformations.
+
+Find more configuration settings over at [getCldImageUrl configuration](/getcldimageurl/configuration).
