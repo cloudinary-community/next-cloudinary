@@ -3,28 +3,18 @@ export interface CloudinaryVideoPlayer {
 }
 
 export interface CloudinaryVideoPlayerOptions {
-  autoplayMode?: string;
-  cloud_name?: string;
-  colors?: CloudinaryVideoPlayerOptionsColors;
-  controls?: boolean;
-  fontFace?: string;
-  loop?: boolean;
-  muted?: boolean;
-  publicId: string;
-  secure?: boolean;
-  transformation?: Array<object> | object;
-  showLogo?: boolean;
-  sourceTypes?: Array<string>;
-  logoImageUrl?: string;
-  logoOnclickUrl?: string;
+  // ------------ Player visuals Props ------------
   aiHighlightsGraph?: boolean;
   bigPlayButton?: boolean | string;
+  colors?: CloudinaryVideoPlayerOptionsColors;
   controlBar?: {
     pictureInPictureToggle?: boolean;
     chaptersButton?: boolean;
   };
+  controls?: boolean;
   floatingWhenNotVisible?: string;
   fluid?: boolean;
+  fontFace?: string;
   hideContextMenu?: boolean;
   interactionAreas?: any; // Used "any" cause this fetaure is still in beta
   playbackRates?: Array<any>;
@@ -34,20 +24,35 @@ export interface CloudinaryVideoPlayerOptions {
   };
   posterOptions?: object;
   showJumpControls?: boolean;
+  // showLogo?: boolean; // Comment This Out cause it seems to be a duplicate of "CldVideoPlayerPropsLogo"
+  // logoImageUrl?: string; // Comment This Out cause it seems to be a duplicate of "CldVideoPlayerPropsLogo"
+  // logoOnclickUrl?: string; // Comment This Out cause it seems to be a duplicate of "CldVideoPlayerPropsLogo"
   seekThumbnails?: boolean;
   videoJS?: object;
+
+  // ------------ Player Behavior Props ------------
+  autoplayMode?: string;
   autoShowRecommendations?: boolean;
+  loop?: boolean;
   maxTries?: Number;
+  muted?: boolean;
   playedEventPercents?: number[];
   playedEventTimes?: null | Array<any>;
   playsinline?: boolean;
   videoTimeout?: number;
   withCredentials?: boolean;
+
+  // ------------ Video Config Props ------------
   chapters?: object;
   preload?: string;
+  publicId?: string;  
   sourceTransformation?: object;
+  sourceTypes?: Array<string>;
+  transformation?: Array<object> | object;
+
+ // ------------ Ads And Analytics Props ------------
   ads?: {
-    adTagUrl?: string;
+   adTagUrl?: string;
     adsInPlaylist?: string;
     showCountdown?: boolean;
     adLabel?: string;
@@ -57,6 +62,12 @@ export interface CloudinaryVideoPlayerOptions {
   };
   analytics?: boolean;
   allowUsageReport?: Boolean;
+
+  // Un-Grouped Props 
+  cloud_name?: string;
+  secure?: boolean;
+
+
 }
 
 export interface CloudinaryVideoPlayerOptionsColors {
