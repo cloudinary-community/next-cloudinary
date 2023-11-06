@@ -2,7 +2,12 @@ export interface CloudinaryVideoPlayer {
   on: Function
 }
 
-export interface CloudinaryVideoPlayerOptions {
+export interface CloudinaryVideoPlayerOptionsLogo {
+  logoImageUrl?: string;
+  logoOnclickUrl?: string;
+  showLogo?: boolean;
+}
+export interface CloudinaryVideoPlayerOptions extends CloudinaryVideoPlayerOptionsLogo {
   // ------------ Player visuals Props ------------
   aiHighlightsGraph?: boolean;
   bigPlayButton?: boolean | string;
@@ -76,11 +81,6 @@ export interface CloudinaryVideoPlayerOptionsColors {
   text?: string;
 }
 
-export interface CloudinaryVideoPlayerOptionsLogo {
-  logoImageUrl?: string;
-  logoOnclickUrl?: string;
-  showLogo?: boolean;
-}
 
 export interface CloudinaryVideoPlayerOptionPosterOptions {
   publicId: string;
