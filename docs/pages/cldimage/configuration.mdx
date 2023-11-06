@@ -132,6 +132,12 @@ CldImage extends the Next.js Image component, meaning props available on
       example: () => (<code>my-image-content</code>)
     },
     {
+      prop: 'strictTransformations',
+      type: 'boolean',
+      default: '-',
+      example: () => (<a href="#strict-transformations">Strict Transformations</a>)
+    },
+    {
       prop: 'unoptimized',
       type: 'boolean',
       default: '-',
@@ -146,6 +152,33 @@ CldImage extends the Next.js Image component, meaning props available on
   ]}
 />
 
+### Strict Transformations
+
+[Strict Transformations](https://cloudinary.com/documentation/control_access_to_media#strict_transformations) gives
+you the ability to have more control over what transformations are permitted to be used from your Cloudinary account.
+
+You can opt into Strict Transformations with the `strictTransformations` prop which will prevent all options from being
+applied to the delivery URL except for named transformations, for instance:
+
+```jsx
+<CldImage
+  width="800"
+  height="600"
+  src="public-id"
+  strictTransformations
+  transformations=["my-transformation"]
+  alt=""
+/>
+```
+
+Will result in a URL of:
+
+```
+https://res.cloudinary.com/cloudname/image/upload/t_my-transformation/public-id
+```
+
+>  Note: the width and height are not applied to the URL, but are still included on the image tag rendered to the DOM.
+
 ### Unoptimized images
 
 The Next.js Image component provides the ability to pass in an [unoptimized](https://nextjs.org/docs/pages/api-reference/components/image#unoptimized)
@@ -153,9 +186,9 @@ flag as a way to deliver the raw image URL without any quality, format, or size 
 this or the global option, the CldImage component performs the same treatment by not adding the
 f_auto or q_auto parameters as well as not subjecting the image to any resizing.
 
-## Effect & Transformation Props
+## Transformations & Effects
 
-### Modifier Props
+### Application Props
 
 <Table
   columns={[
@@ -184,18 +217,6 @@ f_auto or q_auto parameters as well as not subjecting the image to any resizing.
       example: () => (<code>{`[{ background: 'blue' }]`}</code>)
     },
     {
-      prop: 'overlay',
-      type: 'bool',
-      default: '-',
-      example: () => (<code>true</code>)
-    },
-    {
-      prop: 'overlays',
-      type: 'array',
-      default: '-',
-      example: () => (<a href="#overlay--underlay-props">Overlay & Underlay Props</a>)
-    },
-    {
       prop: 'preserveTransformations',
       type: 'string',
       default: () => (<code>false</code>),
@@ -208,60 +229,15 @@ f_auto or q_auto parameters as well as not subjecting the image to any resizing.
       example: () => (<code>{`['e_blur:2000']`}</code>)
     },
     {
-      prop: 'strictTransformations',
-      type: 'boolean',
-      default: '-',
-      example: () => (<a href="#strict-transformations">Strict Transformations</a>)
-    },
-    {
       prop: 'transformations',
       type: 'string/array',
       default: '-',
       example: () => (<code>{`['my-named-transformation']`}</code>)
     },
-    {
-      prop: 'underlay',
-      type: 'string',
-      default: '-',
-      example: () => (<code>my-public-id</code>)
-    },
-    {
-      prop: 'underlays',
-      type: 'array',
-      default: '-',
-      example: () => (<a href="#overlay--underlay-props">Overlay & Underlay Props</a>)
-    },
   ]}
 />
 
-#### Strict Transformations
-
-[Strict Transformations](https://cloudinary.com/documentation/control_access_to_media#strict_transformations) gives
-you the ability to have more control over what transformations are permitted to be used from your Cloudinary account.
-
-You can opt into Strict Transformations with the `strictTransformations` prop which will prevent all options from being
-applied to the delivery URL except for named transformations, for instance:
-
-```jsx
-<CldImage
-  width="800"
-  height="600"
-  src="public-id"
-  strictTransformations
-  transformations=["my-transformation"]
-  alt=""
-/>
-```
-
-Will result in a URL of:
-
-```
-https://res.cloudinary.com/cloudname/image/upload/t_my-transformation/public-id
-```
-
->  Note: the width and height are not applied to the URL, but are still included on the image tag rendered to the DOM.
-
-### Effects & Transformations
+### Transformation & Effect Props
 
 <Table
   columns={[
@@ -619,11 +595,56 @@ https://res.cloudinary.com/cloudname/image/upload/t_my-transformation/public-id
 [View the Cloudinary docs](https://cloudinary.com/documentation/transformation_reference#e_effect) to see learn more about using effects.
 
 
-### Overlay & Underlay
+### Layer Props
 
-The `overlays` and `underlays` props are an arrays of objects that position and transform a layer above or below the primary image.
+Cloudinary gives you the ability to add layers above or below your primary asset using Overlays and Underlays.
 
-Underlays are similar to overlays except they do not support text.
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'overlay',
+      type: 'bool',
+      default: '-',
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'overlays',
+      type: 'array',
+      default: '-',
+      example: () => (<a href="#customizing-overlays--underlays">Customizing Overlays & Underlays</a>)
+    },
+    {
+      prop: 'underlay',
+      type: 'string',
+      default: '-',
+      example: () => (<code>my-public-id</code>)
+    },
+    {
+      prop: 'underlays',
+      type: 'array',
+      default: '-',
+      example: () => (<a href="#customizing-overlays--underlays">Customizing Overlays & Underlays</a>)
+    },
+  ]}
+/>
+
+#### Customizing Overlays & Underlays
+
+> Note: The API for Underlays is similar to Overlays except they do not support text.
 
 <Table
   columns={[
@@ -649,12 +670,12 @@ Underlays are similar to overlays except they do not support text.
     {
       prop: 'effects',
       type: 'array',
-      example: () => (<a href="#effect--transformation-props">Effects & Transformations</a>)
+      example: () => (<a href="#layer-effect-props">effects</a>)
     },
     {
       prop: 'position',
       type: 'object',
-      example: () => (<a href="#position">Position</a>)
+      example: () => (<a href="#layer-position-props">position</a>)
     },
     {
       prop: 'publicId',
@@ -664,7 +685,7 @@ Underlays are similar to overlays except they do not support text.
     {
       prop: 'text',
       type: 'object|string',
-      example: () => (<span><code>Next Cloudinary</code> or See <a href="#text">Text</a> Below</span>)
+      example: () => (<span><code>Next Cloudinary</code> or See <a href="#layer-text-props">text</a> Below</span>)
     },
     {
       prop: 'url',
@@ -674,10 +695,13 @@ Underlays are similar to overlays except they do not support text.
   ]}
 />
 
-
-#### Effects
-
-Objects in the effects array can include everything in [Effect Props](#effect-props) above as well as:
+<div className="-mb-4">
+  <strong id="layer-effect-props" className="block text-slate-500 text-lg mt-8 -mb-4">
+    <code>effects</code>
+  </strong>
+  
+  Objects in the `effects` array can include everything in [Transformation & Effect Props](#transformation--effect-props) above as well as:
+</div>
 
 <Table
   columns={[
@@ -727,9 +751,13 @@ Objects in the effects array can include everything in [Effect Props](#effect-pr
   ]}
 />
 
-#### Position
+<div className="-mb-4">
+  <strong id="layer-position-props" className="block text-slate-500 text-lg mt-8 -mb-4">
+    <code>position</code>
+  </strong>
 
-The position property can include:
+  The `position` property can include:
+</div>
 
 <Table
   columns={[
@@ -770,9 +798,11 @@ The position property can include:
   ]}
 />
 
-#### Text
+<div className="-mb-4">
+  <strong id="layer-text-props" className="block text-slate-500 text-lg mt-8 -mb-4">text</strong>
 
-The text property can include:
+  The `text` property can include:
+</div>
 
 <Table
   columns={[
