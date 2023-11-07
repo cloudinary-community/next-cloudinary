@@ -69,126 +69,17 @@ The basic props required to use CldImage include:
   ]}
 />
 
-CldImage extends the Next.js Image component, meaning props available on 
+CldImage extends the Next.js Image component using Cloudinary tech. This means all props
+available on the Image component are available on CldImage.
 
-## Configuration & Delivery
-
-### Delivery Props
-
-<Table
-  columns={[
-    {
-      id: 'prop',
-      title: 'Prop'
-    },
-    {
-      id: 'type',
-      title: 'Type'
-    },
-    {
-      id: 'default',
-      title: 'Default'
-    },
-    {
-      id: 'example',
-      title: 'Example'
-    },
-  ]}
-  data={[
-    {
-      prop: 'config',
-      type: 'object',
-      default: '-',
-      example: () => (<code>{`{ url: { secureDistribution: 'spacejelly.dev' } }`}</code>)
-    },
-    {
-      prop: 'deliveryType',
-      type: 'string',
-      default: () => (<code>upload</code>),
-      example: () => (<code>fetch</code>)
-    },
-    {
-      prop: 'dpr',
-      type: 'number/string',
-      default: '-',
-      example: () => (<code>2.0</code>)
-    },
-    {
-      prop: 'format',
-      type: 'string',
-      default: () => (<code>auto</code>),
-      example: () => (<code>webp</code>)
-    },
-    {
-      prop: 'quality',
-      type: 'string',
-      default: () => (<code>auto</code>),
-      example: () => (<code>90</code>)
-    },
-    {
-      prop: 'seoSuffix',
-      type: 'string',
-      default: '-',
-      example: () => (<code>my-image-content</code>)
-    },
-    {
-      prop: 'strictTransformations',
-      type: 'boolean',
-      default: '-',
-      example: () => (<a href="#strict-transformations">Strict Transformations</a>)
-    },
-    {
-      prop: 'unoptimized',
-      type: 'boolean',
-      default: '-',
-      example: () => (<a href="#unoptimized-images">Unoptimized Images</a>)
-    },
-    {
-      prop: 'version',
-      type: 'number',
-      default: '-',
-      example: () => (<code>1234</code>)
-    },
-  ]}
-/>
-
-### Strict Transformations
-
-[Strict Transformations](https://cloudinary.com/documentation/control_access_to_media#strict_transformations) gives
-you the ability to have more control over what transformations are permitted to be used from your Cloudinary account.
-
-You can opt into Strict Transformations with the `strictTransformations` prop which will prevent all options from being
-applied to the delivery URL except for named transformations, for instance:
-
-```jsx
-<CldImage
-  width="800"
-  height="600"
-  src="public-id"
-  strictTransformations
-  transformations=["my-transformation"]
-  alt=""
-/>
-```
-
-Will result in a URL of:
-
-```
-https://res.cloudinary.com/cloudname/image/upload/t_my-transformation/public-id
-```
-
->  Note: the width and height are not applied to the URL, but are still included on the image tag rendered to the DOM.
-
-### Unoptimized images
-
-The Next.js Image component provides the ability to pass in an [unoptimized](https://nextjs.org/docs/pages/api-reference/components/image#unoptimized)
-flag as a way to deliver the raw image URL without any quality, format, or size changes. When using
-this or the global option, the CldImage component performs the same treatment by not adding the
-f_auto or q_auto parameters as well as not subjecting the image to any resizing.
+Learn more on the [Next.js docs](https://nextjs.org/docs/pages/api-reference/components/image).
 
 ## Transformations & Effects
 
-### Application Props
+The CldImage component exposes many of Cloudinary's transformations in an easy-to-use way
+right inside of Next.js.
+
+### Transformations
 
 <Table
   columns={[
@@ -211,33 +102,58 @@ f_auto or q_auto parameters as well as not subjecting the image to any resizing.
   ]}
   data={[
     {
-      prop: 'effects',
-      type: 'array',
+      prop: 'background',
+      type: 'string',
       default: '-',
-      example: () => (<code>{`[{ background: 'blue' }]`}</code>)
+      example: () => (<code>blue</code>)
+    },
+
+    {
+      prop: 'crop',
+      type: 'string',
+      default: () => (<code>limit</code>),
+      example: () => (<code>thumb</code>)
     },
     {
-      prop: 'preserveTransformations',
+      prop: 'fillBackground (Beta)',
+      type: 'bool/object',
+      default: '-',
+      example: () => (<code>{`{{ gravity: 'east' }}`}</code>)
+    },
+    {
+      prop: 'gravity',
       type: 'string',
+      default: () => (<code>auto</code>),
+      example: () => (<code>faces</code>)
+    },
+    {
+      prop: 'removeBackground',
+      type: 'bool/string',
       default: () => (<code>false</code>),
       example: () => (<code>true</code>)
     },
     {
-      prop: 'rawTransformations',
-      type: 'array',
+      prop: 'replace',
+      type: 'array/object',
       default: '-',
-      example: () => (<code>{`['e_blur:2000']`}</code>)
+      example: () => (<code>{`['apple', 'banana']`}</code>)
     },
     {
-      prop: 'transformations',
-      type: 'string/array',
+      prop: 'zoom',
+      type: 'string',
       default: '-',
-      example: () => (<code>{`['my-named-transformation']`}</code>)
+      example: () => (<code>0.5</code>)
+    },
+    {
+      prop: 'zoompan',
+      type: 'bool/string/object',
+      default: '-',
+      example: () => (<code>true</code>)
     },
   ]}
 />
 
-### Transformation & Effect Props
+### Filters & Effects
 
 <Table
   columns={[
@@ -288,12 +204,6 @@ f_auto or q_auto parameters as well as not subjecting the image to any resizing.
       type: 'bool/string',
       default: '-',
       example: () => (<span><code>true</code>, <code>20</code>, <code>xray</code></span>)
-    },
-    {
-      prop: 'background',
-      type: 'string',
-      default: '-',
-      example: () => (<code>blue</code>)
     },
     {
       prop: 'blackwhite',
@@ -362,22 +272,10 @@ f_auto or q_auto parameters as well as not subjecting the image to any resizing.
       example: () => (<span><code>true</code>, <code>100</code>, <code>level_-70</code></span>)
     },
     {
-      prop: 'crop',
-      type: 'string',
-      default: () => (<code>limit</code>),
-      example: () => (<code>thumb</code>)
-    },
-    {
       prop: 'distort',
       type: 'string',
       default: '-',
       example: () => (<span><code>150:340:1500:10:1500:1550:50:1000</code>, <code>arc:180.0</code></span>)
-    },
-    {
-      prop: 'fillBackground (Beta)',
-      type: 'bool/object',
-      default: '-',
-      example: () => (<code>{`{{ gravity: 'east' }}`}</code>)
     },
     {
       prop: 'fillLight',
@@ -396,12 +294,6 @@ f_auto or q_auto parameters as well as not subjecting the image to any resizing.
       type: 'bool/string',
       default: '-',
       example: () => (<span><code>true</code>, <code>symmetric:10,x_0.2,y_0.4</code></span>)
-    },
-    {
-      prop: 'gravity',
-      type: 'string',
-      default: () => (<code>auto</code>),
-      example: () => (<code>faces</code>)
     },
     {
       prop: 'grayscale',
@@ -470,18 +362,6 @@ f_auto or q_auto parameters as well as not subjecting the image to any resizing.
       example: () => (<code>true</code>)
     },
     {
-      prop: 'removeBackground',
-      type: 'bool/string',
-      default: () => (<code>false</code>),
-      example: () => (<code>true</code>)
-    },
-    {
-      prop: 'replace',
-      type: 'array/object',
-      default: '-',
-      example: () => (<code>{`['apple', 'banana']`}</code>)
-    },
-    {
       prop: 'replaceColor',
       type: 'string',
       default: '-',
@@ -536,12 +416,6 @@ f_auto or q_auto parameters as well as not subjecting the image to any resizing.
       example: () => (<code>deuteranopia</code>)
     },
     {
-      prop: 'text',
-      type: 'string',
-      default: '-',
-      example: () => (<code>Next Cloudinary</code>)
-    },
-    {
       prop: 'trim',
       type: 'bool/string',
       default: '-',
@@ -576,26 +450,13 @@ f_auto or q_auto parameters as well as not subjecting the image to any resizing.
       type: 'bool/string',
       default: '-',
       example: () => (<span><code>true</code>, <code>30</code></span>)
-    },
-    {
-      prop: 'zoom',
-      type: 'string',
-      default: '-',
-      example: () => (<code>0.5</code>)
-    },
-    {
-      prop: 'zoompan',
-      type: 'bool/string/object',
-      default: '-',
-      example: () => (<code>true</code>)
-    },
+    }
   ]}
 />
 
 [View the Cloudinary docs](https://cloudinary.com/documentation/transformation_reference#e_effect) to see learn more about using effects.
 
-
-### Layer Props
+### Overlays & Underlays
 
 Cloudinary gives you the ability to add layers above or below your primary asset using Overlays and Underlays.
 
@@ -626,6 +487,12 @@ Cloudinary gives you the ability to add layers above or below your primary asset
       type: 'array',
       default: '-',
       example: () => (<a href="#customizing-overlays--underlays">Customizing Overlays & Underlays</a>)
+    },
+    {
+      prop: 'text',
+      type: 'string',
+      default: '-',
+      example: () => (<code>Next Cloudinary</code>)
     },
     {
       prop: 'underlay',
@@ -868,7 +735,145 @@ Cloudinary gives you the ability to add layers above or below your primary asset
   ]}
 />
 
-## Other Props
+
+### Managing Transformations & Effects
+
+Most transformations and effects are exposed as top-level props to enable you to easily
+apply what you need, but you can also use the following props for more advanced and
+organized ways of applying transformations and effects.
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'effects',
+      type: 'array',
+      default: '-',
+      example: () => (<code>{`[{ background: 'blue' }]`}</code>)
+    },
+    {
+      prop: 'preserveTransformations',
+      type: 'string',
+      default: () => (<code>false</code>),
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'rawTransformations',
+      type: 'array',
+      default: '-',
+      example: () => (<code>{`['e_blur:2000']`}</code>)
+    },
+    {
+      prop: 'strictTransformations',
+      type: 'boolean',
+      default: '-',
+      example: () => (<a href="#strict-transformations">Strict Transformations</a>)
+    },
+    {
+      prop: 'transformations',
+      type: 'string/array',
+      default: '-',
+      example: () => (<code>{`['my-named-transformation']`}</code>)
+    },
+  ]}
+/>
+
+#### Strict Transformations
+
+[Strict Transformations](https://cloudinary.com/documentation/control_access_to_media#strict_transformations) gives
+you the ability to have more control over what transformations are permitted to be used from your Cloudinary account.
+
+You can opt into Strict Transformations with the `strictTransformations` prop which will prevent all options from being
+applied to the delivery URL except for named transformations, for instance:
+
+```jsx
+<CldImage
+  width="800"
+  height="600"
+  src="public-id"
+  strictTransformations
+  transformations=["my-transformation"]
+  alt=""
+/>
+```
+
+Will result in a URL of:
+
+```
+https://res.cloudinary.com/cloudname/image/upload/t_my-transformation/public-id
+```
+
+>  Note: the width and height are not applied to the URL, but are still included on the image tag rendered to the DOM.
+
+## Advanced
+
+### Configuration & Delivery
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'config',
+      type: 'object',
+      default: '-',
+      example: () => (<code>{`{ url: { secureDistribution: 'spacejelly.dev' } }`}</code>)
+    },
+    {
+      prop: 'deliveryType',
+      type: 'string',
+      default: () => (<code>upload</code>),
+      example: () => (<code>fetch</code>)
+    },
+    {
+      prop: 'seoSuffix',
+      type: 'string',
+      default: '-',
+      example: () => (<code>my-image-content</code>)
+    },
+    {
+      prop: 'version',
+      type: 'number',
+      default: '-',
+      example: () => (<code>1234</code>)
+    },
+  ]}
+/>
+
+### Events & Refs
 
 <Table
   columns={[
@@ -899,3 +904,66 @@ Cloudinary gives you the ability to add layers above or below your primary asset
     },
   ]}
 />
+
+
+### Optimization
+
+By default, CldImage opts in any image to `f_auto` and `q_auto` which provide automatic
+optimization through intelligent compression and by automatically delivering the most
+efficient format based on the browser and device requesting the image.
+
+You can customize and manage these properties using the options below:
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'dpr',
+      type: 'number/string',
+      default: '-',
+      example: () => (<code>2.0</code>)
+    },
+    {
+      prop: 'format',
+      type: 'string',
+      default: () => (<code>auto</code>),
+      example: () => (<code>webp</code>)
+    },
+    {
+      prop: 'quality',
+      type: 'string',
+      default: () => (<code>auto</code>),
+      example: () => (<code>90</code>)
+    },
+    {
+      prop: 'unoptimized',
+      type: 'boolean',
+      default: '-',
+      example: () => (<a href="#unoptimized-images">Unoptimized Images</a>)
+    },
+  ]}
+/>
+
+#### Unoptimized Images
+
+The Next.js Image component provides the ability to pass in an [unoptimized](https://nextjs.org/docs/pages/api-reference/components/image#unoptimized)
+flag as a way to deliver the raw image URL without any quality, format, or size changes. When using
+this or the global option, the CldImage component performs the same treatment by not adding the
+f_auto or q_auto parameters as well as not subjecting the image to any resizing.
