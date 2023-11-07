@@ -7,6 +7,8 @@
   padding: 1em;
   margin-left: -1.5rem;
   margin-right: -1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 
   @media (min-width: 480px) {
     width: 100%;
@@ -14,11 +16,15 @@
     border-radius: .25em;
     border: solid 1px #E5E7EB;
     margin: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
 }
 
 .headerImageChildren {
+  display: flex;
+  justify-content: center;
   max-width: 500px;
   margin: 0 auto;
 }
