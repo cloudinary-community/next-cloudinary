@@ -109,15 +109,3 @@ Or listening to player events for advanced interactions with:
 ## Learn More about CldVideoPlayer
 * [Configuration](/cldvideoplayer/configuration)
 * [Examples](/cldvideoplayer/examples)
-
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '5px', marginTop: '6px'}}>
-    {Array.from({ length: 20 }).map((_, i) => (
-        <CldVideoPlayer
-            key={i}
-            width={1620}
-            height={1080}
-            id={`dog-${i}`}
-            src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
-        />
-    ))}
-</div>
