@@ -4,20 +4,21 @@ import type { ImageOptions, ConfigOptions, AnalyticsOptions } from '@cloudinary-
 import { NEXT_CLOUDINARY_ANALYTICS_ID, NEXT_CLOUDINARY_VERSION, NEXT_VERSION } from '../constants/analytics';
 
 /**
- * getCldImage
+ * getCldImageUrl
  */
 
 export interface GetCldImageUrlOptions extends ImageOptions {};
 export interface GetCldImageUrlConfig extends ConfigOptions {};
 export interface GetCldImageUrlAnalytics extends AnalyticsOptions {};
 
+// @deprecated GetCldImageUrl
 export interface GetCldImageUrl {
   options: GetCldImageUrlOptions;
   config?: GetCldImageUrlConfig;
   analytics?: GetCldImageUrlAnalytics;
 }
 
-export function getCldImageUrl(options: ImageOptions, config?: ConfigOptions, analytics?: AnalyticsOptions) {
+export function getCldImageUrl(options: GetCldImageUrlOptions, config?: GetCldImageUrlConfig, analytics?: GetCldImageUrlAnalytics) {
   const cloudName = config?.cloud?.cloudName ?? process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
   return constructCloudinaryUrl({
     options,

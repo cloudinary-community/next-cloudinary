@@ -21,7 +21,8 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
 
   const CLD_OPTIONS = [
     'deliveryType',
-    'preserveTransformations'
+    'preserveTransformations',
+    'strictTransformations'
   ];
 
   transformationPlugins.forEach(({ props = [] }) => {

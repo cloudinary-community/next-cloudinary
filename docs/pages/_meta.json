@@ -33,6 +33,7 @@
   },
   "getcldimageurl": "getCldImageUrl",
   "getcldogimageurl": "getCldOgImageUrl",
+  "getcldvideourl": "getCldVideoUrl",
   "Resources": {
     "type": "separator",
     "title": "Resources"

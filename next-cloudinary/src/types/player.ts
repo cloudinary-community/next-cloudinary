@@ -10,6 +10,7 @@ export interface CloudinaryVideoPlayerOptions {
   fontFace?: string;
   loop?: boolean;
   muted?: boolean;
+  posterOptions?: CloudinaryVideoPlayerOptionPosterOptions;
   publicId: string;
   secure?: boolean;
   transformation?: Array<object> | object;
@@ -29,4 +30,8 @@ export interface CloudinaryVideoPlayerOptionsLogo {
   logoImageUrl?: string;
   logoOnclickUrl?: string;
   showLogo?: boolean;
+}
+
+export interface CloudinaryVideoPlayerOptionPosterOptions {
+  publicId: string;
 }

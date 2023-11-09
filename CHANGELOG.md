@@ -1,3 +1,24 @@
+# [5.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.2.0...v5.3.0) (2023-11-03)
+
+
+### Features
+
+* Video Poster ([#337](https://github.com/colbyfayock/next-cloudinary/issues/337)) ([077abcf](https://github.com/colbyfayock/next-cloudinary/commit/077abcf4b73aac07e578060cd3a572f247a8aac1)), closes [#2](https://github.com/colbyfayock/next-cloudinary/issues/2) [#322](https://github.com/colbyfayock/next-cloudinary/issues/322)
+
+# [5.2.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.1.0...v5.2.0) (2023-11-01)
+
+
+### Features
+
+* Strict Transformations ([#336](https://github.com/colbyfayock/next-cloudinary/issues/336)) ([6ca2a2a](https://github.com/colbyfayock/next-cloudinary/commit/6ca2a2a6044f45462c0e73f725c2f0e7a12a5033)), closes [#324](https://github.com/colbyfayock/next-cloudinary/issues/324)
+
+# [5.1.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.0.0...v5.1.0) (2023-11-01)
+
+
+### Features
+
+* Generative Replace ([f9d1de2](https://github.com/colbyfayock/next-cloudinary/commit/f9d1de209d06553be77310f72192b0e9253d5772))
+
 # [5.0.0](https://github.com/colbyfayock/next-cloudinary/compare/v4.28.0...v5.0.0) (2023-10-30)
 
 

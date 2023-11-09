@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
-import { CldVideoPlayer } from '../../../next-cloudinary';
+import { CldVideoPlayer, getCldImageUrl } from '../../../next-cloudinary';
 
 import OgImage from '../../components/OgImage';
 import ImageGrid from '../../components/ImageGrid';
@@ -39,14 +39,16 @@ export const VideoPlayerWithRef = (props) => {
 
 <ImageGrid columns={1}>
   <li>
+    ### Default
+
+    <br />
+
     <CldVideoPlayer
       id="default"
       width="1620"
       height="1080"
       src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
     />
-
-    ### Default
 
     Basic settings to display a video.
 
@@ -57,6 +59,11 @@ export const VideoPlayerWithRef = (props) => {
     ```
   </li>
   <li>
+
+    ### Adaptive Streaming
+
+    <br />
+
     <CldVideoPlayer
       id="adaptive-streaming"
       width="1620"
@@ -67,8 +74,6 @@ export const VideoPlayerWithRef = (props) => {
       }}
       sourceTypes={['hls']}
     />
-
-    ### Adaptive Streaming
 
     Basic settings to display a video.
 
@@ -83,6 +88,10 @@ export const VideoPlayerWithRef = (props) => {
     ```
   </li>
   <li>
+    ### Crop & Resize
+
+    <br />
+
     <div style={{ maxWidth: 500, margin: '0 auto' }}>
       <CldVideoPlayer
         id="crop-resize"
@@ -98,8 +107,6 @@ export const VideoPlayerWithRef = (props) => {
       />
     </div>
 
-    ### Crop & Resize
-
     Basic settings to display a video.
 
     ```jsx copy
@@ -109,6 +116,10 @@ export const VideoPlayerWithRef = (props) => {
     ```
   </li>
   <li>
+    ### Transformation: overlay
+
+    <br />
+
     <CldVideoPlayer
       id="transformation-overlay"
       width="1620"
@@ -123,8 +134,6 @@ export const VideoPlayerWithRef = (props) => {
         opacity: 80
       }}
     />
-
-    ### Transformation: overlay
 
     Adding a watermark to a video.
 
@@ -141,6 +150,10 @@ export const VideoPlayerWithRef = (props) => {
     ```
   </li>
   <li>
+    ### Custom Player Colors & Font
+
+    <br />
+
     <CldVideoPlayer
       id="custom-colors-font"
       width="4096"
@@ -154,8 +167,6 @@ export const VideoPlayerWithRef = (props) => {
       fontFace="Source Serif Pro"
     />
 
-    ### Custom Player Colors & Font
-
     Changing the player theme using colors and fonts
 
     ```jsx copy
@@ -168,6 +179,10 @@ export const VideoPlayerWithRef = (props) => {
     ```
   </li>
   <li>
+    ### Custom Logo
+
+    <br />
+
     <CldVideoPlayer
       id="custom-logo"
       width="4096"
@@ -179,8 +194,6 @@ export const VideoPlayerWithRef = (props) => {
       }}
     />
 
-    ### Custom Logo
-
     Adding a custom logo to the player chrome
 
     ```jsx copy
@@ -191,14 +204,77 @@ export const VideoPlayerWithRef = (props) => {
     ```
   </li>
   <li>
+    ### Poster
+
+    <br />
+
+    <CldVideoPlayer
+      id="custom-poster-1"
+      width="4096"
+      height="2160"
+      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+      poster={{
+        tint: 'equalize:80:blue:blueviolet'
+      }}
+    />
+
+    Adding effects to the video's auto-generated thumb
+
+    ```jsx copy
+    poster={{
+      tint: 'equalize:80:blue:blueviolet'
+    }}
+    ```
+
+    <br />
+
+    <CldVideoPlayer
+      id="custom-poster-2"
+      width="4096"
+      height="2160"
+      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+      poster={getCldImageUrl({ src: `${process.env.IMAGES_DIRECTORY}/turtle` })}
+    />
+
+    Specifying a remote URL
+
+    ```jsx copy
+    poster="https://...com/image.jpg"
+    ```
+
+    <br />
+
+    <CldVideoPlayer
+      id="custom-poster-3"
+      width="4096"
+      height="2160"
+      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+      poster={{
+        src: `${process.env.IMAGES_DIRECTORY}/turtle`,
+        tint: 'equalize:80:blue:blueviolet'
+      }}
+    />
+
+    Using a Cloudinary image with effects
+
+    ```jsx copy
+    poster={{
+      src: `${process.env.IMAGES_DIRECTORY}/turtle`,
+      tint: 'equalize:80:blue:blueviolet'
+    }}
+    ```
+  </li>
+  <li>
+    ### With Ref on Callback
+
+    <br />
+
     <VideoPlayerWithRef
       id="with-ref"
       width="4096"
       height="2160"
       src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
     />
-
-    ### With Ref on Callback
 
     Using a ref to access the player instance
 
