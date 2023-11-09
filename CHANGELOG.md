@@ -1,3 +1,10 @@
+# [5.4.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.3.0...v5.4.0) (2023-11-09)
+
+
+### Features
+
+* dispose of upload widget and video player instance on unmount ([#317](https://github.com/colbyfayock/next-cloudinary/issues/317)) ([a313b7a](https://github.com/colbyfayock/next-cloudinary/commit/a313b7af3bda40ef37418026d162abd59005a59d)), closes [#279](https://github.com/colbyfayock/next-cloudinary/issues/279) [#279](https://github.com/colbyfayock/next-cloudinary/issues/279)
+
 # [5.3.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.2.0...v5.3.0) (2023-11-03)
 
 
