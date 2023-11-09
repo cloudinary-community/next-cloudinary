@@ -125,6 +125,14 @@ const CldUploadWidget = ({
     });
   }
 
+  useEffect(() => {
+
+    return () => {
+      widget.current.destroy();
+      widget.current = undefined;
+    }
+  }, [])
+
   /**
    * generateSignature
    * @description Makes a request to an endpoint to sign Cloudinary parameters as part of widget creation
