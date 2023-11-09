@@ -1,10 +1,12 @@
 import Head from 'next/head';
-import { Callout } from 'nextra-theme-docs';
+import { Callout, Tab, Tabs } from 'nextra-theme-docs';
 
 import { CldImage } from '../../../next-cloudinary';
 
 import OgImage from '../../components/OgImage';
 import ImageGrid from '../../components/ImageGrid';
+import HeaderImage from '../../components/HeaderImage';
+import CodeBlock from '../../components/CodeBlock';
 
 <Head>
   <title>CldImage Examples - Next Cloudinary</title>
@@ -19,233 +21,302 @@ import ImageGrid from '../../components/ImageGrid';
 
 # CldImage Examples
 
-## Effects
+## Basic Transformations
 
-<ImageGrid>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      removeBackground
-      alt=""
-    />
+### Background Removal
 
-    ### Background Removal
+`removeBackground`: Removes the background of the image using AI
 
-    ```jsx copy
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
     removeBackground
-    ```
+    alt=""
+  />
+</HeaderImage>
 
-    <Callout emoji={false}>
-      Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal</a> Add-On
-    </Callout>
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      crop="pad"
-      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      fillBackground
-      alt=""
-    />
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-    ### Generative Fill
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    removeBackground
+    alt=""
+  />
+  ```
+</CodeBlock>
 
-    ```jsx copy
+### Cropping & Resizing
+
+`crop`: Specifies the mode to use when cropping an image based on the given dimensions.
+
+> Note: By default, CldImage uses a gravity of auto, meaning the crop will automatically
+position the subject in the center of the resulting image.
+
+<HeaderImage>
+  <CldImage
+    width="300"
+    height="300"
+    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    sizes="100vw"
+    crop="thumb"
+    alt=""
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="300"
+    height="300"
+    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    sizes="100vw"
+    crop="thumb"
+    alt=""
+  />
+  ```
+</CodeBlock>
+
+### Generative Fill
+
+`fillBackground`: Fills the background of an image using Generative AI
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    crop="pad"
+    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    sizes="100vw"
+    fillBackground
+    alt=""
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
     width="960"
     height="600" // Original 1440
-    crop="pad" // Returns the given size with padding
-    fillBackground // Uses AI to extend image
-    ```
+    crop="pad"  // Returns the given size with padding
+    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    sizes="100vw"
+    fillBackground
+    alt=""
+  />
+  ```
+</CodeBlock>
 
-    <Callout emoji={false}>
-      The generative fill transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#b_gen_fill">Learn more</a>.
-    </Callout>
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      crop="fill"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      replace={['turtle', 'shark']}
-      alt=""
-    />
+<Callout emoji={false}>
+  The generative fill transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#b_gen_fill">Learn more</a>.
+</Callout>
 
-    ### Generative Replace
+### Generative Replace
 
-    ```jsx copy
+`replace`: Replaces an object in an image using Generative AI
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    crop="fill"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
     replace={['turtle', 'shark']}
-    ```
+    alt=""
+  />
+</HeaderImage>
 
-    <Callout emoji={false}>
-      The generative replace transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">Learn more</a>.
-    </Callout>
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      zoompan="loop"
-      alt=""
-    />
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-    ### Zoom &amp; Pan
+  <CldImage
+    width="960"
+    height="600"
+    crop="fill"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    replace={['turtle', 'shark']}
+    alt=""
+  />
+  ```
+</CodeBlock>
 
-    ```jsx copy
-    zoompan="loop"
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      blur="1200"
-      alt=""
-    />
+<Callout emoji={false}>
+  The generative replace transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">Learn more</a>.
+</Callout>
 
-    ### Blur
 
-    ```jsx copy
+## Filters & Effects
+
+### Blur
+
+`blur`: Applies a blurring filter to an asset.
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
     blur="1200"
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      pixelate
-      alt=""
-    />
+    alt=""
+  />
+</HeaderImage>
 
-    ### Pixelate
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    blur="1200"
+    alt=""
+  />
+  ```
+</CodeBlock>
 
-    ```jsx copy
-    pixelate
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      grayscale
-      alt=""
-    />
+### Grayscale
 
-    ### Grayscale
+`grayscale`: Converts an image to grayscale (multiple shades of gray).
 
-    ```jsx copy
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
     grayscale
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      tint="equalize:80:blue:blueviolet"
-      alt=""
-    />
+    alt=""
+  />
+</HeaderImage>
 
-    ### Tint
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-    ```jsx copy
-    tint="equalize:80:blue:blueviolet"
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      opacity="50"
-      alt=""
-    />
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    grayscale
+    alt=""
+  />
+  ```
+</CodeBlock>
 
-    ### Opacity
+### Opacity
 
-    ```jsx copy
+`opacity`: Controls the opacity level of an image.
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
     opacity="50"
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      shear="40:0"
-      alt=""
-    />
+    alt=""
+  />
+</HeaderImage>
 
-    ### Shear
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-    ```jsx copy
-    shear="40:0"
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      border="40px_solid_purple"
-      alt=""
-    />
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    opacity="50"
+    alt=""
+  />
+  ```
+</CodeBlock>
 
-    ### Border
+### Pixelate
 
-    ```jsx copy
-    border="40px_solid_purple"
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      removeBackground
-      background="blue"
-      alt=""
-    />
+`pixelate`: Applies a pixelation effect.
 
-    ### Background
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    pixelate
+    alt=""
+  />
+</HeaderImage>
 
-    ```jsx copy
-    removeBackground
-    background="blue"
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      removeBackground
-      trim
-      alt=""
-    />
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-    ### Trim
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    pixelate
+    alt=""
+  />
+  ```
+</CodeBlock>
 
-    ```jsx copy
-    removeBackground
-    trim
-    ```
-  </li>
+### Tint
+
+`tint`: Blends an image with one or more tint colors.
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    tint="equalize:80:blue:blueviolet"
+    alt=""
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    tint="equalize:80:blue:blueviolet"
+    alt=""
+  />
+  ```
+</CodeBlock>
+
+### More Filters & Effects
+
+Learn about what other filters and effects are supported on [CldImage Configuration](/cldimage/configuration).
+
+## Image Overlays
+
+<ImageGrid>
   <li>
     <CldImage
       width="960"
@@ -281,88 +352,6 @@ import ImageGrid from '../../components/ImageGrid';
     ]}
     ```
   </li>
-</ImageGrid>
-
-<a href="https://github.com/colbyfayock/next-cloudinary">See all supported effects on github.com.</a>
-
-## Cropping
-
-<ImageGrid>
-  <li>
-    <CldImage
-      width="600"
-      height="900"
-      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      crop="thumb"
-      gravity="auto"
-      alt=""
-    />
-
-    ### Original
-
-  </li>
-  <li>
-    <CldImage
-      width="600"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      crop="thumb"
-      gravity="auto"
-      alt=""
-    />
-
-    ### Thumbnail with Auto Gravity
-
-    ```jsx copy
-    crop="thumb"
-    gravity="auto"
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="600"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      crop="thumb"
-      gravity="faces"
-      alt=""
-    />
-
-    ### Thumbnail with Faces Gravity
-
-    ```jsx copy
-    crop="thumb"
-    gravity="faces"
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="600"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      crop="thumb"
-      gravity="faces"
-      zoom="0.5"
-      alt=""
-    />
-
-    ### Thumbnail with Faces Gravity and Zoom
-
-    ```jsx copy
-    crop="thumb"
-    gravity="faces"
-    zoom="0.5"
-    ```
-  </li>
-</ImageGrid>
-
-## Image Overlays
-
-<ImageGrid>
   <li>
     <CldImage
       width="960"

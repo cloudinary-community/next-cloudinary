@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import OgImage from '../../components/OgImage';
+import Table from '../../components/Table';
 
 <Head>
   <title>CldImage Configuration - Next Cloudinary</title>
@@ -17,171 +18,1241 @@ import OgImage from '../../components/OgImage';
 
 Configuration for CldImage is the same as [getCldImageUrl](/getcldimageurl/configuration), which both use the same underlying API.
 
-## General Props
+## Required Props
 
-| Prop Name          | Type               | Default    | Example                      |
-|--------------------|--------------------|------------|------------------------------|
-| config             | object             | -          | `{ url: { secureDistribution: 'spacejelly.dev' } }` |
-| crop               | string             | `"limit"`  | `"thumb"`                    |
-| dpr                | number/string      | -          | `"2.0"`                      |
-| deliveryType       | string             | `"upload"` | `"fetch"`                    |
-| effects            | array              | -          | `[{ background: 'blue' }]`   |
-| fillBackground (Beta) | bool/object     | -          | `{{ gravity: 'east' }}`      |
-| format             | string             | `"auto"`   | `"webp"`                     |
-| gravity            | string             | `"auto"`   | `"faces"`                    |
-| height             | number/string      | -          | `600`                        |
-| onError            | function/bool      | -          | `(event) => {}`              |
-| overlays           | array              | -          | See Below                    |
-| preserveTransformations | string        | `false`    | `true`                       |
-| quality            | string             | `"auto"`   | `"90"`                       |
-| rawTransformations | array              | -          | `['e_blur:2000']`            |
-| ref                | ref                | -          | ref (a ref to a html img element) |
-| removeBackground   | bool/string        | `false`    | `true`                       |
-| replace            | array/object       | -          | `['apple', 'banana']`        |
-| sanitize           | bool               | `true` if svg | `true` (Applies only to SVG) |
-| seoSuffix          | string             | -          | `my-image-content`           |
-| src                | string             | -          | `"my-public-id"`             |
-| strictTransformations | boolean         | -          | `true`                       |
-| text               | string             | -          | `"Next Cloudinary"`          |
-| transformations    | string/array       | -          | `['my-named-transformation']`|
-| underlay           | string             | -          | `"my-public-id"`             |
-| underlays          | array              | -          | See Below                    |
-| unoptimized        | boolean            | -          | See Below                    |
-| version            | number             | -          | `1234`                       |
-| width              | number/string      | -          | `600`                        |
-| zoom               | string             | -          | `0.5`                        |
-| zoompan            | bool/string/object | -          | See Below                    |
+The basic props required to use CldImage include:
 
-### Unoptimized images
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'required',
+      title: 'Required'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'alt',
+      type: 'string',
+      required: 'Yes',
+      example: "Dog catching a frisbee"
+    },
+    {
+      prop: 'height',
+      type: 'number/string',
+      required: () => (<span>Yes, unless using Next Image <code><a href="https://nextjs.org/docs/pages/api-reference/components/image#fill">fill</a></code></span>),
+      example: () => (<code>600</code>)
+    },
+    {
+      prop: 'src',
+      type: 'string',
+      required: 'Yes',
+      example: () => (<code>my-public-id</code>)
+    },
+    {
+      prop: 'width',
+      type: 'number/string',
+      required: () => (<span>Yes, unless using Next Image <code><a href="https://nextjs.org/docs/pages/api-reference/components/image#fill">fill</a></code></span>),
+      example: () => (<code>600</code>)
+    },
+  ]}
+/>
+
+CldImage extends the Next.js Image component using Cloudinary tech. This means all props
+available on the Image component are available on CldImage.
+
+Learn more on the [Next.js docs](https://nextjs.org/docs/pages/api-reference/components/image).
+
+### Using Fill
+
+As CldImage extends Next.js Image, it's important to note the distinction between what "fill"
+applies to in which context. The Next.js Image [fill](https://nextjs.org/docs/pages/api-reference/components/image#fill)
+prop provides a different way of displaying the image using the native `<img />` tag and CSS
+while Cloudinary also provides a crop mode of [fill](https://cloudinary.com/documentation/transformation_reference#c_fill)
+which allows you to crop the resulting image file itself, while filling the containing space.
+
+`fill` or `fill={true}` will opt the CldImage instance into the Next.js Image fill mode.
+
+`crop="fill"` will opt the CldImage instance into the Cloudinary crop mode of fill.
+
+
+## Basic Transformations
+
+The CldImage component exposes many of Cloudinary's transformations in an easy-to-use way
+right inside of Next.js.
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'background',
+      type: 'string',
+      default: '-',
+      example: () => (<code>blue</code>)
+    },
+
+    {
+      prop: 'crop',
+      type: 'string',
+      default: () => (<code>limit</code>),
+      example: () => (<code>thumb</code>)
+    },
+    {
+      prop: 'fillBackground (Beta)',
+      type: 'bool/object',
+      default: '-',
+      example: () => (<code>{`{{ gravity: 'east' }}`}</code>)
+    },
+    {
+      prop: 'gravity',
+      type: 'string',
+      default: () => (<code>auto</code>),
+      example: () => (<code>faces</code>)
+    },
+    {
+      prop: 'removeBackground',
+      type: 'bool/string',
+      default: () => (<code>false</code>),
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'replace',
+      type: 'array/object',
+      default: '-',
+      example: () => (<code>{`['apple', 'banana']`}</code>)
+    },
+    {
+      prop: 'zoom',
+      type: 'string',
+      default: '-',
+      example: () => (<code>0.5</code>)
+    },
+    {
+      prop: 'zoompan',
+      type: 'bool/string/object',
+      default: '-',
+      example: () => (<code>true</code>)
+    },
+  ]}
+/>
+
+### `background`
+
+Applies a background to empty or transparent areas.
+
+**Example**
+
+```
+background="blue"
+```
+
+[Learn more about the background transformation](https://cloudinary.com/documentation/transformation_reference#b_background) on the Cloudinary docs.
+
+### `crop`
+
+Changes the size of the delivered asset according to the requested width & height dimensions.
+
+**Example**
+
+```
+crop="fill"
+```
+
+[Learn more about the crop transformation](https://cloudinary.com/documentation/transformation_reference#c_crop_resize) on the Cloudinary docs.
+
+### `fillBackground`
+
+Automatically fills the padded area using generative AI to extend the image seamlessly
+
+**Example**
+
+```
+fillBackground
+```
+
+> Note: Generative Fill is currently in beta.
+
+[Learn more about the Generative Fill transformation](https://cloudinary.com/documentation/transformation_reference#b_gen_fill) on the Cloudinary docs.
+
+### `gravity`
+
+Determines which part of an asset to focus on, and thus which part of the asset to keep, when any part of the asset is cropped
+
+**Example**
+
+```
+gravity="face"
+```
+
+[Learn more about gravity](https://cloudinary.com/documentation/transformation_reference#g_gravity) on the Cloudinary docs.
+
+### `removeBackground`
+
+Uses the [Cloudinary AI Background Removal add-on](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) to make the background of an image transparent.
+
+**Example**
+
+```
+removeBackground
+```
+
+> Note: The Cloudinary AI Background Removal add-on is required to use this feature.
+
+[Learn more about background removal transformation](https://cloudinary.com/documentation/transformation_reference#e_background_removal) on the Cloudinary docs.
+
+### `replace`
+
+Uses generative AI to replace parts of your image with something else. 
+
+**Example**
+
+```
+replace={['apple', 'banana']}
+```
+
+> Note: Generative Replace is currently in beta.
+
+[Learn more about the Generative Replace transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_replace) on the Cloudinary docs.
+
+### `zoom`
+
+Controls how close to crop to the detected coordinates when using face-detection, custom-coordinate, or object-specific gravity.
+
+**Example**
+
+```
+zoom="0.75"
+```
+
+[Learn more about the zoom transformation](https://cloudinary.com/documentation/transformation_reference#z_zoom) on the Cloudinary docs.
+
+### `zoompan`
+
+Also known as the Ken Burns effect, this transformation applies zooming and/or panning to an image, resulting in a video or animated GIF.
+
+**Example**
+
+```
+zoompan
+```
+
+[Learn more about the zoompan transformation](https://cloudinary.com/documentation/transformation_reference#e_zoompan) on the Cloudinary docs.
+
+
+## Filters & Effects
+
+Cloudinary supports a wide variety of effects and artistic filters that help
+to easily change the appearance of an image.
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'art',
+      type: 'string',
+      default: '-',
+      example: () => (<code>al_dente</code>)
+    },
+    {
+      prop: 'autoBrightness',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>80</code></span>)
+    },
+    {
+      prop: 'autoColor',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>80</code></span>)
+    },
+    {
+      prop: 'autoContrast',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>80</code></span>)
+    },
+    {
+      prop: 'assistColorblind',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>20</code>, <code>xray</code></span>)
+    },
+    {
+      prop: 'blackwhite',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>40</code></span>)
+    },
+    {
+      prop: 'blur',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>800</code></span>)
+    },
+    {
+      prop: 'blurFaces',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>800</code></span>)
+    },
+    {
+      prop: 'blurRegion',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>1000,h_425,w_550,x_600,y_400</code></span>)
+    },
+    {
+      prop: 'border',
+      type: 'string',
+      default: '-',
+      example: () => (<code>5px_solid_purple</code>)
+    },
+    {
+      prop: 'brightness',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>100</code></span>)
+    },
+    {
+      prop: 'brightnessHSB',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>100</code></span>)
+    },
+    {
+      prop: 'cartoonify',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>70:80</code></span>)
+    },
+    {
+      prop: 'color',
+      type: 'string',
+      default: '-',
+      example: () => (<code>blue</code>)
+    },
+    {
+      prop: 'colorize',
+      type: 'string',
+      default: '-',
+      example: () => (<code>35,co_darkviolet</code>)
+    },
+    {
+      prop: 'contrast',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>100</code>, <code>level_-70</code></span>)
+    },
+    {
+      prop: 'distort',
+      type: 'string',
+      default: '-',
+      example: () => (<span><code>150:340:1500:10:1500:1550:50:1000</code>, <code>arc:180.0</code></span>)
+    },
+    {
+      prop: 'fillLight',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>70:20</code></span>)
+    },
+    {
+      prop: 'gamma',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>100</code></span>)
+    },
+    {
+      prop: 'gradientFade',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>symmetric:10,x_0.2,y_0.4</code></span>)
+    },
+    {
+      prop: 'grayscale',
+      type: 'bool',
+      default: '-',
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'improve',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>50</code>, <code>indoor</code></span>)
+    },
+    {
+      prop: 'multiply',
+      type: 'bool',
+      default: '-',
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'negate',
+      type: 'bool',
+      default: '-',
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'oilPaint',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>40</code></span>)
+    },
+    {
+      prop: 'opacity',
+      type: 'number/string',
+      default: '-',
+      example: () => (<code>40</code>)
+    },
+    {
+      prop: 'outline',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>40</code>, <code>outer:15:200</code></span>)
+    },
+    {
+      prop: 'overlay',
+      type: 'bool',
+      default: '-',
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'pixelate',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>20</code></span>)
+    },
+    {
+      prop: 'pixelateFaces',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>20</code></span>)
+    },
+    {
+      prop: 'pixelateRegion',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>35,h_425,w_550,x_600,y_400</code></span>)
+    },
+    {
+      prop: 'redeye',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'replaceColor',
+      type: 'string',
+      default: '-',
+      example: () => (<span><code>saddlebrown</code>, <code>2F4F4F:20</code>, <code>silver:55:89b8ed</code></span>)
+    },
+    {
+      prop: 'sanitize',
+      type: 'bool',
+      default: () => (<span><code>true</code> if .svg</span>),
+      example: () => (<span><code>true</code> - Only applies to .svg</span>),
+    },
+    {
+      prop: 'saturation',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>70</code></span>)
+    },
+    {
+      prop: 'screen',
+      type: 'bool',
+      default: '-',
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'sepia',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>50</code></span>)
+    },
+    {
+      prop: 'shadow',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>50,x_-15,y_15</code></span>)
+    },
+    {
+      prop: 'sharpen',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>100</code></span>)
+    },
+    {
+      prop: 'shear',
+      type: 'string',
+      default: '-',
+      example: () => (<code>20.0:0.0</code>)
+    },
+    {
+      prop: 'simulateColorblind',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<code>deuteranopia</code>)
+    },
+    {
+      prop: 'trim',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>50:yellow</code></span>)
+    },
+    {
+      prop: 'tint',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>100:red:blue:yellow</code></span>)
+    },
+    {
+      prop: 'unsharpMask',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>500</code></span>)
+    },
+    {
+      prop: 'vectorize',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>3:0.5</code></span>)
+    },
+    {
+      prop: 'vibrance',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>70</code></span>)
+    },
+    {
+      prop: 'vignette',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>30</code></span>)
+    }
+  ]}
+/>
+
+[View the Cloudinary docs](https://cloudinary.com/documentation/transformation_reference#e_effect) to see learn more about using effects.
+
+## Overlays & Underlays
+
+Cloudinary gives you the ability to add layers above or below your primary asset using Overlays and Underlays.
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'overlays',
+      type: 'array',
+      default: '-',
+      example: () => (<a href="#customizing-overlays--underlays">Customizing Overlays & Underlays</a>)
+    },
+    {
+      prop: 'text',
+      type: 'string',
+      default: '-',
+      example: () => (<code>Next Cloudinary</code>)
+    },
+    {
+      prop: 'underlay',
+      type: 'string',
+      default: '-',
+      example: () => (<code>my-public-id</code>)
+    },
+    {
+      prop: 'underlays',
+      type: 'array',
+      default: '-',
+      example: () => (<a href="#customizing-overlays--underlays">Customizing Overlays & Underlays</a>)
+    },
+  ]}
+/>
+
+### Customizing Overlays & Underlays
+
+> Note: The API for Underlays is similar to Overlays except they do not support text.
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'appliedEffects',
+      type: 'array',
+      example: 'Same as effects, added as applied transformation'
+    },
+    {
+      prop: 'effects',
+      type: 'array',
+      example: () => (<a href="#layer-effect-props">effects</a>)
+    },
+    {
+      prop: 'position',
+      type: 'object',
+      example: () => (<a href="#layer-position-props">position</a>)
+    },
+    {
+      prop: 'publicId',
+      type: 'string',
+      example: () => (<code>thumb</code>)
+    },
+    {
+      prop: 'text',
+      type: 'object|string',
+      example: () => (<span><code>Next Cloudinary</code> or See <a href="#layer-text-props">text</a> Below</span>)
+    },
+    {
+      prop: 'url',
+      type: 'string',
+      example: () => (<code>https://.../image.jpg</code>)
+    },
+  ]}
+/>
+
+<div className="-mb-4">
+  <strong id="layer-effect-props" className="block text-slate-500 text-lg mt-8 -mb-4">
+    <code>effects</code>
+  </strong>
+  
+  Objects in the `effects` array can include everything in [Basic Transformations](##basic-transformations) and [Filters & Effects](#filters--effects) above as well as:
+</div>
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'aspectRatio',
+      type: 'string',
+      example: () => (<code>3.0</code>)
+    },
+
+    {
+      prop: 'crop',
+      type: 'string',
+      example: () => (<code>10</code>)
+    },
+
+    {
+      prop: 'gravity',
+      type: 'string',
+      example: () => (<code>north_west</code>)
+    },
+
+    {
+      prop: 'height',
+      type: 'number',
+      example: () => (<code>600</code>)
+    },
+
+    {
+      prop: 'width',
+      type: 'number',
+      example: () => (<code>600</code>)
+    },
+  ]}
+/>
+
+<div className="-mb-4">
+  <strong id="layer-position-props" className="block text-slate-500 text-lg mt-8 -mb-4">
+    <code>position</code>
+  </strong>
+
+  The `position` property can include:
+</div>
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'angle',
+      type: 'number',
+      example: () => (<code>45</code>)
+    },
+    {
+      prop: 'gravity',
+      type: 'string',
+      example: () => (<code>north_west</code>)
+    },
+    {
+      prop: 'x',
+      type: 'number',
+      example: () => (<code>10</code>)
+    },
+    {
+      prop: 'y',
+      type: 'number',
+      example: () => (<code>10</code>)
+    },
+  ]}
+/>
+
+<div className="-mb-4">
+  <strong id="layer-text-props" className="block text-slate-500 text-lg mt-8 -mb-4">text</strong>
+
+  The `text` property can include:
+</div>
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'border',
+      type: 'string',
+      example: () => (<code>20px_solid_blue</code>)
+    },
+    {
+      prop: 'color',
+      type: 'string',
+      example: () => (<code>blueviolet</code>)
+    },
+    {
+      prop: 'fontFamily',
+      type: 'string',
+      example: () => (<code>Open Sans</code>)
+    },
+    {
+      prop: 'fontSize',
+      type: 'number',
+      example: () => (<code>48</code>)
+    },
+    {
+      prop: 'fontWeight',
+      type: 'string',
+      example: () => (<code>bold</code>)
+    },
+    {
+      prop: 'letterSpacing',
+      type: 'number',
+      example: () => (<code>14</code>)
+    },
+    {
+      prop: 'lineSpacing',
+      type: 'number',
+      example: () => (<code>14</code>)
+    },
+    {
+      prop: 'stroke',
+      type: 'bool',
+      example: () => (<span><code>true</code> in coordination with Border</span>)
+    },
+    {
+      prop: 'textDecoration',
+      type: 'string',
+      example: () => (<code>underline</code>)
+    },
+  ]}
+/>
+
+## Advanced
+
+### Configuration & Delivery
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'config',
+      type: 'object',
+      default: '-',
+      example: () => (<code>{`{ url: { secureDistribution: 'spacejelly.dev' } }`}</code>)
+    },
+    {
+      prop: 'deliveryType',
+      type: 'string',
+      default: () => (<code>upload</code>),
+      example: () => (<code>fetch</code>)
+    },
+    {
+      prop: 'seoSuffix',
+      type: 'string',
+      default: '-',
+      example: () => (<code>my-image-content</code>)
+    },
+    {
+      prop: 'version',
+      type: 'number',
+      default: '-',
+      example: () => (<code>1234</code>)
+    },
+  ]}
+/>
+
+#### `config`
+
+Allows configuration for the Cloudinary environment.
+
+**Example**
+
+```
+config={{
+  cloud: {
+    cloudName: 'my-cloud'
+  }
+}}
+```
+
+[Learn more about configuration parameters](https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters) on the Cloudinary docs.
+
+#### `deliveryType`
+
+Controls the delivery type of the image.
+
+**Example**
+
+```
+deliveryType="fetch"
+```
+
+[Learn more about Delivery Types](https://cloudinary.com/documentation/image_transformations#delivery_types) on the Cloudinary docs.
+
+#### `seoSuffix`
+
+Adds a dynamic, descriptive suffice to the Public ID for greater SEO control of image URLs.
+
+**Example**
+
+```
+seoSuffix="jellyfish-in-space"
+```
+
+[Learn more about Dynamic SEO Suffixes](https://cloudinary.com/documentation/advanced_url_delivery_options#dynamic_seo_suffixes) on the Cloudinary docs.
+
+#### `version`
+
+Controls the version defined in the delivery URL.
+
+**Example**
+
+```
+version="1234"
+```
+
+[Learn more about Asset Versions](https://cloudinary.com/documentation/advanced_url_delivery_options#asset_versions) on the Cloudinary docs.
+
+
+### Events & Refs
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'onError',
+      type: 'function/bool',
+      example: () => (<code>{`(event) => {}`}</code>)
+    },
+    {
+      prop: 'ref',
+      type: 'ref',
+      default: '-',
+      example: 'Ref'
+    },
+  ]}
+/>
+
+#### `onError`
+
+Callback that fire when an image fails to load.
+
+Upon failure, if the resulting HTTP status is a 423 (Processing), CldImage will attempt to poll the URL
+until it's available, then force refresh the image instance in the DOM.
+
+**Example**
+
+```
+onError={() => {
+  alert('Image failed to load!')
+}}
+```
+
+[Learn more about onError](https://nextjs.org/docs/pages/api-reference/components/image#onerror) on the Next.js docs.
+
+
+#### `ref`
+
+Allows passing in a ref instance that will be used on the Next Image and resulting `<img />`
+
+**Example**
+
+```
+ref={myRef}
+```
+
+### Managing Transformations
+
+Most transformations and effects are exposed as top-level props to enable you to easily
+apply what you need, but you can also use the following props for more advanced and
+organized ways of applying transformations and effects.
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'effects',
+      type: 'array',
+      default: '-',
+      example: () => (<code>{`[{ background: 'blue' }]`}</code>)
+    },
+    {
+      prop: 'preserveTransformations',
+      type: 'string',
+      default: () => (<code>false</code>),
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'rawTransformations',
+      type: 'array',
+      default: '-',
+      example: () => (<code>{`['e_blur:2000']`}</code>)
+    },
+    {
+      prop: 'strictTransformations',
+      type: 'boolean',
+      default: '-',
+      example: () => (<a href="#stricttransformations">Strict Transformations</a>)
+    },
+    {
+      prop: 'transformations',
+      type: 'string/array',
+      default: '-',
+      example: () => (<code>{`['my-named-transformation']`}</code>)
+    },
+  ]}
+/>
+
+#### `effects`
+
+Applies a chain of transformation sets to an image.
+
+**Example**
+
+```
+effects={[
+  {
+    width: 100,
+    height: 100,
+    crop: 'fill'
+  },
+  {
+    opacity: 50
+  }
+]}
+```
+
+#### `preserveTransformations`
+
+Preserves transformations already applied to an image when passing in a Cloudinary URL
+as the `src`.
+
+**Example**
+
+```
+preserveTransformations
+```
+
+#### `rawTransformations`
+
+Provides the ability to pass in an array of "raw" Cloudinary transformations using the
+[Transformation URL API](https://cloudinary.com/documentation/transformation_reference)
+
+**Example**
+
+```
+rawTransformations={['w_100', 'b_blue', 'f_auto']}
+```
+
+#### `strictTransformations`
+
+[Strict Transformations](https://cloudinary.com/documentation/control_access_to_media#strict_transformations) gives
+you the ability to have more control over what transformations are permitted to be used from your Cloudinary account.
+
+By enabling Strict Transformations, you restrict the ability to generate transformations on-the-fly requiring explicit
+approval through the Cloudinary dashboard.
+
+> Note: This disables [optimization](#optimization) and [responsive sizing](/guides/responsive-images)
+only allowing [named transformations](#transformations) to be applied. The width and height are not applied to the URL,
+but are still included on the image tag rendered to the DOM.
+
+**Example**
+
+```
+strictTransformations
+transformations=["my-transformation"]
+```
+
+[Learn more about Strict Transformations](https://cloudinary.com/documentation/control_access_to_media#strict_transformations) on the Cloudinary docs.
+
+#### `transformations`
+
+Applies named transformations to the image.
+
+**Example**
+
+```
+transformations={['my-transformation']}
+```
+
+[Learn more about Named Transformations](https://cloudinary.com/documentation/image_transformations#named_transformations) on the Cloudinary docs.
+
+
+### Optimization
+
+By default, CldImage opts in any image to `f_auto` and `q_auto` which provide automatic
+optimization through intelligent compression and by automatically delivering the most
+efficient format based on the browser and device requesting the image.
+
+You can customize and manage these properties using the options below:
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'dpr',
+      type: 'number/string',
+      default: '-',
+      example: () => (<code>2.0</code>)
+    },
+    {
+      prop: 'format',
+      type: 'string',
+      default: () => (<code>auto</code>),
+      example: () => (<code>webp</code>)
+    },
+    {
+      prop: 'quality',
+      type: 'string',
+      default: () => (<code>auto</code>),
+      example: () => (<code>90</code>)
+    },
+    {
+      prop: 'unoptimized',
+      type: 'boolean',
+      default: '-',
+      example: () => (<a href="#unoptimized">Unoptimized Images</a>)
+    },
+  ]}
+/>
+
+#### `dpr`
+
+Sets the device pixel ratio (DPR) for the delivered image or video using a specified value or automatically based on the requesting device.
+
+**Example**
+
+```
+dpr="2.0"
+```
+
+[Learn more about configuring DPR](https://cloudinary.com/documentation/transformation_reference#dpr_dpr) on the Cloudinary docs.
+
+
+#### `format`
+
+Converts (if necessary) and delivers an asset in the specified format regardless of the file extension used in the delivery URL.
+
+**Example**
+
+```
+format="png"
+```
+
+[Learn more about format](https://cloudinary.com/documentation/transformation_reference#f_format) on the Cloudinary docs.
+
+
+#### `quality`
+
+Controls the quality of the delivered asset. Reducing the quality is a trade-off between visual quality and file size.
+
+**Example**
+
+```
+quality="10"
+```
+
+[Learn more about quality](https://cloudinary.com/documentation/transformation_reference#q_quality) on the Cloudinary docs.
+
+
+#### `unoptimized`
 
 The Next.js Image component provides the ability to pass in an [unoptimized](https://nextjs.org/docs/pages/api-reference/components/image#unoptimized)
 flag as a way to deliver the raw image URL without any quality, format, or size changes. When using
 this or the global option, the CldImage component performs the same treatment by not adding the
 f_auto or q_auto parameters as well as not subjecting the image to any resizing.
 
-### Strict Transformations
-
-[Strict Transformations](https://cloudinary.com/documentation/control_access_to_media#strict_transformations) gives
-you the ability to have more control over what transformations are permitted to be used from your Cloudinary account.
-
-You can opt into Strict Transformations with the `strictTransformations` prop which will prevent all options from being
-applied to the delivery URL except for named transformations, for instance:
+**Example**
 
 ```
-<CldImage
-  width="800"
-  height="600"
-  src="public-id"
-  strictTransformations
-  transformations=["my-transformation"]
-  alt=""
-/>
+unoptimized
 ```
-
-Will result in a URL of:
-
-```
-https://res.cloudinary.com/cloudname/image/upload/t_my-transformation/public-id
-```
-
->  Note: the width and height are not applied to the URL, but are still included on the image tag rendered to the DOM.
-
-## Effect Props
-
-| Prop Name          | Type        | Default | Example                                              |
-| ------------------ | ----------- | ------- | ---------------------------------------------------- |
-| art                | string      | -       | `"al_dente"`                                         |
-| autoBrightness     | bool/string | -       | `true`, `"80"`                                       |
-| autoColor          | bool/string | -       | `true`, `"80"`                                       |
-| autoContrast       | bool/string | -       | `true`, `"80"`                                       |
-| assistColorblind   | bool/string | -       | `true`, `"20"`, `"xray"`                             |
-| background         | string      | -       | `"blue"`                                             |
-| blackwhite         | bool/string | -       | `true`, `"40"`                                       |
-| blur               | bool/string | -       | `true`, `"800"`                                      |
-| blurFaces          | bool/string | -       | `true`, `"800"`                                      |
-| blurRegion         | bool/string | -       | `true`, `"1000,h_425,w_550,x_600,y_400"`             |
-| border             | string      | -       | `"5px_solid_purple"`                                 |
-| brightness         | bool/string | -       | `true`, `"100"`                                      |
-| brightnessHSB      | bool/string | -       | `true`, `"100"`                                      |
-| cartoonify         | bool/string | -       | `true`, `"70:80"`                                    |
-| color              | string      | -       | `"blue"`                                             |
-| colorize           | string      | -       | `"35,co_darkviolet"`                                 |
-| contrast           | bool/string | -       | `true`, `"100"`, `"level_-70"`                       |
-| distort            | string      | -       | `"150:340:1500:10:1500:1550:50:1000"`, `"arc:180.0"` |
-| fillLight          | bool/string | -       | `true`, `"70:20"`                                    |
-| gamma              | bool/string | -       | `true`, `"100"`                                      |
-| gradientFade       | bool/string | -       | `true`, `"symmetric:10,x_0.2,y_0.4"`                 |
-| grayscale          | bool        | -       | `true`                                               |
-| improve            | bool/string | -       | `true`, `"50"`, `"indoor"`                           |
-| multiply           | bool        | -       | `true`                                               |
-| negate             | bool        | -       | `true`                                               |
-| oilPaint           | bool/string | -       | `true`, `"40"`                                       |
-| opacity            | number/string | -     | `40`, `"40"`                                         |
-| outline            | bool/string | -       | `true`, `"40"`, `"outer:15:200"`                     |
-| overlay            | bool        | -       | `true`                                               |
-| pixelate           | bool/string | -       | `true`, `"20"`                                       |
-| pixelateFaces      | bool/string | -       | `true`, `"20"`                                       |
-| pixelateRegion     | bool/string | -       | `true`, `"35,h_425,w_550,x_600,y_400"`               |
-| redeye             | bool/string | -       | `true`                                               |
-| replaceColor       | string      | -       | `"saddlebrown"`, `"2F4F4F:20"`, `"silver:55:89b8ed"` |
-| saturation         | bool/string | -       | `true`, `"70"`                                       |
-| screen             | bool        | -       | `true`                                               |
-| sepia              | bool/string | -       | `true`, `"50"`                                       |
-| shadow             | bool/string | -       | `true`, `"50,x_-15,y_15"`                            |
-| sharpen            | bool/string | -       | `true`, `"100"`                                      |
-| shear              | string      | -       | `"20.0:0.0"`                                         |
-| simulateColorblind | bool/string | -       | `"deuteranopia"`                                     |
-| trim               | bool/string | -       | `true`, `"50:yellow"`                                |
-| tint               | bool/string | -       | `true`, `"100:red:blue:yellow"`                      |
-| unsharpMask        | bool/string | -       | `true`, `"500"`                                      |
-| vectorize          | bool/string | -       | `true`, `"3:0.5"`                                    |
-| vibrance           | bool/string | -       | `true`, `"70"`                                       |
-| vignette           | bool/string | -       | `true`, `"30"`                                       |
-
-[View the Cloudinary docs](https://cloudinary.com/documentation/transformation_reference#e_effect) to see learn more about using effects.
-
-### Overlay Props
-
-The `overlays` prop is an array of objects with the following configuration options:
-
-| Property Name    | Type          | Example                              |
-|------------------|---------------|--------------------------------------|
-| appliedEffects   | array         | Same as effects, added as applied transformation |
-| effects          | array         | See Below                            |
-| position         | object        | See Below                            |
-| publicId         | string        | `"thumb"`                            |
-| text             | object|string | `"Next Cloudinary"` or See Below     |
-| url              | string        | `"https://.../image.jpg"`            |
-
-The position property can include:
-
-| Property Name | Type   | Example        |
-| ------------- | ------ | -------------- |
-| angle         | number | `45`           |
-| gravity       | string | '"north_west"' |
-| x             | number | `10`           |
-| y             | number | `10`           |
-
-Objects in the effects array can include everything in the effects options above as well as:
-
-| Property Name | Type   | Example        |
-| ------------- | ------ | -------------- |
-| aspectRatio   | string | `"3.0"`        |
-| crop          | string | `10`           |
-| gravity       | string | '"north_west"' |
-| height        | number | '600'          |
-| width         | number | '600'          |
-
-The text property can include:
-
-| Property Name  | Type   | Example                                    |
-| -------------- | ------ | ------------------------------------------ |
-| border         | string | `"20px_solid_blue"`                        |
-| color          | string | `"blueviolet"`                             |
-| fontFamily     | string | `"Open Sans"`                              |
-| fontSize       | number | `48`                                       |
-| fontWeight     | string | `"bold"`                                   |
-| letterSpacing  | number | `"14"`                                     |
-| lineSpacing    | number | `"14"`                                     |
-| stroke         | bool   | `true` in coordination with Border         |
-| textDecoration | string | `"underline"`                              |
