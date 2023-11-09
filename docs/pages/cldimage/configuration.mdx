@@ -18,7 +18,7 @@ import Table from '../../components/Table';
 
 Configuration for CldImage is the same as [getCldImageUrl](/getcldimageurl/configuration), which both use the same underlying API.
 
-## Props
+## Required Props
 
 The basic props required to use CldImage include:
 
@@ -51,7 +51,7 @@ The basic props required to use CldImage include:
     {
       prop: 'height',
       type: 'number/string',
-      required: () => (<span>Yes, unless using <code>fill</code></span>),
+      required: () => (<span>Yes, unless using Next Image <code><a href="https://nextjs.org/docs/pages/api-reference/components/image#fill">fill</a></code></span>),
       example: () => (<code>600</code>)
     },
     {
@@ -63,7 +63,7 @@ The basic props required to use CldImage include:
     {
       prop: 'width',
       type: 'number/string',
-      required: () => (<span>Yes, unless using <code>fill</code></span>),
+      required: () => (<span>Yes, unless using Next Image <code><a href="https://nextjs.org/docs/pages/api-reference/components/image#fill">fill</a></code></span>),
       example: () => (<code>600</code>)
     },
   ]}
@@ -74,12 +74,23 @@ available on the Image component are available on CldImage.
 
 Learn more on the [Next.js docs](https://nextjs.org/docs/pages/api-reference/components/image).
 
-## Transformations & Effects
+### Using Fill
+
+As CldImage extends Next.js Image, it's important to note the distinction between what "fill"
+applies to in which context. The Next.js Image [fill](https://nextjs.org/docs/pages/api-reference/components/image#fill)
+prop provides a different way of displaying the image using the native `<img />` tag and CSS
+while Cloudinary also provides a crop mode of [fill](https://cloudinary.com/documentation/transformation_reference#c_fill)
+which allows you to crop the resulting image file itself, while filling the containing space.
+
+`fill` or `fill={true}` will opt the CldImage instance into the Next.js Image fill mode.
+
+`crop="fill"` will opt the CldImage instance into the Cloudinary crop mode of fill.
+
+
+## Basic Transformations
 
 The CldImage component exposes many of Cloudinary's transformations in an easy-to-use way
 right inside of Next.js.
-
-### Transformations
 
 <Table
   columns={[
@@ -153,7 +164,113 @@ right inside of Next.js.
   ]}
 />
 
-### Filters & Effects
+### `background`
+
+Applies a background to empty or transparent areas.
+
+**Example**
+
+```
+background="blue"
+```
+
+[Learn more about the background transformation](https://cloudinary.com/documentation/transformation_reference#b_background) on the Cloudinary docs.
+
+### `crop`
+
+Changes the size of the delivered asset according to the requested width & height dimensions.
+
+**Example**
+
+```
+crop="fill"
+```
+
+[Learn more about the crop transformation](https://cloudinary.com/documentation/transformation_reference#c_crop_resize) on the Cloudinary docs.
+
+### `fillBackground`
+
+Automatically fills the padded area using generative AI to extend the image seamlessly
+
+**Example**
+
+```
+fillBackground
+```
+
+> Note: Generative Fill is currently in beta.
+
+[Learn more about the Generative Fill transformation](https://cloudinary.com/documentation/transformation_reference#b_gen_fill) on the Cloudinary docs.
+
+### `gravity`
+
+Determines which part of an asset to focus on, and thus which part of the asset to keep, when any part of the asset is cropped
+
+**Example**
+
+```
+gravity="face"
+```
+
+[Learn more about gravity](https://cloudinary.com/documentation/transformation_reference#g_gravity) on the Cloudinary docs.
+
+### `removeBackground`
+
+Uses the [Cloudinary AI Background Removal add-on](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) to make the background of an image transparent.
+
+**Example**
+
+```
+removeBackground
+```
+
+> Note: The Cloudinary AI Background Removal add-on is required to use this feature.
+
+[Learn more about background removal transformation](https://cloudinary.com/documentation/transformation_reference#e_background_removal) on the Cloudinary docs.
+
+### `replace`
+
+Uses generative AI to replace parts of your image with something else. 
+
+**Example**
+
+```
+replace={['apple', 'banana']}
+```
+
+> Note: Generative Replace is currently in beta.
+
+[Learn more about the Generative Replace transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_replace) on the Cloudinary docs.
+
+### `zoom`
+
+Controls how close to crop to the detected coordinates when using face-detection, custom-coordinate, or object-specific gravity.
+
+**Example**
+
+```
+zoom="0.75"
+```
+
+[Learn more about the zoom transformation](https://cloudinary.com/documentation/transformation_reference#z_zoom) on the Cloudinary docs.
+
+### `zoompan`
+
+Also known as the Ken Burns effect, this transformation applies zooming and/or panning to an image, resulting in a video or animated GIF.
+
+**Example**
+
+```
+zoompan
+```
+
+[Learn more about the zoompan transformation](https://cloudinary.com/documentation/transformation_reference#e_zoompan) on the Cloudinary docs.
+
+
+## Filters & Effects
+
+Cloudinary supports a wide variety of effects and artistic filters that help
+to easily change the appearance of an image.
 
 <Table
   columns={[
@@ -338,6 +455,12 @@ right inside of Next.js.
       example: () => (<span><code>true</code>, <code>40</code>, <code>outer:15:200</code></span>)
     },
     {
+      prop: 'overlay',
+      type: 'bool',
+      default: '-',
+      example: () => (<code>true</code>)
+    },
+    {
       prop: 'pixelate',
       type: 'bool/string',
       default: '-',
@@ -456,7 +579,7 @@ right inside of Next.js.
 
 [View the Cloudinary docs](https://cloudinary.com/documentation/transformation_reference#e_effect) to see learn more about using effects.
 
-### Overlays & Underlays
+## Overlays & Underlays
 
 Cloudinary gives you the ability to add layers above or below your primary asset using Overlays and Underlays.
 
@@ -476,12 +599,6 @@ Cloudinary gives you the ability to add layers above or below your primary asset
     },
   ]}
   data={[
-    {
-      prop: 'overlay',
-      type: 'bool',
-      default: '-',
-      example: () => (<code>true</code>)
-    },
     {
       prop: 'overlays',
       type: 'array',
@@ -509,7 +626,7 @@ Cloudinary gives you the ability to add layers above or below your primary asset
   ]}
 />
 
-#### Customizing Overlays & Underlays
+### Customizing Overlays & Underlays
 
 > Note: The API for Underlays is similar to Overlays except they do not support text.
 
@@ -735,8 +852,171 @@ Cloudinary gives you the ability to add layers above or below your primary asset
   ]}
 />
 
+## Advanced
 
-### Managing Transformations & Effects
+### Configuration & Delivery
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'config',
+      type: 'object',
+      default: '-',
+      example: () => (<code>{`{ url: { secureDistribution: 'spacejelly.dev' } }`}</code>)
+    },
+    {
+      prop: 'deliveryType',
+      type: 'string',
+      default: () => (<code>upload</code>),
+      example: () => (<code>fetch</code>)
+    },
+    {
+      prop: 'seoSuffix',
+      type: 'string',
+      default: '-',
+      example: () => (<code>my-image-content</code>)
+    },
+    {
+      prop: 'version',
+      type: 'number',
+      default: '-',
+      example: () => (<code>1234</code>)
+    },
+  ]}
+/>
+
+#### `config`
+
+Allows configuration for the Cloudinary environment.
+
+**Example**
+
+```
+config={{
+  cloud: {
+    cloudName: 'my-cloud'
+  }
+}}
+```
+
+[Learn more about configuration parameters](https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters) on the Cloudinary docs.
+
+#### `deliveryType`
+
+Controls the delivery type of the image.
+
+**Example**
+
+```
+deliveryType="fetch"
+```
+
+[Learn more about Delivery Types](https://cloudinary.com/documentation/image_transformations#delivery_types) on the Cloudinary docs.
+
+#### `seoSuffix`
+
+Adds a dynamic, descriptive suffice to the Public ID for greater SEO control of image URLs.
+
+**Example**
+
+```
+seoSuffix="jellyfish-in-space"
+```
+
+[Learn more about Dynamic SEO Suffixes](https://cloudinary.com/documentation/advanced_url_delivery_options#dynamic_seo_suffixes) on the Cloudinary docs.
+
+#### `version`
+
+Controls the version defined in the delivery URL.
+
+**Example**
+
+```
+version="1234"
+```
+
+[Learn more about Asset Versions](https://cloudinary.com/documentation/advanced_url_delivery_options#asset_versions) on the Cloudinary docs.
+
+
+### Events & Refs
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      prop: 'onError',
+      type: 'function/bool',
+      example: () => (<code>{`(event) => {}`}</code>)
+    },
+    {
+      prop: 'ref',
+      type: 'ref',
+      default: '-',
+      example: 'Ref'
+    },
+  ]}
+/>
+
+#### `onError`
+
+Callback that fire when an image fails to load.
+
+Upon failure, if the resulting HTTP status is a 423 (Processing), CldImage will attempt to poll the URL
+until it's available, then force refresh the image instance in the DOM.
+
+**Example**
+
+```
+onError={() => {
+  alert('Image failed to load!')
+}}
+```
+
+[Learn more about onError](https://nextjs.org/docs/pages/api-reference/components/image#onerror) on the Next.js docs.
+
+
+#### `ref`
+
+Allows passing in a ref instance that will be used on the Next Image and resulting `<img />`
+
+**Example**
+
+```
+ref={myRef}
+```
+
+### Managing Transformations
 
 Most transformations and effects are exposed as top-level props to enable you to easily
 apply what you need, but you can also use the following props for more advanced and
@@ -795,115 +1075,79 @@ organized ways of applying transformations and effects.
   ]}
 />
 
-#### Strict Transformations
+#### `effects`
+
+Applies a chain of transformation sets to an image.
+
+**Example**
+
+```
+effects={[
+  {
+    width: 100,
+    height: 100,
+    crop: 'fill'
+  },
+  {
+    opacity: 50
+  }
+]}
+```
+
+#### `preserveTransformations`
+
+Preserves transformations already applied to an image when passing in a Cloudinary URL
+as the `src`.
+
+**Example**
+
+```
+preserveTransformations
+```
+
+#### `rawTransformations`
+
+Provides the ability to pass in an array of "raw" Cloudinary transformations using the
+[Transformation URL API](https://cloudinary.com/documentation/transformation_reference)
+
+**Example**
+
+```
+rawTransformations={['w_100', 'b_blue', 'f_auto']}
+```
+
+#### `strictTransformations`
 
 [Strict Transformations](https://cloudinary.com/documentation/control_access_to_media#strict_transformations) gives
 you the ability to have more control over what transformations are permitted to be used from your Cloudinary account.
 
-You can opt into Strict Transformations with the `strictTransformations` prop which will prevent all options from being
-applied to the delivery URL except for named transformations, for instance:
+By enabling Strict Transformations, you restrict the ability to generate transformations on-the-fly requiring explicit
+approval through the Cloudinary dashboard.
 
-```jsx
-<CldImage
-  width="800"
-  height="600"
-  src="public-id"
-  strictTransformations
-  transformations=["my-transformation"]
-  alt=""
-/>
-```
+> Note: This disables [optimization](#optimization) and [responsive sizing](/guides/responsive-images)
+only allowing [named transformations](#transformations) to be applied. The width and height are not applied to the URL,
+but are still included on the image tag rendered to the DOM.
 
-Will result in a URL of:
+**Example**
 
 ```
-https://res.cloudinary.com/cloudname/image/upload/t_my-transformation/public-id
+strictTransformations
+transformations=["my-transformation"]
 ```
 
->  Note: the width and height are not applied to the URL, but are still included on the image tag rendered to the DOM.
+[Learn more about Strict Transformations](https://cloudinary.com/documentation/control_access_to_media#strict_transformations) on the Cloudinary docs.
 
-## Advanced
+#### `transformations`
 
-### Configuration & Delivery
+Applies named transformations to the image.
 
-<Table
-  columns={[
-    {
-      id: 'prop',
-      title: 'Prop'
-    },
-    {
-      id: 'type',
-      title: 'Type'
-    },
-    {
-      id: 'default',
-      title: 'Default'
-    },
-    {
-      id: 'example',
-      title: 'Example'
-    },
-  ]}
-  data={[
-    {
-      prop: 'config',
-      type: 'object',
-      default: '-',
-      example: () => (<code>{`{ url: { secureDistribution: 'spacejelly.dev' } }`}</code>)
-    },
-    {
-      prop: 'deliveryType',
-      type: 'string',
-      default: () => (<code>upload</code>),
-      example: () => (<code>fetch</code>)
-    },
-    {
-      prop: 'seoSuffix',
-      type: 'string',
-      default: '-',
-      example: () => (<code>my-image-content</code>)
-    },
-    {
-      prop: 'version',
-      type: 'number',
-      default: '-',
-      example: () => (<code>1234</code>)
-    },
-  ]}
-/>
+**Example**
 
-### Events & Refs
+```
+transformations={['my-transformation']}
+```
 
-<Table
-  columns={[
-    {
-      id: 'prop',
-      title: 'Prop'
-    },
-    {
-      id: 'type',
-      title: 'Type'
-    },
-    {
-      id: 'example',
-      title: 'Example'
-    },
-  ]}
-  data={[
-    {
-      prop: 'onError',
-      type: 'function/bool',
-      example: () => (<code>{`(event) => {}`}</code>)
-    },
-    {
-      prop: 'ref',
-      type: 'ref',
-      default: '-',
-      example: 'Ref'
-    },
-  ]}
-/>
+[Learn more about Named Transformations](https://cloudinary.com/documentation/image_transformations#named_transformations) on the Cloudinary docs.
 
 
 ### Optimization
@@ -961,9 +1205,54 @@ You can customize and manage these properties using the options below:
   ]}
 />
 
-#### Unoptimized Images
+#### `dpr`
+
+Sets the device pixel ratio (DPR) for the delivered image or video using a specified value or automatically based on the requesting device.
+
+**Example**
+
+```
+dpr="2.0"
+```
+
+[Learn more about configuring DPR](https://cloudinary.com/documentation/transformation_reference#dpr_dpr) on the Cloudinary docs.
+
+
+#### `format`
+
+Converts (if necessary) and delivers an asset in the specified format regardless of the file extension used in the delivery URL.
+
+**Example**
+
+```
+format="png"
+```
+
+[Learn more about format](https://cloudinary.com/documentation/transformation_reference#f_format) on the Cloudinary docs.
+
+
+#### `quality`
+
+Controls the quality of the delivered asset. Reducing the quality is a trade-off between visual quality and file size.
+
+**Example**
+
+```
+quality="10"
+```
+
+[Learn more about quality](https://cloudinary.com/documentation/transformation_reference#q_quality) on the Cloudinary docs.
+
+
+#### `unoptimized`
 
 The Next.js Image component provides the ability to pass in an [unoptimized](https://nextjs.org/docs/pages/api-reference/components/image#unoptimized)
 flag as a way to deliver the raw image URL without any quality, format, or size changes. When using
 this or the global option, the CldImage component performs the same treatment by not adding the
 f_auto or q_auto parameters as well as not subjecting the image to any resizing.
+
+**Example**
+
+```
+unoptimized
+```
