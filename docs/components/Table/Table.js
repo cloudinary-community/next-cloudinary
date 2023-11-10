@@ -6,8 +6,8 @@ const Table = ({ columns, data }) => {
           <tr className="border-b border-gray-300">
             {columns.map(({ title, id }) => {
               return (
-                <th key={id} scope="col" className="px-6 py-4 font-bold first:pl-0 last pr-0">
-                  { title }
+                <th key={id} scope="col" className="whitespace-nowrap	px-6 py-4 font-bold first:pl-0 last pr-0">
+                  { title || ' ' }
                 </th>
               )
             })}
@@ -20,7 +20,7 @@ const Table = ({ columns, data }) => {
             return (
               <tr key={index} className="border-b last:border-none bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-800">
                 { columns.map(({ id }, index) => {
-                  let Child = row[id];
+                  let Child = row[id] || ' ';
 
                   if ( typeof Child === 'function' ) {
                     Child = <Child />

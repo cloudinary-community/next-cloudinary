@@ -16,7 +16,9 @@ import Table from '../../components/Table';
 
 # CldImage Configuration
 
-Configuration for CldImage is the same as [getCldImageUrl](/getcldimageurl/configuration), which both use the same underlying API.
+The CldImage component provides a wide range of options for being able to easily optimize and transform images.
+
+> Note: Configuration for CldImage is the same as [getCldImageUrl](/getcldimageurl/configuration), which both use the same underlying API.
 
 ## Required Props
 
@@ -40,19 +42,24 @@ The basic props required to use CldImage include:
       id: 'example',
       title: 'Example'
     },
+    {
+      id: 'more'
+    },
   ]}
   data={[
     {
       prop: 'alt',
       type: 'string',
       required: 'Yes',
-      example: "Dog catching a frisbee"
+      example: "Dog catching a frisbee",
+      more: () => (<a href="https://nextjs.org/docs/pages/api-reference/components/image#alt">More Info</a>)
     },
     {
       prop: 'height',
       type: 'number/string',
       required: () => (<span>Yes, unless using Next Image <code><a href="https://nextjs.org/docs/pages/api-reference/components/image#fill">fill</a></code></span>),
-      example: () => (<code>600</code>)
+      example: () => (<code>600</code>),
+      more: () => (<a href="https://nextjs.org/docs/pages/api-reference/components/image#height">More Info</a>)
     },
     {
       prop: 'src',
@@ -64,7 +71,8 @@ The basic props required to use CldImage include:
       prop: 'width',
       type: 'number/string',
       required: () => (<span>Yes, unless using Next Image <code><a href="https://nextjs.org/docs/pages/api-reference/components/image#fill">fill</a></code></span>),
-      example: () => (<code>600</code>)
+      example: () => (<code>600</code>),
+      more: () => (<a href="https://nextjs.org/docs/pages/api-reference/components/image#width">More Info</a>)
     },
   ]}
 />
@@ -110,56 +118,67 @@ right inside of Next.js.
       id: 'example',
       title: 'Example'
     },
+    {
+      id: 'more'
+    }
   ]}
   data={[
     {
       prop: 'background',
       type: 'string',
       default: '-',
-      example: () => (<code>blue</code>)
+      example: () => (<code>blue</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#b_background">More Info</a>)
     },
 
     {
       prop: 'crop',
       type: 'string',
       default: () => (<code>limit</code>),
-      example: () => (<code>thumb</code>)
+      example: () => (<code>thumb</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#c_crop_resize">More Info</a>)
     },
     {
       prop: 'fillBackground (Beta)',
       type: 'bool/object',
       default: '-',
-      example: () => (<code>{`{{ gravity: 'east' }}`}</code>)
+      example: () => (<code>{`{{ gravity: 'east' }}`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#b_gen_fill">More Info</a>)
     },
     {
       prop: 'gravity',
       type: 'string',
       default: () => (<code>auto</code>),
-      example: () => (<code>faces</code>)
+      example: () => (<code>faces</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#g_gravity">More Info</a>)
     },
     {
       prop: 'removeBackground',
       type: 'bool/string',
       default: () => (<code>false</code>),
-      example: () => (<code>true</code>)
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_background_removal">More Info</a>)
     },
     {
       prop: 'replace',
       type: 'array/object',
       default: '-',
-      example: () => (<code>{`['apple', 'banana']`}</code>)
+      example: () => (<code>{`['apple', 'banana']`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">More Info</a>)
     },
     {
       prop: 'zoom',
       type: 'string',
       default: '-',
-      example: () => (<code>0.5</code>)
+      example: () => (<code>0.5</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#z_zoom">More Info</a>)
     },
     {
       prop: 'zoompan',
       type: 'bool/string/object',
       default: '-',
-      example: () => (<code>true</code>)
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_zoompan">More Info</a>)
     },
   ]}
 />
@@ -290,61 +309,73 @@ to easily change the appearance of an image.
       id: 'example',
       title: 'Example'
     },
+    {
+      id: 'more'
+    }
   ]}
   data={[
     {
       prop: 'art',
       type: 'string',
       default: '-',
-      example: () => (<code>al_dente</code>)
+      example: () => (<code>al_dente</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_art">More Info</a>)
     },
     {
       prop: 'autoBrightness',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>80</code></span>)
+      example: () => (<span><code>true</code>, <code>80</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_auto_brightness">More Info</a>)
     },
     {
       prop: 'autoColor',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>80</code></span>)
+      example: () => (<span><code>true</code>, <code>80</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_auto_color">More Info</a>)
     },
     {
       prop: 'autoContrast',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>80</code></span>)
+      example: () => (<span><code>true</code>, <code>80</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_auto_contrast">More Info</a>)
     },
     {
       prop: 'assistColorblind',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>20</code>, <code>xray</code></span>)
+      example: () => (<span><code>true</code>, <code>20</code>, <code>xray</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_assist_colorblind">More Info</a>)
     },
     {
       prop: 'blackwhite',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>40</code></span>)
+      example: () => (<span><code>true</code>, <code>40</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_blackwhite">More Info</a>)
     },
     {
       prop: 'blur',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>800</code></span>)
+      example: () => (<span><code>true</code>, <code>800</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_blur">More Info</a>)
     },
     {
       prop: 'blurFaces',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>800</code></span>)
+      example: () => (<span><code>true</code>, <code>800</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_blur_faces">More Info</a>)
     },
     {
       prop: 'blurRegion',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>1000,h_425,w_550,x_600,y_400</code></span>)
+      example: () => (<span><code>true</code>, <code>1000,h_425,w_550,x_600,y_400</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_blur_region">More Info</a>)
     },
     {
       prop: 'border',
@@ -356,223 +387,259 @@ to easily change the appearance of an image.
       prop: 'brightness',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>100</code></span>)
+      example: () => (<span><code>true</code>, <code>100</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_brightness">More Info</a>)
     },
     {
       prop: 'brightnessHSB',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>100</code></span>)
+      example: () => (<span><code>true</code>, <code>100</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_brightness_hsb">More Info</a>)
     },
     {
       prop: 'cartoonify',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>70:80</code></span>)
+      example: () => (<span><code>true</code>, <code>70:80</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_cartoonify">More Info</a>)
     },
     {
       prop: 'color',
       type: 'string',
       default: '-',
-      example: () => (<code>blue</code>)
+      example: () => (<code>blue</code>),
     },
     {
       prop: 'colorize',
       type: 'string',
       default: '-',
-      example: () => (<code>35,co_darkviolet</code>)
+      example: () => (<code>35,co_darkviolet</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_colorize">More Info</a>)
     },
     {
       prop: 'contrast',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>100</code>, <code>level_-70</code></span>)
+      example: () => (<span><code>true</code>, <code>100</code>, <code>level_-70</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_contrast">More Info</a>)
     },
     {
       prop: 'distort',
       type: 'string',
       default: '-',
-      example: () => (<span><code>150:340:1500:10:1500:1550:50:1000</code>, <code>arc:180.0</code></span>)
+      example: () => (<span><code>150:340:1500:10:1500:1550:50:1000</code>, <code>arc:180.0</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_distort">More Info</a>)
     },
     {
       prop: 'fillLight',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>70:20</code></span>)
+      example: () => (<span><code>true</code>, <code>70:20</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_fill_light">More Info</a>)
     },
     {
       prop: 'gamma',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>100</code></span>)
+      example: () => (<span><code>true</code>, <code>100</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gamma">More Info</a>)
     },
     {
       prop: 'gradientFade',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>symmetric:10,x_0.2,y_0.4</code></span>)
+      example: () => (<span><code>true</code>, <code>symmetric:10,x_0.2,y_0.4</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gradient_fade">More Info</a>)
     },
     {
       prop: 'grayscale',
       type: 'bool',
       default: '-',
-      example: () => (<code>true</code>)
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_grayscale">More Info</a>)
     },
     {
       prop: 'improve',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>50</code>, <code>indoor</code></span>)
+      example: () => (<span><code>true</code>, <code>50</code>, <code>indoor</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_improve">More Info</a>)
     },
     {
       prop: 'multiply',
       type: 'bool',
       default: '-',
-      example: () => (<code>true</code>)
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_multiply">More Info</a>)
     },
     {
       prop: 'negate',
       type: 'bool',
       default: '-',
-      example: () => (<code>true</code>)
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_negate">More Info</a>)
     },
     {
       prop: 'oilPaint',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>40</code></span>)
+      example: () => (<span><code>true</code>, <code>40</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_oil_paint">More Info</a>)
     },
     {
       prop: 'opacity',
       type: 'number/string',
       default: '-',
-      example: () => (<code>40</code>)
+      example: () => (<code>40</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#o_opacity">More Info</a>)
     },
     {
       prop: 'outline',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>40</code>, <code>outer:15:200</code></span>)
+      example: () => (<span><code>true</code>, <code>40</code>, <code>outer:15:200</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_outline">More Info</a>)
     },
     {
       prop: 'overlay',
       type: 'bool',
       default: '-',
-      example: () => (<code>true</code>)
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_overlay">More Info</a>)
     },
     {
       prop: 'pixelate',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>20</code></span>)
+      example: () => (<span><code>true</code>, <code>20</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_pixelate">More Info</a>)
     },
     {
       prop: 'pixelateFaces',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>20</code></span>)
+      example: () => (<span><code>true</code>, <code>20</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_pixelate_faces">More Info</a>)
     },
     {
       prop: 'pixelateRegion',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>35,h_425,w_550,x_600,y_400</code></span>)
+      example: () => (<span><code>true</code>, <code>35,h_425,w_550,x_600,y_400</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_pixelate_region">More Info</a>)
     },
     {
       prop: 'redeye',
       type: 'bool/string',
       default: '-',
-      example: () => (<code>true</code>)
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_redeye">More Info</a>)
     },
     {
       prop: 'replaceColor',
       type: 'string',
       default: '-',
-      example: () => (<span><code>saddlebrown</code>, <code>2F4F4F:20</code>, <code>silver:55:89b8ed</code></span>)
+      example: () => (<span><code>saddlebrown</code>, <code>2F4F4F:20</code>, <code>silver:55:89b8ed</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_replace_color">More Info</a>)
     },
     {
       prop: 'sanitize',
       type: 'bool',
       default: () => (<span><code>true</code> if .svg</span>),
       example: () => (<span><code>true</code> - Only applies to .svg</span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#fl_sanitize">More Info</a>)
     },
     {
       prop: 'saturation',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>70</code></span>)
+      example: () => (<span><code>true</code>, <code>70</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_saturation">More Info</a>)
     },
     {
       prop: 'screen',
       type: 'bool',
       default: '-',
-      example: () => (<code>true</code>)
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_screen">More Info</a>)
     },
     {
       prop: 'sepia',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>50</code></span>)
+      example: () => (<span><code>true</code>, <code>50</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_sepia">More Info</a>)
     },
     {
       prop: 'shadow',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>50,x_-15,y_15</code></span>)
+      example: () => (<span><code>true</code>, <code>50,x_-15,y_15</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_shadow">More Info</a>)
     },
     {
       prop: 'sharpen',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>100</code></span>)
+      example: () => (<span><code>true</code>, <code>100</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_sharpen">More Info</a>)
     },
     {
       prop: 'shear',
       type: 'string',
       default: '-',
-      example: () => (<code>20.0:0.0</code>)
+      example: () => (<code>20.0:0.0</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_shear">More Info</a>)
     },
     {
       prop: 'simulateColorblind',
       type: 'bool/string',
       default: '-',
-      example: () => (<code>deuteranopia</code>)
-    },
-    {
-      prop: 'trim',
-      type: 'bool/string',
-      default: '-',
-      example: () => (<span><code>true</code>, <code>50:yellow</code></span>)
+      example: () => (<code>deuteranopia</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_simulate_colorblind">More Info</a>)
     },
     {
       prop: 'tint',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>100:red:blue:yellow</code></span>)
+      example: () => (<span><code>true</code>, <code>100:red:blue:yellow</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_tint">More Info</a>)
+    },
+    {
+      prop: 'trim',
+      type: 'bool/string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>50:yellow</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_trim">More Info</a>)
     },
     {
       prop: 'unsharpMask',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>500</code></span>)
+      example: () => (<span><code>true</code>, <code>500</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_unsharp_mask">More Info</a>)
     },
     {
       prop: 'vectorize',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>3:0.5</code></span>)
+      example: () => (<span><code>true</code>, <code>3:0.5</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_vectorize">More Info</a>)
     },
     {
       prop: 'vibrance',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>70</code></span>)
+      example: () => (<span><code>true</code>, <code>70</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_vibrance">More Info</a>)
     },
     {
       prop: 'vignette',
       type: 'bool/string',
       default: '-',
-      example: () => (<span><code>true</code>, <code>30</code></span>)
+      example: () => (<span><code>true</code>, <code>30</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_vignette">More Info</a>)
     }
   ]}
 />
@@ -603,25 +670,25 @@ Cloudinary gives you the ability to add layers above or below your primary asset
       prop: 'overlays',
       type: 'array',
       default: '-',
-      example: () => (<a href="#customizing-overlays--underlays">Customizing Overlays & Underlays</a>)
+      example: () => (<a href="#customizing-overlays--underlays">Customizing Overlays & Underlays</a>),
     },
     {
       prop: 'text',
       type: 'string',
       default: '-',
-      example: () => (<code>Next Cloudinary</code>)
+      example: () => (<code>Next Cloudinary</code>),
     },
     {
       prop: 'underlay',
       type: 'string',
       default: '-',
-      example: () => (<code>my-public-id</code>)
+      example: () => (<code>my-public-id</code>),
     },
     {
       prop: 'underlays',
       type: 'array',
       default: '-',
-      example: () => (<a href="#customizing-overlays--underlays">Customizing Overlays & Underlays</a>)
+      example: () => (<a href="#customizing-overlays--underlays">Customizing Overlays & Underlays</a>),
     },
   ]}
 />
@@ -654,27 +721,27 @@ Cloudinary gives you the ability to add layers above or below your primary asset
     {
       prop: 'effects',
       type: 'array',
-      example: () => (<a href="#layer-effect-props">effects</a>)
+      example: () => (<a href="#layer-effect-props">effects</a>),
     },
     {
       prop: 'position',
       type: 'object',
-      example: () => (<a href="#layer-position-props">position</a>)
+      example: () => (<a href="#layer-position-props">position</a>),
     },
     {
       prop: 'publicId',
       type: 'string',
-      example: () => (<code>thumb</code>)
+      example: () => (<code>thumb</code>),
     },
     {
       prop: 'text',
       type: 'object|string',
-      example: () => (<span><code>Next Cloudinary</code> or See <a href="#layer-text-props">text</a> Below</span>)
+      example: () => (<span><code>Next Cloudinary</code> or See <a href="#layer-text-props">text</a> Below</span>),
     },
     {
       prop: 'url',
       type: 'string',
-      example: () => (<code>https://.../image.jpg</code>)
+      example: () => (<code>https://.../image.jpg</code>),
     },
   ]}
 />
@@ -701,36 +768,44 @@ Cloudinary gives you the ability to add layers above or below your primary asset
       id: 'example',
       title: 'Example'
     },
+    {
+      id: 'more',
+    },
   ]}
   data={[
     {
       prop: 'aspectRatio',
       type: 'string',
-      example: () => (<code>3.0</code>)
+      example: () => (<code>3.0</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#ar_aspect_ratio">More Info</a>)
     },
 
     {
       prop: 'crop',
       type: 'string',
-      example: () => (<code>10</code>)
+      example: () => (<code>10</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#c_crop_resize">More Info</a>)
     },
 
     {
       prop: 'gravity',
       type: 'string',
-      example: () => (<code>north_west</code>)
+      example: () => (<code>north_west</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#g_gravity">More Info</a>)
     },
 
     {
       prop: 'height',
       type: 'number',
-      example: () => (<code>600</code>)
+      example: () => (<code>600</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#h_height">More Info</a>)
     },
 
     {
       prop: 'width',
       type: 'number',
-      example: () => (<code>600</code>)
+      example: () => (<code>600</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#w_width">More Info</a>)
     },
   ]}
 />
@@ -757,27 +832,34 @@ Cloudinary gives you the ability to add layers above or below your primary asset
       id: 'example',
       title: 'Example'
     },
+    {
+      id: 'more'
+    },
   ]}
   data={[
     {
       prop: 'angle',
       type: 'number',
-      example: () => (<code>45</code>)
+      example: () => (<code>45</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#a_angle">More Info</a>)
     },
     {
       prop: 'gravity',
       type: 'string',
-      example: () => (<code>north_west</code>)
+      example: () => (<code>north_west</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#g_gravity">More Info</a>)
     },
     {
       prop: 'x',
       type: 'number',
-      example: () => (<code>10</code>)
+      example: () => (<code>10</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#x_y_coordinates">More Info</a>)
     },
     {
       prop: 'y',
       type: 'number',
-      example: () => (<code>10</code>)
+      example: () => (<code>10</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#x_y_coordinates">More Info</a>)
     },
   ]}
 />
@@ -802,52 +884,64 @@ Cloudinary gives you the ability to add layers above or below your primary asset
       id: 'example',
       title: 'Example'
     },
+    {
+      id: 'more',
+    },
   ]}
   data={[
     {
       prop: 'border',
       type: 'string',
-      example: () => (<code>20px_solid_blue</code>)
+      example: () => (<code>20px_solid_blue</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#bo_border">More Info</a>)
     },
     {
       prop: 'color',
       type: 'string',
-      example: () => (<code>blueviolet</code>)
+      example: () => (<code>blueviolet</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#co_color">More Info</a>)
     },
     {
       prop: 'fontFamily',
       type: 'string',
-      example: () => (<code>Open Sans</code>)
+      example: () => (<code>Open Sans</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
     },
     {
       prop: 'fontSize',
       type: 'number',
-      example: () => (<code>48</code>)
+      example: () => (<code>48</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
     },
     {
       prop: 'fontWeight',
       type: 'string',
-      example: () => (<code>bold</code>)
+      example: () => (<code>bold</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
     },
     {
       prop: 'letterSpacing',
       type: 'number',
-      example: () => (<code>14</code>)
+      example: () => (<code>14</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
     },
     {
       prop: 'lineSpacing',
       type: 'number',
-      example: () => (<code>14</code>)
+      example: () => (<code>14</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
     },
     {
       prop: 'stroke',
       type: 'bool',
-      example: () => (<span><code>true</code> in coordination with Border</span>)
+      example: () => (<span><code>true</code> in coordination with Border</span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
     },
     {
       prop: 'textDecoration',
       type: 'string',
-      example: () => (<code>underline</code>)
+      example: () => (<code>underline</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
     },
   ]}
 />
@@ -874,37 +968,45 @@ Cloudinary gives you the ability to add layers above or below your primary asset
       id: 'example',
       title: 'Example'
     },
+    {
+      id: 'more'
+    }
   ]}
   data={[
     {
       prop: 'config',
       type: 'object',
       default: '-',
-      example: () => (<code>{`{ url: { secureDistribution: 'spacejelly.dev' } }`}</code>)
+      example: () => (<code>{`{ url: { secureDistribution: 'spacejelly.dev' } }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters">More Info</a>)
     },
     {
       prop: 'deliveryType',
       type: 'string',
       default: () => (<code>upload</code>),
-      example: () => (<code>fetch</code>)
+      example: () => (<code>fetch</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/image_transformations#delivery_types">More Info</a>)
     },
     {
       prop: 'defaultImage',
       type: 'string',
       default: '-',
-      example: () => (<code>myimage.jpg</code>)
+      example: () => (<code>myimage.jpg</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#d_default_image">More Info</a>)
     },
     {
       prop: 'seoSuffix',
       type: 'string',
       default: '-',
-      example: () => (<code>my-image-content</code>)
+      example: () => (<code>my-image-content</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/advanced_url_delivery_options#dynamic_seo_suffixes">More Info</a>)
     },
     {
       prop: 'version',
       type: 'number',
       default: '-',
-      example: () => (<code>1234</code>)
+      example: () => (<code>1234</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/advanced_url_delivery_options#asset_versions">More Info</a>)
     },
   ]}
 />
@@ -992,18 +1094,22 @@ version="1234"
       id: 'example',
       title: 'Example'
     },
+    {
+      id: 'more',
+    },
   ]}
   data={[
     {
       prop: 'onError',
       type: 'function/bool',
-      example: () => (<code>{`(event) => {}`}</code>)
+      example: () => (<code>{`(event) => {}`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://nextjs.org/docs/pages/api-reference/components/image#onerror">More Info</a>)
     },
     {
       prop: 'ref',
       type: 'ref',
-      default: '-',
-      example: 'Ref'
+      example: 'Ref',
+      more: () => (<a className="whitespace-nowrap" href="https://react.dev/reference/react/useRef">More Info</a>)
     },
   ]}
 />
@@ -1060,6 +1166,9 @@ organized ways of applying transformations and effects.
       id: 'example',
       title: 'Example'
     },
+    {
+      id: 'more'
+    }
   ]}
   data={[
     {
@@ -1078,19 +1187,21 @@ organized ways of applying transformations and effects.
       prop: 'rawTransformations',
       type: 'array',
       default: '-',
-      example: () => (<code>{`['e_blur:2000']`}</code>)
+      example: () => (<code>{`['e_blur:2000']`}</code>),
     },
     {
       prop: 'strictTransformations',
       type: 'boolean',
       default: '-',
-      example: () => (<a href="#stricttransformations">Strict Transformations</a>)
+      example: () => (<a href="#stricttransformations">Strict Transformations</a>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/control_access_to_media#strict_transformations">More Info</a>)
     },
     {
       prop: 'transformations',
       type: 'string/array',
       default: '-',
-      example: () => (<code>{`['my-named-transformation']`}</code>)
+      example: () => (<code>{`['my-named-transformation']`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/image_transformations#named_transformations">More Info</a>)
     },
   ]}
 />
@@ -1196,31 +1307,38 @@ You can customize and manage these properties using the options below:
       id: 'example',
       title: 'Example'
     },
+    {
+      id: 'more'
+    }
   ]}
   data={[
     {
       prop: 'dpr',
       type: 'number/string',
       default: '-',
-      example: () => (<code>2.0</code>)
+      example: () => (<code>2.0</code>),
+      more: () => (<a className="whitespace-nowrap" href="asdf">More Info</a>)
     },
     {
       prop: 'format',
       type: 'string',
       default: () => (<code>auto</code>),
-      example: () => (<code>webp</code>)
+      example: () => (<code>webp</code>),
+      more: () => (<a className="whitespace-nowrap" href="asdf">More Info</a>)
     },
     {
       prop: 'quality',
       type: 'string',
       default: () => (<code>auto</code>),
-      example: () => (<code>90</code>)
+      example: () => (<code>90</code>),
+      more: () => (<a className="whitespace-nowrap" href="asdf">More Info</a>)
     },
     {
       prop: 'unoptimized',
       type: 'boolean',
       default: '-',
-      example: () => (<a href="#unoptimized">Unoptimized Images</a>)
+      example: () => (<a href="#unoptimized">Unoptimized Images</a>),
+      more: () => (<a className="whitespace-nowrap" href="asdf">More Info</a>)
     },
   ]}
 />
