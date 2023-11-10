@@ -1,3 +1,10 @@
+# [5.5.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.4.0...v5.5.0) (2023-11-10)
+
+
+### Features
+
+* Default Image ([#343](https://github.com/colbyfayock/next-cloudinary/issues/343)) ([a118ae1](https://github.com/colbyfayock/next-cloudinary/commit/a118ae1cf9ed23dcfb42115187a8cd798e010dbc)), closes [#340](https://github.com/colbyfayock/next-cloudinary/issues/340)
+
 # [5.4.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.3.0...v5.4.0) (2023-11-09)
 
 
