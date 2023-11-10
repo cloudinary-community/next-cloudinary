@@ -1,3 +1,10 @@
+## [5.5.1](https://github.com/colbyfayock/next-cloudinary/compare/v5.5.0...v5.5.1) (2023-11-10)
+
+
+### Bug Fixes
+
+* Fixes undefined error when calling destroy from CldUploadWidget ([#345](https://github.com/colbyfayock/next-cloudinary/issues/345)) ([7b47d67](https://github.com/colbyfayock/next-cloudinary/commit/7b47d6705072784e1d9a90ece1472bdad2a363c0)), closes [#344](https://github.com/colbyfayock/next-cloudinary/issues/344)
+
 # [5.5.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.4.0...v5.5.0) (2023-11-10)
 
 
