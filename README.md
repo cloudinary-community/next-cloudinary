@@ -193,6 +193,7 @@ yarn test
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://msk4862.github.io"><img src="https://avatars.githubusercontent.com/u/24875366?v=4?s=100" width="100px;" alt="Shoaib Asgar"/><br /><sub><b>Shoaib Asgar</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=msk4862" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://dev-yemi.vercel.app/"><img src="https://avatars.githubusercontent.com/u/68167320?v=4?s=100" width="100px;" alt="Adeyanju Adeyemi"/><br /><sub><b>Adeyanju Adeyemi</b></sub></a><br /><a href="https://github.com/colbyfayock/next-cloudinary/commits?author=DevYemi" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
