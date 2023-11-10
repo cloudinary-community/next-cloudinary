@@ -29,9 +29,6 @@ export interface CloudinaryVideoPlayerOptions extends CloudinaryVideoPlayerOptio
   };
   posterOptions?: CloudinaryVideoPlayerOptionPosterOptions;
   showJumpControls?: boolean;
-  // showLogo?: boolean; // Comment This Out cause it seems to be a duplicate of "CldVideoPlayerPropsLogo"
-  // logoImageUrl?: string; // Comment This Out cause it seems to be a duplicate of "CldVideoPlayerPropsLogo"
-  // logoOnclickUrl?: string; // Comment This Out cause it seems to be a duplicate of "CldVideoPlayerPropsLogo"
   seekThumbnails?: boolean;
   videoJS?: object;
 
@@ -57,7 +54,7 @@ export interface CloudinaryVideoPlayerOptions extends CloudinaryVideoPlayerOptio
 
  // ------------ Ads And Analytics Props ------------
   ads?: {
-   adTagUrl?: string;
+    adTagUrl?: string;
     adsInPlaylist?: string;
     showCountdown?: boolean;
     adLabel?: string;
