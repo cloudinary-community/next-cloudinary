@@ -4,7 +4,7 @@ import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPla
 import { GetCldImageUrlOptions } from '../../helpers/getCldImageUrl';
 import { GetCldVideoUrlOptions } from '../../helpers/getCldVideoUrl';
 
-export type CldVideoPlayerProps = Pick<CloudinaryVideoPlayerOptions, "colors" | "controls" | "fontFace" | "loop" | "muted" | "sourceTypes" | "transformation"> & {
+export type CldVideoPlayerProps = Omit<CloudinaryVideoPlayerOptions, "cloud_name" | "autoplayMode" | "publicId" | "secure" | "showLogo" | "logoImageUrl" | "logoOnclickUrl"> & {
   autoPlay?: string;
   className?: string;
   height: string | number;

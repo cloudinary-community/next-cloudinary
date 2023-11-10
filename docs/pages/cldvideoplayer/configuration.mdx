@@ -19,30 +19,77 @@ import OgImage from '../../components/OgImage';
 
 | Prop Name          | Type           | Default         | Description                              | Example                      |
 |--------------------|----------------|-----------------|------------------------------------------|------------------------------|
-| autoPlay           | string         | `"never"`       | When, if, should the video automatically play. See `autoplayMode` in [Video Player docs](https://cloudinary.com/documentation/video_player_api_reference#constructor_parameters) | `"on-scroll"`          |
-| className          | string         | -               | Additional class names added to the video container | `"my-video-player"` |
-| colors             | object         | See below       | Player chrome colors                     | See Theme Colors Below       |
-| controls           | boolean        | `true`          | Show player controls                     | `true`                       |
-| fontFace           | string         | -               | Player UI font. Uses Google Fonts.       | `"Source Serif Pro"`         |
+| className          | string         | -               | Additional class names added to the video container | `"my-video-player"`      |
 | height             | string/number  | -               | **Required**: Player height              | `1080`                       |
 | id                 | string         | -               | Video instance ID, defaults to src value | `"my-video"`                 |
-| logo               | boolean/object | See Below       | Logo to display in Player UI             | See Custom Logo Below        |
-| loop               | boolean        | `false`         | Loop the video                           | `true`                       |
-| muted              | boolean        | `false`         | Load muted by default                    | `true`                       |
-| onDataLoad         | Function       | -               | Triggered when video metadata is loaded  | See Event Handlers Below     |
-| onError            | Function       | -               | Triggered on video error                 | See Event Handlers Below     |
-| onMetadataLoad     | Function       | -               | Triggered when video data is loaded      | See Event Handlers Below     |
-| onPause            | Function       | -               | Triggered on video pause                 | See Event Handlers Below     |
-| onPlay             | Function       | -               | Triggered on video play                  | See Event Handlers Below     |
-| onEnded            | Function       | -               | Triggered when video has ended play      | See Event Handlers Below     |
+| logo               | boolean/object | See Below       | Logo to display in Player UI             | See Logo Below               |
+| onDataLoad         | Function       | -               | Triggered when video metadata is loaded  | See Events Below             |
+| onError            | Function       | -               | Triggered on video error                 | See Events Below             |
+| onMetadataLoad     | Function       | -               | Triggered when video data is loaded      | See Events Below             |
+| onPause            | Function       | -               | Triggered on video pause                 | See Events Below             |
+| onPlay             | Function       | -               | Triggered on video play                  | See Events Below             |
+| onEnded            | Function       | -               | Triggered when video has ended play      | See Events Below             |
 | playerRef          | Ref            | -               | React ref to access Player instance      | See Refs Below               |
 | poster             | string/object  | -               | Customize the video's poster             | See Poster Below             |
-| showLogo           | boolea         | `true`          | Show the Cloudinary logo on Player       | `false`                      |
 | src                | string         | -               | **Required**: Video public ID            | `"videos/my-video"`          |
-| sourceTypes        | array          | -               | Streaming format                         | `['hls']`                    |
-| transformation     | object/array   | -               | Transformations to apply to the video    | `{ width: 200, height: 200, crop: 'fill' }` |
 | videoRef           | Ref            | -               | React ref to access video element        | See Refs Below               |
 | width              | string/number  | -               | **Required**: Player width               | `1920`                       |
+
+## Player visuals Props
+
+| Prop Name          | Type           | Default         | Description                              | Example                      |
+|--------------------|----------------|-----------------|------------------------------------------|------------------------------|
+| aiHighlightsGraph  | boolean        | `false`         | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| bigPlayButton      | boolean/string | `true`          | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| colors             | object         | See below       | Player chrome colors                            | See Colors Below                    |
+| controlBar         | object         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| controls           | boolean        | `true`          | Show player controls                     | `true`                       |
+| floatingWhenNotVisible  | string    | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| fluid              | boolean        | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| fontFace           | string         | -               | Player UI font. Uses Google Fonts.       | `"Source Serif Pro"`         |
+| hideContextMenu    | boolean        | `false`         | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| interactionAreas   | any            | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| playbackRates      | array          | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| playlistWidget     | object         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| posterOptions      | object         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| showJumpControls   | boolean        | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| showLogo           | boolea         | `true`          | Show the Cloudinary logo on Player       | `false`                      |
+| seekThumbnails     | boolean        | `true`          | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| videoJS            | object         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+
+## Player Behavior Props
+
+| Prop Name          | Type           | Default         | Description                              | Example                      |
+|--------------------|----------------|-----------------|------------------------------------------|------------------------------|
+| autoPlay           | string         | `"never"`       | When, if, should the video automatically play. See `autoplayMode` in [Video Player docs](https://cloudinary.com/documentation/video_player_api_reference#constructor_parameters) | `"on-scroll"`          |
+| autoShowRecommendations  | boolean  | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| loop               | boolean        | `false`         | Loop the video                           | `true`                       |
+| maxTries           | number         | `3`             | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| muted              | boolean        | `false`         | Load muted by default                    | `true`                       |
+| playedEventPercents | array         | `[25, 50, 75, 100]`         | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| playedEventTimes   | array/null     | `null`         | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| playsinline        | boolean        | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| videoTimeout       | number         | `55000`         | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| withCredentials    | boolean        | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+
+## Video Config Props
+
+| Prop Name          | Type           | Default         | Description                              | Example                      |
+|--------------------|----------------|-----------------|------------------------------------------|------------------------------|
+| chapters           | object         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| preload            | string         | `auto`          | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| publicId           | string         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| sourceTransformation  | object      | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| sourceTypes        | array          | -               | Streaming format                         | `['hls']`                    |
+| transformation     | object/array   | -               | Transformations to apply to the video    | `{ width: 200, height: 200, crop: 'fill' }` |
+
+## Ads And Analytics Props
+
+| Prop Name          | Type           | Default         | Description                              | Example                      |
+|--------------------|----------------|-----------------|------------------------------------------|------------------------------|
+| ads                | object         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| analytics          | boolean        | `false`         | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+| allowUsageReport   | boolean        | `true`          | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
 
 Missing an option from the [Video Player docs](https://cloudinary.com/documentation/video_player_api_reference) you'd like to see? [Create an issue](https://github.com/colbyfayock/next-cloudinary/issues/new?assignees=&labels=Type%3A+Feature&template=feature_request.md&title=%5BFeature%5D+)!
 
