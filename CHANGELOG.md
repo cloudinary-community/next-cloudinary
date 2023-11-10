@@ -1,3 +1,10 @@
+# [5.6.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.5.1...v5.6.0) (2023-11-10)
+
+
+### Features
+
+* Allow CldVideoPlayer Fully Extend Cloudinary Video Player API reference Paramenters and Props ([#338](https://github.com/colbyfayock/next-cloudinary/issues/338)) ([cf5cf1a](https://github.com/colbyfayock/next-cloudinary/commit/cf5cf1a9ce346455f6743762e80459920a4097fe)), closes [#283](https://github.com/colbyfayock/next-cloudinary/issues/283)
+
 ## [5.5.1](https://github.com/colbyfayock/next-cloudinary/compare/v5.5.0...v5.5.1) (2023-11-10)
 
 
