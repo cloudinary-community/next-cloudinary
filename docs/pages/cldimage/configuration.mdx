@@ -889,6 +889,12 @@ Cloudinary gives you the ability to add layers above or below your primary asset
       example: () => (<code>fetch</code>)
     },
     {
+      prop: 'defaultImage',
+      type: 'string',
+      default: '-',
+      example: () => (<code>myimage.jpg</code>)
+    },
+    {
       prop: 'seoSuffix',
       type: 'string',
       default: '-',
@@ -930,6 +936,20 @@ deliveryType="fetch"
 ```
 
 [Learn more about Delivery Types](https://cloudinary.com/documentation/image_transformations#delivery_types) on the Cloudinary docs.
+
+#### `defaultImage`
+
+Configures the default image to use in case the given public ID is not available.
+
+> Note: `defaultImage` must include a format / file extension.
+
+**Example**
+
+```
+defaultImage="myimage.jpg"
+```
+
+[Learn more about Default Images](https://cloudinary.com/documentation/transformation_reference#d_default_image) on the Cloudinary docs.
 
 #### `seoSuffix`
 
