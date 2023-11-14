@@ -1,0 +1,111 @@
+import Head from 'next/head';
+import { Tab, Tabs } from 'nextra-theme-docs';
+
+import OgImage from '../../components/OgImage';
+import CodeBlock from '../../components/CodeBlock';
+
+<Head>
+  <title>CldUploadWidget Configuration - Next Cloudinary</title>
+  <meta name="og:title" content="CldUploadWidget Configuration - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/clduploadwidget/configuration`} />
+</Head>
+
+<OgImage
+  title="CldUploadWidget Configuration"
+  twitterTitle="CldUploadWidget Configuration"
+/>
+
+# Signing CldUploadWidget Uploads
+
+Signing requests is an easy way to provide enhanced security for your file uploads. This helps
+deter people from making unauthenticated uploads to your cloud.
+
+## Configuring Signed Uploads
+
+Setting up CldUploadWidget to sign uploads is as simple as passing an API endpoint as a prop:
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldUploadWidget } from 'next-cloudinary';
+
+  <CldUploadWidget signatureEndpoint="<API Endpoint (ex: /api/sign-cloudinary-params)>">
+    {({ open }) => {
+      return (
+        <button onClick={() => open()}>
+          Upload an Image
+        </button>
+      );
+    }}
+  </CldUploadWidget>
+  ```
+</CodeBlock>
+
+However, that API endpoint needs to return a specific shape in order to properly communicate
+with the CldUpload Widget.
+
+## API Endpoint to Sign Requests
+
+When working in Next.js, we gain access to a server environment through both somewhat traditional means
+and serverless functions.
+
+This means, we can use the [Cloudinary Node SDK](https://cloudinary.com/documentation/node_integration)
+in order to easily sign our requests.
+
+To start off, install the Cloudinary Node SDK with:
+
+```shell
+npm install cloudinary
+```
+
+In order to sign our requests, we'll need to use our Cloudinary API Key and Secret, so set additional
+environment variables:
+
+```
+NEXT_PUBLIC_CLOUDINARY_API_KEY="<Your API Key>"
+CLOUDINARY_API_SECRET="<Your API Secret>"
+``` 
+
+Then, we want to create a new API endpoint, which differs based on whether or not you're using
+the App Router or Pages router.
+
+<Tabs items={['App Router', 'Pages Router']}>
+  <Tab>
+    **In the App Router**, create a new API route file such as `app/api/sign-cloudinary-params/route.ts`, where
+    inside, add the folowing code.
+
+    <CodeBlock>
+      ```jsx copy showLineNumbers
+      import { v2 as cloudinary } from "cloudinary";
+
+      export async function POST(request: Request) {
+        const body = await req.json();
+        const { paramsToSign } = body;
+
+        const signature = cloudinary.utils.api_sign_request(paramsToSign, process.env.CLOUDINARY_API_SECRET);
+        
+        return Response.json({ signature });
+      }
+      ```
+    </CodeBlock>
+  </Tab>
+  <Tab>
+    **In the Pages Router**, create a new API endpoint file such as `pages/api/sign-cloudinary-params.js`, where
+    inside, add the folowing code:
+
+    <CodeBlock>
+      ```jsx copy showLineNumbers
+      import { v2 as cloudinary } from "cloudinary";
+
+      export default async function handler(req, res) {
+        const body = JSON.parse(req.body) || {};
+        const { paramsToSign } = body;
+
+        const signature = cloudinary.utils.api_sign_request(paramsToSign, process.env.CLOUDINARY_API_SECRET);
+
+        res.status(200).json({ signature });
+      }
+      ```
+    </CodeBlock>
+
+  </Tab>
+</Tabs>

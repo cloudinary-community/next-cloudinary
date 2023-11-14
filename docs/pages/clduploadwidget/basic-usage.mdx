@@ -2,9 +2,11 @@ import { useState } from 'react';
 import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
-import { CldUploadWidget } from '../../../next-cloudinary';
+import { CldImage, CldUploadWidget } from '../../../next-cloudinary';
 
 import OgImage from '../../components/OgImage';
+import HeaderImage from '../../components/HeaderImage';
+import CodeBlock from '../../components/CodeBlock';
 
 import styles from '../../styles/Docs.module.scss';
 
@@ -43,22 +45,21 @@ To give unsigned access for upload, provide an upload preset as part of the comp
 
 Use the following to generate an unsigned upload widget:
 
-```jsx copy
-import { CldUploadWidget } from 'next-cloudinary';
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldUploadWidget } from 'next-cloudinary';
 
-<CldUploadWidget uploadPreset="<Upload Preset>">
-  {({ open }) => {
-    function handleOnClick(e) {
-      open();
-    }
-    return (
-      <button className="button" onClick={handleOnClick}>
-        Upload an Image
-      </button>
-    );
-  }}
-</CldUploadWidget>
-```
+  <CldUploadWidget uploadPreset="<Your Upload Preset>">
+    {({ open }) => {
+      return (
+        <button onClick={() => open())}>
+          Upload an Image
+        </button>
+      );
+    }}
+  </CldUploadWidget>
+  ```
+</CodeBlock>
 
 <Callout emoji={false}>
   Using the App Router in Next.js 13+? Add the `"use client"` directive at the top of your file.
@@ -67,34 +68,44 @@ import { CldUploadWidget } from 'next-cloudinary';
 export const UnsignedUpload = ({ options }) => {
   const [resource, setResource] = useState();
   return (
-    <>
+    <div className={`grid gap-6 ${resource ? 'grid-cols-2' : 'grid-cols-1'}`}>
       <CldUploadWidget
         uploadPreset="next-cloudinary-unsigned"
-        onUpload={(result, widget) => {
+        onSuccess={(result, { widget }) => {
           setResource(result?.info);
           widget.close();
         }}
+        options={options}
       >
         {({ open }) => {
-          function handleOnClick(e) {
+          function handleOnClick() {
+            setResource(undefined);
             open();
           }
           return (
-            <button className={styles.button} onClick={handleOnClick}>
-              Upload an Image
-            </button>
+            <p className="flex items-center justify-center h-full">
+              <button className={styles.button} onClick={handleOnClick}>
+                Upload an Image
+              </button>
+            </p>
           );
         }}
       </CldUploadWidget>
 
-      <p>URL: { resource?.secure_url }</p>
-    </>
+      {resource && (
+        <p className="m-0 bg-slate-300">
+          <CldImage width={resource.width} height={resource.height} src={resource.public_id} alt="Uploaded image" />
+        </p>
+      )}
+    </div>
   )
 }
 
-<div className="nx-mt-6">
-<UnsignedUpload />
-</div>
+<HeaderImage>
+  <div className="text-center">
+    <UnsignedUpload />
+  </div>
+</HeaderImage>
 
 ### Signed
 
@@ -104,26 +115,69 @@ You can do this by creating a serverless function that reads the parameters as t
 
 Use the following to generate an signed upload widget:
 
-```jsx copy
-import { CldUploadWidget } from 'next-cloudinary';
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldUploadWidget } from 'next-cloudinary';
 
-<CldUploadWidget signatureEndpoint="<API Endpoint (ex: /api/sign-cloudinary-params)>">
-  {({ open }) => {
-    function handleOnClick(e) {
-      open();
-    }
-    return (
-      <button className="button" onClick={handleOnClick}>
-        Upload an Image
-      </button>
-    );
-  }}
-</CldUploadWidget>
-```
+  <CldUploadWidget signatureEndpoint="<API Endpoint (ex: /api/sign-cloudinary-params)>">
+    {({ open }) => {
+      return (
+        <button onClick={() => open()}>
+          Upload an Image
+        </button>
+      );
+    }}
+  </CldUploadWidget>
+  ```
+</CodeBlock>
 
 <Callout emoji={false}>
   Using the App Router in Next.js 13+? Add the `"use client"` directive at the top of your file.
 </Callout>
+
+export const SignedUpload = ({ options }) => {
+  const [resource, setResource] = useState();
+  return (
+    <div className={`grid gap-6 ${resource ? 'grid-cols-2' : 'grid-cols-1'}`}>
+      <CldUploadWidget
+        signatureEndpoint="/api/sign-cloudinary-params"
+        uploadPreset="next-cloudinary-signed"
+        onSuccess={(result, { widget }) => {
+          setResource(result?.info);
+          widget.close();
+        }}
+        options={options}
+      >
+        {({ open }) => {
+          function handleOnClick() {
+            setResource(undefined);
+            open();
+          }
+          return (
+            <p className="flex items-center justify-center h-full">
+              <button className={styles.button} onClick={handleOnClick}>
+                Upload an Image
+              </button>
+            </p>
+          );
+        }}
+      </CldUploadWidget>
+
+      {resource && (
+        <p className="m-0 bg-slate-300">
+          <CldImage width={resource.width} height={resource.height} src={resource.public_id} alt="Uploaded image" />
+        </p>
+      )}
+        
+    </div>
+  )
+}
+
+<HeaderImage>
+  <div className="text-center">
+    <SignedUpload />
+  </div>
+</HeaderImage>
 
 Here's an example of how you could process the signature in an API endpoint that signs a request:
 
@@ -140,45 +194,15 @@ res.status(200).json({
 
 To use the above, create a Node-based API route, add the snippet, and use that endpoint as the `signatureEndpoint` prop.
 
-See a full example of an API endpoint used with the Next Cloudinary docs: https://github.com/colbyfayock/next-cloudinary/blob/main/docs/pages/api/sign-cloudinary-params.js
+[Learn more about signing uploads](/clduploadwidget/signed-uploads).
 
-export const SignedUpload = () => {
-  const [resource, setResource] = useState();
-  return (
-    <>
-      <CldUploadWidget
-        signatureEndpoint="/api/sign-cloudinary-params"
-        uploadPreset="next-cloudinary-signed"
-        onUpload={(result, widget) => {
-          setResource(result?.info);
-          widget.close();
-        }}
-      >
-        {({ open }) => {
-          function handleOnClick(e) {
-            open();
-          }
-          return (
-            <button className={styles.button} onClick={handleOnClick}>
-              Upload an Image
-            </button>
-          );
-        }}
-      </CldUploadWidget>
-      <p>URL: { resource?.secure_url }</p>
-    </>
-  )
-}
-
-<div className="nx-mt-6">
-<SignedUpload />
-</div>
+Or see a full example of an API endpoint used with the Next Cloudinary docs in the Pages Router: https://github.com/colbyfayock/next-cloudinary/blob/main/docs/pages/api/sign-cloudinary-params.js
 
 ## Composing Widget UI
 
 CldUploadWidget uses Function as a Child component to pass options to the widget UI.
 
-To make this work, use a function as the direct child of a CldWidget Instance:
+To make this work, use a function as the direct child of a CldUploadWidget Instance:
 
 ```jsx copy
 <CldUploadWidget>

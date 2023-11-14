@@ -53,6 +53,7 @@ import Table from '../../components/Table';
       prop: 'signatureEndpoint',
       type: 'string',
       example: () => (<code>{`/api/sign-cloudinary-params.js`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="/clduploadwidget/signed-uploads">More Info</a>)
     },
     {
       prop: 'uploadPreset',
@@ -67,7 +68,7 @@ import Table from '../../components/Table';
 
 A function that returns a React component that receives instance methods and options for the widget.
 
-```
+```jsx copy showLineNumbers
 <CldUploadWidget uploadPreset="<Upload Preset>">
   {({ open }) => {
     return (
@@ -84,7 +85,7 @@ A function that returns a React component that receives instance methods and opt
 Parameters used to customize and configure the Upload Widget instance. These options are passed in
 directly to the Upload Widget, exposing all available parameters through the `options` object.
 
-```
+```jsx copy showLineNumbers
 options={{
   sources: ['local', 'url', 'unsplash'],
   multiple: true,
@@ -98,7 +99,7 @@ options={{
 
 An API endpoint used to sign the parameters generated during upload.
 
-```
+```jsx copy showLineNumbers
 signatureEndpoint="/api/sign-cloudinary-params"
 ```
 
@@ -106,7 +107,7 @@ signatureEndpoint="/api/sign-cloudinary-params"
 
 ### `uploadPreset`
 
-```
+```jsx copy showLineNumbers
 uploadPreset="my-upload-preset"
 ```
 
@@ -232,6 +233,17 @@ uploadPreset="my-upload-preset"
 
 To learn more about the event callbacks and when they trigger, see: https://cloudinary.com/documentation/upload_widget_reference#events
 
+**Example**
+
+```jsx copy showLineNumbers
+<CldUploadWidget
+  ...
+  onSuccess={(results) => {
+    console.log('Public ID', results.info.public_id);
+  }}
+/>
+```
+
 ### Callback Parameters
 
 Most of the callbacks provide a set of options that give access to the results, options, and widget instance.
@@ -275,8 +287,18 @@ Most of the callbacks provide a set of options that give access to the results, 
 Future releases will work to create a more consistent interface between older methods and more recently added methods.
 </Callout>
 
-#### `options`
+**Example**
 
+```jsx copy showLineNumbers
+<CldUploadWidget
+  ...
+  onSuccess={(results) => {
+    console.log('Public ID', results.info.public_id);
+  }}
+/>
+```
+
+#### `options`
 
 <Table
   columns={[
@@ -302,7 +324,7 @@ Future releases will work to create a more consistent interface between older me
     {
       prop: '[Instance Methods]',
       type: 'Function',
-      description: 'See Below'
+      description: () => (<span>See <a href="#instance-methods">Instance Methods</a> below</span>)
     },
   ]}
 />
@@ -310,8 +332,7 @@ Future releases will work to create a more consistent interface between older me
 
 #### `results`
 
-A common use of results could be to retrieve an uploaded asset, which would be made available in the `info` property
-from the resulting event.
+The event and results that were returned from the event.
 
 <Table
   columns={[
@@ -341,6 +362,21 @@ from the resulting event.
     },
   ]}
 />
+
+A common use of results could be to retrieve an uploaded asset, which would be made available in the `info` property
+from the resulting event. If the result is a resource, the shape will include some of the following details.
+
+**Example**
+
+```js copy showLineNumbers
+{
+  height: 400;
+  public_id: 'mypublicid';
+  secure_url: 'https://res.cloudinary.com/.../mypublicid';
+  width: 400;
+  ...
+}
+```
 
 ## Child Function Parameters
 
@@ -390,10 +426,20 @@ By passing in a function as the child of the Upload Widget, you're able to gain 
     {
       prop: '[Instance Methods]',
       type: 'Function',
-      description: 'See below.'
+      description: () => (<span>See <a href="#instance-methods">Instance Methods</a> below</span>)
     },
   ]}
 />
+
+**Example**
+
+```jsx copy showLineNumbers
+<CldUploadWidget>
+  {({ cloudinary, widget, open }) => {
+    // Return UI
+  }}
+</CldUploadWidget>
+```
 
 ## Instance Methods
 

@@ -2,10 +2,11 @@ import { useState } from 'react';
 import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
-import { CldUploadWidget } from '../../../next-cloudinary';
+import { CldImage, CldUploadWidget } from '../../../next-cloudinary';
 
 import OgImage from '../../components/OgImage';
-import ImageGrid from '../../components/ImageGrid';
+import HeaderImage from '../../components/HeaderImage';
+import CodeBlock from '../../components/CodeBlock';
 
 import styles from '../../styles/Docs.module.scss';
 
@@ -20,127 +21,190 @@ import styles from '../../styles/Docs.module.scss';
   twitterTitle="CldUploadWidget Examples"
 />
 
-export const MyDynamicButton = () => {
-  const [count, setCount] = useState(0)
+export const SignedUpload = ({ options }) => {
+  const [resource, setResource] = useState();
   return (
-    <button onClick={() => setCount(count + 1)}>Clicked {count} times!</button>
+    <div className={`grid gap-6 ${resource ? 'grid-cols-2' : 'grid-cols-1'}`}>
+      <CldUploadWidget
+        signatureEndpoint="/api/sign-cloudinary-params"
+        uploadPreset="next-cloudinary-signed"
+        onSuccess={(result, { widget }) => {
+          setResource(result?.info);
+          widget.close();
+        }}
+        options={options}
+      >
+        {({ open }) => {
+          function handleOnClick() {
+            setResource(undefined);
+            open();
+          }
+          return (
+            <p className="flex items-center justify-center h-full">
+              <button className={styles.button} onClick={handleOnClick}>
+                Upload an Image
+              </button>
+            </p>
+          );
+        }}
+      </CldUploadWidget>
+
+      {resource && (
+        <p className="m-0 bg-slate-300">
+          <CldImage width={resource.width} height={resource.height} src={resource.public_id} alt="Uploaded image" />
+        </p>
+      )}
+        
+    </div>
+  )
+}
+
+export const UnsignedUpload = ({ options }) => {
+  const [resource, setResource] = useState();
+  return (
+    <div className={`grid gap-6 ${resource ? 'grid-cols-2' : 'grid-cols-1'}`}>
+      <CldUploadWidget
+        uploadPreset="next-cloudinary-unsigned"
+        onSuccess={(result, { widget }) => {
+          setResource(result?.info);
+          widget.close();
+        }}
+        options={options}
+      >
+        {({ open }) => {
+          function handleOnClick() {
+            setResource(undefined);
+            open();
+          }
+          return (
+            <p className="flex items-center justify-center h-full">
+              <button className={styles.button} onClick={handleOnClick}>
+                Upload an Image
+              </button>
+            </p>
+          );
+        }}
+      </CldUploadWidget>
+
+      {resource && (
+        <p className="m-0 bg-slate-300">
+          <CldImage width={resource.width} height={resource.height} src={resource.public_id} alt="Uploaded image" />
+        </p>
+      )}
+    </div>
   )
 }
 
 # CldUploadWidget Examples
 
-## Examples
+## Signed Uploads
 
-export const UnsignedUpload = ({ options }) => {
-  const [resource, setResource] = useState();
-  return (
-    <>
-      <CldUploadWidget
-        uploadPreset="next-cloudinary-unsigned"
-        onUpload={(result, widget) => {
-          console.log('UnsignedUpload:widget:upload', result);
-          setResource(result?.info);
-          widget.close();
-        }}
-        onQueuesStart={(result, { widget, minimize }) => {
-          console.log('UnsignedUpload:widget:queues-start', widget);
-        }}
-        onOpen={(widget) => {
-          console.log('UnsignedUpload:widget:open', widget);
-        }}
-        onClose={(widget) => {
-          console.log('UnsignedUpload:widget:close', widget);
-        }}
-        options={options}
-      >
-        {({ open }) => {
-          function handleOnClick(e) {
-            setResource(undefined);
-            e.preventDefault();
-            open();
-          }
-          return (
-            <button className={styles.button} onClick={handleOnClick}>
-              Upload an Image
-            </button>
-          );
-        }}
-      </CldUploadWidget>
-
-      <p>URL: { resource?.secure_url }</p>
-    </>
-  )
-}
-
-export const SignedUpload = () => {
-  const [resource, setResource] = useState();
-  return (
-    <>
-      <CldUploadWidget
-        signatureEndpoint="/api/sign-cloudinary-params"
-        uploadPreset="next-cloudinary-signed"
-        onUpload={(result, widget) => {
-          console.log('SignedUpload:widget:upload', result);
-          setResource(result?.info);
-          widget.close();
-        }}
-        onOpen={(widget) => {
-          console.log('SignedUpload:widget:open', widget);
-        }}
-        onClose={(widget) => {
-          console.log('SignedUpload:widget:close', widget);
-        }}
-      >
-        {({ open }) => {
-          function handleOnClick(e) {
-            setResource(undefined);
-            e.preventDefault();
-            open();
-          }
-          return (
-            <button className={styles.button} onClick={handleOnClick}>
-              Upload an Image
-            </button>
-          );
-        }}
-      </CldUploadWidget>
-
-      <p>URL: { resource?.secure_url }</p>
-    </>
-  )
-}
-
-<ImageGrid>
-  <li>
-    <UnsignedUpload />
-
-    ### Unsigned
-
-    ```jsx copy
-    uploadPreset="next-cloudinary-unsigned"
-    ```
-  </li>
-  <li>
+<HeaderImage>
+  <div>
     <SignedUpload />
+  </div>
+</HeaderImage>
 
-    ### Signed
-    ```jsx copy
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldUploadWidget } from 'next-cloudinary';
+
+  <CldUploadWidget
     signatureEndpoint="/api/sign-cloudinary-params"
-    ```
-  </li>
-  <li>
-    <UnsignedUpload options={{
-      sources: ['local']
-    }} />
-
-    ### Custom Sources
-    ```jsx copy
-    options={{
-      sources: ['local']
+    onSuccess={(result, { widget }) => {
+      setResource(result?.info);
+      widget.close();
     }}
-    ```
-  </li>
-</ImageGrid>
+  >
+    {({ open }) => {
+      function handleOnClick() {
+        setResource(undefined);
+        open();
+      }
+      return (
+        <button onClick={handleOnClick}>
+          Upload an Image
+        </button>
+      );
+    }}
+  </CldUploadWidget>
+  ```
+</CodeBlock>
+
+## Sources
+
+Controls which sources files can be selected from.
+
+<HeaderImage>
+  <div className="text-center">
+    <SignedUpload options={{
+      sources: ['local', 'url', 'unsplash']
+    }} />
+  </div>
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldUploadWidget } from 'next-cloudinary';
+
+  <CldUploadWidget
+    options={{ sources: ['local', 'url', 'unsplash'] }}
+    signatureEndpoint="/api/sign-cloudinary-params"
+    onSuccess={(result, { widget }) => {
+      setResource(result?.info);
+      widget.close();
+    }}
+  >
+    {({ open }) => {
+      function handleOnClick() {
+        setResource(undefined);
+        open();
+      }
+      return (
+        <button onClick={handleOnClick}>
+          Upload an Image
+        </button>
+      );
+    }}
+  </CldUploadWidget>
+  ```
+</CodeBlock>
+
+## Unsigned Uploads
+
+<HeaderImage>
+  <div className="text-center">
+    <UnsignedUpload />
+  </div>
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldUploadWidget } from 'next-cloudinary';
+
+  <CldUploadWidget
+    uploadPreset="<Your Upload Preset>"
+    onSuccess={(result, { widget }) => {
+      setResource(result?.info);
+      widget.close();
+    }}
+  >
+    {({ open }) => {
+      function handleOnClick() {
+        setResource(undefined);
+        open();
+      }
+      return (
+        <button onClick={handleOnClick}>
+          Upload an Image
+        </button>
+      );
+    }}
+  </CldUploadWidget>
+  ```
+</CodeBlock>
+
+
 
 <Callout emoji={false}>
   Note: all files will eventually be deleted after upload.
