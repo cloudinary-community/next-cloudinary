@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
 import OgImage from '../../components/OgImage';
+import Table from '../../components/Table';
 
 <Head>
   <title>CldUploadWidget Configuration - Next Cloudinary</title>
@@ -16,91 +17,456 @@ import OgImage from '../../components/OgImage';
 
 # CldUploadWidget Configuration
 
-## General Props
+## Configuration
 
-| Prop Name          | Type               | Example                                |
-|--------------------|--------------------|----------------------------------------|
-| children           | function           | `{ (options) => {} }`                  |
-| options            | object             | `{ encryption: {...} }`                |
-| signatureEndpoint  | string             | `"/api/sign-cloudinary-params.js"`     |
-| uploadPreset       | string             | `"my-upload-preset"`                   |
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more'
+    }
+  ]}
+  data={[
+    {
+      prop: 'children',
+      type: 'function',
+      example: () => (<code>{`{(options) => {}}`}</code>),
+    },
+    {
+      prop: 'options',
+      type: 'object',
+      example: () => (<code>{`{encryption: {...}}`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#parameters">More Info</a>)
+    },
+    {
+      prop: 'signatureEndpoint',
+      type: 'string',
+      example: () => (<code>{`/api/sign-cloudinary-params.js`}</code>),
+    },
+    {
+      prop: 'uploadPreset',
+      type: 'string',
+      example: () => (<code>{`my-upload-preset`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_presets">More Info</a>)
+    },
+  ]}
+/>
 
-## Event Props
+### `children`
 
-| Prop Name          | Type               | Example                                |
-|--------------------|--------------------|----------------------------------------|
-| onError            | function           | `(error, widget) => { }`               |
-| onOpen             | function           | `(widget) => { }`                      |
-| onUpload           | function           | `(result, widget) => { }`              |
-| onAbort            | function           | `(result, options) => { }`             |
-| onBatchCancelled   | function           | `(result, options) => { }`             |
-| onClose            | function           | `(widget) => { }`                      |
-| onDisplayChanged   | function           | `(result, options) => { }`             |
-| onPublicId         | function           | `(result, options) => { }`             |
-| onQueuesEnd        | function           | `(result, options) => { }`             |
-| onQueuesStart      | function           | `(result, options) => { }`             |
-| onRetry            | function           | `(result, options) => { }`             |
-| onShowCompleted    | function           | `(result, options) => { }`             |
-| onSourceChanged    | function           | `(result, options) => { }`             |
-| onSuccess          | function           | `(result, options) => { }`             |
-| onTags             | function           | `(result, options) => { }`             |
-| onUploadAdded      | function           | `(result, options) => { }`             |
+A function that returns a React component that receives instance methods and options for the widget.
+
+```
+<CldUploadWidget uploadPreset="<Upload Preset>">
+  {({ open }) => {
+    return (
+      <button className="button" onClick={() => open()}>
+        Upload
+      </button>
+    );
+  }}
+</CldUploadWidget>
+```
+
+### `options`
+
+Parameters used to customize and configure the Upload Widget instance. These options are passed in
+directly to the Upload Widget, exposing all available parameters through the `options` object.
+
+```
+options={{
+  sources: ['local', 'url', 'unsplash'],
+  multiple: true,
+  maxFiles: 5
+}}
+```
+
+[Learn more about Upload Widget parameters](https://cloudinary.com/documentation/upload_widget_reference#parameters) on the Cloudinary docs.
+
+### `signatureEndpoint`
+
+An API endpoint used to sign the parameters generated during upload.
+
+```
+signatureEndpoint="/api/sign-cloudinary-params"
+```
+
+[Learn more about generating signatures](https://cloudinary.com/documentation/upload_images#generating_authentication_signatures) on the Cloudinary docs.
+
+### `uploadPreset`
+
+```
+uploadPreset="my-upload-preset"
+```
+
+[Learn more about upload presets](https://cloudinary.com/documentation/upload_presets) on the Cloudinary docs.
+
+
+## Events
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more',
+    },
+  ]}
+  data={[
+    {
+      prop: 'onAbort',
+      type: 'function',
+      example: () => (<code>{`(results, options) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#abort">More Info</a>)
+    },
+    {
+      prop: 'onBatchCancelled',
+      type: 'function',
+      example: () => (<code>{`(results, options) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#batch_cancelled">More Info</a>)
+    },
+    {
+      prop: 'onClose',
+      type: 'function',
+      example: () => (<code>{`(widget) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#close_event">More Info</a>)
+    },
+    {
+      prop: 'onDisplayChanged',
+      type: 'function',
+      example: () => (<code>{`(results, options) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#display_changed">More Info</a>)
+    },
+    {
+      prop: 'onError',
+      type: 'function',
+      example: () => (<code>{`(error, widget) => { }`}</code>),
+    },
+    {
+      prop: 'onOpen',
+      type: 'function',
+      example: () => (<code>{`(widget) => { }`}</code>),
+    },
+    {
+      prop: 'onPublicId',
+      type: 'function',
+      example: () => (<code>{`(results, options) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#publicid">More Info</a>)
+    },
+    {
+      prop: 'onQueuesEnd',
+      type: 'function',
+      example: () => (<code>{`(results, options) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#queues_end">More Info</a>)
+    },
+    {
+      prop: 'onQueuesStart',
+      type: 'function',
+      example: () => (<code>{`(results, options) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#queues_start">More Info</a>)
+    },
+    {
+      prop: 'onRetry',
+      type: 'function',
+      example: () => (<code>{`(results, options) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#retry">More Info</a>)
+    },
+    {
+      prop: 'onShowCompleted',
+      type: 'function',
+      example: () => (<code>{`(results, options) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#show_completed">More Info</a>)
+    },
+    {
+      prop: 'onSourceChanged',
+      type: 'function',
+      example: () => (<code>{`(results, options) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#source_changed">More Info</a>)
+    },
+    {
+      prop: 'onSuccess',
+      type: 'function',
+      example: () => (<code>{`(results, options) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#success">More Info</a>)
+    },
+    {
+      prop: 'onTags',
+      type: 'function',
+      example: () => (<code>{`(results, options) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#tags">More Info</a>)
+    },
+    {
+      prop: 'onUpload',
+      type: 'function',
+      example: () => (<code>{`(results, widget) => { }`}</code>),
+    },
+    {
+      prop: 'onUploadAdded',
+      type: 'function',
+      example: () => (<code>{`(results, options) => { }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#upload_added">More Info</a>)
+    },
+  ]}
+/>
 
 To learn more about the event callbacks and when they trigger, see: https://cloudinary.com/documentation/upload_widget_reference#events
 
-### Callback Options
+### Callback Parameters
 
-Most of the callbacks provide a set of options that give access to the widget instance and allow more interaction.
+Most of the callbacks provide a set of options that give access to the results, options, and widget instance.
+
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'description',
+      title: 'Description'
+    },
+  ]}
+  data={[
+    {
+      prop: 'error',
+      type: 'string',
+      description: 'If an error occurs, an explanation of what failed.'
+    },
+    {
+      prop: 'options',
+      type: 'object',
+      description: 'Instance methods and the widget instance.'
+    },
+    {
+      prop: 'results',
+      type: 'object',
+      description: 'The event that drove the callback and the info pertaining to the event (such as a resource).'
+    },
+  ]}
+/>
 
 <Callout emoji={false}>
 Future releases will work to create a more consistent interface between older methods and more recently added methods.
 </Callout>
 
-| Name               | Type               | Description                            |
-|--------------------|--------------------|----------------------------------------|
-| widget             | Widget             | The widget instance attached to the current component. |
-| [Instance Methods] | function           | See below.                             |
+#### `options`
 
-## Composing Widget UI
 
-CldUploadWidget uses Function as a Child component to pass options to the widget UI.
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'description',
+      title: 'Description'
+    },
+  ]}
+  data={[
+    {
+      prop: 'widget',
+      type: 'Widget Instance',
+      description: 'The Cloudinary Upload Widget instance being rendered.'
+    },
+    {
+      prop: '[Instance Methods]',
+      type: 'Function',
+      description: 'See Below'
+    },
+  ]}
+/>
 
-To make this work, use a function as the direct child of a CldWidget Instance:
 
-```jsx copy
-<CldUploadWidget>
-  {({ cloudinary, widget, open }) => {
-    // UI
-  }}
-</CldUploadWidget>
-```
+#### `results`
 
-The first and only argument is an object that contains instances of cloudinary, the widget, various instance methods that can control the widget, and other data.
+A common use of results could be to retrieve an uploaded asset, which would be made available in the `info` property
+from the resulting event.
 
-### Child Function Options
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'description',
+      title: 'Description'
+    },
+  ]}
+  data={[
+    {
+      prop: 'event',
+      type: 'string',
+      description: 'The event that triggered the callback.'
+    },
+    {
+      prop: 'info',
+      type: 'string | object',
+      description: 'Information pertaining to the triggered event, such as the resulting uploaded resource.'
+    },
+  ]}
+/>
+
+## Child Function Parameters
 
 By passing in a function as the child of the Upload Widget, you're able to gain access to the widget, results, and instance methods to interface directly with the widget.
 
-| Name               | Type               | Description                            |
-|--------------------|--------------------|----------------------------------------|
-| cloudinary         | Cloudinary         | The Cloudinary instance which creates and manages the Widget instance. |
-| error              | string             | The error, if any, produced by an upload widget action. |
-| isLoading          | boolean            | Designates whether the upload widget is loading and initializing. |
-| results            | object             | The event that triggered the results and information related to that event, which can include upload results. |
-| widget             | Widget             | The widget instance attached to the current component. |
-| [Instance Methods] | function           | See below.                             |
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'description',
+      title: 'Description'
+    },
+  ]}
+  data={[
+    {
+      prop: 'cloudinary',
+      type: 'Cloudinary',
+      description: 'The Cloudinary instance which creates and manages the Widget instance.'
+    },
+    {
+      prop: 'error',
+      type: 'string',
+      description: 'The error, if any, produced by an upload widget action.'
+    },
+    {
+      prop: 'isLoading',
+      type: 'boolean',
+      description: 'Designates whether the upload widget is loading and initializing.'
+    },
+    {
+      prop: 'results',
+      type: 'object',
+      description: 'The event that triggered the results and information related to that event, which can include upload results.'
+    },
+    {
+      prop: 'widget',
+      type: 'Widget',
+      description: 'The widget instance attached to the current component.'
+    },
+    {
+      prop: '[Instance Methods]',
+      type: 'Function',
+      description: 'See below.'
+    },
+  ]}
+/>
 
 ## Instance Methods
 
-| Name           | Type               | Description                            |
-|----------------|--------------------|----------------------------------------|
-| close          | function           | Closes and resets the widget to its initial state without removing it from memory. |
-| destroy        | function           | Hides a previously rendered widget while retaining its current state in memory. |
-| hide           | Promise            | Closes the widget and completely removes it from the DOM. Returns a promise that resolves upon cleanup completion. |
-| isDestroyed    | function           | Returns whether the destroy method was called on this instance. |
-| isMinimized    | function           | Returns whether the widget is currently minimized. |
-| isShowing      | function           | Returns whether the widget is currently visible. |
-| minimize       | function           | Minimizes the widget.                  |
-| open           | function           | Renders an existing widget currently in memory, but that is not currently displayed.
-| show           | function           | Renders a previously hidden widget.    |
-| update         | function           | Updates a widget currently in memory with new options. |
+The Upload Widget exposes instance methods that gives the ability to have greater control and flexbility over
+the upload experience.
+
+They're exposed either through event handler callback or child function parameters.
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'description',
+      title: 'Description'
+    },
+  ]}
+  data={[
+    {
+      prop: 'close',
+      type: 'function',
+      description: 'Closes and resets the widget to its initial state without removing it from memory.'
+    },
+    {
+      prop: 'destroy',
+      type: 'function',
+      description: 'Hides a previously rendered widget while retaining its current state in memory.'
+    },
+    {
+      prop: 'hide',
+      type: 'function',
+      description: 'Closes the widget and completely removes it from the DOM. Returns a promise that resolves upon cleanup completion.'
+    },
+    {
+      prop: 'isDestroyed',
+      type: 'function',
+      description: 'Returns whether the destroy method was called on this instance.'
+    },
+    {
+      prop: 'isMinimized',
+      type: 'function',
+      description: 'Returns whether the widget is currently minimized.'
+    },
+    {
+      prop: 'isShowing',
+      type: 'function',
+      description: 'Returns whether the widget is currently visible.'
+    },
+    {
+      prop: 'minimize',
+      type: 'function',
+      description: 'Minimizes the widget.'
+    },
+    {
+      prop: 'open',
+      type: 'function',
+      description: 'Renders an existing widget currently in memory, but that is not currently displayed.'
+    },
+    {
+      prop: 'show',
+      type: 'function',
+      description: 'Renders a previously hidden widget.'
+    },
+    {
+      prop: 'update',
+      type: 'function',
+      description: 'Updates a widget currently in memory with new options.'
+    },
+  ]}
+/>

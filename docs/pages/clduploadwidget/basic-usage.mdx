@@ -49,7 +49,6 @@ import { CldUploadWidget } from 'next-cloudinary';
 <CldUploadWidget uploadPreset="<Upload Preset>">
   {({ open }) => {
     function handleOnClick(e) {
-      e.preventDefault();
       open();
     }
     return (
@@ -78,7 +77,6 @@ export const UnsignedUpload = ({ options }) => {
       >
         {({ open }) => {
           function handleOnClick(e) {
-            e.preventDefault();
             open();
           }
           return (
@@ -112,7 +110,6 @@ import { CldUploadWidget } from 'next-cloudinary';
 <CldUploadWidget signatureEndpoint="<API Endpoint (ex: /api/sign-cloudinary-params)>">
   {({ open }) => {
     function handleOnClick(e) {
-      e.preventDefault();
       open();
     }
     return (
@@ -159,7 +156,6 @@ export const SignedUpload = () => {
       >
         {({ open }) => {
           function handleOnClick(e) {
-            e.preventDefault();
             open();
           }
           return (
@@ -178,7 +174,21 @@ export const SignedUpload = () => {
 <SignedUpload />
 </div>
 
+## Composing Widget UI
 
+CldUploadWidget uses Function as a Child component to pass options to the widget UI.
+
+To make this work, use a function as the direct child of a CldWidget Instance:
+
+```jsx copy
+<CldUploadWidget>
+  {({ cloudinary, widget, open }) => {
+    // UI
+  }}
+</CldUploadWidget>
+```
+
+The first and only argument is an object that contains instances of cloudinary, the widget, various instance methods that can control the widget, and other data.
 
 ## Learn More about CldUploadWidget
 * [Configuration](/clduploadwidget/configuration)
