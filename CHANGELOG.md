@@ -1,3 +1,10 @@
+# [5.7.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.6.0...v5.7.0) (2023-11-15)
+
+
+### Features
+
+* CldVideoPlayer custom CNAME ([#348](https://github.com/colbyfayock/next-cloudinary/issues/348)) ([bcb54c6](https://github.com/colbyfayock/next-cloudinary/commit/bcb54c6e9c7c17b11d94399ff9aacb1c5c49285f)), closes [#347](https://github.com/colbyfayock/next-cloudinary/issues/347)
+
 # [5.6.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.5.1...v5.6.0) (2023-11-10)
 
 
