@@ -139,7 +139,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         loop,
         muted,
         publicId,
-        secure: true,
         transformation: playerTransformations,
         ...logoOptions,
         ...otherCldVidPlayerOptions

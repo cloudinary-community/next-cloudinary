@@ -65,9 +65,12 @@ export interface CloudinaryVideoPlayerOptions extends CloudinaryVideoPlayerOptio
   analytics?: boolean;
   allowUsageReport?: Boolean;
 
-  // Un-Grouped Props 
+  // ------------ Delivery ------------
   cloud_name?: string;
+  cname?: string;
+  privateCdn?: boolean;
   secure?: boolean;
+  secureDistribution?: string;
 
 
 }
