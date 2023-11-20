@@ -33,6 +33,7 @@ export interface CloudinaryVideoPlayerOptions extends CloudinaryVideoPlayerOptio
   videoJS?: object;
 
   // ------------ Player Behavior Props ------------
+  autoPlay?: string | boolean;
   autoplayMode?: string;
   autoShowRecommendations?: boolean;
   loop?: boolean;

@@ -131,8 +131,17 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         }
       }
 
+      /* 
+      Parse the value passed to 'autoplay';
+      if its a boolean set it directly to browser standard prop autoplay else fallback to default; 
+      if its a string set it to cloudinary video player autoplayMode prop else fallback to default;
+      */
+      const autoPlayValue = typeof autoPlay === 'boolean'  ? autoPlay : false;
+      const autoplayModeValue = typeof autoPlay === 'string' ? autoPlay : 'never';
+
       let playerOptions: CloudinaryVideoPlayerOptions = {
-        autoplayMode: autoPlay,
+        autoplayMode: autoplayModeValue,
+        autoPlay: autoPlayValue,
         cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
         controls,
         fontFace: fontFace || '',
