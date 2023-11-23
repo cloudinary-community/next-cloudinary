@@ -2,6 +2,7 @@ import { constructCloudinaryUrl } from '@cloudinary-util/url-loader';
 import type { ImageOptions, ConfigOptions, AnalyticsOptions } from '@cloudinary-util/url-loader';
 
 import { NEXT_CLOUDINARY_ANALYTICS_ID, NEXT_CLOUDINARY_VERSION, NEXT_VERSION } from '../constants/analytics';
+import {checkForCloudName} from "../lib/cloudinary";
 
 /**
  * getCldImageUrl
@@ -20,6 +21,7 @@ export interface GetCldImageUrl {
 
 export function getCldImageUrl(options: GetCldImageUrlOptions, config?: GetCldImageUrlConfig, analytics?: GetCldImageUrlAnalytics) {
   const cloudName = config?.cloud?.cloudName ?? process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  checkForCloudName(cloudName);
   return constructCloudinaryUrl({
     options,
     config: Object.assign({

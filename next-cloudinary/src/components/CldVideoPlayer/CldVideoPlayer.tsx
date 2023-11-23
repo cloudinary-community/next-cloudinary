@@ -7,6 +7,7 @@ import { CldVideoPlayerProps } from './CldVideoPlayer.types';
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
 import { getCldImageUrl } from '../../helpers/getCldImageUrl';
 import { getCldVideoUrl } from '../../helpers/getCldVideoUrl';
+import {checkForCloudName} from "../../lib/cloudinary";
 
 let playerInstances: string[] = [];
 
@@ -109,6 +110,9 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
       activeEvent(getPlayerRefs());
     }
   }
+
+  //Check if Cloud Name exists
+  checkForCloudName(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
 
   /**
    * handleOnLoad

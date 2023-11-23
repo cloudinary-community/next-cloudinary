@@ -16,6 +16,7 @@ import {
   CldUploadWidgetResults,
   CldUploadWidgetWidgetInstance,
 } from './CldUploadWidget.types';
+import {checkForCloudName} from "../../lib/cloudinary";
 
 const WIDGET_WATCHED_EVENTS = [
   'success',
@@ -72,6 +73,9 @@ const CldUploadWidget = ({
     apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
     ...options,
   };
+
+  //Check if Cloud Name exists
+  checkForCloudName(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
 
   if ( signed ) {
     uploadOptions.uploadSignature = generateSignature;
