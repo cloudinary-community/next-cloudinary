@@ -1,3 +1,10 @@
+# [5.8.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.7.0...v5.8.0) (2023-11-29)
+
+
+### Features
+
+* Fixes CldUploadWidget onError Callback, Updates Video Player CSS to copy .min.css ([#356](https://github.com/colbyfayock/next-cloudinary/issues/356)) ([652fc7e](https://github.com/colbyfayock/next-cloudinary/commit/652fc7eba6621924e91455a91abda6d8875a666e)), closes [#355](https://github.com/colbyfayock/next-cloudinary/issues/355)
+
 # [5.7.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.6.0...v5.7.0) (2023-11-15)
 
 
