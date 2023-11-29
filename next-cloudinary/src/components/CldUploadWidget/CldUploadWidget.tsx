@@ -240,7 +240,7 @@ const CldUploadWidget = ({
 
   function createWidget() {
     return cloudinary.current?.createUploadWidget(uploadOptions, (uploadError: CldUploadWidgetError, uploadResult: CldUploadWidgetResults) => {
-      if ( typeof uploadError == 'string' ) {
+      if ( uploadError && uploadError !== null ) {
         setError(uploadError);
       }
 
