@@ -58,7 +58,10 @@ export interface CldUploadWidgetInstanceMethods {
   update: (options: CldUploadWidgetUpdateInstanceMethodOptions) => void;
 }
 
-export type CldUploadWidgetError = string | null;
+export type CldUploadWidgetError = {
+  status: string;
+  statusText: string;
+} | string | null;
 
 export interface CldUploadWidgetProps {
   children?: ({ cloudinary, widget, open, results, error }: CldUploadWidgetPropsChildren) => JSX.Element;
