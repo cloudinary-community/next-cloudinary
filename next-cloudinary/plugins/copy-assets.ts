@@ -7,7 +7,10 @@ import https from 'https';
 const PLAYER_VERSION = '1.10.1';
 
 const assets = [
-  `https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.css`,
+  {
+    uri: `https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.min.css`,
+    name: 'cld-video-player.css'
+  },
   {
     directory: 'fonts',
     assets: [
@@ -30,11 +33,20 @@ export const plugin: Plugin = {
     await mkdirp(distPath);
 
     for ( const asset of assets ) {
+      if ( typeof asset === 'string' || typeof asset.uri === 'string' ) {
 
-      if ( typeof asset === 'string' ) {
-        const writePath = path.join(distPath, path.basename(asset));
-        await downloadFile(asset, writePath);
-        console.log(`Wrote ${asset} to ${writePath}`);
+        let name = asset.name;
+        let uri = asset.uri;
+
+        if ( typeof asset === 'string' ) {
+          name = path.basename(asset);
+          uri = asset;
+        }
+
+        const writePath = path.join(distPath, name);
+        await downloadFile(uri, writePath);
+
+        console.log(`Wrote ${uri} to ${writePath}`);
       } else if ( typeof asset.directory === 'string' ) {
         await mkdirp(path.join(distPath, asset.directory));
 
