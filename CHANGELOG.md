@@ -1,3 +1,10 @@
+# [5.10.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.9.0...v5.10.0) (2023-11-30)
+
+
+### Features
+
+* Show error if cloudname is not set ([#353](https://github.com/colbyfayock/next-cloudinary/issues/353)) ([053beb7](https://github.com/colbyfayock/next-cloudinary/commit/053beb73575f21b407355aafe222f73fd0dd5ae1)), closes [#264](https://github.com/colbyfayock/next-cloudinary/issues/264) [#264](https://github.com/colbyfayock/next-cloudinary/issues/264) [#264](https://github.com/colbyfayock/next-cloudinary/issues/264)
+
 # [5.9.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.8.0...v5.9.0) (2023-11-30)
 
 
