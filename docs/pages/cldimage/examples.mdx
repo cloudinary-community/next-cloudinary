@@ -25,6 +25,8 @@ import CodeBlock from '../../components/CodeBlock';
 
 ### Background Removal
 
+#### Remove Background
+
 `removeBackground`: Removes the background of the image using AI
 
 <HeaderImage>
@@ -45,7 +47,7 @@ import CodeBlock from '../../components/CodeBlock';
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     removeBackground
     alt=""
@@ -53,7 +55,73 @@ import CodeBlock from '../../components/CodeBlock';
   ```
 </CodeBlock>
 
+#### Color Background
+
+`background`: Specifies a color to use as a background.
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    removeBackground
+    background="blueviolet"
+    alt=""
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="960"
+    height="600"
+    src="<Your Public ID>"
+    sizes="100vw"
+    removeBackground
+    background="blueviolet"
+    alt=""
+  />
+  ```
+</CodeBlock>
+
+#### Image Background
+
+`underlay`: Specifies a public ID to use as an underlaying image.
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    removeBackground
+    underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
+    alt=""
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="960"
+    height="600"
+    src="<Your Public ID>"
+    sizes="100vw"
+    removeBackground
+    underlay="<Your Public ID>"
+    alt=""
+  />
+  ```
+</CodeBlock>
+
 ### Cropping & Resizing
+
+#### Cropping
 
 `crop`: Specifies the mode to use when cropping an image based on the given dimensions.
 
@@ -78,11 +146,51 @@ position the subject in the center of the resulting image.
   <CldImage
     width="300"
     height="300"
-    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    src="<Your Public ID>"
     sizes="100vw"
     crop="thumb"
     alt=""
   />
+  ```
+</CodeBlock>
+
+#### Fill Parent
+
+`fill`: a [Next Image feature](https://nextjs.org/docs/pages/api-reference/components/image#fill) that
+renders an image that fills its parent, not requiring you to pass in a width or height.
+
+You can optionally use this in conjunction with other transformations, such as Aspect Ratio, to automatically
+crop to a specific ratio without specifying the width and height.
+
+> Note: Aspect Ratio requires you to use a crop mode that actually crops the image such as "fill"
+(not to be confused with Next Image's Fill)
+
+<HeaderImage>
+  <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9' }}>
+    <CldImage
+      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      sizes="100vw"
+      aspectRatio="16:9"
+      crop="fill"
+      fill={true}
+      alt=""
+    />
+  </div>
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <div style={{ position: 'relative', aspectRatio: '16 / 9' }}>
+    <CldImage
+      src="<Your Public ID>"
+      sizes="100vw"
+      aspectRatio="16:9"
+      crop="fill"
+      fill={true}
+      alt=""
+    />
   ```
 </CodeBlock>
 
@@ -110,7 +218,7 @@ position the subject in the center of the resulting image.
     width="960"
     height="600" // Original 1440
     crop="pad"  // Returns the given size with padding
-    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    src="<Your Public ID>"
     sizes="100vw"
     fillBackground
     alt=""
@@ -146,7 +254,7 @@ position the subject in the center of the resulting image.
     width="960"
     height="600"
     crop="fill"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     replace={['turtle', 'shark']}
     alt=""
@@ -182,7 +290,7 @@ position the subject in the center of the resulting image.
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     blur="1200"
     alt=""
@@ -212,7 +320,7 @@ position the subject in the center of the resulting image.
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     grayscale
     alt=""
@@ -242,7 +350,7 @@ position the subject in the center of the resulting image.
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     opacity="50"
     alt=""
@@ -272,7 +380,7 @@ position the subject in the center of the resulting image.
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     pixelate
     alt=""
@@ -302,7 +410,7 @@ position the subject in the center of the resulting image.
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     tint="equalize:80:blue:blueviolet"
     alt=""
@@ -766,28 +874,6 @@ Learn about what other filters and effects are supported on [CldImage Configurat
         }
       ]
     }]}
-    ```
-  </li>
-</ImageGrid>
-
-## Next Image Features
-
-<ImageGrid>
-  <li>
-    <div style={{ position: 'relative', height: '10em' }}>
-      <CldImage
-        src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-        fill={true}
-        alt=""
-      />
-    </div>
-
-    ### Fill
-
-    ```jsx copy
-    <div style={{ position: 'relative', height: '10em' }}>
-    ...
-    fill={true}
     ```
   </li>
 </ImageGrid>
