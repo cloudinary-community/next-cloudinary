@@ -1206,6 +1206,13 @@ underlays={[{
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#d_default_image">More Info</a>)
     },
     {
+      prop: 'flags',
+      type: 'array',
+      default: '-',
+      example: () => (<code>{`['keep_iptc']`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#fl_flag">More Info</a>)
+    },
+    {
       prop: 'seoSuffix',
       type: 'string',
       default: '-',
@@ -1265,6 +1272,23 @@ defaultImage="myimage.jpg"
 ```
 
 [Learn more about Default Images](https://cloudinary.com/documentation/transformation_reference#d_default_image) on the Cloudinary docs.
+
+#### `flags`
+
+Alters the regular behavior of another transformation or the overall delivery behavior.
+
+<Callout emoji={false}>
+  The `keep_iptc` flag requires not including a quality of auto. Using `quality="default"` avoids setting the quality flag in the URL.
+</Callout>
+
+**Examples**
+
+```jsx copy
+flags={['keep_iptc']}
+quality="default"
+```
+
+[Learn more about Flags](https://cloudinary.com/documentation/transformation_reference#fl_flag) on the Cloudinary docs.
 
 #### `seoSuffix`
 
