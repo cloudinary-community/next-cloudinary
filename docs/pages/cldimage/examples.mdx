@@ -163,6 +163,7 @@ You can optionally use this in conjunction with other transformations, such as A
 crop to a specific ratio without specifying the width and height.
 
 > Note: Aspect Ratio requires you to use a crop mode that actually crops the image such as "fill"
+(not to be confused with Next Image's Fill)
 
 <HeaderImage>
   <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9' }}>
@@ -186,7 +187,7 @@ crop to a specific ratio without specifying the width and height.
       src="<Your Public ID>"
       sizes="100vw"
       aspectRatio="16:9"
-      crop="crop"
+      crop="fill"
       fill={true}
       alt=""
     />
