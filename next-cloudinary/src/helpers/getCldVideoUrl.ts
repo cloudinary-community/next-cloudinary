@@ -2,6 +2,7 @@ import { constructCloudinaryUrl } from '@cloudinary-util/url-loader';
 import type { VideoOptions, ConfigOptions, AnalyticsOptions } from '@cloudinary-util/url-loader';
 
 import { NEXT_CLOUDINARY_ANALYTICS_ID, NEXT_CLOUDINARY_VERSION, NEXT_VERSION } from '../constants/analytics';
+import {checkForCloudName} from "../lib/cloudinary";
 
 /**
  * getCldVideoUrl
@@ -13,6 +14,7 @@ export interface GetCldVideoUrlAnalytics extends AnalyticsOptions {};
 
 export function getCldVideoUrl(options: GetCldVideoUrlOptions, config?: GetCldVideoUrlConfig, analytics?: GetCldVideoUrlAnalytics) {
   const cloudName = config?.cloud?.cloudName ?? process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  checkForCloudName(cloudName);
   return constructCloudinaryUrl({
     options: {
       assetType: 'video',
