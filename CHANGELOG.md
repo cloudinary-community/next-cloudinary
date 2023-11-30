@@ -1,3 +1,10 @@
+# [5.9.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.8.0...v5.9.0) (2023-11-30)
+
+
+### Features
+
+* Aspect Ratio ([#357](https://github.com/colbyfayock/next-cloudinary/issues/357)) ([257248e](https://github.com/colbyfayock/next-cloudinary/commit/257248e5d39fad28f463a50547dde15a5bc4d04c)), closes [#352](https://github.com/colbyfayock/next-cloudinary/issues/352)
+
 # [5.8.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.7.0...v5.8.0) (2023-11-29)
 
 
