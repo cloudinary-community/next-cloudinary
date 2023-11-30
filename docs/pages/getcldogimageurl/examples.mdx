@@ -5,7 +5,8 @@ import { CldImage, getCldOgImageUrl } from '../../../next-cloudinary';
 import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../../next-cloudinary/src/constants/sizes';
 
 import OgImage from '../../components/OgImage';
-import ImageGrid from '../../components/ImageGrid';
+import HeaderImage from '../../components/HeaderImage';
+import CodeBlock from '../../components/CodeBlock';
 
 <Head>
   <title>getCldOgImageUrl Examples - Next Cloudinary</title>
@@ -24,71 +25,95 @@ import ImageGrid from '../../components/ImageGrid';
   The below examples use the CldImage component to render the images. This is not required, you can use the URL returned by getCldOgImageUrl in any way you like.
 </Callout>
 
-<ImageGrid>
-  <li>
-    <CldImage
-      src={getCldOgImageUrl({
-        src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
-      })}
-      width={OG_IMAGE_WIDTH}
-      height={OG_IMAGE_HEIGHT}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      alt=""
-      preserveTransformations
-    />
+## Basic Image
 
-    ### Basic
+`src`: The public ID of the image to use as a Social Card
 
-    ```js copy
-    getCldOgImageUrl({
-      src: 'images/galaxy',
-    })
-    ```
-  </li>
-  <li>
-    <CldImage
-      src={getCldOgImageUrl({
-        src: `${process.env.IMAGES_DIRECTORY}/turtle`,
-        removeBackground: true,
-        underlay: `${process.env.IMAGES_DIRECTORY}/galaxy`,
-      })}
-      width={OG_IMAGE_WIDTH}
-      height={OG_IMAGE_HEIGHT}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      alt=""
-      preserveTransformations
-    />
+<HeaderImage>
+  <CldImage
+    src={getCldOgImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
+    })}
+    width={OG_IMAGE_WIDTH}
+    height={OG_IMAGE_HEIGHT}
+    sizes="(max-width: 480px) 100vw, 50vw"
+    alt=""
+    preserveTransformations
+  />
+</HeaderImage>
 
-    ### Background Removal & Underlay
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { getCldOgImageUrl } from 'next-cloudinary';
 
-    ```js copy
-    getCldOgImageUrl({
-      src: 'images/turtle',
+  getCldOgImageUrl({
+    src: '<Your Public ID>',
+  })
+  ```
+</CodeBlock>
+
+## Change Background
+
+`removeBackground`: Removes the background from an image.
+
+`underlay`: The public ID of the image to use as the new background.
+
+<HeaderImage>
+  <CldImage
+    src={getCldOgImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/turtle`,
       removeBackground: true,
-      underlay: 'images/galaxy'
-    })
-    ```
-  </li>
-  <li>
-    <CldImage
-      src={getCldOgImageUrl({
-        src: `${process.env.IMAGES_DIRECTORY}/white`,
-        text: 'Next Cloudinary'
-      })}
-      width={OG_IMAGE_WIDTH}
-      height={OG_IMAGE_HEIGHT}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      alt=""
-      preserveTransformations
-    />
+      underlay: `${process.env.IMAGES_DIRECTORY}/galaxy`,
+    })}
+    width={OG_IMAGE_WIDTH}
+    height={OG_IMAGE_HEIGHT}
+    sizes="(max-width: 480px) 100vw, 50vw"
+    alt=""
+    preserveTransformations
+  />
+</HeaderImage>
 
-    ### Basic Text
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { getCldOgImageUrl } from 'next-cloudinary';
 
-    ```js copy
-    getCldOgImageUrl({
-      src: 'images/white',
+  getCldOgImageUrl({
+    src: '<Your Public ID>',
+    removeBackground: true,
+    underlay: '<Your Public ID>'
+  })
+  ```
+</CodeBlock>
+
+<Callout emoji={false} type="info">
+  The Cloudinary AI Background Removal add-on is required to use this feature.
+</Callout>
+
+## Text Overlay
+
+`text`: Adds basic text to the image
+
+<HeaderImage>
+  <CldImage
+    src={getCldOgImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/white`,
       text: 'Next Cloudinary'
-    })
-    ```
-  </li>
-</ImageGrid>
+    })}
+    width={OG_IMAGE_WIDTH}
+    height={OG_IMAGE_HEIGHT}
+    sizes="(max-width: 480px) 100vw, 50vw"
+    alt=""
+    preserveTransformations
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { getCldOgImageUrl } from 'next-cloudinary';
+
+  getCldOgImageUrl({
+    src: '<Your Public ID>',
+    text: 'Next Cloudinary'
+  })
+  ```
+</CodeBlock>
