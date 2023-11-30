@@ -2,8 +2,6 @@ import Head from 'next/head';
 
 import OgImage from '../components/OgImage';
 
-import { CldImage } from '../../next-cloudinary';
-
 <Head>
   <title>Next.js 13 & 14 - Next Cloudinary</title>
   <meta name="og:title" content="Using Next Cloudinary with Next.js 13" />
@@ -29,11 +27,31 @@ By default, Next Cloudinary has full support when using the included components 
 
 Using Next Cloudinary in the `app` directory currently requires marking the parent page or component as a Client Component.
 
+This is due to the split of components in two types: Client Components and Server Components.
+
 At the top of the file, simply add:
 
-```ansi copy
+```jsx copy showLineNumbers
 "use client";
 ```
+
+To avoid marking an entire page as a Client Component, you can create a basic wrapper around any component, which you can then use throughout your application:
+
+```jsx copy showLineNumbers
+"use client";
+
+import { CldImage as CldImageDefault, CldImageProps }  from 'next-cloudinary';
+
+const CldImage = (props: CldImageProps) => {
+  return <CldImageDefault {...props} />
+}
+
+export default CldImage;
+```
+
+Where you can then import and use your wrapper component just as you would the native CldImage component.
+
+Future versions of this library will hopefully avoid the need to add this marker to the file.
 
 ### Open Graph (OG) Images & Social Media Cards
 
@@ -43,7 +61,7 @@ In the App Router, the Head component is no longer supported, instead opting for
 
 You can still easily generate OG images and social card URLs using [getCldOgImageUrl](/getcldogimageurl/basic-usage) in your metadata configuration.
 
-```jsx copy
+```jsx copy showLineNumbers
 import { getCldOgImageUrl } from 'next-cloudinary';
 
 export const metadata = {
