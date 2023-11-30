@@ -12,6 +12,11 @@ module.exports = withNextra({
   async redirects() {
     return [
       {
+        source: '/nextjs-13',
+        destination: '/nextjs-14',
+        permanent: false,
+      },
+      {
         source: '/components/:path(.*)',
         destination: '/:path*',
         permanent: false,
