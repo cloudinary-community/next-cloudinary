@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
 
 import OgImage from '../../components/OgImage';
 import Table from '../../components/Table';
@@ -77,10 +78,11 @@ The basic props required to use CldImage include:
   ]}
 />
 
-CldImage extends the Next.js Image component using Cloudinary tech. This means all props
-available on the Image component are available on CldImage.
+## Next Image Props
 
-Learn more on the [Next.js docs](https://nextjs.org/docs/pages/api-reference/components/image).
+CldImage extends the Next.js Image component using Cloudinary tech. This means all props
+available on the Image component are available on CldImage. Learn more on the
+[Next.js docs](https://nextjs.org/docs/pages/api-reference/components/image).
 
 ### Using Fill
 
@@ -127,7 +129,7 @@ right inside of Next.js.
       prop: 'background',
       type: 'string',
       default: '-',
-      example: () => (<code>blue</code>),
+      example: () => (<span><code>blue</code>, <code>rgb:0000ff</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#b_background">More Info</a>)
     },
 
@@ -140,7 +142,7 @@ right inside of Next.js.
     },
     {
       prop: 'fillBackground (Beta)',
-      type: 'bool/object',
+      type: 'boolean | object',
       default: '-',
       example: () => (<code>{`{{ gravity: 'east' }}`}</code>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#b_gen_fill">More Info</a>)
@@ -154,14 +156,14 @@ right inside of Next.js.
     },
     {
       prop: 'removeBackground',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: () => (<code>false</code>),
       example: () => (<code>true</code>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_background_removal">More Info</a>)
     },
     {
       prop: 'replace',
-      type: 'array/object',
+      type: 'array | object',
       default: '-',
       example: () => (<code>{`['apple', 'banana']`}</code>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">More Info</a>)
@@ -175,7 +177,7 @@ right inside of Next.js.
     },
     {
       prop: 'zoompan',
-      type: 'bool/string/object',
+      type: 'boolean | string | object',
       default: '-',
       example: () => (<code>true</code>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_zoompan">More Info</a>)
@@ -187,9 +189,9 @@ right inside of Next.js.
 
 Applies a background to empty or transparent areas.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 background="blue"
 ```
 
@@ -199,9 +201,9 @@ background="blue"
 
 Changes the size of the delivered asset according to the requested width & height dimensions.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 crop="fill"
 ```
 
@@ -209,15 +211,66 @@ crop="fill"
 
 ### `fillBackground`
 
-Automatically fills the padded area using generative AI to extend the image seamlessly
+<Callout emoji={false} type="info">
+  Generative Fill is currently in beta.
+</Callout>
 
-**Example**
+Automatically fills the padded area using generative AI to extend the image seamlessly.
 
-```
+The `fillBackground` prop can either be a boolean, which will use a set of safe defaults to produce
+a background, or an object, which can take the following options:
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      prop: 'crop',
+      type: 'string',
+      example: () => (<code>clpad</code>),
+    },
+    {
+      prop: 'gravity',
+      type: 'string',
+      example: () => (<code>south</code>),
+    },
+    {
+      prop: 'prompt',
+      type: 'string',
+      example: () => (<code>cupcakes</code>),
+    },
+  ]}
+/>
+
+**Examples**
+
+Applying Generative Fill with defaults:
+
+```jsx copy
 fillBackground
 ```
 
-> Note: Generative Fill is currently in beta.
+Customizing options:
+
+```jsx copy
+fillBackground={{
+  crop: 'clpad',
+  gravity: 'south',
+  prompt: 'cupcakes'
+}}
+```
 
 [Learn more about the Generative Fill transformation](https://cloudinary.com/documentation/transformation_reference#b_gen_fill) on the Cloudinary docs.
 
@@ -225,9 +278,9 @@ fillBackground
 
 Determines which part of an asset to focus on, and thus which part of the asset to keep, when any part of the asset is cropped
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 gravity="face"
 ```
 
@@ -237,27 +290,83 @@ gravity="face"
 
 Uses the [Cloudinary AI Background Removal add-on](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) to make the background of an image transparent.
 
-**Example**
+<Callout emoji={false} type="info">
+  The Cloudinary AI Background Removal add-on is required to use this feature.
+</Callout>
 
-```
+
+**Examples**
+
+```jsx copy
 removeBackground
 ```
-
-> Note: The Cloudinary AI Background Removal add-on is required to use this feature.
 
 [Learn more about background removal transformation](https://cloudinary.com/documentation/transformation_reference#e_background_removal) on the Cloudinary docs.
 
 ### `replace`
 
+
+
+<Callout emoji={false} type="info">
+  Generative Fill is currently in beta.
+</Callout>
+
 Uses generative AI to replace parts of your image with something else. 
 
-**Example**
+The `replace` prop can either be an array with the objects to be replaced or an object
+with the following options:
 
-```
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      prop: 'from',
+      type: 'string',
+      example: () => (<code>apple</code>),
+    },
+    {
+      prop: 'to',
+      type: 'string',
+      example: () => (<code>banana</code>),
+    },
+    {
+      prop: 'preserveGeometry',
+      type: 'bolean',
+      example: () => (<code>true</code>),
+    },
+  ]}
+/>
+
+**Examples**
+
+Replacing an object with an array:
+
+```jsx copy
 replace={['apple', 'banana']}
 ```
 
-> Note: Generative Replace is currently in beta.
+Or using the object format:
+
+```jsx copy
+replace={{
+  from: 'apple',
+  to: 'banana',
+  preserveGeometry; true
+}}
+```
 
 [Learn more about the Generative Replace transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_replace) on the Cloudinary docs.
 
@@ -265,9 +374,9 @@ replace={['apple', 'banana']}
 
 Controls how close to crop to the detected coordinates when using face-detection, custom-coordinate, or object-specific gravity.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 zoom="0.75"
 ```
 
@@ -277,10 +386,64 @@ zoom="0.75"
 
 Also known as the Ken Burns effect, this transformation applies zooming and/or panning to an image, resulting in a video or animated GIF.
 
-**Example**
+`zoompan` can be applied with safe defaults as a boolean, a string, or an object for
+advanced customization.
 
-```
+As a string, you can pass in "loop" to automatically loop, or you can pass in raw configuration using the Cloudinary
+Transformation syntax.
+
+As an object, you can use advanced configuration with the following options:
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      prop: 'loop',
+      type: 'boolean | string',
+      example: () => (<code>true</code>),
+    },
+    {
+      prop: 'options',
+      type: 'boolean | string',
+      example: () => (<code>mode_ztr;maxzoom_6.5;du_10</code>),
+    },
+  ]}
+/>
+
+**Examples**
+
+With defaults:
+
+```jsx copy
 zoompan
+```
+
+Add looping:
+
+```jsx copy
+zoompan="loop"
+```
+
+Customize options:
+
+```jsx copy
+zoompan={{
+  loop: 'loop:2', // Will loop twice
+  options: 'mode_ztr;maxzoom_6.5;du_10'
+}}
 ```
 
 [Learn more about the zoompan transformation](https://cloudinary.com/documentation/transformation_reference#e_zoompan) on the Cloudinary docs.
@@ -323,56 +486,56 @@ to easily change the appearance of an image.
     },
     {
       prop: 'autoBrightness',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>80</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_auto_brightness">More Info</a>)
     },
     {
       prop: 'autoColor',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>80</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_auto_color">More Info</a>)
     },
     {
       prop: 'autoContrast',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>80</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_auto_contrast">More Info</a>)
     },
     {
       prop: 'assistColorblind',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>20</code>, <code>xray</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_assist_colorblind">More Info</a>)
     },
     {
       prop: 'blackwhite',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>40</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_blackwhite">More Info</a>)
     },
     {
       prop: 'blur',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>800</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_blur">More Info</a>)
     },
     {
       prop: 'blurFaces',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>800</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_blur_faces">More Info</a>)
     },
     {
       prop: 'blurRegion',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>1000,h_425,w_550,x_600,y_400</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_blur_region">More Info</a>)
@@ -385,21 +548,21 @@ to easily change the appearance of an image.
     },
     {
       prop: 'brightness',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>100</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_brightness">More Info</a>)
     },
     {
       prop: 'brightnessHSB',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>100</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_brightness_hsb">More Info</a>)
     },
     {
       prop: 'cartoonify',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>70:80</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_cartoonify">More Info</a>)
@@ -419,7 +582,7 @@ to easily change the appearance of an image.
     },
     {
       prop: 'contrast',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>100</code>, <code>level_-70</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_contrast">More Info</a>)
@@ -433,21 +596,21 @@ to easily change the appearance of an image.
     },
     {
       prop: 'fillLight',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>70:20</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_fill_light">More Info</a>)
     },
     {
       prop: 'gamma',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>100</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gamma">More Info</a>)
     },
     {
       prop: 'gradientFade',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>symmetric:10,x_0.2,y_0.4</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gradient_fade">More Info</a>)
@@ -461,7 +624,7 @@ to easily change the appearance of an image.
     },
     {
       prop: 'improve',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>50</code>, <code>indoor</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_improve">More Info</a>)
@@ -482,7 +645,7 @@ to easily change the appearance of an image.
     },
     {
       prop: 'oilPaint',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>40</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_oil_paint">More Info</a>)
@@ -496,7 +659,7 @@ to easily change the appearance of an image.
     },
     {
       prop: 'outline',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>40</code>, <code>outer:15:200</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_outline">More Info</a>)
@@ -510,28 +673,28 @@ to easily change the appearance of an image.
     },
     {
       prop: 'pixelate',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>20</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_pixelate">More Info</a>)
     },
     {
       prop: 'pixelateFaces',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>20</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_pixelate_faces">More Info</a>)
     },
     {
       prop: 'pixelateRegion',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>35,h_425,w_550,x_600,y_400</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_pixelate_region">More Info</a>)
     },
     {
       prop: 'redeye',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<code>true</code>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_redeye">More Info</a>)
@@ -552,7 +715,7 @@ to easily change the appearance of an image.
     },
     {
       prop: 'saturation',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>70</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_saturation">More Info</a>)
@@ -566,21 +729,21 @@ to easily change the appearance of an image.
     },
     {
       prop: 'sepia',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>50</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_sepia">More Info</a>)
     },
     {
       prop: 'shadow',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>50,x_-15,y_15</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_shadow">More Info</a>)
     },
     {
       prop: 'sharpen',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>100</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_sharpen">More Info</a>)
@@ -594,55 +757,75 @@ to easily change the appearance of an image.
     },
     {
       prop: 'simulateColorblind',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<code>deuteranopia</code>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_simulate_colorblind">More Info</a>)
     },
     {
       prop: 'tint',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>100:red:blue:yellow</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_tint">More Info</a>)
     },
     {
       prop: 'trim',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>50:yellow</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_trim">More Info</a>)
     },
     {
       prop: 'unsharpMask',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>500</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_unsharp_mask">More Info</a>)
     },
     {
       prop: 'vectorize',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>3:0.5</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_vectorize">More Info</a>)
     },
     {
       prop: 'vibrance',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>70</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_vibrance">More Info</a>)
     },
     {
       prop: 'vignette',
-      type: 'bool/string',
+      type: 'boolean | string',
       default: '-',
       example: () => (<span><code>true</code>, <code>30</code></span>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_vignette">More Info</a>)
     }
   ]}
 />
+
+**Examples**
+
+Make an image black and white:
+
+```jsx copy
+blackwhite
+```
+
+Pixelate an image:
+
+```jsx copy
+pixelate
+```
+
+Sharpen an image:
+
+```jsx copy
+sharpen={50}
+```
 
 [View the Cloudinary docs](https://cloudinary.com/documentation/transformation_reference#e_effect) to see learn more about using effects.
 
@@ -716,7 +899,7 @@ Cloudinary gives you the ability to add layers above or below your primary asset
     {
       prop: 'appliedEffects',
       type: 'array',
-      example: 'Same as effects, added as applied transformation'
+      example: () => (<span><a href="#layer-effect-props">effects</a>, added as applied transformation</span>),
     },
     {
       prop: 'effects',
@@ -731,7 +914,7 @@ Cloudinary gives you the ability to add layers above or below your primary asset
     {
       prop: 'publicId',
       type: 'string',
-      example: () => (<code>thumb</code>),
+      example: () => (<code>mypublicid</code>),
     },
     {
       prop: 'text',
@@ -745,6 +928,34 @@ Cloudinary gives you the ability to add layers above or below your primary asset
     },
   ]}
 />
+
+**Examples**
+
+Adding an overlay:
+
+```jsx copy
+overlays={[{
+  publicId: 'images/earth',
+  position: {
+    x: 50,
+    y: 50,
+    gravity: 'north_west',
+  },
+  appliedEffects: [
+    {
+      multiply: true
+    }
+  ]
+}]}
+```
+
+Adding an underlay:
+
+```jsx copy
+underlays={[{
+  publicId: 'images/earth',
+}]}
+```
 
 <div className="-mb-4">
   <strong id="layer-effect-props" className="block text-slate-500 text-lg mt-8 -mb-4">
@@ -995,6 +1206,13 @@ Cloudinary gives you the ability to add layers above or below your primary asset
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#d_default_image">More Info</a>)
     },
     {
+      prop: 'flags',
+      type: 'array',
+      default: '-',
+      example: () => (<code>{`['keep_iptc']`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#fl_flag">More Info</a>)
+    },
+    {
       prop: 'seoSuffix',
       type: 'string',
       default: '-',
@@ -1015,9 +1233,9 @@ Cloudinary gives you the ability to add layers above or below your primary asset
 
 Allows configuration for the Cloudinary environment.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 config={{
   cloud: {
     cloudName: 'my-cloud'
@@ -1031,9 +1249,9 @@ config={{
 
 Controls the delivery type of the image.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 deliveryType="fetch"
 ```
 
@@ -1043,23 +1261,42 @@ deliveryType="fetch"
 
 Configures the default image to use in case the given public ID is not available.
 
-> Note: `defaultImage` must include a format / file extension.
+<Callout emoji={false} type="info">
+  `defaultImage` must include a format / file extension.
+</Callout>
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 defaultImage="myimage.jpg"
 ```
 
 [Learn more about Default Images](https://cloudinary.com/documentation/transformation_reference#d_default_image) on the Cloudinary docs.
 
+#### `flags`
+
+Alters the regular behavior of another transformation or the overall delivery behavior.
+
+<Callout emoji={false}>
+  The `keep_iptc` flag requires not including a quality of auto. Using `quality="default"` avoids setting the quality flag in the URL.
+</Callout>
+
+**Examples**
+
+```jsx copy
+flags={['keep_iptc']}
+quality="default"
+```
+
+[Learn more about Flags](https://cloudinary.com/documentation/transformation_reference#fl_flag) on the Cloudinary docs.
+
 #### `seoSuffix`
 
-Adds a dynamic, descriptive suffice to the Public ID for greater SEO control of image URLs.
+Adds a dynamic, descriptive suffix to the Public ID for greater SEO control of image URLs.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 seoSuffix="jellyfish-in-space"
 ```
 
@@ -1069,9 +1306,9 @@ seoSuffix="jellyfish-in-space"
 
 Controls the version defined in the delivery URL.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 version="1234"
 ```
 
@@ -1121,9 +1358,9 @@ Callback that fire when an image fails to load.
 Upon failure, if the resulting HTTP status is a 423 (Processing), CldImage will attempt to poll the URL
 until it's available, then force refresh the image instance in the DOM.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 onError={() => {
   alert('Image failed to load!')
 }}
@@ -1136,9 +1373,9 @@ onError={() => {
 
 Allows passing in a ref instance that will be used on the Next Image and resulting `<img />`
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 ref={myRef}
 ```
 
@@ -1198,7 +1435,7 @@ organized ways of applying transformations and effects.
     },
     {
       prop: 'transformations',
-      type: 'string/array',
+      type: 'string | array',
       default: '-',
       example: () => (<code>{`['my-named-transformation']`}</code>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/image_transformations#named_transformations">More Info</a>)
@@ -1210,9 +1447,9 @@ organized ways of applying transformations and effects.
 
 Applies a chain of transformation sets to an image.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 effects={[
   {
     width: 100,
@@ -1230,9 +1467,9 @@ effects={[
 Preserves transformations already applied to an image when passing in a Cloudinary URL
 as the `src`.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 preserveTransformations
 ```
 
@@ -1241,9 +1478,9 @@ preserveTransformations
 Provides the ability to pass in an array of "raw" Cloudinary transformations using the
 [Transformation URL API](https://cloudinary.com/documentation/transformation_reference)
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 rawTransformations={['w_100', 'b_blue', 'f_auto']}
 ```
 
@@ -1259,9 +1496,9 @@ approval through the Cloudinary dashboard.
 only allowing [named transformations](#transformations) to be applied. The width and height are not applied to the URL,
 but are still included on the image tag rendered to the DOM.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 strictTransformations
 transformations=["my-transformation"]
 ```
@@ -1272,9 +1509,9 @@ transformations=["my-transformation"]
 
 Applies named transformations to the image.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 transformations={['my-transformation']}
 ```
 
@@ -1347,9 +1584,9 @@ You can customize and manage these properties using the options below:
 
 Sets the device pixel ratio (DPR) for the delivered image or video using a specified value or automatically based on the requesting device.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 dpr="2.0"
 ```
 
@@ -1360,9 +1597,9 @@ dpr="2.0"
 
 Converts (if necessary) and delivers an asset in the specified format regardless of the file extension used in the delivery URL.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 format="png"
 ```
 
@@ -1373,9 +1610,9 @@ format="png"
 
 Controls the quality of the delivered asset. Reducing the quality is a trade-off between visual quality and file size.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 quality="10"
 ```
 
@@ -1389,8 +1626,8 @@ flag as a way to deliver the raw image URL without any quality, format, or size 
 this or the global option, the CldImage component performs the same treatment by not adding the
 f_auto or q_auto parameters as well as not subjecting the image to any resizing.
 
-**Example**
+**Examples**
 
-```
+```jsx copy
 unoptimized
 ```

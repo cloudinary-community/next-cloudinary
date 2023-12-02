@@ -970,10 +970,10 @@
   resolved "https://registry.yarnpkg.com/@braintree/sanitize-url/-/sanitize-url-6.0.4.tgz#923ca57e173c6b232bbbb07347b1be982f03e783"
   integrity sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==
 
-"@cloudinary-util/url-loader@^3.15.0":
-  version "3.15.0"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-3.15.0.tgz#5d0be96079cf4ccae960d336adbdcc9595f85b60"
-  integrity sha512-1Xq/woN0cngKY9e1EBgClomkOSmEy+yriBYqy5FUelxc0bCCZXNTMpkhssdUVnMXJbm8TIOBmqgVfqH5u0/DtQ==
+"@cloudinary-util/url-loader@^3.16.0":
+  version "3.16.0"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-3.16.0.tgz#e3a4c3ec74d344ecaeff35528be06795ce80cb52"
+  integrity sha512-KqZYuSkQg5FnlREecay5sJTXYdfg/3PaS9Az+XZbCcrdbQQJtWotyE4K3S3F7YBSqTdBItE/XqmgzmmcGLZ3Pw==
   dependencies:
     "@cloudinary-util/util" "2.3.0"
     "@cloudinary/url-gen" "^1.10.2"

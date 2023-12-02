@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import OgImage from '../../components/OgImage';
+import Table from '../../components/Table';
 
 <Head>
   <title>getCldOgImageUrl Configuration - Next Cloudinary</title>
@@ -19,13 +20,62 @@ Configuration for getCldOgImageUrl is the same as [getCldImageUrl](/getcldimageu
 
 The only difference is getCldOgImageUrl provides the following default settings to make generating an OG image URL simpler:
 
-## General Options
+## Basic Transformations
 
-| Option Name        | Type               | Default    | Example                      |
-|--------------------|--------------------|------------|------------------------------|
-| crop               | string             | `"fill"`   | `"scale"`                    |
-| gravity            | string             | `"center"` | `"auto"`                     |
-| height             | number             | `1254`     | `1254`                       |
-| width              | number             | `2400`     | `2400`                       |
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more'
+    },
+  ]}
+  data={[
+    {
+      prop: 'crop',
+      type: 'string',
+      default: () => (<code>fill</code>),
+      example: () => (<code>scale</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#c_crop_resize">More Info</a>)
+    },
+    {
+      prop: 'gravity',
+      type: 'string',
+      default: () => (<code>center</code>),
+      example: () => (<code>auto</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#g_gravity">More Info</a>)
+    },
+
+    {
+      prop: 'height',
+      type: 'number',
+      default: () => (<code>1254</code>),
+      example: () => (<code>1254</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#h_height">More Info</a>)
+    },
+
+    {
+      prop: 'width',
+      type: 'number',
+      default: () => (<code>2400</code>),
+      example: () => (<code>2400</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#w_width">More Info</a>)
+    },
+  ]}
+/>
 
 Find more configuration settings over at [getCldImageUrl configuration](/getcldimageurl/configuration).

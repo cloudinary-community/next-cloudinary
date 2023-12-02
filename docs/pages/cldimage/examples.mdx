@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import { Callout, Tab, Tabs } from 'nextra-theme-docs';
+import { Callout } from 'nextra-theme-docs';
 
 import { CldImage } from '../../../next-cloudinary';
 
 import OgImage from '../../components/OgImage';
-import ImageGrid from '../../components/ImageGrid';
 import HeaderImage from '../../components/HeaderImage';
 import CodeBlock from '../../components/CodeBlock';
 
@@ -23,7 +22,12 @@ import CodeBlock from '../../components/CodeBlock';
 
 ## Basic Transformations
 
+Cloudinary supports a wide variety of powerful transformations that allow you to
+not only deliver, but easily edit and build new images on the fly.
+
 ### Background Removal
+
+#### Remove Background
 
 `removeBackground`: Removes the background of the image using AI
 
@@ -45,7 +49,7 @@ import CodeBlock from '../../components/CodeBlock';
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     removeBackground
     alt=""
@@ -53,7 +57,77 @@ import CodeBlock from '../../components/CodeBlock';
   ```
 </CodeBlock>
 
+<Callout emoji={false} type="info">
+  The Cloudinary AI Background Removal add-on is required to use this feature.
+</Callout>
+
+#### Color Background
+
+`background`: Specifies a color to use as a background.
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    removeBackground
+    background="blueviolet"
+    alt=""
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="960"
+    height="600"
+    src="<Your Public ID>"
+    sizes="100vw"
+    removeBackground
+    background="blueviolet"
+    alt=""
+  />
+  ```
+</CodeBlock>
+
+#### Image Background
+
+`underlay`: Specifies a public ID to use as an underlaying image.
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
+    removeBackground
+    underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
+    alt=""
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="960"
+    height="600"
+    src="<Your Public ID>"
+    sizes="100vw"
+    removeBackground
+    underlay="<Your Public ID>"
+    alt=""
+  />
+  ```
+</CodeBlock>
+
 ### Cropping & Resizing
+
+#### Cropping
 
 `crop`: Specifies the mode to use when cropping an image based on the given dimensions.
 
@@ -78,11 +152,52 @@ position the subject in the center of the resulting image.
   <CldImage
     width="300"
     height="300"
-    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    src="<Your Public ID>"
     sizes="100vw"
     crop="thumb"
     alt=""
   />
+  ```
+</CodeBlock>
+
+#### Fill Parent
+
+`fill`: a [Next Image feature](https://nextjs.org/docs/pages/api-reference/components/image#fill) that
+renders an image that fills its parent, not requiring you to pass in a width or height.
+
+You can optionally use this in conjunction with other transformations, such as Aspect Ratio, to automatically
+crop to a specific ratio without specifying the width and height.
+
+> Note: Aspect Ratio requires you to use a crop mode that actually crops the image such as "fill"
+(not to be confused with Next Image's Fill)
+
+<HeaderImage>
+  <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9' }}>
+    <CldImage
+      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      sizes="100vw"
+      aspectRatio="16:9"
+      crop="fill"
+      fill={true}
+      alt=""
+    />
+  </div>
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <div style={{ position: 'relative', aspectRatio: '16 / 9' }}>
+    <CldImage
+      src="<Your Public ID>"
+      sizes="100vw"
+      aspectRatio="16:9"
+      crop="fill"
+      fill={true}
+      alt=""
+    />
+  </div>
   ```
 </CodeBlock>
 
@@ -110,7 +225,7 @@ position the subject in the center of the resulting image.
     width="960"
     height="600" // Original 1440
     crop="pad"  // Returns the given size with padding
-    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    src="<Your Public ID>"
     sizes="100vw"
     fillBackground
     alt=""
@@ -146,7 +261,7 @@ position the subject in the center of the resulting image.
     width="960"
     height="600"
     crop="fill"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     replace={['turtle', 'shark']}
     alt=""
@@ -160,6 +275,9 @@ position the subject in the center of the resulting image.
 
 
 ## Filters & Effects
+
+Included in the Cloudinary transformations library are different filters and effects
+that allow you to recolor, improve, fix, and artistically transform your images. 
 
 ### Blur
 
@@ -182,7 +300,7 @@ position the subject in the center of the resulting image.
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     blur="1200"
     alt=""
@@ -212,7 +330,7 @@ position the subject in the center of the resulting image.
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     grayscale
     alt=""
@@ -242,7 +360,7 @@ position the subject in the center of the resulting image.
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     opacity="50"
     alt=""
@@ -272,7 +390,7 @@ position the subject in the center of the resulting image.
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     pixelate
     alt=""
@@ -302,7 +420,7 @@ position the subject in the center of the resulting image.
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="<Your Public ID>"
     sizes="100vw"
     tint="equalize:80:blue:blueviolet"
     alt=""
@@ -310,35 +428,15 @@ position the subject in the center of the resulting image.
   ```
 </CodeBlock>
 
-### More Filters & Effects
+### Chaining Multiple Effects
 
-Learn about what other filters and effects are supported on [CldImage Configuration](/cldimage/configuration).
+`effects`: An array of objects the configure the effects to apply to an image.
 
-## Image Overlays
-
-<ImageGrid>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      effects={[
-        {
-          background: 'green'
-        },
-        {
-          gradientFade: true
-        },
-        {
-          gradientFade: 'symetric,x_0.5'
-        }
-      ]}
-      alt=""
-    />
-
-    ### Multiple Effects
-
-    ```jsx copy
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
     effects={[
       {
         background: 'green'
@@ -350,41 +448,57 @@ Learn about what other filters and effects are supported on [CldImage Configurat
         gradientFade: 'symetric,x_0.5'
       }
     ]}
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      overlays={[{
-        publicId: `${process.env.IMAGES_DIRECTORY}/earth`,
-        position: {
-          x: 50,
-          y: 50,
-          gravity: 'north_west',
-        },
-        effects: [
-          {
-            crop: 'fill',
-            gravity: 'auto',
-            width: 500,
-            height: 500
-          }
-        ]
-      }]}
-      alt=""
-    />
+    alt=""
+  />
+</HeaderImage>
 
-    ### Overlay Image by Public ID
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-    ```jsx copy
+  <CldImage
+    width="960"
+    height="600"
+    src="<Your Public ID>"
+    effects={[
+      {
+        background: 'green'
+      },
+      {
+        gradientFade: true
+      },
+      {
+        gradientFade: 'symetric,x_0.5'
+      }
+    ]}
+    alt=""
+  />
+  ```
+</CodeBlock>
+
+### More Filters & Effects
+
+Learn about what other filters and effects are supported on [CldImage Configuration](/cldimage/configuration#filters--effects).
+
+## Image Overlays
+
+Image overlays allow you to place one or multiple images on top of another image.
+
+### Overlay Image by Public ID
+
+`overlays`: Any array of overlay objects
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
     overlays={[{
-      publicId: `images/earth`,
+      publicId: `${process.env.IMAGES_DIRECTORY}/earth`,
       position: {
-        x: 10,
-        y: 10,
+        x: 50,
+        y: 50,
         gravity: 'north_west',
       },
       effects: [
@@ -396,37 +510,51 @@ Learn about what other filters and effects are supported on [CldImage Configurat
         }
       ]
     }]}
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      crop="fill"
-      src={`${process.env.IMAGES_DIRECTORY}/white`}
-      colorize="100,co_darkviolet"
-      overlays={[{
-        publicId: `images/earth`,
-        effects: [
-          {
-            crop: 'fill',
-            gravity: 'auto',
-            width: 960,
-            height: 600
-          }
-        ],
-        appliedEffects: [
-          {
-            multiply: true
-          }
-        ]
-      }]}
-      alt=""
-    />
+    alt=""
+  />
+</HeaderImage>
 
-    ### Overlay with Multiply Effect
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-    ```jsx copy
+  <CldImage
+    width="960"
+    height="600"
+    src="<Your Public ID>"
+    sizes="100vw"
+    overlays={[{
+      publicId: '<Your Public ID>',
+      position: {
+        x: 50,
+        y: 50,
+        gravity: 'north_west',
+      },
+      effects: [
+        {
+          crop: 'fill',
+          gravity: 'auto',
+          width: 500,
+          height: 500
+        }
+      ]
+    }]}
+    alt=""
+  />
+  ```
+</CodeBlock>
+
+### Overlay Image with Blend Mode
+
+`appliedEffects`: When configured on an overlay object, allows you to set an effect
+that applies a blend mode, such as "multiply"
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    crop="fill"
+    src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
     overlays={[{
       publicId: `images/earth`,
       effects: [
@@ -443,40 +571,21 @@ Learn about what other filters and effects are supported on [CldImage Configurat
         }
       ]
     }]}
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      crop="fill"
-      src={`${process.env.IMAGES_DIRECTORY}/white`}
-      colorize="100,co_darkviolet"
-      overlays={[{
-        publicId: `images/earth`,
-        effects: [
-          {
-            crop: 'fill',
-            gravity: 'auto',
-            width: 960,
-            height: 600
-          }
-        ],
-        appliedEffects: [
-          {
-            screen: true
-          }
-        ]
-      }]}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      alt=""
-    />
+    alt=""
+  />
+</HeaderImage>
 
-    ### Overlay with Screen Effect
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-    ```jsx copy
+  <CldImage
+    width="960"
+    height="600"
+    crop="fill"
+    src="<Your Public ID>"
     overlays={[{
-      publicId: `images/earth`,
+      publicId: '<Your Public ID>',
       effects: [
         {
           crop: 'fill',
@@ -487,120 +596,61 @@ Learn about what other filters and effects are supported on [CldImage Configurat
       ],
       appliedEffects: [
         {
-          screen: true
+          multiply: true
         }
       ]
     }]}
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      crop="fill"
-      src={`${process.env.IMAGES_DIRECTORY}/white`}
-      colorize="100,co_darkviolet"
-      overlays={[{
-        publicId: `images/earth`,
-        effects: [
-          {
-            crop: 'fill',
-            gravity: 'auto',
-            width: 960,
-            height: 600
-          }
-        ],
-        appliedEffects: [
-          {
-            overlay: true
-          }
-        ]
-      }]}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      alt=""
-    />
-
-    ### Overlay with Overlay Effect
-
-    ```jsx copy
-    overlays={[{
-      publicId: `images/earth`,
-      effects: [
-        {
-          crop: 'fill',
-          gravity: 'auto',
-          width: 960,
-          height: 600
-        }
-      ],
-      appliedEffects: [
-        {
-          overlay: true
-        }
-      ]
-    }]}
-    ```
-  </li>
-</ImageGrid>
+    alt=""
+  />
+  ```
+</CodeBlock>
 
 ## Image Underlays
 
-<ImageGrid>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      removeBackground
-      underlay="images/galaxy"
-      alt=""
-    />
+Image underlays allow you to place one or multiple images behind a base image.
 
-    ### Background Removal with Underlay by Public ID
+### Replace Background with Image
 
-    ```jsx copy
+`underlay`: Public ID of image to use under base image
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
     removeBackground
     underlay="images/galaxy"
-    ```
+    alt=""
+  />
+</HeaderImage>
 
-    <Callout emoji={false}>
-      Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal</a> Add-On
-    </Callout>
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      removeBackground
-      underlays={[
-        {
-          publicId: 'images/galaxy',
-          width: 480,
-          height: 600,
-          crop: 'fill',
-          position: {
-            gravity: 'north_west'
-          }
-        },
-        {
-          publicId: 'images/mountain',
-          width: 480,
-          height: 600,
-          crop: 'fill',
-          position: {
-            gravity: 'south_east'
-          }
-        },
-      ]}
-      alt=""
-    />
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-    ### Background Removal with Multiple Underlays
+  <CldImage
+    width="960"
+    height="600"
+    src="<Your Public ID>"
+    sizes="100vw"
+    removeBackground
+    underlay="<Your Public ID>"
+    alt=""
+  />
+  ```
+</CodeBlock>
 
-    ```jsx copy
+### Replace Background with Multiple Images
+
+`underlays`: Array of underlay objects
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    sizes="100vw"
     removeBackground
     underlays={[
       {
@@ -622,95 +672,102 @@ Learn about what other filters and effects are supported on [CldImage Configurat
         }
       },
     ]}
-    ```
+    alt=""
+  />
+</HeaderImage>
 
-    <Callout emoji={false}>
-      Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal</a> Add-On
-    </Callout>
-  </li>
-</ImageGrid>
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="960"
+    height="600"
+    src="<Your Public ID>"
+    sizes="100vw"
+    removeBackground
+    underlays={[
+      {
+        publicId: '<Your Public ID>',
+        width: 480,
+        height: 600,
+        crop: 'fill',
+        position: {
+          gravity: 'north_west'
+        }
+      },
+      {
+        publicId: '<Your Public ID>',
+        width: 480,
+        height: 600,
+        crop: 'fill',
+        position: {
+          gravity: 'south_east'
+        }
+      },
+    ]}
+    alt=""
+  />
+  ```
+</CodeBlock>
+
 
 ## Text Overlays
 
-<ImageGrid>
-  <li>
-    <CldImage
-      width="1335"
-      height="891"
-      src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      blur="2000"
-      brightness="300"
-      text="Cool Beans"
-      alt=""
-    />
+Text overlays allow you to place text on top of an image.
 
-    ### Text Overlay with text prop
+### Adding Text
 
-    ```jsx copy
+`text`: Adds text to an image with default settings
+
+<HeaderImage>
+  <CldImage
+    width="1335"
+    height="891"
+    src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
+    sizes="100vw"
+    blur="2000"
+    brightness="300"
     text="Cool Beans"
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="1335"
-      height="891"
-      src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      blur="2000"
-      brightness="300"
-      overlays={[{
-        text: 'Cool Beans'
-      }]}
-      alt=""
-    />
+    alt=""
+  />
+</HeaderImage>
 
-    ### Text Overlay with text string
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-    ```jsx copy
-    overlays={[{
-      text: 'Cool Beans'
-    }]}
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="1335"
-      height="891"
-      src={`${process.env.IMAGES_DIRECTORY}/sneakers`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      overlays={[{
-        width: 2670 - 20,
-        crop: 'fit',
-        position: {
-          x: 140,
-          y: 140,
-          angle: -20,
-          gravity: 'south_east',
-        },
-        text: {
-          color: 'blueviolet',
-          fontFamily: 'Source Sans Pro',
-          fontSize: 160,
-          fontWeight: 'bold',
-          textDecoration: 'underline',
-          letterSpacing: 14,
-          text: 'Cool Beans'
-        }
-      }]}
-      alt=""
-    />
+  <CldImage
+    width="1335"
+    height="891"
+    src="<Your Public ID>"
+    sizes="100vw"
+    blur="2000"
+    brightness="300"
+    text="Cool Beans"
+    alt=""
+  />
+  ```
+</CodeBlock>
 
-    ### Text Overlay with overlay configuration
+### Adding Custom Text
 
-    ```jsx copy
+`overlays`: Uses overlay objects to add text on top of an image.
+
+<HeaderImage>
+  <CldImage
+    width="1335"
+    height="891"
+    src={`${process.env.IMAGES_DIRECTORY}/sneakers`}
+    sizes="100vw"
     overlays={[{
       width: 2670 - 20,
       crop: 'fit',
       position: {
-        x: 10,
-        y: 10,
-        gravity: 'north_west',
+        x: 140,
+        y: 140,
+        angle: -20,
+        gravity: 'south_east',
       },
       text: {
         color: 'blueviolet',
@@ -722,35 +779,53 @@ Learn about what other filters and effects are supported on [CldImage Configurat
         text: 'Cool Beans'
       }
     }]}
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="1335"
-      height="891"
-      src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      overlays={[{
-        text: {
-          color: 'white',
-          fontFamily: 'Source Sans Pro',
-          fontSize: 160,
-          fontWeight: 'bold',
-          text: 'Cool Beans'
-        },
-        effects: [
-          {
-            shear: '40:0',
-            opacity: 50
-          }
-        ]
-      }]}
-      alt=""
-    />
+    alt=""
+  />
+</HeaderImage>
 
-    ### Text Overlay with Effects
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-    ```jsx copy
+  <CldImage
+    width="1335"
+    height="891"
+    src="<Your Public ID>"
+    sizes="100vw"
+    overlays={[{
+      width: 2670 - 20,
+      crop: 'fit',
+      position: {
+        x: 140,
+        y: 140,
+        angle: -20,
+        gravity: 'south_east',
+      },
+      text: {
+        color: 'blueviolet',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 160,
+        fontWeight: 'bold',
+        textDecoration: 'underline',
+        letterSpacing: 14,
+        text: 'Cool Beans'
+      }
+    }]}
+    alt=""
+  />
+  ```
+</CodeBlock>
+
+### Adding Text with Effects
+
+`effects`: Applies effects to the overlaid text.
+
+<HeaderImage>
+  <CldImage
+    width="1335"
+    height="891"
+    src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
+    sizes="100vw"
     overlays={[{
       text: {
         color: 'white',
@@ -766,133 +841,39 @@ Learn about what other filters and effects are supported on [CldImage Configurat
         }
       ]
     }]}
-    ```
-  </li>
-</ImageGrid>
+    alt=""
+  />
+</HeaderImage>
 
-## Next Image Features
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-<ImageGrid>
-  <li>
-    <div style={{ position: 'relative', height: '10em' }}>
-      <CldImage
-        src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-        fill={true}
-        alt=""
-      />
-    </div>
+  <CldImage
+    width="1335"
+    height="891"
+    src="<Your Public ID>"
+    sizes="100vw"
+    overlays={[{
+      text: {
+        color: 'white',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 160,
+        fontWeight: 'bold',
+        text: 'Cool Beans'
+      },
+      effects: [
+        {
+          shear: '40:0',
+          opacity: 50
+        }
+      ]
+    }]}
+    alt=""
+  />
+  ```
+</CodeBlock>
 
-    ### Fill
+## More Examples
 
-    ```jsx copy
-    <div style={{ position: 'relative', height: '10em' }}>
-    ...
-    fill={true}
-    ```
-  </li>
-</ImageGrid>
-
-## Flags
-
-<ImageGrid>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      flags={['keep_iptc']}
-      quality="default"
-      alt=""
-    />
-
-    ### Keep IPTC
-
-    ```jsx copy
-    flags={['keep_iptc']}
-    quality="default"
-    ```
-
-    <Callout emoji={false}>
-      The `keep_iptc` flag requires not including a quality of auto. Using `quality="default"` avoids setting the quality flag in the URL.
-    </Callout>
-  </li>
-</ImageGrid>
-
-## Other
-
-<ImageGrid>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      transformations={[
-        'next-cloudinary-named-transformation'
-      ]}
-      alt=""
-    />
-
-    ### Named Transformations
-
-    ```jsx copy
-    transformations={[
-      'next-cloudinary-named-transformation'
-    ]}
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      rawTransformations={['c_crop,h_359,w_517,x_1200,y_100/c_scale,h_359,w_517/f_auto,q_auto']}
-      sizes="(max-width: 480px) 100vw, 50vw"
-      alt=""
-    />
-
-    ### Raw Transformations
-
-    ```jsx copy
-    rawTransformations={[
-      // Example from Cloudinary Media Editor widget
-      'c_crop,h_359,w_517,x_1483,y_0/c_scale,h_359,w_517/f_auto,q_auto'
-    ]}
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      strictTransformations
-      alt=""
-    />
-
-    ### Strict Transformations
-
-    ```jsx copy
-    strictTransformations
-    ```
-  </li>
-  <li>
-    <CldImage
-      width="960"
-      height="600"
-      src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_fill,h_300,w_250/e_blur:1000/v1/${process.env.IMAGES_DIRECTORY}/turtle`}
-      preserveTransformations
-      tint="equalize:80:blue:blueviolet"
-      sizes="(max-width: 480px) 100vw, 50vw"
-      alt=""
-    />
-
-    ### Preserve Transformations
-
-    ```jsx copy
-    src={`https://res.cloudinary.com/<Cloud Name>/image/upload/c_fill,h_300,w_250/e_blur:1000/v1/<Public ID>`}
-    preserveTransformations
-    tint="equalize:80:blue:blueviolet"
-    ```
-  </li>
-</ImageGrid>
+Find more examples on [Social Card Templates](/templates/social-media-cards).

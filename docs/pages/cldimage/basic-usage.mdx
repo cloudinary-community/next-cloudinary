@@ -3,9 +3,10 @@ import { Callout } from 'nextra-theme-docs';
 
 import { CldImage } from '../../../next-cloudinary';
 
-import ImageGrid from '../../components/ImageGrid';
 import OgImage from '../../components/OgImage';
 import Video from '../../components/Video';
+import HeaderImage from '../../components/HeaderImage';
+import CodeBlock from '../../components/CodeBlock';
 
 <Head>
   <title>CldImage - Next Cloudinary</title>
@@ -30,26 +31,7 @@ As CldImage is a wrapper around the Next.js Image component, you also gain acces
 
 The basic required props include `width`, `height`, `src`, and `alt`:
 
-```jsx copy
-import { CldImage } from 'next-cloudinary';
-
-<CldImage
-  width="960"
-  height="600"
-  src="<Public ID>"
-  sizes="100vw"
-  alt="Description of my image"
-/>
-```
-
-The `sizes` prop is optional, but recommended for [Responsive Sizing](/guides/responsive-images).
-
-<Callout emoji={false}>
-  Using the App Router in Next.js 13+? Add the `"use client"` directive at the top of your file.
-</Callout>
-
-<div style={{ maxWidth: 500, margin: '0 auto' }}>
-  <p className="nx-mt-6">
+<HeaderImage>
   <CldImage
     width="960"
     height="600"
@@ -57,44 +39,93 @@ The `sizes` prop is optional, but recommended for [Responsive Sizing](/guides/re
     sizes="100vw"
     alt="Turtle in the ocean"
   />
-  </p>
-</div>
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="960"
+    height="600"
+    src="<Public ID>"
+    sizes="100vw"
+    alt="Description of my image"
+  />
+  ```
+</CodeBlock>
 
 The `src` property takes in a Cloudinary Public ID which includes the folder path along with the ID of the image itself.
+The `width` and the `height` should represent the rendered size and the `alt` value should be a text-based description
+of the image.
+
+The `sizes` prop is optional, but recommended for [Responsive Sizing](/guides/responsive-images).
+
+<Callout emoji={false}>
+  Using the App Router in [Next.js 13+](/nextjs-14)? Add the `"use client"` directive at the top of your file.
+</Callout>
 
 ## Transformations
 
 You can further take advantage of Cloudinary features like background removal and overlays by adding additional props:
 
-```jsx copy
-<CldImage
-  width="1200"
-  height="1200"
-  src="<Public ID>"
-  crop="thumb"
-  removeBackground
-  tint="70:blue:green:purple"
-  underlay="<Public ID>"
-  sizes="100vw"
-  alt="Description of my image"
-/>
-```
 
-<div style={{ maxWidth: 500, margin: '0 auto' }}>
+<HeaderImage>
   <CldImage
-    width="1200"
-    height="1200"
+    width="500"
+    height="500"
     src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    crop="thumb"
+    crop="fill"
     removeBackground
     tint="70:blue:green:purple"
     underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
     sizes="100vw"
     alt="Turtle in the ocean"
   />
-</div>
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="500"
+    height="500"
+    src="<Public ID>"
+    crop="fill"
+    removeBackground
+    tint="70:blue:green:purple"
+    underlay="<Public ID>"
+    sizes="100vw"
+    alt="Description of my image"
+  />
+  ```
+</CodeBlock>
 
 ## Using Cloudinary URLs
+
+CldImage supports passing a fully qualified Cloudinary URL as the `src`, however, it
+must include a version number (/v1234) in order to be correctly parsed.
+
+<Callout emoji={false} type="info">
+  The version number is required due to the variable nature of Cloudinary URLs. This helps
+  to ensure the integretiy when during the parsing process.
+</Callout>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="500"
+    height="500"
+    src="https://res.cloudinary.com/mycloud/image/upload/v1234/myimage"
+    alt="Description of my image"
+  />
+  ```
+</CodeBlock>
+
+### Preserving URL Transformations
 
 If using a full Cloudinary URL, you might already have transformations applied to your image.
 
@@ -104,13 +135,11 @@ To preserve those transformations, you can apply the `preserveTransformations` p
 <CldImage
   width="600"
   height="600"
-  src="<Cloudinary URL>"
+  src="https://res.cloudinary.com/mycloud/image/upload/w_100,h_200,c_fill/v1234/myimage"
   preserveTransformations
   alt="Description of my image"
 />
 ```
-
-*Note: Cloudinary URLs must include a version number (/v1234) in order to be correctly parsed.*
 
 ## Watch & Learn
 
