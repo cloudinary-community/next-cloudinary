@@ -18,7 +18,7 @@ const Table = ({ columns, data }) => {
         <tbody>
           {data.map((row, index) => {
             return (
-              <tr key={index} className="border-b last:border-none bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-800">
+              <tr key={index} className="border-b last:border-none border-gray-200  dark:border-gray-800">
                 { columns.map(({ id }, index) => {
                   let Child = row[id] || ' ';
 
