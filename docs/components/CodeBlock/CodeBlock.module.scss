@@ -31,6 +31,11 @@
     @media (prefers-color-scheme: dark) {
       background: linear-gradient(to bottom, rgba(#111111, 0), rgba(#111111, 1));
     }
+
+    :global(.dark) & {
+      background: linear-gradient(to bottom, rgba(#111111, 0), rgba(#111111, 1));
+    }
+
   }
 
   pre {
