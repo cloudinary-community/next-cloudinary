@@ -62,6 +62,33 @@ The only needed prop is `src`:
 The function simply returns a URL for the image public ID provided including default configurations
 including a standard width and height.
 
+To use this in a Next.js app with the App Router, you would then configure it with your Metadata object or generate function:
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { Metadata } from 'next';
+  import { getCldOgImageUrl } from 'next-cloudinary';
+
+  const url = getCldOgImageUrl({
+    src: '<Public ID>'
+  });
+
+  export const metadata: Metadata = {
+    openGraph: {
+      images: [
+        {
+          width: 1200,
+          height: 627,
+          url
+        }
+      ]
+    }
+  }
+  ```
+</CodeBlock>
+
+> Learn more about [Next.js Metadata](https://nextjs.org/docs/app/api-reference/functions/generate-metadata).
+
 getCldOgImageUrl is a deritive of getCldImageUrl meaning it generally has the same API, but provides
 a few defaults for Open Graph images like sizes.
 
@@ -83,7 +110,7 @@ The height is ultimately calculated using the `width` value and the `widthResize
 
 ## Image Format
 
-While Cloudinary's `f_auto` parameter (format of auto) is great for websites and mobile apps, having more control over the format helps to reduce initial encoding time, which is more critical for a social network to recognize the image and load it on first share.
+While Cloudinary's `f_auto` parameter ([format of auto](https://cloudinary.com/documentation/image_optimization#how_to_optimize_image_format)) is great for websites and mobile apps, having more control over the format helps to reduce initial encoding time, which is more critical for a social network to recognize the image and load it on first share.
 
 The safe default format for most use cases is then jpg, as webp does not have broad support (likely nor does AVIF).
 
@@ -91,17 +118,37 @@ The safe default format for most use cases is then jpg, as webp does not have br
 
 If you have the control in your application to produce multiple image sources, such has having a separate `og:image` and `twitter:image`, you can generate two (or more) URLs to produce as optimized a format as you can for the platform:
 
-```js copy
-const ogImageUrl = getCldOgImageUrl({
-  ...options,
-  format: 'jpg',
-});
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { Metadata } from 'next';
+  import { getCldOgImageUrl } from 'next-cloudinary';
 
-const twitterImageUrl = getCldOgImageUrl({
-  ...options,
-  format: 'webp',
-});
-```
+  const ogImageUrl = getCldOgImageUrl({
+    ...options,
+    format: 'jpg',
+  });
+
+  const twitterImageUrl = getCldOgImageUrl({
+    ...options,
+    format: 'webp',
+  });
+
+  export const metadata: Metadata = {
+    openGraph: {
+      images: [
+        {
+          width: 1200,
+          height: 627,
+          url: ogImageUrl
+        }
+      ]
+    },
+    twitter: {
+      images: [twitterImageUrl],
+    },
+  }
+  ```
+</CodeBlock>
 
 Find out how else you can customize your Cloudinary image over on [getCldOgImageUrl configuration](/getcldogimageurl/configuration).
 

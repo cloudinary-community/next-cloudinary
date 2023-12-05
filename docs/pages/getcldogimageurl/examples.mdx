@@ -44,11 +44,24 @@ import CodeBlock from '../../components/CodeBlock';
 
 <CodeBlock>
   ```jsx copy showLineNumbers
+  import { Metadata } from 'next';
   import { getCldOgImageUrl } from 'next-cloudinary';
 
-  getCldOgImageUrl({
+  const url = getCldOgImageUrl({
     src: '<Your Public ID>',
   })
+
+  export const metadata: Metadata = {
+    openGraph: {
+      images: [
+        {
+          width: 1200,
+          height: 627,
+          url
+        }
+      ]
+    }
+  }
   ```
 </CodeBlock>
 
@@ -75,13 +88,26 @@ import CodeBlock from '../../components/CodeBlock';
 
 <CodeBlock>
   ```jsx copy showLineNumbers
+  import { Metadata } from 'next';
   import { getCldOgImageUrl } from 'next-cloudinary';
 
-  getCldOgImageUrl({
+  const url = getCldOgImageUrl({
     src: '<Your Public ID>',
     removeBackground: true,
     underlay: '<Your Public ID>'
   })
+
+  export const metadata: Metadata = {
+    openGraph: {
+      images: [
+        {
+          width: 1200,
+          height: 627,
+          url
+        }
+      ]
+    }
+  }
   ```
 </CodeBlock>
 
@@ -109,11 +135,24 @@ import CodeBlock from '../../components/CodeBlock';
 
 <CodeBlock>
   ```jsx copy showLineNumbers
+  import { Metadata } from 'next';
   import { getCldOgImageUrl } from 'next-cloudinary';
 
-  getCldOgImageUrl({
+  const url = getCldOgImageUrl({
     src: '<Your Public ID>',
     text: 'Next Cloudinary'
   })
+
+  export const metadata: Metadata = {
+    openGraph: {
+      images: [
+        {
+          width: 1200,
+          height: 627,
+          url
+        }
+      ]
+    }
+  }
   ```
 </CodeBlock>
