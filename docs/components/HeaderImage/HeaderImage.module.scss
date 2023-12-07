@@ -20,8 +20,17 @@
 }
 
 .headerImageChildren {
+
   display: flex;
   justify-content: center;
   max-width: 500px;
   margin: 0 auto;
+
+  &[data-layout="grid"] {
+    display: grid;
+    max-width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+  }
+
 }
