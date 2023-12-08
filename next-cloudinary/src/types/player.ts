@@ -69,10 +69,9 @@ export interface CloudinaryVideoPlayerOptions extends CloudinaryVideoPlayerOptio
   cloud_name?: string;
   cname?: string;
   privateCdn?: boolean;
+  queryParams?: Record<string, string | number | boolean> | string;
   secure?: boolean;
   secureDistribution?: string;
-
-
 }
 
 export interface CloudinaryVideoPlayerOptionsColors {
