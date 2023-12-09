@@ -159,7 +159,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
       let playerOptions: CloudinaryVideoPlayerOptions = {
         autoplayMode: autoplayModeValue,
-        autoPlay: autoPlayValue,
+        autoplay: autoPlayValue,
         cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
         controls,
         fontFace: fontFace || '',
