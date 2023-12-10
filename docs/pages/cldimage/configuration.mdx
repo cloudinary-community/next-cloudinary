@@ -155,6 +155,20 @@ right inside of Next.js.
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#g_gravity">More Info</a>)
     },
     {
+      prop: 'recolor',
+      type: 'array | object',
+      default: '-',
+      example: () => (<code>{`['duck', 'blue']`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gen_recolor">More Info</a>)
+    },
+    {
+      prop: 'remove',
+      type: 'string | array | object',
+      default: '-',
+      example: () => (<code>{`apple`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gen_remove">More Info</a>)
+    },
+    {
       prop: 'removeBackground',
       type: 'boolean | string',
       default: () => (<code>false</code>),
@@ -167,6 +181,13 @@ right inside of Next.js.
       default: '-',
       example: () => (<code>{`['apple', 'banana']`}</code>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">More Info</a>)
+    },
+    {
+      prop: 'restore',
+      type: 'boolean',
+      default: '-',
+      example: () => (<code>{`true`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gen_restore">More Info</a>)
     },
     {
       prop: 'zoom',
@@ -286,6 +307,165 @@ gravity="face"
 
 [Learn more about gravity](https://cloudinary.com/documentation/transformation_reference#g_gravity) on the Cloudinary docs.
 
+### `recolor`
+
+<Callout emoji={false} type="info">
+  Generative Recolor is currently in beta.
+</Callout>
+
+Uses generative AI to recolor parts of your image, maintaining the relative shading.
+
+The `recolor` prop can either be an array with the objects to be replaced or an object
+with the following options:
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      prop: 'multiple',
+      type: 'boolean',
+      example: () => (<code>true</code>),
+    },
+    {
+      prop: 'prompt',
+      type: 'string | array',
+      example: () => (<span><code>duck</code> or <code>['duck', 'horse']</code></span>),
+    },
+    {
+      prop: 'to',
+      type: 'string',
+      example: () => (<code>blue</code>),
+    },
+  ]}
+/>
+
+**Examples**
+
+Recoloring an object with an array:
+
+```jsx copy
+recolor={['duck', 'blue']}
+```
+
+Or using the object format:
+
+```jsx copy
+recolor={{
+  prompt: 'duck',
+  to: 'blue',
+  multiple; true
+}}
+```
+
+[Learn more about the Generative Recolor transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_recolor) on the Cloudinary docs.
+
+### `remove`
+
+<Callout emoji={false} type="info">
+  Generative Remove is currently in beta.
+</Callout>
+
+Uses generative AI to remove unwanted parts of your image, replacing the area with realistic pixels.
+
+The `remove` prop can either be a string, an array, or an object with the following options:
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      prop: 'multiple',
+      type: 'boolean',
+      example: () => (<code>true</code>),
+    },
+    {
+      prop: 'prompt',
+      type: 'string | array',
+      example: () => (<span><code>duck</code> or <code>['duck', 'horse']</code></span>),
+    },
+    {
+      prop: 'removeShadow',
+      type: 'boolean',
+      example: () => (<code>true</code>),
+    },
+    {
+      prop: 'region',
+      type: 'array',
+      example: () => (<code>[300, 200, 1900, 3500]</code>),
+    },
+  ]}
+/>
+
+**Examples**
+
+Removing an object by string:
+
+```jsx copy
+remove="apple"
+```
+
+Removing multiple objects by array:
+
+```jsx copy
+remove={['apple', 'banana', 'orange']}
+```
+
+Removing multiple instances of an object and their shadow with object configuration:
+
+```jsx copy
+remove={{
+  prompt: 'apple',
+  multiple: true,
+  removeShadow: true
+}}
+```
+
+Removing a region:
+
+```jsx copy
+remove={{
+  region: [300, 200, 1900, 3500]
+}}
+```
+
+Removing multiple regions:
+
+```jsx copy
+remove={{
+  region: [
+    [300, 200, 1900, 3500],
+    [123, 321, 750, 500]
+  ]
+}}
+```
+
+[Learn more about the Generative Remove transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_remove) on the Cloudinary docs.
+
 ### `removeBackground`
 
 Uses the [Cloudinary AI Background Removal add-on](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) to make the background of an image transparent.
@@ -303,12 +483,11 @@ removeBackground
 
 [Learn more about background removal transformation](https://cloudinary.com/documentation/transformation_reference#e_background_removal) on the Cloudinary docs.
 
+
 ### `replace`
 
-
-
 <Callout emoji={false} type="info">
-  Generative Fill is currently in beta.
+  Generative Replace is currently in beta.
 </Callout>
 
 Uses generative AI to replace parts of your image with something else. 
@@ -344,7 +523,7 @@ with the following options:
     },
     {
       prop: 'preserveGeometry',
-      type: 'bolean',
+      type: 'boolean',
       example: () => (<code>true</code>),
     },
   ]}
@@ -369,6 +548,25 @@ replace={{
 ```
 
 [Learn more about the Generative Replace transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_replace) on the Cloudinary docs.
+
+### `restore`
+
+<Callout emoji={false} type="info">
+  Generative Restore is currently in beta.
+</Callout>
+
+Uses generative AI to restore details in poor quality images or images that may have become degraded through repeated processing and compression.
+
+The `restore` prop can be used as a boolean.
+
+**Examples**
+
+```jsx copy
+restore
+```
+
+[Learn more about the Generative Restore transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_restore) on the Cloudinary docs.
+
 
 ### `zoom`
 

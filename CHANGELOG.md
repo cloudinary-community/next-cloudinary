@@ -1,3 +1,10 @@
+# [5.11.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.10.0...v5.11.0) (2023-12-07)
+
+
+### Features
+
+* Generative Remove, Recolor, and Restore ([#362](https://github.com/colbyfayock/next-cloudinary/issues/362)) ([8847e90](https://github.com/colbyfayock/next-cloudinary/commit/8847e90210aa484c226c3184e779e567abee4403)), closes [#361](https://github.com/colbyfayock/next-cloudinary/issues/361)
+
 # [5.10.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.9.0...v5.10.0) (2023-11-30)
 
 
