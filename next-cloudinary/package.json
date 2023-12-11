@@ -8,12 +8,10 @@
   "source": "src/index.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
     "./helpers": {
-      "types": "./dist/helpers.d.ts",
       "import": "./dist/helpers.mjs",
       "require": "./dist/helpers.js"
     },
