@@ -1,3 +1,10 @@
+# [5.12.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.11.0...v5.12.0) (2023-12-11)
+
+
+### Features
+
+* URL Loader Updates ([#373](https://github.com/colbyfayock/next-cloudinary/issues/373)) ([ddd7c26](https://github.com/colbyfayock/next-cloudinary/commit/ddd7c262e0a4988949fde6e2a592d6b6a24b4365))
+
 # [5.11.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.10.0...v5.11.0) (2023-12-07)
 
 
