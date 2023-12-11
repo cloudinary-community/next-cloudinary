@@ -6,9 +6,19 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
+  "exports": {
+    ".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		},
+    "./helpers": {
+			"types": "./dist/helpers.d.ts",
+			"default": "./dist/helpers.js"
+		}
+  },
   "scripts": {
-    "build": "tsup src/index.ts --dts",
-    "dev": "tsup src/index.ts --watch --dts",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "prepublishOnly": "cp ../README.md . && cp ../LICENSE . && yarn build",
     "postpublish": "rm ./README.md && rm ./LICENSE",
     "test": "jest",
