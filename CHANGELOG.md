@@ -1,3 +1,10 @@
+# [5.12.0-beta.1](https://github.com/colbyfayock/next-cloudinary/compare/v5.11.0...v5.12.0-beta.1) (2023-12-11)
+
+
+### Features
+
+* updating import, forcing feat ([1f55d36](https://github.com/colbyfayock/next-cloudinary/commit/1f55d36b0abdc6a94e65fc3a642fac43b7f35564))
+
 # [5.11.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.10.0...v5.11.0) (2023-12-07)
 
 
