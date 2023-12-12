@@ -28,7 +28,7 @@ export async function pollForProcessingImage(options: PollForProcessingImageOpti
 }
 
 export function checkForCloudName(cloudName: string | undefined) {
-  if (!cloudName) {
+  if (typeof cloudName === 'undefined') {
     throw new Error('A Cloudinary Cloud name is required, please make sure NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME is set and configured in your environment.');
   }
 }
