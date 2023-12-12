@@ -1,3 +1,10 @@
+# [5.12.0-beta.2](https://github.com/colbyfayock/next-cloudinary/compare/v5.12.0-beta.1...v5.12.0-beta.2) (2023-12-12)
+
+
+### Features
+
+* adding cjs to root of project for node10 ([#374](https://github.com/colbyfayock/next-cloudinary/issues/374)) ([7bdba72](https://github.com/colbyfayock/next-cloudinary/commit/7bdba728d539f3e8805d73305afb45c0429dd4ae))
+
 # [5.12.0-beta.1](https://github.com/colbyfayock/next-cloudinary/compare/v5.11.0...v5.12.0-beta.1) (2023-12-11)
 
 
