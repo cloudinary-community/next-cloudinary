@@ -21,4 +21,12 @@ export default defineConfig([
     ...commonConfig,
     entry: ['src/helpers.ts']
   },
+  // moduleResolution: Node(10) support
+  {
+    ...commonConfig,
+    clean: false,
+    entry: ['src/helpers.ts'],
+    format: 'cjs',
+    outDir: '.'
+  },
 ]);
