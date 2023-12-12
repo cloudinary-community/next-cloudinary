@@ -1,3 +1,10 @@
+# [5.13.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.12.0...v5.13.0) (2023-12-12)
+
+
+### Features
+
+* Add subpath import for helpers ([bb331af](https://github.com/colbyfayock/next-cloudinary/commit/bb331af00a86c57d24a358eba6be07df3a3a3583))
+
 # [5.12.0-beta.2](https://github.com/colbyfayock/next-cloudinary/compare/v5.12.0-beta.1...v5.12.0-beta.2) (2023-12-12)
 
 ### Features
