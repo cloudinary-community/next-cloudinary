@@ -1,12 +1,32 @@
-import { defineConfig } from 'tsup'
+import { defineConfig, Options } from 'tsup'
 import { plugin as CopyAssetsPlugin } from './plugins/copy-assets';
 
-export default defineConfig({
+const commonConfig: Options = {
   minify: true,
   target: 'es2018',
   external: ['react'],
-  sourcemap: true,
   dts: true,
   format: ['esm', 'cjs'],
-  esbuildPlugins: [CopyAssetsPlugin]
-})
+  sourcemap: true,
+  clean: true,
+};
+
+export default defineConfig([
+  {
+    ...commonConfig,
+    entry: ['src/index.ts'],
+    esbuildPlugins: [CopyAssetsPlugin] // Add plugin to copy assets on one of the entrypoints
+  },
+  {
+    ...commonConfig,
+    entry: ['src/helpers.ts']
+  },
+  // moduleResolution: Node(10) support
+  {
+    ...commonConfig,
+    clean: false,
+    entry: ['src/helpers.ts'],
+    format: 'cjs',
+    outDir: '.'
+  },
+]);

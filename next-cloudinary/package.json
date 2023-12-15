@@ -1,21 +1,32 @@
 {
   "name": "next-cloudinary",
-  "version": "5.11.0",
+  "version": "5.13.0",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./helpers": {
+      "import": "./dist/helpers.mjs",
+      "require": "./dist/helpers.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
-    "build": "tsup src/index.ts --dts",
-    "dev": "tsup src/index.ts --watch --dts",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "prepublishOnly": "cp ../README.md . && cp ../LICENSE . && yarn build",
     "postpublish": "rm ./README.md && rm ./LICENSE",
     "test": "jest",
     "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" yarn build && cd tests/nextjs-app && yarn build"
   },
   "dependencies": {
-    "@cloudinary-util/url-loader": "^3.20.0",
+    "@cloudinary-util/url-loader": "^3.22.0",
     "@cloudinary-util/util": "^2.3.0"
   },
   "devDependencies": {
