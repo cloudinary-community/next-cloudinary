@@ -139,11 +139,11 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
       /* 
       Parse the value passed to 'autoplay' or 'autoPlay';
       if its a boolean or a boolean passed as string ("true") set it directly to browser standard prop autoplay else fallback to default; 
-      if its a string and not a boolean passed as string ("true") set it to cloudinary video player autoplayMode prop else fallback to default;
+      if its a string and not a boolean passed as string ("true") set it to cloudinary video player autoplayMode prop else fallback to undefined;
       */
       const autoplayFallback = autoplay || autoPlay ;
       let autoPlayValue: boolean | 'true' | 'false' = false;
-      let autoplayModeValue: string = 'never';
+      let autoplayModeValue: string | undefined = undefined;
 
       if ( autoPlay && process.env.NODE_ENV === 'development' ) {
         console.warn('Prop autoPlay will be removed in future versions, please use autoplay (lowercase "p")')
@@ -156,6 +156,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
       if (typeof autoplayFallback === 'string' && autoplayFallback !== 'true' && autoplayFallback !== 'false') {
         autoplayModeValue = autoplayFallback;
       }
+
 
       let playerOptions: CloudinaryVideoPlayerOptions = {
         autoplayMode: autoplayModeValue,
