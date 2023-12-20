@@ -1,3 +1,10 @@
+# [5.14.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.13.0...v5.14.0) (2023-12-20)
+
+
+### Features
+
+* respect browser standard autoplay props ([#319](https://github.com/colbyfayock/next-cloudinary/issues/319)) ([#350](https://github.com/colbyfayock/next-cloudinary/issues/350)) ([614dd81](https://github.com/colbyfayock/next-cloudinary/commit/614dd816553c07722492ac1ec0e3b1de462fd6da))
+
 # [5.13.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.12.0...v5.13.0) (2023-12-12)
 
 
