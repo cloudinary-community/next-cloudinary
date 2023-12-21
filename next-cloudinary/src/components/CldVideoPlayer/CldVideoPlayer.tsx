@@ -11,7 +11,7 @@ import {checkForCloudName} from "../../lib/cloudinary";
 
 let playerInstances: string[] = [];
 
-const PLAYER_VERSION = '1.10.1';
+const PLAYER_VERSION = '1.10.4';
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
@@ -24,6 +24,8 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     fontFace,
     height,
     id,
+    language,
+    languages,
     logo = true,
     loop = false,
     muted = false,
@@ -164,6 +166,8 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
         controls,
         fontFace: fontFace || '',
+        language,
+        languages,
         loop,
         muted,
         publicId,
