@@ -1,3 +1,16 @@
+# [5.13.0-beta.1](https://github.com/colbyfayock/next-cloudinary/compare/v5.12.0...v5.13.0-beta.1) (2023-12-21)
+
+
+### Bug Fixes
+
+* adding CSS export for video player ([#381](https://github.com/colbyfayock/next-cloudinary/issues/381)) ([7d97a6a](https://github.com/colbyfayock/next-cloudinary/commit/7d97a6a81fee1ee5751d245c68f9a6e59c98192f))
+
+
+### Features
+
+* adding cjs to root of project for node10 ([#374](https://github.com/colbyfayock/next-cloudinary/issues/374)) ([7bdba72](https://github.com/colbyfayock/next-cloudinary/commit/7bdba728d539f3e8805d73305afb45c0429dd4ae))
+* updating import, forcing feat ([1f55d36](https://github.com/colbyfayock/next-cloudinary/commit/1f55d36b0abdc6a94e65fc3a642fac43b7f35564))
+
 # [5.12.0-beta.2](https://github.com/colbyfayock/next-cloudinary/compare/v5.12.0-beta.1...v5.12.0-beta.2) (2023-12-12)
 
 ### Features
