@@ -1,3 +1,10 @@
+# [5.15.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.14.1...v5.15.0) (2023-12-21)
+
+
+### Features
+
+* CldVideoPlayer Localization ([#385](https://github.com/colbyfayock/next-cloudinary/issues/385)) ([3845399](https://github.com/colbyfayock/next-cloudinary/commit/3845399bdcecea8b7703a51fb11e9b6586fa65c1)), closes [#384](https://github.com/colbyfayock/next-cloudinary/issues/384)
+
 ## [5.14.1](https://github.com/colbyfayock/next-cloudinary/compare/v5.14.0...v5.14.1) (2023-12-21)
 
 
