@@ -1383,6 +1383,13 @@ underlays={[{
   ]}
   data={[
     {
+      prop: 'assetType',
+      type: 'string',
+      default: () => (<code>image</code>),
+      example: () => (<code>video</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/image_transformations#transformation_url_structure">More Info</a>)
+    },
+    {
       prop: 'config',
       type: 'object',
       default: '-',
@@ -1426,6 +1433,23 @@ underlays={[{
     },
   ]}
 />
+
+#### `assetType`
+
+Configures the asset type for the delivered resource.
+
+This defaults to an image for the CldImage component.
+
+**Examples**
+
+Create an image thumbnail from a video asset:
+
+```jsx copy
+assetType="video"
+```
+
+[Learn more about Delivery Types](https://cloudinary.com/documentation/image_transformations#delivery_types) on the Cloudinary docs.
+
 
 #### `config`
 

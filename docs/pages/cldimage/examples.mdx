@@ -990,6 +990,40 @@ Text overlays allow you to place text on top of an image.
   ```
 </CodeBlock>
 
+## Misc
+
+### Video Thumbnail
+
+`assetType`: Specifies the type of asset to be delivered.
+
+This is handy when wanting to create an image thumbnail from a video, where the asset type would be "video", yet delivering an image.
+
+<HeaderImage>
+  <CldImage
+    assetType="video"
+    width="1920"
+    height="1080"
+    src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+    sizes="100vw"
+    alt=""
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    assetType="video"
+    width="1920"
+    height="1080"
+    src="<Your Video Public ID>"
+    sizes="100vw"
+    alt=""
+  />
+  ```
+</CodeBlock>
+
 ## More Examples
 
 Find more examples on [Social Card Templates](/templates/social-media-cards).
