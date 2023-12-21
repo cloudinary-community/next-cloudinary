@@ -1,3 +1,10 @@
+# [5.16.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.15.0...v5.16.0) (2023-12-21)
+
+
+### Features
+
+* Adds assetType as available CldImage configuration ([#378](https://github.com/colbyfayock/next-cloudinary/issues/378)) ([6f9fd6e](https://github.com/colbyfayock/next-cloudinary/commit/6f9fd6e285af861a3901a28a1e471561d7dbd379))
+
 # [5.15.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.14.1...v5.15.0) (2023-12-21)
 
 
