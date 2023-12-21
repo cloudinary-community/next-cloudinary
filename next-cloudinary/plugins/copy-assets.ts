@@ -4,7 +4,7 @@ import { createWriteStream } from 'fs';
 import { mkdirp } from 'mkdirp';
 import https from 'https';
 
-const PLAYER_VERSION = '1.10.1';
+const PLAYER_VERSION = '1.10.4';
 
 const assets = [
   {

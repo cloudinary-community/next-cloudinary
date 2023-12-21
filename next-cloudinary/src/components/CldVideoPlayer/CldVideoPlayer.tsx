@@ -11,7 +11,7 @@ import {checkForCloudName} from "../../lib/cloudinary";
 
 let playerInstances: string[] = [];
 
-const PLAYER_VERSION = '1.10.1';
+const PLAYER_VERSION = '1.10.4';
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
