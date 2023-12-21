@@ -1,3 +1,10 @@
+## [5.14.1](https://github.com/colbyfayock/next-cloudinary/compare/v5.14.0...v5.14.1) (2023-12-21)
+
+
+### Bug Fixes
+
+* Fixes cld-video-player.css import error ([#383](https://github.com/colbyfayock/next-cloudinary/issues/383)) ([d8f016d](https://github.com/colbyfayock/next-cloudinary/commit/d8f016dbcf30f749a9c5a7faf8773172416c114f)), closes [#382](https://github.com/colbyfayock/next-cloudinary/issues/382)
+
 # [5.14.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.13.0...v5.14.0) (2023-12-20)
 
 
