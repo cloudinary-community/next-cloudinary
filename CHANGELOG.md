@@ -1,3 +1,10 @@
+# [5.17.0-beta.3](https://github.com/colbyfayock/next-cloudinary/compare/v5.17.0-beta.2...v5.17.0-beta.3) (2023-12-22)
+
+
+### Features
+
+* trying to import with .js ([#391](https://github.com/colbyfayock/next-cloudinary/issues/391)) ([e22ec79](https://github.com/colbyfayock/next-cloudinary/commit/e22ec7900ee6e3be5d166be028ec9d3712f1cf95))
+
 # [5.17.0-beta.2](https://github.com/colbyfayock/next-cloudinary/compare/v5.17.0-beta.1...v5.17.0-beta.2) (2023-12-22)
 
 
