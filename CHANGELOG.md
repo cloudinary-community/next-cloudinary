@@ -1,3 +1,10 @@
+# [5.17.0-beta.2](https://github.com/colbyfayock/next-cloudinary/compare/v5.17.0-beta.1...v5.17.0-beta.2) (2023-12-22)
+
+
+### Features
+
+* updating next image module to use default import trick ([#390](https://github.com/colbyfayock/next-cloudinary/issues/390)) ([8f9ca0c](https://github.com/colbyfayock/next-cloudinary/commit/8f9ca0ca10846c351b8ea2b773cc983812fc80b5))
+
 # [5.17.0-beta.1](https://github.com/colbyfayock/next-cloudinary/compare/v5.16.0...v5.17.0-beta.1) (2023-12-22)
 
 
