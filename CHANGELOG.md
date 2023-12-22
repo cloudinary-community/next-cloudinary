@@ -1,3 +1,10 @@
+# [5.17.0-beta.1](https://github.com/colbyfayock/next-cloudinary/compare/v5.16.0...v5.17.0-beta.1) (2023-12-22)
+
+
+### Features
+
+* Updates next/image import to dist path ([#388](https://github.com/colbyfayock/next-cloudinary/issues/388)) ([59ad1ff](https://github.com/colbyfayock/next-cloudinary/commit/59ad1ffc90e457b70a4dd0fcd278371dc0f9263d)), closes [/github.com/vercel/next.js/issues/54777#issuecomment-1808505837](https://github.com//github.com/vercel/next.js/issues/54777/issues/issuecomment-1808505837)
+
 # [5.16.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.15.0...v5.16.0) (2023-12-21)
 
 
