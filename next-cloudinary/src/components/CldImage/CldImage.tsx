@@ -1,5 +1,6 @@
 import React, { useState, useCallback, forwardRef, SyntheticEvent } from 'react';
-import Image, { ImageProps } from 'next/image';
+import { Image } from 'next/dist/client/image-component';
+import { ImageProps } from 'next/image';
 import { getTransformations } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
 import type { ImageOptions, ConfigOptions } from '@cloudinary-util/url-loader';
