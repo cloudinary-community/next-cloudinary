@@ -1,3 +1,10 @@
+# [5.17.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.16.0...v5.17.0) (2024-01-02)
+
+
+### Features
+
+* Reverts Subpath Imports ([#393](https://github.com/colbyfayock/next-cloudinary/issues/393)) ([5b4a158](https://github.com/colbyfayock/next-cloudinary/commit/5b4a158832a26f5a0df0ee21ba8cd016b3f20475)), closes [#363](https://github.com/colbyfayock/next-cloudinary/issues/363) [#387](https://github.com/colbyfayock/next-cloudinary/issues/387)
+
 # [5.16.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.15.0...v5.16.0) (2023-12-21)
 
 
