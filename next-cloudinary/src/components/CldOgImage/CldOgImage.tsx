@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import Head from 'next/dist/shared/lib/head.js';
 import type { ImageOptions } from '@cloudinary-util/url-loader';
 
 import { CldImageProps } from '../CldImage/CldImage';
