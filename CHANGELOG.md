@@ -1,3 +1,11 @@
+# [5.17.0-beta.4](https://github.com/colbyfayock/next-cloudinary/compare/v5.17.0-beta.3...v5.17.0-beta.4) (2024-01-02)
+
+
+### Features
+
+* removing video player from demo temporarily ([3118364](https://github.com/colbyfayock/next-cloudinary/commit/3118364782b00509e602543e1b33ba38332adb7a))
+* updating imports for head and script ([#392](https://github.com/colbyfayock/next-cloudinary/issues/392)) ([428fdf8](https://github.com/colbyfayock/next-cloudinary/commit/428fdf894679bf73a47af750f4d1f6659223599a))
+
 # [5.17.0-beta.3](https://github.com/colbyfayock/next-cloudinary/compare/v5.17.0-beta.2...v5.17.0-beta.3) (2023-12-22)
 
 
