@@ -1,6 +1,6 @@
 "use client";
 
-import { CldImage, CldUploadWidget, CldUploadButton, CldVideoPlayer } from '../../../';
+import { CldImage, CldUploadWidget, CldUploadButton } from '../../../dist/index.mjs';
 
 import '../../../dist/cld-video-player.css';
 
@@ -40,12 +40,12 @@ export default function Home() {
         marginBottom: '2em'
       }}>
         <h2>CldVideoPlayer</h2>
-        <CldVideoPlayer
+        {/* <CldVideoPlayer
           id="test"
           width="1620"
           height="1080"
           src={`videos/mountain-stars`}
-        />
+        /> */}
       </div>
     </>
   )
