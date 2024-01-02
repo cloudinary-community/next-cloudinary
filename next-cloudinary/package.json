@@ -6,18 +6,6 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./helpers": {
-      "import": "./dist/helpers.mjs",
-      "require": "./dist/helpers.js"
-    },
-    "./dist/cld-video-player.css": "./dist/cld-video-player.css",
-    "./package.json": "./package.json"
-  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
