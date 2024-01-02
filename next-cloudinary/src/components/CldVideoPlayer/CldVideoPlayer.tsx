@@ -1,6 +1,6 @@
 import React, {useRef, MutableRefObject, useEffect} from 'react';
-import Script from 'next/script';
-import Head from 'next/head';
+import Script from 'next/dist/client/script.js';
+import Head from 'next/dist/shared/lib/head.js';
 import { parseUrl } from '@cloudinary-util/util';
 
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
