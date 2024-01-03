@@ -57,9 +57,9 @@ From a responsive standpoint, we're stating that we want full width images on an
 
 The challenge here is when cropping the image, we're cropping it to 600px, which is smaller than some of the sizes we want to responsively serve. We don't want to responsively change that cropped size, otherwise we would change the cropping results due to the crop attempting to grab different portions of the image depending on the size.
 
-To avoid attempting to load upscaled images, resulting in blurry or grainy images as well as more bandwidth used on a device, any responsive size that is greater than the set width will not be generated and instead, we'll deliver an image at the size specifiy (in this example, 600x600).
+To avoid attempting to load upscaled images, resulting in blurry or grainy images as well as more bandwidth used on a device, any responsive size that is greater than the set width will not be generated and instead, we'll deliver an image at that size specifically (in this example, 600x600).
 
-For instance, in the above, the resulting responive image in the HTML may look like:
+For instance, in the above example, the resulting responsive image in the HTML may look like:
 
 ```jsx copy
 <img
