@@ -16,25 +16,28 @@ import {
   CldUploadWidgetResults,
   CldUploadWidgetWidgetInstance,
 } from './CldUploadWidget.types';
-import { checkForCloudName } from '../../lib/cloudinary';
+import {checkForCloudName} from "../../lib/cloudinary";
 
-const WIDGET_WATCHED_EVENTS = ['success', 'display-changed'];
+const WIDGET_WATCHED_EVENTS = [
+  'success',
+  'display-changed'
+];
 
 const WIDGET_EVENTS: { [key: string]: string } = {
-  abort: 'onAbort',
+  'abort': 'onAbort',
   'batch-cancelled': 'onBatchCancelled',
   // 'close': 'onClose', // TODO: should follow other event patterns
   'display-changed': 'onDisplayChanged',
-  publicid: 'onPublicId',
+  'publicid': 'onPublicId',
   'queues-end': 'onQueuesEnd',
   'queues-start': 'onQueuesStart',
-  retry: 'onRetry',
+  'retry': 'onRetry',
   'show-completed': 'onShowCompleted',
   'source-changed': 'onSourceChanged',
-  success: 'onSuccess',
-  tags: 'onTags',
+  'success': 'onSuccess',
+  'tags': 'onTags',
   'upload-added': 'onUploadAdded',
-};
+}
 
 // TODO: update onError to follow CldUploadEventCallback pattern
 // TODO: update onClose to follow CldUploadEventCallback pattern
@@ -74,7 +77,7 @@ const CldUploadWidget = ({
   //Check if Cloud Name exists
   checkForCloudName(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
 
-  if (signed) {
+  if ( signed ) {
     uploadOptions.uploadSignature = generateSignature;
 
     if (!uploadOptions.apiKey) {
@@ -85,22 +88,22 @@ const CldUploadWidget = ({
   // Handle result states and callbacks
 
   useEffect(() => {
-    if (typeof results === 'undefined') return;
+    if ( typeof results === 'undefined' ) return;
 
     const isSuccess = results.event === 'success';
     const isClosed = results.event === 'display-changed' && results.info === 'hidden';
 
-    if (isSuccess && typeof onUpload === 'function') {
+    if ( isSuccess && typeof onUpload === 'function' ) {
       onUpload(results, widget.current);
     }
 
-    if (isClosed && typeof onClose === 'function') {
+    if ( isClosed && typeof onClose === 'function' ) {
       onClose(widget.current);
     }
-  }, [results]);
+  }, [results])
 
   useEffect(() => {
-    if (error && typeof onError === 'function') {
+    if ( error && typeof onError === 'function' ) {
       onError(error, widget.current);
     }
   }, [error]);
@@ -112,7 +115,7 @@ const CldUploadWidget = ({
 
   function handleOnLoad() {
     setIsScriptLoading(false);
-    if (!cloudinary.current) {
+    if ( !cloudinary.current ) {
       cloudinary.current = (window as any).cloudinary;
     }
 
@@ -120,7 +123,7 @@ const CldUploadWidget = ({
     // to trigger widget creation. Optional.
 
     triggerOnIdle(() => {
-      if (!widget.current) {
+      if ( !widget.current ) {
         widget.current = createWidget();
       }
     });
@@ -130,8 +133,8 @@ const CldUploadWidget = ({
     return () => {
       widget.current?.destroy();
       widget.current = undefined;
-    };
-  }, []);
+    }
+  }, [])
 
   /**
    * generateSignature
@@ -139,8 +142,8 @@ const CldUploadWidget = ({
    */
 
   function generateSignature(callback: Function, paramsToSign: object) {
-    if (typeof signatureEndpoint === 'undefined') {
-      throw Error('Failed to generate signature: signatureEndpoint undefined.');
+    if ( typeof signatureEndpoint === 'undefined' ) {
+      throw Error('Failed to generate signature: signatureEndpoint undefined.')
     }
     fetch(signatureEndpoint, {
       method: 'POST',
@@ -160,17 +163,19 @@ const CldUploadWidget = ({
    * https://cloudinary.com/documentation/upload_widget_reference#instance_methods
    */
 
-  function invokeInstanceMethod<TMethod extends keyof CldUploadWidgetInstanceMethods>(
+  function invokeInstanceMethod<
+    TMethod extends keyof CldUploadWidgetInstanceMethods
+  >(
     method: TMethod,
-    options: Parameters<CldUploadWidgetInstanceMethods[TMethod]> = [] as Parameters<
+    options: Parameters<
       CldUploadWidgetInstanceMethods[TMethod]
-    >
+    > = [] as Parameters<CldUploadWidgetInstanceMethods[TMethod]>
   ) {
     if (!widget.current) {
       widget.current = createWidget();
     }
 
-    if (typeof widget?.current[method] === 'function') {
+    if (typeof widget?.current[method] === "function") {
       return widget.current[method](...options);
     }
   }
@@ -206,7 +211,7 @@ const CldUploadWidget = ({
   function open(widgetSource?: CldUploadWidgetOpenWidgetSources, options?: CldUploadWidgetOpenInstanceMethodOptions) {
     invokeInstanceMethod('open', [widgetSource, options]);
 
-    if (typeof onOpen === 'function') {
+    if ( typeof onOpen === 'function' ) {
       onOpen(widget.current);
     }
   }
@@ -230,7 +235,7 @@ const CldUploadWidget = ({
     open,
     show,
     update,
-  };
+  }
 
   /**
    * createWidget
@@ -238,46 +243,38 @@ const CldUploadWidget = ({
    */
 
   function createWidget() {
-    return cloudinary.current?.createUploadWidget(
-      uploadOptions,
-      (uploadError: CldUploadWidgetError, uploadResult: CldUploadWidgetResults) => {
-        if (uploadError && uploadError !== null) {
-          setError(uploadError);
+    return cloudinary.current?.createUploadWidget(uploadOptions, (uploadError: CldUploadWidgetError, uploadResult: CldUploadWidgetResults) => {
+      if ( uploadError && uploadError !== null ) {
+        setError(uploadError);
+      }
+
+      if ( typeof uploadResult?.event === 'string' ) {
+        if ( WIDGET_WATCHED_EVENTS.includes(uploadResult?.event) ) {
+          setResults(uploadResult);
         }
 
-        if (typeof uploadResult?.event === 'string') {
-          if (WIDGET_WATCHED_EVENTS.includes(uploadResult?.event)) {
-            setResults(uploadResult);
-          }
+        const widgetEvent = WIDGET_EVENTS[uploadResult.event] as keyof typeof props;
 
-          const widgetEvent = WIDGET_EVENTS[uploadResult.event] as keyof typeof props;
-
-          if (
-            typeof widgetEvent === 'string' &&
-            typeof props[widgetEvent] === 'function' &&
-            typeof props[widgetEvent]
-          ) {
-            const callback = props[widgetEvent] as CldUploadEventCallback;
-            callback(uploadResult, {
-              widget: widget.current,
-              ...instanceMethods,
-            });
-          }
+        if ( typeof widgetEvent === 'string' && typeof props[widgetEvent] === 'function' && typeof props[widgetEvent] ) {
+          const callback = props[widgetEvent] as CldUploadEventCallback;
+          callback(uploadResult, {
+            widget: widget.current,
+            ...instanceMethods
+          });
         }
       }
-    );
+    });
   }
 
   return (
     <>
-      {typeof children === 'function' &&
-        children({
-          cloudinary: cloudinary.current,
-          widget: widget.current,
-          results,
-          error,
-          isLoading: isScriptLoading,
-          ...instanceMethods,
+      {typeof children === 'function' && children({
+        cloudinary: cloudinary.current,
+        widget: widget.current,
+        results,
+        error,
+        isLoading: isScriptLoading,
+        ...instanceMethods,
         })}
       <Script
         id={`cloudinary-uploadwidget-${Math.floor(Math.random() * 100)}`}
