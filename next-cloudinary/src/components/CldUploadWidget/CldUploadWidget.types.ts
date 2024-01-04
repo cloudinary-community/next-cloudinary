@@ -7,7 +7,7 @@ type CustomURL = `https://${string}.${string}`;
 
 export interface CldUploadWidgetResults {
   event?: string;
-  info?: string | object;
+  info?: string | CldUploadWidgetInfo;
 }
 
 export interface CldUploadWidgetInfo {
