@@ -10,17 +10,17 @@ export interface CldUploadWidgetResults {
   info?: string | object;
 }
 
-export type CldUploadWidgetDetsroyInstanceMethodOptions = {
+export type CldUploadWidgetDestroyInstanceMethodOptions = {
   removeThumbnails: boolean;
-}
+};
 
 export type CldUploadWidgetCloseInstanceMethodOptions = {
   quiet: boolean;
-}
+};
 
 export type CldUploadWidgetOpenInstanceMethodOptions = {
   files: CustomURL[];
-}
+};
 
 export type CldUploadWidgetOpenWidgetSources =
   | 'local'
@@ -34,20 +34,20 @@ export type CldUploadWidgetOpenWidgetSources =
   | 'shutterstock'
   | 'getty'
   | 'istock'
-  | 'unsplash' 
+  | 'unsplash'
   | null;
 
 type CldUploadWidgetUpdateInstanceMethodOptions = Omit<
   CldUploadWidgetPropsOptions,
-  "secure" | "uploadSignature" | "getTags" | "preBatch" | "inlineContainer" | "fieldName"
+  'secure' | 'uploadSignature' | 'getTags' | 'preBatch' | 'inlineContainer' | 'fieldName'
 > & {
   cloudName: string;
   uploadPreset: string;
-}
+};
 
 export interface CldUploadWidgetInstanceMethods {
   close: (options?: CldUploadWidgetCloseInstanceMethodOptions) => void;
-  destroy: (options?: CldUploadWidgetDetsroyInstanceMethodOptions) => Promise<void>;
+  destroy: (options?: CldUploadWidgetDestroyInstanceMethodOptions) => Promise<void>;
   hide: () => void;
   isDestroyed: () => boolean;
   isMinimized: () => boolean;
@@ -58,10 +58,13 @@ export interface CldUploadWidgetInstanceMethods {
   update: (options: CldUploadWidgetUpdateInstanceMethodOptions) => void;
 }
 
-export type CldUploadWidgetError = {
-  status: string;
-  statusText: string;
-} | string | null;
+export type CldUploadWidgetError =
+  | {
+      status: string;
+      statusText: string;
+    }
+  | string
+  | null;
 
 export interface CldUploadWidgetProps {
   children?: ({ cloudinary, widget, open, results, error }: CldUploadWidgetPropsChildren) => JSX.Element;
@@ -104,23 +107,23 @@ export interface CldUploadWidgetPropsOptions {
   encryption?: {
     key: string;
     iv: string;
-  }
+  };
   defaultSource?: string;
   maxFiles?: number;
   multiple?: boolean;
   sources?: Array<
-    "camera"
-    | "dropbox"
-    | "facebook"
-    | "gettyimages"
-    | "google_drive"
-    | "image_search"
-    | "instagram"
-    | "istock"
-    | "local"
-    | "shutterstock"
-    | "unsplash"
-    | "url"
+    | 'camera'
+    | 'dropbox'
+    | 'facebook'
+    | 'gettyimages'
+    | 'google_drive'
+    | 'image_search'
+    | 'instagram'
+    | 'istock'
+    | 'local'
+    | 'shutterstock'
+    | 'unsplash'
+    | 'url'
   >;
 
   // Cropping
@@ -202,7 +205,10 @@ export interface CldUploadWidgetPropsOptions {
 }
 
 export type CldUploadEventCallback = (results: CldUploadWidgetResults, widget: CldUploadEventCallbackWidget) => void;
-export type CldUploadEventCallbackNoOptions = (results: CldUploadWidgetResults, widget: CldUploadWidgetWidgetInstance) => void;
+export type CldUploadEventCallbackNoOptions = (
+  results: CldUploadWidgetResults,
+  widget: CldUploadWidgetWidgetInstance
+) => void;
 export type CldUploadEventCallbackWidgetOnly = (widget: CldUploadWidgetWidgetInstance) => void;
 export type CldUploadEventCallbackError = (error: CldUploadWidgetError, widget: CldUploadWidgetWidgetInstance) => void;
 
