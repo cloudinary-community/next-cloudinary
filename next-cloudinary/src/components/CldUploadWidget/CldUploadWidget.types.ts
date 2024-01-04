@@ -231,8 +231,8 @@ export interface CldUploadWidgetPropsOptions {
   showPoweredBy?: boolean;
   showUploadMoreButton?: boolean;
   singleUploadAutoClose?: boolean;
-  detection: string;
-  on_success: string;
+  detection?: string;
+  on_success?: string;
 }
 
 export type CldUploadEventCallback = (results: CldUploadWidgetResults, widget: CldUploadEventCallbackWidget) => void;
