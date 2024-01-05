@@ -227,6 +227,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "RichardBray",
+      "name": "Richard Oliver Bray",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1377253?v=4",
+      "profile": "https://robray.dev/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
