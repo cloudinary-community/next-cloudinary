@@ -1,3 +1,10 @@
+# [5.18.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.17.0...v5.18.0) (2024-01-05)
+
+
+### Features
+
+* Add Types for CldUploadWidget options.detection and results.info ([#396](https://github.com/colbyfayock/next-cloudinary/issues/396)) ([079911b](https://github.com/colbyfayock/next-cloudinary/commit/079911b22ddfe10abdef7704c47715300c99eb0c)), closes [#397](https://github.com/colbyfayock/next-cloudinary/issues/397)
+
 # [5.17.0](https://github.com/colbyfayock/next-cloudinary/compare/v5.16.0...v5.17.0) (2024-01-02)
 
 
