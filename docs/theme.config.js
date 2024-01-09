@@ -2,9 +2,9 @@ import { useRouter } from 'next/router';
 
 export default {
   project: {
-    link: 'https://github.com/colbyfayock/next-cloudinary'
+    link: 'https://github.com/cloudinary-community/next-cloudinary'
   },
-  docsRepositoryBase: 'https://github.com/colbyfayock/next-cloudinary/tree/main/docs',
+  docsRepositoryBase: 'https://github.com/cloudinary-community/next-cloudinary/tree/main/docs',
   useNextSeoProps() {
     const { route } = useRouter()
     if (route !== '/') {
