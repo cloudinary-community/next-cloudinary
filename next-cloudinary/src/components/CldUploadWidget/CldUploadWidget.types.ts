@@ -7,10 +7,42 @@ type CustomURL = `https://${string}.${string}`;
 
 export interface CldUploadWidgetResults {
   event?: string;
-  info?: string | object;
+  info?: string | CldUploadWidgetInfo;
 }
 
-export type CldUploadWidgetDetsroyInstanceMethodOptions = {
+export interface CldUploadWidgetInfo {
+  access_mode: 'public' | 'authenticated';
+  api_key: string;
+  asset_id: string;
+  batchId: string;
+  bytes: number;
+  context: Record<string, Record<string, string>>;
+  created_at: string;
+  etag: string;
+  folder: string;
+  format: string;
+  height: number;
+  hook_execution: Record<string, unknown>;
+  id: string;
+  info: Record<string, unknown>;
+  original_filename: string;
+  pages: number;
+  path: string;
+  placeholder: boolean;
+  public_id: string;
+  resource_type: 'image' | 'raw' | 'video' | 'auto';
+  secure_url: string;
+  signature: string;
+  tags: string[];
+  thumbnail_url: string;
+  type: 'upload' | 'private' | 'authenticated';
+  url: string;
+  version: number;
+  width: number;
+  [key: string]: unknown;
+}
+
+export type CldUploadWidgetDestroyInstanceMethodOptions = {
   removeThumbnails: boolean;
 }
 
@@ -34,7 +66,7 @@ export type CldUploadWidgetOpenWidgetSources =
   | 'shutterstock'
   | 'getty'
   | 'istock'
-  | 'unsplash' 
+  | 'unsplash'
   | null;
 
 type CldUploadWidgetUpdateInstanceMethodOptions = Omit<
@@ -47,7 +79,7 @@ type CldUploadWidgetUpdateInstanceMethodOptions = Omit<
 
 export interface CldUploadWidgetInstanceMethods {
   close: (options?: CldUploadWidgetCloseInstanceMethodOptions) => void;
-  destroy: (options?: CldUploadWidgetDetsroyInstanceMethodOptions) => Promise<void>;
+  destroy: (options?: CldUploadWidgetDestroyInstanceMethodOptions) => Promise<void>;
   hide: () => void;
   isDestroyed: () => boolean;
   isMinimized: () => boolean;
@@ -199,6 +231,8 @@ export interface CldUploadWidgetPropsOptions {
   showPoweredBy?: boolean;
   showUploadMoreButton?: boolean;
   singleUploadAutoClose?: boolean;
+  detection?: string;
+  on_success?: string;
 }
 
 export type CldUploadEventCallback = (results: CldUploadWidgetResults, widget: CldUploadEventCallbackWidget) => void;

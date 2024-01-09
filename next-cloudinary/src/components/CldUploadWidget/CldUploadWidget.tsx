@@ -7,7 +7,7 @@ import {
   CldUploadEventCallback,
   CldUploadWidgetCloseInstanceMethodOptions,
   CldUploadWidgetCloudinaryInstance,
-  CldUploadWidgetDetsroyInstanceMethodOptions,
+  CldUploadWidgetDestroyInstanceMethodOptions,
   CldUploadWidgetError,
   CldUploadWidgetInstanceMethods,
   CldUploadWidgetOpenInstanceMethodOptions,
@@ -184,14 +184,14 @@ const CldUploadWidget = ({
     invokeInstanceMethod('close', [options]);
   }
 
-  function destroy(options?: CldUploadWidgetDetsroyInstanceMethodOptions) {
+  function destroy(options?: CldUploadWidgetDestroyInstanceMethodOptions) {
     return invokeInstanceMethod('destroy', [options]);
   }
-  
+
   function hide() {
     invokeInstanceMethod('hide');
   }
-  
+
   function isDestroyed() {
     return invokeInstanceMethod('isDestroyed');
   }
@@ -199,7 +199,7 @@ const CldUploadWidget = ({
   function isMinimized() {
     return invokeInstanceMethod('isMinimized');
   }
-  
+
   function isShowing() {
     return invokeInstanceMethod('isShowing');
   }
