@@ -77,8 +77,14 @@ the App Router or Pages router.
       ```jsx copy showLineNumbers
       import { v2 as cloudinary } from "cloudinary";
 
+      cloudinary.config({
+        cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_API_SECRET,
+      });
+
       export async function POST(request: Request) {
-        const body = await req.json();
+        const body = await request.json();
         const { paramsToSign } = body;
 
         const signature = cloudinary.utils.api_sign_request(paramsToSign, process.env.CLOUDINARY_API_SECRET);
@@ -95,6 +101,12 @@ the App Router or Pages router.
     <CodeBlock>
       ```jsx copy showLineNumbers
       import { v2 as cloudinary } from "cloudinary";
+
+      cloudinary.config({
+        cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_API_SECRET,
+      });
 
       export default async function handler(req, res) {
         const body = JSON.parse(req.body) || {};
