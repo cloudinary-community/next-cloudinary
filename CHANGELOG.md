@@ -1,3 +1,11 @@
+# [6.0.0-beta.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.1...v6.0.0-beta.2) (2024-01-16)
+
+
+### Features
+
+* deprecating GetCldImageUrl and GetCldOgImageUrl types ([2e4f7e1](https://github.com/cloudinary-community/next-cloudinary/commit/2e4f7e10b22e76739cd4af7b1bc7327280324df3))
+* removing autoPlay prop (with capital p) in favor of autoplay ([393b2e1](https://github.com/cloudinary-community/next-cloudinary/commit/393b2e16387ad8cd3c6584f077964ad4373316a1))
+
 # [6.0.0-beta.1](https://github.com/cloudinary-community/next-cloudinary/compare/v5.18.0...v6.0.0-beta.1) (2024-01-16)
 
 
