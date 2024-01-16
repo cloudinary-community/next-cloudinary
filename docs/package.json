@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cloudinary-util/url-loader": "^4.0.1",
+    "@cloudinary-util/util": "^3.0.0",
     "@vercel/analytics": "^1.0.1",
     "cloudinary": "^1.37.3",
     "next": "^14.0.0",
