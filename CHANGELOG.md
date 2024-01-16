@@ -1,3 +1,15 @@
+# [6.0.0-beta.1](https://github.com/cloudinary-community/next-cloudinary/compare/v5.18.0...v6.0.0-beta.1) (2024-01-16)
+
+
+### Features
+
+* Updates URL Loader to 4.0 ([#406](https://github.com/cloudinary-community/next-cloudinary/issues/406)) ([26789ee](https://github.com/cloudinary-community/next-cloudinary/commit/26789ee512aaf782895963c2fff799577245cb81))
+
+
+### BREAKING CHANGES
+
+* Updates URL Loader to new major version
+
 # [5.18.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.17.0...v5.18.0) (2024-01-05)
 
 ### Features
