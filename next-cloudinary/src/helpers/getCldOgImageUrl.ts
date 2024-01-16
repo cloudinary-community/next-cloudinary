@@ -1,14 +1,11 @@
 import { OG_IMAGE_WIDTH, OG_IMAGE_WIDTH_RESIZE, OG_IMAGE_HEIGHT } from '../constants/sizes';
 
 import { getCldImageUrl } from './getCldImageUrl';
-import type { GetCldImageUrl, GetCldImageUrlOptions } from './getCldImageUrl';
+import type { GetCldImageUrlOptions } from './getCldImageUrl';
 
 /**
  * getCldImageUrl
  */
-
-// @deprecated GetCldOgImageUrl
-export interface GetCldOgImageUrl extends GetCldImageUrl {}
 
 export interface GetCldOgImageUrlOptions extends GetCldImageUrlOptions {};
 
