@@ -1,3 +1,10 @@
+# [5.19.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.18.0...v5.19.0) (2024-01-17)
+
+
+### Features
+
+* Export CldUploadWidgetInfo Type ([#413](https://github.com/cloudinary-community/next-cloudinary/issues/413)) ([8058c5c](https://github.com/cloudinary-community/next-cloudinary/commit/8058c5ce8e7c399cde46eff7d3628a5495ce7d7d)), closes [#412](https://github.com/cloudinary-community/next-cloudinary/issues/412)
+
 # [5.18.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.17.0...v5.18.0) (2024-01-05)
 
 ### Features
