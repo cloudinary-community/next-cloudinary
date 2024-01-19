@@ -1,3 +1,15 @@
+# [6.0.0-beta.4](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.3...v6.0.0-beta.4) (2024-01-19)
+
+
+### Features
+
+* Add Content-Type to CldUploadWidget Signature Headers ([#418](https://github.com/cloudinary-community/next-cloudinary/issues/418)) ([4f86a20](https://github.com/cloudinary-community/next-cloudinary/commit/4f86a2066732337506c8d386fdf79fa6dfd04f2f))
+
+
+### BREAKING CHANGES
+
+* CldUploadWidget signature endpoint now sets content-type as application/json
+
 # [6.0.0-beta.3](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.2...v6.0.0-beta.3) (2024-01-19)
 
 
