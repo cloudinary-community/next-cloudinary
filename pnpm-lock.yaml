@@ -73,8 +73,8 @@ importers:
   next-cloudinary:
     dependencies:
       '@cloudinary-util/types':
-        specifier: 1.0.0-beta.2
-        version: 1.0.0-beta.2
+        specifier: 1.0.0-beta.3
+        version: 1.0.0-beta.3
       '@cloudinary-util/url-loader':
         specifier: 4.2.0
         version: 4.2.0
@@ -1340,8 +1340,8 @@ packages:
     resolution: {integrity: sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==}
     dev: false
 
-  /@cloudinary-util/types@1.0.0-beta.2:
-    resolution: {integrity: sha512-zSswnj559nfb4/U3eJdizTcPt93blono/GPYyU3eWzGfr07xQl/v8rwTAmwRqYxSlP1jNMTUDiXfRlOBzMH5jw==}
+  /@cloudinary-util/types@1.0.0-beta.3:
+    resolution: {integrity: sha512-Gs+yDFjoriFL6GQxlpE6aFpgjlXy0/SPC7NBhlNai79suzblDaetYNIBeyg8JW5tJZnSy3j4Pajrt6V46l/E1g==}
     dev: false
 
   /@cloudinary-util/url-loader@4.2.0:
