@@ -1,3 +1,11 @@
+# [6.0.0-beta.3](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.2...v6.0.0-beta.3) (2024-01-19)
+
+
+### Features
+
+* Export CldUploadWidgetInfo Type ([#413](https://github.com/cloudinary-community/next-cloudinary/issues/413)) ([8058c5c](https://github.com/cloudinary-community/next-cloudinary/commit/8058c5ce8e7c399cde46eff7d3628a5495ce7d7d)), closes [#412](https://github.com/cloudinary-community/next-cloudinary/issues/412)
+* Updates URL Loader, Fixes Comma Encoding ([#415](https://github.com/cloudinary-community/next-cloudinary/issues/415)) ([25d2228](https://github.com/cloudinary-community/next-cloudinary/commit/25d2228a6f750ef32415c5b98c10b3ee7b32ad4e)), closes [#414](https://github.com/cloudinary-community/next-cloudinary/issues/414)
+
 # [6.0.0-beta.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.1...v6.0.0-beta.2) (2024-01-16)
 
 ### Features
