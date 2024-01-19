@@ -1,3 +1,10 @@
+# [6.0.0-beta.5](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.4...v6.0.0-beta.5) (2024-01-19)
+
+
+### Features
+
+* PNPM ([#419](https://github.com/cloudinary-community/next-cloudinary/issues/419)) ([d607e10](https://github.com/cloudinary-community/next-cloudinary/commit/d607e10a183d463ef6c367e1d656d06f38f88cb5)), closes [#408](https://github.com/cloudinary-community/next-cloudinary/issues/408)
+
 # [6.0.0-beta.4](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.3...v6.0.0-beta.4) (2024-01-19)
 
 
