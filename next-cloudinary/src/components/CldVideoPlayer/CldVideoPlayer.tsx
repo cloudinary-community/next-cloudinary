@@ -2,9 +2,10 @@ import React, {useRef, MutableRefObject, useEffect} from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import { parseUrl } from '@cloudinary-util/util';
+import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptionsLogo, CloudinaryVideoPlayerOptions, } from '@cloudinary-util/types';
 
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
-import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
+
 import { getCldImageUrl } from '../../helpers/getCldImageUrl';
 import { getCldVideoUrl } from '../../helpers/getCldVideoUrl';
 import {checkForCloudName} from "../../lib/cloudinary";

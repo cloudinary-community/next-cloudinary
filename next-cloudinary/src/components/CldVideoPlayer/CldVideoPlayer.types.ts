@@ -1,6 +1,11 @@
 import { MutableRefObject } from 'react';
+import {
+  CloudinaryVideoPlayer,
+  CloudinaryVideoPlayerOptionsLogo,
+  CloudinaryVideoPlayerOptions,
+  CloudinaryVideoPlayerOptionsColors
+} from '@cloudinary-util/types';
 
-import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsColors, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
 import { GetCldImageUrlOptions } from '../../helpers/getCldImageUrl';
 import { GetCldVideoUrlOptions } from '../../helpers/getCldVideoUrl';
 
