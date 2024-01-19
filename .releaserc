@@ -42,7 +42,8 @@
     [
       "@colbyfayock/semantic-release-pnpm",
       {
-        "pkgRoot": "next-cloudinary"
+        "pkgRoot": "next-cloudinary",
+        "publishBranch": "main|beta"
       }
     ],
     [
