@@ -8,9 +8,9 @@ import type { GetCldImageUrl, GetCldImageUrlOptions } from './getCldImageUrl';
  */
 
 // @deprecated GetCldOgImageUrl
-export interface GetCldOgImageUrl extends GetCldImageUrl {}
+export type GetCldOgImageUrl = GetCldImageUrl;
 
-export interface GetCldOgImageUrlOptions extends GetCldImageUrlOptions {};
+export type GetCldOgImageUrlOptions = GetCldImageUrlOptions;
 
 export function getCldOgImageUrl(options: GetCldOgImageUrlOptions) {
   return getCldImageUrl({
