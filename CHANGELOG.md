@@ -1,3 +1,10 @@
+# [6.0.0-beta.6](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.5...v6.0.0-beta.6) (2024-01-19)
+
+
+### Bug Fixes
+
+* Publish Branch ([#420](https://github.com/cloudinary-community/next-cloudinary/issues/420)) ([ababfb7](https://github.com/cloudinary-community/next-cloudinary/commit/ababfb794716f419375ab4f8ceda616a6c2217f4))
+
 # [6.0.0-beta.5](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.4...v6.0.0-beta.5) (2024-01-19)
 
 
