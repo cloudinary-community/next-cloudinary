@@ -981,15 +981,10 @@
     zod "^3.22.4"
     zod-to-json-schema "^3.22.3"
 
-"@cloudinary-util/util@3.0.0":
+"@cloudinary-util/util@3.0.0", "@cloudinary-util/util@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-3.0.0.tgz#4096e0190108b2680c0027bf9afaeca039cea6cc"
   integrity sha512-o6cJsN49OIelLcSkqUf4WzgefpePDFsAaeQfJbpcKhVdtvmWv71K0oZwMXuX62IY1OolqIg0etMiHtWZPhvPNA==
-
-"@cloudinary-util/util@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-2.3.0.tgz#8a2a7ad3d3f089c2fff08f53eaddd50e946048f1"
-  integrity sha512-0Gojd+ZRQjJQmlBEAa8Ua94amvx7uWHoUzVUEGi1S8bgF1wPcMqG07cSUGQfRwHsFQ/9XOesx76Df622E+CevA==
 
 "@cloudinary/transformation-builder-sdk@^1.10.0":
   version "1.10.1"
