@@ -11,14 +11,23 @@ jobs:
         node: [ '18', '20' ]
     steps:
       - uses: actions/checkout@v2
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-      - run: yarn install --frozen-lockfile
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
         working-directory: ./next-cloudinary
-      - run: yarn test
+
+      - run: pnpm test
         working-directory: ./next-cloudinary
-      - run: yarn test:app
+
+      - run: pnpm test:app
         working-directory: ./next-cloudinary
 
   release:
@@ -30,15 +39,23 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-        # Semantic Release is incompatible with node 16 - so add these only on release
-      - run: yarn add @semantic-release/changelog @semantic-release/git semantic-release -W
-      - name: Release
+          cache: 'pnpm'
+          # https://github.com/pnpm/pnpm/issues/3141
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: pnpm install --frozen-lockfile
+      
+      - run: pnpm release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        

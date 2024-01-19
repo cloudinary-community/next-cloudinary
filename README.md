@@ -39,9 +39,8 @@ High-performance image delivery and uploading at scale in Next.js powered by Clo
 ### Installation
 
 * Install `next-cloudinary` with:
+
 ```
-yarn add next-cloudinary
-# or
 npm install next-cloudinary
 ```
 
@@ -91,12 +90,12 @@ Please read [CONTRIBUTING.md](https://github.com/cloudinary-community/next-cloud
 
 #### Installation
 
-This project is using [yarn](https://yarnpkg.com/) as a way to manage dependencies and workspaces.
+This project is using [pnpm](https://pnpm.io/) as a way to manage dependencies and workspaces.
 
 With the project cloned, install the dependencies from the root of the project with:
 
 ```
-yarn install
+pnpm install
 ```
 
 #### Configuration
@@ -128,7 +127,7 @@ CLOUDINARY_API_SECRET="<Your API Secret>"
 Then run the upload script with:
 
 ```
-yarn upload
+pnpm upload
 ```
 
 By default, the images inside of `scripts/images.json` will be uploaded to the "images" directory inside of your Cloudinary account. To change the location, add the `CLOUDINARY_IMAGES_DIRECTORY` environment variable with your preferred directory:
@@ -142,7 +141,7 @@ CLOUDINARY_IMAGES_DIRECTORY="<Your Directory>"
 Once installed and configured, open two terminal tabs, navigating one to `next-cloudinary` and one to `docs`, running the following command in each:
 
 ```
-yarn dev
+pnpm dev
 ```
 
 The project will now be available at <https://localhost:3000> or the configured local port.
@@ -154,7 +153,7 @@ All tests are located inside of `next-cloudinary/tests` with a directory structu
 While inside `next-cloudinary`, run tests with:
 
 ```
-yarn test
+pnpm test
 ```
 
 ## Contributors
