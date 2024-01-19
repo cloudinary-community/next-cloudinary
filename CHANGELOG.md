@@ -1,3 +1,10 @@
+# [5.20.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.19.0...v5.20.0) (2024-01-19)
+
+
+### Features
+
+* Updates URL Loader, Fixes Comma Encoding ([#415](https://github.com/cloudinary-community/next-cloudinary/issues/415)) ([25d2228](https://github.com/cloudinary-community/next-cloudinary/commit/25d2228a6f750ef32415c5b98c10b3ee7b32ad4e)), closes [#414](https://github.com/cloudinary-community/next-cloudinary/issues/414)
+
 # [5.19.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.18.0...v5.19.0) (2024-01-17)
 
 
