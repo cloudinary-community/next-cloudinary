@@ -26,8 +26,9 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
     'assetType',
   ];
 
-  transformationPlugins.forEach(({ props = [] }) => {
-    props.forEach(prop => {
+  transformationPlugins.forEach(({ props }) => {
+    const pluginProps = Object.keys(props);
+    pluginProps.forEach(prop => {
       if ( CLD_OPTIONS.includes(prop) ) {
         throw new Error(`Option ${prop} already exists!`);
       }

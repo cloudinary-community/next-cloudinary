@@ -7,7 +7,7 @@ import type { GetCldImageUrlOptions } from './getCldImageUrl';
  * getCldImageUrl
  */
 
-export interface GetCldOgImageUrlOptions extends GetCldImageUrlOptions {};
+export type GetCldOgImageUrlOptions = GetCldImageUrlOptions;
 
 export function getCldOgImageUrl(options: GetCldOgImageUrlOptions) {
   return getCldImageUrl({

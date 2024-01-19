@@ -8,9 +8,9 @@ import {checkForCloudName} from "../lib/cloudinary";
  * getCldImageUrl
  */
 
-export interface GetCldImageUrlOptions extends ImageOptions {};
-export interface GetCldImageUrlConfig extends ConfigOptions {};
-export interface GetCldImageUrlAnalytics extends AnalyticsOptions {};
+export type GetCldImageUrlOptions = ImageOptions;
+export type GetCldImageUrlConfig = ConfigOptions;
+export type GetCldImageUrlAnalytics = AnalyticsOptions;
 
 export function getCldImageUrl(options: GetCldImageUrlOptions, config?: GetCldImageUrlConfig, analytics?: GetCldImageUrlAnalytics) {
   const cloudName = config?.cloud?.cloudName ?? process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;

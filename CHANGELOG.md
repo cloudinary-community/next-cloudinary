@@ -1,6 +1,5 @@
 # [6.0.0-beta.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.1...v6.0.0-beta.2) (2024-01-16)
 
-
 ### Features
 
 * deprecating GetCldImageUrl and GetCldOgImageUrl types ([2e4f7e1](https://github.com/cloudinary-community/next-cloudinary/commit/2e4f7e10b22e76739cd4af7b1bc7327280324df3))
@@ -8,15 +7,21 @@
 
 # [6.0.0-beta.1](https://github.com/cloudinary-community/next-cloudinary/compare/v5.18.0...v6.0.0-beta.1) (2024-01-16)
 
-
-### Features
-
 * Updates URL Loader to 4.0 ([#406](https://github.com/cloudinary-community/next-cloudinary/issues/406)) ([26789ee](https://github.com/cloudinary-community/next-cloudinary/commit/26789ee512aaf782895963c2fff799577245cb81))
-
 
 ### BREAKING CHANGES
 
 * Updates URL Loader to new major version
+
+# [5.20.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.19.0...v5.20.0) (2024-01-19)
+
+* Updates URL Loader, Fixes Comma Encoding ([#415](https://github.com/cloudinary-community/next-cloudinary/issues/415)) ([25d2228](https://github.com/cloudinary-community/next-cloudinary/commit/25d2228a6f750ef32415c5b98c10b3ee7b32ad4e)), closes [#414](https://github.com/cloudinary-community/next-cloudinary/issues/414)
+
+# [5.19.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.18.0...v5.19.0) (2024-01-17)
+
+### Features
+
+* Export CldUploadWidgetInfo Type ([#413](https://github.com/cloudinary-community/next-cloudinary/issues/413)) ([8058c5c](https://github.com/cloudinary-community/next-cloudinary/commit/8058c5ce8e7c399cde46eff7d3628a5495ce7d7d)), closes [#412](https://github.com/cloudinary-community/next-cloudinary/issues/412)
 
 # [5.18.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.17.0...v5.18.0) (2024-01-05)
 
