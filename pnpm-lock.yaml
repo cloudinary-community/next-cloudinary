@@ -72,6 +72,9 @@ importers:
 
   next-cloudinary:
     dependencies:
+      '@cloudinary-util/types':
+        specifier: 1.0.0
+        version: 1.0.0
       '@cloudinary-util/url-loader':
         specifier: 4.2.0
         version: 4.2.0
@@ -1335,6 +1338,10 @@ packages:
 
   /@braintree/sanitize-url@6.0.4:
     resolution: {integrity: sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==}
+    dev: false
+
+  /@cloudinary-util/types@1.0.0:
+    resolution: {integrity: sha512-h7rGVFjOWHhxUiN41sAQako54pLqLQAfp7pr3PdA1sui24zTubV1PTRlhg0hOpvzxFknaFbNwJ+6aj2fYIoKIQ==}
     dev: false
 
   /@cloudinary-util/url-loader@4.2.0:
@@ -6739,7 +6746,7 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       sass: 1.70.0
-      styled-jsx: 5.1.1(react@18.2.0)
+      styled-jsx: 5.1.1(@babel/core@7.23.7)(react@18.2.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.1.0
       '@next/swc-darwin-x64': 14.1.0
@@ -8250,23 +8257,6 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.23.7
-      client-only: 0.0.1
-      react: 18.2.0
-    dev: false
-
-  /styled-jsx@5.1.1(react@18.2.0):
-    resolution: {integrity: sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw==}
-    engines: {node: '>= 12.0.0'}
-    peerDependencies:
-      '@babel/core': '*'
-      babel-plugin-macros: '*'
-      react: '>= 16.8.0 || 17.x.x || ^18.0.0-0'
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      babel-plugin-macros:
-        optional: true
-    dependencies:
       client-only: 0.0.1
       react: 18.2.0
     dev: false

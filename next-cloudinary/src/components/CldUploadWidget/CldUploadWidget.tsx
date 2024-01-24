@@ -1,21 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
+import {
+  CloudinaryUploadWidgetResults,
+  CloudinaryUploadWidgetInstanceMethods,
+  CloudinaryUploadWidgetInstanceMethodCloseOptions,
+  CloudinaryUploadWidgetInstanceMethodDestroyOptions,
+  CloudinaryUploadWidgetInstanceMethodOpenOptions,
+  CloudinaryUploadWidgetSources,
+  CloudinaryUploadWidgetError
+} from '@cloudinary-util/types';
 
 import { triggerOnIdle } from '../../lib/util';
 
 import {
   CldUploadEventCallback,
-  CldUploadWidgetCloseInstanceMethodOptions,
   CldUploadWidgetCloudinaryInstance,
-  CldUploadWidgetDestroyInstanceMethodOptions,
-  CldUploadWidgetError,
-  CldUploadWidgetInstanceMethods,
-  CldUploadWidgetOpenInstanceMethodOptions,
-  CldUploadWidgetOpenWidgetSources,
   CldUploadWidgetProps,
-  CldUploadWidgetResults,
   CldUploadWidgetWidgetInstance,
 } from './CldUploadWidget.types';
+
 import {checkForCloudName} from "../../lib/cloudinary";
 
 const WIDGET_WATCHED_EVENTS = [
@@ -58,8 +61,8 @@ const CldUploadWidget = ({
 
   const signed = !!signatureEndpoint;
 
-  const [error, setError] = useState<CldUploadWidgetError | undefined>(undefined);
-  const [results, setResults] = useState<CldUploadWidgetResults | undefined>(undefined);
+  const [error, setError] = useState<CloudinaryUploadWidgetError | undefined>(undefined);
+  const [results, setResults] = useState<CloudinaryUploadWidgetResults | undefined>(undefined);
   const [isScriptLoading, setIsScriptLoading] = useState(true);
 
   // When creating a signed upload, you need to provide both your Cloudinary API Key
@@ -167,12 +170,12 @@ const CldUploadWidget = ({
    */
 
   function invokeInstanceMethod<
-    TMethod extends keyof CldUploadWidgetInstanceMethods
+    TMethod extends keyof CloudinaryUploadWidgetInstanceMethods
   >(
     method: TMethod,
     options: Parameters<
-      CldUploadWidgetInstanceMethods[TMethod]
-    > = [] as Parameters<CldUploadWidgetInstanceMethods[TMethod]>
+      CloudinaryUploadWidgetInstanceMethods[TMethod]
+    > = [] as Parameters<CloudinaryUploadWidgetInstanceMethods[TMethod]>
   ) {
     if (!widget.current) {
       widget.current = createWidget();
@@ -183,11 +186,11 @@ const CldUploadWidget = ({
     }
   }
 
-  function close(options?: CldUploadWidgetCloseInstanceMethodOptions) {
+  function close(options?: CloudinaryUploadWidgetInstanceMethodCloseOptions) {
     invokeInstanceMethod('close', [options]);
   }
 
-  function destroy(options?: CldUploadWidgetDestroyInstanceMethodOptions) {
+  function destroy(options?: CloudinaryUploadWidgetInstanceMethodDestroyOptions) {
     return invokeInstanceMethod('destroy', [options]);
   }
 
@@ -211,7 +214,7 @@ const CldUploadWidget = ({
     invokeInstanceMethod('minimize');
   }
 
-  function open(widgetSource?: CldUploadWidgetOpenWidgetSources, options?: CldUploadWidgetOpenInstanceMethodOptions) {
+  function open(widgetSource?: CloudinaryUploadWidgetSources, options?: CloudinaryUploadWidgetInstanceMethodOpenOptions) {
     invokeInstanceMethod('open', [widgetSource, options]);
 
     if ( typeof onOpen === 'function' ) {
@@ -227,7 +230,7 @@ const CldUploadWidget = ({
     invokeInstanceMethod('update');
   }
 
-  const instanceMethods: CldUploadWidgetInstanceMethods = {
+  const instanceMethods: CloudinaryUploadWidgetInstanceMethods = {
     close,
     destroy,
     hide,
@@ -246,7 +249,7 @@ const CldUploadWidget = ({
    */
 
   function createWidget() {
-    return cloudinary.current?.createUploadWidget(uploadOptions, (uploadError: CldUploadWidgetError, uploadResult: CldUploadWidgetResults) => {
+    return cloudinary.current?.createUploadWidget(uploadOptions, (uploadError: CloudinaryUploadWidgetError, uploadResult: CloudinaryUploadWidgetResults) => {
       if ( uploadError && uploadError !== null ) {
         setError(uploadError);
       }

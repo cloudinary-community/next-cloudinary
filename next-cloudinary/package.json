@@ -15,6 +15,7 @@
     "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" pnpm build && cd tests/nextjs-app && pnpm build"
   },
   "dependencies": {
+    "@cloudinary-util/types": "1.0.0",
     "@cloudinary-util/url-loader": "4.2.0",
     "@cloudinary-util/util": "^2.3.0"
   },
