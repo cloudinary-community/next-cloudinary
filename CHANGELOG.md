@@ -1,3 +1,10 @@
+# [6.0.0-beta.7](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.6...v6.0.0-beta.7) (2024-01-24)
+
+
+### Features
+
+* Manage Native Types from @cloudinary-util/types ([#421](https://github.com/cloudinary-community/next-cloudinary/issues/421)) ([fbb4608](https://github.com/cloudinary-community/next-cloudinary/commit/fbb46085a0208766245f71f4b63856d1f3826603))
+
 # [6.0.0-beta.6](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.5...v6.0.0-beta.6) (2024-01-19)
 
 
