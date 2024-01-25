@@ -12,10 +12,13 @@ export interface CldUploadWidgetProps {
   children?: ({ cloudinary, widget, open, results, error }: CldUploadWidgetPropsChildren) => JSX.Element;
   onError?: CldUploadEventCallbackError;
   onOpen?: CldUploadEventCallbackWidgetOnly;
+  /**
+   * @deprecated use onSuccess instead
+   */
   onUpload?: CldUploadEventCallbackNoOptions;
   onAbort?: CldUploadEventCallback;
   onBatchCancelled?: CldUploadEventCallback;
-  onClose?: CldUploadEventCallbackWidgetOnly;
+  onClose?: CldUploadEventCallback;
   onDisplayChanged?: CldUploadEventCallback;
   onPublicId?: CldUploadEventCallback;
   onQueuesEnd?: CldUploadEventCallback;
@@ -34,7 +37,6 @@ export interface CldUploadWidgetProps {
 export type CldUploadWidgetPropsChildren = {
   cloudinary: CldUploadWidgetCloudinaryInstance;
   widget: CldUploadWidgetWidgetInstance;
-
   error?: CloudinaryUploadWidgetError;
   isLoading?: boolean;
   results?: CloudinaryUploadWidgetResults;
@@ -43,7 +45,7 @@ export type CldUploadWidgetPropsChildren = {
 export type CldUploadEventCallback = (results: CloudinaryUploadWidgetResults, widget: CldUploadEventCallbackWidget) => void;
 export type CldUploadEventCallbackNoOptions = (results: CloudinaryUploadWidgetResults, widget: CldUploadWidgetWidgetInstance) => void;
 export type CldUploadEventCallbackWidgetOnly = (widget: CldUploadWidgetWidgetInstance) => void;
-export type CldUploadEventCallbackError = (error: CloudinaryUploadWidgetError, widget: CldUploadWidgetWidgetInstance) => void;
+export type CldUploadEventCallbackError = (error: CloudinaryUploadWidgetError, widget: CldUploadEventCallbackWidget) => void;
 
 export type CldUploadEventCallbackWidget = {
   widget: CldUploadWidgetWidgetInstance;

@@ -29,7 +29,7 @@ const WIDGET_WATCHED_EVENTS = [
 const WIDGET_EVENTS: { [key: string]: string } = {
   'abort': 'onAbort',
   'batch-cancelled': 'onBatchCancelled',
-  // 'close': 'onClose', // TODO: should follow other event patterns
+  'close': 'onClose',
   'display-changed': 'onDisplayChanged',
   'publicid': 'onPublicId',
   'queues-end': 'onQueuesEnd',
@@ -42,12 +42,8 @@ const WIDGET_EVENTS: { [key: string]: string } = {
   'upload-added': 'onUploadAdded',
 }
 
-// TODO: update onError to follow CldUploadEventCallback pattern
-// TODO: update onClose to follow CldUploadEventCallback pattern
-
 const CldUploadWidget = ({
   children,
-  onClose,
   onError,
   onOpen,
   onUpload,
@@ -94,22 +90,14 @@ const CldUploadWidget = ({
     if ( typeof results === 'undefined' ) return;
 
     const isSuccess = results.event === 'success';
-    const isClosed = results.event === 'display-changed' && results.info === 'hidden';
 
     if ( isSuccess && typeof onUpload === 'function' ) {
+      if ( process.env.NODE_ENVIRONMENT === 'development' ) {
+        console.warn('The onUpload callback is deprecated. Please use onSuccess instead.');
+      }
       onUpload(results, widget.current);
     }
-
-    if ( isClosed && typeof onClose === 'function' ) {
-      onClose(widget.current);
-    }
   }, [results])
-
-  useEffect(() => {
-    if ( error && typeof onError === 'function' ) {
-      onError(error, widget.current);
-    }
-  }, [error]);
 
   /**
    * handleOnLoad
@@ -118,6 +106,7 @@ const CldUploadWidget = ({
 
   function handleOnLoad() {
     setIsScriptLoading(false);
+
     if ( !cloudinary.current ) {
       cloudinary.current = (window as any).cloudinary;
     }
@@ -252,6 +241,13 @@ const CldUploadWidget = ({
     return cloudinary.current?.createUploadWidget(uploadOptions, (uploadError: CloudinaryUploadWidgetError, uploadResult: CloudinaryUploadWidgetResults) => {
       if ( uploadError && uploadError !== null ) {
         setError(uploadError);
+
+        if ( typeof onError === 'function' ) {
+          onError(uploadError, {
+            widget: widget.current,
+            ...instanceMethods
+          });
+        }
       }
 
       if ( typeof uploadResult?.event === 'string' ) {
@@ -261,7 +257,7 @@ const CldUploadWidget = ({
 
         const widgetEvent = WIDGET_EVENTS[uploadResult.event] as keyof typeof props;
 
-        if ( typeof widgetEvent === 'string' && typeof props[widgetEvent] === 'function' && typeof props[widgetEvent] ) {
+        if ( typeof widgetEvent === 'string' && typeof props[widgetEvent] === 'function' ) {
           const callback = props[widgetEvent] as CldUploadEventCallback;
           callback(uploadResult, {
             widget: widget.current,
@@ -281,7 +277,7 @@ const CldUploadWidget = ({
         error,
         isLoading: isScriptLoading,
         ...instanceMethods,
-        })}
+      })}
       <Script
         id={`cloudinary-uploadwidget-${Math.floor(Math.random() * 100)}`}
         src="https://upload-widget.cloudinary.com/global/all.js"
