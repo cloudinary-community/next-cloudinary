@@ -1,3 +1,10 @@
+# [6.0.0-beta.8](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.7...v6.0.0-beta.8) (2024-01-25)
+
+
+### Features
+
+* CldUploadWidget Events Normalization ([#424](https://github.com/cloudinary-community/next-cloudinary/issues/424)) ([df7f587](https://github.com/cloudinary-community/next-cloudinary/commit/df7f587c8fc5b33b0e3e24a0aea0746434249b6e))
+
 # [6.0.0-beta.7](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.6...v6.0.0-beta.7) (2024-01-24)
 
 
