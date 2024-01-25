@@ -23,7 +23,6 @@ import {checkForCloudName} from "../../lib/cloudinary";
 
 const WIDGET_WATCHED_EVENTS = [
   'success',
-  'display-changed'
 ];
 
 const WIDGET_EVENTS: { [key: string]: string } = {
