@@ -11,7 +11,7 @@
   "dependencies": {
     "@vercel/analytics": "^1.0.1",
     "cloudinary": "^1.37.3",
-    "next": "^14.0.0",
+    "next": "^13.5.0",
     "nextjs-google-analytics": "^2.3.3",
     "nextra": "^2.13.2",
     "nextra-theme-docs": "^2.13.2",
