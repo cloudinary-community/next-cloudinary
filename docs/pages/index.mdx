@@ -31,24 +31,99 @@ High-performance image and video delivery and uploading at scale in Next.js powe
 
 
 <ImageGrid>
+
   <li>
+    { /** Crops at the end - not usually what you want with responsive sizing */ }
     <CldImage
       width="987"
-      height="1481"
+      height="987"
       src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      crop="fill"
+      alt=""
       sizes="50vw"
-      alt="Original image of woman with headphones"
-      priority
     />
   </li>
+  <li>
+    { /** Crops at the beginning - but awkward syntax */ }
+    <CldImage
+      width="987"
+      height="987"
+      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      baseWidth="987"
+      baseHeight="987"
+      baseCrop="thumb"
+      alt=""
+      sizes="50vw"
+    />
+  </li>
+
+
+
+
   <li>
     <CldImage
       width="987"
       height="987"
       src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
       sizes="50vw"
-      crop="thumb"
-      gravity="faces"
+      baseWidth="987"
+      baseHeight="987"
+      baseCrop="thumb"
+      baseGravity="faces"
+      removeBackground
+      tint="40:253f8c"
+      underlay={`${process.env.IMAGES_DIRECTORY}/city-skyline`}
+      overlays={[
+        {
+          position: {
+            gravity: 'north',
+            y: 60
+          },
+          text: {
+            color: 'rgb:52a4ff80',
+            fontFamily: 'Source Sans Pro',
+            fontSize: 320,
+            fontWeight: 'black',
+            text: 'MUSIC',
+            letterSpacing: -10,
+            lineSpacing: -100,
+            stroke: true,
+            border: '20px_solid_rgb:2d0eff99',
+          }
+        },
+        {
+          position: {
+            gravity: 'south',
+            y: 60
+          },
+          text: {
+            color: 'rgb:52a4ff80',
+            fontFamily: 'Source Sans Pro',
+            fontSize: 320,
+            fontWeight: 'black',
+            text: 'IS LIFE',
+            letterSpacing: -10,
+            lineSpacing: -100,
+            stroke: true,
+            border: '20px_solid_rgb:2d0eff99',
+          }
+        }
+      ]}
+      alt="Image of woman with headphones transformed with Cloudinary"
+      priority
+    />
+
+
+
+    <CldImage
+      width="987"
+      height="987"
+      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      sizes="50vw"
+      baseWidth="987"
+      baseHeight="987"
+      baseCrop="thumb"
+      baseGravity="faces"
       removeBackground
       tint="40:253f8c"
       underlay={`${process.env.IMAGES_DIRECTORY}/city-skyline`}

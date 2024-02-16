@@ -35,6 +35,9 @@ importers:
       cloudinary:
         specifier: ^1.37.3
         version: 1.41.3
+      clsx:
+        specifier: ^2.1.0
+        version: 2.1.0
       next:
         specifier: ^14.0.0
         version: 14.1.0(react-dom@18.2.0)(react@18.2.0)(sass@1.70.0)
@@ -59,6 +62,9 @@ importers:
       sass:
         specifier: ^1.63.6
         version: 1.70.0
+      tailwind-merge:
+        specifier: ^2.2.1
+        version: 2.2.1
     devDependencies:
       autoprefixer:
         specifier: ^10.4.16
@@ -76,8 +82,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0
       '@cloudinary-util/url-loader':
-        specifier: 4.2.0
-        version: 4.2.0
+        specifier: 5.0.0-beta.1
+        version: 5.0.0-beta.1
       '@cloudinary-util/util':
         specifier: ^2.3.0
         version: 2.4.0
@@ -1346,6 +1352,14 @@ packages:
 
   /@cloudinary-util/url-loader@4.2.0:
     resolution: {integrity: sha512-fpCFqFPAN/f9Gt//25qLXNDYwy5EcOudRzDPOrsEBH6aMwEdFaJuPxvLiP0IP5MCihKji/XDr9QJQ9Wa+amNSA==}
+    dependencies:
+      '@cloudinary-util/util': 3.0.0
+      '@cloudinary/url-gen': 1.15.0
+      zod: 3.22.4
+    dev: false
+
+  /@cloudinary-util/url-loader@5.0.0-beta.1:
+    resolution: {integrity: sha512-ZIRG4qqmlHPTKHpxL07WTi3BwgaoAVkEHqnTxdWLSJmYDb8EWFzhJ341l0mpzQ40CLW21yfLm3kkoInvDHm/Tg==}
     dependencies:
       '@cloudinary-util/util': 3.0.0
       '@cloudinary/url-gen': 1.15.0
@@ -8322,6 +8336,12 @@ packages:
   /symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
     dev: true
+
+  /tailwind-merge@2.2.1:
+    resolution: {integrity: sha512-o+2GTLkthfa5YUt4JxPfzMIpQzZ3adD1vLVkvKE1Twl9UAhGsEbIZhHHZVRttyW177S8PDJI3bTQNaebyofK3Q==}
+    dependencies:
+      '@babel/runtime': 7.23.8
+    dev: false
 
   /tailwindcss@3.4.1:
     resolution: {integrity: sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==}

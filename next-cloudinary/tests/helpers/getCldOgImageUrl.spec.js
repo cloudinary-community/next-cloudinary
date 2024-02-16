@@ -1,5 +1,5 @@
 import { getCldOgImageUrl } from '../../src/helpers/getCldOgImageUrl';
-import { OG_IMAGE_WIDTH_RESIZE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../src/constants/sizes';
+import { OG_IMAGE_WIDTH, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../src/constants/sizes';
 
 describe('Cloudinary', () => {
   const OLD_ENV = process.env;
@@ -25,7 +25,7 @@ describe('Cloudinary', () => {
         src
       });
 
-      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_fill,w_${OG_IMAGE_WIDTH},h_${OG_IMAGE_HEIGHT},g_center/c_limit,w_${OG_IMAGE_WIDTH_RESIZE}/f_jpg/q_auto/${src}`);
+      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_fill,w_${OG_IMAGE_WIDTH},h_${OG_IMAGE_HEIGHT},g_center/c_limit,w_${OG_IMAGE_WIDTH}/f_jpg/q_auto/${src}`);
     });
 
     it('should allow customization of width and height', () => {

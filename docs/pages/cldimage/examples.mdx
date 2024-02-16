@@ -677,10 +677,11 @@ that applies a blend mode, such as "multiply"
         {
           crop: 'fill',
           gravity: 'auto',
-          width: 960,
-          height: 600
+          width: '1.0',
+          height: '1.0',
         }
       ],
+      flags: ['relative'],
       appliedEffects: [
         {
           multiply: true
@@ -706,10 +707,11 @@ that applies a blend mode, such as "multiply"
         {
           crop: 'fill',
           gravity: 'auto',
-          width: 960,
-          height: 600
+          width: '1.0',
+          height: '1.0',
         }
       ],
+      flags: ['relative'],
       appliedEffects: [
         {
           multiply: true
@@ -771,21 +773,23 @@ Image underlays allow you to place one or multiple images behind a base image.
     underlays={[
       {
         publicId: 'images/galaxy',
-        width: 480,
-        height: 600,
+        width: '0.5',
+        height: '1.0',
         crop: 'fill',
         position: {
           gravity: 'north_west'
-        }
+        },
+        flags: ['relative']
       },
       {
         publicId: 'images/mountain',
-        width: 480,
-        height: 600,
+        width: '0.5',
+        height: '1.0',
         crop: 'fill',
         position: {
           gravity: 'south_east'
-        }
+        },
+        flags: ['relative']
       },
     ]}
     alt=""
@@ -804,22 +808,24 @@ Image underlays allow you to place one or multiple images behind a base image.
     removeBackground
     underlays={[
       {
-        publicId: '<Your Public ID>',
-        width: 480,
-        height: 600,
+        publicId: 'images/galaxy',
+        width: '0.5',
+        height: '1.0',
         crop: 'fill',
         position: {
           gravity: 'north_west'
-        }
+        },
+        flags: ['relative']
       },
       {
-        publicId: '<Your Public ID>',
-        width: 480,
-        height: 600,
+        publicId: 'images/mountain',
+        width: '0.5',
+        height: '1.0',
         crop: 'fill',
         position: {
           gravity: 'south_east'
-        }
+        },
+        flags: ['relative']
       },
     ]}
     alt=""
@@ -832,40 +838,6 @@ Image underlays allow you to place one or multiple images behind a base image.
 
 Text overlays allow you to place text on top of an image.
 
-### Adding Text
-
-`text`: Adds text to an image with default settings
-
-<HeaderImage>
-  <CldImage
-    width="1335"
-    height="891"
-    src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
-    sizes="100vw"
-    blur="2000"
-    brightness="300"
-    text="Cool Beans"
-    alt=""
-  />
-</HeaderImage>
-
-<CodeBlock>
-  ```jsx copy showLineNumbers
-  import { CldImage } from 'next-cloudinary';
-
-  <CldImage
-    width="1335"
-    height="891"
-    src="<Your Public ID>"
-    sizes="100vw"
-    blur="2000"
-    brightness="300"
-    text="Cool Beans"
-    alt=""
-  />
-  ```
-</CodeBlock>
-
 ### Adding Custom Text
 
 `overlays`: Uses overlay objects to add text on top of an image.
@@ -877,8 +849,6 @@ Text overlays allow you to place text on top of an image.
     src={`${process.env.IMAGES_DIRECTORY}/sneakers`}
     sizes="100vw"
     overlays={[{
-      width: 2670 - 20,
-      crop: 'fit',
       position: {
         x: 140,
         y: 140,
@@ -888,11 +858,11 @@ Text overlays allow you to place text on top of an image.
       text: {
         color: 'blueviolet',
         fontFamily: 'Source Sans Pro',
-        fontSize: 160,
+        fontSize: 280,
         fontWeight: 'bold',
         textDecoration: 'underline',
         letterSpacing: 14,
-        text: 'Cool Beans'
+        text: 'With Style'
       }
     }]}
     alt=""
@@ -909,8 +879,6 @@ Text overlays allow you to place text on top of an image.
     src="<Your Public ID>"
     sizes="100vw"
     overlays={[{
-      width: 2670 - 20,
-      crop: 'fit',
       position: {
         x: 140,
         y: 140,
@@ -920,7 +888,7 @@ Text overlays allow you to place text on top of an image.
       text: {
         color: 'blueviolet',
         fontFamily: 'Source Sans Pro',
-        fontSize: 160,
+        fontSize: 280,
         fontWeight: 'bold',
         textDecoration: 'underline',
         letterSpacing: 14,
@@ -946,9 +914,9 @@ Text overlays allow you to place text on top of an image.
       text: {
         color: 'white',
         fontFamily: 'Source Sans Pro',
-        fontSize: 160,
+        fontSize: 500,
         fontWeight: 'bold',
-        text: 'Cool Beans'
+        text: 'Into the Galaxy'
       },
       effects: [
         {
@@ -974,9 +942,9 @@ Text overlays allow you to place text on top of an image.
       text: {
         color: 'white',
         fontFamily: 'Source Sans Pro',
-        fontSize: 160,
+        fontSize: 500,
         fontWeight: 'bold',
-        text: 'Cool Beans'
+        text: 'Into the Galaxy'
       },
       effects: [
         {
