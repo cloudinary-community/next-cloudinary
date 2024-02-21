@@ -23,18 +23,13 @@ export function cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldCon
     ...cldOptions
   }
 
-  console.log('options', options)
-  console.log('loaderOptions', loaderOptions)
   options.width = typeof options.width === 'string' ? parseInt(options.width) : options.width;
   options.height = typeof options.height === 'string' ? parseInt(options.height) : options.height;
-
   
   // // The loader options are used to create dynamic sizing when working with responsive images
   // // so these should override the default options collected from the props alone if
   // // the results are different. While we don't always use the height in the loader logic,
   // // we always pass it here, as the usage is determined later based on cropping.js
-
-  // let widthResize;
 
   if ( typeof loaderOptions?.width === 'number' && typeof options.width === 'number' && loaderOptions.width !== options.width ) {
     const multiplier = loaderOptions.width / options.width;
