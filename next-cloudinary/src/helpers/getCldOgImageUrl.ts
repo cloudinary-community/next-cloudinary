@@ -18,6 +18,7 @@ export function getCldOgImageUrl(options: GetCldOgImageUrlOptions) {
     crop: options.crop || {
       crop: 'fill',
       gravity: 'center',
+      source: true
     }
   });
 }

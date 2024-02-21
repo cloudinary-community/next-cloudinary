@@ -1,5 +1,5 @@
 import { getCldOgImageUrl } from '../../src/helpers/getCldOgImageUrl';
-import { OG_IMAGE_WIDTH, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../src/constants/sizes';
+import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../src/constants/sizes';
 
 describe('Cloudinary', () => {
   const OLD_ENV = process.env;

@@ -50,6 +50,7 @@ export function cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldCon
     // The Fill option does not allow someone to pass in a width or a height
     // If this is the case, we still need to define a width for sizing optimization but also
     // for responsive sizing to take effect, so we can utilize the loader width for the base width
+    options.width = loaderOptions?.width;
   }
 
   // @ts-ignore
