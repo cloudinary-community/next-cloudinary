@@ -15,9 +15,9 @@ export function getCldOgImageUrl(options: GetCldOgImageUrlOptions) {
     format: options.format || 'jpg',
     width: options.width || OG_IMAGE_WIDTH,
     height: options.height || OG_IMAGE_HEIGHT,
-    baseCrop: options.baseCrop || 'fill',
-    baseGravity: options.baseGravity || 'center',
-    baseHeight: options.baseHeight || OG_IMAGE_HEIGHT,
-    baseWidth: options.baseWidth || OG_IMAGE_WIDTH
+    crop: options.crop || {
+      crop: 'fill',
+      gravity: 'center',
+    }
   });
 }

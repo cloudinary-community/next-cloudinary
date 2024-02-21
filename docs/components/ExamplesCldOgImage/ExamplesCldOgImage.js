@@ -6,10 +6,13 @@ const ExamplesCldOgImage = ({ ...props }) => {
     <CldImage
       width={OG_IMAGE_WIDTH}
       height={OG_IMAGE_HEIGHT}
-      baseCrop="fill"
-      baseGravity="center"
-      baseHeight={OG_IMAGE_HEIGHT}
-      baseWidth={OG_IMAGE_WIDTH}
+      crop={{
+        width: OG_IMAGE_WIDTH,
+        height: OG_IMAGE_HEIGHT,
+        crop: 'fill',
+        gravity: 'center',
+        source: true
+      }}
       sizes="100vw"
       alt=""
       {...props}
