@@ -1,5 +1,6 @@
 import React, { useState, useCallback, forwardRef, SyntheticEvent } from 'react';
-import Image, { ImageProps } from 'next/image';
+import { Image } from 'next/dist/client/image-component.js';
+import { ImageProps } from 'next/image';
 import { getTransformations } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
 import type { ImageOptions, ConfigOptions } from '@cloudinary-util/url-loader';
@@ -138,18 +139,8 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
 
   const handleOnError = useCallback(onError, [pollForProcessingImage, defaultImgKey]);
 
-  // Copypasta from https://github.com/prismicio/prismic-next/pull/79/files
-  // Thanks Angelo!
-  // TODO: Remove once https://github.com/vercel/next.js/issues/52216 is resolved.
-
-  let ResolvedImage = Image;
-
-  if ("default" in ResolvedImage) {
-    ResolvedImage = (ResolvedImage as unknown as { default: typeof Image }).default;
-  }
-
   return (
-    <ResolvedImage
+    <Image
       key={imgKey}
       {...imageProps}
       loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig: props.config })}

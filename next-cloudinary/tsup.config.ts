@@ -8,7 +8,6 @@ const commonConfig: Options = {
   dts: true,
   format: ['esm', 'cjs'],
   sourcemap: true,
-  clean: true,
 };
 
 export default defineConfig([
@@ -24,7 +23,6 @@ export default defineConfig([
   // moduleResolution: Node(10) support
   {
     ...commonConfig,
-    clean: false,
     entry: ['src/helpers.ts'],
     format: 'cjs',
     outDir: '.'

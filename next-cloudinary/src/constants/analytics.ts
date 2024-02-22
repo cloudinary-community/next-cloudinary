@@ -1,5 +1,5 @@
-import nextPkg from 'next/package.json';
-import pkg from '../../package.json';
+import nextPkg from 'next/package.json' assert { type: "json" };
+import pkg from '../../package.json' assert { type: "json" };
 
 export const NEXT_CLOUDINARY_ANALYTICS_PRODUCT_ID = 'A';
 export const NEXT_CLOUDINARY_ANALYTICS_ID = 'V';
