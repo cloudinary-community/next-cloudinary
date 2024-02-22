@@ -12,11 +12,11 @@
     "prepublishOnly": "cp ../README.md . && cp ../LICENSE . && pnpm build",
     "postpublish": "rm ./README.md && rm ./LICENSE",
     "test": "jest",
-    "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" pnpm build && cd tests/nextjs-app && pnpm build"
+    "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" pnpm build && cd tests/nextjs-app && npm install && npm run build"
   },
   "dependencies": {
     "@cloudinary-util/types": "1.0.0",
-    "@cloudinary-util/url-loader": "4.2.0",
+    "@cloudinary-util/url-loader": "5.0.0-beta.3",
     "@cloudinary-util/util": "^2.3.0"
   },
   "devDependencies": {

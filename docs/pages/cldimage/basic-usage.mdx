@@ -77,7 +77,7 @@ You can further take advantage of Cloudinary features like background removal an
     src={`${process.env.IMAGES_DIRECTORY}/turtle`}
     crop="fill"
     removeBackground
-    tint="70:blue:green:purple"
+    tint="70:blue:purple"
     underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
     sizes="100vw"
     alt="Turtle in the ocean"
@@ -94,7 +94,7 @@ You can further take advantage of Cloudinary features like background removal an
     src="<Public ID>"
     crop="fill"
     removeBackground
-    tint="70:blue:green:purple"
+    tint="70:blue:purple"
     underlay="<Public ID>"
     sizes="100vw"
     alt="Description of my image"
@@ -112,7 +112,7 @@ must include a version number (/v1234) in order to be correctly parsed.
   to ensure the integretiy when during the parsing process.
 </Callout>
 
-<CodeBlock>
+<CodeBlock className="mt-6">
   ```jsx copy showLineNumbers
   import { CldImage } from 'next-cloudinary';
 

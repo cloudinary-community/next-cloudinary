@@ -19,7 +19,10 @@ export async function pollForProcessingImage(options: PollForProcessingImageOpti
       });
     });
   } catch(e: any) {
+    // Timeout for 200ms before trying to fetch again to avoid overwhelming requests
+
     if ( e.status === 423 ) {
+      await new Promise((resolve) => setTimeout(() => resolve(undefined), 200));
       return await pollForProcessingImage(options);
     }
     return false;

@@ -1,10 +1,11 @@
 import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
-import { CldImage } from '../../../next-cloudinary';
-
 import OgImage from '../../components/OgImage';
 import Video from '../../components/Video';
+import HeaderImage from '../../components/HeaderImage';
+import CodeBlock from '../../components/CodeBlock';
+import ExamplesCldOgImage from '../../components/ExamplesCldOgImage';
 
 <Head>
   <title>CldOgImage - Next Cloudinary</title>
@@ -29,13 +30,24 @@ The CldOgImageComponent give you the ability to use the same CldImage API to eas
 
 The basic required prop is `src`:
 
-```jsx copy
-import { CldOgImage } from 'next-cloudinary';
+<HeaderImage>
+  <ExamplesCldOgImage
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    alt="Turtle in the ocean"
+  />
+</HeaderImage>
 
-<CldOgImage
-  src="<Public ID>"
-/>
-```
+> CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. The following examples make use of the `<CldImage>` tag to showcase what's possible.
+
+<CodeBlock className="mt-6">
+  ```jsx copy showLineNumbers
+  import { CldOgImage } from 'next-cloudinary';
+
+  <CldOgImage
+    src="<Public ID>"
+  />
+  ```
+</CodeBlock>
 
 Place the CldOgImage component anywhere outside of the Head component.
 
@@ -46,31 +58,15 @@ Place the CldOgImage component anywhere outside of the Head component.
 The resulting HTML will be applied to the Head of the document including all applicable [open graph tags](https://ogp.me/):
 
 ```html copy
-<meta property="og:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1254,g_center/c_scale,w_1200/f_jpg/q_auto/v1/images/galaxy" />
-<meta property="og:image:secure_url" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1254,g_center/c_scale,w_1200/f_jpg/q_auto/v1/images/galaxy" />
+<meta property="og:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_1200,h_627,g_center/c_limit,w_1200/f_jpg/q_auto/v1/images/galaxy" />
+<meta property="og:image:secure_url" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_1200,h_627,g_center/c_limit,w_1200/f_jpg/q_auto/v1/images/galaxy" />
 <meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="627" />
+<meta property="og:image:height" content="630" />
 <meta property="twitter:title" content=" " />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_2400,h_1254,g_center/c_scale,w_1200/f_webp/q_auto/v1/images/galaxy" />
+<meta property="twitter:image" content="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/c_fill,w_1200,h_627,g_center/c_limit,w_1200/f_webp/q_auto/v1/images/galaxy" />
 ```
 
-<div style={{ maxWidth: 500, margin: '0 auto' }}>
-  <p className="nx-mt-6">
-  <CldImage
-    width="1200"
-    height="627"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    crop="fill"
-    sizes="100vw"
-    alt="Turtle in the ocean"
-  />
-  </p>
-</div>
-
-<Callout emoji={false}>
-  CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. This example makes use of the `<CldImage>` tag to showcase what's possible.
-</Callout>
 
 ## Transformations
 
@@ -78,34 +74,10 @@ You can further take advantage of Cloudinary features like background removal an
 
 The CldOgImage component uses the same API as [CldImage](/cldimage/configuration), meaning you can use the same transformations and effects.
 
-```jsx copy
-<CldOgImage
-  src="<Public ID>"
-  tint="100:0762a0"
-  removeBackground
-  opacity="40"
-  overlays={[{
-    text: {
-      color: 'white',
-      fontFamily: 'Source Sans Pro',
-      fontSize: 200,
-      fontWeight: 'bold',
-      text: '<Text>'
-    }
-  }]}
-  underlay="<Public ID>"
-  alt="<Description>"
-  twitterTitle="<Title>"
-/>
-```
 
-<div style={{ maxWidth: 500, margin: '0 auto' }}>
-  <p className="nx-mt-6">
-  <CldImage
-    width="1200"
-    height="627"
+<HeaderImage>
+  <ExamplesCldOgImage
     src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    crop="fill"
     tint="100:0762a0"
     removeBackground
     opacity="40"
@@ -119,15 +91,36 @@ The CldOgImage component uses the same API as [CldImage](/cldimage/configuration
       }
     }]}
     underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
-    sizes="100vw"
     alt="Turtle in the ocean"
   />
-  </p>
-</div>
+</HeaderImage>
 
-<Callout emoji={false}>
-  CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. This example makes use of the `<CldImage>` tag to showcase what's possible.
-</Callout>
+> CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. The following examples make use of the `<CldImage>` tag to showcase what's possible.
+
+<CodeBlock className="mt-6">
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldOgImage
+    src="<Public ID>"
+    tint="100:0762a0"
+    removeBackground
+    opacity="40"
+    overlays={[{
+      text: {
+        color: 'white',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 80,
+        fontWeight: 'bold',
+        text: '<Text>'
+      }
+    }]}
+    underlay="<Public ID>"
+    alt="<Description>"
+    twitterTitle="<Title>"
+  />
+  ```
+</CodeBlock>
 
 ## Watch & Learn
 
