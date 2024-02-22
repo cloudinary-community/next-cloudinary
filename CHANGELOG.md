@@ -1,3 +1,10 @@
+# [6.0.0-beta.11](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.10...v6.0.0-beta.11) (2024-02-22)
+
+
+### Features
+
+* applying analytics to video urls ([bf3059e](https://github.com/cloudinary-community/next-cloudinary/commit/bf3059eef2d267da1427454d5c17d85889aab19f))
+
 # [6.0.0-beta.10](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.9...v6.0.0-beta.10) (2024-02-22)
 
 
