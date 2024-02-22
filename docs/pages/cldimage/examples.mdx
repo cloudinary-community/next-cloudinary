@@ -140,7 +140,7 @@ position the subject in the center of the resulting image.
     height="300"
     src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
     sizes="100vw"
-    crop="thumb"
+    crop="fill"
     alt=""
   />
 </HeaderImage>
@@ -154,11 +154,60 @@ position the subject in the center of the resulting image.
     height="300"
     src="<Your Public ID>"
     sizes="100vw"
-    crop="thumb"
+    crop="fill"
     alt=""
   />
   ```
 </CodeBlock>
+
+Cloudinary additionally supports dynamic crop modes like `thumb` that
+may provide a different result based on the given width and height. To
+help provide more options for controlling cropping images, you can specify
+and object or array of objects.
+
+For instance, to crop the original source image, which will then later
+resize it to the initial width and height, you can use:
+
+
+<HeaderImage>
+  <CldImage
+    width="300"
+    height="300"
+    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    sizes="100vw"
+    crop={{
+      width: 600,
+      height: 600,
+      type: 'thumb',
+      source: true
+    }}
+    alt=""
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="300"
+    height="300"
+    src="<Your Public ID>"
+    sizes="100vw"
+    crop={{
+      width: 600,
+      height: 600,
+      type: 'thumb',
+      source: true
+    }}
+    alt=""
+  />
+  ```
+</CodeBlock>
+
+Which will provide a consistent crop for all rendered sizes.
+
+Learn more about [cropping](/cldimage/configuration#crop) and [responsive images](/guides/responsive-images).
 
 #### Fill Parent
 
