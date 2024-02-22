@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
 import { CldImage } from '../../../next-cloudinary';
-import { getCldImageUrl } from '../../../next-cloudinary';
+import { getCldImageUrl } from '../../../next-cloudinary/dist/helpers';
 
 import OgImage from '../../components/OgImage';
 import HeaderImage from '../../components/HeaderImage';
@@ -40,9 +40,14 @@ not only deliver, but easily edit and build new images on the fly.
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src={getCldImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/turtle`,
+      width: 960,
+      height: 600,
+      removeBackground: true
+    })}
     sizes="100vw"
-    removeBackground
+    preserveTransformations
     alt=""
   />
 </HeaderImage>
@@ -77,9 +82,14 @@ position the subject in the center of the resulting image.
   <CldImage
     width="300"
     height="300"
-    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    src={getCldImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/woman-headphones`,
+      width: 300,
+      height: 300,
+      crop: 'fill'
+    })}
     sizes="100vw"
-    crop="fill"
+    preserveTransformations
     alt=""
   />
 </HeaderImage>
@@ -109,14 +119,19 @@ resize it to the initial width and height, you can use:
   <CldImage
     width="300"
     height="300"
-    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    src={getCldImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/woman-headphones`,
+      width: 300,
+      height: 300,
+      crop: {
+        width: 600,
+        height: 600,
+        type: 'thumb',
+        source: true
+      }
+    })}
     sizes="100vw"
-    crop={{
-      width: 600,
-      height: 600,
-      type: 'thumb',
-      source: true
-    }}
+    preserveTransformations
     alt=""
   />
 </HeaderImage>
@@ -149,11 +164,16 @@ Learn more about [cropping](/getcldimageurl/configuration#crop) and [responsive 
 
 <HeaderImage>
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
     width="960"
     height="600"
-    crop="pad"
-    fillBackground
+    src={getCldImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/woman-headphones`,
+      width: 960,
+      height: 600,
+      fillBackground: true,
+      crop: 'pad'
+    })}
+    preserveTransformations
     alt=""
     sizes="100vw"
   />
