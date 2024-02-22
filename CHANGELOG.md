@@ -1,3 +1,10 @@
+# [6.0.0-beta.12](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.11...v6.0.0-beta.12) (2024-02-22)
+
+
+### Features
+
+* Subpath Imports ([#436](https://github.com/cloudinary-community/next-cloudinary/issues/436)) ([4a202e2](https://github.com/cloudinary-community/next-cloudinary/commit/4a202e2d1576d151a52e3fb2c5b8cadfbe91b621))
+
 # [6.0.0-beta.11](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.10...v6.0.0-beta.11) (2024-02-22)
 
 
