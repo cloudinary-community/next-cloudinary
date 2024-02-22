@@ -1,10 +1,12 @@
+import { vi, describe, it, beforeEach, afterAll, expect } from 'vitest';
+
 import { getCldImageUrl } from '../../src/helpers/getCldImageUrl';
 
 describe('Cloudinary', () => {
   const OLD_ENV = process.env;
 
   beforeEach(() => {
-    jest.resetModules()
+    vi.resetModules()
     process.env = { ...OLD_ENV };
   });
 

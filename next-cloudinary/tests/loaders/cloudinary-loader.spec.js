@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { cloudinaryLoader } from '../../src/loaders/cloudinary-loader';
 
 const cldConfig = {
