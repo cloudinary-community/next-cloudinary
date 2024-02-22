@@ -18,6 +18,12 @@
       "breadcrumb": false
     }
   },
+  "changelog": {
+    "title": "Changelog",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
   "Components": {
     "type": "separator",
     "title": "Components"
