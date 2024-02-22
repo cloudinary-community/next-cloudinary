@@ -16,7 +16,7 @@ export function getCldOgImageUrl(options: GetCldOgImageUrlOptions) {
     width: options.width || OG_IMAGE_WIDTH,
     height: options.height || OG_IMAGE_HEIGHT,
     crop: options.crop || {
-      crop: 'fill',
+      type: 'fill',
       gravity: 'center',
       source: true
     }

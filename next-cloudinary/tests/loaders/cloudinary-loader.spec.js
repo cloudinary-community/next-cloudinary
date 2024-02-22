@@ -46,11 +46,11 @@ describe('Cloudinary Loader', () => {
         removeBackground: true,
         crop: [
           {
-            crop: 'thumb',
+            type: 'thumb',
             source: true
           },
           {
-            crop: 'scale'
+            type: 'scale'
           }
         ],
         gravity: 'faces',
@@ -163,7 +163,7 @@ describe('Cloudinary Loader', () => {
         crop: {
           width: 1234,
           height: 4321,
-          crop: 'fill',
+          type: 'fill',
           source: true
         },
         overlays: [{
@@ -179,15 +179,15 @@ describe('Cloudinary Loader', () => {
 
       const loaderOptions1 = { width: 2048 };
       const result1 = cloudinaryLoader({ loaderOptions: loaderOptions1, imageProps, cldOptions, cldConfig });
-      expect(result1).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_${cldOptions.crop.crop},w_${cldOptions.crop.width},h_${cldOptions.crop.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_limit,w_${loaderOptions1.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+      expect(result1).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_${cldOptions.crop.type},w_${cldOptions.crop.width},h_${cldOptions.crop.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_limit,w_${loaderOptions1.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
 
       const loaderOptions2 = { width: 3840 };
       const result2 = cloudinaryLoader({ loaderOptions: loaderOptions2, imageProps, cldOptions, cldConfig });
-      expect(result2).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_${cldOptions.crop.crop},w_${cldOptions.crop.width},h_${cldOptions.crop.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_limit,w_${loaderOptions2.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+      expect(result2).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_${cldOptions.crop.type},w_${cldOptions.crop.width},h_${cldOptions.crop.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_limit,w_${loaderOptions2.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
 
       const loaderOptions3 = { width: 640 };
       const result3 = cloudinaryLoader({ loaderOptions: loaderOptions3, imageProps, cldOptions, cldConfig });
-      expect(result3).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_${cldOptions.crop.crop},w_${cldOptions.crop.width},h_${cldOptions.crop.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_limit,w_${loaderOptions3.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+      expect(result3).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_${cldOptions.crop.type},w_${cldOptions.crop.width},h_${cldOptions.crop.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_limit,w_${loaderOptions3.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
     });
 
     it('should add any resizing when fill is set to true without a width or height', async () => {

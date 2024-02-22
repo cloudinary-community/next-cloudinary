@@ -9,7 +9,7 @@ const ExamplesCldOgImage = ({ ...props }) => {
       crop={{
         width: OG_IMAGE_WIDTH,
         height: OG_IMAGE_HEIGHT,
-        crop: 'fill',
+        type: 'fill',
         gravity: 'center',
         source: true
       }}

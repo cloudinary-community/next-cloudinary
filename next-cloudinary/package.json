@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@cloudinary-util/types": "1.0.0",
-    "@cloudinary-util/url-loader": "5.0.0-beta.2",
+    "@cloudinary-util/url-loader": "5.0.0-beta.3",
     "@cloudinary-util/util": "^2.3.0"
   },
   "devDependencies": {
