@@ -2,6 +2,8 @@ import Head from 'next/head';
 import { Tab, Tabs } from 'nextra-theme-docs';
 
 import OgImage from '../../components/OgImage';
+import HeaderImage from '../../components/HeaderImage';
+import CodeBlock from '../../components/CodeBlock';
 
 import { CldImage } from '../../../next-cloudinary';
 
@@ -22,97 +24,140 @@ You can add text on top of your image with text-based overlays.
 
 ## Example
 
-<div style={{ maxWidth: 500, margin: '0 auto' }}>
+<HeaderImage>
   <CldImage
     width="1335"
     height="891"
     src={`${process.env.IMAGES_DIRECTORY}/sneakers`}
     sizes="100vw"
-    overlays={[{
-      width: 2670 - 20,
-      crop: 'fit',
-      position: {
-        x: 140,
-        y: 140,
-        angle: -20,
-        gravity: 'south_east',
+    overlays={[
+      {
+        position: {
+          x: 160,
+          y: 120,
+          angle: -20,
+          gravity: 'south_east',
+        },
+        text: {
+          color: 'magenta',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 280,
+          fontWeight: 'black',
+          text: 'WITH STYLE'
+        }
       },
-      text: {
-        color: 'blueviolet',
-        fontFamily: 'Source Sans Pro',
-        fontSize: 160,
-        fontWeight: 'bold',
-        textDecoration: 'underline',
-        letterSpacing: 14,
-        text: 'Cool Beans'
-      }
-    }]}
-    alt="Sneakers with Cool Beans"
+      {
+        position: {
+          x: 140,
+          y: 140,
+          angle: -20,
+          gravity: 'south_east',
+        },
+        text: {
+          color: 'white',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 280,
+          fontWeight: 'black',
+          text: 'WITH STYLE'
+        }
+      },
+    ]}
+    alt="Sneakers with text With Style"
   />
-</div>
+</HeaderImage>
 
 <Tabs items={['CldImage', 'getCldImageUrl']}>
-  <Tab>
-    ```jsx copy
-    import { CldImage } from 'next-cloudinary';
+  <Tab className="nx-pt-0">
+    <CodeBlock>
+    ```jsx copy showLineNumbers
+      import { CldImage } from 'next-cloudinary';
 
-    <CldImage
-      width="1335"
-      height="891"
-      src="images/sneakers"
-      sizes="100vw"
-      overlays={[{
-        width: 2670 - 20,
-        crop: 'fit',
-        position: {
-          x: 140,
-          y: 140,
-          angle: -20,
-          gravity: 'south_east',
-        },
-        text: {
-          color: 'blueviolet',
-          fontFamily: 'Source Sans Pro',
-          fontSize: 160,
-          fontWeight: 'bold',
-          textDecoration: 'underline',
-          letterSpacing: 14,
-          text: 'Cool Beans'
-        }
-      }]}
-      alt="Sneakers with Cool Beans"
-    />
-    ```
+      <CldImage
+        width="1335"
+        height="891"
+        src="images/sneakers"
+        sizes="100vw"
+        overlays={[
+          {
+            position: {
+              x: 160,
+              y: 120,
+              angle: -20,
+              gravity: 'south_east',
+            },
+            text: {
+              color: 'magenta',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 280,
+              fontWeight: 'black',
+              text: 'WITH STYLE'
+            }
+          },
+          {
+            position: {
+              x: 140,
+              y: 140,
+              angle: -20,
+              gravity: 'south_east',
+            },
+            text: {
+              color: 'white',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 280,
+              fontWeight: 'black',
+              text: 'WITH STYLE'
+            }
+          },
+        ]}
+        alt="Sneakers with text With Style"
+      />
+      ```
+    </CodeBlock>
   </Tab>
   <Tab>
-    ```jsx copy
-    import { getCldImageUrl } from 'next-cloudinary';
+    <CodeBlock>
+    ```jsx copy showLineNumbers
+      import { getCldImageUrl } from 'next-cloudinary';
 
-    getCldImageUrl({
-      width: 1335,
-      height: 891,
-      src: 'images/sneakers',
-      overlays: [{
-        width: 2670 - 20,
-        crop: 'fit',
-        position: {
-          x: 140,
-          y: 140,
-          angle: -20,
-          gravity: 'south_east',
-        },
-        text: {
-          color: 'blueviolet',
-          fontFamily: 'Source Sans Pro',
-          fontSize: 160,
-          fontWeight: 'bold',
-          textDecoration: 'underline',
-          letterSpacing: 14,
-          text: 'Cool Beans'
-        }
-      }]
-    })
-    ```
+      getCldImageUrl({
+        width: 1335,
+        height: 891,
+        src: 'images/sneakers',
+        overlays: [
+          {
+            position: {
+              x: 160,
+              y: 120,
+              angle: -20,
+              gravity: 'south_east',
+            },
+            text: {
+              color: 'magenta',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 280,
+              fontWeight: 'black',
+              text: 'WITH STYLE'
+            }
+          },
+          {
+            position: {
+              x: 140,
+              y: 140,
+              angle: -20,
+              gravity: 'south_east',
+            },
+            text: {
+              color: 'white',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 280,
+              fontWeight: 'black',
+              text: 'WITH STYLE'
+            }
+          },
+        ]
+      })
+      ```
+    </CodeBlock>
   </Tab>
 </Tabs>
 

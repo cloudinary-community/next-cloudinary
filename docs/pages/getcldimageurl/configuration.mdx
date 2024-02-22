@@ -1,6 +1,8 @@
 import Head from 'next/head';
+import { Callout } from 'nextra-theme-docs';
 
 import OgImage from '../../components/OgImage';
+import Table from '../../components/Table';
 
 <Head>
   <title>getCldImageUrl Configuration - Next Cloudinary</title>
@@ -19,138 +21,1870 @@ Configuration for getCldImageUrl is the same as [CldImage](/cldimage/configurati
 
 The function takes two main arguments: options and config.
 
-| Option Name        | Type               | Default    | Example                      |
-|--------------------|--------------------|------------|------------------------------|
-| options            | object             | -          | `{ src: 'myimage', ... }`      |
-| config             | object             | -          | `{ cloud: { cloudName: 'name' } }` |
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more'
+    },
+  ]}
+  data={[
+    {
+      name: 'options',
+      type: 'object',
+      example: () => (<code>{`{ src: 'myimage', ... }`}</code>),
+    },
+    {
+      name: 'config',
+      type: 'object',
+      example: () => (<code>{`{ cloud: { cloudName: 'name' } }`}</code>),
+      more: () => (<a href="https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters">More Info</a>)
+    },
+  ]}
+/>
 
 The function also accepts a third argument of `analytics` that's intended to be used configure analytics properties for usage statistics.
 
-## General Options
+## Basic Options
 
-| Option Name        | Type               | Default    | Example                      |
-|--------------------|--------------------|------------|------------------------------|
-| crop               | string             | `"limit"`  | `"thumb"`                    |
-| deliveryType       | string             | `"upload"` | `"fetch"`                    |
-| dpr                | number/string      | -          | `"2.0"`                      |
-| effects            | array              | -          | `[{ background: 'blue' }]`   |
-| format             | string             | `"auto"`   | `"webp"`                     |
-| fillBackground (Beta) | bool/object     | -          | `{{ gravity: 'east' }}`      |
-| gravity            | string             | `"auto"`   | `"faces"`                    |
-| height             | number/string      | -          | `600`                        |
-| overlays           | array              | -          | See Below                    |
-| preserveTransformations | string        | `false`    | `true`                       |
-| quality            | string             | `"auto"`   | `"90"`                       |
-| rawTransformations | array              | -          | `['e_blur:2000']`            |
-| removeBackground   | bool/string        | `false`    | `true`                       |
-| sanitize           | bool               | `true` if svg | `true` (Applies only to SVG) |
-| seoSuffix          | string             | -          | `my-image-content`           |
-| src                | string             | -          | `"my-public-id"`             |
-| text               | string             | -          | `"Next Cloudinary"`          |
-| transformations    | string/array       | -          | `['my-named-transformation']`|
-| underlay           | string             | -          | `"my-public-id"`             |
-| underlays          | array              | -          | See Below                    |
-| version            | number             | -          | `1234`                       |
-| width              | number/string      | -          | `600`                        |
-| zoom               | string             | -          | `0.5`                        |
-| zoompan            | bool/string/object | -          | See Below                    |
+The basic options available to use with getCldImageUrl include:
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'required',
+      title: 'Required'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more'
+    },
+  ]}
+  data={[
+    {
+      name: 'height',
+      type: 'number/string',
+      required: () => (<span>Yes, unless using Next Image <code><a href="https://nextjs.org/docs/pages/api-reference/components/image#fill">fill</a></code></span>),
+      example: () => (<code>600</code>),
+      more: () => (<a href="https://nextjs.org/docs/pages/api-reference/components/image#height">More Info</a>)
+    },
+    {
+      name: 'src',
+      type: 'string',
+      required: 'Yes',
+      example: () => (<code>my-public-id</code>)
+    },
+    {
+      name: 'width',
+      type: 'number/string',
+      required: () => (<span>Yes, unless using Next Image <code><a href="https://nextjs.org/docs/pages/api-reference/components/image#fill">fill</a></code></span>),
+      example: () => (<code>600</code>),
+      more: () => (<a href="https://nextjs.org/docs/pages/api-reference/components/image#width">More Info</a>)
+    },
+  ]}
+/>
+
+## Basic Transformations
+
+The getCldImageUrl helper exposes many of Cloudinary's transformations in an easy-to-use way
+right inside of Next.js.
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more'
+    }
+  ]}
+  data={[
+    {
+      name: 'background',
+      type: 'string',
+      default: '-',
+      example: () => (<span><code>blue</code>, <code>rgb:0000ff</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#b_background">More Info</a>)
+    },
+
+    {
+      name: 'crop',
+      type: 'string | object',
+      default: () => (<code>limit</code>),
+      example: () => (<code>fill</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#c_crop_resize">More Info</a>)
+    },
+    {
+      name: 'fillBackground (Beta)',
+      type: 'boolean | object',
+      default: '-',
+      example: () => (<code>{`{{ gravity: 'east' }}`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#b_gen_fill">More Info</a>)
+    },
+    {
+      name: 'gravity',
+      type: 'string',
+      default: () => (<code>auto</code>),
+      example: () => (<code>faces</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#g_gravity">More Info</a>)
+    },
+    {
+      name: 'recolor',
+      type: 'array | object',
+      default: '-',
+      example: () => (<code>{`['duck', 'blue']`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gen_recolor">More Info</a>)
+    },
+    {
+      name: 'remove',
+      type: 'string | array | object',
+      default: '-',
+      example: () => (<code>{`apple`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gen_remove">More Info</a>)
+    },
+    {
+      name: 'removeBackground',
+      type: 'boolean | string',
+      default: () => (<code>false</code>),
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_background_removal">More Info</a>)
+    },
+    {
+      name: 'replace',
+      type: 'array | object',
+      default: '-',
+      example: () => (<code>{`['apple', 'banana']`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">More Info</a>)
+    },
+    {
+      name: 'restore',
+      type: 'boolean',
+      default: '-',
+      example: () => (<code>{`true`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gen_restore">More Info</a>)
+    },
+    {
+      name: 'zoom',
+      type: 'string',
+      default: '-',
+      example: () => (<code>0.5</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#z_zoom">More Info</a>)
+    },
+    {
+      name: 'zoompan',
+      type: 'boolean | string | object',
+      default: '-',
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_zoompan">More Info</a>)
+    },
+  ]}
+/>
+
+### `background`
+
+Applies a background to empty or transparent areas.
+
+**Examples**
+
+```jsx copy
+background: 'blue'
+```
+
+[Learn more about the background transformation](https://cloudinary.com/documentation/transformation_reference#b_background) on the Cloudinary docs.
+
+### `crop`
+
+Changes the size of the delivered asset according to the requested width & height dimensions.
+
+The `crop` prop can either be a string, which can accept any [valid Cloudinary crop mode](https://cloudinary.com/documentation/transformation_reference#c_crop_resize),
+or it can accept an object or an array of objects which can take the following options:
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      name: 'aspectRatio',
+      type: 'string',
+      example: () => (<code>16:9</code>),
+    },
+    {
+      name: 'gravity',
+      type: 'string',
+      example: () => (<a href="#gravity">See Gravity</a>),
+    },
+    {
+      name: 'height',
+      type: 'string',
+      example: () => (<a href="#required-props">See Height</a>),
+    },
+    {
+      name: 'source',
+      type: 'boolean',
+      example: () => (<code>true</code>),
+    },
+    {
+      name: 'type (crop mode)',
+      type: 'string',
+      example: () => (<code>fill</code>),
+    },
+    {
+      name: 'width',
+      type: 'string',
+      example: () => (<a href="#required-props">See Width</a>),
+    },
+    {
+      name: 'zoom',
+      type: 'string',
+      example: () => (<a href="#zoom">See Zoom</a>),
+    },
+  ]}
+/>
+
+**Dynamic Crop Modes**
+
+When using a dynamic crop mode, such as `thumb`, the resulting image may
+be visually different based on the given dimensions. For instance, an
+image cropped using the `thumb` crop mode with dimensions 600x600 will
+give different results than 1200x1200 (assuming a gravity of auto or similar,
+which is the default for getCldImageUrl).
+
+This is especially important in the context of [Responsive Images](/guides/responsive-images)
+where due to the resize mechanism, different device sizes may result
+in different looking images, which doesn't provide a great experience.
+
+To resolve this, when using dynamic crop modes you may want to opt into
+a two-stage crop, first cropping the original source image, then allowing
+the the resize mechanism to handle resizing that to the appropriate device
+size. See examples below.
+
+<Callout emoji={false}>
+  Versions 5 and below of Next Cloudinary automatically opted getCldImageUrl in
+  to a two-stage cropping to help improve the experience, but it came with
+  drawbacks including prematurely limiting the potential resulting size
+  of an image. [Learn more](https://github.com/cloudinary-community/next-cloudinary/discussions/432).
+</Callout>
+
+**Examples**
+
+Cropping an image and filling the containing space:
+
+```jsx copy
+crop: 'fill'
+```
+
+Using a crop of `thumb` on the original source image:
+
+```jsx copy
+crop: {
+  width: 1200,
+  height: 1200,
+  type: 'thumb',
+  source: true
+}
+```
+
+[Learn more about the crop transformation](https://cloudinary.com/documentation/transformation_reference#c_crop_resize) on the Cloudinary docs.
+
+### `fillBackground`
+
+<Callout emoji={false} type="info">
+  Generative Fill is currently in beta.
+</Callout>
+
+Automatically fills the padded area using generative AI to extend the image seamlessly.
+
+The `fillBackground` prop can either be a boolean, which will use a set of safe defaults to produce
+a background, or an object, which can take the following options:
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      name: 'crop',
+      type: 'string',
+      example: () => (<code>clpad</code>),
+    },
+    {
+      name: 'gravity',
+      type: 'string',
+      example: () => (<code>south</code>),
+    },
+    {
+      name: 'prompt',
+      type: 'string',
+      example: () => (<code>cupcakes</code>),
+    },
+  ]}
+/>
+
+**Examples**
+
+Applying Generative Fill with defaults:
+
+```jsx copy
+fillBackground: true
+```
+
+Customizing options:
+
+```jsx copy
+fillBackground: {
+  crop: 'clpad',
+  gravity: 'south',
+  prompt: 'cupcakes'
+}
+```
+
+[Learn more about the Generative Fill transformation](https://cloudinary.com/documentation/transformation_reference#b_gen_fill) on the Cloudinary docs.
+
+### `gravity`
+
+Determines which part of an asset to focus on, and thus which part of the asset to keep, when any part of the asset is cropped
+
+**Examples**
+
+```jsx copy
+gravity: 'face'
+```
+
+[Learn more about gravity](https://cloudinary.com/documentation/transformation_reference#g_gravity) on the Cloudinary docs.
+
+### `recolor`
+
+<Callout emoji={false} type="info">
+  Generative Recolor is currently in beta.
+</Callout>
+
+Uses generative AI to recolor parts of your image, maintaining the relative shading.
+
+The `recolor` prop can either be an array with the objects to be replaced or an object
+with the following options:
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      name: 'multiple',
+      type: 'boolean',
+      example: () => (<code>true</code>),
+    },
+    {
+      name: 'prompt',
+      type: 'string | array',
+      example: () => (<span><code>duck</code> or <code>['duck', 'horse']</code></span>),
+    },
+    {
+      name: 'to',
+      type: 'string',
+      example: () => (<code>blue</code>),
+    },
+  ]}
+/>
+
+**Examples**
+
+Recoloring an object with an array:
+
+```jsx copy
+recolor: ['duck', 'blue']
+```
+
+Or using the object format:
+
+```jsx copy
+recolor: {
+  prompt: 'duck',
+  to: 'blue',
+  multiple; true
+}
+```
+
+[Learn more about the Generative Recolor transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_recolor) on the Cloudinary docs.
+
+### `remove`
+
+<Callout emoji={false} type="info">
+  Generative Remove is currently in beta.
+</Callout>
+
+Uses generative AI to remove unwanted parts of your image, replacing the area with realistic pixels.
+
+The `remove` prop can either be a string, an array, or an object with the following options:
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      name: 'multiple',
+      type: 'boolean',
+      example: () => (<code>true</code>),
+    },
+    {
+      name: 'prompt',
+      type: 'string | array',
+      example: () => (<span><code>duck</code> or <code>['duck', 'horse']</code></span>),
+    },
+    {
+      name: 'removeShadow',
+      type: 'boolean',
+      example: () => (<code>true</code>),
+    },
+    {
+      name: 'region',
+      type: 'array',
+      example: () => (<code>[300, 200, 1900, 3500]</code>),
+    },
+  ]}
+/>
+
+**Examples**
+
+Removing an object by string:
+
+```jsx copy
+remove: 'apple'
+```
+
+Removing multiple objects by array:
+
+```jsx copy
+remove: ['apple', 'banana', 'orange']
+```
+
+Removing multiple instances of an object and their shadow with object configuration:
+
+```jsx copy
+remove: {
+  prompt: 'apple',
+  multiple: true,
+  removeShadow: true
+}
+```
+
+Removing a region:
+
+```jsx copy
+remove: {
+  region: [300, 200, 1900, 3500]
+}
+```
+
+Removing multiple regions:
+
+```jsx copy
+remove: {
+  region: [
+    [300, 200, 1900, 3500],
+    [123, 321, 750, 500]
+  ]
+}
+```
+
+[Learn more about the Generative Remove transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_remove) on the Cloudinary docs.
+
+### `removeBackground`
+
+Uses the [Cloudinary AI Background Removal add-on](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) to make the background of an image transparent.
+
+<Callout emoji={false} type="info">
+  The Cloudinary AI Background Removal add-on is required to use this feature.
+</Callout>
 
 
-## Effect Options
+**Examples**
 
-| Option Name        | Type        | Default | Example                                              |
-| ------------------ | ----------- | ------- | ---------------------------------------------------- |
-| art                | string      | -       |`"al_dente"`                                         |
-| autoBrightness     | bool/string | -       |`true`, `"80"`                                       |
-| autoColor          | bool/string | -       |`true`, `"80"`                                       |
-| autoContrast       | bool/string | -       |`true`, `"80"`                                       |
-| assistColorblind   | bool/string | -       |`true`, `"20"`, `"xray"`                             |
-| background         | string      | -       |`"blue"`                                             |
-| blackwhite         | bool/string | -       |`true`, `"40"`                                       |
-| blur               | bool/string | -       |`true`, `"800"`                                      |
-| blurFaces          | bool/string | -       |`true`, `"800"`                                      |
-| blurRegion         | bool/string | -       |`true`, `"1000,h_425,w_550,x_600,y_400"`             |
-| border             | string      | -       |`"5px_solid_purple"`                                 |
-| brightness         | bool/string | -       |`true`, `"100"`                                      |
-| brightnessHSB      | bool/string | -       |`true`, `"100"`                                      |
-| cartoonify         | bool/string | -       |`true`, `"70:80"`                                    |
-| color              | string      | -       |`"blue"`                                             |
-| colorize           | string      | -       |`"35,co_darkviolet"`                                 |
-| contrast           | bool/string | -       |`true`, `"100"`, `"level_-70"`                       |
-| distort            | string      | -       |`"150:340:1500:10:1500:1550:50:1000"`, `"arc:180.0"` |
-| fillLight          | bool/string | -       |`true`, `"70:20"`                                    |
-| gamma              | bool/string | -       |`true`, `"100"`                                      |
-| gradientFade       | bool/string | -       |`true`, `"symmetric:10,x_0.2,y_0.4"`                 |
-| grayscale          | bool        | -       |`true`                                               |
-| improve            | bool/string | -       |`true`, `"50"`, `"indoor"`                           |
-| multiply           | bool        | -       |`true`                                               |
-| negate             | bool        | -       |`true`                                               |
-| oilPaint           | bool/string | -       |`true`, `"40"`                                       |
-| opacity            | number/string | -     |`40`, `"40"`                                       |
-| outline            | bool/string | -       |`true`, `"40"`, `"outer:15:200"`                     |
-| overlay            | bool        | -       |`true`                                               |
-| pixelate           | bool/string | -       |`true`, `"20"`                                       |
-| pixelateFaces      | bool/string | -       |`true`, `"20"`                                       |
-| pixelateRegion     | bool/string | -       |`true`, `"35,h_425,w_550,x_600,y_400"`               |
-| redeye             | bool/string | -       |`true`                                               |
-| replaceColor       | string      | -       |`"saddlebrown"`, `"2F4F4F:20"`, `"silver:55:89b8ed"` |
-| saturation         | bool/string | -       |`true`, `"70"`                                       |
-| screen             | bool        | -       |`true`                                               |
-| sepia              | bool/string | -       |`true`, `"50"`                                       |
-| shadow             | bool/string | -       |`true`, `"50,x_-15,y_15"`                            |
-| sharpen            | bool/string | -       |`true`, `"100"`                                      |
-| shear              | string      | -       |`"20.0:0.0"`                                         |
-| simulateColorblind | bool/string | -       |`"deuteranopia"`                                     |
-| tint               | bool/string | -       |`true`, `"100:red:blue:yellow"`                      |
-| unsharpMask        | bool/string | -       |`true`, `"500"`                                      |
-| vectorize          | bool/string | -       |`true`, `"3:0.5"`                                    |
-| vibrance           | bool/string | -       |`true`, `"70"`                                       |
-| vignette           | bool/string | -       |`true`, `"30"`                                       |
+```jsx copy
+removeBackground: true
+```
+
+[Learn more about background removal transformation](https://cloudinary.com/documentation/transformation_reference#e_background_removal) on the Cloudinary docs.
+
+
+### `replace`
+
+<Callout emoji={false} type="info">
+  Generative Replace is currently in beta.
+</Callout>
+
+Uses generative AI to replace parts of your image with something else. 
+
+The `replace` prop can either be an array with the objects to be replaced or an object
+with the following options:
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      name: 'from',
+      type: 'string',
+      example: () => (<code>apple</code>),
+    },
+    {
+      name: 'to',
+      type: 'string',
+      example: () => (<code>banana</code>),
+    },
+    {
+      name: 'preserveGeometry',
+      type: 'boolean',
+      example: () => (<code>true</code>),
+    },
+  ]}
+/>
+
+**Examples**
+
+Replacing an object with an array:
+
+```jsx copy
+replace: ['apple', 'banana']
+```
+
+Or using the object format:
+
+```jsx copy
+replace: {
+  from: 'apple',
+  to: 'banana',
+  preserveGeometry; true
+}
+```
+
+[Learn more about the Generative Replace transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_replace) on the Cloudinary docs.
+
+### `restore`
+
+<Callout emoji={false} type="info">
+  Generative Restore is currently in beta.
+</Callout>
+
+Uses generative AI to restore details in poor quality images or images that may have become degraded through repeated processing and compression.
+
+The `restore` prop can be used as a boolean.
+
+**Examples**
+
+```jsx copy
+restore: true
+```
+
+[Learn more about the Generative Restore transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_restore) on the Cloudinary docs.
+
+
+### `zoom`
+
+Controls how close to crop to the detected coordinates when using face-detection, custom-coordinate, or object-specific gravity.
+
+**Examples**
+
+```jsx copy
+zoom: '0.75'
+```
+
+[Learn more about the zoom transformation](https://cloudinary.com/documentation/transformation_reference#z_zoom) on the Cloudinary docs.
+
+### `zoompan`
+
+Also known as the Ken Burns effect, this transformation applies zooming and/or panning to an image, resulting in a video or animated GIF.
+
+`zoompan` can be applied with safe defaults as a boolean, a string, or an object for
+advanced customization.
+
+As a string, you can pass in "loop" to automatically loop, or you can pass in raw configuration using the Cloudinary
+Transformation syntax.
+
+As an object, you can use advanced configuration with the following options:
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      name: 'loop',
+      type: 'boolean | string',
+      example: () => (<code>true</code>),
+    },
+    {
+      name: 'options',
+      type: 'boolean | string',
+      example: () => (<code>mode_ztr;maxzoom_6.5;du_10</code>),
+    },
+  ]}
+/>
+
+**Examples**
+
+With defaults:
+
+```jsx copy
+zoompan: true
+```
+
+Add looping:
+
+```jsx copy
+zoompan: 'loop'
+```
+
+Customize options:
+
+```jsx copy
+zoompan: {
+  loop: 'loop:2', // Will loop twice
+  options: 'mode_ztr;maxzoom_6.5;du_10'
+}
+```
+
+[Learn more about the zoompan transformation](https://cloudinary.com/documentation/transformation_reference#e_zoompan) on the Cloudinary docs.
+
+
+## Filters & Effects
+
+Cloudinary supports a wide variety of effects and artistic filters that help
+to easily change the appearance of an image.
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more'
+    }
+  ]}
+  data={[
+    {
+      name: 'art',
+      type: 'string',
+      default: '-',
+      example: () => (<code>al_dente</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_art">More Info</a>)
+    },
+    {
+      name: 'autoBrightness',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>80</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_auto_brightness">More Info</a>)
+    },
+    {
+      name: 'autoColor',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>80</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_auto_color">More Info</a>)
+    },
+    {
+      name: 'autoContrast',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>80</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_auto_contrast">More Info</a>)
+    },
+    {
+      name: 'assistColorblind',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>20</code>, <code>xray</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_assist_colorblind">More Info</a>)
+    },
+    {
+      name: 'blackwhite',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>40</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_blackwhite">More Info</a>)
+    },
+    {
+      name: 'blur',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>800</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_blur">More Info</a>)
+    },
+    {
+      name: 'blurFaces',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>800</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_blur_faces">More Info</a>)
+    },
+    {
+      name: 'blurRegion',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>1000,h_425,w_550,x_600,y_400</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_blur_region">More Info</a>)
+    },
+    {
+      name: 'border',
+      type: 'string',
+      default: '-',
+      example: () => (<code>5px_solid_purple</code>)
+    },
+    {
+      name: 'brightness',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>100</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_brightness">More Info</a>)
+    },
+    {
+      name: 'brightnessHSB',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>100</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_brightness_hsb">More Info</a>)
+    },
+    {
+      name: 'cartoonify',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>70:80</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_cartoonify">More Info</a>)
+    },
+    {
+      name: 'color',
+      type: 'string',
+      default: '-',
+      example: () => (<code>blue</code>),
+    },
+    {
+      name: 'colorize',
+      type: 'string',
+      default: '-',
+      example: () => (<code>35,co_darkviolet</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_colorize">More Info</a>)
+    },
+    {
+      name: 'contrast',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>100</code>, <code>level_-70</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_contrast">More Info</a>)
+    },
+    {
+      name: 'distort',
+      type: 'string',
+      default: '-',
+      example: () => (<span><code>150:340:1500:10:1500:1550:50:1000</code>, <code>arc:180.0</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_distort">More Info</a>)
+    },
+    {
+      name: 'fillLight',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>70:20</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_fill_light">More Info</a>)
+    },
+    {
+      name: 'gamma',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>100</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gamma">More Info</a>)
+    },
+    {
+      name: 'gradientFade',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>symmetric:10,x_0.2,y_0.4</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gradient_fade">More Info</a>)
+    },
+    {
+      name: 'grayscale',
+      type: 'bool',
+      default: '-',
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_grayscale">More Info</a>)
+    },
+    {
+      name: 'improve',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>50</code>, <code>indoor</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_improve">More Info</a>)
+    },
+    {
+      name: 'multiply',
+      type: 'bool',
+      default: '-',
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_multiply">More Info</a>)
+    },
+    {
+      name: 'negate',
+      type: 'bool',
+      default: '-',
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_negate">More Info</a>)
+    },
+    {
+      name: 'oilPaint',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>40</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_oil_paint">More Info</a>)
+    },
+    {
+      name: 'opacity',
+      type: 'number/string',
+      default: '-',
+      example: () => (<code>40</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#o_opacity">More Info</a>)
+    },
+    {
+      name: 'outline',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>40</code>, <code>outer:15:200</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_outline">More Info</a>)
+    },
+    {
+      name: 'overlay',
+      type: 'bool',
+      default: '-',
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_overlay">More Info</a>)
+    },
+    {
+      name: 'pixelate',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>20</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_pixelate">More Info</a>)
+    },
+    {
+      name: 'pixelateFaces',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>20</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_pixelate_faces">More Info</a>)
+    },
+    {
+      name: 'pixelateRegion',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>35,h_425,w_550,x_600,y_400</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_pixelate_region">More Info</a>)
+    },
+    {
+      name: 'redeye',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_redeye">More Info</a>)
+    },
+    {
+      name: 'replaceColor',
+      type: 'string',
+      default: '-',
+      example: () => (<span><code>saddlebrown</code>, <code>2F4F4F:20</code>, <code>silver:55:89b8ed</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_replace_color">More Info</a>)
+    },
+    {
+      name: 'sanitize',
+      type: 'bool',
+      default: () => (<span><code>true</code> if .svg</span>),
+      example: () => (<span><code>true</code> - Only applies to .svg</span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#fl_sanitize">More Info</a>)
+    },
+    {
+      name: 'saturation',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>70</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_saturation">More Info</a>)
+    },
+    {
+      name: 'screen',
+      type: 'bool',
+      default: '-',
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_screen">More Info</a>)
+    },
+    {
+      name: 'sepia',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>50</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_sepia">More Info</a>)
+    },
+    {
+      name: 'shadow',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>50,x_-15,y_15</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_shadow">More Info</a>)
+    },
+    {
+      name: 'sharpen',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>100</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_sharpen">More Info</a>)
+    },
+    {
+      name: 'shear',
+      type: 'string',
+      default: '-',
+      example: () => (<code>20.0:0.0</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_shear">More Info</a>)
+    },
+    {
+      name: 'simulateColorblind',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<code>deuteranopia</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_simulate_colorblind">More Info</a>)
+    },
+    {
+      name: 'tint',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>100:red:blue:yellow</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_tint">More Info</a>)
+    },
+    {
+      name: 'trim',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>50:yellow</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_trim">More Info</a>)
+    },
+    {
+      name: 'unsharpMask',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>500</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_unsharp_mask">More Info</a>)
+    },
+    {
+      name: 'vectorize',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>3:0.5</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_vectorize">More Info</a>)
+    },
+    {
+      name: 'vibrance',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>70</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_vibrance">More Info</a>)
+    },
+    {
+      name: 'vignette',
+      type: 'boolean | string',
+      default: '-',
+      example: () => (<span><code>true</code>, <code>30</code></span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_vignette">More Info</a>)
+    }
+  ]}
+/>
+
+**Examples**
+
+Make an image black and white:
+
+```jsx copy
+blackwhite: true
+```
+
+Pixelate an image:
+
+```jsx copy
+pixelate: true
+```
+
+Sharpen an image:
+
+```jsx copy
+sharpen: 50
+```
 
 [View the Cloudinary docs](https://cloudinary.com/documentation/transformation_reference#e_effect) to see learn more about using effects.
 
-### Overlay Options
+## Overlays & Underlays
 
-The `overlays` prop is an array of objects with the following configuration options:
+Cloudinary gives you the ability to add layers above or below your primary asset using Overlays and Underlays.
 
-| Property Name    | Type          | Example                              |
-|------------------|---------------|--------------------------------------|
-| appliedEffects   | array         | Same as effects, added as applied transformation |
-| effects          | array         | See Below                            |
-| position         | object        | See Below                            |
-| publicId         | string        | `"thumb"`                            |
-| text             | object|string | `"Next Cloudinary"` or See Below     |
-| url              | string        | `"https://.../image.jpg"`            |
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      name: 'overlays',
+      type: 'array',
+      default: '-',
+      example: () => (<a href="#customizing-overlays--underlays">Customizing Overlays & Underlays</a>),
+    },
+    {
+      name: 'text',
+      type: 'string',
+      default: '-',
+      example: () => (<code>Next Cloudinary</code>),
+    },
+    {
+      name: 'underlay',
+      type: 'string',
+      default: '-',
+      example: () => (<code>my-public-id</code>),
+    },
+    {
+      name: 'underlays',
+      type: 'array',
+      default: '-',
+      example: () => (<a href="#customizing-overlays--underlays">Customizing Overlays & Underlays</a>),
+    },
+  ]}
+/>
 
-The position property can include:
+### Customizing Overlays & Underlays
 
-| Property Name | Type   | Example        |
-| ------------- | ------ | -------------- |
-| angle         | number | `45`           |
-| gravity       | string | '"north_west"' |
-| x             | number | `10`           |
-| y             | number | `10`           |
+> Note: The API for Underlays is similar to Overlays except they do not support text.
 
-Objects in the effects array can include everything in the effects options above as well as:
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+  ]}
+  data={[
+    {
+      name: 'appliedEffects',
+      type: 'array',
+      example: () => (<span><a href="#layer-effect-props">effects</a>, added as applied transformation</span>),
+    },
+    {
+      name: 'effects',
+      type: 'array',
+      example: () => (<a href="#layer-effect-props">effects</a>),
+    },
+    {
+      name: 'position',
+      type: 'object',
+      example: () => (<a href="#layer-position-props">position</a>),
+    },
+    {
+      name: 'publicId',
+      type: 'string',
+      example: () => (<code>mypublicid</code>),
+    },
+    {
+      name: 'text',
+      type: 'object|string',
+      example: () => (<span><code>Next Cloudinary</code> or See <a href="#layer-text-props">text</a> Below</span>),
+    },
+    {
+      name: 'url',
+      type: 'string',
+      example: () => (<code>https://.../image.jpg</code>),
+    },
+  ]}
+/>
 
-| Property Name | Type   | Example        |
-| ------------- | ------ | -------------- |
-| aspectRatio   | string | `"3.0"`        |
-| crop          | string | `10`           |
-| gravity       | string | '"north_west"' |
-| height        | number | '600'          |
-| width         | number | '600'          |
+**Examples**
 
-The text property can include:
+Adding an overlay:
 
-| Property Name  | Type   | Example                                    |
-| -------------- | ------ | ------------------------------------------ |
-| border         | string | `"20px_solid_blue"`                        |
-| color          | string | `"blueviolet"`                             |
-| fontFamily     | string | `"Open Sans"`                              |
-| fontSize       | number | `48`                                       |
-| fontWeight     | string | `"bold"`                                   |
-| letterSpacing  | number | `"14"`                                     |
-| lineSpacing    | number | `"14"`                                     |
-| stroke         | bool   | `true` in coordination with Border         |
-| textDecoration | string | `"underline"`                              |
+```jsx copy
+overlays: [{
+  publicId: 'images/earth',
+  position: {
+    x: 50,
+    y: 50,
+    gravity: 'north_west',
+  },
+  appliedEffects: [
+    {
+      multiply: true
+    }
+  ]
+}]
+```
+
+Adding an underlay:
+
+```jsx copy
+underlays: [{
+  publicId: 'images/earth',
+}]
+```
+
+<div className="-mb-4">
+  <strong id="layer-effect-props" className="block text-slate-500 text-lg mt-8 -mb-4">
+    <code>effects</code>
+  </strong>
+  
+  Objects in the `effects` array can include everything in [Basic Transformations](##basic-transformations) and [Filters & Effects](#filters--effects) above as well as:
+</div>
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more',
+    },
+  ]}
+  data={[
+    {
+      name: 'aspectRatio',
+      type: 'string',
+      example: () => (<code>3.0</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#ar_aspect_ratio">More Info</a>)
+    },
+
+    {
+      name: 'crop',
+      type: 'string',
+      example: () => (<code>10</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#c_crop_resize">More Info</a>)
+    },
+
+    {
+      name: 'gravity',
+      type: 'string',
+      example: () => (<code>north_west</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#g_gravity">More Info</a>)
+    },
+
+    {
+      name: 'height',
+      type: 'number',
+      example: () => (<code>600</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#h_height">More Info</a>)
+    },
+
+    {
+      name: 'width',
+      type: 'number',
+      example: () => (<code>600</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#w_width">More Info</a>)
+    },
+  ]}
+/>
+
+<div className="-mb-4">
+  <strong id="layer-position-props" className="block text-slate-500 text-lg mt-8 -mb-4">
+    <code>position</code>
+  </strong>
+
+  The `position` property can include:
+</div>
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more'
+    },
+  ]}
+  data={[
+    {
+      name: 'angle',
+      type: 'number',
+      example: () => (<code>45</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#a_angle">More Info</a>)
+    },
+    {
+      name: 'gravity',
+      type: 'string',
+      example: () => (<code>north_west</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#g_gravity">More Info</a>)
+    },
+    {
+      name: 'x',
+      type: 'number',
+      example: () => (<code>10</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#x_y_coordinates">More Info</a>)
+    },
+    {
+      name: 'y',
+      type: 'number',
+      example: () => (<code>10</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#x_y_coordinates">More Info</a>)
+    },
+  ]}
+/>
+
+<div className="-mb-4">
+  <strong id="layer-text-props" className="block text-slate-500 text-lg mt-8 -mb-4">text</strong>
+
+  The `text` property can include:
+</div>
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more',
+    },
+  ]}
+  data={[
+    {
+      name: 'border',
+      type: 'string',
+      example: () => (<code>20px_solid_blue</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#bo_border">More Info</a>)
+    },
+    {
+      name: 'color',
+      type: 'string',
+      example: () => (<code>blueviolet</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#co_color">More Info</a>)
+    },
+    {
+      name: 'fontFamily',
+      type: 'string',
+      example: () => (<code>Open Sans</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
+    },
+    {
+      name: 'fontSize',
+      type: 'number',
+      example: () => (<code>48</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
+    },
+    {
+      name: 'fontWeight',
+      type: 'string',
+      example: () => (<code>bold</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
+    },
+    {
+      name: 'letterSpacing',
+      type: 'number',
+      example: () => (<code>14</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
+    },
+    {
+      name: 'lineSpacing',
+      type: 'number',
+      example: () => (<code>14</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
+    },
+    {
+      name: 'stroke',
+      type: 'bool',
+      example: () => (<span><code>true</code> in coordination with Border</span>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
+    },
+    {
+      name: 'textDecoration',
+      type: 'string',
+      example: () => (<code>underline</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#styling_parameters">More Info</a>)
+    },
+  ]}
+/>
+
+## Advanced
+
+### Configuration & Delivery
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more'
+    }
+  ]}
+  data={[
+    {
+      name: 'assetType',
+      type: 'string',
+      default: () => (<code>image</code>),
+      example: () => (<code>video</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/image_transformations#transformation_url_structure">More Info</a>)
+    },
+    {
+      name: 'config',
+      type: 'object',
+      default: '-',
+      example: () => (<code>{`{ url: { secureDistribution: 'spacejelly.dev' } }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters">More Info</a>)
+    },
+    {
+      name: 'deliveryType',
+      type: 'string',
+      default: () => (<code>upload</code>),
+      example: () => (<code>fetch</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/image_transformations#delivery_types">More Info</a>)
+    },
+    {
+      name: 'defaultImage',
+      type: 'string',
+      default: '-',
+      example: () => (<code>myimage.jpg</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#d_default_image">More Info</a>)
+    },
+    {
+      name: 'flags',
+      type: 'array',
+      default: '-',
+      example: () => (<code>{`['keep_iptc']`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#fl_flag">More Info</a>)
+    },
+    {
+      name: 'seoSuffix',
+      type: 'string',
+      default: '-',
+      example: () => (<code>my-image-content</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/advanced_url_delivery_options#dynamic_seo_suffixes">More Info</a>)
+    },
+    {
+      name: 'version',
+      type: 'number',
+      default: '-',
+      example: () => (<code>1234</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/advanced_url_delivery_options#asset_versions">More Info</a>)
+    },
+  ]}
+/>
+
+#### `assetType`
+
+Configures the asset type for the delivered resource.
+
+This defaults to an image for the getCldImageUrl helper.
+
+**Examples**
+
+Create an image thumbnail from a video asset:
+
+```jsx copy
+assetType: 'video'
+```
+
+[Learn more about Asset Types](https://cloudinary.com/documentation/image_transformations#transformation_url_structure) on the Cloudinary docs.
+
+
+#### `config`
+
+Allows configuration for the Cloudinary environment.
+
+**Examples**
+
+```jsx copy
+config: {
+  cloud: {
+    cloudName: 'my-cloud'
+  }
+}
+```
+
+[Learn more about configuration parameters](https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters) on the Cloudinary docs.
+
+#### `deliveryType`
+
+Controls the delivery type of the image.
+
+**Examples**
+
+```jsx copy
+deliveryType: 'fetch'
+```
+
+[Learn more about Delivery Types](https://cloudinary.com/documentation/image_transformations#delivery_types) on the Cloudinary docs.
+
+#### `defaultImage`
+
+Configures the default image to use in case the given public ID is not available.
+
+<Callout emoji={false} type="info">
+  `defaultImage` must include a format / file extension.
+</Callout>
+
+**Examples**
+
+```jsx copy
+defaultImage: 'myimage.jpg'
+```
+
+[Learn more about Default Images](https://cloudinary.com/documentation/transformation_reference#d_default_image) on the Cloudinary docs.
+
+#### `flags`
+
+Alters the regular behavior of another transformation or the overall delivery behavior.
+
+<Callout emoji={false}>
+  The `keep_iptc` flag requires not including a quality of auto. Using `quality="default"` avoids setting the quality flag in the URL.
+</Callout>
+
+**Examples**
+
+```jsx copy
+flags: ['keep_iptc'],
+quality: 'default'
+```
+
+[Learn more about Flags](https://cloudinary.com/documentation/transformation_reference#fl_flag) on the Cloudinary docs.
+
+#### `seoSuffix`
+
+Adds a dynamic, descriptive suffix to the Public ID for greater SEO control of image URLs.
+
+**Examples**
+
+```jsx copy
+seoSuffix: 'jellyfish-in-space'
+```
+
+[Learn more about Dynamic SEO Suffixes](https://cloudinary.com/documentation/advanced_url_delivery_options#dynamic_seo_suffixes) on the Cloudinary docs.
+
+#### `version`
+
+Controls the version defined in the delivery URL.
+
+**Examples**
+
+```jsx copy
+version: '1234'
+```
+
+[Learn more about Asset Versions](https://cloudinary.com/documentation/advanced_url_delivery_options#asset_versions) on the Cloudinary docs.
+
+### Managing Transformations
+
+Most transformations and effects are exposed as top-level props to enable you to easily
+apply what you need, but you can also use the following props for more advanced and
+organized ways of applying transformations and effects.
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more'
+    }
+  ]}
+  data={[
+    {
+      name: 'effects',
+      type: 'array',
+      default: '-',
+      example: () => (<code>{`[{ background: 'blue' }]`}</code>)
+    },
+    {
+      name: 'namedTransformations',
+      type: 'string | array',
+      default: '-',
+      example: () => (<code>{`['my-named-transformation']`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/image_transformations#named_transformations">More Info</a>)
+    },
+    {
+      name: 'preserveTransformations',
+      type: 'string',
+      default: () => (<code>false</code>),
+      example: () => (<code>true</code>)
+    },
+    {
+      name: 'rawTransformations',
+      type: 'array',
+      default: '-',
+      example: () => (<code>{`['e_blur:2000']`}</code>),
+    },
+    {
+      name: 'strictTransformations',
+      type: 'boolean',
+      default: '-',
+      example: () => (<a href="#stricttransformations">Strict Transformations</a>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/control_access_to_media#strict_transformations">More Info</a>)
+    },
+    {
+      name: 'transformations (deprecated)',
+      type: 'string | array',
+      default: '-',
+      example: () => (<code>{`['my-named-transformation']`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/image_transformations#named_transformations">More Info</a>)
+    },
+  ]}
+/>
+
+#### `effects`
+
+Applies a chain of transformation sets to an image.
+
+**Examples**
+
+```jsx copy
+effects: [
+  {
+    width: 100,
+    height: 100,
+    crop: 'fill'
+  },
+  {
+    opacity: 50
+  }
+]
+```
+
+#### `namedTransformations`
+
+Applies named transformations to the image.
+
+**Examples**
+
+```jsx copy
+namedTransformations: ['my-transformation']
+```
+
+[Learn more about Named Transformations](https://cloudinary.com/documentation/image_transformations#named_transformations) on the Cloudinary docs.
+
+
+#### `preserveTransformations`
+
+Preserves transformations already applied to an image when passing in a Cloudinary URL
+as the `src`.
+
+**Examples**
+
+```jsx copy
+preserveTransformations: true
+```
+
+#### `rawTransformations`
+
+Provides the ability to pass in an array of "raw" Cloudinary transformations using the
+[Transformation URL API](https://cloudinary.com/documentation/transformation_reference)
+
+**Examples**
+
+```jsx copy
+rawTransformations: ['w_100', 'b_blue', 'f_auto']
+```
+
+#### `strictTransformations`
+
+[Strict Transformations](https://cloudinary.com/documentation/control_access_to_media#strict_transformations) gives
+you the ability to have more control over what transformations are permitted to be used from your Cloudinary account.
+
+By enabling Strict Transformations, you restrict the ability to generate transformations on-the-fly requiring explicit
+approval through the Cloudinary dashboard.
+
+> Note: This disables [optimization](#optimization) and [responsive sizing](/guides/responsive-images)
+only allowing [named transformations](#transformations) to be applied. The width and height are not applied to the URL,
+but are still included on the image tag rendered to the DOM.
+
+**Examples**
+
+```jsx copy
+strictTransformations: true,
+transformations: ['my-transformation']
+```
+
+[Learn more about Strict Transformations](https://cloudinary.com/documentation/control_access_to_media#strict_transformations) on the Cloudinary docs.
+
+#### `transformations` - Deprecated
+
+**Use namedTransformations instead**
+
+### Optimization
+
+By default, getCldImageUrl opts in any image to `f_auto` and `q_auto` which provide automatic
+optimization through intelligent compression and by automatically delivering the most
+efficient format based on the browser and device requesting the image.
+
+You can customize and manage these properties using the options below:
+
+<Table
+  columns={[
+    {
+      id: 'name',
+      title: 'Name'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more'
+    }
+  ]}
+  data={[
+    {
+      name: 'dpr',
+      type: 'number/string',
+      default: '-',
+      example: () => (<code>2.0</code>),
+      more: () => (<a className="whitespace-nowrap" href="asdf">More Info</a>)
+    },
+    {
+      name: 'format',
+      type: 'string',
+      default: () => (<code>auto</code>),
+      example: () => (<code>webp</code>),
+      more: () => (<a className="whitespace-nowrap" href="asdf">More Info</a>)
+    },
+    {
+      name: 'quality',
+      type: 'string',
+      default: () => (<code>auto</code>),
+      example: () => (<code>90</code>),
+      more: () => (<a className="whitespace-nowrap" href="asdf">More Info</a>)
+    },
+    {
+      name: 'unoptimized',
+      type: 'boolean',
+      default: '-',
+      example: () => (<a href="#unoptimized">Unoptimized Images</a>),
+      more: () => (<a className="whitespace-nowrap" href="asdf">More Info</a>)
+    },
+  ]}
+/>
+
+#### `dpr`
+
+Sets the device pixel ratio (DPR) for the delivered image or video using a specified value or automatically based on the requesting device.
+
+**Examples**
+
+```jsx copy
+dpr: '2.0'
+```
+
+[Learn more about configuring DPR](https://cloudinary.com/documentation/transformation_reference#dpr_dpr) on the Cloudinary docs.
+
+
+#### `format`
+
+Converts (if necessary) and delivers an asset in the specified format regardless of the file extension used in the delivery URL.
+
+**Examples**
+
+```jsx copy
+format: 'png'
+```
+
+[Learn more about format](https://cloudinary.com/documentation/transformation_reference#f_format) on the Cloudinary docs.
+
+
+#### `quality`
+
+Controls the quality of the delivered asset. Reducing the quality is a trade-off between visual quality and file size.
+
+**Examples**
+
+```jsx copy
+quality: 10
+```
+
+[Learn more about quality](https://cloudinary.com/documentation/transformation_reference#q_quality) on the Cloudinary docs.

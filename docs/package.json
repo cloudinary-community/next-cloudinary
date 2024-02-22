@@ -11,20 +11,22 @@
   "dependencies": {
     "@cloudinary-util/url-loader": "4.2.0",
     "@cloudinary-util/util": "^3.0.0",
-    "@vercel/analytics": "^1.0.1",
-    "cloudinary": "^1.37.3",
-    "next": "^14.0.0",
+    "@vercel/analytics": "^1.2.2",
+    "cloudinary": "^2.0.1",
+    "clsx": "^2.1.0",
+    "next": "^14.1.0",
     "nextjs-google-analytics": "^2.3.3",
-    "nextra": "^2.13.2",
-    "nextra-theme-docs": "^2.13.2",
+    "nextra": "^2.13.3",
+    "nextra-theme-docs": "^2.13.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.11.0",
-    "sass": "^1.63.6"
+    "react-icons": "^5.0.1",
+    "sass": "^1.71.1",
+    "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.5"
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
   }
 }

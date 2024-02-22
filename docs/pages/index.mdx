@@ -34,10 +34,10 @@ High-performance image and video delivery and uploading at scale in Next.js powe
   <li>
     <CldImage
       width="987"
-      height="1481"
+      height="987"
       src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
       sizes="50vw"
-      alt="Original image of woman with headphones"
+      alt="Image of woman with headphones transformed with Cloudinary"
       priority
     />
   </li>
@@ -47,8 +47,13 @@ High-performance image and video delivery and uploading at scale in Next.js powe
       height="987"
       src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
       sizes="50vw"
-      crop="thumb"
-      gravity="faces"
+      crop={{
+        width: 987,
+        height: 987,
+        type: 'thumb',
+        gravity: 'faces',
+        source: true,
+      }}
       removeBackground
       tint="40:253f8c"
       underlay={`${process.env.IMAGES_DIRECTORY}/city-skyline`}

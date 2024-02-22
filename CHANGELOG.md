@@ -1,3 +1,15 @@
+# [6.0.0-beta.9](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.8...v6.0.0-beta.9) (2024-02-22)
+
+
+### Features
+
+* Remove Default 2-Stage Image Sizing ([#431](https://github.com/cloudinary-community/next-cloudinary/issues/431)) ([b8de6f0](https://github.com/cloudinary-community/next-cloudinary/commit/b8de6f055c8c2641b1990ae60c8d5092b9381b23))
+
+
+### BREAKING CHANGES
+
+* Changes how cropping fundamentally works, introduces new functionality behind crop prop
+
 # [6.0.0-beta.8](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.7...v6.0.0-beta.8) (2024-01-25)
 
 

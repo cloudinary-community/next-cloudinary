@@ -1,11 +1,10 @@
 import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
-import { CldImage } from '../../../next-cloudinary';
-import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../../next-cloudinary/src/constants/sizes';
-
 import OgImage from '../../components/OgImage';
-import ImageGrid from '../../components/ImageGrid';
+import HeaderImage from '../../components/HeaderImage';
+import CodeBlock from '../../components/CodeBlock';
+import ExamplesCldOgImage from '../../components/ExamplesCldOgImage';
 
 <Head>
   <title>CldOgImage Examples - Next Cloudinary</title>
@@ -20,57 +19,37 @@ import ImageGrid from '../../components/ImageGrid';
 
 # CldOgImage Examples
 
-<Callout emoji={false}>
-  CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. The following examples make use of the `<CldImage>` tag to showcase what's possible.
-</Callout>
+> CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. The following examples make use of the `<CldImage>` tag to showcase what's possible.
 
-## Effects
+## Basic Image
 
-<ImageGrid columns={1}>
-  <li>
-    <CldImage
-      width={OG_IMAGE_WIDTH}
-      height={OG_IMAGE_HEIGHT}
-      crop="fill"
-      gravity="auto"
-      src={`${process.env.IMAGES_DIRECTORY}/white`}
-      sizes="100vw"
-      text="Next Cloudinary"
-      alt="Next Cloudinary"
-    />
+`src`: Specifies a public ID to use as the image
 
-    ### Text over a white background
+<HeaderImage>
+  <ExamplesCldOgImage
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+  />
+</HeaderImage>
 
-    ```jsx copy
-    text="Next Cloudinary"
-    ```
-  </li>
-  <li>
-    <CldImage
-      width={OG_IMAGE_WIDTH}
-      height={OG_IMAGE_HEIGHT}
-      crop="fill"
-      gravity="auto"
-      src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-      tint="100:0000FF:0p:FF1493:100p"
-      blur="2000"
-      removeBackground
-      overlays={[{
-        text: {
-          color: 'white',
-          fontFamily: 'Source Sans Pro',
-          fontSize: 200,
-          fontWeight: 'bold',
-          text: 'Next Cloudinary'
-        }
-      }]}
-      underlay="images/galaxy"
-      alt="Next Cloudinary on a Galaxy"
-    />
+<CodeBlock className="mt-6">
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
-    ### Background removal with custom background
+  <CldOgImage
+    src="<Public ID>"
+  />
+  ```
+</CodeBlock>
 
-    ```jsx copy
+## Background Removal
+
+#### Image Background
+
+`underlay`: Specifies a public ID to use as an underlaying image.
+
+<HeaderImage>
+  <ExamplesCldOgImage
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
     tint="100:0000FF:0p:FF1493:100p"
     blur="2000"
     removeBackground
@@ -78,16 +57,74 @@ import ImageGrid from '../../components/ImageGrid';
       text: {
         color: 'white',
         fontFamily: 'Source Sans Pro',
-        fontSize: 200,
+        fontSize: 120,
         fontWeight: 'bold',
         text: 'Next Cloudinary'
       }
     }]}
     underlay="images/galaxy"
-    ```
-  </li>
-</ImageGrid>
+  />
+</HeaderImage>
 
+<CodeBlock className="mt-6">
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
 
+  <CldOgImage
+    src="<Public ID>"
+    tint="100:0000FF:0p:FF1493:100p"
+    blur="2000"
+    removeBackground
+    overlays={[{
+      text: {
+        color: 'white',
+        fontFamily: 'Source Sans Pro',
+        fontSize: 120,
+        fontWeight: 'bold',
+        text: 'Next Cloudinary'
+      }
+    }]}
+    underlay="images/galaxy"
+  />
+  ```
+</CodeBlock>
 
+## Text Overlays
 
+Text overlays allow you to place text on top of an image.
+
+### Adding Custom Text
+
+`overlays`: Uses overlay objects to add text on top of an image.
+
+<HeaderImage>
+  <ExamplesCldOgImage
+    src={`${process.env.IMAGES_DIRECTORY}/white`}
+    overlays={[{
+      text: {
+        fontFamily: 'Source Sans Pro',
+        fontSize: 120,
+        fontWeight: 'bold',
+        text: 'Next Cloudinary'
+      }
+    }]}
+  />
+</HeaderImage>
+
+<CodeBlock className="mt-6">
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldOgImage
+    src="<Public ID>"
+    overlays={[{
+      text: {
+        fontFamily: 'Source Sans Pro',
+        fontSize: 120,
+        fontWeight: 'bold',
+        text: 'Next Cloudinary'
+      }
+    }]}
+  />
+  ```
+</CodeBlock>

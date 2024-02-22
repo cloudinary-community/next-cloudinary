@@ -1,0 +1,59 @@
+import Head from 'next/head';
+import { Callout, Steps, Tab, Tabs } from 'nextra-theme-docs';
+
+
+import OgImage from '../components/OgImage';
+
+import { CldImage } from '../../next-cloudinary';
+import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../next-cloudinary/src/constants/sizes';
+
+<Head>
+  <title>Installation - Next Cloudinary</title>
+  <meta name="og:title" content="Installing Next Cloudinary - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/installation`} />
+</Head>
+
+<OgImage
+  title="Changelog"
+  twitterTitle="Changelog"
+/>
+
+# Changelog
+
+## v6.0.0
+
+### Overview
+
+### Changes
+
+* Migrates project to pnpm ([#419](https://github.com/cloudinary-community/next-cloudinary/pull/419))
+
+**CldImage, getCldImageUrl, CldOgImage, getCldOgImageUrl**
+
+<Callout emoji={false} type="warning">
+This is a fundamental change in how the API works
+</Callout>
+
+* Removes default 2-stage resizing to avoid low resolution images for larger source images  ([#431](https://github.com/cloudinary-community/next-cloudinary/pull/431))
+  * Learn more about [cropping](/cldimage/configuration#crop)
+  * Learn more about [responsive images](/guides/responsive-images)
+  * See the RFC with more details behind the change: https://github.com/cloudinary-community/next-cloudinary/discussions/432
+
+**CldImage**
+* Deprecates `transformations` in favor of `namedTransformations`
+
+**getCldImageUrl**
+* Removes types GetCldImageUrl and GetCldOgImageUrl
+
+**CldUploadWidget**
+* Add Content-Type to CldUploadWidget signature endpoint ([#379](https://github.com/cloudinary-community/next-cloudinary/issues/379))
+* Deprecates some CldUploadWidget types in favor of natively defined types from [@cloudinary-util/types](https://github.com/colbyfayock/cloudinary-util/tree/main/packages/types)
+  * CldUploadWidgetInfo, CldUploadWidgetPropsOptions, CldUploadWidgetResults
+* Updates onError and onClose callbacks to have a consistent API with the rest of the callbacks ([#424](https://github.com/cloudinary-community/next-cloudinary/pull/424))
+* Deprecates onUpload in favor of onSuccess, matching the native Cloudinary Upload Widget API ([#424](https://github.com/cloudinary-community/next-cloudinary/pull/424))
+
+**CldVideoPlayer**
+* Removes autoPlay in favor of autoplay
+* Video Player: CldVideoPlayerPropsColors
+* Deprecates some CldVideoPlayer types in favor of natively defined types from [@cloudinary-util/types](https://github.com/colbyfayock/cloudinary-util/tree/main/packages/types)
+  * CldVideoPlayerPropsColors
