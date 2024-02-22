@@ -1,3 +1,10 @@
+# [6.0.0-beta.13](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.12...v6.0.0-beta.13) (2024-02-22)
+
+
+### Features
+
+* Assert JSON on package.json imports, import Image from Next.js directly ([#437](https://github.com/cloudinary-community/next-cloudinary/issues/437)) ([a4b4017](https://github.com/cloudinary-community/next-cloudinary/commit/a4b4017eaab7742b351a9904527916119e834850))
+
 # [6.0.0-beta.12](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.11...v6.0.0-beta.12) (2024-02-22)
 
 
