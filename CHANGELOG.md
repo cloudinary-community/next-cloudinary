@@ -1,3 +1,10 @@
+# [6.0.0-beta.10](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.9...v6.0.0-beta.10) (2024-02-22)
+
+
+### Features
+
+* fixing analytics bug ([e868afd](https://github.com/cloudinary-community/next-cloudinary/commit/e868afd19f81552d7aec3b7a90e88786c672c633))
+
 # [6.0.0-beta.9](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.8...v6.0.0-beta.9) (2024-02-22)
 
 
