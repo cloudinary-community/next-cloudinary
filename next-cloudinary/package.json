@@ -12,7 +12,7 @@
     "prepublishOnly": "cp ../README.md . && cp ../LICENSE . && pnpm build",
     "postpublish": "rm ./README.md && rm ./LICENSE",
     "test": "jest",
-    "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" pnpm build && cd tests/nextjs-app && pnpm build"
+    "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" pnpm build && cd tests/nextjs-app && npm install && npm build"
   },
   "dependencies": {
     "@cloudinary-util/types": "1.0.0",
