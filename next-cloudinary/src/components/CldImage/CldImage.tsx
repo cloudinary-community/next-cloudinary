@@ -138,8 +138,18 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
 
   const handleOnError = useCallback(onError, [pollForProcessingImage, defaultImgKey]);
 
+  // Copypasta from https://github.com/prismicio/prismic-next/pull/79/files
+  // Thanks Angelo!
+  // TODO: Remove once https://github.com/vercel/next.js/issues/52216 is resolved.
+
+  let ResolvedImage = Image;
+
+  if ("default" in ResolvedImage) {
+    ResolvedImage = (ResolvedImage as unknown as { default: typeof Image }).default;
+  }
+
   return (
-    <Image
+    <ResolvedImage
       key={imgKey}
       {...imageProps}
       loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig: props.config })}
