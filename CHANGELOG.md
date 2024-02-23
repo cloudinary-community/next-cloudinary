@@ -1,3 +1,10 @@
+# [6.0.0-beta.15](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.14...v6.0.0-beta.15) (2024-02-23)
+
+
+### Features
+
+* Homepage Updates ([#438](https://github.com/cloudinary-community/next-cloudinary/issues/438)) ([8958e52](https://github.com/cloudinary-community/next-cloudinary/commit/8958e523052a030301d559edf954a99408e854e8))
+
 # [6.0.0-beta.14](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.13...v6.0.0-beta.14) (2024-02-23)
 
 
