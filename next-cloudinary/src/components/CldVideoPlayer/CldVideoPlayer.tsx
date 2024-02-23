@@ -1,6 +1,5 @@
 import React, {useRef, MutableRefObject, useEffect} from 'react';
-import Script from 'next/script';
-import Head from 'next/head';
+import Script from 'next/dist/client/script.js';
 import { parseUrl } from '@cloudinary-util/util';
 import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptionsLogo, CloudinaryVideoPlayerOptions, } from '@cloudinary-util/types';
 
@@ -237,9 +236,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
   return (
     <>
-      <Head>
-        <link href={`https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.min.css`} rel="stylesheet" />
-      </Head>
       <div style={{ width: '100%', aspectRatio: `${props.width} / ${props.height}`}}>
         <video
           ref={videoRef}
