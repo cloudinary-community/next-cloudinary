@@ -6,43 +6,45 @@ const OgImage = ({ title, ...props }) => {
       src={`${process.env.IMAGES_DIRECTORY}/next-cloudinary-social-background`}
       overlays={[
         {
-          width: 2000,
+          width: 1000,
           crop: 'fit',
           position: {
-            y: -160
+            y: -80
           },
           text: {
             color: 'white',
             fontFamily: 'Source Sans Pro',
-            fontSize: 200,
+            fontSize: 100,
             fontWeight: 'black',
             text: title,
             alignment: 'center',
-            lineSpacing: -50
+            lineSpacing: -25
           }
         },
         {
           publicId: 'images/cloudinary-white',
+          height: 60,
           position: {
-            x: -200,
-            y: 180,
+            x: -100,
+            y: 90,
           },
         },
         {
           publicId: 'images/nextjs-white',
+          height: 38,
           position: {
-            x: 350,
-            y: 180,
+            x: 175,
+            y: 90,
           },
         },
         {
           position: {
-            y: 320
+            y: 160
           },
           text: {
             color: 'white',
             fontFamily: 'Source Sans Pro',
-            fontSize: 60,
+            fontSize: 30,
             fontWeight: 'bold',
             text: 'next.cloudinary.dev'
           }

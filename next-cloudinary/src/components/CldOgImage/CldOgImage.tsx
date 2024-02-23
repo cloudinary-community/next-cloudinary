@@ -41,7 +41,7 @@ const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: Cld
     height
   });
 
-  const twitterImageUrl = getCldImageUrl({
+  const twitterImageUrl = getCldOgImageUrl({
     ...props,
     width,
     height,
