@@ -1,9 +1,16 @@
 {
+  "menubar-installation": {
+    "title": "Installation",
+    "href": "/installation",
+    "type": "page"
+  },
+
   "index": {
-    "title": "Getting Started",
+    "display": "hidden",
+    "type": "page",
     "theme": {
-      "breadcrumb": false,
-      "toc": false
+      "layout": "full",
+      "timestamp": false
     }
   },
   "installation": {
