@@ -1,3 +1,10 @@
+# [6.0.0-beta.14](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.13...v6.0.0-beta.14) (2024-02-23)
+
+
+### Features
+
+* import paths for next modules, removing head from video player ([f442385](https://github.com/cloudinary-community/next-cloudinary/commit/f442385ec62a6162317436fd12babbba5ca82510))
+
 # [6.0.0-beta.13](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.12...v6.0.0-beta.13) (2024-02-22)
 
 
