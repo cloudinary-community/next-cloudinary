@@ -13,6 +13,7 @@ export type GetCldVideoUrlConfig = ConfigOptions;
 export type GetCldVideoUrlAnalytics = AnalyticsOptions;
 
 export function getCldVideoUrl(options: GetCldVideoUrlOptions, config?: GetCldVideoUrlConfig, analytics?: GetCldVideoUrlAnalytics) {
+  // @ts-expect-error Property 'cloud' does not exist on type 'CloudinaryConfigurationOptions'.
   const cloudName = config?.cloud?.cloudName ?? process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
   checkForCloudName(cloudName);
   return constructCloudinaryUrl({

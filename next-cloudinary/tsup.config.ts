@@ -2,11 +2,10 @@ import { defineConfig, Options } from 'tsup'
 import { plugin as CopyAssetsPlugin } from './plugins/copy-assets';
 
 const commonConfig: Options = {
-  minify: true,
-  target: 'es2018',
-  external: ['react'],
   dts: true,
+  external: ['react'],
   format: ['esm', 'cjs'],
+  minify: true,
   sourcemap: true,
 };
 

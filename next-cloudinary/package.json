@@ -18,8 +18,8 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "node scripts/copy-package-versions.js && tsup",
+    "dev": "node scripts/copy-package-versions.js && tsup --watch",
     "prepublishOnly": "cp ../README.md . && cp ../LICENSE . && pnpm build",
     "postpublish": "rm ./README.md && rm ./LICENSE",
     "test": "vitest run",
@@ -29,7 +29,8 @@
   "dependencies": {
     "@cloudinary-util/types": "1.0.0",
     "@cloudinary-util/url-loader": "5.0.0-beta.3",
-    "@cloudinary-util/util": "^2.3.0"
+    "@cloudinary-util/util": "^2.3.0",
+    "@tsconfig/recommended": "^1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.23.2",
