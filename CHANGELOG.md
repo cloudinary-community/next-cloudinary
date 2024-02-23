@@ -1,3 +1,10 @@
+# [6.0.0-beta.16](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.15...v6.0.0-beta.16) (2024-02-23)
+
+
+### Features
+
+* CldOgImage fix, updating SEO in docs ([f8ce7e0](https://github.com/cloudinary-community/next-cloudinary/commit/f8ce7e03113812678712bd405c17349fa5b150bd))
+
 # [6.0.0-beta.15](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.14...v6.0.0-beta.15) (2024-02-23)
 
 
