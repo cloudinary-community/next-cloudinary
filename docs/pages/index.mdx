@@ -1,9 +1,11 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 import { CldImage, CldOgImage } from '../../next-cloudinary';
 
 import OgImage from '../components/OgImage';
 import ImageGrid from '../components/ImageGrid';
+import Button from '../components/Button';
 
 <Head>
   <title>Next Cloudinary</title>
@@ -16,136 +18,96 @@ import ImageGrid from '../components/ImageGrid';
   twitterTitle="Next Cloudinary"
 />
 
-# Next Cloudinary
-
-High-performance image and video delivery and uploading at scale in Next.js powered by Cloudinary.
-
-* Automatically optimize images and videos and deliver in modern formats
-* Remove backgrounds from images
-* Dynamically add image and text overlays to images and videos
-* AI-based cropping and resizing
-* Transform images and videos using color and effects
-* Generate Open Graph Social Media cards on the fly
-* Drop-in Upload Widget
-* ...all at scale with Cloudinary
-
-
-<ImageGrid>
-  <li>
+<div className="text-center max-w-xl mx-auto mt-36 mb-44">
+  <h1 className="text-6xl font-bold">Next Cloudinary</h1>
+  <p className="text-xl mt-8">High-performance image and video delivery and uploading at scale in Next.js powered by Cloudinary.</p>
+  <p className="flex items-center justify-center gap-6 mt-8">
     <CldImage
-      width="987"
-      height="987"
-      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      width="218"
+      height="42"
+      src={`${process.env.IMAGES_DIRECTORY}/cloudinary-blue`}
       sizes="50vw"
-      alt="Image of woman with headphones transformed with Cloudinary"
+      alt="Cloudinary Logo"
       priority
     />
-  </li>
-  <li>
     <CldImage
-      width="987"
-      height="987"
-      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      width="148"
+      height="30"
+      src={`${process.env.IMAGES_DIRECTORY}/nextjs-black`}
       sizes="50vw"
-      crop={{
-        width: 987,
-        height: 987,
-        type: 'thumb',
-        gravity: 'faces',
-        source: true,
-      }}
-      removeBackground
-      tint="40:253f8c"
-      underlay={`${process.env.IMAGES_DIRECTORY}/city-skyline`}
-      overlays={[
-        {
-          position: {
-            gravity: 'north',
-            y: 60
-          },
-          text: {
-            color: 'rgb:52a4ff80',
-            fontFamily: 'Source Sans Pro',
-            fontSize: 320,
-            fontWeight: 'black',
-            text: 'MUSIC',
-            letterSpacing: -10,
-            lineSpacing: -100,
-            stroke: true,
-            border: '20px_solid_rgb:2d0eff99',
-          }
-        },
-        {
-          position: {
-            gravity: 'south',
-            y: 60
-          },
-          text: {
-            color: 'rgb:52a4ff80',
-            fontFamily: 'Source Sans Pro',
-            fontSize: 320,
-            fontWeight: 'black',
-            text: 'IS LIFE',
-            letterSpacing: -10,
-            lineSpacing: -100,
-            stroke: true,
-            border: '20px_solid_rgb:2d0eff99',
-          }
-        }
-      ]}
-      alt="Image of woman with headphones transformed with Cloudinary"
+      alt="Cloudinary Logo"
       priority
     />
-  </li>
-</ImageGrid>
+  </p>
+  <p className="mt-10"><Button href="/installation">Get Started</Button></p>
+</div>
 
-```jsx copy
-<CldImage
-  width="987"
-  height="987"
-  src="images/woman-headphones"
-  sizes="50vw"
-  crop="thumb"
-  gravity="faces"
-  removeBackground
-  tint="40:253f8c"
-  underlay="images/city-skyline"
-  overlays={[
-    {
-      position: {
-        gravity: 'north',
-        y: 60
-      },
-      text: {
-        color: 'rgb:52a4ff80',
-        fontFamily: 'Source Sans Pro',
-        fontSize: 320,
-        fontWeight: 'black',
-        text: 'MUSIC',
-        letterSpacing: -10,
-        lineSpacing: -100,
-        stroke: true,
-        border: '20px_solid_rgb:2d0eff99',
-      }
-    },
-    {
-      position: {
-        gravity: 'south',
-        y: 60
-      },
-      text: {
-        color: 'rgb:52a4ff80',
-        fontFamily: 'Source Sans Pro',
-        fontSize: 320,
-        fontWeight: 'black',
-        text: 'IS LIFE',
-        letterSpacing: -10,
-        lineSpacing: -100,
-        stroke: true,
-        border: '20px_solid_rgb:2d0eff99',
-      }
-    }
-  ]}
-  alt="Image of woman with headphones transformed with Cloudinary"
-/>
-```
+
+<div className="text-center max-w-4xl mx-auto my-44">
+  <h2 className="text-4xl font-bold">What's Inside?</h2>
+
+  <ul className="grid grid-cols-2 gap-16 mt-20">
+    <li>
+      <CldImage
+        className="rounded-lg border border-zinc-200 mb-6"
+        width="800"
+        height="600"
+        src={`${process.env.IMAGES_DIRECTORY}/next-cloudinary-optimization_saagby`}
+        sizes="50w"
+        alt=""
+      />
+      <h3 className="text-2xl font-semibold mb-4">Optimization</h3>
+      <p>Automatically <Link className="underline underline-offset-2" href="/guides/image-optimization">optimize images</Link> and videos with <Link className="underline underline-offset-2" href="/guides/responsive-images">responsive sizes</Link> and modern formats.</p>
+    </li>
+    <li>
+      <CldImage
+        className="rounded-lg border border-zinc-200 mb-6"
+        width="800"
+        height="600"
+        src={`${process.env.IMAGES_DIRECTORY}/next-cloudinary-transformations_vjacda`}
+        sizes="50w"
+        alt=""
+      />
+      <h3 className="text-2xl font-semibold mb-4">Transformations</h3>
+      <p>Transform assets using dynamic <Link className="underline underline-offset-2" href="/cldimage/examples#cropping--resizing">Cropping and Resizing</Link>, <Link className="underline underline-offset-2" href="/guides/background-removal">Background Removal</Link>, Generative AI, and more.</p>
+    </li>
+    <li>
+      <CldImage
+        className="rounded-lg border border-zinc-200 mb-6"
+        width="800"
+        height="600"
+        src={`${process.env.IMAGES_DIRECTORY}/next-cloudinary-upload-widget_fvrnjs`}
+        sizes="50w"
+        alt=""
+      />
+      <h3 className="text-2xl font-semibold mb-4">Uploading</h3>
+      <p>Drop-in width for easily <Link className="underline underline-offset-2" href="/guides/uploading-images-and-videos">uploading assets</Link> into the cloud.</p>
+    </li>
+    <li>
+      <CldImage
+        className="rounded-lg border border-zinc-200 mb-6"
+        width="800"
+        height="600"
+        src={`${process.env.IMAGES_DIRECTORY}/next-cloudinary-social-cards_ll4fqu`}
+        sizes="50w"
+        alt=""
+      />
+      <h3 className="text-2xl font-semibold mb-4">Social Cards</h3>
+      <p>Easiest way to create beautiful <Link className="underline underline-offset-2" href="/guides/social-media-card">social cards</Link> in Next.js.</p>
+    </li>
+  </ul>
+
+  <ul className="text-center text-lg mt-20">
+    <li className="mb-3"><Link className="underline underline-offset-2" href="/cldvideoplayer/examples#adaptive-streaming">Adaptive Bitrate Streaming</Link></li>
+    <li className="mb-3"><Link className="underline underline-offset-2" href="/cldimage/examples#generative-fill">Generative AI</Link></li>
+    <li className="mb-3"><Link className="underline underline-offset-2" href="/guides/text-overlays">Text</Link> &amp; <Link className="underline underline-offset-2" href="/guides/image-overlays">Image</Link> Overlays</li>
+    <li>And a lot more...</li>
+  </ul>
+
+  <p className="text-3xl mt-16">All at <strong>scale</strong> with Cloudinary</p>
+</div>
+
+<div className="text-center max-w-2xl mx-auto my-44">
+  <h2 className="text-5xl font-bold leading-[4rem]">Transform &amp; Deliver at Scale with Next Cloudinary</h2>
+  <p className="mt-10"><Button href="/installation">Get Started</Button></p>
+</div>
