@@ -21,8 +21,8 @@ const files = [
     versions[file.export] = json.version;
   };
   
-  await fs.writeFile(path.resolve(process.cwd(), 'versions.js'), `export const versions: Record<string, string> = ${JSON.stringify(versions)}`);
+  await fs.writeFile(path.resolve(process.cwd(), 'versions.ts'), `export const versions: Record<string, string> = ${JSON.stringify(versions)}`);
 
-  console.log(`Copied package versions ${files.map(file => file.export).join(', ')} to ${path.resolve(process.cwd(), 'versions.js')}`)
+  console.log(`Copied package versions ${files.map(file => file.export).join(', ')} to ${path.resolve(process.cwd(), 'versions.ts')}`)
 })();
 
