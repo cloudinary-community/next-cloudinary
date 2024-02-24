@@ -1,3 +1,10 @@
+# [6.0.0-beta.17](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.16...v6.0.0-beta.17) (2024-02-24)
+
+
+### Features
+
+* Fix Subpath Imports & Config ([#439](https://github.com/cloudinary-community/next-cloudinary/issues/439)) ([99786db](https://github.com/cloudinary-community/next-cloudinary/commit/99786dba79fcd73061c6e823473d0c96389e0b0c))
+
 # [6.0.0-beta.16](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.15...v6.0.0-beta.16) (2024-02-23)
 
 
