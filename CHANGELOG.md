@@ -1,3 +1,10 @@
+# [6.0.0-beta.18](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.17...v6.0.0-beta.18) (2024-02-24)
+
+
+### Features
+
+* attempting to fix package.json import ([993115d](https://github.com/cloudinary-community/next-cloudinary/commit/993115dd9b488292fa178baf65018598b588e3f4))
+
 # [6.0.0-beta.17](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.16...v6.0.0-beta.17) (2024-02-24)
 
 
