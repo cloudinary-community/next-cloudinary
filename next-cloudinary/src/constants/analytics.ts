@@ -1,5 +1,6 @@
 import { versions } from '../../versions';
-import nextPkg from 'next/package.json';
+// @ts-ignore
+import nextPkg from 'next/package';
 
 export const NEXT_CLOUDINARY_ANALYTICS_PRODUCT_ID = 'A';
 export const NEXT_CLOUDINARY_ANALYTICS_ID = 'V';
