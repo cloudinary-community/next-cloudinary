@@ -1,3 +1,10 @@
+# [6.0.0-beta.19](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.18...v6.0.0-beta.19) (2024-02-24)
+
+
+### Features
+
+* Revert Subpath Imports ([#440](https://github.com/cloudinary-community/next-cloudinary/issues/440)) ([b569709](https://github.com/cloudinary-community/next-cloudinary/commit/b5697095d28050c27f994db54980a67e92200c83))
+
 # [6.0.0-beta.18](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.17...v6.0.0-beta.18) (2024-02-24)
 
 
