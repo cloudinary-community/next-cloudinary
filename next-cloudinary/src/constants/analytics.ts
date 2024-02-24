@@ -1,10 +1,10 @@
-import nextPkg from 'next/package.json' assert { type: "json" };
-import pkg from '../../package.json' assert { type: "json" };
+import { versions } from '../../versions';
+import nextPkg from 'next/package.json';
 
 export const NEXT_CLOUDINARY_ANALYTICS_PRODUCT_ID = 'A';
 export const NEXT_CLOUDINARY_ANALYTICS_ID = 'V';
 export const NEXT_VERSION = normalizeVersion(nextPkg.version);
-export const NEXT_CLOUDINARY_VERSION = normalizeVersion(pkg.version);
+export const NEXT_CLOUDINARY_VERSION = normalizeVersion(versions.NEXT_CLOUDINARY_VERSION);
 
 function normalizeVersion(version: string) {
   let normalized = version;
