@@ -1,4 +1,4 @@
-import { CldImage } from '../../../next-cloudinary/dist';
+import { CldImage } from '../../../next-cloudinary';
 import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../../next-cloudinary/src/constants/sizes';
 
 const ExamplesCldOgImage = ({ ...props }) => {

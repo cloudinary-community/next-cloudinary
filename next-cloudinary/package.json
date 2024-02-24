@@ -6,25 +6,14 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./helpers": {
-      "import": "./dist/helpers.mjs",
-      "require": "./dist/helpers.js"
-    },
-    "./package.json": "./package.json"
-  },
   "scripts": {
-    "build": "node scripts/copy-package-versions.js && tsup",
-    "dev": "node scripts/copy-package-versions.js && tsup --watch",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "prepublishOnly": "cp ../README.md . && cp ../LICENSE . && pnpm build",
     "postpublish": "rm ./README.md && rm ./LICENSE",
-    "test": "node scripts/copy-package-versions.js && vitest run",
+    "test": "vitest run",
     "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" pnpm build && cd tests/nextjs-app && npm install && npm run build",
-    "test:watch": "node scripts/copy-package-versions.js && vitest"
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@cloudinary-util/types": "1.0.0",
