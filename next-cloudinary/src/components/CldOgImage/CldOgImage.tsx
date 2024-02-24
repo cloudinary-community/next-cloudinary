@@ -1,8 +1,7 @@
 import React from 'react';
-import Head from 'next/dist/shared/lib/head.js';
+import Head from 'next/head';
 
 import { CldImageProps } from '../CldImage/CldImage';
-import { getCldImageUrl } from '../../helpers/getCldImageUrl';
 import { getCldOgImageUrl } from '../../helpers/getCldOgImageUrl';
 import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../constants/sizes';
 

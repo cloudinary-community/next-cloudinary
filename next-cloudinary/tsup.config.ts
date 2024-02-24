@@ -14,16 +14,5 @@ export default defineConfig([
     ...commonConfig,
     entry: ['src/index.ts'],
     esbuildPlugins: [CopyAssetsPlugin] // Add plugin to copy assets on one of the entrypoints
-  },
-  {
-    ...commonConfig,
-    entry: ['src/helpers.ts']
-  },
-  // moduleResolution: Node(10) support
-  {
-    ...commonConfig,
-    entry: ['src/helpers.ts'],
-    format: 'cjs',
-    outDir: '.'
-  },
+  }
 ]);

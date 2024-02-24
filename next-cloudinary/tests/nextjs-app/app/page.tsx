@@ -1,7 +1,7 @@
 "use client";
 
 import { CldImage, CldUploadWidget, CldUploadButton, CldVideoPlayer } from '../../../';
-import { getCldImageUrl, getCldOgImageUrl, getCldVideoUrl } from '../../../dist/helpers';
+import { getCldImageUrl, getCldOgImageUrl, getCldVideoUrl } from '../../../';
 
 import '../../../dist/cld-video-player.css';
 

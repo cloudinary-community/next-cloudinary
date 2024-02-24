@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Script from 'next/dist/client/script.js';
+import Script from 'next/script';
 import {
   CloudinaryUploadWidgetResults,
   CloudinaryUploadWidgetInstanceMethods,
