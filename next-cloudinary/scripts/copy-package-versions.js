@@ -6,10 +6,6 @@ const files = [
     'path': '../package.json',
     'export': 'NEXT_CLOUDINARY_VERSION'
   },
-  {
-    'path': '../node_modules/next/package.json',
-    'export': 'NEXT_VERSION'
-  },
 ];
 
 (async function run() {
