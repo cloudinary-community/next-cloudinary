@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { Callout, Steps, Tab, Tabs } from 'nextra-theme-docs';
 
-
 import OgImage from '../components/OgImage';
 
 import { CldImage } from '../../next-cloudinary';
@@ -23,6 +22,27 @@ import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../next-cloudinary/src/const
 ## v6.0.0
 
 ### Overview
+
+This is one of the more substantial updates since the launch of Next Cloudinary
+which updates and fixes an underlaying mechanism in how the CldImage component works.
+
+The CldImage component dynamically generates not only a single URL, but multiple
+Cloudinary URLs through [responsive sizing](/guides/responsive-images) to provide as performant of an experience
+as possible. To do this, we take advantage of Cloudinary's on-the-fly [cropping](/cldimage/configuration#crop)
+and resizing.
+
+While doing this, previous versions of the CldImage component used a 2-stage resize
+process to provide an intuitive developer experience in how cropping was applied
+to images, but this created a problem where resulting images would be limited to
+the defined "rendered size" of an image, even if it was larger.
+
+To resolve this, the 2-stage resizing is removed by default, but now available
+to use as an opt-in mechanism behind the now advanced `crop` prop.
+
+Learn more over on the RFC: https://github.com/cloudinary-community/next-cloudinary/discussions/432
+
+Beyond that, there are a few type and prop deprecations with replacements
+as necessary and bug fixes that required a slight breaking change.
 
 ### Changes
 

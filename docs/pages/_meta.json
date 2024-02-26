@@ -4,6 +4,11 @@
     "href": "/installation",
     "type": "page"
   },
+  "menubar-changelog": {
+    "title": "Changelog",
+    "href": "/changelog",
+    "type": "page"
+  },
 
   "index": {
     "display": "hidden",
