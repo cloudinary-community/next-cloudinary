@@ -82,11 +82,11 @@ importers:
         specifier: 1.0.0
         version: 1.0.0
       '@cloudinary-util/url-loader':
-        specifier: 5.0.0-beta.3
-        version: 5.0.0-beta.3
+        specifier: 5.0.0
+        version: 5.0.0
       '@cloudinary-util/util':
-        specifier: ^2.3.0
-        version: 2.4.0
+        specifier: ^3.0.0
+        version: 3.0.0
       '@tsconfig/recommended':
         specifier: ^1.0.3
         version: 1.0.3
@@ -1316,16 +1316,12 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@cloudinary-util/url-loader@5.0.0-beta.3:
-    resolution: {integrity: sha512-5Hsga1/on+3RMUkusXpCo1sazXbU55+2xPO7DOShbuc1CJZRUyebKVNifokvE5TRAVWmsQBqsW/7d0o7aX2SLw==}
+  /@cloudinary-util/url-loader@5.0.0:
+    resolution: {integrity: sha512-WjfzbI/l6uqQsnq6xnPrR6gvicQzI9jMZnhJK1fpeM9FrLemRjqXZNEsJyx909BfKtE2WKMzzw2Tw7iQ7/R6LQ==}
     dependencies:
       '@cloudinary-util/util': 3.0.0
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
-    dev: false
-
-  /@cloudinary-util/util@2.4.0:
-    resolution: {integrity: sha512-RJW/K1hvm+qL2civTWgg7iKdTPDMLmpFBvH03KUkDxuDk/xi9E9x9nPthEsmdDy65GdCcZm0UKnErXXgKzMOQQ==}
     dev: false
 
   /@cloudinary-util/util@3.0.0:
