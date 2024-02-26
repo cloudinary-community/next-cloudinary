@@ -1,10 +1,20 @@
 "use client";
 
 import { CldImage, CldUploadWidget, CldUploadButton, CldVideoPlayer } from '../../../';
+import { getCldImageUrl, getCldOgImageUrl, getCldVideoUrl } from '../../../';
 
 import '../../../dist/cld-video-player.css';
 
 export default function Home() {
+  console.log(getCldImageUrl({
+    src: 'images/turtle'
+  }))
+  console.log(getCldOgImageUrl({
+    src: 'images/turtle'
+  }))
+  console.log(getCldVideoUrl({
+    src: 'videos/mountain-stars'
+  }))
   return (
     <>
       <div style={{

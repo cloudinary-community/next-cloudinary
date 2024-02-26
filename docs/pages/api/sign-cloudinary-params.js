@@ -1,8 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 
 export default async function handler(req, res) {
-  const body = JSON.parse(req.body) || {};
-  const { paramsToSign } = body;
+  const { paramsToSign } = req.body;
 
   try {
     const signature = cloudinary.utils.api_sign_request(

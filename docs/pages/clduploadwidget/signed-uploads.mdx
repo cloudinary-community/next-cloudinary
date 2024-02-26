@@ -1,18 +1,18 @@
 import Head from 'next/head';
-import { Tab, Tabs } from 'nextra-theme-docs';
+import { Tab, Tabs, Callout } from 'nextra-theme-docs';
 
 import OgImage from '../../components/OgImage';
 import CodeBlock from '../../components/CodeBlock';
 
 <Head>
-  <title>CldUploadWidget Configuration - Next Cloudinary</title>
-  <meta name="og:title" content="CldUploadWidget Configuration - Next Cloudinary" />
-  <meta name="og:url" content={`https://next.cloudinary.dev/clduploadwidget/configuration`} />
+  <title>CldUploadWidget Signed Uploads - Next Cloudinary</title>
+  <meta name="og:title" content="CldUploadWidget Signed Uploads - Next Cloudinary" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/clduploadwidget/signed-uploads`} />
 </Head>
 
 <OgImage
-  title="CldUploadWidget Configuration"
-  twitterTitle="CldUploadWidget Configuration"
+  title="CldUploadWidget Signed Uploads"
+  twitterTitle="CldUploadWidget Signed Uploads"
 />
 
 # Signing CldUploadWidget Uploads
@@ -98,6 +98,11 @@ the App Router or Pages router.
     **In the Pages Router**, create a new API endpoint file such as `pages/api/sign-cloudinary-params.js`, where
     inside, add the folowing code:
 
+    <Callout emoji={false} type="warning">
+      If using Next Cloudinary v5 or lower, you need to use `JSON.parse(req.body)` to obtain the JSON payload
+      of the Signature Request from the Upload Widget.
+    </Callout>
+
     <CodeBlock>
       ```jsx copy showLineNumbers
       import { v2 as cloudinary } from "cloudinary";
@@ -109,8 +114,7 @@ the App Router or Pages router.
       });
 
       export default async function handler(req, res) {
-        const body = JSON.parse(req.body) || {};
-        const { paramsToSign } = body;
+        const { paramsToSign } = req.body;
 
         const signature = cloudinary.utils.api_sign_request(paramsToSign, process.env.CLOUDINARY_API_SECRET);
 

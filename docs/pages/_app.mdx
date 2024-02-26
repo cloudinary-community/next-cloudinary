@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/react';
 import { GoogleAnalytics } from "nextjs-google-analytics";
 
@@ -8,6 +9,13 @@ export default function Nextra({ Component, pageProps }) {
   return (
     <>
       <GoogleAnalytics trackPageViews />
+      <div className="bg-primary">
+        <Link className="block text-center py-2" href="/changelog">
+          <p className="text-white font-semibold text-xs">
+            Next Cloudinary v6 now available! <span className="underline underline-offset-2">View Changelog</span>
+          </p>
+        </Link>
+      </div>
       <Component {...pageProps} />
       <Analytics />
     </>

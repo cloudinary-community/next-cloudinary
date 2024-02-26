@@ -1,9 +1,21 @@
 {
+  "menubar-installation": {
+    "title": "Installation",
+    "href": "/installation",
+    "type": "page"
+  },
+  "menubar-changelog": {
+    "title": "Changelog",
+    "href": "/changelog",
+    "type": "page"
+  },
+
   "index": {
-    "title": "Getting Started",
+    "display": "hidden",
+    "type": "page",
     "theme": {
-      "breadcrumb": false,
-      "toc": false
+      "layout": "full",
+      "timestamp": false
     }
   },
   "installation": {
@@ -14,6 +26,12 @@
   },
   "nextjs-14": {
     "title": "Next.js 13/14",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "changelog": {
+    "title": "Changelog",
     "theme": {
       "breadcrumb": false
     }

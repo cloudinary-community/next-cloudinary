@@ -1,6 +1,10 @@
 import { MutableRefObject } from 'react';
+import {
+  CloudinaryVideoPlayer,
+  CloudinaryVideoPlayerOptionsLogo,
+  CloudinaryVideoPlayerOptions
+} from '@cloudinary-util/types';
 
-import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsColors, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
 import { GetCldImageUrlOptions } from '../../helpers/getCldImageUrl';
 import { GetCldVideoUrlOptions } from '../../helpers/getCldVideoUrl';
 
@@ -22,10 +26,6 @@ export type CldVideoPlayerProps = Omit<CloudinaryVideoPlayerOptions, "cloud_name
   quality?: string | number;
   width: string | number;
 }
-
-// Maintain for backwards compatibility
-
-export interface CldVideoPlayerPropsColors extends CloudinaryVideoPlayerOptionsColors {}
 
 export interface CldVideoPlayerPropsLogo {
   imageUrl?: CloudinaryVideoPlayerOptionsLogo['logoImageUrl'];

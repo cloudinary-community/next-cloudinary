@@ -135,9 +135,9 @@ right inside of Next.js.
 
     {
       prop: 'crop',
-      type: 'string',
+      type: 'string | object',
       default: () => (<code>limit</code>),
-      example: () => (<code>thumb</code>),
+      example: () => (<code>fill</code>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#c_crop_resize">More Info</a>)
     },
     {
@@ -222,10 +222,104 @@ background="blue"
 
 Changes the size of the delivered asset according to the requested width & height dimensions.
 
+The `crop` prop can either be a string, which can accept any [valid Cloudinary crop mode](https://cloudinary.com/documentation/transformation_reference#c_crop_resize),
+or it can accept an object or an array of objects which can take the following options:
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      prop: 'aspectRatio',
+      type: 'string',
+      example: () => (<code>16:9</code>),
+    },
+    {
+      prop: 'gravity',
+      type: 'string',
+      example: () => (<a href="#gravity">See Gravity</a>),
+    },
+    {
+      prop: 'height',
+      type: 'string',
+      example: () => (<a href="#required-props">See Height</a>),
+    },
+    {
+      prop: 'source',
+      type: 'boolean',
+      example: () => (<code>true</code>),
+    },
+    {
+      prop: 'type (crop mode)',
+      type: 'string',
+      example: () => (<code>fill</code>),
+    },
+    {
+      prop: 'width',
+      type: 'string',
+      example: () => (<a href="#required-props">See Width</a>),
+    },
+    {
+      prop: 'zoom',
+      type: 'string',
+      example: () => (<a href="#zoom">See Zoom</a>),
+    },
+  ]}
+/>
+
+**Dynamic Crop Modes**
+
+When using a dynamic crop mode, such as `thumb`, the resulting image may
+be visually different based on the given dimensions. For instance, an
+image cropped using the `thumb` crop mode with dimensions 600x600 will
+give different results than 1200x1200 (assuming a gravity of auto or similar,
+which is the default for CldImage).
+
+This is especially important in the context of [Responsive Images](/guides/responsive-images)
+where due to the resize mechanism, different device sizes may result
+in different looking images, which doesn't provide a great experience.
+
+To resolve this, when using dynamic crop modes you may want to opt into
+a two-stage crop, first cropping the original source image, then allowing
+the the resize mechanism to handle resizing that to the appropriate device
+size. See examples below.
+
+<Callout emoji={false}>
+  Versions 5 and below of Next Cloudinary automatically opted CldImage in
+  to a two-stage cropping to help improve the experience, but it came with
+  drawbacks including prematurely limiting the potential resulting size
+  of an image. [Learn more](https://github.com/cloudinary-community/next-cloudinary/discussions/432).
+</Callout>
+
 **Examples**
+
+Cropping an image and filling the containing space:
 
 ```jsx copy
 crop="fill"
+```
+
+Using a crop of `thumb` on the original source image:
+
+```jsx copy
+crop={{
+  width: 1200,
+  height: 1200,
+  type: 'thumb',
+  source: true
+}}
 ```
 
 [Learn more about the crop transformation](https://cloudinary.com/documentation/transformation_reference#c_crop_resize) on the Cloudinary docs.
@@ -1637,6 +1731,13 @@ organized ways of applying transformations and effects.
       example: () => (<code>{`[{ background: 'blue' }]`}</code>)
     },
     {
+      prop: 'namedTransformations',
+      type: 'string | array',
+      default: '-',
+      example: () => (<code>{`['my-named-transformation']`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/image_transformations#named_transformations">More Info</a>)
+    },
+    {
       prop: 'preserveTransformations',
       type: 'string',
       default: () => (<code>false</code>),
@@ -1656,7 +1757,7 @@ organized ways of applying transformations and effects.
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/control_access_to_media#strict_transformations">More Info</a>)
     },
     {
-      prop: 'transformations',
+      prop: 'transformations (deprecated)',
       type: 'string | array',
       default: '-',
       example: () => (<code>{`['my-named-transformation']`}</code>),
@@ -1683,6 +1784,19 @@ effects={[
   }
 ]}
 ```
+
+#### `namedTransformations`
+
+Applies named transformations to the image.
+
+**Examples**
+
+```jsx copy
+namedTransformations={['my-transformation']}
+```
+
+[Learn more about Named Transformations](https://cloudinary.com/documentation/image_transformations#named_transformations) on the Cloudinary docs.
+
 
 #### `preserveTransformations`
 
@@ -1727,18 +1841,9 @@ transformations=["my-transformation"]
 
 [Learn more about Strict Transformations](https://cloudinary.com/documentation/control_access_to_media#strict_transformations) on the Cloudinary docs.
 
-#### `transformations`
+#### `transformations` - Deprecated
 
-Applies named transformations to the image.
-
-**Examples**
-
-```jsx copy
-transformations={['my-transformation']}
-```
-
-[Learn more about Named Transformations](https://cloudinary.com/documentation/image_transformations#named_transformations) on the Cloudinary docs.
-
+**Use namedTransformations instead**
 
 ### Optimization
 

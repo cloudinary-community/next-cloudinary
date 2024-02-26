@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
-import { CldImage } from '../../../next-cloudinary';
-import { getCldOgImageUrl } from '../../../next-cloudinary';
+import { CldImage, getCldOgImageUrl } from '../../../next-cloudinary';
 import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../../next-cloudinary/src/constants/sizes';
 
 import OgImage from '../../components/OgImage';
 import HeaderImage from '../../components/HeaderImage';
 import CodeBlock from '../../components/CodeBlock';
+import ExamplesCldOgImage from '../../components/ExamplesCldOgImage';
 
 <Head>
   <title>getCldOgImageUrl Examples - Next Cloudinary</title>
@@ -31,15 +31,8 @@ import CodeBlock from '../../components/CodeBlock';
 `src`: The public ID of the image to use as a Social Card
 
 <HeaderImage>
-  <CldImage
-    src={getCldOgImageUrl({
-      src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
-    })}
-    width={OG_IMAGE_WIDTH}
-    height={OG_IMAGE_HEIGHT}
-    sizes="(max-width: 480px) 100vw, 50vw"
-    alt=""
-    preserveTransformations
+  <ExamplesCldOgImage
+    src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
   />
 </HeaderImage>
 
@@ -73,17 +66,10 @@ import CodeBlock from '../../components/CodeBlock';
 `underlay`: The public ID of the image to use as the new background.
 
 <HeaderImage>
-  <CldImage
-    src={getCldOgImageUrl({
-      src: `${process.env.IMAGES_DIRECTORY}/turtle`,
-      removeBackground: true,
-      underlay: `${process.env.IMAGES_DIRECTORY}/galaxy`,
-    })}
-    width={OG_IMAGE_WIDTH}
-    height={OG_IMAGE_HEIGHT}
-    sizes="(max-width: 480px) 100vw, 50vw"
-    alt=""
-    preserveTransformations
+  <ExamplesCldOgImage
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    removeBackground
+    underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
   />
 </HeaderImage>
 
@@ -121,16 +107,16 @@ import CodeBlock from '../../components/CodeBlock';
 `text`: Adds basic text to the image
 
 <HeaderImage>
-  <CldImage
-    src={getCldOgImageUrl({
-      src: `${process.env.IMAGES_DIRECTORY}/white`,
-      text: 'Next Cloudinary'
-    })}
-    width={OG_IMAGE_WIDTH}
-    height={OG_IMAGE_HEIGHT}
-    sizes="(max-width: 480px) 100vw, 50vw"
-    alt=""
-    preserveTransformations
+  <ExamplesCldOgImage
+    src={`${process.env.IMAGES_DIRECTORY}/white`}
+    overlays={[{
+      text: {
+        fontFamily: 'Source Sans Pro',
+        fontSize: 120,
+        fontWeight: 'bold',
+        text: 'Next Cloudinary'
+      }
+    }]}
   />
 </HeaderImage>
 
@@ -141,7 +127,14 @@ import CodeBlock from '../../components/CodeBlock';
 
   const url = getCldOgImageUrl({
     src: '<Your Public ID>',
-    text: 'Next Cloudinary'
+    overlays: [{
+      text: {
+        fontFamily: 'Source Sans Pro',
+        fontSize: 120,
+        fontWeight: 'bold',
+        text: 'Next Cloudinary'
+      }
+    }]
   })
 
   export const metadata: Metadata = {

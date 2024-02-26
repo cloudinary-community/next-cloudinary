@@ -1,32 +1,34 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
+import {
+  CloudinaryUploadWidgetResults,
+  CloudinaryUploadWidgetInstanceMethods,
+  CloudinaryUploadWidgetInstanceMethodCloseOptions,
+  CloudinaryUploadWidgetInstanceMethodDestroyOptions,
+  CloudinaryUploadWidgetInstanceMethodOpenOptions,
+  CloudinaryUploadWidgetSources,
+  CloudinaryUploadWidgetError
+} from '@cloudinary-util/types';
 
 import { triggerOnIdle } from '../../lib/util';
 
 import {
   CldUploadEventCallback,
-  CldUploadWidgetCloseInstanceMethodOptions,
   CldUploadWidgetCloudinaryInstance,
-  CldUploadWidgetDestroyInstanceMethodOptions,
-  CldUploadWidgetError,
-  CldUploadWidgetInstanceMethods,
-  CldUploadWidgetOpenInstanceMethodOptions,
-  CldUploadWidgetOpenWidgetSources,
   CldUploadWidgetProps,
-  CldUploadWidgetResults,
   CldUploadWidgetWidgetInstance,
 } from './CldUploadWidget.types';
+
 import {checkForCloudName} from "../../lib/cloudinary";
 
 const WIDGET_WATCHED_EVENTS = [
   'success',
-  'display-changed'
 ];
 
 const WIDGET_EVENTS: { [key: string]: string } = {
   'abort': 'onAbort',
   'batch-cancelled': 'onBatchCancelled',
-  // 'close': 'onClose', // TODO: should follow other event patterns
+  'close': 'onClose',
   'display-changed': 'onDisplayChanged',
   'publicid': 'onPublicId',
   'queues-end': 'onQueuesEnd',
@@ -39,12 +41,8 @@ const WIDGET_EVENTS: { [key: string]: string } = {
   'upload-added': 'onUploadAdded',
 }
 
-// TODO: update onError to follow CldUploadEventCallback pattern
-// TODO: update onClose to follow CldUploadEventCallback pattern
-
 const CldUploadWidget = ({
   children,
-  onClose,
   onError,
   onOpen,
   onUpload,
@@ -58,8 +56,8 @@ const CldUploadWidget = ({
 
   const signed = !!signatureEndpoint;
 
-  const [error, setError] = useState<CldUploadWidgetError | undefined>(undefined);
-  const [results, setResults] = useState<CldUploadWidgetResults | undefined>(undefined);
+  const [error, setError] = useState<CloudinaryUploadWidgetError | undefined>(undefined);
+  const [results, setResults] = useState<CloudinaryUploadWidgetResults | undefined>(undefined);
   const [isScriptLoading, setIsScriptLoading] = useState(true);
 
   // When creating a signed upload, you need to provide both your Cloudinary API Key
@@ -91,22 +89,14 @@ const CldUploadWidget = ({
     if ( typeof results === 'undefined' ) return;
 
     const isSuccess = results.event === 'success';
-    const isClosed = results.event === 'display-changed' && results.info === 'hidden';
 
     if ( isSuccess && typeof onUpload === 'function' ) {
+      if ( process.env.NODE_ENVIRONMENT === 'development' ) {
+        console.warn('The onUpload callback is deprecated. Please use onSuccess instead.');
+      }
       onUpload(results, widget.current);
     }
-
-    if ( isClosed && typeof onClose === 'function' ) {
-      onClose(widget.current);
-    }
   }, [results])
-
-  useEffect(() => {
-    if ( error && typeof onError === 'function' ) {
-      onError(error, widget.current);
-    }
-  }, [error]);
 
   /**
    * handleOnLoad
@@ -115,6 +105,7 @@ const CldUploadWidget = ({
 
   function handleOnLoad() {
     setIsScriptLoading(false);
+
     if ( !cloudinary.current ) {
       cloudinary.current = (window as any).cloudinary;
     }
@@ -150,6 +141,9 @@ const CldUploadWidget = ({
       body: JSON.stringify({
         paramsToSign,
       }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
       .then((r) => r.json())
       .then(({ signature }) => {
@@ -164,12 +158,12 @@ const CldUploadWidget = ({
    */
 
   function invokeInstanceMethod<
-    TMethod extends keyof CldUploadWidgetInstanceMethods
+    TMethod extends keyof CloudinaryUploadWidgetInstanceMethods
   >(
     method: TMethod,
     options: Parameters<
-      CldUploadWidgetInstanceMethods[TMethod]
-    > = [] as Parameters<CldUploadWidgetInstanceMethods[TMethod]>
+      CloudinaryUploadWidgetInstanceMethods[TMethod]
+    > = [] as Parameters<CloudinaryUploadWidgetInstanceMethods[TMethod]>
   ) {
     if (!widget.current) {
       widget.current = createWidget();
@@ -180,11 +174,11 @@ const CldUploadWidget = ({
     }
   }
 
-  function close(options?: CldUploadWidgetCloseInstanceMethodOptions) {
+  function close(options?: CloudinaryUploadWidgetInstanceMethodCloseOptions) {
     invokeInstanceMethod('close', [options]);
   }
 
-  function destroy(options?: CldUploadWidgetDestroyInstanceMethodOptions) {
+  function destroy(options?: CloudinaryUploadWidgetInstanceMethodDestroyOptions) {
     return invokeInstanceMethod('destroy', [options]);
   }
 
@@ -208,7 +202,7 @@ const CldUploadWidget = ({
     invokeInstanceMethod('minimize');
   }
 
-  function open(widgetSource?: CldUploadWidgetOpenWidgetSources, options?: CldUploadWidgetOpenInstanceMethodOptions) {
+  function open(widgetSource?: CloudinaryUploadWidgetSources, options?: CloudinaryUploadWidgetInstanceMethodOpenOptions) {
     invokeInstanceMethod('open', [widgetSource, options]);
 
     if ( typeof onOpen === 'function' ) {
@@ -224,7 +218,7 @@ const CldUploadWidget = ({
     invokeInstanceMethod('update');
   }
 
-  const instanceMethods: CldUploadWidgetInstanceMethods = {
+  const instanceMethods: CloudinaryUploadWidgetInstanceMethods = {
     close,
     destroy,
     hide,
@@ -243,9 +237,16 @@ const CldUploadWidget = ({
    */
 
   function createWidget() {
-    return cloudinary.current?.createUploadWidget(uploadOptions, (uploadError: CldUploadWidgetError, uploadResult: CldUploadWidgetResults) => {
+    return cloudinary.current?.createUploadWidget(uploadOptions, (uploadError: CloudinaryUploadWidgetError, uploadResult: CloudinaryUploadWidgetResults) => {
       if ( uploadError && uploadError !== null ) {
         setError(uploadError);
+
+        if ( typeof onError === 'function' ) {
+          onError(uploadError, {
+            widget: widget.current,
+            ...instanceMethods
+          });
+        }
       }
 
       if ( typeof uploadResult?.event === 'string' ) {
@@ -255,7 +256,7 @@ const CldUploadWidget = ({
 
         const widgetEvent = WIDGET_EVENTS[uploadResult.event] as keyof typeof props;
 
-        if ( typeof widgetEvent === 'string' && typeof props[widgetEvent] === 'function' && typeof props[widgetEvent] ) {
+        if ( typeof widgetEvent === 'string' && typeof props[widgetEvent] === 'function' ) {
           const callback = props[widgetEvent] as CldUploadEventCallback;
           callback(uploadResult, {
             widget: widget.current,
@@ -275,7 +276,7 @@ const CldUploadWidget = ({
         error,
         isLoading: isScriptLoading,
         ...instanceMethods,
-        })}
+      })}
       <Script
         id={`cloudinary-uploadwidget-${Math.floor(Math.random() * 100)}`}
         src="https://upload-widget.cloudinary.com/global/all.js"

@@ -2,9 +2,10 @@ import React, {useRef, MutableRefObject, useEffect} from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import { parseUrl } from '@cloudinary-util/util';
+import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptionsLogo, CloudinaryVideoPlayerOptions, } from '@cloudinary-util/types';
 
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
-import { CloudinaryVideoPlayer, CloudinaryVideoPlayerOptions, CloudinaryVideoPlayerOptionsLogo } from '../../types/player';
+
 import { getCldImageUrl } from '../../helpers/getCldImageUrl';
 import { getCldVideoUrl } from '../../helpers/getCldVideoUrl';
 import {checkForCloudName} from "../../lib/cloudinary";
@@ -16,7 +17,6 @@ const PLAYER_VERSION = '1.10.4';
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
   const {
-    autoPlay, // Left behind for backward compactibility.
     autoplay,
     className,
     colors,
@@ -86,7 +86,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const checkForMultipleInstance = playerInstances.filter((id) => id === playerId).length > 1
   if (checkForMultipleInstance) {
     console.warn(`Multiple instances of the same video detected on the
-     page which may cause some features to not work. 
+     page which may cause some features to not work.
     Try adding a unique id to each player.`)
   } else {
     playerInstances.push(playerId)
@@ -138,25 +138,19 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         }
       }
 
-      /* 
-      Parse the value passed to 'autoplay' or 'autoPlay';
-      if its a boolean or a boolean passed as string ("true") set it directly to browser standard prop autoplay else fallback to default; 
-      if its a string and not a boolean passed as string ("true") set it to cloudinary video player autoplayMode prop else fallback to undefined;
-      */
-      const autoplayFallback = autoplay || autoPlay ;
+      // Parse the value passed to 'autoplay';
+      // if its a boolean or a boolean passed as string ("true") set it directly to browser standard prop autoplay else fallback to default;
+      // if its a string and not a boolean passed as string ("true") set it to cloudinary video player autoplayMode prop else fallback to undefined;
+
       let autoPlayValue: boolean | 'true' | 'false' = false;
       let autoplayModeValue: string | undefined = undefined;
 
-      if ( autoPlay && process.env.NODE_ENV === 'development' ) {
-        console.warn('Prop autoPlay will be removed in future versions, please use autoplay (lowercase "p")')
+      if (typeof autoplay === 'boolean' || autoplay === 'true' || autoplay === 'false') {
+        autoPlayValue = autoplay
       }
 
-      if (typeof autoplayFallback === 'boolean' || autoplayFallback === 'true' || autoplayFallback === 'false') {
-        autoPlayValue = autoplayFallback
-      }
-
-      if (typeof autoplayFallback === 'string' && autoplayFallback !== 'true' && autoplayFallback !== 'false') {
-        autoplayModeValue = autoplayFallback;
+      if (typeof autoplay === 'string' && autoplay !== 'true' && autoplay !== 'false') {
+        autoplayModeValue = autoplay;
       }
 
 
@@ -194,7 +188,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         // If poster is an object, we can either customize the
         // automatically generated image from the video or generate
         // a completely new image from a separate public ID, so look
-        // to see if the src is explicitly set to determine whether 
+        // to see if the src is explicitly set to determine whether
         // or not to use the video's ID or just pass things along
         if ( typeof poster.src !== 'string' ) {
           playerOptions.posterOptions = {

@@ -1,10 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
-import type { ImageOptions } from '@cloudinary-util/url-loader';
 
 import { CldImageProps } from '../CldImage/CldImage';
-import { getCldImageUrl } from '../../helpers/getCldImageUrl';
-import { OG_IMAGE_WIDTH, OG_IMAGE_WIDTH_RESIZE, OG_IMAGE_HEIGHT } from '../../constants/sizes';
+import { getCldOgImageUrl } from '../../helpers/getCldOgImageUrl';
+import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../constants/sizes';
 
 const TWITTER_CARD = 'summary_large_image';
 
@@ -17,38 +16,34 @@ export type CldOgImageProps = CldImageProps & {
 const CldOgImage = ({ excludeTags = [], twitterTitle, keys = {}, ...props }: CldOgImageProps) => {
   const { alt } = props;
 
-  const options: ImageOptions = {
-    ...props,
-    crop: props.crop || 'fill',
-    gravity: props.gravity || 'center',
-    height: props.height || OG_IMAGE_HEIGHT,
-    src: props.src,
-    width: props.width || OG_IMAGE_WIDTH,
-    widthResize: props.width || OG_IMAGE_WIDTH_RESIZE
-  }
+  // We need to separately handle the width and the height to allow our user to pass in
+  // a custom value, but also we need to know this at the component level so that we can
+  // use it when rendering the meta tags
 
-  let width = typeof options.width === 'string' ? parseInt(options.width) : options.width;
-  let height = typeof options.height === 'string' ? parseInt(options.height) : options.height;
+  let {
+    width = OG_IMAGE_WIDTH,
+    height = OG_IMAGE_HEIGHT
+  } = props;
 
-  // Resize the height based on the widthResize property
+  // Normalize the width and height
 
-  if ( typeof height === 'number' && typeof width === 'number' ) {
-    height = ( OG_IMAGE_WIDTH_RESIZE / width ) * height;
-  }
-
-  width = OG_IMAGE_WIDTH_RESIZE;
+  width = typeof width === 'string' ? parseInt(width) : width;
+  height = typeof height === 'string' ? parseInt(height) : height;
 
   // Render the final URLs. We use two different format versions to deliver
   // webp for Twitter as it supports it (and we can control with tags) where
   // other platforms may not support webp, so we deliver jpg
 
-  const ogImageUrl = getCldImageUrl({
-    ...options,
-    format: props.format || 'jpg',
+  const ogImageUrl = getCldOgImageUrl({
+    ...props,
+    width,
+    height
   });
 
-  const twitterImageUrl = getCldImageUrl({
-    ...options,
+  const twitterImageUrl = getCldOgImageUrl({
+    ...props,
+    width,
+    height,
     format: props.format || 'webp',
   });
 

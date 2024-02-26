@@ -1,12 +1,153 @@
-# [5.20.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.19.0...v5.20.0) (2024-01-19)
+# [6.0.0-beta.19](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.18...v6.0.0-beta.19) (2024-02-24)
 
 
 ### Features
 
+* Revert Subpath Imports ([#440](https://github.com/cloudinary-community/next-cloudinary/issues/440)) ([b569709](https://github.com/cloudinary-community/next-cloudinary/commit/b5697095d28050c27f994db54980a67e92200c83))
+
+# [6.0.0-beta.18](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.17...v6.0.0-beta.18) (2024-02-24)
+
+
+### Features
+
+* attempting to fix package.json import ([993115d](https://github.com/cloudinary-community/next-cloudinary/commit/993115dd9b488292fa178baf65018598b588e3f4))
+
+# [6.0.0-beta.17](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.16...v6.0.0-beta.17) (2024-02-24)
+
+
+### Features
+
+* Fix Subpath Imports & Config ([#439](https://github.com/cloudinary-community/next-cloudinary/issues/439)) ([99786db](https://github.com/cloudinary-community/next-cloudinary/commit/99786dba79fcd73061c6e823473d0c96389e0b0c))
+
+# [6.0.0-beta.16](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.15...v6.0.0-beta.16) (2024-02-23)
+
+
+### Features
+
+* CldOgImage fix, updating SEO in docs ([f8ce7e0](https://github.com/cloudinary-community/next-cloudinary/commit/f8ce7e03113812678712bd405c17349fa5b150bd))
+
+# [6.0.0-beta.15](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.14...v6.0.0-beta.15) (2024-02-23)
+
+
+### Features
+
+* Homepage Updates ([#438](https://github.com/cloudinary-community/next-cloudinary/issues/438)) ([8958e52](https://github.com/cloudinary-community/next-cloudinary/commit/8958e523052a030301d559edf954a99408e854e8))
+
+# [6.0.0-beta.14](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.13...v6.0.0-beta.14) (2024-02-23)
+
+
+### Features
+
+* import paths for next modules, removing head from video player ([f442385](https://github.com/cloudinary-community/next-cloudinary/commit/f442385ec62a6162317436fd12babbba5ca82510))
+
+# [6.0.0-beta.13](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.12...v6.0.0-beta.13) (2024-02-22)
+
+
+### Features
+
+* Assert JSON on package.json imports, import Image from Next.js directly ([#437](https://github.com/cloudinary-community/next-cloudinary/issues/437)) ([a4b4017](https://github.com/cloudinary-community/next-cloudinary/commit/a4b4017eaab7742b351a9904527916119e834850))
+
+# [6.0.0-beta.12](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.11...v6.0.0-beta.12) (2024-02-22)
+
+
+### Features
+
+* Subpath Imports ([#436](https://github.com/cloudinary-community/next-cloudinary/issues/436)) ([4a202e2](https://github.com/cloudinary-community/next-cloudinary/commit/4a202e2d1576d151a52e3fb2c5b8cadfbe91b621))
+
+# [6.0.0-beta.11](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.10...v6.0.0-beta.11) (2024-02-22)
+
+
+### Features
+
+* applying analytics to video urls ([bf3059e](https://github.com/cloudinary-community/next-cloudinary/commit/bf3059eef2d267da1427454d5c17d85889aab19f))
+
+# [6.0.0-beta.10](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.9...v6.0.0-beta.10) (2024-02-22)
+
+
+### Features
+
+* fixing analytics bug ([e868afd](https://github.com/cloudinary-community/next-cloudinary/commit/e868afd19f81552d7aec3b7a90e88786c672c633))
+
+# [6.0.0-beta.9](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.8...v6.0.0-beta.9) (2024-02-22)
+
+
+### Features
+
+* Remove Default 2-Stage Image Sizing ([#431](https://github.com/cloudinary-community/next-cloudinary/issues/431)) ([b8de6f0](https://github.com/cloudinary-community/next-cloudinary/commit/b8de6f055c8c2641b1990ae60c8d5092b9381b23))
+
+
+### BREAKING CHANGES
+
+* Changes how cropping fundamentally works, introduces new functionality behind crop prop
+
+# [6.0.0-beta.8](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.7...v6.0.0-beta.8) (2024-01-25)
+
+
+### Features
+
+* CldUploadWidget Events Normalization ([#424](https://github.com/cloudinary-community/next-cloudinary/issues/424)) ([df7f587](https://github.com/cloudinary-community/next-cloudinary/commit/df7f587c8fc5b33b0e3e24a0aea0746434249b6e))
+
+# [6.0.0-beta.7](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.6...v6.0.0-beta.7) (2024-01-24)
+
+
+### Features
+
+* Manage Native Types from @cloudinary-util/types ([#421](https://github.com/cloudinary-community/next-cloudinary/issues/421)) ([fbb4608](https://github.com/cloudinary-community/next-cloudinary/commit/fbb46085a0208766245f71f4b63856d1f3826603))
+
+# [6.0.0-beta.6](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.5...v6.0.0-beta.6) (2024-01-19)
+
+
+### Bug Fixes
+
+* Publish Branch ([#420](https://github.com/cloudinary-community/next-cloudinary/issues/420)) ([ababfb7](https://github.com/cloudinary-community/next-cloudinary/commit/ababfb794716f419375ab4f8ceda616a6c2217f4))
+
+# [6.0.0-beta.5](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.4...v6.0.0-beta.5) (2024-01-19)
+
+
+### Features
+
+* PNPM ([#419](https://github.com/cloudinary-community/next-cloudinary/issues/419)) ([d607e10](https://github.com/cloudinary-community/next-cloudinary/commit/d607e10a183d463ef6c367e1d656d06f38f88cb5)), closes [#408](https://github.com/cloudinary-community/next-cloudinary/issues/408)
+
+# [6.0.0-beta.4](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.3...v6.0.0-beta.4) (2024-01-19)
+
+
+### Features
+
+* Add Content-Type to CldUploadWidget Signature Headers ([#418](https://github.com/cloudinary-community/next-cloudinary/issues/418)) ([4f86a20](https://github.com/cloudinary-community/next-cloudinary/commit/4f86a2066732337506c8d386fdf79fa6dfd04f2f))
+
+
+### BREAKING CHANGES
+
+* CldUploadWidget signature endpoint now sets content-type as application/json
+
+# [6.0.0-beta.3](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.2...v6.0.0-beta.3) (2024-01-19)
+
+
+### Features
+
+* Export CldUploadWidgetInfo Type ([#413](https://github.com/cloudinary-community/next-cloudinary/issues/413)) ([8058c5c](https://github.com/cloudinary-community/next-cloudinary/commit/8058c5ce8e7c399cde46eff7d3628a5495ce7d7d)), closes [#412](https://github.com/cloudinary-community/next-cloudinary/issues/412)
+* Updates URL Loader, Fixes Comma Encoding ([#415](https://github.com/cloudinary-community/next-cloudinary/issues/415)) ([25d2228](https://github.com/cloudinary-community/next-cloudinary/commit/25d2228a6f750ef32415c5b98c10b3ee7b32ad4e)), closes [#414](https://github.com/cloudinary-community/next-cloudinary/issues/414)
+
+# [6.0.0-beta.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.1...v6.0.0-beta.2) (2024-01-16)
+
+### Features
+
+* deprecating GetCldImageUrl and GetCldOgImageUrl types ([2e4f7e1](https://github.com/cloudinary-community/next-cloudinary/commit/2e4f7e10b22e76739cd4af7b1bc7327280324df3))
+* removing autoPlay prop (with capital p) in favor of autoplay ([393b2e1](https://github.com/cloudinary-community/next-cloudinary/commit/393b2e16387ad8cd3c6584f077964ad4373316a1))
+
+# [6.0.0-beta.1](https://github.com/cloudinary-community/next-cloudinary/compare/v5.18.0...v6.0.0-beta.1) (2024-01-16)
+
+* Updates URL Loader to 4.0 ([#406](https://github.com/cloudinary-community/next-cloudinary/issues/406)) ([26789ee](https://github.com/cloudinary-community/next-cloudinary/commit/26789ee512aaf782895963c2fff799577245cb81))
+
+### BREAKING CHANGES
+
+* Updates URL Loader to new major version
+
+# [5.20.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.19.0...v5.20.0) (2024-01-19)
+
 * Updates URL Loader, Fixes Comma Encoding ([#415](https://github.com/cloudinary-community/next-cloudinary/issues/415)) ([25d2228](https://github.com/cloudinary-community/next-cloudinary/commit/25d2228a6f750ef32415c5b98c10b3ee7b32ad4e)), closes [#414](https://github.com/cloudinary-community/next-cloudinary/issues/414)
 
 # [5.19.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.18.0...v5.19.0) (2024-01-17)
-
 
 ### Features
 

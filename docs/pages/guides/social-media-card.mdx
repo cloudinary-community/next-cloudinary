@@ -2,8 +2,9 @@ import Head from 'next/head';
 import { Callout, Tab, Tabs } from 'nextra-theme-docs';
 
 import OgImage from '../../components/OgImage';
-
-import { CldImage, CldOgImage } from '../../../next-cloudinary';
+import HeaderImage from '../../components/HeaderImage';
+import CodeBlock from '../../components/CodeBlock';
+import ExamplesCldOgImage from '../../components/ExamplesCldOgImage';
 
 <Head>
   <title>Social Media Cards - Next Cloudinary</title>
@@ -18,23 +19,17 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
 
 # Generating Social Media Cards
 
-<Callout emoji={false}>
-  CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. The following examples make use of the `<CldImage>` tag to showcase what's possible.
-</Callout>
+You can use Next Cloudinary to easily generate dynamic social media cards
+for your Next.js app.
 
 ## Example
 
-<div style={{ maxWidth: 500, margin: '0 auto' }}>
-  <CldImage
-    width="2400"
-    height="1200"
-    crop="fill"
-    gravity="auto"
+<HeaderImage>
+  <ExamplesCldOgImage
     src={`${process.env.IMAGES_DIRECTORY}/white`}
-    sizes="100w"
     overlays={[
       {
-        publicId: 'images/mountain',
+        publicId: `${process.env.IMAGES_DIRECTORY}/mountain`,
         position: {
           x: 0,
           y: 0,
@@ -44,168 +39,176 @@ import { CldImage, CldOgImage } from '../../../next-cloudinary';
           {
             crop: 'fill',
             gravity: 'auto',
-            width: 800,
-            height: 1200
+            width: '0.33',
+            height: '1.0'
           }
-        ]
+        ],
+        flags: ['relative']
       },
       {
-        width: 1400,
-        crop: 'fit',
-        text: {
-          color: 'black',
-          fontFamily: 'Source Sans Pro',
-          fontSize: 160,
-          fontWeight: 'bold',
-          text: 'Next Cloudinary'
-        },
-        position: {
-          x: 100,
-          y: -100,
-          gravity: 'west',
-        },
-      },
-      {
-        width: 1400,
+        width: 700,
         crop: 'fit',
         text: {
           color: 'black',
           fontFamily: 'Source Sans Pro',
           fontSize: 80,
+          fontWeight: 'bold',
+          text: 'Next Cloudinary'
+        },
+        position: {
+          x: 80,
+          y: -50,
+          gravity: 'west',
+        },
+      },
+      {
+        width: 700,
+        crop: 'fit',
+        text: {
+          color: 'black',
+          fontFamily: 'Source Sans Pro',
+          fontSize: 40,
           text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
         },
         position: {
-          x: 100,
-          y: 100,
+          x: 80,
+          y: 50,
           gravity: 'west',
         },
       },
     ]}
-    alt="Next Cloudinary with picture of a mountain"
   />
-</div>
+</HeaderImage>
 
+> CldOgImage does not render an `<img>` tag, meaning it can't be visually embedded on a page. The following examples make use of the `<CldImage>` tag to showcase what's possible.
 
-<Tabs items={['CldOgImage (Pages)', 'getCldOgImageUrl (App)']}>
+<Tabs items={['getCldOgImageUrl (App)', 'CldOgImage (Pages)']}>
   <Tab>
-    ```jsx copy
-    import { CldOgImage } from 'next-cloudinary';
+    <CodeBlock>
+    ```jsx copy showLineNumbers
+      import { getCldOgImageUrl } from 'next-cloudinary';
 
-    <CldOgImage
-      src="images/white"
-      overlays={[
-        {
-          publicId: 'images/mountain',
-          position: {
-            x: 0,
-            y: 0,
-            gravity: 'north_east',
+      getCldOgImageUrl({
+        src: '<Your Public ID>',
+        overlays: [
+          {
+            publicId: '<Your Public ID>',
+            position: {
+              x: 0,
+              y: 0,
+              gravity: 'north_east',
+            },
+            effects: [
+              {
+                crop: 'fill',
+                gravity: 'auto',
+                width: '0.33',
+                height: '1.0'
+              }
+            ],
+            flags: ['relative']
           },
-          effects: [
-            {
-              crop: 'fill',
-              gravity: 'auto',
-              width: 800,
-              height: 1200
-            }
-          ]
-        },
-        {
-          width: 1400,
-          crop: 'fit',
-          text: {
-            color: 'black',
-            fontFamily: 'Source Sans Pro',
-            fontSize: 160,
-            fontWeight: 'bold',
-            text: 'Next Cloudinary'
+          {
+            width: 700,
+            crop: 'fit',
+            text: {
+              color: 'black',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 80,
+              fontWeight: 'bold',
+              text: '<Your Text>'
+            },
+            position: {
+              x: 50,
+              y: -50,
+              gravity: 'west',
+            },
           },
-          position: {
-            x: 100,
-            y: -100,
-            gravity: 'west',
+          {
+            width: 700,
+            crop: 'fit',
+            text: {
+              color: 'black',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 40,
+              text: '<Your Text>'
+            },
+            position: {
+              x: 50,
+              y: 50,
+              gravity: 'west',
+            },
           },
-        },
-        {
-          width: 1400,
-          crop: 'fit',
-          text: {
-            color: 'black',
-            fontFamily: 'Source Sans Pro',
-            fontSize: 80,
-            text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
-          },
-          position: {
-            x: 100,
-            y: 100,
-            gravity: 'west',
-          },
-        },
-      ]}
-      twitterTitle="Next Cloudinary"
-      alt="Next Cloudinary with picture of a mountain"
-    />
+        ]
+      });
     ```
+    </CodeBlock>
   </Tab>
   <Tab>
-    ```jsx copy
-    import { getCldOgImageUrl } from 'next-cloudinary';
+    <CodeBlock>
+    ```jsx copy showLineNumbers
+      import { CldOgImage } from 'next-cloudinary';
 
-    getCldOgImageUrl({
-      src: 'images/white',
-      overlays: [
-        {
-          publicId: 'images/mountain',
-          position: {
-            x: 0,
-            y: 0,
-            gravity: 'north_east',
+      <CldOgImage
+        src="<Your Public ID>"
+        overlays={[
+          {
+            publicId: '<Your Public ID>',
+            position: {
+              x: 0,
+              y: 0,
+              gravity: 'north_east',
+            },
+            effects: [
+              {
+                crop: 'fill',
+                gravity: 'auto',
+                width: '0.33',
+                height: '1.0'
+              }
+            ],
+            flags: ['relative']
           },
-          effects: [
-            {
-              crop: 'fill',
-              gravity: 'auto',
-              width: 800,
-              height: 1200
-            }
-          ]
-        },
-        {
-          width: 1400,
-          crop: 'fit',
-          text: {
-            color: 'black',
-            fontFamily: 'Source Sans Pro',
-            fontSize: 160,
-            fontWeight: 'bold',
-            text: 'Next Cloudinary'
+          {
+            width: 700,
+            crop: 'fit',
+            text: {
+              color: 'black',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 80,
+              fontWeight: 'bold',
+              text: '<Your Text>'
+            },
+            position: {
+              x: 80,
+              y: -50,
+              gravity: 'west',
+            },
           },
-          position: {
-            x: 100,
-            y: -100,
-            gravity: 'west',
+          {
+            width: 700,
+            crop: 'fit',
+            text: {
+              color: 'black',
+              fontFamily: 'Source Sans Pro',
+              fontSize: 40,
+              text: '<Your Text>'
+            },
+            position: {
+              x: 80,
+              y: 50,
+              gravity: 'west',
+            },
           },
-        },
-        {
-          width: 1400,
-          crop: 'fit',
-          text: {
-            color: 'black',
-            fontFamily: 'Source Sans Pro',
-            fontSize: 80,
-            text: 'Get the power of Cloudinary in a Next.js project with Next Cloudinary!'
-          },
-          position: {
-            x: 100,
-            y: 100,
-            gravity: 'west',
-          },
-        },
-      ]
-    });
+        ]}
+        twitterTitle="<Your Text>"
+        alt="<Your Text>"
+      />
     ```
+    </CodeBlock>
   </Tab>
 </Tabs>
 
 ## Learn More
+* [Social Media Card Templates](/templates/social-media-cards)
 * [CldOgImage Configuration](/cldogimage/configuration)

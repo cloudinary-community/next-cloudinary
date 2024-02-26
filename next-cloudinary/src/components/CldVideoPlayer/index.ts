@@ -1,2 +1,2 @@
 export { default } from './CldVideoPlayer';
-export type {  CldVideoPlayerProps, CldVideoPlayerPropsColors, CldVideoPlayerPropsLogo } from './CldVideoPlayer.types';
+export type {  CldVideoPlayerProps, CldVideoPlayerPropsLogo } from './CldVideoPlayer.types';

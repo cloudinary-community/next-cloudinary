@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import { Callout } from 'nextra-theme-docs';
 
-import { CldImage } from '../../../next-cloudinary';
-import { getCldImageUrl } from '../../../next-cloudinary';
+import { CldImage, getCldImageUrl } from '../../../next-cloudinary';
 
 import OgImage from '../../components/OgImage';
-import ImageGrid from '../../components/ImageGrid';
+import HeaderImage from '../../components/HeaderImage';
+import CodeBlock from '../../components/CodeBlock';
 
 <Head>
   <title>getCldImageUrl Examples - Next Cloudinary</title>
@@ -24,91 +24,174 @@ import ImageGrid from '../../components/ImageGrid';
   The below examples use the CldImage component to render the images. This is not required, you can use the URL returned by getCldImageUrl in any way you like.
 </Callout>
 
-<ImageGrid>
-  <li>
-    <CldImage
-      src={getCldImageUrl({
-        src: `${process.env.IMAGES_DIRECTORY}/turtle`,
-        width: 960,
-        height: 600,
-      })}
-      width="960"
-      height="600"
-      sizes="(max-width: 480px) 100vw, 50vw"
-      alt=""
-      preserveTransformations
-    />
+## Basic Transformations
 
-    ### Basic
+Cloudinary supports a wide variety of powerful transformations that allow you to
+not only deliver, but easily edit and build new images on the fly.
 
-    ```js copy
-    getCldImageUrl({
-      src: 'images/turtle',
-      width: 960,
-      height: 600,
-    })
-    ```
-  </li>
-  <li>
-    <CldImage
-      src={getCldImageUrl({
-        src: `${process.env.IMAGES_DIRECTORY}/turtle`,
-        width: 960,
-        height: 600,
-        removeBackground: true
-      })}
-      width="960"
-      height="600"
-      sizes="(max-width: 480px) 100vw, 50vw"
-      alt=""
-      preserveTransformations
-    />
+### Background Removal
 
-    ### Background Removal
+#### Remove Background
 
-    ```js copy
-    getCldImageUrl({
-      src: 'images/turtle',
+`removeBackground`: Removes the background of the image using AI
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={getCldImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/turtle`,
       width: 960,
       height: 600,
       removeBackground: true
-    })
-    ```
+    })}
+    sizes="100vw"
+    preserveTransformations
+    alt=""
+  />
+</HeaderImage>
 
-    <Callout emoji={false}>
-      Background removal requires the <a href="https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon">Cloudinary AI Background Removal</a> Add-On
-    </Callout>
-  </li>
-  <li>
-    <CldImage
-      src={getCldImageUrl({
-        src: `${process.env.IMAGES_DIRECTORY}/woman-headphones`,
-        width: 960,
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { getCldImageUrl } from 'next-cloudinary';
+
+  getCldImageUrl({
+    src: '<Your Public ID>',
+    width: 960,
+    height: 600,
+    removeBackground: true
+  })
+  ```
+</CodeBlock>
+
+<Callout emoji={false} type="info">
+  The Cloudinary AI Background Removal add-on is required to use this feature.
+</Callout>
+
+### Cropping & Resizing
+
+#### Cropping
+
+`crop`: Specifies the mode to use when cropping an image based on the given dimensions.
+
+> Note: By default, CldImage uses a gravity of auto, meaning the crop will automatically
+position the subject in the center of the resulting image.
+
+<HeaderImage>
+  <CldImage
+    width="300"
+    height="300"
+    src={getCldImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/woman-headphones`,
+      width: 300,
+      height: 300,
+      crop: 'fill'
+    })}
+    sizes="100vw"
+    preserveTransformations
+    alt=""
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { getCldImageUrl } from 'next-cloudinary';
+
+  getCldImageUrl({
+    src: '<Your Public ID>',
+    width: 300,
+    height: 300,
+    crop: 'fill'
+  })
+  ```
+</CodeBlock>
+
+Cloudinary additionally supports dynamic crop modes like `thumb` that
+may provide a different result based on the given width and height. To
+help provide more options for controlling cropping images, you can specify
+and object or array of objects.
+
+For instance, to crop the original source image, which will then later
+resize it to the initial width and height, you can use:
+
+<HeaderImage>
+  <CldImage
+    width="300"
+    height="300"
+    src={getCldImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/woman-headphones`,
+      width: 300,
+      height: 300,
+      crop: {
+        width: 600,
         height: 600,
-        crop: 'pad',
-        fillBackground: true
-      })}
-      width="960"
-      height="600"
-      sizes="(max-width: 480px) 100vw, 50vw"
-      alt=""
-      preserveTransformations
-    />
+        type: 'thumb',
+        source: true
+      }
+    })}
+    sizes="100vw"
+    preserveTransformations
+    alt=""
+  />
+</HeaderImage>
 
-    ### Generative Fill
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { getCldImageUrl } from 'next-cloudinary';
 
-    ```js copy
-    getCldImageUrl({
-      src: 'images/woman-headphones',
+  getCldImageUrl({
+    src: '<Your Public ID>',
+    width: 300,
+    height: 300,
+    crop: {
+      width: 600,
+      height: 600,
+      type: 'thumb',
+      source: true
+    }
+  })
+  ```
+</CodeBlock>
+
+Which will provide a consistent crop for all rendered sizes.
+
+Learn more about [cropping](/getcldimageurl/configuration#crop) and [responsive images](/guides/responsive-images).
+
+### Generative Fill
+
+`fillBackground`: Fills the background of an image using Generative AI
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src={getCldImageUrl({
+      src: `${process.env.IMAGES_DIRECTORY}/woman-headphones`,
       width: 960,
-      height: 600, // Original 1440
-      crop: 'pad', // Returns the given size with padding
-      fillBackground: true // Uses AI to extend image
-    })
-    ```
+      height: 600,
+      fillBackground: true,
+      crop: 'pad'
+    })}
+    preserveTransformations
+    alt=""
+    sizes="100vw"
+  />
+</HeaderImage>
 
-    <Callout emoji={false}>
-      The generative fill transformation is currently in Beta. <a href="https://cloudinary.com/documentation/effects_and_artistic_enhancements#generative_fill">Learn more</a>.
-    </Callout>
-  </li>
-</ImageGrid>
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { getCldImageUrl } from 'next-cloudinary';
+
+  getCldImageUrl({
+    src: '<Your Public ID>',
+    width: 960,
+    height: 600,
+    fillBackground: true,
+    crop: 'pad'
+  })
+  ```
+</CodeBlock>
+
+<Callout emoji={false}>
+  The generative fill transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#b_gen_fill">Learn more</a>.
+</Callout>

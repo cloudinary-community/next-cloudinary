@@ -75,7 +75,12 @@ const url = getCldImageUrl({
       src: `${process.env.IMAGES_DIRECTORY}/galaxy`,
       width: 600,
       height: 600,
-      crop: 'thumb',
+      crop: {
+        width: 600,
+        height: 600,
+        type: 'thumb',
+        source: true
+      },
       tint: '50:blue:green:red',
       blur: 1000,
     })}
