@@ -1,3 +1,15 @@
+# [6.0.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.20.0...v6.0.0) (2024-02-26)
+
+
+### Features
+
+* v6.0.0 ([#407](https://github.com/cloudinary-community/next-cloudinary/issues/407)) ([f10ec96](https://github.com/cloudinary-community/next-cloudinary/commit/f10ec96ee908d114d4da40671f8d4c36cc1713ec)), closes [#363](https://github.com/cloudinary-community/next-cloudinary/issues/363) [#379](https://github.com/cloudinary-community/next-cloudinary/issues/379) [#419](https://github.com/cloudinary-community/next-cloudinary/issues/419) [#327](https://github.com/cloudinary-community/next-cloudinary/issues/327)
+
+
+### BREAKING CHANGES
+
+* Removes 2-stage cropping and resizing, type and prop deprecations, and more - see Changelog on next.cloudinary.dev
+
 # [6.0.0-beta.19](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0-beta.18...v6.0.0-beta.19) (2024-02-24)
 
 
