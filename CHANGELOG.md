@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0...v6.0.1) (2024-02-26)
+
+
+### Bug Fixes
+
+* Upgrading URL Loader package from Beta ([#443](https://github.com/cloudinary-community/next-cloudinary/issues/443)) ([7fb9568](https://github.com/cloudinary-community/next-cloudinary/commit/7fb95684b0fdfae1a32cf895bbcdba46258dfd03))
+
 # [6.0.0](https://github.com/cloudinary-community/next-cloudinary/compare/v5.20.0...v6.0.0) (2024-02-26)
 
 
