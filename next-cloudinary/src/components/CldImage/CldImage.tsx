@@ -26,7 +26,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
     'assetType',
   ];
 
-  transformationPlugins.forEach(({ props }) => {
+  transformationPlugins.forEach(({ props }: { props: Record<string, unknown> }) => {
     const pluginProps = Object.keys(props);
     pluginProps.forEach(prop => {
       if ( CLD_OPTIONS.includes(prop) ) {
@@ -44,22 +44,22 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
   };
 
   (Object.keys(props) as Array<keyof typeof props>)
-    .filter(key => !CLD_OPTIONS.includes(key))
-    // @ts-expect-error
-    .forEach(key => imageProps[key] = props[key]);
+    .filter(key => typeof key === 'string' && !CLD_OPTIONS.includes(key))
+    .forEach(key => imageProps[key as keyof ImageProps] = props[key]);
 
   const defaultImgKey = (Object.keys(imageProps) as Array<keyof typeof imageProps>).map(key => `${key}:${imageProps[key]}`).join(';');
   const [imgKey, setImgKey] = useState(defaultImgKey);
 
   // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
 
-  const cldOptions: Omit<ImageOptions, 'src'> = {};
+  type CldOptions = Omit<ImageOptions, 'src'>;
 
-  CLD_OPTIONS.forEach(key => {
-    // @ts-expect-error
-    if ( props[key] ) {
-      // @ts-expect-error
-      cldOptions[key] = props[key] || undefined;
+  const cldOptions: CldOptions = {};
+
+  CLD_OPTIONS.forEach((key) => {
+    const prop = props[key as keyof ImageOptions];
+    if ( prop ) {
+      cldOptions[key as keyof CldOptions] = prop || undefined;
     }
   });
 

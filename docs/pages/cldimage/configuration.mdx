@@ -126,6 +126,12 @@ right inside of Next.js.
   ]}
   data={[
     {
+      prop: 'angle',
+      type: 'number',
+      example: () => (<code>45</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#a_angle">More Info</a>)
+    },
+    {
       prop: 'background',
       type: 'string',
       default: '-',
@@ -141,6 +147,13 @@ right inside of Next.js.
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#c_crop_resize">More Info</a>)
     },
     {
+      prop: 'enhance',
+      type: 'boolean',
+      default: '-',
+      example: () => (<code>{`true`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_enhance">More Info</a>)
+    },
+    {
       prop: 'fillBackground (Beta)',
       type: 'boolean | object',
       default: '-',
@@ -153,6 +166,12 @@ right inside of Next.js.
       default: () => (<code>auto</code>),
       example: () => (<code>faces</code>),
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#g_gravity">More Info</a>)
+    },
+    {
+      prop: 'loop',
+      type: 'boolean | number',
+      example: () => (<code>true</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_loop">More Info</a>)
     },
     {
       prop: 'recolor',
@@ -205,6 +224,18 @@ right inside of Next.js.
     },
   ]}
 />
+
+### `angle`
+
+Rotates the image at the given angle.
+
+**Examples**
+
+```jsx copy
+angle={15}
+```
+
+[Learn more about angle](https://cloudinary.com/documentation/transformation_reference#b_background) on the Cloudinary docs.
 
 ### `background`
 
@@ -324,6 +355,26 @@ crop={{
 
 [Learn more about the crop transformation](https://cloudinary.com/documentation/transformation_reference#c_crop_resize) on the Cloudinary docs.
 
+
+### `enhance`
+
+<Callout emoji={false} type="info">
+  Generative Enhance is currently in beta.
+</Callout>
+
+Uses generative AI to enhance the visual appeal of an image.
+
+The `enhance` prop can be used as a boolean.
+
+**Examples**
+
+```jsx copy
+enhance
+```
+
+[Learn more about the Generative Enhance transformation](https://cloudinary.com/documentation/transformation_reference#e_enhance) on the Cloudinary docs.
+
+
 ### `fillBackground`
 
 <Callout emoji={false} type="info">
@@ -400,6 +451,18 @@ gravity="face"
 ```
 
 [Learn more about gravity](https://cloudinary.com/documentation/transformation_reference#g_gravity) on the Cloudinary docs.
+
+### `loop`
+
+Loops an animated image infinitely or for the specified number of times.
+
+**Examples**
+
+```jsx copy
+loop
+```
+
+[Learn more about loop](https://cloudinary.com/documentation/transformation_reference#e_loop) on the Cloudinary docs.
 
 ### `recolor`
 
@@ -704,7 +767,7 @@ As an object, you can use advanced configuration with the following options:
   data={[
     {
       prop: 'loop',
-      type: 'boolean | string',
+      type: 'boolean | number',
       example: () => (<code>true</code>),
     },
     {
