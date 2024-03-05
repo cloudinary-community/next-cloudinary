@@ -82,8 +82,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0
       '@cloudinary-util/url-loader':
-        specifier: 5.0.0
-        version: 5.0.0
+        specifier: 5.1.0
+        version: 5.1.0
       '@cloudinary-util/util':
         specifier: ^3.0.0
         version: 3.0.0
@@ -1316,8 +1316,8 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@cloudinary-util/url-loader@5.0.0:
-    resolution: {integrity: sha512-WjfzbI/l6uqQsnq6xnPrR6gvicQzI9jMZnhJK1fpeM9FrLemRjqXZNEsJyx909BfKtE2WKMzzw2Tw7iQ7/R6LQ==}
+  /@cloudinary-util/url-loader@5.1.0:
+    resolution: {integrity: sha512-B4ou2sL0VSwUslrrAg8/0Id4YHZtXXtGNZ/lhZE8TSqdhcJm3T4eMFa5FfdUFs7Tz/nE1U9Zomdaxo34W7L53Q==}
     dependencies:
       '@cloudinary-util/util': 3.0.0
       '@cloudinary/url-gen': 1.15.0
