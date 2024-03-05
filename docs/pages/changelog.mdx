@@ -19,6 +19,30 @@ import { OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from '../../next-cloudinary/src/const
 
 # Changelog
 
+## v6.1.0
+
+### Overview
+
+Adds new top-level options to CldImage including Generative Enhance, Angle, and Loop.
+
+Enhance is a Generative AI feature in Beta that will automatically improve the visual
+appeal of an image.
+
+Angle allows you to rotate an image by the given degrees or [custom mode](https://cloudinary.com/documentation/transformation_reference#a_angle).
+
+Loop allows you to apply a looping effect to an animated image, such as a gif, infinitely or by a specific number of times.
+
+### Changes
+
+**CldImage**
+* Adds `enhance`
+* Adds `angle` as a top-level effect, also available in the effects array
+* Adds `loop` as a top-level effect
+* Adds a test and console warning for `fillBackground` without a `width` and `height` or `aspectRatio`
+* Fixes `zoompan` bug where passing custom options didn't include `:` required in transformation
+
+https://github.com/cloudinary-community/next-cloudinary/pull/448
+
 ## v6.0.0
 
 ### Overview
