@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.1...v6.1.0) (2024-03-05)
+
+
+### Features
+
+* Generative Enhance, Angle, Loop, Fixes ([#448](https://github.com/cloudinary-community/next-cloudinary/issues/448)) ([929cdb8](https://github.com/cloudinary-community/next-cloudinary/commit/929cdb8383ceebb21e35324648e1046e195e25b5)), closes [#447](https://github.com/cloudinary-community/next-cloudinary/issues/447)
+
 ## [6.0.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.0...v6.0.1) (2024-02-26)
 
 
