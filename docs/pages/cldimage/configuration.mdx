@@ -1866,6 +1866,11 @@ namedTransformations={['my-transformation']}
 Preserves transformations already applied to an image when passing in a Cloudinary URL
 as the `src`.
 
+> Note: The Cloudinary URL requires a version number (ex: `/v1234/`) in order to be parsed.
+
+When using this option, the transformations will be parsed from a valid URL and then
+be applied as [rawTransformations](#rawtransformations).
+
 **Examples**
 
 ```jsx copy
@@ -1875,7 +1880,11 @@ preserveTransformations
 #### `rawTransformations`
 
 Provides the ability to pass in an array of "raw" Cloudinary transformations using the
-[Transformation URL API](https://cloudinary.com/documentation/transformation_reference)
+[Transformation URL API](https://cloudinary.com/documentation/transformation_reference).
+
+When using this option, if a format (`f_`) or quality (`q_`) is detected in the applied
+transformations, the respective option will not be applied automatically unless explicitly
+configured on the component using the [format](#format) or [quality](#quality) options.
 
 **Examples**
 
@@ -2003,7 +2012,7 @@ Controls the quality of the delivered asset. Reducing the quality is a trade-off
 **Examples**
 
 ```jsx copy
-quality="10"
+quality={10}
 ```
 
 [Learn more about quality](https://cloudinary.com/documentation/transformation_reference#q_quality) on the Cloudinary docs.
