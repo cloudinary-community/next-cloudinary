@@ -1,3 +1,10 @@
+## [6.1.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.1.0...v6.1.1) (2024-03-06)
+
+
+### Bug Fixes
+
+* Fixes missing quality type of string ([#451](https://github.com/cloudinary-community/next-cloudinary/issues/451)) ([eda5637](https://github.com/cloudinary-community/next-cloudinary/commit/eda563712b4402f9ca4bcf9ad8aa336823853a0f)), closes [#449](https://github.com/cloudinary-community/next-cloudinary/issues/449)
+
 # [6.1.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.0.1...v6.1.0) (2024-03-05)
 
 
