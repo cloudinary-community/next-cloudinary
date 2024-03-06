@@ -237,7 +237,7 @@ describe('Cloudinary Loader', () => {
 
       const result = cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig });
 
-      expect(result).toContain(`image/upload/${cldOptions.rawTransformations.join('/')}/c_limit,w_${imageProps.width}/f_auto/q_auto/v1/${imageProps.src}`)
+      expect(result).toContain(`image/upload/${cldOptions.rawTransformations.join('/')}/c_limit,w_${imageProps.width}/v1/${imageProps.src}`)
     });
 
     it('should return a Cloudinary URL from a Cloudinary URL source with spaces', async () => {
