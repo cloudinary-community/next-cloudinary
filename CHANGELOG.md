@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.1.1...v6.2.0) (2024-03-06)
+
+
+### Features
+
+* Fixes auto format and quality overriding raw transformations configuration ([#452](https://github.com/cloudinary-community/next-cloudinary/issues/452)) ([b908710](https://github.com/cloudinary-community/next-cloudinary/commit/b908710d1563cf7eb07fba5e39fd98b55bab9c25))
+
 ## [6.1.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.1.0...v6.1.1) (2024-03-06)
 
 
