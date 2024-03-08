@@ -1,3 +1,10 @@
+## [6.2.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.2.0...v6.2.1) (2024-03-08)
+
+
+### Bug Fixes
+
+* Fixes quality type of CldImage component ([#454](https://github.com/cloudinary-community/next-cloudinary/issues/454)) ([3c5789a](https://github.com/cloudinary-community/next-cloudinary/commit/3c5789a8318ca443b8b72cb1ba38f42893ca9a54)), closes [#449](https://github.com/cloudinary-community/next-cloudinary/issues/449)
+
 # [6.2.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.1.1...v6.2.0) (2024-03-06)
 
 
