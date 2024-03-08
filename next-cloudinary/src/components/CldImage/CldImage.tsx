@@ -9,7 +9,7 @@ import { getCldImageUrl } from '../../helpers/getCldImageUrl';
 
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
-export type CldImageProps = Omit<ImageProps, 'src'> & ImageOptions & {
+export type CldImageProps = Omit<ImageProps, 'src' | 'quality'> & ImageOptions & {
   config?: ConfigOptions;
   preserveTransformations?: boolean;
   src: string;
