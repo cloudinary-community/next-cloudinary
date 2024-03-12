@@ -1,3 +1,10 @@
+# [6.3.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.2.1...v6.3.0) (2024-03-12)
+
+
+### Features
+
+* Video Player Picture-in-Picture, Updated Examples ([#456](https://github.com/cloudinary-community/next-cloudinary/issues/456)) ([851687c](https://github.com/cloudinary-community/next-cloudinary/commit/851687c07cfaf0c7dafde2b12f19c5056bf5a75f))
+
 ## [6.2.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.2.0...v6.2.1) (2024-03-08)
 
 
