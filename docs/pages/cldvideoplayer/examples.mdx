@@ -5,22 +5,8 @@ import { Callout } from 'nextra-theme-docs';
 import { CldVideoPlayer, getCldImageUrl } from '../../../next-cloudinary';
 
 import OgImage from '../../components/OgImage';
-import ImageGrid from '../../components/ImageGrid';
-
-export const VideoPlayerWithRef = (props) => {
-  const myPlayerRef = useRef();
-  return (
-    <CldVideoPlayer
-      playerRef={myPlayerRef}
-      onDataLoad={() => console.log('VideoPlayerWithRef:data-loaded')}
-      onMetadataLoad={() => {
-        console.log('VideoPlayerWithRef:metadata-loaded');
-        console.log(`VideoPlayerWithRef:duration: ${myPlayerRef.current.duration()}`);
-      }}
-      {...props}
-    />
-  );
-}
+import HeaderImage from '../../components/HeaderImage';
+import CodeBlock from '../../components/CodeBlock';
 
 <Head>
   <title>CldVideoPlayer Examples - Next Cloudinary</title>
@@ -35,330 +21,471 @@ export const VideoPlayerWithRef = (props) => {
 
 # CldVideoPlayer Examples
 
-## Examples
 
-<ImageGrid columns={1}>
-  <li>
-    ### Default
+## Basic Usage
 
-    <br />
+Standard Cloudinary Video Player with playback.
 
-    <CldVideoPlayer
-      id="default"
-      width="1620"
-      height="1080"
-      src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
-    />
-
-    Basic settings to display a video.
-
-    ```jsx copy
+<HeaderImage>
+  <CldVideoPlayer
+    id="default"
     width="1620"
     height="1080"
-    src="videos/mountain-stars"
-    ```
-  </li>
-  <li>
+    src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
+  />
+</HeaderImage>
 
-    ### Adaptive Streaming
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer } from 'next-cloudinary';
 
-    <br />
-
-    <CldVideoPlayer
-      id="adaptive-streaming"
-      width="1620"
-      height="1080"
-      src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
-      transformation={{
-        streaming_profile: 'hd',
-      }}
-      sourceTypes={['hls']}
-    />
-
-    Basic settings to display a video.
-
-    ```jsx copy
+  <CldVideoPlayer
+    id="default"
     width="1620"
     height="1080"
-    src="videos/mountain-stars"
+    src="<Your Public ID>"
+  />
+  ```
+</CodeBlock>
+
+## Playback
+
+### Adaptive Bitrate Streaming (ABR)
+
+<HeaderImage>
+  <CldVideoPlayer
+    id="adaptive-bitrate-streaming"
+    width="1620"
+    height="1080"
+    src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
     transformation={{
       streaming_profile: 'hd',
     }}
     sourceTypes={['hls']}
-    ```
-  </li>
-  <li>
-    ### Crop & Resize
+  />
+</HeaderImage>
 
-    <br />
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer } from 'next-cloudinary';
 
-    <div style={{ maxWidth: 500, margin: '0 auto' }}>
-      <CldVideoPlayer
-        id="crop-resize"
-        width="500"
-        height="500"
-        src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
-        transformation={{
-          width: 500,
-          height: 500,
-          crop: 'fill',
-          gravity: 'auto'
-        }}
-      />
-    </div>
-
-    Basic settings to display a video.
-
-    ```jsx copy
+  <CldVideoPlayer
+    id="adaptive-bitrate-streaming"
     width="1620"
     height="1080"
-    src="videos/dog-running-snow"
-    ```
-  </li>
-  <li>
-    ### Transformation: overlay
-
-    <br />
-
-    <CldVideoPlayer
-      id="transformation-overlay"
-      width="1620"
-      height="1080"
-      src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
-      transformation={{
-        overlay: `${process.env.ASSETS_DIRECTORY}:space-jelly-cosmo-helmet`,
-        width: 150,
-        gravity: "south_east",
-        x: 50,
-        y: 50,
-        opacity: 80
-      }}
-    />
-
-    Adding a watermark to a video.
-
-    ```jsx copy
-    src="videos/mountain-stars"
+    src="<Your Public ID>"
     transformation={{
-      overlay: "assets:space-jelly-cosmo-helmet",
-      width: 150,
-      gravity: "south_east",
-      x: 50,
-      y: 50,
-      opacity: 40
+      streaming_profile: 'hd',
     }}
-    ```
-  </li>
-  <li>
-    ### Custom Player Colors & Font
+    sourceTypes={['hls']}
+  />
+  ```
+</CodeBlock>
 
-    <br />
 
-    <CldVideoPlayer
-      id="custom-colors-font"
-      width="4096"
-      height="2160"
-      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
-      colors={{
-        accent: '#ff0000',
-        base: '#00ff00',
-        text: '#0000ff'
-      }}
-      fontFace="Source Serif Pro"
-    />
+### Picture-in-Picture
 
-    Changing the player theme using colors and fonts
+Utilizes the browser's Picture-in-Picture API to create a floating video on top of other windows.
 
-    ```jsx copy
+<HeaderImage>
+  <CldVideoPlayer
+    id="picture-in-picture"
+    width="1620"
+    height="1080"
+    src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
+    pictureInPictureToggle
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer } from 'next-cloudinary';
+
+  <CldVideoPlayer
+    id="picture-in-picture"
+    width="1620"
+    height="1080"
+    src="<Your Public ID>"
+    pictureInPictureToggle
+  />
+  ```
+</CodeBlock>
+
+## Player Customization
+
+### Colors & Font
+
+Changing the player theme using colors and fonts.
+
+<HeaderImage>
+  <CldVideoPlayer
+    id="custom-colors-font"
+    width="4096"
+    height="2160"
+    src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
     colors={{
       accent: '#ff0000',
       base: '#00ff00',
       text: '#0000ff'
     }}
     fontFace="Source Serif Pro"
-    ```
-  </li>
-  <li>
-    ### Custom Logo
+  />
+</HeaderImage>
 
-    <br />
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer } from 'next-cloudinary';
 
-    <CldVideoPlayer
-      id="custom-logo"
-      width="4096"
-      height="2160"
-      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
-      logo={{
-        imageUrl: 'https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/v1676058142/assets/space-jelly-cosmo-helmet.svg',
-        onClickUrl: 'https://spacejelly.dev'
-      }}
-    />
+  <CldVideoPlayer
+    id="custom-colors-font"
+    width="4096"
+    height="2160"
+    src="<Your Public ID>"
+    colors={{
+      accent: '#ff0000',
+      base: '#00ff00',
+      text: '#0000ff'
+    }}
+    fontFace="Source Serif Pro"
+  />
+  ```
+</CodeBlock>
 
-    Adding a custom logo to the player chrome
+### Logo
 
-    ```jsx copy
+Adding a custom logo to the player chrome
+
+<HeaderImage>
+  <CldVideoPlayer
+    id="custom-logo"
+    width="4096"
+    height="2160"
+    src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
     logo={{
-      imageUrl: 'https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/v1676058142/assets/space-jelly-cosmo-helmet.svg',
+      imageUrl: getCldImageUrl({
+        src: `${process.env.ASSETS_DIRECTORY}/space-jelly-cosmo-helmet`
+      }),
       onClickUrl: 'https://spacejelly.dev'
     }}
-    ```
-  </li>
-  <li>
-    ### Poster
+  />
+</HeaderImage>
 
-    <br />
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer, getCldImageUrl } from 'next-cloudinary';
 
-    <CldVideoPlayer
-      id="custom-poster-1"
-      width="4096"
-      height="2160"
-      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
-      poster={{
-        tint: 'equalize:80:blue:blueviolet'
-      }}
-    />
+  <CldVideoPlayer
+    id="custom-logo"
+    width="4096"
+    height="2160"
+    src="<Your Public ID>"
+    logo={{
+      imageUrl: getCldImageUrl({
+        src: '<Your Public ID>'
+      }),
+      // imageUrl: '<Your Image URL',
+      onClickUrl: '<Your URL>'
+    }}
+  />
+  ```
+</CodeBlock>
 
-    Adding effects to the video's auto-generated thumb
 
-    ```jsx copy
+### Poster URL
+
+Allows you to change the poster used for the player.
+
+<HeaderImage>
+  <CldVideoPlayer
+    id="poster-custom-url"
+    width="4096"
+    height="2160"
+    src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+    poster={getCldImageUrl({ src: `${process.env.IMAGES_DIRECTORY}/turtle` })}
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer, getCldImageUrl } from 'next-cloudinary';
+
+  <CldVideoPlayer
+    id="poster-custom-url"
+    width="4096"
+    height="2160"
+    src="<Your Public ID>"
+    poster={getCldImageUrl({ src: '<Your Public ID>' })}
+    // poster="<Your Remote URL>"
+  />
+  ```
+</CodeBlock>
+
+### Poster Transformations
+
+Adding effects to the video's auto-generated thumb
+
+<HeaderImage>
+  <CldVideoPlayer
+    id="poster-transformations"
+    width="4096"
+    height="2160"
+    src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
     poster={{
       tint: 'equalize:80:blue:blueviolet'
     }}
-    ```
+  />
+</HeaderImage>
 
-    <br />
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer } from 'next-cloudinary';
 
-    <CldVideoPlayer
-      id="custom-poster-2"
-      width="4096"
-      height="2160"
-      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
-      poster={getCldImageUrl({ src: `${process.env.IMAGES_DIRECTORY}/turtle` })}
-    />
-
-    Specifying a remote URL
-
-    ```jsx copy
-    poster="https://...com/image.jpg"
-    ```
-
-    <br />
-
-    <CldVideoPlayer
-      id="custom-poster-3"
-      width="4096"
-      height="2160"
-      src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
-      poster={{
-        src: `${process.env.IMAGES_DIRECTORY}/turtle`,
-        tint: 'equalize:80:blue:blueviolet'
-      }}
-    />
-
-    Using a Cloudinary image with effects
-
-    ```jsx copy
+  <CldVideoPlayer
+    id="poster-transformations"
+    width="4096"
+    height="2160"
+    src="<Your Public ID>"
     poster={{
-      src: `${process.env.IMAGES_DIRECTORY}/turtle`,
       tint: 'equalize:80:blue:blueviolet'
     }}
-    ```
-  </li>
-  <li>
-    ### Localization
+  />
+  ```
+</CodeBlock>
 
-    <br />
 
+## Transformations
+
+### Cropping & Resizing
+
+<HeaderImage>
+  <div className="w-full max-w-[500px] mx-auto">
     <CldVideoPlayer
-      id="localization"
-      width="4096"
-      height="2160"
+      id="cropping-resizing"
+      width="500"
+      height="500"
       src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
-      language="es"
-      languages={{
-        es: {
-          Play: "Reproducción",
-          "Play Video": "Reproduce el Video",
-          Pause: "Pausa",
-          "Current Time": "Tiempo reproducido",
-          Duration: "Duración total",
-          "Remaining Time": "Tiempo restante",
-          "Stream Type": "Tipo de secuencia",
-          LIVE: "DIRECTO",
-          Loaded: "Cargado",
-          Progress: "Progreso",
-          Fullscreen: "Pantalla completa",
-          "Non-Fullscreen": "Pantalla no completa",
-          Mute: "Silenciar",
-          Unmute: "No silenciado",
-          "Playback Rate": "Velocidad de reproducción",
-          Subtitles: "Subtítulos",
-          "subtitles off": "Subtítulos desactivados",
-          Captions: "Subtítulos especiales",
-          "captions off": "Subtítulos especiales desactivados",
-          Chapters: "Capítulos",
-          "Close Modal Dialog": "Cerca de diálogo modal",
-          "You aborted the video playback":
-            "Ha interrumpido la reproducción del vídeo.",
-          "A network error caused the video download to fail part-way.":
-            "Un error de red ha interrumpido la descarga del vídeo.",
-          "The video could not be loaded, either because the server or network failed or because the format is not supported.":
-            "No se ha podido cargar el vídeo debido a un fallo de red o del servidor o porque el formato es incompatible.",
-          "The video playback was aborted due to a corruption problem or because the video used features your browser did not support.":
-            "La reproducción de vídeo se ha interrumpido por un problema de corrupción de datos o porque el vídeo precisa funciones que su navegador no ofrece.",
-          "No compatible source was found for this video.":
-            "No se ha encontrado ninguna fuente compatible con este vídeo."
-        }
+      transformation={{
+        width: 500,
+        height: 500,
+        crop: 'fill',
+        gravity: 'auto'
       }}
     />
+  </div>
+</HeaderImage>
 
-    Provide localization options for player labels.
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer } from 'next-cloudinary';
 
-    ```jsx copy
+  <CldVideoPlayer
+    id="cropping-resizing"
+    width="500"
+    height="500"
+    src="<Your Public ID>"
+    transformation={{
+      width: 500,
+      height: 500,
+      crop: 'fill',
+      gravity: 'auto'
+    }}
+  />
+  ```
+</CodeBlock>
+
+
+### Image Overlays
+
+Place an image over the video (Ex: watermarks).
+
+<HeaderImage>
+  <CldVideoPlayer
+    id="image-overlays"
+    width="1620"
+    height="1080"
+    src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
+    transformation={{
+      overlay: `${process.env.ASSETS_DIRECTORY}:space-jelly-cosmo-helmet`,
+      width: 150,
+      gravity: "south_east",
+      x: 50,
+      y: 50,
+      opacity: 80
+    }}
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer } from 'next-cloudinary';
+
+  <CldVideoPlayer
+    id="image-overlays"
+    width="1620"
+    height="1080"
+    src="<Your Public ID>"
+    transformation={{
+      overlay: '<Your Public ID>',
+      width: 150,
+      gravity: "south_east",
+      x: 50,
+      y: 50,
+      opacity: 80
+    }}
+  />
+  ```
+</CodeBlock>
+
+## Advanced
+
+### Localization
+
+Provides localization options for player labels.
+
+Uses Video.js [JSON format](https://videojs.com/guides/languages/#json-format) to provide labels.
+
+<HeaderImage>
+  <CldVideoPlayer
+    id="localization"
+    width="4096"
+    height="2160"
+    src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
     language="es"
     languages={{
       es: {
         Play: "Reproducción",
+        "Play Video": "Reproduce el Video",
         Pause: "Pausa",
         "Current Time": "Tiempo reproducido",
-        ...
+        Duration: "Duración total",
+        "Remaining Time": "Tiempo restante",
+        "Stream Type": "Tipo de secuencia",
+        LIVE: "DIRECTO",
+        Loaded: "Cargado",
+        Progress: "Progreso",
+        Fullscreen: "Pantalla completa",
+        "Non-Fullscreen": "Pantalla no completa",
+        Mute: "Silenciar",
+        Unmute: "No silenciado",
+        "Playback Rate": "Velocidad de reproducción",
+        Subtitles: "Subtítulos",
+        "subtitles off": "Subtítulos desactivados",
+        Captions: "Subtítulos especiales",
+        "captions off": "Subtítulos especiales desactivados",
+        Chapters: "Capítulos",
+        "Close Modal Dialog": "Cerca de diálogo modal",
+        "You aborted the video playback":
+          "Ha interrumpido la reproducción del vídeo.",
+        "A network error caused the video download to fail part-way.":
+          "Un error de red ha interrumpido la descarga del vídeo.",
+        "The video could not be loaded, either because the server or network failed or because the format is not supported.":
+          "No se ha podido cargar el vídeo debido a un fallo de red o del servidor o porque el formato es incompatible.",
+        "The video playback was aborted due to a corruption problem or because the video used features your browser did not support.":
+          "La reproducción de vídeo se ha interrumpido por un problema de corrupción de datos o porque el vídeo precisa funciones que su navegador no ofrece.",
+        "No compatible source was found for this video.":
+          "No se ha encontrado ninguna fuente compatible con este vídeo."
       }
     }}
-    ```
+  />
+</HeaderImage>
 
-    Uses Video.js [JSON format](https://videojs.com/guides/languages/#json-format) to provide labels.
-  </li>
-  <li>
-    ### With Ref on Callback
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer } from 'next-cloudinary';
 
-    <br />
+  <CldVideoPlayer
+    id="localization"
+    width="4096"
+    height="2160"
+    src="<Your Public ID>"
+    language="es"
+    languages={{
+      es: {
+        Play: "Reproducción",
+        "Play Video": "Reproduce el Video",
+        Pause: "Pausa",
+        "Current Time": "Tiempo reproducido",
+        Duration: "Duración total",
+        "Remaining Time": "Tiempo restante",
+        "Stream Type": "Tipo de secuencia",
+        LIVE: "DIRECTO",
+        Loaded: "Cargado",
+        Progress: "Progreso",
+        Fullscreen: "Pantalla completa",
+        "Non-Fullscreen": "Pantalla no completa",
+        Mute: "Silenciar",
+        Unmute: "No silenciado",
+        "Playback Rate": "Velocidad de reproducción",
+        Subtitles: "Subtítulos",
+        "subtitles off": "Subtítulos desactivados",
+        Captions: "Subtítulos especiales",
+        "captions off": "Subtítulos especiales desactivados",
+        Chapters: "Capítulos",
+        "Close Modal Dialog": "Cerca de diálogo modal",
+        "You aborted the video playback": "Ha interrumpido la reproducción del vídeo.",
+        "A network error caused the video download to fail part-way.": "Un error de red ha interrumpido la descarga del vídeo.",
+        "The video could not be loaded, either because the server or network failed or because the format is not supported.": "No se ha podido cargar el vídeo debido a un fallo de red o del servidor o porque el formato es incompatible.",
+        "The video playback was aborted due to a corruption problem or because the video used features your browser did not support.": "La reproducción de vídeo se ha interrumpido por un problema de corrupción de datos o porque el vídeo precisa funciones que su navegador no ofrece.",
+        "No compatible source was found for this video.": "No se ha encontrado ninguna fuente compatible con este vídeo."
+      }
+    }}
+  />
+  ```
+</CodeBlock>
 
-    <VideoPlayerWithRef
-      id="with-ref"
+### Playback Events
+
+Callbacks for player events.
+
+export const VideoPlayerWithRef = () => {
+  const myPlayerRef = useRef();
+  return (
+    <CldVideoPlayer
+      playerRef={myPlayerRef}
+      id="player-events"
       width="4096"
       height="2160"
       src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+      onMetadataLoad={() => {
+        console.log('[Cloudinary Video Player] metadata-loaded');
+        console.log(`[Cloudinary Video Player] duration: ${myPlayerRef.current.duration()}`);
+      }}
+      onPlay={() => {
+        console.log('[Cloudinary Video Player] play');
+      }}
     />
+  );
+}
 
-    Using a ref to access the player instance
+<HeaderImage>
+  <VideoPlayerWithRef
+    
+  />
+</HeaderImage>
 
-    ```jsx copy
+<Callout emoji={false}>
+  Note: the `player` instance is also passed in the callback function:
+</Callout>
+
+<CodeBlock className="mt-6">
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer } from 'next-cloudinary';
+
+  const myPlayerRef = useRef();
+
+  <CldVideoPlayer
     playerRef={myPlayerRef}
+    id="player-events"
+    width="4096"
+    height="2160"
+    src="<Your Public ID>"
     onMetadataLoad={() => {
-      console.log('metadata-loaded');
-      console.log(`duration: ${myPlayerRef.current.duration()}`);
+      console.log('[Cloudinary Video Player] metadata-loaded');
+      console.log(`[Cloudinary Video Player] duration: ${myPlayerRef.current.duration()}`);
     }}
-    ```
-
-    <Callout emoji={false}>
-      Note: the `player` instance is also passed in the callback function:
-    </Callout>
-
-    ```jsx copy
-    onMetadataLoad={({ player }) => {
-      console.log('metadata-loaded');
-      console.log(`duration: ${player.duration()}`);
+    onPlay={() => {
+      console.log('[Cloudinary Video Player] play');
     }}
-    ```
-  </li>
-</ImageGrid>
+  />
+  ```
+</CodeBlock>
