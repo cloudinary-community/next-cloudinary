@@ -12,6 +12,7 @@ export type CldVideoPlayerProps = Omit<CloudinaryVideoPlayerOptions, "cloud_name
   className?: string;
   height: string | number;
   id?: string;
+  loading?: 'eager' | 'idle' | 'lazy' | 'click';
   logo?: boolean | CldVideoPlayerPropsLogo;
   onDataLoad?: Function;
   onError?: Function;
