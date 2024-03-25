@@ -12,7 +12,7 @@ import {checkForCloudName} from "../../lib/cloudinary";
 
 let playerInstances: string[] = [];
 
-const PLAYER_VERSION = '1.10.6';
+const PLAYER_VERSION = '1.11.1';
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
@@ -204,6 +204,8 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
           };
         }
       }
+
+      console.log('playerOptions', playerOptions)
 
       playerRef.current = cloudinaryRef.current.videoPlayer(videoRef.current, playerOptions);
 
