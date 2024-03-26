@@ -90,8 +90,8 @@ Utilizes the browser's Picture-in-Picture API to create a floating video on top 
 <HeaderImage>
   <CldVideoPlayer
     id="picture-in-picture"
-    width="4096"
-    height="2160"
+    width="2048"
+    height="1080"
     src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
     pictureInPictureToggle
   />
@@ -120,8 +120,8 @@ Changing the player theme using colors and fonts.
 <HeaderImage>
   <CldVideoPlayer
     id="custom-colors-font"
-    width="4096"
-    height="2160"
+    width="2048"
+    height="1080"
     src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
     colors={{
       accent: '#ff0000',
@@ -158,8 +158,8 @@ Adding a custom logo to the player chrome
 <HeaderImage>
   <CldVideoPlayer
     id="custom-logo"
-    width="4096"
-    height="2160"
+    width="2048"
+    height="1080"
     src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
     logo={{
       imageUrl: getCldImageUrl({
@@ -198,8 +198,8 @@ Allows you to change the poster used for the player.
 <HeaderImage>
   <CldVideoPlayer
     id="poster-custom-url"
-    width="4096"
-    height="2160"
+    width="2048"
+    height="1080"
     src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
     poster={getCldImageUrl({ src: `${process.env.IMAGES_DIRECTORY}/turtle` })}
   />
@@ -227,8 +227,8 @@ Adding effects to the video's auto-generated thumb
 <HeaderImage>
   <CldVideoPlayer
     id="poster-transformations"
-    width="4096"
-    height="2160"
+    width="2048"
+    height="1080"
     src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
     poster={{
       tint: 'equalize:80:blue:blueviolet'
@@ -347,8 +347,8 @@ Uses Video.js [JSON format](https://videojs.com/guides/languages/#json-format) t
 <HeaderImage>
   <CldVideoPlayer
     id="localization"
-    width="4096"
-    height="2160"
+    width="2048"
+    height="1080"
     src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
     language="es"
     languages={{
@@ -443,8 +443,8 @@ export const VideoPlayerWithRef = () => {
     <CldVideoPlayer
       playerRef={myPlayerRef}
       id="player-events"
-      width="4096"
-      height="2160"
+      width="2048"
+      height="1080"
       src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
       onMetadataLoad={() => {
         console.log('[Cloudinary Video Player] metadata-loaded');
