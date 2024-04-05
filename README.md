@@ -21,7 +21,7 @@ High-performance image delivery and uploading at scale in Next.js powered by Clo
 
 <a href="#-features">Features</a> • <a href="#-getting-started">Getting Started</a> • <a href="#%EF%B8%8F-community--support">Community & Support</a> • <a href="#-contributing">Contributing</a>
 
-**This plugin is a community library and not officially supported by Cloudinary.**
+**This is a community library supported by the Cloudinary Developer Experience team.**
 
 ## ✨ Features
 
