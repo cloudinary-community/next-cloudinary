@@ -208,8 +208,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         }
       }
 
-      console.log('playerOptions', playerOptions)
-
       playerRef.current = cloudinaryRef.current.videoPlayer(videoRef.current, playerOptions);
 
       Object.keys(events).forEach((key) => {
