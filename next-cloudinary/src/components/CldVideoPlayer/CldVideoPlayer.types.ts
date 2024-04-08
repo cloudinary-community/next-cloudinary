@@ -10,7 +10,6 @@ import { GetCldVideoUrlOptions } from '../../helpers/getCldVideoUrl';
 
 export type CldVideoPlayerProps = Omit<CloudinaryVideoPlayerOptions, "cloud_name" | "autoplayMode" | "publicId" | "secure" | "showLogo" | "logoImageUrl" | "logoOnclickUrl"> & {
   className?: string;
-  height: string | number;
   id?: string;
   logo?: boolean | CldVideoPlayerPropsLogo;
   onDataLoad?: Function;
@@ -24,7 +23,6 @@ export type CldVideoPlayerProps = Omit<CloudinaryVideoPlayerOptions, "cloud_name
   src: string;
   videoRef?: MutableRefObject<HTMLVideoElement | null>;
   quality?: string | number;
-  width: string | number;
 }
 
 export interface CldVideoPlayerPropsLogo {

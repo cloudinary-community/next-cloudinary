@@ -12,7 +12,7 @@ import {checkForCloudName} from "../../lib/cloudinary";
 
 let playerInstances: string[] = [];
 
-const PLAYER_VERSION = '1.10.6';
+const PLAYER_VERSION = '1.11.1';
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
@@ -165,6 +165,9 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         loop,
         muted,
         publicId,
+        width,
+        height,
+        aspectRatio: `${width}:${height}`,
         transformation: playerTransformations,
         ...logoOptions,
         ...otherCldVidPlayerOptions
@@ -240,7 +243,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
       <Head>
         <link href={`https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.min.css`} rel="stylesheet" />
       </Head>
-      <div style={{ width: '100%', aspectRatio: `${props.width} / ${props.height}`}}>
+      <div style={{ width: '100%', aspectRatio: `${width} / ${height}`}}>
         <video
           ref={videoRef}
           id={playerId}
@@ -249,10 +252,10 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
           height={height}
         />
         <Script
-            id={`cloudinary-videoplayer-${playerId}-${Math.floor(Math.random() * 100)}`}
-            src={`https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.min.js`}
-            onLoad={handleOnLoad}
-            onError={(e) => console.error(`Failed to load Cloudinary Video Player: ${e.message}`)}
+          id={`cloudinary-videoplayer-${playerId}-${Math.floor(Math.random() * 100)}`}
+          src={`https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.min.js`}
+          onLoad={handleOnLoad}
+          onError={(e) => console.error(`Failed to load Cloudinary Video Player: ${e.message}`)}
         />
       </div>
     </>
