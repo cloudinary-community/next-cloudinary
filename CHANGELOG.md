@@ -1,3 +1,10 @@
+# [6.4.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.3.0...v6.4.0) (2024-04-08)
+
+
+### Features
+
+* Video Player 1.11.1 ([#461](https://github.com/cloudinary-community/next-cloudinary/issues/461)) ([68f7f52](https://github.com/cloudinary-community/next-cloudinary/commit/68f7f52db7b2219f19c25c1e9aa67aee8d3bef8d))
+
 # [6.3.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.2.1...v6.3.0) (2024-03-12)
 
 
