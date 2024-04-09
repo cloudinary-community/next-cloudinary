@@ -1,3 +1,10 @@
+## [6.4.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.4.0...v6.4.1) (2024-04-09)
+
+
+### Bug Fixes
+
+* upgrading URL loader to pull in crop auto enum value ([f1a16c5](https://github.com/cloudinary-community/next-cloudinary/commit/f1a16c555122143b9da72575ce2cfbc5d0ec3e1a))
+
 # [6.4.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.3.0...v6.4.0) (2024-04-08)
 
 
