@@ -34,12 +34,6 @@ export async function pollForProcessingImage(options: PollForProcessingImageOpti
   return true;
 }
 
-export function checkForCloudName(cloudName: string | undefined) {
-  if (!cloudName) {
-    throw new Error('A Cloudinary Cloud name is required, please make sure NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME is set and configured in your environment.');
-  }
-}
-
 /**
  * getCloudinaryConfig
  */
@@ -51,13 +45,15 @@ export function getCloudinaryConfig(config?: ConfigOptions) {
     throw new Error('A Cloudinary Cloud name is required, please make sure NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME is set and configured in your environment.');
   }
 
+  const apiKey = config?.cloud?.apiKey ?? process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY;
   const secureDistribution = config?.url?.secureDistribution ?? process.env.NEXT_PUBLIC_CLOUDINARY_SECURE_DISTRIBUTION;
   const privateCdn = config?.url?.privateCdn ?? process.env.NEXT_PUBLIC_CLOUDINARY_PRIVATE_CDN;
 
   return Object.assign({
     cloud: {
       ...config?.cloud,
-      cloudName: cloudName
+      apiKey,
+      cloudName
     },
     url: {
       ...config?.url,

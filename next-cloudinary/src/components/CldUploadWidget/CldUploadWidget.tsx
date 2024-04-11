@@ -19,7 +19,7 @@ import {
   CldUploadWidgetWidgetInstance,
 } from './CldUploadWidget.types';
 
-import {checkForCloudName} from "../../lib/cloudinary";
+import { getCloudinaryConfig } from "../../lib/cloudinary";
 
 const WIDGET_WATCHED_EVENTS = [
   'success',
@@ -43,6 +43,7 @@ const WIDGET_EVENTS: { [key: string]: string } = {
 
 const CldUploadWidget = ({
   children,
+  config,
   onError,
   onOpen,
   onUpload,
@@ -65,15 +66,15 @@ const CldUploadWidget = ({
   // either on page load or during the upload process. Read more about signed uploads at:
   // https://cloudinary.com/documentation/upload_widget#signed_uploads
 
+  const cloudinaryConfig = getCloudinaryConfig(config);
+  const { cloudName, apiKey } = cloudinaryConfig?.cloud;
+
   const uploadOptions = {
-    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+    cloudName,
     uploadPreset: uploadPreset || process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
-    apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+    apiKey,
     ...options,
   };
-
-  //Check if Cloud Name exists
-  checkForCloudName(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
 
   if ( signed ) {
     uploadOptions.uploadSignature = generateSignature;
