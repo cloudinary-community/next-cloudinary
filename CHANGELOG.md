@@ -1,3 +1,10 @@
+# [6.5.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.4.1...v6.5.0) (2024-04-11)
+
+
+### Features
+
+* Secure Distribution / Cname Environment Variables, CldVideoPlayer Config ([#466](https://github.com/cloudinary-community/next-cloudinary/issues/466)) ([9cafdac](https://github.com/cloudinary-community/next-cloudinary/commit/9cafdac56345b3524970994c3ee27b1b0826b852)), closes [#465](https://github.com/cloudinary-community/next-cloudinary/issues/465) [#464](https://github.com/cloudinary-community/next-cloudinary/issues/464)
+
 ## [6.4.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.4.0...v6.4.1) (2024-04-09)
 
 
