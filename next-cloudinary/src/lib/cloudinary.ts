@@ -44,7 +44,7 @@ export function checkForCloudName(cloudName: string | undefined) {
  * getCloudinaryConfig
  */
 
-export function getCloudinaryConfig(config: ConfigOptions = {}) {
+export function getCloudinaryConfig(config?: ConfigOptions) {
   const cloudName = config?.cloud?.cloudName ?? process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
   if (!cloudName) {
@@ -56,11 +56,11 @@ export function getCloudinaryConfig(config: ConfigOptions = {}) {
 
   return Object.assign({
     cloud: {
-      ...config.cloud,
+      ...config?.cloud,
       cloudName: cloudName
     },
     url: {
-      ...config.url,
+      ...config?.url,
       secureDistribution,
       privateCdn
     }
@@ -71,7 +71,7 @@ export function getCloudinaryConfig(config: ConfigOptions = {}) {
  * getCloudinaryAnalytics
  */
 
-export function getCloudinaryAnalytics(analytics: AnalyticsOptions) {
+export function getCloudinaryAnalytics(analytics?: AnalyticsOptions) {
   return Object.assign({
     product: NEXT_CLOUDINARY_ANALYTICS_PRODUCT_ID,
     sdkCode: NEXT_CLOUDINARY_ANALYTICS_ID,
