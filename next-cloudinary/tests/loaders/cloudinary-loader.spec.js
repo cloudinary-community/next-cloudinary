@@ -294,7 +294,6 @@ describe('Cloudinary Loader', () => {
 
         expect(result).toContain(`https://${config.url.secureDistribution}/${cldConfig.cloud.cloudName}/image/upload`)
       });
-
     });
   })
 });

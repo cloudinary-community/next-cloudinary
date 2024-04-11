@@ -1,3 +1,7 @@
+import { AnalyticsOptions, ConfigOptions } from "@cloudinary-util/url-loader";
+
+import { NEXT_CLOUDINARY_ANALYTICS_PRODUCT_ID, NEXT_CLOUDINARY_ANALYTICS_ID, NEXT_CLOUDINARY_VERSION, NEXT_VERSION } from '../constants/analytics';
+
 /**
  * pollForProcessingImage
  */
@@ -34,4 +38,45 @@ export function checkForCloudName(cloudName: string | undefined) {
   if (!cloudName) {
     throw new Error('A Cloudinary Cloud name is required, please make sure NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME is set and configured in your environment.');
   }
+}
+
+/**
+ * getCloudinaryConfig
+ */
+
+export function getCloudinaryConfig(config: ConfigOptions = {}) {
+  const cloudName = config?.cloud?.cloudName ?? process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
+  if (!cloudName) {
+    throw new Error('A Cloudinary Cloud name is required, please make sure NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME is set and configured in your environment.');
+  }
+
+  const secureDistribution = config?.url?.secureDistribution ?? process.env.NEXT_PUBLIC_CLOUDINARY_SECURE_DISTRIBUTION;
+  const privateCdn = config?.url?.privateCdn ?? process.env.NEXT_PUBLIC_CLOUDINARY_PRIVATE_CDN;
+
+  return Object.assign({
+    cloud: {
+      ...config.cloud,
+      cloudName: cloudName
+    },
+    url: {
+      ...config.url,
+      secureDistribution,
+      privateCdn
+    }
+  }, config);
+}
+
+/**
+ * getCloudinaryAnalytics
+ */
+
+export function getCloudinaryAnalytics(analytics: AnalyticsOptions) {
+  return Object.assign({
+    product: NEXT_CLOUDINARY_ANALYTICS_PRODUCT_ID,
+    sdkCode: NEXT_CLOUDINARY_ANALYTICS_ID,
+    sdkSemver: NEXT_CLOUDINARY_VERSION,
+    techVersion: NEXT_VERSION,
+    feature: ''
+  }, analytics)
 }
