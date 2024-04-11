@@ -58,7 +58,32 @@ Don't have a Cloudinary account? <a href="https://cloudinary.com/users/register_
 
 </Steps>
 
-You can find more detailed instructions for components that may require other configuration such as an API key on the component's Basic Usage page.
+If using the Cloudinary Upload Widget and using Signed Uploads, you'll likely also want to also set
+your Cloudinary API Key and API Secret.
+
+```ansi copy
+NEXT_PUBLIC_CLOUDINARY_API_KEY="<Your API Key>"
+CLOUDINARY_API_SECRET="<Your API Secret>"
+```
+
+The API Key is a publicly available value where the Secret must be kept private only to be used on the server.
+
+## Global Configuration
+
+Here are all of the available configurable environment variables for Next Cloudinary:
+
+<Callout emoji={false}>
+  Note: These are not all required to use the library.
+</Callout>
+
+```ansi copy
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="<Your Cloud Name>"
+NEXT_PUBLIC_CLOUDINARY_API_KEY="<Your API Key>"
+CLOUDINARY_API_SECRET="<Your API Secret>"
+
+NEXT_PUBLIC_CLOUDINARY_SECURE_DISTRIBUTION="<Your Secure Distribution / CNAME>"
+NEXT_PUBLIC_CLOUDINARY_PRIVATE_CDN="<true|false>"
+```
 
 ## Using Next Cloudinary
 

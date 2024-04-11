@@ -8,7 +8,7 @@ import { CldVideoPlayerProps } from './CldVideoPlayer.types';
 
 import { getCldImageUrl } from '../../helpers/getCldImageUrl';
 import { getCldVideoUrl } from '../../helpers/getCldVideoUrl';
-import {checkForCloudName} from "../../lib/cloudinary";
+import { getCloudinaryConfig } from "../../lib/cloudinary";
 
 let playerInstances: string[] = [];
 
@@ -20,6 +20,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     autoplay,
     className,
     colors,
+    config,
     controls = true,
     fontFace,
     height,
@@ -114,9 +115,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     }
   }
 
-  //Check if Cloud Name exists
-  checkForCloudName(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
-
   /**
    * handleOnLoad
    * @description Stores the Cloudinary window instance to a ref when the widget script loads
@@ -153,11 +151,17 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         autoplayModeValue = autoplay;
       }
 
+      const cloudinaryConfig = getCloudinaryConfig(config);
+      const { cloudName } = cloudinaryConfig?.cloud;
+      const { secureDistribution, privateCdn } = cloudinaryConfig?.url;
 
       let playerOptions: CloudinaryVideoPlayerOptions = {
+        cloud_name: cloudName,
+        privateCdn,
+        secureDistribution,
+
         autoplayMode: autoplayModeValue,
         autoplay: autoPlayValue,
-        cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
         controls,
         fontFace: fontFace || '',
         language,

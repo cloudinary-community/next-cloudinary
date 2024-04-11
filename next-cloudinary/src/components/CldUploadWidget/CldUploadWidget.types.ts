@@ -4,12 +4,14 @@ import {
   CloudinaryUploadWidgetInstanceMethods,
   CloudinaryUploadWidgetError
 } from '@cloudinary-util/types';
+import { ConfigOptions } from "@cloudinary-util/url-loader";
 
 export type CldUploadWidgetCloudinaryInstance = any;
 export type CldUploadWidgetWidgetInstance = any;
 
 export interface CldUploadWidgetProps {
   children?: ({ cloudinary, widget, open, results, error }: CldUploadWidgetPropsChildren) => JSX.Element;
+  config?: ConfigOptions;
   onError?: CldUploadEventCallbackError;
   onOpen?: CldUploadEventCallbackWidgetOnly;
   /**
