@@ -17,7 +17,7 @@ import Table from '../../components/Table';
 
 # CldUploadWidget Configuration
 
-## Configuration
+## Basic Props
 
 <Table
   columns={[
@@ -42,12 +42,6 @@ import Table from '../../components/Table';
       prop: 'children',
       type: 'function',
       example: () => (<code>{`{(options) => {}}`}</code>),
-    },
-    {
-      prop: 'options',
-      type: 'object',
-      example: () => (<code>{`{encryption: {...}}`}</code>),
-      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#parameters">More Info</a>)
     },
     {
       prop: 'signatureEndpoint',
@@ -80,20 +74,68 @@ A function that returns a React component that receives instance methods and opt
 </CldUploadWidget>
 ```
 
-### `options`
+#### Parameters
 
-Parameters used to customize and configure the Upload Widget instance. These options are passed in
-directly to the Upload Widget, exposing all available parameters through the `options` object.
+By passing in a function as the child of the Upload Widget, you're able to gain access to the widget, results, and instance methods to interface directly with the widget.
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'description',
+      title: 'Description'
+    },
+  ]}
+  data={[
+    {
+      prop: 'cloudinary',
+      type: 'Cloudinary',
+      description: 'The Cloudinary instance which creates and manages the Widget instance.'
+    },
+    {
+      prop: 'error',
+      type: 'string',
+      description: 'The error, if any, produced by an upload widget action.'
+    },
+    {
+      prop: 'isLoading',
+      type: 'boolean',
+      description: 'Designates whether the upload widget is loading and initializing.'
+    },
+    {
+      prop: 'results',
+      type: 'object',
+      description: 'The event that triggered the results and information related to that event, which can include upload results.'
+    },
+    {
+      prop: 'widget',
+      type: 'Widget',
+      description: 'The widget instance attached to the current component.'
+    },
+    {
+      prop: '[Instance Methods]',
+      type: 'Function',
+      description: () => (<span>See <a href="#instance-methods">Instance Methods</a> below</span>)
+    },
+  ]}
+/>
+
+**Example**
 
 ```jsx copy showLineNumbers
-options={{
-  sources: ['local', 'url', 'unsplash'],
-  multiple: true,
-  maxFiles: 5
-}}
+<CldUploadWidget>
+  {({ cloudinary, widget, open }) => {
+    // Return UI
+  }}
+</CldUploadWidget>
 ```
-
-[Learn more about Upload Widget parameters](https://cloudinary.com/documentation/upload_widget_reference#parameters) on the Cloudinary docs.
 
 ### `signatureEndpoint`
 
@@ -115,6 +157,8 @@ uploadPreset="my-upload-preset"
 
 
 ## Events
+
+### Callback Functions
 
 <Table
   columns={[
@@ -378,69 +422,6 @@ from the resulting event. If the result is a resource, the shape will include so
 }
 ```
 
-## Child Function Parameters
-
-By passing in a function as the child of the Upload Widget, you're able to gain access to the widget, results, and instance methods to interface directly with the widget.
-
-<Table
-  columns={[
-    {
-      id: 'prop',
-      title: 'Prop'
-    },
-    {
-      id: 'type',
-      title: 'Type'
-    },
-    {
-      id: 'description',
-      title: 'Description'
-    },
-  ]}
-  data={[
-    {
-      prop: 'cloudinary',
-      type: 'Cloudinary',
-      description: 'The Cloudinary instance which creates and manages the Widget instance.'
-    },
-    {
-      prop: 'error',
-      type: 'string',
-      description: 'The error, if any, produced by an upload widget action.'
-    },
-    {
-      prop: 'isLoading',
-      type: 'boolean',
-      description: 'Designates whether the upload widget is loading and initializing.'
-    },
-    {
-      prop: 'results',
-      type: 'object',
-      description: 'The event that triggered the results and information related to that event, which can include upload results.'
-    },
-    {
-      prop: 'widget',
-      type: 'Widget',
-      description: 'The widget instance attached to the current component.'
-    },
-    {
-      prop: '[Instance Methods]',
-      type: 'Function',
-      description: () => (<span>See <a href="#instance-methods">Instance Methods</a> below</span>)
-    },
-  ]}
-/>
-
-**Example**
-
-```jsx copy showLineNumbers
-<CldUploadWidget>
-  {({ cloudinary, widget, open }) => {
-    // Return UI
-  }}
-</CldUploadWidget>
-```
-
 ## Instance Methods
 
 The Upload Widget exposes instance methods that gives the ability to have greater control and flexbility over
@@ -516,3 +497,76 @@ They're exposed either through event handler callback or child function paramete
     },
   ]}
 />
+
+## Advanced
+
+### Configuration
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'default',
+      title: 'Default'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    },
+    {
+      id: 'more'
+    }
+  ]}
+  data={[
+    {
+      prop: 'config',
+      type: 'object',
+      default: '-',
+      example: () => (<code>{`{ url: { cloudName: 'spacejelly' } }`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters">More Info</a>)
+    },
+    {
+      prop: 'options',
+      type: 'object',
+      example: () => (<code>{`{encryption: {...}}`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#parameters">More Info</a>)
+    },
+  ]}
+/>
+
+#### `config`
+
+Allows configuration for the Cloudinary environment.
+
+**Examples**
+
+```jsx copy
+config={{
+  cloud: {
+    cloudName: '<Your Cloud Name>',
+    apiKey: '<Your API Key>'
+  }
+}}
+```
+
+#### `options`
+
+Parameters used to customize and configure the Upload Widget instance. These options are passed in
+directly to the Upload Widget, exposing all available parameters through the `options` object.
+
+```jsx copy showLineNumbers
+options={{
+  sources: ['local', 'url', 'unsplash'],
+  multiple: true,
+  maxFiles: 5
+}}
+```
+
+[Learn more about Upload Widget parameters](https://cloudinary.com/documentation/upload_widget_reference#parameters) on the Cloudinary docs.
