@@ -1,3 +1,10 @@
+## [6.5.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.5.0...v6.5.1) (2024-04-17)
+
+
+### Bug Fixes
+
+* Fixes getCldVideoUrl Safari Bug ([#468](https://github.com/cloudinary-community/next-cloudinary/issues/468)) ([2d3d953](https://github.com/cloudinary-community/next-cloudinary/commit/2d3d953bf1ee4968e1287a1a3720d8f9e3ac1409)), closes [#467](https://github.com/cloudinary-community/next-cloudinary/issues/467)
+
 # [6.5.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.4.1...v6.5.0) (2024-04-11)
 
 
