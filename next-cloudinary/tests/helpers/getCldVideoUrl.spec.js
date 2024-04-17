@@ -26,7 +26,7 @@ describe('Cloudinary', () => {
         height: 100
       });
 
-      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/video/upload/c_limit,w_100/f_auto/q_auto/turtle`);
+      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/video/upload/c_limit,w_100/f_auto:video/q_auto/turtle`);
     });
   });
 
@@ -46,7 +46,7 @@ describe('Cloudinary', () => {
         height: 100
       });
 
-      expect(url).toContain(`https://${secureDistrubtion}/video/upload/c_limit,w_100/f_auto/q_auto/turtle`);
+      expect(url).toContain(`https://${secureDistrubtion}/video/upload/c_limit,w_100/f_auto:video/q_auto/turtle`);
     });
   });
 })

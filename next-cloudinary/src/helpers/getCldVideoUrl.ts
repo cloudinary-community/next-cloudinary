@@ -15,6 +15,7 @@ export function getCldVideoUrl(options: GetCldVideoUrlOptions, config?: GetCldVi
   return constructCloudinaryUrl({
     options: {
       assetType: 'video',
+      format: 'auto:video',
       ...options
     },
     config: getCloudinaryConfig(config),
