@@ -109,10 +109,12 @@ export const UnsignedUpload = ({ options }) => {
   ```jsx copy showLineNumbers
   import { CldUploadWidget } from 'next-cloudinary';
 
+  const [resource, setResource] = useState();
+
   <CldUploadWidget
     signatureEndpoint="/api/sign-cloudinary-params"
     onSuccess={(result, { widget }) => {
-      setResource(result?.info);
+      setResource(result?.info); // { public_id, secure_url, etc }
       widget.close();
     }}
   >
@@ -147,11 +149,13 @@ Controls which sources files can be selected from.
   ```jsx copy showLineNumbers
   import { CldUploadWidget } from 'next-cloudinary';
 
+  const [resource, setResource] = useState();
+
   <CldUploadWidget
     options={{ sources: ['local', 'url', 'unsplash'] }}
     signatureEndpoint="/api/sign-cloudinary-params"
     onSuccess={(result, { widget }) => {
-      setResource(result?.info);
+      setResource(result?.info);  // { public_id, secure_url, etc }
       widget.close();
     }}
   >
@@ -182,10 +186,12 @@ Controls which sources files can be selected from.
   ```jsx copy showLineNumbers
   import { CldUploadWidget } from 'next-cloudinary';
 
+  const [resource, setResource] = useState();
+
   <CldUploadWidget
     uploadPreset="<Your Upload Preset>"
     onSuccess={(result, { widget }) => {
-      setResource(result?.info);
+      setResource(result?.info);  // { public_id, secure_url, etc }
       widget.close();
     }}
   >

@@ -60,11 +60,13 @@ export const SignedUpload = () => {
 ```jsx copy
 import { CldUploadButton } from 'next-cloudinary';
 
+const [resource, setResource] = useState();
+
 <CldUploadButton
   className={styles.button}
   onUpload={(error, result, widget) => {
-    setResource(result?.info); // Updating local state with asset details
-    widget.close(); // Close widget immediately after successful upload
+    setResource(result?.info);  // { public_id, secure_url, etc }
+    widget.close();
   }}
   signatureEndpoint="/api/sign-cloudinary-params"
   uploadPreset="next-cloudinary-signed"
