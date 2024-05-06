@@ -113,6 +113,44 @@ Utilizes the browser's Picture-in-Picture API to create a floating video on top 
 
 ## Player Customization
 
+### Chapters & Selector
+
+Adding a button to select chapters.
+
+<HeaderImage>
+  <CldVideoPlayer
+    id="chapters-selector"
+    width="2048"
+    height="1080"
+    src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+    chapters={{
+      0: "Chapter 1",
+      6: "Chapter 2",
+      9: "Chapter 3"
+    }}
+    chaptersButton
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer } from 'next-cloudinary';
+
+  <CldVideoPlayer
+    id="chapters-selector"
+    width="4096"
+    height="2160"
+    src="<Your Public ID>"
+    chapters={{
+      0: "Chapter 1",
+      6: "Chapter 2",
+      9: "Chapter 3"
+    }}
+    chaptersButton
+  />
+  ```
+</CodeBlock>
+
 ### Colors & Font
 
 Changing the player theme using colors and fonts.
@@ -458,9 +496,7 @@ export const VideoPlayerWithRef = () => {
 }
 
 <HeaderImage>
-  <VideoPlayerWithRef
-    
-  />
+  <VideoPlayerWithRef />
 </HeaderImage>
 
 <Callout emoji={false}>
