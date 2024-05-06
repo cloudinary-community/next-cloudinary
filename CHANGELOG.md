@@ -1,3 +1,10 @@
+## [6.5.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.5.1...v6.5.2) (2024-05-06)
+
+
+### Bug Fixes
+
+* ChaptersButton Types ([#473](https://github.com/cloudinary-community/next-cloudinary/issues/473)) ([10ba89c](https://github.com/cloudinary-community/next-cloudinary/commit/10ba89cd598d5fdd5029e962c591c5967d00bfdb)), closes [#469](https://github.com/cloudinary-community/next-cloudinary/issues/469)
+
 ## [6.5.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.5.0...v6.5.1) (2024-04-17)
 
 
