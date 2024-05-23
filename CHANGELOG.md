@@ -1,3 +1,10 @@
+# [6.6.0-beta.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.5.2...v6.6.0-beta.1) (2024-05-23)
+
+
+### Features
+
+* CldVideoPlayer - getVideoPlayerOptions ([#477](https://github.com/cloudinary-community/next-cloudinary/issues/477)) ([4ad73c5](https://github.com/cloudinary-community/next-cloudinary/commit/4ad73c5ec881cfa68e0ba65c6ba59ffa057c12f1))
+
 ## [6.5.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.5.1...v6.5.2) (2024-05-06)
 
 
