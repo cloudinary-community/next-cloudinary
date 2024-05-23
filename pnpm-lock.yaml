@@ -82,8 +82,8 @@ importers:
         specifier: 1.0.5
         version: 1.0.5
       '@cloudinary-util/url-loader':
-        specifier: 5.3.0-beta.3
-        version: 5.3.0-beta.3
+        specifier: 5.3.0
+        version: 5.3.0
       '@cloudinary-util/util':
         specifier: ^3.0.0
         version: 3.0.0
@@ -1304,10 +1304,6 @@ packages:
     resolution: {integrity: sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==}
     dev: false
 
-  /@cloudinary-util/types@1.0.4:
-    resolution: {integrity: sha512-IB9I8bRnkovBtu/KBmybDhReAurC4fKpNwrZuli1JZh8Y/3N+chD0xUEGxTvv8+ZISD3GH/jz/FZNzUNs6ov3g==}
-    dev: false
-
   /@cloudinary-util/types@1.0.5:
     resolution: {integrity: sha512-QySi6Q138yg/qrD7f6yscH9T+/8VwUfF9AiwFPMS89uI5wnSG9nhC+93a/8iUpgk9ujTDVqE8+TqYAbxvF0BMA==}
     dev: false
@@ -1320,10 +1316,10 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@cloudinary-util/url-loader@5.3.0-beta.3:
-    resolution: {integrity: sha512-NMbyfled3pXoX8V20u0GI3z3R1qYRkQSCby2Xjpq8f4t+Xl92vpIkm9gi1F0VB08bWq6Cx+KBZCyPezUhSyLYA==}
+  /@cloudinary-util/url-loader@5.3.0:
+    resolution: {integrity: sha512-QKXH9DwNwp81hWYMJPVzAvn03YgRvbOnrBM4BpuP2znLgiws2+Zgb5kxAEyWUjSIaiGcoT1XnrrjNF6GiRpKYA==}
     dependencies:
-      '@cloudinary-util/types': 1.0.4
+      '@cloudinary-util/types': 1.0.5
       '@cloudinary-util/util': 3.0.0
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
