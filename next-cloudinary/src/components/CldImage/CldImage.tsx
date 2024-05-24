@@ -19,12 +19,24 @@ export type CldImageProps = Omit<ImageProps, 'src' | 'quality'> & ImageOptions &
 const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(props, ref) {
   let hasThrownError = false;
 
+  // Add props here that are intended to only be used for
+  // Cloudinary URL construction to avoid them being forwarded
+  // to the DOM
+
   const CLD_OPTIONS = [
+    'assetType',
+    'config',
     'deliveryType',
     'preserveTransformations',
     'strictTransformations',
-    'assetType',
   ];
+
+  // Loop through all of the props available on the transformation plugins and verify
+  // that we're not accientally applying the same prop twice
+
+  // We're also using those props to push into CLD_OPTIONS which helps us filter what
+  // props are applied to the underlaying Image component vs what's being sent
+  // to Cloudinary URL construction
 
   transformationPlugins.forEach(({ props }: { props: Record<string, unknown> }) => {
     const pluginProps = Object.keys(props);
