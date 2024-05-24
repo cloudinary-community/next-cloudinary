@@ -1,3 +1,10 @@
+## [6.6.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.6.0...v6.6.1) (2024-05-24)
+
+
+### Bug Fixes
+
+* adding config to CLD_OPTIONS to avoid it being added to the DOM ([528d69e](https://github.com/cloudinary-community/next-cloudinary/commit/528d69e29f85cdc55c725429f96f9098f1f93e58))
+
 # [6.6.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.5.2...v6.6.0) (2024-05-23)
 
 
