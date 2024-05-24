@@ -1,3 +1,10 @@
+## [6.6.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.6.1...v6.6.2) (2024-05-24)
+
+
+### Bug Fixes
+
+* upgrading url-loader to pull in fix for secure distribution parsing ([fb34a8b](https://github.com/cloudinary-community/next-cloudinary/commit/fb34a8b840dfd8bb53aafbf96c43cbe2b37d4f75))
+
 ## [6.6.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.6.0...v6.6.1) (2024-05-24)
 
 
