@@ -29,6 +29,7 @@ export interface CldUploadWidgetProps {
   onShowCompleted?: CldUploadEventCallback;
   onSourceChanged?: CldUploadEventCallback;
   onSuccess?: CldUploadEventCallback;
+  onSuccessAction?: (results: FormData) => void;
   onTags?: CldUploadEventCallback;
   onUploadAdded?: CldUploadEventCallback;
   options?: CloudinaryUploadWidgetOptions;

@@ -57,6 +57,8 @@ const CldUploadWidget = ({
 
   const signed = !!signatureEndpoint;
 
+  const { onSuccessAction } = props;
+
   const [error, setError] = useState<CloudinaryUploadWidgetError | undefined>(undefined);
   const [results, setResults] = useState<CloudinaryUploadWidgetResults | undefined>(undefined);
   const [isScriptLoading, setIsScriptLoading] = useState(true);
@@ -264,6 +266,17 @@ const CldUploadWidget = ({
             ...instanceMethods
           });
         }
+
+        if ( onSuccessAction && typeof props[`onSuccessAction`] === 'function' ) {
+          const formData = new FormData();
+
+          Object.entries(uploadResult).forEach(([key, value]) => {
+            formData.append(key, JSON.stringify(value))
+          });
+          if (uploadResult.event === 'success') {
+            onSuccessAction(formData);
+          }
+         }
       }
     });
   }
