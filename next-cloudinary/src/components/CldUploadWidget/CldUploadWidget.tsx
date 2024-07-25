@@ -13,6 +13,7 @@ import {
 import { triggerOnIdle } from '../../lib/util';
 
 import {
+  CldUploadEventAction,
   CldUploadEventCallback,
   CldUploadWidgetCloudinaryInstance,
   CldUploadWidgetProps,
@@ -253,7 +254,7 @@ const CldUploadWidget = ({
       }
 
       if ( typeof uploadResult?.event === 'string' ) {
-        if ( WIDGET_WATCHED_EVENTS.includes(uploadResult?.event) ) {
+        if ( WIDGET_WATCHED_EVENTS.includes(uploadResult?.event as string) ) {
           setResults(uploadResult);
         }
 
@@ -267,15 +268,11 @@ const CldUploadWidget = ({
           });
         }
 
-        if ( onSuccessAction && typeof props[`onSuccessAction`] === 'function' ) {
-          const formData = new FormData();
+        const widgetEventAction = `${widgetEvent}Action` as keyof typeof props;
 
-          Object.entries(uploadResult).forEach(([key, value]) => {
-            formData.append(key, JSON.stringify(value))
-          });
-          if (uploadResult.event === 'success') {
-            onSuccessAction(formData);
-          }
+        if ( widgetEventAction && typeof props[widgetEventAction] === 'function' ) {
+          const action = props[widgetEventAction] as CldUploadEventAction;
+          uploadResult.event === 'success' && action(uploadResult);
          }
       }
     });
