@@ -35,7 +35,6 @@ export interface CldUploadWidgetProps {
   signatureEndpoint?: URL | RequestInfo;
   uploadPreset?: string;
   onSuccessAction?: CldUploadEventAction;
-  onUploadAction?: CldUploadEventAction;
   onAbortAction?: CldUploadEventAction;
   onBatchCancelledAction?: CldUploadEventAction;
   onCloseAction?: CldUploadEventAction;

@@ -26,7 +26,7 @@ const WIDGET_WATCHED_EVENTS = [
   'success',
 ];
 
-const WIDGET_EVENTS: { [key: string]: string } = {
+export const WIDGET_EVENTS: { [key: string]: string } = {
   'abort': 'onAbort',
   'batch-cancelled': 'onBatchCancelled',
   'close': 'onClose',
@@ -57,8 +57,6 @@ const CldUploadWidget = ({
   const widget: CldUploadWidgetWidgetInstance = useRef();
 
   const signed = !!signatureEndpoint;
-
-  const { onSuccessAction } = props;
 
   const [error, setError] = useState<CloudinaryUploadWidgetError | undefined>(undefined);
   const [results, setResults] = useState<CloudinaryUploadWidgetResults | undefined>(undefined);
@@ -272,7 +270,7 @@ const CldUploadWidget = ({
 
         if ( widgetEventAction && typeof props[widgetEventAction] === 'function' ) {
           const action = props[widgetEventAction] as CldUploadEventAction;
-          uploadResult.event === 'success' && action(uploadResult);
+          action(uploadResult);
          }
       }
     });

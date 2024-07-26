@@ -158,6 +158,9 @@ uploadPreset="my-upload-preset"
 
 ## Events
 
+The difference between the `Callback Functions` and the `Actions` is the second argument of options
+that the `Callback Functions` receive. The `Actions` only takes the results argument.
+
 ### Callback Functions
 
 <Table
@@ -273,6 +276,109 @@ uploadPreset="my-upload-preset"
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#upload_added">More Info</a>)
     },
   ]}
+/>
+
+
+### Actions
+
+<Table
+    columns={[
+        {
+            id: 'prop',
+            title: 'Prop'
+        },
+        {
+            id: 'type',
+            title: 'Type'
+        },
+        {
+            id: 'example',
+            title: 'Example'
+        },
+        {
+            id: 'more',
+        },
+    ]}
+    data={[
+        {
+            prop: 'onAbortAction',
+            type: 'function',
+            example: () => (<code>{`(results) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#abort">More Info</a>)
+        },
+        {
+            prop: 'onBatchCancelledAction',
+            type: 'function',
+            example: () => (<code>{`(results) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#batch_cancelled">More Info</a>)
+        },
+        {
+            prop: 'onCloseAction',
+            type: 'function',
+            example: () => (<code>{`(results) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#close_event">More Info</a>)
+        },
+        {
+            prop: 'onDisplayChangedAction',
+            type: 'function',
+            example: () => (<code>{`(results) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#display_changed">More Info</a>)
+        },
+        {
+            prop: 'onPublicIdAction',
+            type: 'function',
+            example: () => (<code>{`(results) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#publicid">More Info</a>)
+        },
+        {
+            prop: 'onQueuesEndAction',
+            type: 'function',
+            example: () => (<code>{`(results, options) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#queues_end">More Info</a>)
+        },
+        {
+            prop: 'onQueuesStartAction',
+            type: 'function',
+            example: () => (<code>{`(results) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#queues_start">More Info</a>)
+        },
+        {
+            prop: 'onRetryAction',
+            type: 'function',
+            example: () => (<code>{`(results) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#retry">More Info</a>)
+        },
+        {
+            prop: 'onShowCompletedAction',
+            type: 'function',
+            example: () => (<code>{`(results) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#show_completed">More Info</a>)
+        },
+        {
+            prop: 'onSourceChangedAction',
+            type: 'function',
+            example: () => (<code>{`(results) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#source_changed">More Info</a>)
+        },
+        {
+            prop: 'onSuccessAction',
+            type: 'function',
+            example: () => (<code>{`(results) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#success">More Info</a>)
+        },
+        {
+            prop: 'onTagsAction',
+            type: 'function',
+            example: () => (<code>{`(results) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#tags">More Info</a>)
+        },
+        {
+            prop: 'onUploadAddedAction',
+            type: 'function',
+            example: () => (<code>{`(results) => { }`}</code>),
+            more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/upload_widget_reference#upload_added">More Info</a>)
+        },
+    ]}
 />
 
 To learn more about the event callbacks and when they trigger, see: https://cloudinary.com/documentation/upload_widget_reference#events

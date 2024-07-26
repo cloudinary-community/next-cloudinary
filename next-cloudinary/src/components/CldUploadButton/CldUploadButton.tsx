@@ -14,7 +14,7 @@ const CldUploadButton = ({
   onError,
   onOpen,
   onUpload,
-  onAbort,
+   onAbort,
   onBatchCancelled,
   onClose,
   onDisplayChanged,
@@ -33,13 +33,21 @@ const CldUploadButton = ({
   ...props
 }: CldUploadButtonProps) => {
 
+  const actionProps = Object.keys(props)
+      .filter(key => key.endsWith('Action'))
+      .reduce((result, key) => {
+        //@ts-ignore
+        result[key] = props[key];
+        return result;
+      }, {});
+
   return (
     <>
       <CldUploadWidget
         onError={onError}
         onOpen={onOpen}
         onUpload={onUpload}
-        onAbort={onAbort}
+         onAbort={onAbort}
         onBatchCancelled={onBatchCancelled}
         onClose={onClose}
         onDisplayChanged={onDisplayChanged}
@@ -55,6 +63,7 @@ const CldUploadButton = ({
         options={options}
         signatureEndpoint={signatureEndpoint}
         uploadPreset={uploadPreset}
+        {...actionProps}
       >
         {({ open, isLoading }) => {
           function handleOnClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
