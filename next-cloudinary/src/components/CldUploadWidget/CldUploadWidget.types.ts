@@ -34,7 +34,6 @@ export interface CldUploadWidgetProps {
   options?: CloudinaryUploadWidgetOptions;
   signatureEndpoint?: URL | RequestInfo;
   uploadPreset?: string;
-  onSuccessAction?: CldUploadEventAction;
   onAbortAction?: CldUploadEventAction;
   onBatchCancelledAction?: CldUploadEventAction;
   onCloseAction?: CldUploadEventAction;
@@ -45,6 +44,7 @@ export interface CldUploadWidgetProps {
   onRetryAction?: CldUploadEventAction;
   onShowCompletedAction?: CldUploadEventAction;
   onSourceChangedAction?: CldUploadEventAction;
+  onSuccessAction?: CldUploadEventAction;
   onTagsAction?: CldUploadEventAction;
   onUploadAddedAction?: CldUploadEventAction;
 }
