@@ -158,8 +158,14 @@ uploadPreset="my-upload-preset"
 
 ## Events
 
-The difference between the `Callback Functions` and the `Actions` is the second argument of options
-that the `Callback Functions` receive. The `Actions` only takes the results argument.
+Upload Widget events allow you to tap into different points of the upload lifecycle including
+when an upload has completed, but also when it starts the queue and more. To allow interaction with
+these events, CldUplodWidget provides both "Callback Functions" and "Actions".
+
+The difference between the Callback Functions and the Actions is the second argument of options
+that the Callback Functions receive. While Callback Functions pass in both the results along with the
+widget instance and instance methods, Actions only pass along the results in order to support the
+Server Actions workflow.
 
 ### Callback Functions
 
