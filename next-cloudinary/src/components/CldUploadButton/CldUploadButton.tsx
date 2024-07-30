@@ -14,7 +14,7 @@ const CldUploadButton = ({
   onError,
   onOpen,
   onUpload,
-  onAbort,
+   onAbort,
   onBatchCancelled,
   onClose,
   onDisplayChanged,
@@ -30,6 +30,19 @@ const CldUploadButton = ({
   options,
   signatureEndpoint,
   uploadPreset,
+  onAbortAction,
+  onBatchCancelledAction,
+  onCloseAction,
+  onDisplayChangedAction,
+  onPublicIdAction,
+  onQueuesEndAction,
+  onQueuesStartAction,
+  onRetryAction,
+  onShowCompletedAction,
+  onSourceChangedAction,
+  onSuccessAction,
+  onTagsAction,
+  onUploadAddedAction,
   ...props
 }: CldUploadButtonProps) => {
 
@@ -55,6 +68,19 @@ const CldUploadButton = ({
         options={options}
         signatureEndpoint={signatureEndpoint}
         uploadPreset={uploadPreset}
+        onAbortAction={onAbortAction}
+        onBatchCancelledAction={onBatchCancelledAction}
+        onCloseAction={onCloseAction}
+        onDisplayChangedAction={onDisplayChangedAction}
+        onPublicIdAction={onPublicIdAction}
+        onQueuesEndAction={onQueuesEndAction}
+        onQueuesStartAction={onQueuesStartAction}
+        onRetryAction={onRetryAction}
+        onShowCompletedAction={onShowCompletedAction}
+        onSourceChangedAction={onSourceChangedAction}
+        onSuccessAction={onSuccessAction}
+        onTagsAction={onTagsAction}
+        onUploadAddedAction={onUploadAddedAction}
       >
         {({ open, isLoading }) => {
           function handleOnClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {

@@ -13,6 +13,7 @@ import {
 import { triggerOnIdle } from '../../lib/util';
 
 import {
+  CldUploadEventAction,
   CldUploadEventCallback,
   CldUploadWidgetCloudinaryInstance,
   CldUploadWidgetProps,
@@ -25,7 +26,7 @@ const WIDGET_WATCHED_EVENTS = [
   'success',
 ];
 
-const WIDGET_EVENTS: { [key: string]: string } = {
+export const WIDGET_EVENTS: { [key: string]: string } = {
   'abort': 'onAbort',
   'batch-cancelled': 'onBatchCancelled',
   'close': 'onClose',
@@ -251,7 +252,7 @@ const CldUploadWidget = ({
       }
 
       if ( typeof uploadResult?.event === 'string' ) {
-        if ( WIDGET_WATCHED_EVENTS.includes(uploadResult?.event) ) {
+        if ( WIDGET_WATCHED_EVENTS.includes(uploadResult?.event as string) ) {
           setResults(uploadResult);
         }
 
@@ -264,6 +265,13 @@ const CldUploadWidget = ({
             ...instanceMethods
           });
         }
+
+        const widgetEventAction = `${widgetEvent}Action` as keyof typeof props;
+
+        if ( widgetEventAction && typeof props[widgetEventAction] === 'function' ) {
+          const action = props[widgetEventAction] as CldUploadEventAction;
+          action(uploadResult);
+         }
       }
     });
   }

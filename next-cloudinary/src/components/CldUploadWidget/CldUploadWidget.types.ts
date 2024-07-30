@@ -34,6 +34,19 @@ export interface CldUploadWidgetProps {
   options?: CloudinaryUploadWidgetOptions;
   signatureEndpoint?: URL | RequestInfo;
   uploadPreset?: string;
+  onAbortAction?: CldUploadEventAction;
+  onBatchCancelledAction?: CldUploadEventAction;
+  onCloseAction?: CldUploadEventAction;
+  onDisplayChangedAction?: CldUploadEventAction;
+  onPublicIdAction?: CldUploadEventAction;
+  onQueuesEndAction?: CldUploadEventAction;
+  onQueuesStartAction?: CldUploadEventAction;
+  onRetryAction?: CldUploadEventAction;
+  onShowCompletedAction?: CldUploadEventAction;
+  onSourceChangedAction?: CldUploadEventAction;
+  onSuccessAction?: CldUploadEventAction;
+  onTagsAction?: CldUploadEventAction;
+  onUploadAddedAction?: CldUploadEventAction;
 }
 
 export type CldUploadWidgetPropsChildren = {
@@ -45,6 +58,7 @@ export type CldUploadWidgetPropsChildren = {
 } & CloudinaryUploadWidgetInstanceMethods;
 
 export type CldUploadEventCallback = (results: CloudinaryUploadWidgetResults, widget: CldUploadEventCallbackWidget) => void;
+export type CldUploadEventAction = (results: CloudinaryUploadWidgetResults) => void;
 export type CldUploadEventCallbackNoOptions = (results: CloudinaryUploadWidgetResults, widget: CldUploadWidgetWidgetInstance) => void;
 export type CldUploadEventCallbackWidgetOnly = (widget: CldUploadWidgetWidgetInstance) => void;
 export type CldUploadEventCallbackError = (error: CloudinaryUploadWidgetError, widget: CldUploadEventCallbackWidget) => void;
