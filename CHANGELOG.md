@@ -1,3 +1,10 @@
+# [6.7.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.6.2...v6.7.0) (2024-07-30)
+
+
+### Features
+
+* Action Props for CldUploadWidget ([#487](https://github.com/cloudinary-community/next-cloudinary/issues/487)) ([ea29cf3](https://github.com/cloudinary-community/next-cloudinary/commit/ea29cf397b61396788adeb5d57a9d253c7196ae9)), closes [#486](https://github.com/cloudinary-community/next-cloudinary/issues/486)
+
 ## [6.6.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.6.1...v6.6.2) (2024-05-24)
 
 
