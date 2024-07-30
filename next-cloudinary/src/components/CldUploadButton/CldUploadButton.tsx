@@ -30,16 +30,21 @@ const CldUploadButton = ({
   options,
   signatureEndpoint,
   uploadPreset,
+  onAbortAction,
+  onBatchCancelledAction,
+  onCloseAction,
+  onDisplayChangedAction,
+  onPublicIdAction,
+  onQueuesEndAction,
+  onQueuesStartAction,
+  onRetryAction,
+  onShowCompletedAction,
+  onSourceChangedAction,
+  onSuccessAction,
+  onTagsAction,
+  onUploadAddedAction,
   ...props
 }: CldUploadButtonProps) => {
-
-  const actionProps = Object.keys(props)
-      .filter(key => key.endsWith('Action'))
-      .reduce((result, key) => {
-        //@ts-ignore
-        result[key] = props[key];
-        return result;
-      }, {});
 
   return (
     <>
@@ -47,7 +52,7 @@ const CldUploadButton = ({
         onError={onError}
         onOpen={onOpen}
         onUpload={onUpload}
-         onAbort={onAbort}
+        onAbort={onAbort}
         onBatchCancelled={onBatchCancelled}
         onClose={onClose}
         onDisplayChanged={onDisplayChanged}
@@ -63,7 +68,19 @@ const CldUploadButton = ({
         options={options}
         signatureEndpoint={signatureEndpoint}
         uploadPreset={uploadPreset}
-        {...actionProps}
+        onAbortAction={onAbortAction}
+        onBatchCancelledAction={onBatchCancelledAction}
+        onCloseAction={onCloseAction}
+        onDisplayChangedAction={onDisplayChangedAction}
+        onPublicIdAction={onPublicIdAction}
+        onQueuesEndAction={onQueuesEndAction}
+        onQueuesStartAction={onQueuesStartAction}
+        onRetryAction={onRetryAction}
+        onShowCompletedAction={onShowCompletedAction}
+        onSourceChangedAction={onSourceChangedAction}
+        onSuccessAction={onSuccessAction}
+        onTagsAction={onTagsAction}
+        onUploadAddedAction={onUploadAddedAction}
       >
         {({ open, isLoading }) => {
           function handleOnClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
