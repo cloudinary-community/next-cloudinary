@@ -71,7 +71,8 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
   CLD_OPTIONS.forEach((key) => {
     const prop = props[key as keyof ImageOptions];
     if ( prop ) {
-      cldOptions[key as keyof CldOptions] = prop || undefined;
+      // @ts-expect-error
+      cldOptions[key as keyof CldOptions] = prop;
     }
   });
 
