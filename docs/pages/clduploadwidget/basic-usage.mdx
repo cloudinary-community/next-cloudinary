@@ -73,6 +73,8 @@ export const UnsignedUpload = ({ options }) => {
         uploadPreset="next-cloudinary-unsigned"
         onSuccess={(result, { widget }) => {
           setResource(result?.info);
+        }}
+        onQueuesEnd={(result, { widget }) => {
           widget.close();
         }}
         options={options}
@@ -144,6 +146,8 @@ export const SignedUpload = ({ options }) => {
         uploadPreset="next-cloudinary-signed"
         onSuccess={(result, { widget }) => {
           setResource(result?.info);
+        }}
+        onQueuesEnd={(result, { widget }) => {
           widget.close();
         }}
         options={options}
