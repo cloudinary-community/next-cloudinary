@@ -16,8 +16,8 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@cloudinary-util/types": "1.1.0-beta.1",
-    "@cloudinary-util/url-loader": "5.4.0-beta.1",
+    "@cloudinary-util/types": "1.1.0",
+    "@cloudinary-util/url-loader": "5.4.0",
     "@cloudinary-util/util": "^3.0.0",
     "@tsconfig/recommended": "^1.0.7"
   },

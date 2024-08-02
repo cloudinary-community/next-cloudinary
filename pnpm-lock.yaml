@@ -79,11 +79,11 @@ importers:
   next-cloudinary:
     dependencies:
       '@cloudinary-util/types':
-        specifier: 1.1.0-beta.1
-        version: 1.1.0-beta.1
+        specifier: 1.1.0
+        version: 1.1.0
       '@cloudinary-util/url-loader':
-        specifier: 5.4.0-beta.1
-        version: 5.4.0-beta.1
+        specifier: 5.4.0
+        version: 5.4.0
       '@cloudinary-util/util':
         specifier: ^3.0.0
         version: 3.0.0
@@ -747,23 +747,20 @@ packages:
   '@braintree/sanitize-url@6.0.4':
     resolution: {integrity: sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==}
 
-  '@cloudinary-util/types@1.0.5':
-    resolution: {integrity: sha512-QySi6Q138yg/qrD7f6yscH9T+/8VwUfF9AiwFPMS89uI5wnSG9nhC+93a/8iUpgk9ujTDVqE8+TqYAbxvF0BMA==}
-
-  '@cloudinary-util/types@1.1.0-beta.1':
-    resolution: {integrity: sha512-xUWhZ9uHIOWqAI7mhQtpumzBkp6h9qi0BNZyd5DUevNWrtv7GrV5BokUHJuD8SVOvCqwQurpv+X3uddJcPcXpA==}
+  '@cloudinary-util/types@1.1.0':
+    resolution: {integrity: sha512-hlaN/+3wulAe+wGJNO2XrtFHKGrjt80F02BJFE4nEucAmv5OVYxRIQg/aroYb56X8jdSAHU1nPw9GRqApYdNog==}
 
   '@cloudinary-util/url-loader@4.2.0':
     resolution: {integrity: sha512-fpCFqFPAN/f9Gt//25qLXNDYwy5EcOudRzDPOrsEBH6aMwEdFaJuPxvLiP0IP5MCihKji/XDr9QJQ9Wa+amNSA==}
 
-  '@cloudinary-util/url-loader@5.4.0-beta.1':
-    resolution: {integrity: sha512-z0i00o+CLqIi1wp5KjUr2Z7Qi2geDswlKG7AqAfg4bHcp0bfcqBY5kuDr6eZGBPQWTJdGGvnxkMnnXqQjwaa1w==}
+  '@cloudinary-util/url-loader@5.4.0':
+    resolution: {integrity: sha512-Aehynl0B8tRsFuUI7odZVk7et/oMyXmEg2OemGpG229PQ7am7OuXa1CJfduK4eO5uxxdBcsWVdY5g3JRc59dPw==}
 
   '@cloudinary-util/util@3.0.0':
     resolution: {integrity: sha512-o6cJsN49OIelLcSkqUf4WzgefpePDFsAaeQfJbpcKhVdtvmWv71K0oZwMXuX62IY1OolqIg0etMiHtWZPhvPNA==}
 
-  '@cloudinary-util/util@3.1.0-beta.1':
-    resolution: {integrity: sha512-po32hEsGh6+vrjnNbWUOdmhmgeAFwfHjdo4h5Gl6g/x9Kxz3dNORgbVZveGe5JTyasToceKZDmGgP7kBRmA8EQ==}
+  '@cloudinary-util/util@3.1.0':
+    resolution: {integrity: sha512-BPy6wLDf+mILZTb8zR44MJxqGp3z8Y9W4DZ0kHC+SJjQYKbYUqcdzFhDKGZNOTAO7pWhkf8E5ViZGy+A0lD44w==}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     resolution: {integrity: sha512-UUb1wS/eWCf4YBThGszoBBzH6kP+frdd5JeJkF0/SOwbX3tkcrdzxD+Srn5GXPCqzf6Gw1nrGrv/3U9hiZP55A==}
@@ -5317,9 +5314,7 @@ snapshots:
 
   '@braintree/sanitize-url@6.0.4': {}
 
-  '@cloudinary-util/types@1.0.5': {}
-
-  '@cloudinary-util/types@1.1.0-beta.1': {}
+  '@cloudinary-util/types@1.1.0': {}
 
   '@cloudinary-util/url-loader@4.2.0':
     dependencies:
@@ -5327,16 +5322,16 @@ snapshots:
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
 
-  '@cloudinary-util/url-loader@5.4.0-beta.1':
+  '@cloudinary-util/url-loader@5.4.0':
     dependencies:
-      '@cloudinary-util/types': 1.0.5
-      '@cloudinary-util/util': 3.1.0-beta.1
+      '@cloudinary-util/types': 1.1.0
+      '@cloudinary-util/util': 3.1.0
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
 
   '@cloudinary-util/util@3.0.0': {}
 
-  '@cloudinary-util/util@3.1.0-beta.1': {}
+  '@cloudinary-util/util@3.1.0': {}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     dependencies:
