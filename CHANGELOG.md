@@ -1,3 +1,10 @@
+# [6.8.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.7.0...v6.8.0) (2024-08-02)
+
+
+### Features
+
+* URL Loader Types, React beta and Next.js rc ([#490](https://github.com/cloudinary-community/next-cloudinary/issues/490)) ([fd961e3](https://github.com/cloudinary-community/next-cloudinary/commit/fd961e3b57cde1054f0e81c40ac5f2c3f879e930))
+
 # [6.7.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.6.2...v6.7.0) (2024-07-30)
 
 
