@@ -202,6 +202,13 @@ right inside of Next.js.
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">More Info</a>)
     },
     {
+      prop: 'replaceBackground',
+      type: 'boolean | string | object',
+      default: '-',
+      example: () => (<code>{`true`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_gen_background_replace">More Info</a>)
+    },
+    {
       prop: 'restore',
       type: 'boolean',
       default: '-',
@@ -705,6 +712,71 @@ replace={{
 ```
 
 [Learn more about the Generative Replace transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_replace) on the Cloudinary docs.
+
+### `replaceBackground`
+
+<Callout emoji={false} type="info">
+  Generative Replace Background is currently in beta.
+</Callout>
+
+Uses generative AI to replace the background of your image.
+
+The `replaceBackground` prop can be a boolean, string, or object
+with the following options:
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      prop: 'prompt',
+      type: 'string',
+      example: () => (<code>fish tank</code>),
+    },
+    {
+      prop: 'seed',
+      type: 'number',
+      example: () => (<code>2</code>),
+    },
+  ]}
+/>
+
+**Examples**
+
+Replacing the background based on the image context:
+
+```jsx copy
+replaceBackground
+```
+
+Or using a string prompt:
+
+```jsx copy
+replaceBackground="fish tank"
+```
+
+Or using the object format:
+
+```jsx copy
+replaceBackground={{
+  prompt: 'fish tank',
+  seed: 3
+}}
+```
+
+[Learn more about the Generative Replace Background transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_background_replace) on the Cloudinary docs.
 
 ### `restore`
 
