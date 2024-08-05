@@ -82,8 +82,8 @@ importers:
         specifier: 1.1.0
         version: 1.1.0
       '@cloudinary-util/url-loader':
-        specifier: 5.5.0-beta.2
-        version: 5.5.0-beta.2
+        specifier: 5.6.0-beta.1
+        version: 5.6.0-beta.1
       '@cloudinary-util/util':
         specifier: ^3.0.0
         version: 3.0.0
@@ -756,8 +756,8 @@ packages:
   '@cloudinary-util/url-loader@4.2.0':
     resolution: {integrity: sha512-fpCFqFPAN/f9Gt//25qLXNDYwy5EcOudRzDPOrsEBH6aMwEdFaJuPxvLiP0IP5MCihKji/XDr9QJQ9Wa+amNSA==}
 
-  '@cloudinary-util/url-loader@5.5.0-beta.2':
-    resolution: {integrity: sha512-G1Vnq4QTV0nQNWAQSHAGyjwrrrsZjS+qyZYd8VVR2pVWsaRdkvskEsdGDQj5EQ5Ovckom+56xmtIT//TElBL+g==}
+  '@cloudinary-util/url-loader@5.6.0-beta.1':
+    resolution: {integrity: sha512-NAtvA4faa3fMgyGxRBCh+DTlxdVpMHQYtVVHdG9kwWujLh0UYvQOZ/Tox68tS12mt7RIevX117bI3QKHnWYx3w==}
 
   '@cloudinary-util/util@3.0.0':
     resolution: {integrity: sha512-o6cJsN49OIelLcSkqUf4WzgefpePDFsAaeQfJbpcKhVdtvmWv71K0oZwMXuX62IY1OolqIg0etMiHtWZPhvPNA==}
@@ -3661,7 +3661,6 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     deprecated: |-
       You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
-
       (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
 
   queue-microtask@1.2.3:
@@ -5327,7 +5326,7 @@ snapshots:
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
 
-  '@cloudinary-util/url-loader@5.5.0-beta.2':
+  '@cloudinary-util/url-loader@5.6.0-beta.1':
     dependencies:
       '@cloudinary-util/types': 1.2.0-beta.1
       '@cloudinary-util/util': 3.2.0-beta.1

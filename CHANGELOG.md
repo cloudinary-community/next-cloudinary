@@ -1,3 +1,10 @@
+# [6.9.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.8.0...v6.9.0) (2024-08-02)
+
+
+### Features
+
+* Generative Replace Background ([#494](https://github.com/cloudinary-community/next-cloudinary/issues/494)) ([90c0c0a](https://github.com/cloudinary-community/next-cloudinary/commit/90c0c0abbb1478fb692c93320c01532690337dcd))
+
 # [6.8.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.7.0...v6.8.0) (2024-08-02)
 
 

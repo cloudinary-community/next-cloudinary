@@ -319,7 +319,7 @@ crop to a specific ratio without specifying the width and height.
 </CodeBlock>
 
 <Callout emoji={false}>
-  The generative replace transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">Learn more</a>.
+  The generative recolor transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">Learn more</a>.
 </Callout>
 
 ### Generative Remove
@@ -355,7 +355,7 @@ crop to a specific ratio without specifying the width and height.
 </CodeBlock>
 
 <Callout emoji={false}>
-  The generative replace transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">Learn more</a>.
+  The generative remove transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">Learn more</a>.
 </Callout>
 
 ### Generative Replace
@@ -392,6 +392,42 @@ crop to a specific ratio without specifying the width and height.
 
 <Callout emoji={false}>
   The generative replace transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#e_gen_replace">Learn more</a>.
+</Callout>
+
+### Generative Replace Background
+
+`replaceBackground`: Replaces the background of an image with an AI-generated background.
+
+<HeaderImage>
+  <CldImage
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    width="960"
+    height="600"
+    crop="fill"
+    replaceBackground="big fish tank"
+    alt=""
+    sizes="100vw"
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    width="960"
+    height="600"
+    crop="fill"
+    src="<Your Public ID>"
+    replaceBackground="big fish tank"
+    alt=""
+    sizes="100vw"
+  />
+  ```
+</CodeBlock>
+
+<Callout emoji={false}>
+  The generative replace background transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#e_gen_background_replace">Learn more</a>.
 </Callout>
 
 ### Generative Restore
