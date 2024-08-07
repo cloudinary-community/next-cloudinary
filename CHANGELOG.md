@@ -1,3 +1,10 @@
+# [6.10.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.9.0...v6.10.0) (2024-08-07)
+
+
+### Features
+
+* Upload Widget Cleanup ([#492](https://github.com/cloudinary-community/next-cloudinary/issues/492)) ([19413ed](https://github.com/cloudinary-community/next-cloudinary/commit/19413edc1cfae8d91eb6efe2c2110a6281b60940)), closes [#495](https://github.com/cloudinary-community/next-cloudinary/issues/495)
+
 # [6.9.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.8.0...v6.9.0) (2024-08-02)
 
 
