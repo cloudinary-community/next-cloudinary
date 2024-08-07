@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
+import { generateSignatureCallback, generateUploadWidgetResultCallback, getUploadWidgetOptions, UPLOAD_WIDGET_EVENTS } from '@cloudinary-util/url-loader'
 import {
   CloudinaryUploadWidgetResults,
   CloudinaryUploadWidgetInstanceMethods,
@@ -22,26 +23,6 @@ import {
 
 import { getCloudinaryConfig } from "../../lib/cloudinary";
 
-const WIDGET_WATCHED_EVENTS = [
-  'success',
-];
-
-export const WIDGET_EVENTS: { [key: string]: string } = {
-  'abort': 'onAbort',
-  'batch-cancelled': 'onBatchCancelled',
-  'close': 'onClose',
-  'display-changed': 'onDisplayChanged',
-  'publicid': 'onPublicId',
-  'queues-end': 'onQueuesEnd',
-  'queues-start': 'onQueuesStart',
-  'retry': 'onRetry',
-  'show-completed': 'onShowCompleted',
-  'source-changed': 'onSourceChanged',
-  'success': 'onSuccess',
-  'tags': 'onTags',
-  'upload-added': 'onUploadAdded',
-}
-
 const CldUploadWidget = ({
   children,
   config,
@@ -56,8 +37,6 @@ const CldUploadWidget = ({
   const cloudinary: CldUploadWidgetCloudinaryInstance = useRef();
   const widget: CldUploadWidgetWidgetInstance = useRef();
 
-  const signed = !!signatureEndpoint;
-
   const [error, setError] = useState<CloudinaryUploadWidgetError | undefined>(undefined);
   const [results, setResults] = useState<CloudinaryUploadWidgetResults | undefined>(undefined);
   const [isScriptLoading, setIsScriptLoading] = useState(true);
@@ -68,22 +47,53 @@ const CldUploadWidget = ({
   // https://cloudinary.com/documentation/upload_widget#signed_uploads
 
   const cloudinaryConfig = getCloudinaryConfig(config);
-  const { cloudName, apiKey } = cloudinaryConfig?.cloud;
 
-  const uploadOptions = {
-    cloudName,
+  const uploadSignature = signatureEndpoint && generateSignatureCallback({
+    signatureEndpoint: String(signatureEndpoint),
+    fetch
+  });
+
+  const uploadOptions = getUploadWidgetOptions({
     uploadPreset: uploadPreset || process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
-    apiKey,
+    uploadSignature,
     ...options,
-  };
+  }, cloudinaryConfig);
 
-  if ( signed ) {
-    uploadOptions.uploadSignature = generateSignature;
+  const resultsCallback = generateUploadWidgetResultCallback({
+    onError: (uploadError) => {
+      setError(uploadError);
 
-    if (!uploadOptions.apiKey) {
-      console.warn(`Missing dependency: Signed Upload requires an API key`);
-    }
-  }
+      if ( typeof onError === 'function' ) {
+        onError(uploadError, {
+          widget: widget.current,
+          ...instanceMethods
+        });
+      }
+    },
+    onResult: (uploadResult) => {
+      if ( typeof uploadResult?.event !== 'string' ) return;
+
+      setResults(uploadResult);
+
+      const widgetEvent = UPLOAD_WIDGET_EVENTS[uploadResult.event] as keyof typeof props;
+
+      if ( typeof widgetEvent === 'string' && typeof props[widgetEvent] === 'function' ) {
+        const callback = props[widgetEvent] as CldUploadEventCallback;
+        callback(uploadResult, {
+          widget: widget.current,
+          ...instanceMethods
+        });
+      }
+
+      const widgetEventAction = `${widgetEvent}Action` as keyof typeof props;
+
+      if ( widgetEventAction && typeof props[widgetEventAction] === 'function' ) {
+        const action = props[widgetEventAction] as CldUploadEventAction;
+        action(uploadResult);
+      }
+    },
+  });
+
 
   // Handle result states and callbacks
 
@@ -128,30 +138,6 @@ const CldUploadWidget = ({
       widget.current = undefined;
     }
   }, [])
-
-  /**
-   * generateSignature
-   * @description Makes a request to an endpoint to sign Cloudinary parameters as part of widget creation
-   */
-
-  function generateSignature(callback: Function, paramsToSign: object) {
-    if ( typeof signatureEndpoint === 'undefined' ) {
-      throw Error('Failed to generate signature: signatureEndpoint undefined.')
-    }
-    fetch(signatureEndpoint, {
-      method: 'POST',
-      body: JSON.stringify({
-        paramsToSign,
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then((r) => r.json())
-      .then(({ signature }) => {
-        callback(signature);
-      });
-  }
 
   /**
    * Instance Methods
@@ -239,41 +225,7 @@ const CldUploadWidget = ({
    */
 
   function createWidget() {
-    return cloudinary.current?.createUploadWidget(uploadOptions, (uploadError: CloudinaryUploadWidgetError, uploadResult: CloudinaryUploadWidgetResults) => {
-      if ( uploadError && uploadError !== null ) {
-        setError(uploadError);
-
-        if ( typeof onError === 'function' ) {
-          onError(uploadError, {
-            widget: widget.current,
-            ...instanceMethods
-          });
-        }
-      }
-
-      if ( typeof uploadResult?.event === 'string' ) {
-        if ( WIDGET_WATCHED_EVENTS.includes(uploadResult?.event as string) ) {
-          setResults(uploadResult);
-        }
-
-        const widgetEvent = WIDGET_EVENTS[uploadResult.event] as keyof typeof props;
-
-        if ( typeof widgetEvent === 'string' && typeof props[widgetEvent] === 'function' ) {
-          const callback = props[widgetEvent] as CldUploadEventCallback;
-          callback(uploadResult, {
-            widget: widget.current,
-            ...instanceMethods
-          });
-        }
-
-        const widgetEventAction = `${widgetEvent}Action` as keyof typeof props;
-
-        if ( widgetEventAction && typeof props[widgetEventAction] === 'function' ) {
-          const action = props[widgetEventAction] as CldUploadEventAction;
-          action(uploadResult);
-         }
-      }
-    });
+    return cloudinary.current?.createUploadWidget(uploadOptions, resultsCallback);
   }
 
   return (

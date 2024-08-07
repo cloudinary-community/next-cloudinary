@@ -29,7 +29,9 @@ export const SignedUpload = ({ options }) => {
         signatureEndpoint="/api/sign-cloudinary-params"
         uploadPreset="next-cloudinary-signed"
         onSuccess={(result, { widget }) => {
-          setResource(result?.info);
+          setResource(result?.info);  // { public_id, secure_url, etc }
+        }}
+        onQueuesEnd={(result, { widget }) => {
           widget.close();
         }}
         options={options}
@@ -66,7 +68,9 @@ export const UnsignedUpload = ({ options }) => {
       <CldUploadWidget
         uploadPreset="next-cloudinary-unsigned"
         onSuccess={(result, { widget }) => {
-          setResource(result?.info);
+          setResource(result?.info);  // { public_id, secure_url, etc }
+        }}
+        onQueuesEnd={(result, { widget }) => {
           widget.close();
         }}
         options={options}
@@ -114,7 +118,9 @@ export const UnsignedUpload = ({ options }) => {
   <CldUploadWidget
     signatureEndpoint="/api/sign-cloudinary-params"
     onSuccess={(result, { widget }) => {
-      setResource(result?.info); // { public_id, secure_url, etc }
+      setResource(result?.info);  // { public_id, secure_url, etc }
+    }}
+    onQueuesEnd={(result, { widget }) => {
       widget.close();
     }}
   >
@@ -156,6 +162,8 @@ Controls which sources files can be selected from.
     signatureEndpoint="/api/sign-cloudinary-params"
     onSuccess={(result, { widget }) => {
       setResource(result?.info);  // { public_id, secure_url, etc }
+    }}
+    onQueuesEnd={(result, { widget }) => {
       widget.close();
     }}
   >
@@ -192,6 +200,8 @@ Controls which sources files can be selected from.
     uploadPreset="<Your Upload Preset>"
     onSuccess={(result, { widget }) => {
       setResource(result?.info);  // { public_id, secure_url, etc }
+    }}
+    onQueuesEnd={(result, { widget }) => {
       widget.close();
     }}
   >

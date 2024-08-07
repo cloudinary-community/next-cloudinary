@@ -40,7 +40,7 @@ importers:
         version: 2.1.0
       next:
         specifier: ^14.1.0
-        version: 14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
+        version: 14.1.0(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
       nextjs-google-analytics:
         specifier: ^2.3.3
         version: 2.3.3(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1))(react@18.2.0)
@@ -79,14 +79,14 @@ importers:
   next-cloudinary:
     dependencies:
       '@cloudinary-util/types':
-        specifier: 1.1.0
-        version: 1.1.0
+        specifier: 1.2.0
+        version: 1.2.0
       '@cloudinary-util/url-loader':
-        specifier: 5.5.0
-        version: 5.5.0
+        specifier: 5.6.0
+        version: 5.6.0
       '@cloudinary-util/util':
-        specifier: ^3.0.0
-        version: 3.0.0
+        specifier: ^3.2.0
+        version: 3.2.0
       '@tsconfig/recommended':
         specifier: ^1.0.7
         version: 1.0.7
@@ -747,20 +747,23 @@ packages:
   '@braintree/sanitize-url@6.0.4':
     resolution: {integrity: sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==}
 
-  '@cloudinary-util/types@1.1.0':
-    resolution: {integrity: sha512-hlaN/+3wulAe+wGJNO2XrtFHKGrjt80F02BJFE4nEucAmv5OVYxRIQg/aroYb56X8jdSAHU1nPw9GRqApYdNog==}
+  '@cloudinary-util/types@1.2.0':
+    resolution: {integrity: sha512-2Mo5juB1HV+GmVLq2+bU0Yg5FB6r+csbHyDN6njc0AqkEkp+AW+Q6kYbbTYkT7zk3x9tBWfKn3lfR7wUCwowJw==}
+
+  '@cloudinary-util/types@1.2.0-beta.1':
+    resolution: {integrity: sha512-zdMPqadGhRWwSZQcgsUoouJhr2Dnpc4p1ytGLtnEmVFNvwDhYMR6ER3xLP5FoSNzPx10SoWfNl6UWQKInkk+iQ==}
 
   '@cloudinary-util/url-loader@4.2.0':
     resolution: {integrity: sha512-fpCFqFPAN/f9Gt//25qLXNDYwy5EcOudRzDPOrsEBH6aMwEdFaJuPxvLiP0IP5MCihKji/XDr9QJQ9Wa+amNSA==}
 
-  '@cloudinary-util/url-loader@5.5.0':
-    resolution: {integrity: sha512-oFDyeRzvnawhmP1OSnXb/A09LiUyROylpTSfaNgb0eJ4oP1Lc60VMuzJsbsiLVTOf8N5pf7MHlUtM9y/Q9JrUA==}
+  '@cloudinary-util/url-loader@5.6.0':
+    resolution: {integrity: sha512-oWTXaaBralKLfk9tD2fWaTfwflx9Acug6L3GO72sLPxIssg+SyeNDiIrNwIFRx6SkFR74bWWNqjp2yu135gaDQ==}
 
   '@cloudinary-util/util@3.0.0':
     resolution: {integrity: sha512-o6cJsN49OIelLcSkqUf4WzgefpePDFsAaeQfJbpcKhVdtvmWv71K0oZwMXuX62IY1OolqIg0etMiHtWZPhvPNA==}
 
-  '@cloudinary-util/util@3.1.0':
-    resolution: {integrity: sha512-BPy6wLDf+mILZTb8zR44MJxqGp3z8Y9W4DZ0kHC+SJjQYKbYUqcdzFhDKGZNOTAO7pWhkf8E5ViZGy+A0lD44w==}
+  '@cloudinary-util/util@3.2.0':
+    resolution: {integrity: sha512-VJBqAT3W0HQ9kyMagv+EzXkM/VYR9Ks01ewGxsS8T8b2N0NZFPAhYKeU2H9fOXSl6BVrD6aVYjJZAoT8pfQIyA==}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     resolution: {integrity: sha512-UUb1wS/eWCf4YBThGszoBBzH6kP+frdd5JeJkF0/SOwbX3tkcrdzxD+Srn5GXPCqzf6Gw1nrGrv/3U9hiZP55A==}
@@ -3658,7 +3661,6 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     deprecated: |-
       You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
-
       (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
 
   queue-microtask@1.2.3:
@@ -5314,7 +5316,9 @@ snapshots:
 
   '@braintree/sanitize-url@6.0.4': {}
 
-  '@cloudinary-util/types@1.1.0': {}
+  '@cloudinary-util/types@1.2.0': {}
+
+  '@cloudinary-util/types@1.2.0-beta.1': {}
 
   '@cloudinary-util/url-loader@4.2.0':
     dependencies:
@@ -5322,16 +5326,16 @@ snapshots:
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
 
-  '@cloudinary-util/url-loader@5.5.0':
+  '@cloudinary-util/url-loader@5.6.0':
     dependencies:
-      '@cloudinary-util/types': 1.1.0
-      '@cloudinary-util/util': 3.1.0
+      '@cloudinary-util/types': 1.2.0-beta.1
+      '@cloudinary-util/util': 3.2.0
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
 
   '@cloudinary-util/util@3.0.0': {}
 
-  '@cloudinary-util/util@3.1.0': {}
+  '@cloudinary-util/util@3.2.0': {}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     dependencies:
@@ -6000,7 +6004,7 @@ snapshots:
     dependencies:
       server-only: 0.0.1
     optionalDependencies:
-      next: 14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
+      next: 14.1.0(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
       react: 18.2.0
 
   '@vitest/expect@2.0.5':
@@ -7963,13 +7967,13 @@ snapshots:
 
   next-seo@6.4.0(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      next: 14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
+      next: 14.1.0(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
   next-themes@0.2.1(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      next: 14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
+      next: 14.1.0(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
@@ -7999,35 +8003,9 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1):
-    dependencies:
-      '@next/env': 14.1.0
-      '@swc/helpers': 0.5.2
-      busboy: 1.6.0
-      caniuse-lite: 1.0.30001579
-      graceful-fs: 4.2.11
-      postcss: 8.4.31
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      styled-jsx: 5.1.1(react@18.2.0)
-    optionalDependencies:
-      '@next/swc-darwin-arm64': 14.1.0
-      '@next/swc-darwin-x64': 14.1.0
-      '@next/swc-linux-arm64-gnu': 14.1.0
-      '@next/swc-linux-arm64-musl': 14.1.0
-      '@next/swc-linux-x64-gnu': 14.1.0
-      '@next/swc-linux-x64-musl': 14.1.0
-      '@next/swc-win32-arm64-msvc': 14.1.0
-      '@next/swc-win32-ia32-msvc': 14.1.0
-      '@next/swc-win32-x64-msvc': 14.1.0
-      sass: 1.71.1
-    transitivePeerDependencies:
-      - '@babel/core'
-      - babel-plugin-macros
-
   nextjs-google-analytics@2.3.3(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1))(react@18.2.0):
     dependencies:
-      next: 14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
+      next: 14.1.0(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
       react: 18.2.0
     optionalDependencies:
       fsevents: 2.3.3
@@ -8043,7 +8021,7 @@ snapshots:
       git-url-parse: 13.1.1
       intersection-observer: 0.12.2
       match-sorter: 6.3.3
-      next: 14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
+      next: 14.1.0(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
       next-seo: 6.4.0(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-themes: 0.2.1(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       nextra: 2.13.3(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -8066,7 +8044,7 @@ snapshots:
       gray-matter: 4.0.3
       katex: 0.16.9
       lodash.get: 4.4.2
-      next: 14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
+      next: 14.1.0(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
       next-mdx-remote: 4.4.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       p-limit: 3.1.0
       react: 18.2.0
@@ -8784,11 +8762,6 @@ snapshots:
       react: 18.2.0
     optionalDependencies:
       '@babel/core': 7.25.2
-
-  styled-jsx@5.1.1(react@18.2.0):
-    dependencies:
-      client-only: 0.0.1
-      react: 18.2.0
 
   stylis@4.3.1: {}
 

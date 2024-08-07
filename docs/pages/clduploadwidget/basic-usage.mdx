@@ -70,9 +70,11 @@ export const UnsignedUpload = ({ options }) => {
   return (
     <div className={`grid gap-6 ${resource ? 'grid-cols-2' : 'grid-cols-1'}`}>
       <CldUploadWidget
-        uploadPreset="<Your Upload Preset>"
+        uploadPreset="next-cloudinary-unsigned"
         onSuccess={(result, { widget }) => {
           setResource(result?.info);
+        }}
+        onQueuesEnd={(result, { widget }) => {
           widget.close();
         }}
         options={options}
@@ -144,6 +146,8 @@ export const SignedUpload = ({ options }) => {
         uploadPreset="next-cloudinary-signed"
         onSuccess={(result, { widget }) => {
           setResource(result?.info);
+        }}
+        onQueuesEnd={(result, { widget }) => {
           widget.close();
         }}
         options={options}
