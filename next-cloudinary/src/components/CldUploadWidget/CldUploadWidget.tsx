@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
-import { generateSignatureCallback, generateUploadWidgetResultCallback, getUploadWidgetOptions } from '@cloudinary-util/url-loader'
+import { generateSignatureCallback, generateUploadWidgetResultCallback, getUploadWidgetOptions, UPLOAD_WIDGET_EVENTS } from '@cloudinary-util/url-loader'
 import {
   CloudinaryUploadWidgetResults,
   CloudinaryUploadWidgetInstanceMethods,
@@ -22,26 +22,6 @@ import {
 } from './CldUploadWidget.types';
 
 import { getCloudinaryConfig } from "../../lib/cloudinary";
-
-const WIDGET_WATCHED_EVENTS = [
-  'success',
-];
-
-export const WIDGET_EVENTS: { [key: string]: string } = {
-  'abort': 'onAbort',
-  'batch-cancelled': 'onBatchCancelled',
-  'close': 'onClose',
-  'display-changed': 'onDisplayChanged',
-  'publicid': 'onPublicId',
-  'queues-end': 'onQueuesEnd',
-  'queues-start': 'onQueuesStart',
-  'retry': 'onRetry',
-  'show-completed': 'onShowCompleted',
-  'source-changed': 'onSourceChanged',
-  'success': 'onSuccess',
-  'tags': 'onTags',
-  'upload-added': 'onUploadAdded',
-}
 
 const CldUploadWidget = ({
   children,
@@ -95,7 +75,7 @@ const CldUploadWidget = ({
 
       setResults(uploadResult);
 
-      const widgetEvent = WIDGET_EVENTS[uploadResult.event] as keyof typeof props;
+      const widgetEvent = UPLOAD_WIDGET_EVENTS[uploadResult.event] as keyof typeof props;
 
       if ( typeof widgetEvent === 'string' && typeof props[widgetEvent] === 'function' ) {
         const callback = props[widgetEvent] as CldUploadEventCallback;
@@ -112,9 +92,6 @@ const CldUploadWidget = ({
         action(uploadResult);
       }
     },
-    onSuccess: (uploadResult) => {
-      // Tapping into individual events
-    }
   });
 
 
