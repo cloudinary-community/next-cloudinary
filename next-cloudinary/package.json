@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@cloudinary-util/types": "1.2.0",
-    "@cloudinary-util/url-loader": "5.6.0",
+    "@cloudinary-util/url-loader": "5.6.1",
     "@cloudinary-util/util": "^3.2.0",
     "@tsconfig/recommended": "^1.0.7"
   },
