@@ -1,3 +1,10 @@
+## [6.10.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.10.0...v6.10.1) (2024-08-21)
+
+
+### Bug Fixes
+
+* Fixes CldVideoPlayer aspect ratio undefined ([#500](https://github.com/cloudinary-community/next-cloudinary/issues/500)) ([5a15289](https://github.com/cloudinary-community/next-cloudinary/commit/5a15289a6dd58995c694a33ecd4e11f3b9dc1078)), closes [#499](https://github.com/cloudinary-community/next-cloudinary/issues/499)
+
 # [6.10.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.9.0...v6.10.0) (2024-08-07)
 
 
