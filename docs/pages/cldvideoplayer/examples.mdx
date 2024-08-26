@@ -374,6 +374,51 @@ Place an image over the video (Ex: watermarks).
   ```
 </CodeBlock>
 
+### Text Overlays
+
+Place a text over the video.
+
+<HeaderImage>
+  <CldVideoPlayer
+    id="text-overlays"
+    width="1620"
+    height="1080"
+    src={`${process.env.VIDEOS_DIRECTORY}/mountain-stars`}
+    transformation={{
+      color: 'white',
+      overlay: {
+        font_family: "Source Sans Pro",
+        font_size: 150,
+        font_weight: "bold",
+        text: "Zen"
+      },
+      gravity: "center",
+      opacity: 80
+    }}
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer } from 'next-cloudinary';
+
+  <CldVideoPlayer
+    id="text-overlays"
+    width="1620"
+    height="1080"
+    src="<Your Public ID>"
+    transformation={{
+      overlay: '<Your Public ID>',
+      width: 150,
+      gravity: "south_east",
+      x: 50,
+      y: 50,
+      opacity: 80
+    }}
+  />
+  ```
+</CodeBlock>
+
 ## Advanced
 
 ### Localization
