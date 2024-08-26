@@ -408,11 +408,14 @@ Place a text over the video.
     height="1080"
     src="<Your Public ID>"
     transformation={{
-      overlay: '<Your Public ID>',
-      width: 150,
-      gravity: "south_east",
-      x: 50,
-      y: 50,
+      color: 'white',
+      overlay: {
+        font_family: "Source Sans Pro",
+        font_size: 150,
+        font_weight: "bold",
+        text: "Zen"
+      },
+      gravity: "center",
       opacity: 80
     }}
   />
