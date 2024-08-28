@@ -131,15 +131,53 @@ If using a full Cloudinary URL, you might already have transformations applied t
 
 To preserve those transformations, you can apply the `preserveTransformations` property:
 
-```jsx copy
-<CldImage
-  width="600"
-  height="600"
-  src="https://res.cloudinary.com/mycloud/image/upload/w_100,h_200,c_fill/v1234/myimage"
-  preserveTransformations
-  alt="Description of my image"
-/>
-```
+<CodeBlock className="mt-6">
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    src="https://res.cloudinary.com/<Cloud Name>/image/upload/w_100,h_200,c_fill/v1234/myimage"
+    width="<Width>"
+    height="<Height>"
+    preserveTransformations
+    alt="<Description>"
+  />
+  ```
+</CodeBlock>
+
+For example:
+
+<HeaderImage>
+  <CldImage
+    src="https://res.cloudinary.com/colbycloud-next-cloudinary/image/upload/e_background_removal/b_blueviolet/f_auto/q_auto/v1/cld-sample-5"
+    width="800"
+    height="600"
+    preserveTransformations
+    alt="test"
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'astro-cloudinary';
+
+  <CldImage
+    src="https://res.cloudinary.com/<Cloud Name>/image/upload/e_background_removal/b_blueviolet/f_auto/q_auto/v1/cld-sample-5"
+    width="<Width>"
+    height="<Height>"
+    preserveTransformations
+    alt="test"
+  />
+  ```
+</CodeBlock>
+
+Would generate a URL of:
+
+<CodeBlock>
+  ```
+  https://res.cloudinary.com/<Cloud Name>/image/upload/e_background_removal/b_blueviolet/f_auto/q_auto/c_limit,w_1600/v1/cld-sample-5?_a=BBGAABS00
+  ```
+</CodeBlock>
 
 ## Watch & Learn
 

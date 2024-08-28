@@ -1,17 +1,15 @@
 import React, { useState, useCallback, forwardRef, SyntheticEvent } from 'react';
 import Image, { ImageProps } from 'next/image';
-import { getTransformations } from '@cloudinary-util/util';
+import { pollForProcessingImage } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
 import type { ImageOptions, ConfigOptions } from '@cloudinary-util/url-loader';
 
-import { pollForProcessingImage } from '../../lib/cloudinary';
 import { getCldImageUrl } from '../../helpers/getCldImageUrl';
 
 import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
 export type CldImageProps = Omit<ImageProps, 'src' | 'quality'> & ImageOptions & {
   config?: ConfigOptions;
-  preserveTransformations?: boolean;
   src: string;
   unoptimized?: boolean;
 };
@@ -27,7 +25,6 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
     'assetType',
     'config',
     'deliveryType',
-    'preserveTransformations',
     'strictTransformations',
   ];
 
@@ -75,19 +72,6 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
       cldOptions[key as keyof CldOptions] = prop;
     }
   });
-
-  // Try to preserve the original transformations from the Cloudinary URL passed in
-  // to the component. This only works if the URL has a version number on it and otherwise
-  // will fail to load
-
-  if (props.preserveTransformations) {
-    try {
-      const transformations = getTransformations(props.src).map(t => t.join(','));
-      cldOptions.rawTransformations = [...transformations.flat(), ...(props.rawTransformations || [])];
-    } catch(e) {
-      console.warn(`Failed to preserve transformations: ${(e as Error).message}`)
-    }
-  }
 
   // The unoptimized flag is intended to remove all optimizations including quality, format, and sizing
   // via responsive sizing. When passing this in, it also prevents the `loader` from running, thus
