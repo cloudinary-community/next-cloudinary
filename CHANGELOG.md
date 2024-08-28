@@ -1,3 +1,10 @@
+## [6.10.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.10.1...v6.10.2) (2024-08-28)
+
+
+### Bug Fixes
+
+* Cleanup - pollForProcessingImage, preserveTransformations ([#504](https://github.com/cloudinary-community/next-cloudinary/issues/504)) ([c71ca67](https://github.com/cloudinary-community/next-cloudinary/commit/c71ca67dc8a3346a633e1520db88316c207ce51f))
+
 ## [6.10.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.10.0...v6.10.1) (2024-08-21)
 
 
