@@ -23,12 +23,15 @@ importers:
 
   docs:
     dependencies:
+      '@cloudinary-util/types':
+        specifier: ^1.4.0
+        version: 1.4.0
       '@cloudinary-util/url-loader':
-        specifier: 4.2.0
-        version: 4.2.0
+        specifier: 5.7.0
+        version: 5.7.0
       '@cloudinary-util/util':
-        specifier: ^3.0.0
-        version: 3.0.0
+        specifier: ^3.2.0
+        version: 3.2.0
       '@vercel/analytics':
         specifier: ^1.2.2
         version: 1.2.2(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1))(react@18.2.0)
@@ -79,14 +82,14 @@ importers:
   next-cloudinary:
     dependencies:
       '@cloudinary-util/types':
-        specifier: 1.2.0
-        version: 1.2.0
+        specifier: 1.4.0
+        version: 1.4.0
       '@cloudinary-util/url-loader':
-        specifier: 5.6.1
-        version: 5.6.1
+        specifier: 5.8.0
+        version: 5.8.0
       '@cloudinary-util/util':
-        specifier: ^3.2.0
-        version: 3.2.0
+        specifier: ^3.3.2
+        version: 3.3.2
       '@tsconfig/recommended':
         specifier: ^1.0.7
         version: 1.0.7
@@ -747,23 +750,20 @@ packages:
   '@braintree/sanitize-url@6.0.4':
     resolution: {integrity: sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==}
 
-  '@cloudinary-util/types@1.2.0':
-    resolution: {integrity: sha512-2Mo5juB1HV+GmVLq2+bU0Yg5FB6r+csbHyDN6njc0AqkEkp+AW+Q6kYbbTYkT7zk3x9tBWfKn3lfR7wUCwowJw==}
+  '@cloudinary-util/types@1.4.0':
+    resolution: {integrity: sha512-0zWtZ78IlIKS2xrdtPXHCYtLuAbxtlWpNTKb5CGP86wJUCm/r7e12v5xzjcx3tSzY6NlEsnxV88xhp64s834LA==}
 
-  '@cloudinary-util/types@1.3.0':
-    resolution: {integrity: sha512-vDSr49G2QJaLlp7zWs8XuiSjKCO8ucCyS1IhrMvXJTUfby+w2eIguPwtJ0ho7pQgUGHnZY+b0aaN7hBTjhHUzw==}
+  '@cloudinary-util/url-loader@5.7.0':
+    resolution: {integrity: sha512-Wt9yOeldVRMAFe1NOHG0fxXbGQ5ZP3f/zaH08PHS4nKVneeq5QWMi25sd9sn3QPwZ8CZ+0YGiQVArYhOY/EvAg==}
 
-  '@cloudinary-util/url-loader@4.2.0':
-    resolution: {integrity: sha512-fpCFqFPAN/f9Gt//25qLXNDYwy5EcOudRzDPOrsEBH6aMwEdFaJuPxvLiP0IP5MCihKji/XDr9QJQ9Wa+amNSA==}
-
-  '@cloudinary-util/url-loader@5.6.1':
-    resolution: {integrity: sha512-8I2VxzqYmc29elf8EMMiDOJOLivCIXqinF4HJ2ZniPktP2MdKrU+w2QCaEaelTQYeQwRa+ee0zBOtWP1xcNUew==}
-
-  '@cloudinary-util/util@3.0.0':
-    resolution: {integrity: sha512-o6cJsN49OIelLcSkqUf4WzgefpePDFsAaeQfJbpcKhVdtvmWv71K0oZwMXuX62IY1OolqIg0etMiHtWZPhvPNA==}
+  '@cloudinary-util/url-loader@5.8.0':
+    resolution: {integrity: sha512-p79dB1OQiP0JWmM90lkAi/QNH+FdcaYAs+iI19doWuo0Pv74kHf8R0EC1Z4hFK9sxFbN73VLtvALPiXa9Q3eOw==}
 
   '@cloudinary-util/util@3.2.0':
     resolution: {integrity: sha512-VJBqAT3W0HQ9kyMagv+EzXkM/VYR9Ks01ewGxsS8T8b2N0NZFPAhYKeU2H9fOXSl6BVrD6aVYjJZAoT8pfQIyA==}
+
+  '@cloudinary-util/util@3.3.2':
+    resolution: {integrity: sha512-Cc0iFxzfl7fcOXuznpeZFGYC885Of/vDgccRDnhTe/8Rf8YKv2PjLtezyo0VgmdA/CpeZy29NCXAsf6liokbwg==}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     resolution: {integrity: sha512-UUb1wS/eWCf4YBThGszoBBzH6kP+frdd5JeJkF0/SOwbX3tkcrdzxD+Srn5GXPCqzf6Gw1nrGrv/3U9hiZP55A==}
@@ -5317,26 +5317,25 @@ snapshots:
 
   '@braintree/sanitize-url@6.0.4': {}
 
-  '@cloudinary-util/types@1.2.0': {}
+  '@cloudinary-util/types@1.4.0': {}
 
-  '@cloudinary-util/types@1.3.0': {}
-
-  '@cloudinary-util/url-loader@4.2.0':
+  '@cloudinary-util/url-loader@5.7.0':
     dependencies:
-      '@cloudinary-util/util': 3.0.0
-      '@cloudinary/url-gen': 1.15.0
-      zod: 3.22.4
-
-  '@cloudinary-util/url-loader@5.6.1':
-    dependencies:
-      '@cloudinary-util/types': 1.3.0
+      '@cloudinary-util/types': 1.4.0
       '@cloudinary-util/util': 3.2.0
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
 
-  '@cloudinary-util/util@3.0.0': {}
+  '@cloudinary-util/url-loader@5.8.0':
+    dependencies:
+      '@cloudinary-util/types': 1.4.0
+      '@cloudinary-util/util': 3.2.0
+      '@cloudinary/url-gen': 1.15.0
+      zod: 3.22.4
 
   '@cloudinary-util/util@3.2.0': {}
+
+  '@cloudinary-util/util@3.3.2': {}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     dependencies:
