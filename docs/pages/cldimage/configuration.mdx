@@ -154,6 +154,13 @@ right inside of Next.js.
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_enhance">More Info</a>)
     },
     {
+      prop: 'extract',
+      type: 'boolean',
+      default: '-',
+      example: () => (<code>{`"space jellyfish"`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_extract">More Info</a>)
+    },
+    {
       prop: 'fillBackground (Beta)',
       type: 'boolean | object',
       default: '-',
@@ -380,6 +387,96 @@ enhance
 ```
 
 [Learn more about the Generative Enhance transformation](https://cloudinary.com/documentation/transformation_reference#e_enhance) on the Cloudinary docs.
+
+
+
+### `extract`
+
+<Callout emoji={false} type="info">
+  Extract is currently in beta.
+</Callout>
+
+
+Extracts an area or multiple areas of an image, described in natural language, keeping
+the content of the extracted area (like background removal) or making the extracted area
+transparent keeping the rest of image, which can be helpful creating a mask.
+
+The `extract` prop can be a string, an array of strings, or an object with the following options:
+
+<Table
+  columns={[
+    {
+      id: 'prop',
+      title: 'Prop'
+    },
+    {
+      id: 'type',
+      title: 'Type'
+    },
+    {
+      id: 'example',
+      title: 'Example'
+    }
+  ]}
+  data={[
+    {
+      prop: 'invert',
+      type: 'boolean',
+      example: () => (<code>true</code>),
+    },
+    {
+      prop: 'mode',
+      type: 'string',
+      example: () => (<code>mask</code>),
+    },
+    {
+      prop: 'multiple',
+      type: 'boolean',
+      example: () => (<code>true</code>),
+    },
+    {
+      prop: 'prompt',
+      type: 'string',
+      example: () => (<code>space jellyfish</code>),
+    },
+  ]}
+/>
+
+**Examples**
+
+Extracting part of the image by prompt:
+
+```jsx copy
+extract="space jellyfish"
+```
+
+Or using an array of strings:
+
+```jsx copy
+extract={['space jellyfish', 'octocat']}
+```
+
+Or using object syntax:
+
+```jsx copy
+extract={{
+  prompt: 'space jellyfish',
+  multiple: true,
+  mode: 'mask',
+  invert: true
+}}
+```
+
+Or using object syntax with multiple prompts:
+
+```jsx copy
+extract={{
+  prompt: ['space jellyfish', 'octocat'],
+  mode: 'mask',
+}}
+```
+
+[Learn more about the Extract transformation](https://cloudinary.com/documentation/transformation_reference#e_extract) on the Cloudinary docs.
 
 
 ### `fillBackground`
@@ -654,7 +751,7 @@ removeBackground
   Generative Replace is currently in beta.
 </Callout>
 
-Uses generative AI to replace parts of your image with something else. 
+Uses generative AI to replace parts of your image with something else.
 
 The `replace` prop can either be an array with the objects to be replaced or an object
 with the following options:
@@ -1388,7 +1485,7 @@ underlays={[{
   <strong id="layer-effect-props" className="block text-slate-500 text-lg mt-8 -mb-4">
     <code>effects</code>
   </strong>
-  
+
   Objects in the `effects` array can include everything in [Basic Transformations](##basic-transformations) and [Filters & Effects](#filters--effects) above as well as:
 </div>
 
