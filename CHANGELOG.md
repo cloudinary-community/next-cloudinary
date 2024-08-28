@@ -1,3 +1,10 @@
+# [6.11.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.10.2...v6.11.0) (2024-08-28)
+
+
+### Features
+
+* Extract ([#505](https://github.com/cloudinary-community/next-cloudinary/issues/505)) ([04691f5](https://github.com/cloudinary-community/next-cloudinary/commit/04691f5dad6804cc82af7de7fcdc398160adbe12))
+
 ## [6.10.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.10.1...v6.10.2) (2024-08-28)
 
 
