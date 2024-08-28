@@ -250,6 +250,52 @@ crop to a specific ratio without specifying the width and height.
   ```
 </CodeBlock>
 
+### Extract
+
+`extract`: Extracts an area or multiple areas of an image, described in natural language.
+
+<HeaderImage layout="grid" caption="Prompt: toys; Multiple: true">
+  <CldImage
+    src={`${process.env.IMAGES_DIRECTORY}/robot_irmslr`}
+    width="960"
+    height="600"
+    crop="fill"
+    alt=""
+    sizes="100vw"
+  />
+  <CldImage
+    src={`${process.env.IMAGES_DIRECTORY}/robot_irmslr`}
+    width="960"
+    height="600"
+    crop="fill"
+    extract={{
+      prompt: 'toys',
+      multiple: true
+    }}
+    alt=""
+    sizes="100vw"
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    src="<Your Public ID>"
+    width="960"
+    height="600"
+    extract="<Prompt>"
+    alt=""
+    sizes="100vw"
+  />
+  ```
+</CodeBlock>
+
+<Callout emoji={false}>
+  The extract transformation is currently in Beta. <a href="https://cloudinary.com/documentation/transformation_reference#e_extract">Learn more</a>.
+</Callout>
+
 ### Generative Fill
 
 `fillBackground`: Fills the background of an image using Generative AI
@@ -290,7 +336,15 @@ crop to a specific ratio without specifying the width and height.
 
 `recolor`: Recolors an object in an image using Generative AI
 
-<HeaderImage>
+<HeaderImage layout="grid" caption="Recolor: shoelaces; Color: purple">
+  <CldImage
+    src={`${process.env.IMAGES_DIRECTORY}/sneakers`}
+    width="960"
+    height="600"
+    crop="fill"
+    alt=""
+    sizes="100vw"
+  />
   <CldImage
     src={`${process.env.IMAGES_DIRECTORY}/sneakers`}
     width="960"
@@ -326,7 +380,15 @@ crop to a specific ratio without specifying the width and height.
 
 `remove`: Removes an object in an image using Generative AI
 
-<HeaderImage>
+<HeaderImage layout="grid" caption="Prompt: mountain">
+  <CldImage
+    src={`${process.env.IMAGES_DIRECTORY}/mountain`}
+    width="960"
+    height="600"
+    crop="fill"
+    alt=""
+    sizes="100vw"
+  />
   <CldImage
     src={`${process.env.IMAGES_DIRECTORY}/mountain`}
     width="960"
@@ -346,8 +408,7 @@ crop to a specific ratio without specifying the width and height.
     src="<Your Public ID>"
     width="960"
     height="600"
-    crop="fill"
-    remove="mountain"
+    remove="<Prompt>"
     alt=""
     sizes="100vw"
   />
@@ -362,7 +423,15 @@ crop to a specific ratio without specifying the width and height.
 
 `replace`: Replaces an object in an image using Generative AI
 
-<HeaderImage>
+<HeaderImage layout="grid" caption="Replace: turtle; With: Shark">
+  <CldImage
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    width="960"
+    height="600"
+    crop="fill"
+    alt=""
+    sizes="100vw"
+  />
   <CldImage
     src={`${process.env.IMAGES_DIRECTORY}/turtle`}
     width="960"
@@ -398,7 +467,15 @@ crop to a specific ratio without specifying the width and height.
 
 `replaceBackground`: Replaces the background of an image with an AI-generated background.
 
-<HeaderImage>
+<HeaderImage layout="grid" caption="Prompt: big fish tank">
+  <CldImage
+    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    width="960"
+    height="600"
+    crop="fill"
+    alt=""
+    sizes="100vw"
+  />
   <CldImage
     src={`${process.env.IMAGES_DIRECTORY}/turtle`}
     width="960"
@@ -415,11 +492,10 @@ crop to a specific ratio without specifying the width and height.
   import { CldImage } from 'next-cloudinary';
 
   <CldImage
+    src="<Your Public ID>"
     width="960"
     height="600"
-    crop="fill"
-    src="<Your Public ID>"
-    replaceBackground="big fish tank"
+    replaceBackground="<Prompt>"
     alt=""
     sizes="100vw"
   />
@@ -478,7 +554,7 @@ crop to a specific ratio without specifying the width and height.
 ## Filters & Effects
 
 Included in the Cloudinary transformations library are different filters and effects
-that allow you to recolor, improve, fix, and artistically transform your images. 
+that allow you to recolor, improve, fix, and artistically transform your images.
 
 ### Blur
 
