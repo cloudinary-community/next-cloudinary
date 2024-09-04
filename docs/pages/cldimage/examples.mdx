@@ -136,12 +136,12 @@ position the subject in the center of the resulting image.
 
 <HeaderImage>
   <CldImage
+    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
     width="300"
     height="300"
-    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
-    sizes="100vw"
     crop="fill"
     alt=""
+    sizes="100vw"
   />
 </HeaderImage>
 
@@ -150,12 +150,12 @@ position the subject in the center of the resulting image.
   import { CldImage } from 'next-cloudinary';
 
   <CldImage
+    src="<Your Public ID>"
     width="300"
     height="300"
-    src="<Your Public ID>"
-    sizes="100vw"
     crop="fill"
     alt=""
+    sizes="100vw"
   />
   ```
 </CodeBlock>
@@ -172,16 +172,16 @@ resize it to the initial width and height, you can use:
 <HeaderImage>
   <CldImage
     width="300"
-    height="300"
     src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
-    sizes="100vw"
+    height="300"
     crop={{
+      type: 'thumb',
       width: 600,
       height: 600,
-      type: 'thumb',
       source: true
     }}
     alt=""
+    sizes="100vw"
   />
 </HeaderImage>
 
@@ -190,22 +190,66 @@ resize it to the initial width and height, you can use:
   import { CldImage } from 'next-cloudinary';
 
   <CldImage
+    src="<Your Public ID>"
     width="300"
     height="300"
-    src="<Your Public ID>"
-    sizes="100vw"
     crop={{
+      type: 'thumb',
       width: 600,
       height: 600,
-      type: 'thumb',
       source: true
     }}
     alt=""
+    sizes="100vw"
   />
   ```
 </CodeBlock>
 
 Which will provide a consistent crop for all rendered sizes.
+
+You can also use coordinates to crop to the exact location you need:
+
+<HeaderImage>
+  <CldImage
+    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    width="300"
+    height="300"
+    crop={{
+      type: 'crop',
+      width: 400,
+      height: 400,
+      x: 80,
+      y: 350,
+      gravity: 'north_east',
+      source: true
+    }}
+    alt=""
+    sizes="100vw"
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+    src="<Your Public ID>"
+    width="300"
+    height="300"
+    crop={{
+      type: 'crop',
+      width: 400,
+      height: 400,
+      x: 80,
+      y: 350,
+      gravity: 'north_east',
+      source: true
+    }}
+    alt=""
+    sizes="100vw"
+  />
+  ```
+</CodeBlock>
 
 Learn more about [cropping](/cldimage/configuration#crop) and [responsive images](/guides/responsive-images).
 
