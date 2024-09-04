@@ -1,3 +1,10 @@
+# [6.12.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.11.0...v6.12.0) (2024-09-04)
+
+
+### Features
+
+* Coordinates-based Cropping ([#509](https://github.com/cloudinary-community/next-cloudinary/issues/509)) ([9b6b9dd](https://github.com/cloudinary-community/next-cloudinary/commit/9b6b9dd7f673ad436325466da2a6892b99339470)), closes [#507](https://github.com/cloudinary-community/next-cloudinary/issues/507) [#481](https://github.com/cloudinary-community/next-cloudinary/issues/481)
+
 # [6.11.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.10.2...v6.11.0) (2024-08-28)
 
 
