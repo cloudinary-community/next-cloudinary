@@ -317,6 +317,16 @@ or it can accept an object or an array of objects which can take the following o
       example: () => (<a href="#required-props">See Width</a>),
     },
     {
+      prop: 'x',
+      type: 'number | string',
+      example: () => (<code>100</code>),
+    },
+    {
+      prop: 'y',
+      type: 'number | string',
+      example: () => (<code>200</code>),
+    },
+    {
       prop: 'zoom',
       type: 'string',
       example: () => (<a href="#zoom">See Zoom</a>),
@@ -363,6 +373,20 @@ crop={{
   width: 1200,
   height: 1200,
   type: 'thumb',
+  source: true
+}}
+```
+
+Using coordinates to crop to a specific location:
+
+```jsx copy
+crop={{
+  type: 'crop',
+  width: 400,
+  height: 400,
+  x: 80,
+  y: 350,
+  gravity: 'north_east',
   source: true
 }}
 ```

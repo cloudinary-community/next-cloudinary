@@ -82,11 +82,11 @@ importers:
   next-cloudinary:
     dependencies:
       '@cloudinary-util/types':
-        specifier: 1.4.0
-        version: 1.4.0
+        specifier: 1.5.3
+        version: 1.5.3
       '@cloudinary-util/url-loader':
-        specifier: 5.9.0
-        version: 5.9.0
+        specifier: 5.10.0
+        version: 5.10.0
       '@cloudinary-util/util':
         specifier: ^3.3.2
         version: 3.3.2
@@ -753,11 +753,14 @@ packages:
   '@cloudinary-util/types@1.4.0':
     resolution: {integrity: sha512-0zWtZ78IlIKS2xrdtPXHCYtLuAbxtlWpNTKb5CGP86wJUCm/r7e12v5xzjcx3tSzY6NlEsnxV88xhp64s834LA==}
 
+  '@cloudinary-util/types@1.5.3':
+    resolution: {integrity: sha512-/EbFhGKw942gAmBYN8iLCB8+7PfQR6DRIkfJWWoDf8OxInIrnVAhWHy+m1g1oltrTHZKbkF57oPJmi9Yv/4IIQ==}
+
+  '@cloudinary-util/url-loader@5.10.0':
+    resolution: {integrity: sha512-FW2hkDpOQ9LgeecrID5NTx84Zfk7MSZXMy2W+sJ0g3R2SaXZyykqtcMluzX94CypPgsu1OoM8qPs3l1gKTwarQ==}
+
   '@cloudinary-util/url-loader@5.7.0':
     resolution: {integrity: sha512-Wt9yOeldVRMAFe1NOHG0fxXbGQ5ZP3f/zaH08PHS4nKVneeq5QWMi25sd9sn3QPwZ8CZ+0YGiQVArYhOY/EvAg==}
-
-  '@cloudinary-util/url-loader@5.9.0':
-    resolution: {integrity: sha512-Jy2nfMwUor/VkjZ05qXSOYQg1lqUJfk1upNhkFdMc/2S2DeveuiNe5kjua1FVbROWoAnAv47qaGSsKwQHWibbA==}
 
   '@cloudinary-util/util@3.2.0':
     resolution: {integrity: sha512-VJBqAT3W0HQ9kyMagv+EzXkM/VYR9Ks01ewGxsS8T8b2N0NZFPAhYKeU2H9fOXSl6BVrD6aVYjJZAoT8pfQIyA==}
@@ -5319,17 +5322,19 @@ snapshots:
 
   '@cloudinary-util/types@1.4.0': {}
 
+  '@cloudinary-util/types@1.5.3': {}
+
+  '@cloudinary-util/url-loader@5.10.0':
+    dependencies:
+      '@cloudinary-util/types': 1.5.3
+      '@cloudinary-util/util': 3.3.2
+      '@cloudinary/url-gen': 1.15.0
+      zod: 3.22.4
+
   '@cloudinary-util/url-loader@5.7.0':
     dependencies:
       '@cloudinary-util/types': 1.4.0
       '@cloudinary-util/util': 3.2.0
-      '@cloudinary/url-gen': 1.15.0
-      zod: 3.22.4
-
-  '@cloudinary-util/url-loader@5.9.0':
-    dependencies:
-      '@cloudinary-util/types': 1.4.0
-      '@cloudinary-util/util': 3.3.2
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
 
