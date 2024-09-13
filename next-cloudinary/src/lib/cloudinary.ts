@@ -38,7 +38,7 @@ export async function pollForProcessingImage(options: PollForProcessingImageOpti
  * getCloudinaryConfig
  */
 
-export function getCloudinaryConfig(config?: ConfigOptions) {
+export function getCloudinaryConfig(config?: ConfigOptions): ConfigOptions {
   const cloudName = config?.cloud?.cloudName ?? process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
   if (!cloudName) {

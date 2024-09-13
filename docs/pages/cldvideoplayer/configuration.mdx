@@ -83,6 +83,7 @@ import Table from '../../components/Table';
 | publicId           | string         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
 | sourceTransformation  | object      | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
 | sourceTypes        | array          | -               | Streaming format                         | `['hls']`                    |
+| textTracks         | object         | -               | Captions or subtitles for the active video| See Text Tracks below |
 | transformation     | object/array   | -               | Transformations to apply to the video    | `{ width: 200, height: 200, crop: 'fill' }` |
 
 ## Ads And Analytics Props
@@ -123,6 +124,32 @@ You can either specify a `src` option with a custom public ID or omit the `src`,
 ID to render an automatically generated preview image.
 
 [View examples](/cldvideoplayer/examples#poster).
+
+### Text Tracks
+
+The `textTracks` prop allows you to add captions or subtitles to the player.
+
+Each Text Track is an object containing details about where the captions or subtitles should
+be loaded from as well as any customization of that track.
+
+**Examples**
+
+```
+textTracks={{
+  captions: {
+      label: 'English',
+      language: 'en',
+      default: true,
+      url: 'https://res.cloudinary.com/demo/raw/upload/<FileName>.vtt'
+    }
+  }
+}}
+```
+
+Learn more on the [Video Player Reference](https://cloudinary.com/documentation/video_player_api_reference#text_tracks) or
+the [Subtitles and Captions guide](https://cloudinary.com/documentation/video_player_customization#subtitles_and_captions).
+
+
 ### Theme Colors
 
 The `colors` prop takes an object that can control what colors are used in the player:
@@ -144,7 +171,7 @@ You can add custom localization options to control the languages of the player p
 | language           | string        | -              | The language of the player's labels.     |
 | languages          | object        | -              | Language configuration and label overrides. |
 
-Uses Vide.js JSON format for localization customization: https://videojs.com/guides/languages/#json-format
+Uses Video.js JSON format for localization customization: https://videojs.com/guides/languages/#json-format
 
 ## Player APIs
 
