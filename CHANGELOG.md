@@ -1,3 +1,10 @@
+# [6.13.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.12.0...v6.13.0) (2024-09-13)
+
+
+### Features
+
+* Captions & Subtitles, URL Default Version, TS Config Tweaks ([#517](https://github.com/cloudinary-community/next-cloudinary/issues/517)) ([386c74d](https://github.com/cloudinary-community/next-cloudinary/commit/386c74d3a5bdf2088710c79c8920f9fe12e76cf1)), closes [#430](https://github.com/cloudinary-community/next-cloudinary/issues/430) [#515](https://github.com/cloudinary-community/next-cloudinary/issues/515)
+
 # [6.12.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.11.0...v6.12.0) (2024-09-04)
 
 
