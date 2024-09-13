@@ -27,7 +27,7 @@ describe('Cloudinary', () => {
         src
       });
 
-      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_fill,w_${OG_IMAGE_WIDTH},h_${OG_IMAGE_HEIGHT},g_center/c_limit,w_${OG_IMAGE_WIDTH}/f_jpg/q_auto/${src}`);
+      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_fill,w_${OG_IMAGE_WIDTH},h_${OG_IMAGE_HEIGHT},g_center/c_limit,w_${OG_IMAGE_WIDTH}/f_jpg/q_auto/v1/${src}`);
     });
 
     it('should allow customization of width and height', () => {
@@ -45,7 +45,7 @@ describe('Cloudinary', () => {
         height
       });
 
-      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_fill,w_${width},h_${height},g_center/c_limit,w_${width}/f_jpg/q_auto/${src}`);
+      expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_fill,w_${width},h_${height},g_center/c_limit,w_${width}/f_jpg/q_auto/v1/${src}`);
     });
   });
 })
