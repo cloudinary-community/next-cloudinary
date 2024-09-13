@@ -89,7 +89,7 @@ describe('Cloudinary Loader', () => {
 
       const result = cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig });
 
-      expect(result).toContain('https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_960/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg')
+      expect(result).toContain('https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_960/f_auto/q_auto/v1/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg')
     });
 
     it('should return responsive images', async () => {
@@ -106,15 +106,15 @@ describe('Cloudinary Loader', () => {
       // The resulting widths should only be resized from imageProps if the value is smaller, to avoid upscaling an image
       const loaderOptions1 = { width: 2048 };
       const result1 = cloudinaryLoader({ loaderOptions: loaderOptions1, imageProps, cldOptions, cldConfig });
-      expect(result1).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_${loaderOptions1.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+      expect(result1).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_${loaderOptions1.width}/f_auto/q_auto/v1/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
 
       const loaderOptions2 = { width: 3840 };
       const result2 = cloudinaryLoader({ loaderOptions: loaderOptions2, imageProps, cldOptions, cldConfig });
-      expect(result2).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_${loaderOptions2.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+      expect(result2).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_${loaderOptions2.width}/f_auto/q_auto/v1/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
 
       const loaderOptions3 = { width: 640 };
       const result3 = cloudinaryLoader({ loaderOptions: loaderOptions3, imageProps, cldOptions, cldConfig });
-      expect(result3).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_${loaderOptions3.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+      expect(result3).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_limit,w_${loaderOptions3.width}/f_auto/q_auto/v1/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
     });
 
     it('should add any resizing after any effects are added', async () => {
@@ -141,15 +141,15 @@ describe('Cloudinary Loader', () => {
 
       const loaderOptions1 = { width: 2048 };
       const result1 = cloudinaryLoader({ loaderOptions: loaderOptions1, imageProps, cldOptions, cldConfig });
-      expect(result1).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_fill,w_${loaderOptions1.width},h_${(loaderOptions1.width / imageProps.width) * imageProps.height},g_auto/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+      expect(result1).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_fill,w_${loaderOptions1.width},h_${(loaderOptions1.width / imageProps.width) * imageProps.height},g_auto/f_auto/q_auto/v1/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
 
       const loaderOptions2 = { width: 3840 };
       const result2 = cloudinaryLoader({ loaderOptions: loaderOptions2, imageProps, cldOptions, cldConfig });
-      expect(result2).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_fill,w_${loaderOptions2.width},h_${(loaderOptions2.width / imageProps.width) * imageProps.height},g_auto/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+      expect(result2).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_fill,w_${loaderOptions2.width},h_${(loaderOptions2.width / imageProps.width) * imageProps.height},g_auto/f_auto/q_auto/v1/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
 
       const loaderOptions3 = { width: 640 };
       const result3 = cloudinaryLoader({ loaderOptions: loaderOptions3, imageProps, cldOptions, cldConfig });
-      expect(result3).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_fill,w_${loaderOptions3.width},h_${(loaderOptions3.width / imageProps.width) * imageProps.height},g_auto/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+      expect(result3).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_fill,w_${loaderOptions3.width},h_${(loaderOptions3.width / imageProps.width) * imageProps.height},g_auto/f_auto/q_auto/v1/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
     });
 
     it('should add two-stage resizing and cropping', async () => {
@@ -181,15 +181,15 @@ describe('Cloudinary Loader', () => {
 
       const loaderOptions1 = { width: 2048 };
       const result1 = cloudinaryLoader({ loaderOptions: loaderOptions1, imageProps, cldOptions, cldConfig });
-      expect(result1).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_${cldOptions.crop.type},w_${cldOptions.crop.width},h_${cldOptions.crop.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_limit,w_${loaderOptions1.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+      expect(result1).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_${cldOptions.crop.type},w_${cldOptions.crop.width},h_${cldOptions.crop.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_limit,w_${loaderOptions1.width}/f_auto/q_auto/v1/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
 
       const loaderOptions2 = { width: 3840 };
       const result2 = cloudinaryLoader({ loaderOptions: loaderOptions2, imageProps, cldOptions, cldConfig });
-      expect(result2).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_${cldOptions.crop.type},w_${cldOptions.crop.width},h_${cldOptions.crop.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_limit,w_${loaderOptions2.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+      expect(result2).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_${cldOptions.crop.type},w_${cldOptions.crop.width},h_${cldOptions.crop.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_limit,w_${loaderOptions2.width}/f_auto/q_auto/v1/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
 
       const loaderOptions3 = { width: 640 };
       const result3 = cloudinaryLoader({ loaderOptions: loaderOptions3, imageProps, cldOptions, cldConfig });
-      expect(result3).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_${cldOptions.crop.type},w_${cldOptions.crop.width},h_${cldOptions.crop.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_limit,w_${loaderOptions3.width}/f_auto/q_auto/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
+      expect(result3).toContain(`https://res.cloudinary.com/test-cloud/image/fetch/c_${cldOptions.crop.type},w_${cldOptions.crop.width},h_${cldOptions.crop.height},g_auto/l_fetch:${urlParam}/fl_layer_apply,fl_no_overflow/c_limit,w_${loaderOptions3.width}/f_auto/q_auto/v1/https://upload.wikimedia.org/wikipedia/commons/4/44/Jelly_cc11.jpg`)
     });
 
     it('should add any resizing when fill is set to true without a width or height', async () => {
