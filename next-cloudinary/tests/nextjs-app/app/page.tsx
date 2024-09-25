@@ -1,9 +1,7 @@
 "use client";
-
-import { CldImage, CldUploadWidget, CldUploadButton, CldVideoPlayer } from '../../../';
-import { getCldImageUrl, getCldOgImageUrl, getCldVideoUrl } from '../../../';
-
-import '../../../dist/cld-video-player.css';
+import { CldImage, CldUploadWidget, CldUploadButton, CldVideoPlayer } from 'next-cloudinary';
+import { getCldImageUrl, getCldOgImageUrl, getCldVideoUrl } from 'next-cloudinary';
+import 'next-cloudinary/dist/cld-video-player.css';
 
 export default function Home() {
   console.log(getCldImageUrl({
