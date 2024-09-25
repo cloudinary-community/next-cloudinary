@@ -1,9 +1,8 @@
-"use client";
-
-import { CldImage, CldUploadWidget, CldUploadButton, CldVideoPlayer } from '../../../';
+import { CldImage, CldUploadButton, CldVideoPlayer } from '../../../';
 import { getCldImageUrl, getCldOgImageUrl, getCldVideoUrl } from '../../../';
-
 import '../../../dist/cld-video-player.css';
+
+import { UploadWidget } from './UploadWidget';
 
 export default function Home() {
   console.log(getCldImageUrl({
@@ -27,18 +26,7 @@ export default function Home() {
         marginBottom: '2em'
       }}>
         <h2>CldUploadWidget</h2>
-        <CldUploadWidget
-          uploadPreset="next-cloudinary-unsigned"
-          options={{
-            sources: ['local', 'camera']
-          }}
-        >
-          {({ open }) => {
-            return (
-              <button onClick={() => open()}>Upload</button>
-            )
-          }}
-        </CldUploadWidget>
+        <UploadWidget />
       </div>
       <div style={{
         marginBottom: '2em'

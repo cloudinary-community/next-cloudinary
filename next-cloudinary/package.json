@@ -2,13 +2,30 @@
   "name": "next-cloudinary",
   "version": "6.13.0",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "source": "src/index.ts",
+  "main": "dist/next-cloudinary.cjs.js",
+  "module": "dist/next-cloudinary.esm.js",
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./dist/next-cloudinary.cjs.mjs",
+        "default": "./dist/next-cloudinary.cjs.js"
+      },
+      "module": "./dist/next-cloudinary.esm.js",
+      "import": "./dist/next-cloudinary.cjs.mjs",
+      "default": "./dist/next-cloudinary.cjs.js"
+    },
+    "./package.json": "./package.json",
+    "./cld-video-player.css": "./dist/cld-video-player.css",
+    "./dist/cld-video-player.css": "./dist/cld-video-player.css",
+    "./cloudinary_icon_for_black_bg.svg": "./dist/cloudinary_icon_for_black_bg.svg",
+    "./dist/cloudinary_icon_for_black_bg.svg": "./dist/cloudinary_icon_for_black_bg.svg",
+    "./cloudinary_icon_for_white_bg.svg": "./dist/cloudinary_icon_for_white_bg.svg",
+    "./dist/cloudinary_icon_for_white_bg.svg": "./dist/cloudinary_icon_for_white_bg.svg"
+  },
+  "types": "./dist/next-cloudinary.cjs.d.ts",
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "preconstruct build && tsx scripts/copy-assets.ts",
+    "dev": "preconstruct watch",
     "prepublishOnly": "cp ../README.md . && cp ../LICENSE . && pnpm build",
     "postpublish": "rm ./README.md && rm ./LICENSE",
     "test": "vitest run",
@@ -23,18 +40,36 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
-    "@babel/preset-env": "^7.25.3",
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-react": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
     "@types/node": "^22.0.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "dotenv": "^16.4.5",
     "mkdirp": "^3.0.1",
-    "tsup": "^8.2.3",
+    "tsx": "^4.19.1",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   },
   "peerDependencies": {
     "next": "^12 || ^13 || ^14 || >=15.0.0-rc",
     "react": "^17 || ^18 || >=19.0.0-beta"
+  },
+  "preconstruct": {
+    "exports": {
+      "importConditionDefaultExport": "default",
+      "extra": {
+        "./cld-video-player.css": "./dist/cld-video-player.css",
+        "./dist/cld-video-player.css": "./dist/cld-video-player.css",
+        "./cloudinary_icon_for_black_bg.svg": "./dist/cloudinary_icon_for_black_bg.svg",
+        "./dist/cloudinary_icon_for_black_bg.svg": "./dist/cloudinary_icon_for_black_bg.svg",
+        "./cloudinary_icon_for_white_bg.svg": "./dist/cloudinary_icon_for_white_bg.svg",
+        "./dist/cloudinary_icon_for_white_bg.svg": "./dist/cloudinary_icon_for_white_bg.svg"
+      }
+    },
+    "___experimentalFlags_WILL_CHANGE_IN_PATCH": {
+      "importsConditions": true
+    }
   }
 }

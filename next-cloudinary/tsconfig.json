@@ -5,7 +5,7 @@
     "declarationMap": true,
     "emitDeclarationOnly": true,
     "esModuleInterop": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "lib": ["dom", "esnext"],
     "module": "nodenext",
     "moduleResolution": "nodenext",
@@ -17,7 +17,7 @@
       {
         "name": "next"
       }
-    ],
+    ]
   },
   "exclude": ["node_modules"]
 }
