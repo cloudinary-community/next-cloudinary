@@ -29,7 +29,7 @@
     "prepublishOnly": "cp ../README.md . && cp ../LICENSE . && pnpm build",
     "postpublish": "rm ./README.md && rm ./LICENSE",
     "test": "vitest run",
-    "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" pnpm build && cd tests/nextjs-app && npm install && npm run build",
+    "test:app": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=\"test\" pnpm build && cd tests/nextjs-app && pnpm build",
     "test:watch": "vitest"
   },
   "dependencies": {
