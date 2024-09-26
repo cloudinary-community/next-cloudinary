@@ -35,14 +35,14 @@
   "dependencies": {
     "@cloudinary-util/types": "1.5.8",
     "@cloudinary-util/url-loader": "5.10.3",
-    "@cloudinary-util/util": "^3.3.2",
-    "@tsconfig/recommended": "^1.0.7"
+    "@cloudinary-util/util": "^3.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
+    "@tsconfig/recommended": "^1.0.7",
     "@types/node": "^22.0.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
