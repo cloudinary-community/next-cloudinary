@@ -1,3 +1,15 @@
+# [7.0.0-beta.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.13.0...v7.0.0-beta.1) (2024-09-27)
+
+
+### Features
+
+* Switch to Preconstruct for library building ([#520](https://github.com/cloudinary-community/next-cloudinary/issues/520)) ([a35a928](https://github.com/cloudinary-community/next-cloudinary/commit/a35a92872dc2e78626060e977b2bf7b1b60856dd))
+
+
+### BREAKING CHANGES
+
+* New build tool, no longer requires `use client` directive, marking as breaking for safety
+
 # [6.13.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.12.0...v6.13.0) (2024-09-13)
 
 
