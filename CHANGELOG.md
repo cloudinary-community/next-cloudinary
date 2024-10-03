@@ -1,3 +1,10 @@
+# [7.0.0-beta.2](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.1...v7.0.0-beta.2) (2024-10-03)
+
+
+### Bug Fixes
+
+* make sure to publish types ([#528](https://github.com/cloudinary-community/next-cloudinary/issues/528)) ([b1d1f61](https://github.com/cloudinary-community/next-cloudinary/commit/b1d1f61ba086959f05d0d3bcd08747c7e2b33abc))
+
 # [7.0.0-beta.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.13.0...v7.0.0-beta.1) (2024-09-27)
 
 
