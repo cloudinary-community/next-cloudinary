@@ -1,4 +1,4 @@
-import React, {useRef, MutableRefObject, useEffect} from 'react';
+import React, {useRef, MutableRefObject, useEffect, useId} from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import { CloudinaryVideoPlayer } from '@cloudinary-util/types';
@@ -28,6 +28,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     width,
   } = props as CldVideoPlayerProps;
 
+  const uniqueId = useId();
 
   const cloudinaryConfig = getCloudinaryConfig(config);
   const playerOptions = getVideoPlayerOptions(props, cloudinaryConfig);
@@ -46,7 +47,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const defaultPlayerRef = useRef()as MutableRefObject<CloudinaryVideoPlayer | null>;
   const playerRef = props.playerRef || defaultPlayerRef;
 
-  const playerId = id || `player-${publicId.replace('/', '-')}`;
+  const playerId = id || `player-${uniqueId}`;
   let playerClassName = 'cld-video-player cld-fluid';
 
   if ( className ) {
@@ -137,7 +138,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
           height={height}
         />
         <Script
-          id={`cloudinary-videoplayer-${playerId}-${Math.floor(Math.random() * 100)}`}
+          id={`cloudinary-videoplayer-${playerId}`}
           src={`https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.min.js`}
           onLoad={handleOnLoad}
           onError={(e) => console.error(`Failed to load Cloudinary Video Player: ${e.message}`)}
