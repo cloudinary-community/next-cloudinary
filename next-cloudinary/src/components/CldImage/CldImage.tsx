@@ -1,4 +1,5 @@
-import React, { useState, useCallback, forwardRef, SyntheticEvent } from 'react';
+'use client';
+import { useState, useCallback, forwardRef, SyntheticEvent } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { pollForProcessingImage } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
