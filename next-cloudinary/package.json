@@ -23,6 +23,9 @@
     "./dist/cloudinary_icon_for_white_bg.svg": "./dist/cloudinary_icon_for_white_bg.svg"
   },
   "types": "./dist/next-cloudinary.cjs.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "preconstruct build && tsx scripts/copy-assets.ts",
     "dev": "preconstruct watch",
