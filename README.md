@@ -198,6 +198,7 @@ pnpm test
       <td align="center" valign="top" width="14.28%"><a href="https://robray.dev/"><img src="https://avatars.githubusercontent.com/u/1377253?v=4?s=100" width="100px;" alt="Richard Oliver Bray"/><br /><sub><b>Richard Oliver Bray</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=RichardBray" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/zecka"><img src="https://avatars.githubusercontent.com/u/18116930?v=4?s=100" width="100px;" alt="zecka"/><br /><sub><b>zecka</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=zecka" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/HarshitVashisht11"><img src="https://avatars.githubusercontent.com/u/120767685?v=4?s=100" width="100px;" alt="Harshit Vashisht"/><br /><sub><b>Harshit Vashisht</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=HarshitVashisht11" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://sahil9001.github.io"><img src="https://avatars.githubusercontent.com/u/32628578?v=4?s=100" width="100px;" alt="Sahil Silare"/><br /><sub><b>Sahil Silare</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=sahil9001" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
