@@ -33,7 +33,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const cloudinaryConfig = getCloudinaryConfig(config);
   const playerOptions = getVideoPlayerOptions(props, cloudinaryConfig);
   const { publicId } = playerOptions;
-
   if ( typeof publicId === 'undefined' ) {
     throw new Error('Video Player requires a Public ID or Cloudinary URL - please specify a src prop');
   }
@@ -47,7 +46,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const defaultPlayerRef = useRef()as MutableRefObject<CloudinaryVideoPlayer | null>;
   const playerRef = props.playerRef || defaultPlayerRef;
 
-  const playerId = id || `player-${uniqueId}`;
+  const playerId = id || `player-${uniqueId.replace(/:/g, '')}`;
   let playerClassName = 'cld-video-player cld-fluid';
 
   if ( className ) {
