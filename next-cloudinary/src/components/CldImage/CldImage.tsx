@@ -89,7 +89,6 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
       src: imageProps.src as string,
       format: 'default',
       quality: 'default',
-      blur:'1000'
     }, props.config);
   }
 

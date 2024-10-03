@@ -254,6 +254,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "sahil9001",
+      "name": "Sahil Silare",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32628578?v=4",
+      "profile": "https://github.com/sahil9001",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
