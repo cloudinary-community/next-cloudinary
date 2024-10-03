@@ -1,3 +1,10 @@
+# [6.14.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.13.0...v6.14.0) (2024-10-03)
+
+
+### Features
+
+* added unique id generation using React's `useId()` hook ([#529](https://github.com/cloudinary-community/next-cloudinary/issues/529)) ([682f4c2](https://github.com/cloudinary-community/next-cloudinary/commit/682f4c22cf7ed710383b34a9f52cf3db05bd1fb1)), closes [#493](https://github.com/cloudinary-community/next-cloudinary/issues/493)
+
 # [6.13.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.12.0...v6.13.0) (2024-09-13)
 
 
