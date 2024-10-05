@@ -1915,6 +1915,12 @@ version="1234"
       more: () => (<a className="whitespace-nowrap" href="https://nextjs.org/docs/pages/api-reference/components/image#onerror">More Info</a>)
     },
     {
+      prop: 'onLoad',
+      type: 'function',
+      example: () => (<code>{`(event) => {}`}</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://nextjs.org/docs/pages/api-reference/components/image#onload">More Info</a>)
+    },
+    {
       prop: 'ref',
       type: 'ref',
       example: 'Ref',
@@ -1933,13 +1939,26 @@ until it's available, then force refresh the image instance in the DOM.
 **Examples**
 
 ```jsx copy
-onError={() => {
+onError={(e) => {
   alert('Image failed to load!')
 }}
 ```
 
 [Learn more about onError](https://nextjs.org/docs/pages/api-reference/components/image#onerror) on the Next.js docs.
 
+#### `onLoad`
+
+Callback that fires when an image loads completely and any [placeholder](/guides/placeholders) has been removed.
+
+**Examples**
+
+```jsx copy
+onLoad((e) => {
+  alert("Image has loaded!")
+})
+```
+
+[Learn more about onLoad](https://nextjs.org/docs/pages/api-reference/components/image#onload) on the Next.js docs.
 
 #### `ref`
 
