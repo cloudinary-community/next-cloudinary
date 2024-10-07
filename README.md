@@ -202,6 +202,7 @@ pnpm test
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://yashmathur.live"><img src="https://avatars.githubusercontent.com/u/69838816?v=4?s=100" width="100px;" alt="Yash Mathur"/><br /><sub><b>Yash Mathur</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=Yash-sudo-web" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/mr-loop-1"><img src="https://avatars.githubusercontent.com/u/62374784?v=4?s=100" width="100px;" alt="Abdul Samad"/><br /><sub><b>Abdul Samad</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=mr-loop-1" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
