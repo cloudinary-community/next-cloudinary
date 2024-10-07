@@ -4,18 +4,16 @@
   <img alt="Cloudinary" src="https://user-images.githubusercontent.com/62209650/196528761-a815025a-271a-4d8e-ac7e-cea833728bf9.png" align="center" height=30>
 </picture>
 &ensp;&ensp;
-<picture style="padding: 30px">
-  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/62209650/196529551-917766a7-6d73-4a0b-9f80-db31ac62358f.png" align="center" height=30>
-  <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/62209650/196529695-8c260b0b-b5e6-44ae-bf71-db3c28534b20.png" align="center" height=30>
-  <img alt="Nextjs" src="https://user-images.githubusercontent.com/62209650/196529695-8c260b0b-b5e6-44ae-bf71-db3c28534b20.png" align="center" height=30>
-</picture>
 
 ######
 
 <a href="https://github.com/cloudinary-community/next-cloudinary/actions/workflows/test_and_release.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/cloudinary-community/next-cloudinary/test_and_release.yml?branch=main&label=Test%20%26%20Release&style=flat-square"></a> <a href="https://www.npmjs.com/package/next-cloudinary"><img alt="npm" src="https://img.shields.io/npm/v/next-cloudinary?style=flat-square"></a> <a href="https://bundlephobia.com/package/next-cloudinary"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/next-cloudinary?style=flat-square&label=Minified%20Size"></a> <a href="https://github.com/cloudinary-community/next-cloudinary/blob/main/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/cloudinary-community/next-cloudinary?label=License&style=flat-square"></a>
 
-
 # Next Cloudinary
+
+<!-- doc-gen PKGJSON optionOne="hey" -->
+undefined
+<!-- end-doc-gen -->
 
 High-performance image delivery and uploading at scale in Next.js powered by Cloudinary.
 
