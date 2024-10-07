@@ -16,7 +16,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@cloudinary-util/types": "1.5.10",
+    "@cloudinary-util/types": "1.5.11",
     "@cloudinary-util/url-loader": "5.10.4",
     "@cloudinary-util/util": "^3.3.2"
   },
