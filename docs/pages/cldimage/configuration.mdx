@@ -132,6 +132,12 @@ right inside of Next.js.
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#a_angle">More Info</a>)
     },
     {
+      prop: 'aspectRatio',
+      type: 'string',
+      example: () => (<code>16:9</code>),
+      more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#ar_aspect_ratio">More Info</a>)
+    },
+    {
       prop: 'background',
       type: 'string',
       default: '-',
@@ -250,6 +256,20 @@ angle={15}
 ```
 
 [Learn more about angle](https://cloudinary.com/documentation/transformation_reference#b_background) on the Cloudinary docs.
+
+### `aspectRatio`
+
+Resizes the image to a new aspect ratio.
+
+> Note: For `aspectRatio` prop to work properly, `fill` prop must also be present alongside it, and `width` and `height` props must be absent.
+
+**Examples**
+
+```jsx copy
+aspectRatio="16:9"
+```
+
+[Learn more about angle](https://cloudinary.com/documentation/transformation_reference#ar_aspect_ratio) on the Cloudinary docs.
 
 ### `background`
 
