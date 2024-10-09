@@ -261,7 +261,15 @@ angle={15}
 
 Resizes the image to a new aspect ratio.
 
-> Note: For `aspectRatio` prop to work properly, `fill` prop must also be present alongside it, and `width` and `height` props must be absent.
+**Usage constraints**
+
+The `aspectRatio` prop can be applied only in the following crop modes: `auto`, `crop`, `fill`, `lfill`, `fill_pad` and `thumb`.
+
+Also, for it to work properly, `width` and `height` props must be absent, as they prevent the aspect ratio from applying as a transformation.
+However, `width` and `height` are required props for any Next Image component, unless we use the `fill` prop.
+
+So, whenever the `aspectRatio` prop is used, the `fill` prop must always be present alongside it, the `crop` prop must be set to a supported 
+crop mode, and the `width` and `height` props must be absent.
 
 **Examples**
 
