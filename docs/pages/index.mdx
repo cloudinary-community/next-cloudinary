@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import data from "../../next-cloudinary/package.json"
 
 import { CldImage, CldOgImage } from '../../next-cloudinary';
 
@@ -21,6 +22,11 @@ import Button from '../components/Button';
 <div className="text-center max-w-xl mx-auto mt-14 mb-20 md:mt-36 md:mb-44">
   <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">Next Cloudinary</h1>
   <p className="text-xl mt-8">High-performance image and video delivery and uploading at scale in Next.js powered by Cloudinary.</p>
+
+  <div>
+    <code className="text-base" > Version: {data.version} </code>
+  </div>
+
   <p className="flex items-center justify-center gap-6 mt-8 px-2">
     {/* Light Mode Image */}
     <CldImage
