@@ -26,7 +26,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     onPlay,
     onEnded,
     width,
-  } = props as CldVideoPlayerProps;
+  } = props;
 
   const uniqueId = useId();
 

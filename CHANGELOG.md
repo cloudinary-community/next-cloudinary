@@ -1,3 +1,10 @@
+## [6.14.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.1...v6.14.2) (2024-10-14)
+
+
+### Bug Fixes
+
+* use more proper type to derive `CldVideoPlayerProps` ([#537](https://github.com/cloudinary-community/next-cloudinary/issues/537)) ([65c3dd1](https://github.com/cloudinary-community/next-cloudinary/commit/65c3dd199176cd91d43161289672381b8c640b68))
+
 ## [6.14.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.0...v6.14.1) (2024-10-04)
 
 
