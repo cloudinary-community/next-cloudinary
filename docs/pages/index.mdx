@@ -22,8 +22,9 @@ import Button from '../components/Button';
   <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">Next Cloudinary</h1>
   <p className="text-xl mt-8">High-performance image and video delivery and uploading at scale in Next.js powered by Cloudinary.</p>
   <p className="flex items-center justify-center gap-6 mt-8 px-2">
+    {/* Light Mode Image */}
     <CldImage
-      className="min-w-0"
+      className="min-w-0 dark:hidden"
       width="218"
       height="42"
       src={`${process.env.IMAGES_DIRECTORY}/cloudinary-blue`}
@@ -31,18 +32,41 @@ import Button from '../components/Button';
       alt="Cloudinary Logo"
       priority
     />
+    {/* Dark Mode Image */}
     <CldImage
-      className="min-w-0"
+      className="min-w-0 hidden dark:block"
+      width="218"
+      height="42"
+      src={`${process.env.IMAGES_DIRECTORY}/cloudinary-white`}
+      sizes="50vw"
+      alt="Cloudinary Dark Mode Logo"
+      priority
+    />
+
+    {/* Light Mode Next.js Logo */}
+    <CldImage
+      className="min-w-0 dark:hidden"
       width="148"
       height="30"
       src={`${process.env.IMAGES_DIRECTORY}/nextjs-black`}
       sizes="50vw"
-      alt="Cloudinary Logo"
+      alt="Next.js Logo"
+      priority
+    />
+    {/* Dark Mode Next.js Logo */}
+    <CldImage
+      className="min-w-0 hidden dark:block"
+      width="148"
+      height="30"
+      src={`${process.env.IMAGES_DIRECTORY}/nextjs-white`}
+      sizes="50vw"
+      alt="Next.js Dark Mode Logo"
       priority
     />
   </p>
   <p className="mt-10"><Button href="/installation">Get Started</Button></p>
 </div>
+
 
 
 <div className="text-center max-w-4xl mx-auto my-14 md:my-36">
