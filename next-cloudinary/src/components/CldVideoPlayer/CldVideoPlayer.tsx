@@ -26,7 +26,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     onPlay,
     onEnded,
     width,
-  } = props as CldVideoPlayerProps;
+  } = props;
 
   const uniqueId = useId();
 
@@ -106,7 +106,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   useEffect(() => {
 
     return () => {
-      //@ts-ignore
       playerRef.current?.videojs.cloudinary.dispose();
       playerInstances = playerInstances.filter((id) => id !== playerId)
     }

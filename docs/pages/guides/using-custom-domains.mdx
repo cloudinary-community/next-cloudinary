@@ -1,0 +1,43 @@
+import { useState } from 'react';
+import Head from 'next/head';
+import { CldImage } from 'next-cloudinary';
+import OgImage from '../../components/OgImage';
+import styles from '../../styles/Docs.module.scss';
+import { Callout } from 'nextra-theme-docs';
+
+<Head>
+  <title>Using Next Cloudinary with Custom Domains</title>
+  <meta name="og:title" content="Using Next Cloudinary with Custom Domain" />
+  <meta name="og:url" content={`https://next.cloudinary.dev/guides/using-custom-domains`} />
+</Head>
+
+<OgImage
+  title="Using Custom Domains - Next Cloudinary"
+  twitterTitle="Using Next Cloudinary with Custom Domains"
+/>
+
+# Using Custom Domains
+
+When using Next Cloudinary with a custom domain in your Next.js application, you can serve your media assets with your own branded URLs. 
+
+<Callout type="info">
+  This feature is relevant only for users on Advanced plans or higher. Advanced plan users can request a custom domain with Cloudinary. [Learn more](https://support.cloudinary.com/hc/en-us/articles/202520562-Can-we-deliver-our-assets-using-a-subdomain-of-our-own-domain-like-cdn-example-com)
+</Callout>
+
+## Example
+
+Display images and videos using your custom domain with the `CldImage` or `CldVideoPlayer` component.
+
+```jsx
+<CldImage
+  src={src}
+  config={{
+    privateCdn: true, // Set to true when using a custom domain
+    secureDistribution: 'your-custom-domain.com', // Set your custom domain here
+  }}
+/>
+```
+
+## Learn More
+* [CldImage Config](/cldimage/configuration#config)
+* [CldVideoPlayer Config](/cldvideoplayer/configuration#configuration--delivery)
