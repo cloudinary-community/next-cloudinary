@@ -1,3 +1,16 @@
+# [7.0.0-beta.3](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.2...v7.0.0-beta.3) (2024-10-14)
+
+
+### Bug Fixes
+
+* removed ts-ignore ([#535](https://github.com/cloudinary-community/next-cloudinary/issues/535)) ([32931c9](https://github.com/cloudinary-community/next-cloudinary/commit/32931c9f0aab70a03df8e4f0bca05a56f5d75210)), closes [#426](https://github.com/cloudinary-community/next-cloudinary/issues/426)
+* use more proper type to derive `CldVideoPlayerProps` ([#537](https://github.com/cloudinary-community/next-cloudinary/issues/537)) ([65c3dd1](https://github.com/cloudinary-community/next-cloudinary/commit/65c3dd199176cd91d43161289672381b8c640b68))
+
+
+### Features
+
+* added unique id generation using React's `useId()` hook ([#529](https://github.com/cloudinary-community/next-cloudinary/issues/529)) ([682f4c2](https://github.com/cloudinary-community/next-cloudinary/commit/682f4c22cf7ed710383b34a9f52cf3db05bd1fb1)), closes [#493](https://github.com/cloudinary-community/next-cloudinary/issues/493)
+
 # [7.0.0-beta.2](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.1...v7.0.0-beta.2) (2024-10-03)
 
 * Switch to Preconstruct for library building ([#520](https://github.com/cloudinary-community/next-cloudinary/issues/520)) ([a35a928](https://github.com/cloudinary-community/next-cloudinary/commit/a35a92872dc2e78626060e977b2bf7b1b60856dd))
