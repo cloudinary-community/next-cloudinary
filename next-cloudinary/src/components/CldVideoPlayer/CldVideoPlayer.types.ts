@@ -2,14 +2,13 @@ import { MutableRefObject } from 'react';
 import {
   CloudinaryVideoPlayer,
   CloudinaryVideoPlayerOptionsLogo,
-  CloudinaryVideoPlayerOptions
 } from '@cloudinary-util/types';
-import { ConfigOptions } from "@cloudinary-util/url-loader";
+import { ConfigOptions, GetVideoPlayerOptions } from "@cloudinary-util/url-loader";
 
 import { GetCldImageUrlOptions } from '../../helpers/getCldImageUrl';
 import { GetCldVideoUrlOptions } from '../../helpers/getCldVideoUrl';
 
-export type CldVideoPlayerProps = Omit<CloudinaryVideoPlayerOptions, "cloud_name" | "autoplayMode" | "publicId" | "secure" | "showLogo" | "logoImageUrl" | "logoOnclickUrl"> & {
+export type CldVideoPlayerProps = Omit<GetVideoPlayerOptions, "cloud_name" | "autoplayMode" | "publicId" | "secure" | "showLogo" | "logoImageUrl" | "logoOnclickUrl"> & {
   className?: string;
   config?: ConfigOptions;
   id?: string;
