@@ -203,6 +203,7 @@ pnpm test
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mr-loop-1"><img src="https://avatars.githubusercontent.com/u/62374784?v=4?s=100" width="100px;" alt="Abdul Samad"/><br /><sub><b>Abdul Samad</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=mr-loop-1" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/DevRish"><img src="https://avatars.githubusercontent.com/u/78094670?v=4?s=100" width="100px;" alt="Rishav Chattopadhyay"/><br /><sub><b>Rishav Chattopadhyay</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=DevRish" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Prathamesh010"><img src="https://avatars.githubusercontent.com/u/41731424?v=4?s=100" width="100px;" alt="Prathamesh Gawas"/><br /><sub><b>Prathamesh Gawas</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=Prathamesh010" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://victory-nwani.dev"><img src="https://avatars.githubusercontent.com/u/29664439?v=4?s=100" width="100px;" alt="Nwani Victory"/><br /><sub><b>Nwani Victory</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=vickywane" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
