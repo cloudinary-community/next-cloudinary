@@ -3,6 +3,7 @@ import { ImageProps } from 'next/image';
 import { getCldImageUrl } from '../helpers/getCldImageUrl';
 
 export interface CloudinaryLoaderCldOptions {
+  src: string;
 }
 
 export interface CloudinaryLoaderLoaderOptions {
@@ -20,7 +21,7 @@ export interface CloudinaryLoader {
 export function cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig = {} }: CloudinaryLoader) {
   const options = {
     ...imageProps,
-    ...cldOptions
+    ...cldOptions,
   }
 
   options.width = typeof options.width === 'string' ? parseInt(options.width) : options.width;
@@ -53,6 +54,6 @@ export function cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldCon
     options.width = loaderOptions?.width;
   }
 
-  // @ts-ignore
+ 
   return getCldImageUrl(options, cldConfig);
 }
