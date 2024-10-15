@@ -1,3 +1,10 @@
+# [6.15.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.2...v6.15.0) (2024-10-15)
+
+
+### Features
+
+* Log x-cld-error on image error ([#553](https://github.com/cloudinary-community/next-cloudinary/issues/553)) ([711c759](https://github.com/cloudinary-community/next-cloudinary/commit/711c75989d30ef544f69914efdb961bd0963d492)), closes [#512](https://github.com/cloudinary-community/next-cloudinary/issues/512)
+
 ## [6.14.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.1...v6.14.2) (2024-10-14)
 
 
