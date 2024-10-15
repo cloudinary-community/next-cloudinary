@@ -16,7 +16,7 @@ import { cloudinaryLoader } from "../../loaders/cloudinary-loader";
 export type CldImageProps = Omit<ImageProps, "src" | "quality"> &
   ImageOptions & {
     config?: ConfigOptions;
-    // src: string;
+    src: string;
     unoptimized?: boolean;
   };
 
@@ -57,7 +57,6 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
   );
 
   // Construct the base Image component props by filtering out Cloudinary-specific props
-
   const imageProps: ImageProps = {
     alt: props.alt,
     src: props.src,
