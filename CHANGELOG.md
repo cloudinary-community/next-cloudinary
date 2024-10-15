@@ -1,3 +1,10 @@
+# [7.0.0-beta.4](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.3...v7.0.0-beta.4) (2024-10-15)
+
+
+### Features
+
+* Log x-cld-error on image error ([#553](https://github.com/cloudinary-community/next-cloudinary/issues/553)) ([711c759](https://github.com/cloudinary-community/next-cloudinary/commit/711c75989d30ef544f69914efdb961bd0963d492)), closes [#512](https://github.com/cloudinary-community/next-cloudinary/issues/512)
+
 # [7.0.0-beta.3](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.2...v7.0.0-beta.3) (2024-10-14)
 
 ### Bug Fixes
