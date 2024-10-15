@@ -91,8 +91,8 @@ importers:
         specifier: 5.10.4
         version: 5.10.4
       '@cloudinary-util/util':
-        specifier: ^3.3.2
-        version: 3.3.2
+        specifier: 4.0.0
+        version: 4.0.0
       next:
         specifier: ^12 || ^13 || ^14 || >=15.0.0-rc
         version: 14.1.0(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
@@ -866,6 +866,9 @@ packages:
 
   '@cloudinary-util/util@3.3.2':
     resolution: {integrity: sha512-Cc0iFxzfl7fcOXuznpeZFGYC885Of/vDgccRDnhTe/8Rf8YKv2PjLtezyo0VgmdA/CpeZy29NCXAsf6liokbwg==}
+
+  '@cloudinary-util/util@4.0.0':
+    resolution: {integrity: sha512-S4xcou/3A7l5o+bcKlw2VHBNgwups7/0lbVDT/cO5YmtrcEYXgj6LGmwnjvpTm/x571VPVN8x5jWdT3rLZiKJQ==}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     resolution: {integrity: sha512-UUb1wS/eWCf4YBThGszoBBzH6kP+frdd5JeJkF0/SOwbX3tkcrdzxD+Srn5GXPCqzf6Gw1nrGrv/3U9hiZP55A==}
@@ -2754,10 +2757,6 @@ packages:
     resolution: {integrity: sha512-1lvV17H2bMYda/WaFb2jLPeHU3zml2k4/yagNMG8Q/YtfMjCwEUZa2eXXMgZTVSL5q1n4H7sQ0X6CdJDqqeCFA==}
     engines: {node: '>=18'}
     hasBin: true
-
-  escalade@3.1.1:
-    resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
-    engines: {node: '>=6'}
 
   escalade@3.1.2:
     resolution: {integrity: sha512-ErCHMCae19vR8vQGe50xIsVomy19rg6gFu3+r3jkEO46suLMWBksvVyoGgQV+jOfl84ZSOSlmv6Gxa89PmTGmA==}
@@ -6606,6 +6605,8 @@ snapshots:
 
   '@cloudinary-util/util@3.3.2': {}
 
+  '@cloudinary-util/util@4.0.0': {}
+
   '@cloudinary/transformation-builder-sdk@1.10.1':
     dependencies:
       '@cloudinary/url-gen': 1.16.0
@@ -8586,8 +8587,6 @@ snapshots:
       '@esbuild/win32-arm64': 0.23.0
       '@esbuild/win32-ia32': 0.23.0
       '@esbuild/win32-x64': 0.23.0
-
-  escalade@3.1.1: {}
 
   escalade@3.1.2: {}
 
@@ -11749,7 +11748,7 @@ snapshots:
   update-browserslist-db@1.0.13(browserslist@4.22.2):
     dependencies:
       browserslist: 4.22.2
-      escalade: 3.1.1
+      escalade: 3.1.2
       picocolors: 1.0.1
 
   update-browserslist-db@1.1.0(browserslist@4.23.2):
@@ -11981,7 +11980,7 @@ snapshots:
   yargs@17.7.2:
     dependencies:
       cliui: 8.0.1
-      escalade: 3.1.1
+      escalade: 3.1.2
       get-caller-file: 2.0.5
       require-directory: 2.1.1
       string-width: 4.2.3

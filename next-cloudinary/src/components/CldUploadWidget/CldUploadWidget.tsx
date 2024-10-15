@@ -104,7 +104,7 @@ const CldUploadWidget = ({
     const isSuccess = results.event === 'success';
 
     if ( isSuccess && typeof onUpload === 'function' ) {
-      if ( process.env.NODE_ENVIRONMENT === 'development' ) {
+      if ( process.env.NODE_ENV === 'development' ) {
         console.warn('The onUpload callback is deprecated. Please use onSuccess instead.');
       }
       onUpload(results, widget.current);

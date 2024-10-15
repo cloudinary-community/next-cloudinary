@@ -1,6 +1,5 @@
 # [7.0.0-beta.3](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.2...v7.0.0-beta.3) (2024-10-14)
 
-
 ### Bug Fixes
 
 * removed ts-ignore ([#535](https://github.com/cloudinary-community/next-cloudinary/issues/535)) ([32931c9](https://github.com/cloudinary-community/next-cloudinary/commit/32931c9f0aab70a03df8e4f0bca05a56f5d75210)), closes [#426](https://github.com/cloudinary-community/next-cloudinary/issues/426)
@@ -24,6 +23,22 @@
 
 * New build tool, no longer requires `use client` directive, marking as breaking for safety
 * use more proper type to derive `CldVideoPlayerProps` ([#537](https://github.com/cloudinary-community/next-cloudinary/issues/537)) ([65c3dd1](https://github.com/cloudinary-community/next-cloudinary/commit/65c3dd199176cd91d43161289672381b8c640b68))
+
+# [6.15.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.2...v6.15.0) (2024-10-15)
+
+
+### Features
+
+* Log x-cld-error on image error ([#553](https://github.com/cloudinary-community/next-cloudinary/issues/553)) ([711c759](https://github.com/cloudinary-community/next-cloudinary/commit/711c75989d30ef544f69914efdb961bd0963d492)), closes [#512](https://github.com/cloudinary-community/next-cloudinary/issues/512)
+
+## [6.14.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.1...v6.14.2) (2024-10-14)
+
+
+### Bug Fixes
+
+* use more proper type to derive `CldVideoPlayerProps` ([#537](https://github.com/cloudinary-community/next-cloudinary/issues/537)) ([65c3dd1](https://github.com/cloudinary-community/next-cloudinary/commit/65c3dd199176cd91d43161289672381b8c640b68))
+
+## [6.14.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.0...v6.14.1) (2024-10-04)
 
 ## [6.14.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.1...v6.14.2) (2024-10-14)
 
