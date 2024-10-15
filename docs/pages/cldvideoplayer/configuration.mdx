@@ -18,81 +18,450 @@ import Table from '../../components/Table';
 
 ## General Props
 
-| Prop Name          | Type           | Default         | Description                              | Example                      |
-|--------------------|----------------|-----------------|------------------------------------------|------------------------------|
-| className          | string         | -               | Additional class names added to the video container | `"my-video-player"`      |
-| height             | string/number  | -               | **Required**: Player height              | `1080`                       |
-| id                 | string         | -               | Video instance ID, defaults to src value | `"my-video"`                 |
-| logo               | boolean/object | See Below       | Logo to display in Player UI             | See Logo Below               |
-| onDataLoad         | Function       | -               | Triggered when video metadata is loaded  | See Events Below             |
-| onError            | Function       | -               | Triggered on video error                 | See Events Below             |
-| onMetadataLoad     | Function       | -               | Triggered when video data is loaded      | See Events Below             |
-| onPause            | Function       | -               | Triggered on video pause                 | See Events Below             |
-| onPlay             | Function       | -               | Triggered on video play                  | See Events Below             |
-| onEnded            | Function       | -               | Triggered when video has ended play      | See Events Below             |
-| playerRef          | Ref            | -               | React ref to access Player instance      | See Refs Below               |
-| poster             | string/object  | -               | Customize the video's poster             | See Poster Below             |
-| src                | string         | -               | **Required**: Video public ID            | `"videos/my-video"`          |
-| videoRef           | Ref            | -               | React ref to access video element        | See Refs Below               |
-| width              | string/number  | -               | **Required**: Player width               | `1920`                       |
+<Table
+  columns={[
+    { id: 'prop', title: 'Prop Name' },
+    { id: 'type', title: 'Type' },
+    { id: 'default', title: 'Default' },
+    { id: 'description', title: 'Description' },
+    { id: 'example', title: 'Example' }
+  ]}
+  data={[
+    {
+      prop: 'className',
+      type: 'string',
+      default: '-',
+      description: 'Additional class names added to the video container',
+      example: () => (<code>"my-video-player"</code>)
+    },
+    {
+      prop: 'height',
+      type: 'string/number',
+      default: '-',
+      description: (<span><strong>Required</strong>: Player height</span>),
+      example: () => (<code>1080</code>)
+    },
+    {
+      prop: 'id',
+      type: 'string',
+      default: '-',
+      description: 'Video instance ID, defaults to src value',
+      example: () => (<code>"my-video"</code>)
+    },
+    {
+      prop: 'logo',
+      type: 'boolean/object',
+      default: 'See Below',
+      description: 'Logo to display in Player UI',
+      example: 'See Logo Below'
+    },
+    {
+      prop: 'onDataLoad',
+      type: 'Function',
+      default: '-',
+      description: 'Triggered when video metadata is loaded',
+      example: 'See Events Below'
+    },
+    {
+      prop: 'onError',
+      type: 'Function',
+      default: '-',
+      description: 'Triggered on video error',
+      example: 'See Events Below'
+    },
+    {
+      prop: 'onMetadataLoad',
+      type: 'Function',
+      default: '-',
+      description: 'Triggered when video data is loaded',
+      example: 'See Events Below'
+    },
+    {
+      prop: 'onPause',
+      type: 'Function',
+      default: '-',
+      description: 'Triggered on video pause',
+      example: 'See Events Below'
+    },
+    {
+      prop: 'onPlay',
+      type: 'Function',
+      default: '-',
+      description: 'Triggered on video play',
+      example: 'See Events Below'
+    },
+    {
+      prop: 'onEnded',
+      type: 'Function',
+      default: '-',
+      description: 'Triggered when video has ended play',
+      example: 'See Events Below'
+    },
+    {
+      prop: 'playerRef',
+      type: 'Ref',
+      default: '-',
+      description: 'React ref to access Player instance',
+      example: 'See Refs Below'
+    },
+    {
+      prop: 'poster',
+      type: 'string/object',
+      default: '-',
+      description: 'Customize the video\'s poster',
+      example: 'See Poster Below'
+    },
+    {
+      prop: 'src',
+      type: 'string',
+      default: '-',
+      description: (<span><strong>Required</strong>: Video public ID</span>),
+      example: () => (<code>"videos/my-video"</code>)
+    },
+    {
+      prop: 'videoRef',
+      type: 'Ref',
+      default: '-',
+      description: 'React ref to access video element',
+      example: 'See Refs Below'
+    },
+    {
+      prop: 'width',
+      type: 'string/number',
+      default: '-',
+      description: (<span><strong>Required</strong>: Player width</span>),
+      example: () => (<code>1920</code>)
+    }
+  ]}
+/>
+
+
 
 ## Player visuals Props
 
-| Prop Name          | Type           | Default         | Description                              | Example                      |
-|--------------------|----------------|-----------------|------------------------------------------|------------------------------|
-| aiHighlightsGraph  | boolean        | `false`         | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| bigPlayButton      | boolean/string | `true`          | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| colors             | object         | See below       | Player chrome colors                            | See Colors Below                    |
-| controlBar         | object         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| controls           | boolean        | `true`          | Show player controls                     | `true`                       |
-| floatingWhenNotVisible  | string    | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| fluid              | boolean        | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| fontFace           | string         | -               | Player UI font. Uses Google Fonts.       | `"Source Serif Pro"`         |
-| hideContextMenu    | boolean        | `false`         | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| interactionAreas   | any            | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| playbackRates      | array          | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| playlistWidget     | object         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| posterOptions      | object         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| showJumpControls   | boolean        | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| showLogo           | boolea         | `true`          | Show the Cloudinary logo on Player       | `false`                      |
-| seekThumbnails     | boolean        | `true`          | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| videoJS            | object         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+<Table
+  columns={[
+    { id: 'prop', title: 'Prop Name' },
+    { id: 'type', title: 'Type' },
+    { id: 'default', title: 'Default' },
+    { id: 'description', title: 'Description' },
+    { id: 'example', title: 'Example' }
+  ]}
+  data={[
+    {
+      prop: 'aiHighlightsGraph',
+      type: 'boolean',
+      default: 'false',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'bigPlayButton',
+      type: 'boolean/string',
+      default: 'true',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'colors',
+      type: 'object',
+      default: 'See below',
+      description: 'Player chrome colors',
+      example: 'See Colors Below'
+    },
+    {
+      prop: 'controlBar',
+      type: 'object',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'controls',
+      type: 'boolean',
+      default: 'true',
+      description: 'Show player controls',
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'floatingWhenNotVisible',
+      type: 'string',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'fluid',
+      type: 'boolean',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'fontFace',
+      type: 'string',
+      default: '-',
+      description: 'Player UI font. Uses Google Fonts.',
+      example: () => (<code>"Source Serif Pro"</code>)
+    },
+    {
+      prop: 'hideContextMenu',
+      type: 'boolean',
+      default: 'false',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'interactionAreas',
+      type: 'any',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'playbackRates',
+      type: 'array',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'playlistWidget',
+      type: 'object',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'posterOptions',
+      type: 'object',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'showJumpControls',
+      type: 'boolean',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'showLogo',
+      type: 'boolean',
+      default: 'true',
+      description: 'Show the Cloudinary logo on Player',
+      example: () => (<code>false</code>)
+    },
+    {
+      prop: 'seekThumbnails',
+      type: 'boolean',
+      default: 'true',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'videoJS',
+      type: 'object',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    }
+  ]}
+/>
 
 ## Player Behavior Props
 
-| Prop Name          | Type           | Default         | Description                              | Example                      |
-|--------------------|----------------|-----------------|------------------------------------------|------------------------------|
-| autoplay           | string/boolean | `"never"`       | When, if, should the video automatically play. Note that if the value passed is a boolean then the value will be passed to `autoplay` but if the value passed is a string then the value will be passed to `autoplayMode` See `autoplayMode` in [Video Player docs](https://cloudinary.com/documentation/video_player_api_reference#constructor_parameters) | `"on-scroll"`/`true`          |
-| autoShowRecommendations  | boolean  | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| loop               | boolean        | `false`         | Loop the video                           | `true`                       |
-| maxTries           | number         | `3`             | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| muted              | boolean        | `false`         | Load muted by default                    | `true`                       |
-| pictureInPictureToggle | boolean    | `false`         | Uses browser's Picture-in-Picture API to add floating video UI. | `true` |
-| playedEventPercents | array         | `[25, 50, 75, 100]`         | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| playedEventTimes   | array/null     | `null`         | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| playsinline        | boolean        | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| videoTimeout       | number         | `55000`         | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| withCredentials    | boolean        | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+<Table
+  columns={[
+    { id: 'prop', title: 'Prop Name' },
+    { id: 'type', title: 'Type' },
+    { id: 'default', title: 'Default' },
+    { id: 'description', title: 'Description' },
+    { id: 'example', title: 'Example' }
+  ]}
+  data={[
+    {
+      prop: 'autoplay',
+      type: 'string/boolean',
+      default: '"never"',
+      description: (
+        <span>
+          When, if, should the video automatically play. Note that if the value passed is a boolean then the value will be passed to <code>autoplay</code> but if the value passed is a string then the value will be passed to <code>autoplayMode</code>. See <code>autoplayMode</code> in <a href="https://cloudinary.com/documentation/video_player_api_reference#constructor_parameters">Video Player docs</a>
+        </span>
+      ),
+      example: () => (<code>"on-scroll"/true</code>)
+    },
+    {
+      prop: 'autoShowRecommendations',
+      type: 'boolean',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'loop',
+      type: 'boolean',
+      default: 'false',
+      description: 'Loop the video',
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'maxTries',
+      type: 'number',
+      default: '3',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'muted',
+      type: 'boolean',
+      default: 'false',
+      description: 'Load muted by default',
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'pictureInPictureToggle',
+      type: 'boolean',
+      default: 'false',
+      description: 'Uses browser\'s Picture-in-Picture API to add floating video UI.',
+      example: () => (<code>true</code>)
+    },
+    {
+      prop: 'playedEventPercents',
+      type: 'array',
+      default: '[25, 50, 75, 100]',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'playedEventTimes',
+      type: 'array/null',
+      default: 'null',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'playsinline',
+      type: 'boolean',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'videoTimeout',
+      type: 'number',
+      default: '55000',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'withCredentials',
+      type: 'boolean',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    }
+  ]}
+/>
 
 ## Video Config Props
 
-| Prop Name          | Type           | Default         | Description                              | Example                      |
-|--------------------|----------------|-----------------|------------------------------------------|------------------------------|
-| chapters           | object         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| preload            | string         | `auto`          | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| publicId           | string         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| sourceTransformation  | object      | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| sourceTypes        | array          | -               | Streaming format                         | `['hls']`                    |
-| textTracks         | object         | -               | Captions or subtitles for the active video| See Text Tracks below |
-| transformation     | object/array   | -               | Transformations to apply to the video    | `{ width: 200, height: 200, crop: 'fill' }` |
+<Table
+  columns={[
+    { id: 'prop', title: 'Prop Name' },
+    { id: 'type', title: 'Type' },
+    { id: 'default', title: 'Default' },
+    { id: 'description', title: 'Description' },
+    { id: 'example', title: 'Example' }
+  ]}
+  data={[
+    {
+      prop: 'chapters',
+      type: 'object',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'preload',
+      type: 'string',
+      default: 'auto',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'publicId',
+      type: 'string',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'sourceTransformation',
+      type: 'object',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'sourceTypes',
+      type: 'array',
+      default: '-',
+      description: 'Streaming format',
+      example: () => (<code>['hls']</code>)
+    },
+    {
+      prop: 'textTracks',
+      type: 'object',
+      default: '-',
+      description: 'Captions or subtitles for the active video',
+      example: 'See Text Tracks below'
+    },
+    {
+      prop: 'transformation',
+      type: 'object/array',
+      default: '-',
+      description: 'Transformations to apply to the video',
+      example: () => (<code>{`{ width: 200, height: 200, crop: 'fill' }`}</code>)
+    }
+  ]}
+/>
 
 ## Ads And Analytics Props
 
-| Prop Name          | Type           | Default         | Description                              | Example                      |
-|--------------------|----------------|-----------------|------------------------------------------|------------------------------|
-| ads                | object         | -               | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| analytics          | boolean        | `false`         | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
-| allowUsageReport   | boolean        | `true`          | **Check Cloudinary Video Player Api Docs**      | **Check Cloudinary Video Api Docs** |
+<Table
+  columns={[
+    { id: 'prop', title: 'Prop Name' },
+    { id: 'type', title: 'Type' },
+    { id: 'default', title: 'Default' },
+    { id: 'description', title: 'Description' },
+    { id: 'example', title: 'Example' }
+  ]}
+  data={[
+    {
+      prop: 'ads',
+      type: 'object',
+      default: '-',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'analytics',
+      type: 'boolean',
+      default: 'false',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    },
+    {
+      prop: 'allowUsageReport',
+      type: 'boolean',
+      default: 'true',
+      description: (<span><strong>Check Cloudinary Video Player Api Docs</strong></span>),
+      example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
+    }
+  ]}
+/>
 
 Missing an option from the [Video Player docs](https://cloudinary.com/documentation/video_player_api_reference) you'd like to see? [Create an issue](https://github.com/cloudinary-community/next-cloudinary/issues/new?assignees=&labels=Type%3A+Feature&template=feature_request.md&title=%5BFeature%5D+)!
 
@@ -108,10 +477,29 @@ When `logo` is set to `false`, no logo will be displayed.
 
 To customize the logo, the following options are available in the form of an object:
 
-| Prop Name          | Type          | Default        | Description                              |
-|--------------------|---------------|----------------|------------------------------------------|
-| imageUrl           | string        | -              | Image URL for player logo.               |
-| onClickUrl         | string        | -              | URL to browse to on logo click.          |
+<Table
+  columns={[
+    { id: 'prop', title: 'Prop Name' },
+    { id: 'type', title: 'Type' },
+    { id: 'default', title: 'Default' },
+    { id: 'description', title: 'Description' }
+  ]}
+  data={[
+    {
+      prop: 'imageUrl',
+      type: 'string',
+      default: '-',
+      description: 'Image URL for player logo.'
+    },
+    {
+      prop: 'onClickUrl',
+      type: 'string',
+      default: '-',
+      description: 'URL to browse to on logo click.'
+    }
+  ]}
+/>
+
 
 ### Poster
 
@@ -154,11 +542,34 @@ the [Subtitles and Captions guide](https://cloudinary.com/documentation/video_pl
 
 The `colors` prop takes an object that can control what colors are used in the player:
 
-| Prop Name          | Type          | Default        | Description                              |
-|--------------------|---------------|----------------|------------------------------------------|
-| accent             | string        | `"#FF620C"`    | Seek bar, volume control and for highlighting interactions. |
-| base               | string        | `"#000000"`    | Player controls bar, information bar, central play button, and right-click context menu. |
-| text               | string        | `"#FFFFFF"`    | All the text and icons that are present within the video player UI. |
+<Table
+  columns={[
+    { id: 'prop', title: 'Prop Name' },
+    { id: 'type', title: 'Type' },
+    { id: 'default', title: 'Default' },
+    { id: 'description', title: 'Description' }
+  ]}
+  data={[
+    {
+      prop: 'accent',
+      type: 'string',
+      default: (<code>"#FF620C"</code>),
+      description: 'Seek bar, volume control and for highlighting interactions.'
+    },
+    {
+      prop: 'base',
+      type: 'string',
+      default: (<code>"#000000"</code>),
+      description: 'Player controls bar, information bar, central play button, and right-click context menu.'
+    },
+    {
+      prop: 'text',
+      type: 'string',
+      default: (<code>"#FFFFFF"</code>),
+      description: 'All the text and icons that are present within the video player UI.'
+    }
+  ]}
+/>
 
 Learn more about the color scheme options and how they're used [on the Cloudinary docs](https://cloudinary.com/documentation/video_player_customization#color_scheme).
 
@@ -166,10 +577,28 @@ Learn more about the color scheme options and how they're used [on the Cloudinar
 
 You can add custom localization options to control the languages of the player provides labels in.
 
-| Prop Name          | Type          | Default        | Description                              |
-|--------------------|---------------|----------------|------------------------------------------|
-| language           | string        | -              | The language of the player's labels.     |
-| languages          | object        | -              | Language configuration and label overrides. |
+<Table
+  columns={[
+    { id: 'prop', title: 'Prop Name' },
+    { id: 'type', title: 'Type' },
+    { id: 'default', title: 'Default' },
+    { id: 'description', title: 'Description' }
+  ]}
+  data={[
+    {
+      prop: 'language',
+      type: 'string',
+      default: '-',
+      description: 'The language of the player\'s labels.'
+    },
+    {
+      prop: 'languages',
+      type: 'object',
+      default: '-',
+      description: 'Language configuration and label overrides.'
+    }
+  ]}
+/>
 
 Uses Video.js JSON format for localization customization: https://videojs.com/guides/languages/#json-format
 
