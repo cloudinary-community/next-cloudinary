@@ -88,8 +88,8 @@ importers:
         specifier: 5.10.4
         version: 5.10.4
       '@cloudinary-util/util':
-        specifier: ^3.3.2
-        version: 3.3.2
+        specifier: 4.0.0
+        version: 4.0.0
       next:
         specifier: ^12 || ^13 || ^14 || >=15.0.0-rc
         version: 14.1.0(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
@@ -130,15 +130,6 @@ importers:
       vitest:
         specifier: ^2.0.5
         version: 2.0.5(@types/node@22.0.2)(sass@1.71.1)
-
-  scripts:
-    devDependencies:
-      cloudinary:
-        specifier: ^1.32.0
-        version: 1.41.3
-      dotenv:
-        specifier: ^16.4.5
-        version: 16.4.5
 
 packages:
 
@@ -776,6 +767,9 @@ packages:
 
   '@cloudinary-util/util@3.3.2':
     resolution: {integrity: sha512-Cc0iFxzfl7fcOXuznpeZFGYC885Of/vDgccRDnhTe/8Rf8YKv2PjLtezyo0VgmdA/CpeZy29NCXAsf6liokbwg==}
+
+  '@cloudinary-util/util@4.0.0':
+    resolution: {integrity: sha512-S4xcou/3A7l5o+bcKlw2VHBNgwups7/0lbVDT/cO5YmtrcEYXgj6LGmwnjvpTm/x571VPVN8x5jWdT3rLZiKJQ==}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     resolution: {integrity: sha512-UUb1wS/eWCf4YBThGszoBBzH6kP+frdd5JeJkF0/SOwbX3tkcrdzxD+Srn5GXPCqzf6Gw1nrGrv/3U9hiZP55A==}
@@ -1850,15 +1844,6 @@ packages:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
     engines: {node: '>=12'}
 
-  cloudinary-core@2.13.1:
-    resolution: {integrity: sha512-z53GPNWnvU0Zi+ns8CIVbZBfj7ps/++zDvwIyiFuq5p1MoK+KUCg0k5mBceDDHTnx1gHmHUd9aohS+gDxPNt6w==}
-    peerDependencies:
-      lodash: '>=4.0'
-
-  cloudinary@1.41.3:
-    resolution: {integrity: sha512-4o84y+E7dbif3lMns+p3UW6w6hLHEifbX/7zBJvaih1E9QNMZITENQ14GPYJC4JmhygYXsuuBb9bRA3xWEoOfg==}
-    engines: {node: '>=0.6'}
-
   cloudinary@2.0.1:
     resolution: {integrity: sha512-+j5GswtCwjAmLhjs/K26id4Zvh53zL/YWzgyenxgbdXdXmdFM8d5H1FV1sJCkpS77AqylJKBzyztySdILM+F+A==}
     engines: {node: '>=9'}
@@ -1934,9 +1919,6 @@ packages:
 
   core-js-compat@3.37.1:
     resolution: {integrity: sha512-9TNiImhKvQqSUkOvk/mMRZzOANTiEVC7WaBNhHcKM7x+/5E1l5NvsysR19zuDQScE8k+kfQXWRN3AtS/eOSHpg==}
-
-  core-js@3.38.1:
-    resolution: {integrity: sha512-OP35aUorbU3Zvlx7pjsFdu1rGNnD4pgw/CWoYzRY3t2EzoVT7shKHY1dlAy3f41cGIO7ZDPQimhGFTlEYkG/Hw==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -5359,6 +5341,8 @@ snapshots:
 
   '@cloudinary-util/util@3.3.2': {}
 
+  '@cloudinary-util/util@4.0.0': {}
+
   '@cloudinary/transformation-builder-sdk@1.10.1':
     dependencies:
       '@cloudinary/url-gen': 1.16.0
@@ -6320,17 +6304,6 @@ snapshots:
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
 
-  cloudinary-core@2.13.1(lodash@4.17.21):
-    dependencies:
-      lodash: 4.17.21
-
-  cloudinary@1.41.3:
-    dependencies:
-      cloudinary-core: 2.13.1(lodash@4.17.21)
-      core-js: 3.38.1
-      lodash: 4.17.21
-      q: 1.5.1
-
   cloudinary@2.0.1:
     dependencies:
       lodash: 4.17.21
@@ -6401,8 +6374,6 @@ snapshots:
   core-js-compat@3.37.1:
     dependencies:
       browserslist: 4.23.2
-
-  core-js@3.38.1: {}
 
   core-util-is@1.0.3: {}
 
