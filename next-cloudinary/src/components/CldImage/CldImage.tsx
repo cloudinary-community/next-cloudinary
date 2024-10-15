@@ -128,7 +128,11 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
     const image = options.target as HTMLImageElement
     const result = await pollForProcessingImage({ src: image.src })
 
-    if ( result ) {
+    if ( typeof result.error === 'string' && process.env.NODE_ENV === 'development' ) {
+      console.error(`[CldImage] Failed to load image ${props.src}: ${result.error}`)
+    }
+
+    if ( result.success ) {
       setImgKey(`${defaultImgKey};${Date.now()}`);
     }
   }
