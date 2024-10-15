@@ -53,7 +53,6 @@ export function cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldCon
     // for responsive sizing to take effect, so we can utilize the loader width for the base width
     options.width = loaderOptions?.width;
   }
-
  
   return getCldImageUrl(options, cldConfig);
 }
