@@ -31,13 +31,20 @@ not only deliver, but easily edit and build new images on the fly.
 
 `removeBackground`: Removes the background of the image using AI
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    sizes="100vw"
+    src="samples/animals/three-dogs"
+    sizes="50vw"
+    alt=""
+  />
+  <CldImage
+    width="960"
+    height="600"
+    src="samples/animals/three-dogs"
     removeBackground
+    sizes="50vw"
     alt=""
   />
 </HeaderImage>
@@ -65,15 +72,22 @@ not only deliver, but easily edit and build new images on the fly.
 
 `background`: Specifies a color to use as a background.
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
+    src="samples/animals/three-dogs"
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    sizes="100vw"
+    alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="samples/animals/three-dogs"
+    width="960"
+    height="600"
     removeBackground
     background="blueviolet"
     alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -97,15 +111,22 @@ not only deliver, but easily edit and build new images on the fly.
 
 `underlay`: Specifies a public ID to use as an underlaying image.
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
+    src="samples/animals/three-dogs"
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    sizes="100vw"
-    removeBackground
-    underlay={`${process.env.IMAGES_DIRECTORY}/galaxy`}
     alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="samples/animals/three-dogs"
+    width="960"
+    height="600"
+    removeBackground
+    underlay="samples/landscapes/nature-mountains"
+    alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -134,14 +155,21 @@ not only deliver, but easily edit and build new images on the fly.
 > Note: By default, CldImage uses a gravity of auto, meaning the crop will automatically
 position the subject in the center of the resulting image.
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    src="samples/woman-on-a-football-field"
+    width="1200"
+    height="1350"
+    alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="samples/woman-on-a-football-field"
     width="300"
     height="300"
     crop="fill"
     alt=""
-    sizes="100vw"
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -169,19 +197,26 @@ For instance, to crop the original source image, which will then later
 resize it to the initial width and height, you can use:
 
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
+    src="samples/woman-on-a-football-field"
+    width="1200"
+    height="1350"
+    alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="samples/woman-on-a-football-field"
     width="300"
-    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
     height="300"
     crop={{
-      type: 'thumb',
       width: 600,
       height: 600,
+      type: 'thumb',
       source: true
     }}
     alt=""
-    sizes="100vw"
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -209,9 +244,16 @@ Which will provide a consistent crop for all rendered sizes.
 
 You can also use coordinates to crop to the exact location you need:
 
-<HeaderImage>
+<HeaderImage layout="grid">
+<CldImage
+    src="samples/woman-on-a-football-field"
+    width="300"
+    height="300"
+    alt=""
+    sizes="50vw"
+  />
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+    src="samples/woman-on-a-football-field"
     width="300"
     height="300"
     crop={{
@@ -224,7 +266,7 @@ You can also use coordinates to crop to the exact location you need:
       source: true
     }}
     alt=""
-    sizes="100vw"
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -267,7 +309,7 @@ crop to a specific ratio without specifying the width and height.
 <HeaderImage>
   <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9' }}>
     <CldImage
-      src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
+      src="samples/woman-on-a-football-field"
       sizes="100vw"
       aspectRatio="16:9"
       crop="fill"
@@ -298,9 +340,9 @@ crop to a specific ratio without specifying the width and height.
 
 `extract`: Extracts an area or multiple areas of an image, described in natural language.
 
-<HeaderImage layout="grid" caption="Prompt: toys; Multiple: true">
+<HeaderImage layout="grid" caption="Prompt: dogs; Multiple: true">
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/robot_irmslr`}
+    src="samples/animals/three-dogs"
     width="960"
     height="600"
     crop="fill"
@@ -308,12 +350,12 @@ crop to a specific ratio without specifying the width and height.
     sizes="100vw"
   />
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/robot_irmslr`}
+    src="samples/animals/three-dogs"
     width="960"
     height="600"
     crop="fill"
     extract={{
-      prompt: 'toys',
+      prompt: 'dogs',
       multiple: true
     }}
     alt=""
@@ -344,15 +386,23 @@ crop to a specific ratio without specifying the width and height.
 
 `fillBackground`: Fills the background of an image using Generative AI
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/woman-headphones`}
-    width="960"
+    src="cld-sample-2"
+    width="900"
+    height="600"
+    crop="fill"
+    alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="cld-sample-2"
+    width="1400"
     height="600"
     crop="pad"
     fillBackground
     alt=""
-    sizes="100vw"
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -362,8 +412,8 @@ crop to a specific ratio without specifying the width and height.
 
   <CldImage
     src="<Your Public ID>"
-    width="960"
-    height="600" // Original 1440
+    width="1400" //Original width 900
+    height="600"
     crop="pad"  // Returns the given size with padding
     fillBackground
     alt=""
@@ -380,23 +430,23 @@ crop to a specific ratio without specifying the width and height.
 
 `recolor`: Recolors an object in an image using Generative AI
 
-<HeaderImage layout="grid" caption="Recolor: shoelaces; Color: purple">
+<HeaderImage layout="grid">
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/sneakers`}
+    src="samples/balloons"
     width="960"
     height="600"
     crop="fill"
     alt=""
-    sizes="100vw"
+    sizes="50vw"
   />
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/sneakers`}
+    src="samples/balloons"
     width="960"
     height="600"
     crop="fill"
-    recolor={['shoelaces', 'purple']}
+    recolor={['balloon', 'red']}
     alt=""
-    sizes="100vw"
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -409,7 +459,7 @@ crop to a specific ratio without specifying the width and height.
     width="960"
     height="600"
     crop="fill"
-    recolor={['shoelaces', 'purple']}
+    recolor={['<Object>', '<Color>']}
     alt=""
     sizes="100vw"
   />
@@ -424,23 +474,28 @@ crop to a specific ratio without specifying the width and height.
 
 `remove`: Removes an object in an image using Generative AI
 
-<HeaderImage layout="grid" caption="Prompt: mountain">
+<HeaderImage layout="grid">
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/mountain`}
+    src="samples/landscapes/beach-boat"
     width="960"
     height="600"
     crop="fill"
+    gravity="center"
     alt=""
-    sizes="100vw"
+    sizes="50vw"
   />
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/mountain`}
+    src="samples/landscapes/beach-boat"
     width="960"
     height="600"
     crop="fill"
-    remove="mountain"
+    gravity="center"
+    remove={{
+      prompt: 'boat',
+      removeShadow: true
+    }}
     alt=""
-    sizes="100vw"
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -452,7 +507,10 @@ crop to a specific ratio without specifying the width and height.
     src="<Your Public ID>"
     width="960"
     height="600"
-    remove="<Prompt>"
+    remove={{
+    prompt: '<Object>',
+    removeShadow: true
+  }}
     alt=""
     sizes="100vw"
   />
@@ -467,23 +525,25 @@ crop to a specific ratio without specifying the width and height.
 
 `replace`: Replaces an object in an image using Generative AI
 
-<HeaderImage layout="grid" caption="Replace: turtle; With: Shark">
+<HeaderImage layout="grid">
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="samples/look-up"
     width="960"
-    height="600"
+    height="960"
     crop="fill"
+    gravity="center"
     alt=""
-    sizes="100vw"
+    sizes="50vw"
   />
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="samples/look-up"
     width="960"
-    height="600"
+    height="960"
     crop="fill"
-    replace={['turtle', 'shark']}
+    gravity="center"
+    replace={['person', 'cat']}
     alt=""
-    sizes="100vw"
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -493,7 +553,7 @@ crop to a specific ratio without specifying the width and height.
 
   <CldImage
     width="960"
-    height="600"
+    height="960"
     crop="fill"
     src="<Your Public ID>"
     replace={['turtle', 'shark']}
@@ -511,23 +571,23 @@ crop to a specific ratio without specifying the width and height.
 
 `replaceBackground`: Replaces the background of an image with an AI-generated background.
 
-<HeaderImage layout="grid" caption="Prompt: big fish tank">
+<HeaderImage layout="grid">
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="samples/balloons"
     width="960"
     height="600"
     crop="fill"
     alt=""
-    sizes="100vw"
+    sizes="50vw"
   />
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    src="samples/balloons"
     width="960"
     height="600"
     crop="fill"
-    replaceBackground="big fish tank"
+    replaceBackground="space galaxy"
     alt=""
-    sizes="100vw"
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -556,19 +616,20 @@ crop to a specific ratio without specifying the width and height.
 
 <HeaderImage layout="grid">
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/galaxy-poor`}
+    src="cld-sample-4"
     width="960"
     height="600"
     crop="fill"
+    rawTransformations={['e_blur:500']}
     alt=""
     sizes="100vw"
   />
   <CldImage
-    src={`${process.env.IMAGES_DIRECTORY}/galaxy-poor`}
+    src="cld-sample-4"
     width="960"
     height="600"
     crop="fill"
-    restore
+    rawTransformations={['e_blur:500', 'e_gen_restore']}
     alt=""
     sizes="100vw"
   />
@@ -604,14 +665,21 @@ that allow you to recolor, improve, fix, and artistically transform your images.
 
 `blur`: Applies a blurring filter to an asset.
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
+    src="samples/food/spices"
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    sizes="100vw"
+    alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="samples/food/spices"
+    width="960"
+    height="600"
     blur="1200"
     alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -633,14 +701,21 @@ that allow you to recolor, improve, fix, and artistically transform your images.
 
 `grayscale`: Converts an image to grayscale (multiple shades of gray).
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    sizes="100vw"
+    src="samples/food/spices"
+    alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    width="960"
+    height="600"
+    src="samples/food/spices"
     grayscale
     alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -663,14 +738,21 @@ that allow you to recolor, improve, fix, and artistically transform your images.
 
 `opacity`: Controls the opacity level of an image.
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
+    src="samples/food/spices"
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    sizes="100vw"
+    alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="samples/food/spices"
+    width="960"
+    height="600"
     opacity="50"
     alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -693,14 +775,21 @@ that allow you to recolor, improve, fix, and artistically transform your images.
 
 `pixelate`: Applies a pixelation effect.
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
+    src="samples/food/spices"
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    sizes="100vw"
+    alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="samples/food/spices"
+    width="960"
+    height="600"
     pixelate
     alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -723,14 +812,21 @@ that allow you to recolor, improve, fix, and artistically transform your images.
 
 `tint`: Blends an image with one or more tint colors.
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
+    src="samples/food/spices"
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    alt=""
     sizes="100vw"
+  />
+  <CldImage
+    src="samples/food/spices"
+    width="960"
+    height="600"
     tint="equalize:80:blue:blueviolet"
     alt=""
+    sizes="100vw"
   />
 </HeaderImage>
 
@@ -753,11 +849,18 @@ that allow you to recolor, improve, fix, and artistically transform your images.
 
 `effects`: An array of objects the configure the effects to apply to an image.
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
+    src="samples/food/spices"
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
+    alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="samples/food/spices"
+    width="960"
+    height="600"
     effects={[
       {
         background: 'green'
@@ -770,6 +873,7 @@ that allow you to recolor, improve, fix, and artistically transform your images.
       }
     ]}
     alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -793,6 +897,7 @@ that allow you to recolor, improve, fix, and artistically transform your images.
       }
     ]}
     alt=""
+    sizes="100vw"
   />
   ```
 </CodeBlock>
@@ -809,29 +914,37 @@ Image overlays allow you to place one or multiple images on top of another image
 
 `overlays`: Any array of overlay objects
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
+    src="samples/people/kitchen-bar"
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    sizes="100vw"
+    crop="fill"
+    alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="samples/people/kitchen-bar"
+    width="960"
+    height="600"
+    crop="fill"
     overlays={[{
-      publicId: `${process.env.IMAGES_DIRECTORY}/earth`,
+      publicId: "samples/food/fish-vegetables",
       position: {
         x: 50,
         y: 50,
-        gravity: 'north_west',
+        gravity: 'north_east',
       },
-      effects: [
-        {
-          crop: 'fill',
-          gravity: 'auto',
-          width: 500,
-          height: 500
-        }
-      ]
+      effects: [{
+        crop: 'fill',
+        width: 350,
+        height: 350,
+        gravity: 'auto',
+        border: '5px_solid_yellow'
+      }]
     }]}
     alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -855,8 +968,8 @@ Image overlays allow you to place one or multiple images on top of another image
         {
           crop: 'fill',
           gravity: 'auto',
-          width: 500,
-          height: 500
+          width: 350,
+          height: 350
         }
       ]
     }]}
@@ -870,30 +983,33 @@ Image overlays allow you to place one or multiple images on top of another image
 `appliedEffects`: When configured on an overlay object, allows you to set an effect
 that applies a blend mode, such as "multiply"
 
-<HeaderImage>
+<HeaderImage layout="grid">
+  <CldImage
+    src="samples/landscapes/nature-mountains"
+    width="960"
+    height="600"
+    crop="fill"
+    alt=""
+    sizes="50vw"
+  />
   <CldImage
     width="960"
     height="600"
     crop="fill"
-    src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
+    src="samples/landscapes/nature-mountains"
     overlays={[{
-      publicId: `images/earth`,
-      effects: [
-        {
-          crop: 'fill',
-          gravity: 'auto',
-          width: '1.0',
-          height: '1.0',
-        }
-      ],
+      publicId: "samples/animals/cat",
+      effects: [{
+        crop: 'fill',
+        gravity: 'auto',
+        width: '1.0',
+        height: '1.0',
+      }],
       flags: ['relative'],
-      appliedEffects: [
-        {
-          multiply: true
-        }
-      ]
+      appliedEffects: [{ multiply: true }]
     }]}
     alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -924,6 +1040,7 @@ that applies a blend mode, such as "multiply"
       ]
     }]}
     alt=""
+    sizes="100vw"
   />
   ```
 </CodeBlock>
@@ -936,15 +1053,24 @@ Image underlays allow you to place one or multiple images behind a base image.
 
 `underlay`: Public ID of image to use under base image
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
+    src="cld-sample-3"
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    sizes="100vw"
-    removeBackground
-    underlay="images/galaxy"
+    crop="fill"
     alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="cld-sample-3"
+    width="960"
+    height="600"
+    crop="fill"
+    underlay="samples/balloons"
+    removeBackground
+    alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -968,16 +1094,21 @@ Image underlays allow you to place one or multiple images behind a base image.
 
 `underlays`: Array of underlay objects
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
+    src="cld-sample-3"
     width="960"
     height="600"
-    src={`${process.env.IMAGES_DIRECTORY}/turtle`}
-    sizes="100vw"
-    removeBackground
+    sizes="50vw"
+    alt=""
+  />
+  <CldImage
+    src="cld-sample-3"
+    width="960"
+    height="600"
     underlays={[
       {
-        publicId: 'images/galaxy',
+        publicId: 'cld-sample-2',
         width: '0.5',
         height: '1.0',
         crop: 'fill',
@@ -987,7 +1118,7 @@ Image underlays allow you to place one or multiple images behind a base image.
         flags: ['relative']
       },
       {
-        publicId: 'images/mountain',
+        publicId: 'samples/landscapes/beach-boat',
         width: '0.5',
         height: '1.0',
         crop: 'fill',
@@ -997,7 +1128,9 @@ Image underlays allow you to place one or multiple images behind a base image.
         flags: ['relative']
       },
     ]}
+    removeBackground
     alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -1013,7 +1146,7 @@ Image underlays allow you to place one or multiple images behind a base image.
     removeBackground
     underlays={[
       {
-        publicId: 'images/galaxy',
+        publicId: '<Public ID>',
         width: '0.5',
         height: '1.0',
         crop: 'fill',
@@ -1023,7 +1156,7 @@ Image underlays allow you to place one or multiple images behind a base image.
         flags: ['relative']
       },
       {
-        publicId: 'images/mountain',
+        publicId: '<Public ID>',
         width: '0.5',
         height: '1.0',
         crop: 'fill',
@@ -1034,6 +1167,7 @@ Image underlays allow you to place one or multiple images behind a base image.
       },
     ]}
     alt=""
+    sizes="100vw"
   />
   ```
 </CodeBlock>
@@ -1047,30 +1181,39 @@ Text overlays allow you to place text on top of an image.
 
 `overlays`: Uses overlay objects to add text on top of an image.
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
-    width="1335"
-    height="891"
-    src={`${process.env.IMAGES_DIRECTORY}/sneakers`}
-    sizes="100vw"
+    src="cld-sample-5"
+    width="960"
+    height="600"
+    crop="fill"
+    alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="cld-sample-5"
+    width="960"
+    height="600"
+    crop="fill"
     overlays={[{
       position: {
-        x: 140,
-        y: 140,
+        x: 60,
+        y: 60,
         angle: -20,
         gravity: 'south_east',
       },
       text: {
         color: 'blueviolet',
         fontFamily: 'Source Sans Pro',
-        fontSize: 280,
-        fontWeight: 'bold',
+        fontSize: 160,
+        fontWeight: 'black',
         textDecoration: 'underline',
-        letterSpacing: 14,
+        letterSpacing: -15,
         text: 'With Style'
       }
     }]}
     alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -1109,19 +1252,27 @@ Text overlays allow you to place text on top of an image.
 
 `effects`: Applies effects to the overlaid text.
 
-<HeaderImage>
+<HeaderImage layout="grid">
   <CldImage
-    width="1335"
-    height="891"
-    src={`${process.env.IMAGES_DIRECTORY}/galaxy`}
-    sizes="100vw"
+    src="samples/landscapes/nature-mountains"
+    width="960"
+    height="600"
+    crop="fill"
+    alt=""
+    sizes="50vw"
+  />
+  <CldImage
+    src="samples/landscapes/nature-mountains"
+    width="960"
+    height="600"
+    crop="fill"
     overlays={[{
       text: {
         color: 'white',
         fontFamily: 'Source Sans Pro',
-        fontSize: 500,
-        fontWeight: 'bold',
-        text: 'Into the Galaxy'
+        fontSize: 400,
+        fontWeight: 'black',
+        text: 'Touching Grass'
       },
       effects: [
         {
@@ -1131,6 +1282,7 @@ Text overlays allow you to place text on top of an image.
       ]
     }]}
     alt=""
+    sizes="50vw"
   />
 </HeaderImage>
 
@@ -1147,9 +1299,9 @@ Text overlays allow you to place text on top of an image.
       text: {
         color: 'white',
         fontFamily: 'Source Sans Pro',
-        fontSize: 500,
-        fontWeight: 'bold',
-        text: 'Into the Galaxy'
+        fontSize: 400,
+        fontWeight: 'black',
+        text: 'Touching Grass'
       },
       effects: [
         {
@@ -1176,7 +1328,7 @@ This is handy when wanting to create an image thumbnail from a video, where the 
     assetType="video"
     width="1920"
     height="1080"
-    src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+    src="samples/sea-turtle"
     sizes="100vw"
     alt=""
   />
