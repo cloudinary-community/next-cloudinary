@@ -205,6 +205,7 @@ pnpm test
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Prathamesh010"><img src="https://avatars.githubusercontent.com/u/41731424?v=4?s=100" width="100px;" alt="Prathamesh Gawas"/><br /><sub><b>Prathamesh Gawas</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=Prathamesh010" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://victory-nwani.dev"><img src="https://avatars.githubusercontent.com/u/29664439?v=4?s=100" width="100px;" alt="Nwani Victory"/><br /><sub><b>Nwani Victory</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=vickywane" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://neilblaze.live"><img src="https://avatars.githubusercontent.com/u/48355572?v=4?s=100" width="100px;" alt="Pratyay Banerjee"/><br /><sub><b>Pratyay Banerjee</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=Neilblaze" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/saai-syvendra"><img src="https://avatars.githubusercontent.com/u/157691467?v=4?s=100" width="100px;" alt="Saai Syvendra"/><br /><sub><b>Saai Syvendra</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=saai-syvendra" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
