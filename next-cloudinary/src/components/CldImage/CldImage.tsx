@@ -78,9 +78,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
 
   type CldOptions = ImageOptions;
 
-  const cldOptions: CldOptions = {
-    src: "",
-  };
+  const cldOptions: CldOptions | {} = {};
 
   CLD_OPTIONS.forEach((key) => {
     const prop = props[key as keyof ImageOptions];
@@ -178,7 +176,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
         cloudinaryLoader({
           loaderOptions,
           imageProps,
-          cldOptions,
+          cldOptions : cldOptions as CldOptions,
           cldConfig: props.config,
         })
       }
