@@ -100,11 +100,14 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
     imageProps.src = getCldImageUrl(
       {
         ...cldOptions,
-        width: imageProps.width,
-        height: imageProps.height,
-        src: imageProps.src as string,
-        format: "default",
-        quality: "default",
+
+        ...{
+          width: imageProps.width,
+          height: imageProps.height,
+          src: imageProps.src as string,
+          format: "default",
+          quality: "default",
+        },
       },
       props.config
     );
@@ -146,11 +149,16 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
     const image = options.target as HTMLImageElement;
     const result = await pollForProcessingImage({ src: image.src });
 
-    if ( typeof result.error === 'string' && process.env.NODE_ENV === 'development' ) {
-      console.error(`[CldImage] Failed to load image ${props.src}: ${result.error}`)
+    if (
+      typeof result.error === "string" &&
+      process.env.NODE_ENV === "development"
+    ) {
+      console.error(
+        `[CldImage] Failed to load image ${props.src}: ${result.error}`
+      );
     }
 
-    if ( result.success ) {
+    if (result.success) {
       setImgKey(`${defaultImgKey};${Date.now()}`);
     }
   }
@@ -179,7 +187,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
         cloudinaryLoader({
           loaderOptions,
           imageProps,
-          cldOptions : cldOptions as CldOptions,
+          cldOptions: cldOptions as CldOptions,
           cldConfig: props.config,
         })
       }

@@ -3,7 +3,7 @@ import { ImageProps } from 'next/image';
 import { getCldImageUrl } from '../helpers/getCldImageUrl';
 
 export interface CloudinaryLoaderCldOptions {
-  src: string;
+  src: string
 }
 
 export interface CloudinaryLoaderLoaderOptions {
