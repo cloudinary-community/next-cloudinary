@@ -1,3 +1,15 @@
+# [6.16.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.15.0...v6.16.0) (2024-10-22)
+
+
+### Bug Fixes
+
+* lockfile ([cb44682](https://github.com/cloudinary-community/next-cloudinary/commit/cb4468258a0589dabc614ccbf5014d4d37e365de))
+
+
+### Features
+
+* nextjs 15 support in package.json ([fb75bff](https://github.com/cloudinary-community/next-cloudinary/commit/fb75bffabc41390339c2b5dc3cd754e473d5674e))
+
 # [6.15.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.2...v6.15.0) (2024-10-15)
 
 
