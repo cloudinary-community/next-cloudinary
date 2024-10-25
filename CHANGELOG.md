@@ -1,3 +1,10 @@
+# [7.0.0-beta.5](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.4...v7.0.0-beta.5) (2024-10-25)
+
+
+### Bug Fixes
+
+* upgrading util packages to beta which refactors type system and how props are exported ([08a60de](https://github.com/cloudinary-community/next-cloudinary/commit/08a60de07288a9594efd3f9b4d20a6234dc89446))
+
 # [7.0.0-beta.4](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.3...v7.0.0-beta.4) (2024-10-15)
 
 
