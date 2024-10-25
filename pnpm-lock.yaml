@@ -85,14 +85,14 @@ importers:
   next-cloudinary:
     dependencies:
       '@cloudinary-util/types':
-        specifier: 1.5.10
-        version: 1.5.10
+        specifier: 2.0.0-beta.2
+        version: 2.0.0-beta.2
       '@cloudinary-util/url-loader':
-        specifier: 5.10.4
-        version: 5.10.4
+        specifier: 6.0.0-beta.4
+        version: 6.0.0-beta.4
       '@cloudinary-util/util':
-        specifier: 4.0.0
-        version: 4.0.0
+        specifier: 5.0.0-beta.1
+        version: 5.0.0-beta.1
       next:
         specifier: ^12 || ^13 || ^14 || >=15.0.0-rc
         version: 14.1.0(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
@@ -852,23 +852,20 @@ packages:
   '@cloudinary-util/types@1.4.0':
     resolution: {integrity: sha512-0zWtZ78IlIKS2xrdtPXHCYtLuAbxtlWpNTKb5CGP86wJUCm/r7e12v5xzjcx3tSzY6NlEsnxV88xhp64s834LA==}
 
-  '@cloudinary-util/types@1.5.10':
-    resolution: {integrity: sha512-n5lrm7SdAXhgWEbkSJKHZGnaoO9G/g4WYS6HYnq/k4nLj79sYfQZOoKjyR8hF2iyLRdLkT+qlk68RNFFv5tKew==}
-
-  '@cloudinary-util/url-loader@5.10.4':
-    resolution: {integrity: sha512-gHkdvOaV+rlcwuIT7Vqd0ts/H5bsH4+bwFten/gIZ8oRjzdTBvgIY3R6F8bbJt0pFIEfpFEQLe4rPkl0NNqEWg==}
+  '@cloudinary-util/types@2.0.0-beta.2':
+    resolution: {integrity: sha512-Vk5RQ647CJDawLIm/uvHLfq1jp3w2x4yV0z2BwAYO9FIK5eii/lIAQsHurGztWWrBXnksymGayWT6oVcuHzz7Q==}
 
   '@cloudinary-util/url-loader@5.7.0':
     resolution: {integrity: sha512-Wt9yOeldVRMAFe1NOHG0fxXbGQ5ZP3f/zaH08PHS4nKVneeq5QWMi25sd9sn3QPwZ8CZ+0YGiQVArYhOY/EvAg==}
 
+  '@cloudinary-util/url-loader@6.0.0-beta.4':
+    resolution: {integrity: sha512-/IkhbBbIlnj93+wr57WuhYPFRGeETWx7ahfTYDdc/mp8EHlaJiUTVH5MTKP+drwlbgaN3K48/gyXgmSQ6Ub3yA==}
+
   '@cloudinary-util/util@3.2.0':
     resolution: {integrity: sha512-VJBqAT3W0HQ9kyMagv+EzXkM/VYR9Ks01ewGxsS8T8b2N0NZFPAhYKeU2H9fOXSl6BVrD6aVYjJZAoT8pfQIyA==}
 
-  '@cloudinary-util/util@3.3.2':
-    resolution: {integrity: sha512-Cc0iFxzfl7fcOXuznpeZFGYC885Of/vDgccRDnhTe/8Rf8YKv2PjLtezyo0VgmdA/CpeZy29NCXAsf6liokbwg==}
-
-  '@cloudinary-util/util@4.0.0':
-    resolution: {integrity: sha512-S4xcou/3A7l5o+bcKlw2VHBNgwups7/0lbVDT/cO5YmtrcEYXgj6LGmwnjvpTm/x571VPVN8x5jWdT3rLZiKJQ==}
+  '@cloudinary-util/util@5.0.0-beta.1':
+    resolution: {integrity: sha512-22zCkqAOzKkYSeQTDnmgdfOPMlhq/+XfyGitNstm9QMtFqJGmItqgj9l9Gn05xZGHS3BtSHt21X6A+56XkiFew==}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     resolution: {integrity: sha512-UUb1wS/eWCf4YBThGszoBBzH6kP+frdd5JeJkF0/SOwbX3tkcrdzxD+Srn5GXPCqzf6Gw1nrGrv/3U9hiZP55A==}
@@ -2859,6 +2856,7 @@ packages:
   eslint@8.57.1:
     resolution: {integrity: sha512-ypowyDxpVSYpkXr9WPv2PAZCtNip1Mv5KTW0SCurXv/9iOpcrH9PaqUElksqEB6pChqHGDRCFTyrZlGhnLNGiA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.6.1:
@@ -4678,6 +4676,7 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     deprecated: |-
       You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+
       (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
 
   queue-microtask@1.2.3:
@@ -6585,14 +6584,7 @@ snapshots:
 
   '@cloudinary-util/types@1.4.0': {}
 
-  '@cloudinary-util/types@1.5.10': {}
-
-  '@cloudinary-util/url-loader@5.10.4':
-    dependencies:
-      '@cloudinary-util/types': 1.5.10
-      '@cloudinary-util/util': 3.3.2
-      '@cloudinary/url-gen': 1.15.0
-      zod: 3.22.4
+  '@cloudinary-util/types@2.0.0-beta.2': {}
 
   '@cloudinary-util/url-loader@5.7.0':
     dependencies:
@@ -6601,11 +6593,15 @@ snapshots:
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
 
+  '@cloudinary-util/url-loader@6.0.0-beta.4':
+    dependencies:
+      '@cloudinary-util/types': 2.0.0-beta.2
+      '@cloudinary-util/util': 5.0.0-beta.1
+      '@cloudinary/url-gen': 1.15.0
+
   '@cloudinary-util/util@3.2.0': {}
 
-  '@cloudinary-util/util@3.3.2': {}
-
-  '@cloudinary-util/util@4.0.0': {}
+  '@cloudinary-util/util@5.0.0-beta.1': {}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     dependencies:
