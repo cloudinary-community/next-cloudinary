@@ -2,7 +2,7 @@
 import { useState, useCallback, forwardRef, SyntheticEvent } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { pollForProcessingImage } from '@cloudinary-util/util';
-import { transformationPlugins } from '@cloudinary-util/url-loader';
+import { cloudinaryPluginKeys } from '@cloudinary-util/url-loader';
 import type { ImageOptions, ConfigOptions } from '@cloudinary-util/url-loader';
 
 import { getCldImageUrl } from '../../helpers/getCldImageUrl';
@@ -27,24 +27,8 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
     'config',
     'deliveryType',
     'strictTransformations',
+    ...cloudinaryPluginKeys
   ];
-
-  // Loop through all of the props available on the transformation plugins and verify
-  // that we're not accientally applying the same prop twice
-
-  // We're also using those props to push into CLD_OPTIONS which helps us filter what
-  // props are applied to the underlaying Image component vs what's being sent
-  // to Cloudinary URL construction
-
-  transformationPlugins.forEach(({ props }: { props: Record<string, unknown> }) => {
-    const pluginProps = Object.keys(props);
-    pluginProps.forEach(prop => {
-      if ( CLD_OPTIONS.includes(prop) ) {
-        throw new Error(`Option ${prop} already exists!`);
-      }
-      CLD_OPTIONS.push(prop);
-    });
-  });
 
   // Construct the base Image component props by filtering out Cloudinary-specific props
 
@@ -60,20 +44,6 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
   const defaultImgKey = (Object.keys(imageProps) as Array<keyof typeof imageProps>).map(key => `${key}:${imageProps[key]}`).join(';');
   const [imgKey, setImgKey] = useState(defaultImgKey);
 
-  // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
-
-  type CldOptions = Omit<ImageOptions, 'src'>;
-
-  const cldOptions: CldOptions = {};
-
-  CLD_OPTIONS.forEach((key) => {
-    const prop = props[key as keyof ImageOptions];
-    if ( prop ) {
-      // @ts-expect-error
-      cldOptions[key as keyof CldOptions] = prop;
-    }
-  });
-
   // The unoptimized flag is intended to remove all optimizations including quality, format, and sizing
   // via responsive sizing. When passing this in, it also prevents the `loader` from running, thus
   // breaking this component. This rewrites the `src` to construct a fully formed Cloudinary URL
@@ -84,7 +54,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
 
   if ( props.unoptimized === true || IMAGE_OPTIONS?.unoptimized === true ) {
     imageProps.src = getCldImageUrl({
-      ...cldOptions,
+      ...props,
       width: imageProps.width,
       height: imageProps.height,
       src: imageProps.src as string,
@@ -154,7 +124,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
     <ResolvedImage
       key={imgKey}
       {...imageProps}
-      loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig: props.config })}
+      loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions: props, cldConfig: props.config })}
       onError={handleOnError}
       ref={ref}
     />
