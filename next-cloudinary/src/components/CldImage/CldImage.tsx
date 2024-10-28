@@ -1,29 +1,20 @@
-import React, {
-  useState,
-  useCallback,
-  forwardRef,
-  SyntheticEvent,
-} from "react";
-import Image, { ImageProps } from "next/image";
-import { pollForProcessingImage } from "@cloudinary-util/util";
-import { transformationPlugins } from "@cloudinary-util/url-loader";
-import type { ImageOptions, ConfigOptions } from "@cloudinary-util/url-loader";
+import React, { useState, useCallback, forwardRef, SyntheticEvent } from 'react';
+import Image, { ImageProps } from 'next/image';
+import { pollForProcessingImage } from '@cloudinary-util/util';
+import { transformationPlugins } from '@cloudinary-util/url-loader';
+import type { ImageOptions, ConfigOptions } from '@cloudinary-util/url-loader';
 
-import { getCldImageUrl } from "../../helpers/getCldImageUrl";
+import { getCldImageUrl } from '../../helpers/getCldImageUrl';
 
-import { cloudinaryLoader } from "../../loaders/cloudinary-loader";
+import { cloudinaryLoader } from '../../loaders/cloudinary-loader';
 
-export type CldImageProps = Omit<ImageProps, "src" | "quality"> &
-  ImageOptions & {
-    config?: ConfigOptions;
-    src: string;
-    unoptimized?: boolean;
-  };
+export type CldImageProps = Omit<ImageProps, 'src' | 'quality'> & ImageOptions & {
+  config?: ConfigOptions;
+  src: string;
+  unoptimized?: boolean;
+};
 
-const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
-  props,
-  ref
-) {
+const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(props, ref) {
   let hasThrownError = false;
 
   // Add props here that are intended to only be used for
@@ -31,10 +22,10 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
   // to the DOM
 
   const CLD_OPTIONS = [
-    "assetType",
-    "config",
-    "deliveryType",
-    "strictTransformations",
+    'assetType',
+    'config',
+    'deliveryType',
+    'strictTransformations',
   ];
 
   // Loop through all of the props available on the transformation plugins and verify
@@ -44,33 +35,28 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
   // props are applied to the underlaying Image component vs what's being sent
   // to Cloudinary URL construction
 
-  transformationPlugins.forEach(
-    ({ props }: { props: Record<string, unknown> }) => {
-      const pluginProps = Object.keys(props);
-      pluginProps.forEach((prop) => {
-        if (CLD_OPTIONS.includes(prop)) {
-          throw new Error(`Option ${prop} already exists!`);
-        }
-        CLD_OPTIONS.push(prop);
-      });
-    }
-  );
+  transformationPlugins.forEach(({ props }: { props: Record<string, unknown> }) => {
+    const pluginProps = Object.keys(props);
+    pluginProps.forEach(prop => {
+      if ( CLD_OPTIONS.includes(prop) ) {
+        throw new Error(`Option ${prop} already exists!`);
+      }
+      CLD_OPTIONS.push(prop);
+    });
+  });
 
   // Construct the base Image component props by filtering out Cloudinary-specific props
+
   const imageProps: ImageProps = {
     alt: props.alt,
     src: props.src,
   };
 
   (Object.keys(props) as Array<keyof typeof props>)
-    .filter((key) => typeof key === "string" && !CLD_OPTIONS.includes(key))
-    .forEach((key) => (imageProps[key as keyof ImageProps] = props[key]));
+    .filter(key => typeof key === 'string' && !CLD_OPTIONS.includes(key))
+    .forEach(key => imageProps[key as keyof ImageProps] = props[key]);
 
-  const defaultImgKey = (
-    Object.keys(imageProps) as Array<keyof typeof imageProps>
-  )
-    .map((key) => `${key}:${imageProps[key]}`)
-    .join(";");
+  const defaultImgKey = (Object.keys(imageProps) as Array<keyof typeof imageProps>).map(key => `${key}:${imageProps[key]}`).join(';');
   const [imgKey, setImgKey] = useState(defaultImgKey);
 
   // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
@@ -81,7 +67,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
 
   CLD_OPTIONS.forEach((key) => {
     const prop = props[key as keyof ImageOptions];
-    if (prop) {
+    if ( prop ) {
       // @ts-expect-error
       cldOptions[key as keyof CldOptions] = prop;
     }
@@ -93,24 +79,17 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
   // that also disables format and quality transformations, to deliver it as unoptimized
   // See about unoptimized not working with loader: https://github.com/vercel/next.js/issues/50764
 
-  const IMAGE_OPTIONS: { unoptimized?: boolean } = (process.env
-    .__NEXT_IMAGE_OPTS || {}) as unknown as object;
+  const IMAGE_OPTIONS: { unoptimized?: boolean } = (process.env.__NEXT_IMAGE_OPTS || {}) as unknown as object;
 
-  if (props.unoptimized === true || IMAGE_OPTIONS?.unoptimized === true) {
-    imageProps.src = getCldImageUrl(
-      {
-        ...cldOptions,
-
-        ...{
-          width: imageProps.width,
-          height: imageProps.height,
-          src: imageProps.src as string,
-          format: "default",
-          quality: "default",
-        },
-      },
-      props.config
-    );
+  if ( props.unoptimized === true || IMAGE_OPTIONS?.unoptimized === true ) {
+    imageProps.src = getCldImageUrl({
+      ...cldOptions,
+      width: imageProps.width,
+      height: imageProps.height,
+      src: imageProps.src as string,
+      format: 'default',
+      quality: 'default',
+    }, props.config);
   }
 
   /**
@@ -127,46 +106,38 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
     // up triggering an infinite loop if the resulting image keeps erroring and
     // this function sets a key using the current time to force refresh the UI
 
-    if (hasThrownError) return;
+    if ( hasThrownError ) return;
 
     hasThrownError = true;
 
-    if (typeof props.onError === "function") {
+    if ( typeof props.onError === 'function' ) {
       const onErrorResult = props.onError(options);
 
-      if (typeof onErrorResult === "boolean" && onErrorResult === false) {
+      if ( typeof onErrorResult === 'boolean' && onErrorResult === false ) {
         pollForImage = false;
       }
-    } else if (typeof props.onError === "boolean" && props.onError === false) {
+    } else if ( typeof props.onError === 'boolean' && props.onError === false ) {
       pollForImage = false;
     }
 
     // Give an escape hatch in case the user wants to handle the error themselves
     // or if they want to disable polling for the image
 
-    if (pollForImage === false) return;
+    if ( pollForImage === false ) return;
 
-    const image = options.target as HTMLImageElement;
-    const result = await pollForProcessingImage({ src: image.src });
+    const image = options.target as HTMLImageElement
+    const result = await pollForProcessingImage({ src: image.src })
 
-    if (
-      typeof result.error === "string" &&
-      process.env.NODE_ENV === "development"
-    ) {
-      console.error(
-        `[CldImage] Failed to load image ${props.src}: ${result.error}`
-      );
+    if ( typeof result.error === 'string' && process.env.NODE_ENV === 'development' ) {
+      console.error(`[CldImage] Failed to load image ${props.src}: ${result.error}`)
     }
 
-    if (result.success) {
+    if ( result.success ) {
       setImgKey(`${defaultImgKey};${Date.now()}`);
     }
   }
 
-  const handleOnError = useCallback(onError, [
-    pollForProcessingImage,
-    defaultImgKey,
-  ]);
+  const handleOnError = useCallback(onError, [pollForProcessingImage, defaultImgKey]);
 
   // Copypasta from https://github.com/prismicio/prismic-next/pull/79/files
   // Thanks Angelo!
@@ -175,22 +146,14 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(
   let ResolvedImage = Image;
 
   if ("default" in ResolvedImage) {
-    ResolvedImage = (ResolvedImage as unknown as { default: typeof Image })
-      .default;
+    ResolvedImage = (ResolvedImage as unknown as { default: typeof Image }).default;
   }
 
   return (
     <ResolvedImage
       key={imgKey}
       {...imageProps}
-      loader={(loaderOptions) =>
-        cloudinaryLoader({
-          loaderOptions,
-          imageProps,
-          cldOptions: cldOptions as CldOptions,
-          cldConfig: props.config,
-        })
-      }
+      loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions: cldOptions as CldOptions, cldConfig: props.config })}
       onError={handleOnError}
       ref={ref}
     />

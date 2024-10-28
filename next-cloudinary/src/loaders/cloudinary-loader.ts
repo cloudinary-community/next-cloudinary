@@ -21,7 +21,7 @@ export interface CloudinaryLoader {
 export function cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig = {} }: CloudinaryLoader) {
   const options = {
     ...imageProps,
-    ...cldOptions,
+    ...cldOptions
   }
 
   options.width = typeof options.width === 'string' ? parseInt(options.width) : options.width;
@@ -53,6 +53,6 @@ export function cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldCon
     // for responsive sizing to take effect, so we can utilize the loader width for the base width
     options.width = loaderOptions?.width;
   }
- 
+
   return getCldImageUrl(options, cldConfig);
 }
