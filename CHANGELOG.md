@@ -1,3 +1,11 @@
+# [7.0.0-beta.6](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.5...v7.0.0-beta.6) (2024-10-31)
+
+
+### Bug Fixes
+
+* oops, pnpm lock ([d2e115e](https://github.com/cloudinary-community/next-cloudinary/commit/d2e115ea51b7ab689c9e730e76a0ff66a5b48c5c))
+* upgrading url-loader to new beta ([edeee00](https://github.com/cloudinary-community/next-cloudinary/commit/edeee003fd5d1169fe20ccf54e646bf35467c7a3))
+
 # [7.0.0-beta.5](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.4...v7.0.0-beta.5) (2024-10-25)
 
 
