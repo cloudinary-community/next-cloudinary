@@ -1,3 +1,10 @@
+# [7.0.0-beta.7](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.6...v7.0.0-beta.7) (2024-10-31)
+
+
+### Bug Fixes
+
+* upgrading util packages, fixing prop definitions ([94e9e87](https://github.com/cloudinary-community/next-cloudinary/commit/94e9e87d69565dccf1c2a7c62617b26ef1c7c6f3))
+
 # [7.0.0-beta.6](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.5...v7.0.0-beta.6) (2024-10-31)
 
 
