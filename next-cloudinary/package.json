@@ -36,9 +36,9 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@cloudinary-util/types": "2.0.0-beta.2",
-    "@cloudinary-util/url-loader": "6.0.0-beta.5",
-    "@cloudinary-util/util": "5.0.0-beta.1"
+    "@cloudinary-util/types": "2.0.0-beta.3",
+    "@cloudinary-util/url-loader": "6.0.0-beta.7",
+    "@cloudinary-util/util": "5.0.0-beta.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

@@ -85,14 +85,14 @@ importers:
   next-cloudinary:
     dependencies:
       '@cloudinary-util/types':
-        specifier: 2.0.0-beta.2
-        version: 2.0.0-beta.2
+        specifier: 2.0.0-beta.3
+        version: 2.0.0-beta.3
       '@cloudinary-util/url-loader':
-        specifier: 6.0.0-beta.5
-        version: 6.0.0-beta.5
+        specifier: 6.0.0-beta.7
+        version: 6.0.0-beta.7
       '@cloudinary-util/util':
-        specifier: 5.0.0-beta.1
-        version: 5.0.0-beta.1
+        specifier: 5.0.0-beta.2
+        version: 5.0.0-beta.2
       next:
         specifier: ^12 || ^13 || ^14 || >=15.0.0-rc
         version: 14.1.0(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
@@ -852,20 +852,20 @@ packages:
   '@cloudinary-util/types@1.4.0':
     resolution: {integrity: sha512-0zWtZ78IlIKS2xrdtPXHCYtLuAbxtlWpNTKb5CGP86wJUCm/r7e12v5xzjcx3tSzY6NlEsnxV88xhp64s834LA==}
 
-  '@cloudinary-util/types@2.0.0-beta.2':
-    resolution: {integrity: sha512-Vk5RQ647CJDawLIm/uvHLfq1jp3w2x4yV0z2BwAYO9FIK5eii/lIAQsHurGztWWrBXnksymGayWT6oVcuHzz7Q==}
+  '@cloudinary-util/types@2.0.0-beta.3':
+    resolution: {integrity: sha512-4kc+pxC4/AC2Qqhu4MK9E6ZSXJ3ai4B6UgnjG8U91nsr4HtKOVFBSltl5vi5n7hb4szRFDclVOclEN/9KNWwNA==}
 
   '@cloudinary-util/url-loader@5.7.0':
     resolution: {integrity: sha512-Wt9yOeldVRMAFe1NOHG0fxXbGQ5ZP3f/zaH08PHS4nKVneeq5QWMi25sd9sn3QPwZ8CZ+0YGiQVArYhOY/EvAg==}
 
-  '@cloudinary-util/url-loader@6.0.0-beta.5':
-    resolution: {integrity: sha512-QDr9ziNuP6mUQM80HDR4dkFUfaARqs8wCNE7z6SmSYxZflDlY9D9hUrL+oOnmbJ4oZ7hlJfrOqQ5h5U8mekiFA==}
+  '@cloudinary-util/url-loader@6.0.0-beta.7':
+    resolution: {integrity: sha512-7iWgR41CDlqfuVqXNVKwyXYSXrUbfm1wQy+H2/56H2VEBIyzKjrAfuDHL01xmIsjWWwvfwzatAM2/vKYy9hm0A==}
 
   '@cloudinary-util/util@3.2.0':
     resolution: {integrity: sha512-VJBqAT3W0HQ9kyMagv+EzXkM/VYR9Ks01ewGxsS8T8b2N0NZFPAhYKeU2H9fOXSl6BVrD6aVYjJZAoT8pfQIyA==}
 
-  '@cloudinary-util/util@5.0.0-beta.1':
-    resolution: {integrity: sha512-22zCkqAOzKkYSeQTDnmgdfOPMlhq/+XfyGitNstm9QMtFqJGmItqgj9l9Gn05xZGHS3BtSHt21X6A+56XkiFew==}
+  '@cloudinary-util/util@5.0.0-beta.2':
+    resolution: {integrity: sha512-SkST+WScke9hGKZwCnDXltr9wr9SDrIYBZIhmNdEdfl6J0nNbJC9FNBZ6D2NUlloodOYYzhuitCq7cSkHdPaIg==}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     resolution: {integrity: sha512-UUb1wS/eWCf4YBThGszoBBzH6kP+frdd5JeJkF0/SOwbX3tkcrdzxD+Srn5GXPCqzf6Gw1nrGrv/3U9hiZP55A==}
@@ -6584,7 +6584,7 @@ snapshots:
 
   '@cloudinary-util/types@1.4.0': {}
 
-  '@cloudinary-util/types@2.0.0-beta.2': {}
+  '@cloudinary-util/types@2.0.0-beta.3': {}
 
   '@cloudinary-util/url-loader@5.7.0':
     dependencies:
@@ -6593,15 +6593,15 @@ snapshots:
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
 
-  '@cloudinary-util/url-loader@6.0.0-beta.5':
+  '@cloudinary-util/url-loader@6.0.0-beta.7':
     dependencies:
-      '@cloudinary-util/types': 2.0.0-beta.2
-      '@cloudinary-util/util': 5.0.0-beta.1
+      '@cloudinary-util/types': 2.0.0-beta.3
+      '@cloudinary-util/util': 5.0.0-beta.2
       '@cloudinary/url-gen': 1.15.0
 
   '@cloudinary-util/util@3.2.0': {}
 
-  '@cloudinary-util/util@5.0.0-beta.1': {}
+  '@cloudinary-util/util@5.0.0-beta.2': {}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     dependencies:

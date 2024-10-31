@@ -34,7 +34,9 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
 
   const imageProps: ImageProps = {
     alt: props.alt,
+    height: props.height,
     src: props.src,
+    width: props.width,
   };
 
   (Object.keys(props) as Array<keyof typeof props>)
