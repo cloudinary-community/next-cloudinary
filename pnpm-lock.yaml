@@ -88,8 +88,8 @@ importers:
         specifier: 2.0.0-beta.2
         version: 2.0.0-beta.2
       '@cloudinary-util/url-loader':
-        specifier: 6.0.0-beta.4
-        version: 6.0.0-beta.4
+        specifier: 6.0.0-beta.5
+        version: 6.0.0-beta.5
       '@cloudinary-util/util':
         specifier: 5.0.0-beta.1
         version: 5.0.0-beta.1
@@ -858,8 +858,8 @@ packages:
   '@cloudinary-util/url-loader@5.7.0':
     resolution: {integrity: sha512-Wt9yOeldVRMAFe1NOHG0fxXbGQ5ZP3f/zaH08PHS4nKVneeq5QWMi25sd9sn3QPwZ8CZ+0YGiQVArYhOY/EvAg==}
 
-  '@cloudinary-util/url-loader@6.0.0-beta.4':
-    resolution: {integrity: sha512-/IkhbBbIlnj93+wr57WuhYPFRGeETWx7ahfTYDdc/mp8EHlaJiUTVH5MTKP+drwlbgaN3K48/gyXgmSQ6Ub3yA==}
+  '@cloudinary-util/url-loader@6.0.0-beta.5':
+    resolution: {integrity: sha512-QDr9ziNuP6mUQM80HDR4dkFUfaARqs8wCNE7z6SmSYxZflDlY9D9hUrL+oOnmbJ4oZ7hlJfrOqQ5h5U8mekiFA==}
 
   '@cloudinary-util/util@3.2.0':
     resolution: {integrity: sha512-VJBqAT3W0HQ9kyMagv+EzXkM/VYR9Ks01ewGxsS8T8b2N0NZFPAhYKeU2H9fOXSl6BVrD6aVYjJZAoT8pfQIyA==}
@@ -6593,7 +6593,7 @@ snapshots:
       '@cloudinary/url-gen': 1.15.0
       zod: 3.22.4
 
-  '@cloudinary-util/url-loader@6.0.0-beta.4':
+  '@cloudinary-util/url-loader@6.0.0-beta.5':
     dependencies:
       '@cloudinary-util/types': 2.0.0-beta.2
       '@cloudinary-util/util': 5.0.0-beta.1
