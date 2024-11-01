@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+'use client';
+import { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { generateSignatureCallback, generateUploadWidgetResultCallback, getUploadWidgetOptions, UPLOAD_WIDGET_EVENTS } from '@cloudinary-util/url-loader'
 import {
