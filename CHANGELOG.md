@@ -1,3 +1,10 @@
+# [7.0.0-beta.9](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.8...v7.0.0-beta.9) (2024-11-01)
+
+
+### Bug Fixes
+
+* upgrading to stable releases for url-loader and util packages ([1b9c160](https://github.com/cloudinary-community/next-cloudinary/commit/1b9c160dca04601d133b83d7dc15b34acccfa54f))
+
 # [7.0.0-beta.8](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.7...v7.0.0-beta.8) (2024-11-01)
 
 
