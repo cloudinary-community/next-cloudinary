@@ -56,8 +56,8 @@
     "vitest": "^2.0.5"
   },
   "peerDependencies": {
-    "next": "^12 || ^13 || ^14 || >=15.0.0-rc",
-    "react": "^17 || ^18 || >=19.0.0-beta"
+    "next": "^12 || ^13 || ^14 || >=15.0.0-rc || ^15",
+    "react": "^17 || ^18 || >=19.0.0-beta || ^19"
   },
   "preconstruct": {
     "exports": {

@@ -1,6 +1,5 @@
 # [7.0.0-beta.7](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.6...v7.0.0-beta.7) (2024-10-31)
 
-
 ### Bug Fixes
 
 * upgrading util packages, fixing prop definitions ([94e9e87](https://github.com/cloudinary-community/next-cloudinary/commit/94e9e87d69565dccf1c2a7c62617b26ef1c7c6f3))
@@ -33,7 +32,7 @@
 
 * removed ts-ignore ([#535](https://github.com/cloudinary-community/next-cloudinary/issues/535)) ([32931c9](https://github.com/cloudinary-community/next-cloudinary/commit/32931c9f0aab70a03df8e4f0bca05a56f5d75210)), closes [#426](https://github.com/cloudinary-community/next-cloudinary/issues/426)
 * use more proper type to derive `CldVideoPlayerProps` ([#537](https://github.com/cloudinary-community/next-cloudinary/issues/537)) ([65c3dd1](https://github.com/cloudinary-community/next-cloudinary/commit/65c3dd199176cd91d43161289672381b8c640b68))
-
+* lockfile ([cb44682](https://github.com/cloudinary-community/next-cloudinary/commit/cb4468258a0589dabc614ccbf5014d4d37e365de))
 
 ### Features
 
@@ -52,6 +51,10 @@
 
 * New build tool, no longer requires `use client` directive, marking as breaking for safety
 * use more proper type to derive `CldVideoPlayerProps` ([#537](https://github.com/cloudinary-community/next-cloudinary/issues/537)) ([65c3dd1](https://github.com/cloudinary-community/next-cloudinary/commit/65c3dd199176cd91d43161289672381b8c640b68))
+
+# [6.16.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.15.0...v6.16.0) (2024-10-22)
+
+* nextjs 15 support in package.json ([fb75bff](https://github.com/cloudinary-community/next-cloudinary/commit/fb75bffabc41390339c2b5dc3cd754e473d5674e))
 
 # [6.15.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.2...v6.15.0) (2024-10-15)
 
