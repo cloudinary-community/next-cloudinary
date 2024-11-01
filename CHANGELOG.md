@@ -1,3 +1,10 @@
+# [7.0.0-beta.10](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.9...v7.0.0-beta.10) (2024-11-01)
+
+
+### Bug Fixes
+
+* add src type to CloudinaryLoaderCldOptions interface ([#552](https://github.com/cloudinary-community/next-cloudinary/issues/552)) ([74e1b96](https://github.com/cloudinary-community/next-cloudinary/commit/74e1b96e8d6f81135628c90a61ac6ac2584c3d4b)), closes [#425](https://github.com/cloudinary-community/next-cloudinary/issues/425)
+
 # [7.0.0-beta.9](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.8...v7.0.0-beta.9) (2024-11-01)
 
 
