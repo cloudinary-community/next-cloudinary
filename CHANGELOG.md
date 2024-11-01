@@ -1,3 +1,15 @@
+# [7.0.0-beta.8](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.7...v7.0.0-beta.8) (2024-11-01)
+
+
+### Bug Fixes
+
+* lockfile ([cb44682](https://github.com/cloudinary-community/next-cloudinary/commit/cb4468258a0589dabc614ccbf5014d4d37e365de))
+
+
+### Features
+
+* nextjs 15 support in package.json ([fb75bff](https://github.com/cloudinary-community/next-cloudinary/commit/fb75bffabc41390339c2b5dc3cd754e473d5674e))
+
 # [7.0.0-beta.7](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.6...v7.0.0-beta.7) (2024-10-31)
 
 ### Bug Fixes
