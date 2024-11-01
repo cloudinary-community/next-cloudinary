@@ -63,7 +63,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
 
   type CldOptions = ImageOptions;
 
-  const cldOptions: CldOptions | {} = {};
+  const cldOptions = {} as CldOptions;
 
   CLD_OPTIONS.forEach((key) => {
     const prop = props[key as keyof ImageOptions];
@@ -153,7 +153,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
     <ResolvedImage
       key={imgKey}
       {...imageProps}
-      loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions: cldOptions as CldOptions, cldConfig: props.config })}
+      loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig: props.config })}
       onError={handleOnError}
       ref={ref}
     />
