@@ -1,4 +1,18 @@
-# [6.16.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.15.0...v6.16.0) (2024-10-22)
+# [7.0.0-beta.10](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.9...v7.0.0-beta.10) (2024-11-01)
+
+
+### Bug Fixes
+
+* add src type to CloudinaryLoaderCldOptions interface ([#552](https://github.com/cloudinary-community/next-cloudinary/issues/552)) ([74e1b96](https://github.com/cloudinary-community/next-cloudinary/commit/74e1b96e8d6f81135628c90a61ac6ac2584c3d4b)), closes [#425](https://github.com/cloudinary-community/next-cloudinary/issues/425)
+
+# [7.0.0-beta.9](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.8...v7.0.0-beta.9) (2024-11-01)
+
+
+### Bug Fixes
+
+* upgrading to stable releases for url-loader and util packages ([1b9c160](https://github.com/cloudinary-community/next-cloudinary/commit/1b9c160dca04601d133b83d7dc15b34acccfa54f))
+
+# [7.0.0-beta.8](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.7...v7.0.0-beta.8) (2024-11-01)
 
 
 ### Bug Fixes
@@ -7,6 +21,64 @@
 
 
 ### Features
+
+* nextjs 15 support in package.json ([fb75bff](https://github.com/cloudinary-community/next-cloudinary/commit/fb75bffabc41390339c2b5dc3cd754e473d5674e))
+
+# [7.0.0-beta.7](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.6...v7.0.0-beta.7) (2024-10-31)
+
+### Bug Fixes
+
+* upgrading util packages, fixing prop definitions ([94e9e87](https://github.com/cloudinary-community/next-cloudinary/commit/94e9e87d69565dccf1c2a7c62617b26ef1c7c6f3))
+
+# [7.0.0-beta.6](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.5...v7.0.0-beta.6) (2024-10-31)
+
+
+### Bug Fixes
+
+* oops, pnpm lock ([d2e115e](https://github.com/cloudinary-community/next-cloudinary/commit/d2e115ea51b7ab689c9e730e76a0ff66a5b48c5c))
+* upgrading url-loader to new beta ([edeee00](https://github.com/cloudinary-community/next-cloudinary/commit/edeee003fd5d1169fe20ccf54e646bf35467c7a3))
+
+# [7.0.0-beta.5](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.4...v7.0.0-beta.5) (2024-10-25)
+
+
+### Bug Fixes
+
+* upgrading util packages to beta which refactors type system and how props are exported ([08a60de](https://github.com/cloudinary-community/next-cloudinary/commit/08a60de07288a9594efd3f9b4d20a6234dc89446))
+
+# [7.0.0-beta.4](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.3...v7.0.0-beta.4) (2024-10-15)
+
+
+### Features
+
+* Log x-cld-error on image error ([#553](https://github.com/cloudinary-community/next-cloudinary/issues/553)) ([711c759](https://github.com/cloudinary-community/next-cloudinary/commit/711c75989d30ef544f69914efdb961bd0963d492)), closes [#512](https://github.com/cloudinary-community/next-cloudinary/issues/512)
+
+# [7.0.0-beta.3](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.2...v7.0.0-beta.3) (2024-10-14)
+
+### Bug Fixes
+
+* removed ts-ignore ([#535](https://github.com/cloudinary-community/next-cloudinary/issues/535)) ([32931c9](https://github.com/cloudinary-community/next-cloudinary/commit/32931c9f0aab70a03df8e4f0bca05a56f5d75210)), closes [#426](https://github.com/cloudinary-community/next-cloudinary/issues/426)
+* use more proper type to derive `CldVideoPlayerProps` ([#537](https://github.com/cloudinary-community/next-cloudinary/issues/537)) ([65c3dd1](https://github.com/cloudinary-community/next-cloudinary/commit/65c3dd199176cd91d43161289672381b8c640b68))
+* lockfile ([cb44682](https://github.com/cloudinary-community/next-cloudinary/commit/cb4468258a0589dabc614ccbf5014d4d37e365de))
+
+### Features
+
+* added unique id generation using React's `useId()` hook ([#529](https://github.com/cloudinary-community/next-cloudinary/issues/529)) ([682f4c2](https://github.com/cloudinary-community/next-cloudinary/commit/682f4c22cf7ed710383b34a9f52cf3db05bd1fb1)), closes [#493](https://github.com/cloudinary-community/next-cloudinary/issues/493)
+
+# [7.0.0-beta.2](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.1...v7.0.0-beta.2) (2024-10-03)
+
+* Switch to Preconstruct for library building ([#520](https://github.com/cloudinary-community/next-cloudinary/issues/520)) ([a35a928](https://github.com/cloudinary-community/next-cloudinary/commit/a35a92872dc2e78626060e977b2bf7b1b60856dd))
+
+# [7.0.0-beta.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.13.0...v7.0.0-beta.1) (2024-09-27)
+
+### Features
+* make sure to publish types ([#528](https://github.com/cloudinary-community/next-cloudinary/issues/528)) ([b1d1f61](https://github.com/cloudinary-community/next-cloudinary/commit/b1d1f61ba086959f05d0d3bcd08747c7e2b33abc))
+
+### BREAKING CHANGES
+
+* New build tool, no longer requires `use client` directive, marking as breaking for safety
+* use more proper type to derive `CldVideoPlayerProps` ([#537](https://github.com/cloudinary-community/next-cloudinary/issues/537)) ([65c3dd1](https://github.com/cloudinary-community/next-cloudinary/commit/65c3dd199176cd91d43161289672381b8c640b68))
+
+# [6.16.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.15.0...v6.16.0) (2024-10-22)
 
 * nextjs 15 support in package.json ([fb75bff](https://github.com/cloudinary-community/next-cloudinary/commit/fb75bffabc41390339c2b5dc3cd754e473d5674e))
 
@@ -26,20 +98,21 @@
 
 ## [6.14.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.0...v6.14.1) (2024-10-04)
 
+## [6.14.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.1...v6.14.2) (2024-10-14)
+
+## [6.14.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.14.0...v6.14.1) (2024-10-04)
 
 ### Bug Fixes
 
 * removed ts-ignore ([#535](https://github.com/cloudinary-community/next-cloudinary/issues/535)) ([32931c9](https://github.com/cloudinary-community/next-cloudinary/commit/32931c9f0aab70a03df8e4f0bca05a56f5d75210)), closes [#426](https://github.com/cloudinary-community/next-cloudinary/issues/426)
 
+
 # [6.14.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.13.0...v6.14.0) (2024-10-03)
-
-
-### Features
 
 * added unique id generation using React's `useId()` hook ([#529](https://github.com/cloudinary-community/next-cloudinary/issues/529)) ([682f4c2](https://github.com/cloudinary-community/next-cloudinary/commit/682f4c22cf7ed710383b34a9f52cf3db05bd1fb1)), closes [#493](https://github.com/cloudinary-community/next-cloudinary/issues/493)
 
-# [6.13.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.12.0...v6.13.0) (2024-09-13)
 
+# [6.13.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.12.0...v6.13.0) (2024-09-13)
 
 ### Features
 
