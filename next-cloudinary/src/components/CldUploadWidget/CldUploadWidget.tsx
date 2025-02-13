@@ -137,7 +137,7 @@ const CldUploadWidget = ({
       widget.current?.destroy();
       widget.current = undefined;
     }
-  }, [])
+  }, [widget.current])
 
   /**
    * Instance Methods
