@@ -49,10 +49,15 @@ export function useTriggerOnIdle() {
     }
     
     // Trigger new callback
-    callbackId.current = triggerOnIdle(() => {
-      callbackId.current = undefined; // Clear after execution
-      callback();
+    const currentId = triggerOnIdle(() => {
+      // Only execute if this callback ID is still current (not cancelled)
+      if (callbackId.current === currentId) {
+        callbackId.current = undefined; // Clear after execution
+        callback();
+      }
     });
+    
+    callbackId.current = currentId;
   }, []);
 
   // Cleanup on unmount
