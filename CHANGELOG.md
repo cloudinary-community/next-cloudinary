@@ -1,3 +1,10 @@
+# [7.0.0-beta.11](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.10...v7.0.0-beta.11) (2025-09-16)
+
+
+### Bug Fixes
+
+* updating util packages ([56910f1](https://github.com/cloudinary-community/next-cloudinary/commit/56910f17df76f1b061210d1c44d1d32a65679819))
+
 # [7.0.0-beta.10](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.9...v7.0.0-beta.10) (2024-11-01)
 
 
