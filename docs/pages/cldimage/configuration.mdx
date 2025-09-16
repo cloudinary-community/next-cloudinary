@@ -573,6 +573,11 @@ a background, or an object, which can take the following options:
       type: 'string',
       example: () => (<code>cupcakes</code>),
     },
+    {
+      prop: 'seed',
+      type: 'number',
+      example: () => (<code>3</code>),
+    },
   ]}
 />
 
@@ -590,7 +595,8 @@ Customizing options:
 fillBackground={{
   crop: 'clpad',
   gravity: 'south',
-  prompt: 'cupcakes'
+  prompt: 'cupcakes',
+  seed: 3
 }}
 ```
 

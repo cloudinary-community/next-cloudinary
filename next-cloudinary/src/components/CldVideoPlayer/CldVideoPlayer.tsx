@@ -1,4 +1,5 @@
-import React, {useRef, MutableRefObject, useEffect, useId} from 'react';
+'use client';
+import {useRef, MutableRefObject, useEffect, useId} from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import { CloudinaryVideoPlayer } from '@cloudinary-util/types';
