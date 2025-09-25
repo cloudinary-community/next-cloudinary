@@ -167,7 +167,7 @@ right inside of Next.js.
       more: () => (<a className="whitespace-nowrap" href="https://cloudinary.com/documentation/transformation_reference#e_extract">More Info</a>)
     },
     {
-      prop: 'fillBackground (Beta)',
+      prop: 'fillBackground',
       type: 'boolean | object',
       default: '-',
       example: () => (<code>{`{{ gravity: 'east' }}`}</code>),
@@ -424,9 +424,6 @@ crop={{
 
 ### `enhance`
 
-<Callout emoji={false} type="info">
-  Generative Enhance is currently in beta.
-</Callout>
 
 Uses generative AI to enhance the visual appeal of an image.
 
@@ -443,11 +440,6 @@ enhance
 
 
 ### `extract`
-
-<Callout emoji={false} type="info">
-  Extract is currently in beta.
-</Callout>
-
 
 Extracts an area or multiple areas of an image, described in natural language, keeping
 the content of the extracted area (like background removal) or making the extracted area
@@ -533,9 +525,6 @@ extract={{
 
 ### `fillBackground`
 
-<Callout emoji={false} type="info">
-  Generative Fill is currently in beta.
-</Callout>
 
 Automatically fills the padded area using generative AI to extend the image seamlessly.
 
@@ -622,9 +611,6 @@ loop
 
 ### `recolor`
 
-<Callout emoji={false} type="info">
-  Generative Recolor is currently in beta.
-</Callout>
 
 Uses generative AI to recolor parts of your image, maintaining the relative shading.
 
@@ -686,10 +672,6 @@ recolor={{
 [Learn more about the Generative Recolor transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_recolor) on the Cloudinary docs.
 
 ### `remove`
-
-<Callout emoji={false} type="info">
-  Generative Remove is currently in beta.
-</Callout>
 
 Uses generative AI to remove unwanted parts of your image, replacing the area with realistic pixels.
 
@@ -799,10 +781,6 @@ removeBackground
 
 ### `replace`
 
-<Callout emoji={false} type="info">
-  Generative Replace is currently in beta.
-</Callout>
-
 Uses generative AI to replace parts of your image with something else.
 
 The `replace` prop can either be an array with the objects to be replaced or an object
@@ -864,10 +842,6 @@ replace={{
 
 ### `replaceBackground`
 
-<Callout emoji={false} type="info">
-  Generative Replace Background is currently in beta.
-</Callout>
-
 Uses generative AI to replace the background of your image.
 
 The `replaceBackground` prop can be a boolean, string, or object
@@ -928,10 +902,6 @@ replaceBackground={{
 [Learn more about the Generative Replace Background transformation](https://cloudinary.com/documentation/transformation_reference#e_gen_background_replace) on the Cloudinary docs.
 
 ### `restore`
-
-<Callout emoji={false} type="info">
-  Generative Restore is currently in beta.
-</Callout>
 
 Uses generative AI to restore details in poor quality images or images that may have become degraded through repeated processing and compression.
 
