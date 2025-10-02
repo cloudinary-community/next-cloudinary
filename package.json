@@ -1,7 +1,7 @@
 {
   "name": "next-cloudinary",
   "repository": "git@github.com:cloudinary-community/next-cloudinary.git",
-  "author": "Colby Fayock <hello@colbyfayock.com>",
+  "author": "Cloudinary",
   "license": "MIT",
   "private": true,
   "scripts": {
