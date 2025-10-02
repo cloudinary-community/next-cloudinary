@@ -1,7 +1,7 @@
 {
   "name": "next-cloudinary",
   "repository": "git@github.com:cloudinary-community/next-cloudinary.git",
-  "author": "Cloudinary",
+  "author": "Cloudinary <devrel@cloudinary.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
