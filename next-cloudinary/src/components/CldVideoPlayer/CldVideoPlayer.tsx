@@ -127,7 +127,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
       <Head>
         <link href={`https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.min.css`} rel="stylesheet" />
       </Head>
-      <div style={{ width: '100%', aspectRatio: `${width} / ${height}`}}>
+      <div style={{ width: '100%' }}>
         <video
           ref={videoRef}
           id={playerId}
