@@ -79,7 +79,7 @@ import { CldImage } from 'next-cloudinary';
 ## ❤️ Community & Support
 
 * [GitHub: Create an Issue](https://github.com/cloudinary-community/next-cloudinary/issues)
-* [Twitter: @colbyfayock](https://twitter.com/colbyfayock)
+* [Twitter: @cloudinary](https://twitter.com/cloudinary)
 
 ## 🛠 Contributing
 
