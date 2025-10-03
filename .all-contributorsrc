@@ -336,6 +336,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "thinkverse",
+      "name": "Kim Hallberg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2221746?v=4",
+      "profile": "https://github.com/thinkverse",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
