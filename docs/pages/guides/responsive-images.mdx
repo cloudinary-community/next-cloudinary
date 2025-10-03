@@ -70,7 +70,8 @@ in order to provide the responsive sizing.
 
 In the example above, the output would look like:
 
-```
+<CodeBlock>
+```html copy showLineNumbers
 <img
   alt="Turtle"
   loading="lazy"
@@ -95,6 +96,7 @@ In the example above, the output would look like:
   src="https://res.cloudinary.com/<Cloud Name>/image/upload/c_limit,w_3840/f_auto/q_auto/v1/<Public ID>"
 >
 ```
+</CodeBlock>
 
 Where the image is automatically generated on the fly with Cloudinary by passing
 in a URL parameter of `w_<width>`.
@@ -146,7 +148,8 @@ Each image will be cropped to a 1:1 ratio represented by the width and height pr
 As the underlaying Next Image component generates an image for each responsive size,
 Cloudinary will use those sizes when building the URL, for example:
 
-```
+<CodeBlock>
+```html copy showLineNumbers
 <img
   alt="Turtle"
   loading="lazy"
@@ -169,6 +172,7 @@ Cloudinary will use those sizes when building the URL, for example:
   src="https://res.cloudinary.com/<Cloud Name>/image/upload/c_fill,w_3840,h_3840,g_auto/f_auto/q_auto/v1/<Public ID>"
 >
 ```
+</CodeBlock>
 
 And so on...
 
