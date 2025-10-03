@@ -207,6 +207,9 @@ pnpm test
       <td align="center" valign="top" width="14.28%"><a href="http://neilblaze.live"><img src="https://avatars.githubusercontent.com/u/48355572?v=4?s=100" width="100px;" alt="Pratyay Banerjee"/><br /><sub><b>Pratyay Banerjee</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=Neilblaze" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/saai-syvendra"><img src="https://avatars.githubusercontent.com/u/157691467?v=4?s=100" width="100px;" alt="Saai Syvendra"/><br /><sub><b>Saai Syvendra</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=saai-syvendra" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Zaki-Mohd"><img src="https://avatars.githubusercontent.com/u/181067270?v=4?s=100" width="100px;" alt="Mohammad Zaki"/><br /><sub><b>Mohammad Zaki</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=Zaki-Mohd" title="Documentation">📖</a></td>
+    </tr>
   </tbody>
 </table>
 
