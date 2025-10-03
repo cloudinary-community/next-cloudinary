@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { CldVideoPlayer } from "next-cloudinary";
 
 import OgImage from '../../components/OgImage';
 import Table from '../../components/Table';
@@ -523,6 +524,7 @@ be loaded from as well as any customization of that track.
 **Examples**
 
 ```jsx
+<CldVideoPlayer
 textTracks={{
   captions: {
       label: 'English',
@@ -532,6 +534,7 @@ textTracks={{
     }
   }
 }
+/>
 ```
 
 Learn more on the [Video Player Reference](https://cloudinary.com/documentation/video_player_api_reference#text_tracks) or
