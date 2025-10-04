@@ -28,6 +28,44 @@ describe('Cloudinary', () => {
 
       expect(url).toContain(`https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_100/f_auto/q_auto/v1/turtle`);
     });
+
+    it('should support auto_pad crop mode with auto gravity', () => {
+      const cloudName = 'customtestcloud';
+
+      process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME = cloudName;
+
+      const url = getCldImageUrl({
+        src: 'turtle',
+        width: 960,
+        aspectRatio: '16:9',
+        crop: 'auto_pad',
+        gravity: 'auto'
+      });
+
+      expect(url).toContain('c_auto_pad');
+      expect(url).toContain('g_auto');
+      expect(url).toContain('ar_16:9');
+      expect(url).toContain('w_960');
+    });
+
+    it('should support auto_pad crop mode with width and height', () => {
+      const cloudName = 'customtestcloud';
+
+      process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME = cloudName;
+
+      const url = getCldImageUrl({
+        src: 'turtle',
+        width: 960,
+        height: 540,
+        crop: 'auto_pad',
+        gravity: 'auto'
+      });
+
+      expect(url).toContain('c_auto_pad');
+      expect(url).toContain('g_auto');
+      expect(url).toContain('w_960');
+      expect(url).toContain('h_540');
+    });
   });
 
   describe('Config', () => {
