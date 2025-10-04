@@ -11,6 +11,7 @@ import { GetCldVideoUrlOptions } from '../../helpers/getCldVideoUrl';
 export type CldVideoPlayerProps = Omit<GetVideoPlayerOptions, "cloud_name" | "autoplayMode" | "publicId" | "secure" | "showLogo" | "logoImageUrl" | "logoOnclickUrl"> & {
   className?: string;
   config?: ConfigOptions;
+  disableRemotePlayback?: boolean;
   id?: string;
   logo?: boolean | CldVideoPlayerPropsLogo;
   onDataLoad?: Function;
