@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import NewsletterSubscription from './components/NewsletterSubscription';
 
 export default {
   project: {
@@ -14,7 +15,12 @@ export default {
     }
   },
   footer: {
-    text: `MIT ${new Date().getFullYear()} © Colby Fayock`,
+    text: (
+      <div className="w-full flex flex-col items-center gap-4 py-6">
+        <NewsletterSubscription />
+        <span>MIT {new Date().getFullYear()} © Colby Fayock</span>
+      </div>
+    )
   },
   editLink: {
     text: 'Edit this page on GitHub'
