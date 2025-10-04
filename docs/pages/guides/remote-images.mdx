@@ -1,0 +1,96 @@
+import Head from 'next/head';
+import CodeBlock from '../../components/CodeBlock';
+import OgImage from '../../components/OgImage';
+import Video from '../../components/Video';
+
+
+<Head>
+    <title>Remote Images - Next Cloudinary</title>
+    <meta name="og:title" content="Delivering Remote Images - Next Cloudinary" />
+    <meta name="og:url" content={`https://next.cloudinary.dev/guides/remote-images`} />
+</Head>
+
+<OgImage title="Remote Images" twitterTitle="Delivering Remote Images" />
+
+# Working with Remote Images
+
+You can leverage Cloudinary's powerful transformation and delivery features even for images not stored in your Cloudinary account.
+
+Next-cloudinary provides two primary methods for working with remote images: 
+
+## Method 1: Fetching Remote Images On-the-Fly
+
+The `Fetch` delivery method allows you to use a remote image URL as a source for the `CldImage` component.
+
+Cloudinary will fetch the image, apply transformations, cache it on the CDN, and deliver it, all without storing it in your Media Library.
+
+This is the simplest way to get started with remote media.
+
+### Example:
+
+To use this method, provide the remote image URL to the `src` prop and add the `deliveryType="fetch"` prop
+
+<CodeBlock>
+```jsx copy showLineNumbers
+  import { CldImage } from 'next-cloudinary';
+
+  <CldImage
+  width="400"
+  height="400"
+  src="your image url "
+  deliveryType="fetch"
+  // Apply transformations like any other Cloudinary image
+  alt="Next.js Logo"
+  />
+  ```
+</CodeBlock>
+This will generate a Cloudinary URL prefixed with `/image/fetch/`, which instructs Cloudinary to retrieve the image from the source URL
+
+## Method 2: Auto-Uploading Remote Images
+
+This method automatically uploads an image from a remote source to your Cloudinary Media Library the first time it's requested.
+
+Subsequent requests will serve the now-stored Cloudinary asset. This is a powerful Cloudinary feature that works seamlessly with next-cloudinary.
+
+### Use Cases  
+
+- Migrating an existing media library from a service like S3 to Cloudinary without downtime 
+- Permanently storing and managing remote assets in Cloudinary
+- Building a media library from a trusted, remote source over time 
+
+### How to Set Up Auto-Upload Mapping:
+
+1. Navigate to your Cloudinary settings: Go to `Settings` >` Upload`.
+2. Find the `Auto upload mapping` section: Here you will define the mapping.
+3. Create a new mapping:
+- **Target Folder**: : A virtual folder name to use in your src prop (e.g., `s3-images`).
+- **Source URL prefix**: Paste the base URL of your remote image storage (e.g., `https://my-s3-bucket.s3.amazonaws.com/images/`).
+4. Save your changes
+
+### Example Usage:
+<Video
+  title="Upload Images & Videos to Cloudinary Automatically with Auto Upload"
+  url="https://www.youtube.com/watch?v=LJhsn5A0PFE"
+/>
+
+
+
+### Implementation with `CldImage`
+
+Once your mapping is configured, construct the src prop by combining your mapped folder with the remote image's path
+
+<CodeBlock>
+```jsx copy showLineNumbers
+ import { CldImage } from 'next-cloudinary';
+
+// Remote URL: https://my-s3-bucket.s3.amazonaws.com/images/product-image.jpg
+// Mapped Folder: s3-images
+
+<CldImage
+  width="960"
+  height="600"
+  src="s3-images/product-image.jpg"
+  alt="An image that will be auto-uploaded"
+/>
+  ```
+</CodeBlock>
