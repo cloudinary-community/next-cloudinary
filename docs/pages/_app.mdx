@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/react';
 import { GoogleAnalytics } from "nextjs-google-analytics";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import 'nextra-theme-docs/style.css';
 import '../styles/global.scss';
@@ -17,6 +19,7 @@ export default function Nextra({ Component, pageProps }) {
         </Link>
       </div>
       <Component {...pageProps} />
+      <ToastContainer position="top-right" autoClose={3000} />
       <Analytics />
     </>
   );
