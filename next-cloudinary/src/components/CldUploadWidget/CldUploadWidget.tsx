@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useId } from 'react';
 import Script from 'next/script';
 import { generateSignatureCallback, generateUploadWidgetResultCallback, getUploadWidgetOptions, UPLOAD_WIDGET_EVENTS } from '@cloudinary-util/url-loader'
 import {
@@ -40,6 +40,8 @@ const CldUploadWidget = ({
   const [error, setError] = useState<CloudinaryUploadWidgetError | undefined>(undefined);
   const [results, setResults] = useState<CloudinaryUploadWidgetResults | undefined>(undefined);
   const [isScriptLoading, setIsScriptLoading] = useState(true);
+  
+  const uniqueId = useId();
 
   // When creating a signed upload, you need to provide both your Cloudinary API Key
   // as well as a signature generator function that will sign any paramters
@@ -239,7 +241,7 @@ const CldUploadWidget = ({
         ...instanceMethods,
       })}
       <Script
-        id={`cloudinary-uploadwidget-${Math.floor(Math.random() * 100)}`}
+        id={`cloudinary-uploadwidget-${uniqueId.replace(/:/g, '')}`}
         src="https://upload-widget.cloudinary.com/global/all.js"
         onLoad={handleOnLoad}
         onError={(e) => console.error(`Failed to load Cloudinary Upload Widget: ${e.message}`)}
