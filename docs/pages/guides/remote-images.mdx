@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import CodeBlock from '../../components/CodeBlock';
 import OgImage from '../../components/OgImage';
+import { CldImage } from '../../../next-cloudinary';
+import HeaderImage from '../../components/HeaderImage';
 import Video from '../../components/Video';
 
 
@@ -16,11 +18,11 @@ import Video from '../../components/Video';
 
 You can leverage Cloudinary's powerful transformation and delivery features even for images not stored in your Cloudinary account.
 
-Next-cloudinary provides two primary methods for working with remote images: 
+The `CldImage` component provides two primary methods for working with remote images: 
 
 ## Method 1: Fetching Remote Images On-the-Fly
 
-The `Fetch` delivery method allows you to use a remote image URL as a source for the `CldImage` component.
+[The `fetch` delivery method](https://cloudinary.com/documentation/fetch_remote_images) allows you to use a remote image URL as a source for the `CldImage` component.
 
 Cloudinary will fetch the image, apply transformations, cache it on the CDN, and deliver it, all without storing it in your Media Library.
 
@@ -28,29 +30,40 @@ This is the simplest way to get started with remote media.
 
 ### Example:
 
-To use this method, provide the remote image URL to the `src` prop and add the `deliveryType="fetch"` prop
+To use this method, provide the remote image URL to the `src` prop and set the `deliveryType` prop to `"fetch"`
+
+<HeaderImage>
+  <CldImage
+    width="960"
+    height="600"
+    src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png"
+    alt="Wikipedia logo"
+    tint="70:blue:purple"
+    deliveryType="fetch"
+  />
+</HeaderImage>
 
 <CodeBlock>
 ```jsx copy showLineNumbers
   import { CldImage } from 'next-cloudinary';
 
   <CldImage
-  width="400"
-  height="400"
-  src="your image url "
+  width="960"
+  height="600"
+  src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png"
   deliveryType="fetch"
   // Apply transformations like any other Cloudinary image
-  alt="Next.js Logo"
+  tint="70:blue:purple"
+  alt="Wikipedia Logo"
   />
   ```
 </CodeBlock>
-This will generate a Cloudinary URL prefixed with `/image/fetch/`, which instructs Cloudinary to retrieve the image from the source URL
+This will generate a Cloudinary URL `https://res.cloudinary.com/<your-cloud-name>/image/fetch/f_auto,q_auto,w_960,h_600/https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png`,
+ which instructs Cloudinary to retrieve the image from the source URL
 
 ## Method 2: Auto-Uploading Remote Images
 
 This method automatically uploads an image from a remote source to your Cloudinary Media Library the first time it's requested.
-
-Subsequent requests will serve the now-stored Cloudinary asset. This is a powerful Cloudinary feature that works seamlessly with next-cloudinary.
 
 ### Use Cases  
 
@@ -67,7 +80,9 @@ Subsequent requests will serve the now-stored Cloudinary asset. This is a powerf
 - **Source URL prefix**: Paste the base URL of your remote image storage (e.g., `https://my-s3-bucket.s3.amazonaws.com/images/`).
 4. Save your changes
 
-### Example Usage:
+For more details, see the official Cloudinary documentation on [Lazy Migration with Auto-Upload](https://cloudinary.com/documentation/migration#lazy_migration_with_auto_upload).
+
+### Watch & Learn :
 <Video
   title="Upload Images & Videos to Cloudinary Automatically with Auto Upload"
   url="https://www.youtube.com/watch?v=LJhsn5A0PFE"
@@ -77,7 +92,7 @@ Subsequent requests will serve the now-stored Cloudinary asset. This is a powerf
 
 ### Implementation with `CldImage`
 
-Once your mapping is configured, construct the src prop by combining your mapped folder with the remote image's path
+Once your mapping is configured, construct the `src` prop by combining your mapped folder with the remote image's path
 
 <CodeBlock>
 ```jsx copy showLineNumbers
