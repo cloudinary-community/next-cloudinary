@@ -1,4 +1,4 @@
-import React, { useState, useCallback, forwardRef, SyntheticEvent } from 'react';
+import React, { useState, useCallback, forwardRef, SyntheticEvent, CSSProperties } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { pollForProcessingImage } from '@cloudinary-util/util';
 import { transformationPlugins } from '@cloudinary-util/url-loader';
@@ -13,6 +13,33 @@ export type CldImageProps = Omit<ImageProps, 'src' | 'quality'> & ImageOptions &
   src: string;
   unoptimized?: boolean;
 };
+
+/**
+ * Generates a shimmer placeholder SVG with enhanced visibility
+ */
+const shimmer = (w: number, h: number) => `
+  <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <linearGradient id="g">
+        <stop stop-color="#e0e0e0" offset="0%" />
+        <stop stop-color="#f0f0f0" offset="20%" />
+        <stop stop-color="#ffffff" offset="50%" />
+        <stop stop-color="#f0f0f0" offset="80%" />
+        <stop stop-color="#e0e0e0" offset="100%" />
+      </linearGradient>
+    </defs>
+    <rect width="${w}" height="${h}" fill="#e8e8e8" />
+    <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+    <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1.2s" repeatCount="indefinite" />
+  </svg>`;
+
+/**
+ * Converts string to base64
+ */
+const toBase64 = (str: string) =>
+  typeof window === 'undefined'
+    ? Buffer.from(str).toString('base64')
+    : window.btoa(str);
 
 const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(props, ref) {
   let hasThrownError = false;
@@ -58,6 +85,7 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
 
   const defaultImgKey = (Object.keys(imageProps) as Array<keyof typeof imageProps>).map(key => `${key}:${imageProps[key]}`).join(';');
   const [imgKey, setImgKey] = useState(defaultImgKey);
+  const [isPolling, setIsPolling] = useState(false);
 
   // Construct Cloudinary-specific props by looking for values for any of the supported prop keys
 
@@ -110,6 +138,12 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
 
     hasThrownError = true;
 
+    // Immediately hide the image DOM element to prevent broken icon from appearing
+    // This runs synchronously before setState queues re-render
+    const img = options.target as HTMLImageElement;
+    img.style.opacity = '0';
+    img.style.visibility = 'hidden';
+
     if ( typeof props.onError === 'function' ) {
       const onErrorResult = props.onError(options);
 
@@ -125,8 +159,13 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
 
     if ( pollForImage === false ) return;
 
-    const image = options.target as HTMLImageElement
-    const result = await pollForProcessingImage({ src: image.src })
+    // Set polling state to show placeholder (triggers shimmer overlay)
+    setIsPolling(true);
+
+    const result = await pollForProcessingImage({ src: img.src })
+
+    // Reset polling state
+    setIsPolling(false);
 
     if ( typeof result.error === 'string' && process.env.NODE_ENV === 'development' ) {
       console.error(`[CldImage] Failed to load image ${props.src}: ${result.error}`)
@@ -149,14 +188,80 @@ const CldImage = forwardRef<HTMLImageElement, CldImageProps>(function CldImage(p
     ResolvedImage = (ResolvedImage as unknown as { default: typeof Image }).default;
   }
 
+  // Generate shimmer placeholder for polling state
+  const width = typeof imageProps.width === 'number' ? imageProps.width : 600;
+  const height = typeof imageProps.height === 'number' ? imageProps.height : 400;
+  const shimmerDataUrl = `data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`;
+
+  // If user hasn't provided a placeholder and we're polling, use shimmer
+  const effectivePlaceholder = isPolling && !imageProps.placeholder 
+    ? shimmerDataUrl 
+    : imageProps.placeholder;
+
+  const containerStyle: CSSProperties = {
+    position: 'relative',
+    display: 'inline-block',
+    width: '100%',
+  };
+
+  const imageStyle: CSSProperties = {
+    ...(typeof imageProps.style === 'object' ? imageProps.style : {}),
+    visibility: isPolling ? 'hidden' : 'visible',
+    opacity: isPolling ? 0 : 1,
+    transition: 'opacity 0.3s ease-in-out',
+  };
+
+  const placeholderStyle: CSSProperties = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    opacity: isPolling ? 1 : 0,
+    transition: 'opacity 0.3s ease-in-out',
+    pointerEvents: 'none',
+    zIndex: 1,
+    background: 'linear-gradient(90deg, #d0d0d0 0%, #e0e0e0 20%, #f0f0f0 50%, #e0e0e0 80%, #d0d0d0 100%)',
+    backgroundSize: '200% 100%',
+    animation: isPolling ? 'shimmer 1.5s ease-in-out infinite' : 'none',
+  };
+
+  // Hide broken image icon by making container overflow hidden and hiding alt text
+  const imageContainerStyle: CSSProperties = {
+    ...containerStyle,
+    overflow: 'hidden',
+    backgroundColor: 'transparent',
+  };
+
+  // Inject keyframes for shimmer animation
+  const shimmerKeyframes = `
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+  `;
+
   return (
-    <ResolvedImage
-      key={imgKey}
-      {...imageProps}
-      loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig: props.config })}
-      onError={handleOnError}
-      ref={ref}
-    />
+    <>
+      <style dangerouslySetInnerHTML={{ __html: shimmerKeyframes }} />
+      <div style={imageContainerStyle}>
+        <ResolvedImage
+          key={imgKey}
+          {...imageProps}
+          style={imageStyle}
+          loader={(loaderOptions) => cloudinaryLoader({ loaderOptions, imageProps, cldOptions, cldConfig: props.config })}
+          onError={handleOnError}
+          ref={ref}
+        />
+        {isPolling && (
+          <div style={placeholderStyle} />
+        )}
+      </div>
+    </>
   );
 });
 
