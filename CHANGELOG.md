@@ -1,3 +1,11 @@
+## [6.16.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.16.0...v6.16.1) (2025-10-17)
+
+
+### Bug Fixes
+
+* **typo:** remove colon from Watch & Learn ([43fdeda](https://github.com/cloudinary-community/next-cloudinary/commit/43fdeda2b028dfa3b4194f63ecc56cc173afc035))
+* url ([15179f7](https://github.com/cloudinary-community/next-cloudinary/commit/15179f7d768d4e2f57b207ca6973142adc15320d))
+
 # [6.16.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.15.0...v6.16.0) (2024-10-22)
 
 
