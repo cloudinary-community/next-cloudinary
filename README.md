@@ -11,10 +11,6 @@
 
 # Next Cloudinary
 
-<!-- doc-gen PKGJSON optionOne="hey" -->
-undefined
-<!-- end-doc-gen -->
-
 High-performance image delivery and uploading at scale in Next.js powered by Cloudinary.
 
 <a href="#-features">Features</a> • <a href="#-getting-started">Getting Started</a> • <a href="#%EF%B8%8F-community--support">Community & Support</a> • <a href="#-contributing">Contributing</a>
