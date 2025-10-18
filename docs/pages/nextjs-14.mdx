@@ -40,7 +40,7 @@ To avoid marking an entire page as a Client Component, you can create a basic wr
 ```jsx copy showLineNumbers
 "use client";
 
-import { CldImage as CldImageDefault, CldImageProps }  from 'next-cloudinary';
+import { CldImage as CldImageDefault, type CldImageProps } from 'next-cloudinary';
 
 const CldImage = (props: CldImageProps) => {
   return <CldImageDefault {...props} />
@@ -67,9 +67,13 @@ import { getCldOgImageUrl } from 'next-cloudinary';
 export const metadata = {
   openGraph: {
     ...
-    images: getCldOgImageUrl({
-      src: '<Public ID>'
-    })
+    images: [
+      {
+        url: getCldOgImageUrl({
+          src: 'your-public-id',
+        }),
+      },
+    ],
   },
 };
 ```
