@@ -211,6 +211,7 @@ pnpm test
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Zaki-Mohd"><img src="https://avatars.githubusercontent.com/u/181067270?v=4?s=100" width="100px;" alt="Mohammad Zaki"/><br /><sub><b>Mohammad Zaki</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=Zaki-Mohd" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/thinkverse"><img src="https://avatars.githubusercontent.com/u/2221746?v=4?s=100" width="100px;" alt="Kim Hallberg"/><br /><sub><b>Kim Hallberg</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=thinkverse" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Waqibsk"><img src="https://avatars.githubusercontent.com/u/162541991?v=4?s=100" width="100px;" alt="Md Waqib Sk"/><br /><sub><b>Md Waqib Sk</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=Waqibsk" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://arjuncodess.is-a.dev/"><img src="https://avatars.githubusercontent.com/u/137415649?v=4?s=100" width="100px;" alt="Arjun Vijay Prakash"/><br /><sub><b>Arjun Vijay Prakash</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=ArjunCodess" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
