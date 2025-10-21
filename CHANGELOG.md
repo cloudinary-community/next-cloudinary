@@ -1,3 +1,10 @@
+## [6.16.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.16.1...v6.16.2) (2025-10-21)
+
+
+### Bug Fixes
+
+* resolve CldVideoPlayer fullscreen object-cover issue ([27e2dbb](https://github.com/cloudinary-community/next-cloudinary/commit/27e2dbb45c5d122b1d4ea067d2d565ca0a4a6d61)), closes [#433](https://github.com/cloudinary-community/next-cloudinary/issues/433)
+
 ## [6.16.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.16.0...v6.16.1) (2025-10-17)
 
 
