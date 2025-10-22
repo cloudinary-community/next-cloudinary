@@ -17,6 +17,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const {
     className,
     config,
+    disableRemotePlayback,
     height,
     id,
     onDataLoad,
@@ -172,6 +173,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
           className={playerClassName}
           width={width}
           height={height}
+          disableRemotePlayback={disableRemotePlayback}
         />
         <Script
           id={`cloudinary-videoplayer-${playerId}`}
