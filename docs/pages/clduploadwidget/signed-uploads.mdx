@@ -43,6 +43,16 @@ Setting up CldUploadWidget to sign uploads is as simple as passing an API endpoi
 However, that API endpoint needs to return a specific shape in order to properly communicate
 with the CldUpload Widget.
 
+<Callout emoji="⚠️" type="error">
+  **Security Warning:** The signature endpoint must be properly secured with authentication and authorization checks. Without proper security measures, anyone can upload files to your Cloudinary account, potentially leading to:
+  
+  - Unauthorized storage consumption and bandwidth costs
+  - Malicious content hosting under your account
+  - Account suspension or legal liability
+  
+  **Always implement authentication** before signing upload requests in production environments.
+</Callout>
+
 ## API Endpoint to Sign Requests
 
 When working in Next.js, we gain access to a server environment through both somewhat traditional means
@@ -73,6 +83,10 @@ the App Router or Pages router.
     **In the App Router**, create a new API route file such as `app/api/sign-cloudinary-params/route.ts`, where
     inside, add the folowing code.
 
+    <Callout emoji={false} type="warning">
+      The following example includes basic security measures. **You must add authentication** (session verification, JWT validation, API key check, etc.) before deploying to production.
+    </Callout>
+
     <CodeBlock>
       ```jsx copy showLineNumbers
       import { v2 as cloudinary } from "cloudinary";
@@ -84,12 +98,35 @@ the App Router or Pages router.
       });
 
       export async function POST(request: Request) {
+        // TODO: Add authentication check here
+        // Example: Verify user session, JWT token, or API key
+        // const session = await getServerSession(authOptions);
+        // if (!session || !session.user) {
+        //   return Response.json({ error: 'Unauthorized' }, { status: 401 });
+        // }
+
         const body = await request.json();
         const { paramsToSign } = body;
 
-        const signature = cloudinary.utils.api_sign_request(paramsToSign, process.env.CLOUDINARY_API_SECRET);
-        
-        return Response.json({ signature });
+        // Validate input
+        if (!paramsToSign || typeof paramsToSign !== 'object') {
+          return Response.json({ error: 'Invalid parameters' }, { status: 400 });
+        }
+
+        try {
+          const signature = cloudinary.utils.api_sign_request(
+            paramsToSign, 
+            process.env.CLOUDINARY_API_SECRET
+          );
+          
+          return Response.json({ signature });
+        } catch (error) {
+          console.error('Cloudinary signature error:', error);
+          return Response.json(
+            { error: 'Failed to generate upload signature' }, 
+            { status: 500 }
+          );
+        }
       }
       ```
     </CodeBlock>
@@ -103,6 +140,10 @@ the App Router or Pages router.
       of the Signature Request from the Upload Widget.
     </Callout>
 
+    <Callout emoji={false} type="warning">
+      The following example includes basic security measures. **You must add authentication** (session verification, JWT validation, API key check, etc.) before deploying to production.
+    </Callout>
+
     <CodeBlock>
       ```jsx copy showLineNumbers
       import { v2 as cloudinary } from "cloudinary";
@@ -114,11 +155,38 @@ the App Router or Pages router.
       });
 
       export default async function handler(req, res) {
+        // Validate HTTP method
+        if (req.method !== 'POST') {
+          return res.status(405).json({ error: 'Method not allowed' });
+        }
+
+        // TODO: Add authentication check here
+        // Example: Verify user session, JWT token, or API key
+        // const session = await getSession(req);
+        // if (!session || !session.user) {
+        //   return res.status(401).json({ error: 'Unauthorized' });
+        // }
+
         const { paramsToSign } = req.body;
 
-        const signature = cloudinary.utils.api_sign_request(paramsToSign, process.env.CLOUDINARY_API_SECRET);
+        // Validate input
+        if (!paramsToSign || typeof paramsToSign !== 'object') {
+          return res.status(400).json({ error: 'Invalid parameters' });
+        }
 
-        res.status(200).json({ signature });
+        try {
+          const signature = cloudinary.utils.api_sign_request(
+            paramsToSign, 
+            process.env.CLOUDINARY_API_SECRET
+          );
+
+          res.status(200).json({ signature });
+        } catch (error) {
+          console.error('Cloudinary signature error:', error);
+          res.status(500).json({ 
+            error: 'Failed to generate upload signature' 
+          });
+        }
       }
       ```
     </CodeBlock>
