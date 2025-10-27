@@ -210,6 +210,7 @@ pnpm test
       <td align="center" valign="top" width="14.28%"><a href="https://arjuncodess.is-a.dev/"><img src="https://avatars.githubusercontent.com/u/137415649?v=4?s=100" width="100px;" alt="Arjun Vijay Prakash"/><br /><sub><b>Arjun Vijay Prakash</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=ArjunCodess" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://musaddiq625.carrd.co"><img src="https://avatars.githubusercontent.com/u/37911054?v=4?s=100" width="100px;" alt="Musaddiq Ahmed Khan"/><br /><sub><b>Musaddiq Ahmed Khan</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=Musaddiq625" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/SarthakJain29"><img src="https://avatars.githubusercontent.com/u/93116216?v=4?s=100" width="100px;" alt="Sarthak Jain"/><br /><sub><b>Sarthak Jain</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=SarthakJain29" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/HRIDYANSHU054"><img src="https://avatars.githubusercontent.com/u/124202756?v=4?s=100" width="100px;" alt="Hridyanshu"/><br /><sub><b>Hridyanshu</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=HRIDYANSHU054" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
