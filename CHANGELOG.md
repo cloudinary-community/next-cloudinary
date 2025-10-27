@@ -1,3 +1,10 @@
+## [6.16.3](https://github.com/cloudinary-community/next-cloudinary/compare/v6.16.2...v6.16.3) (2025-10-27)
+
+
+### Bug Fixes
+
+* merge pull request [#632](https://github.com/cloudinary-community/next-cloudinary/issues/632) from SarthakJain29/updated_footer ([be68133](https://github.com/cloudinary-community/next-cloudinary/commit/be68133865d723b7e6a20ced3a406941b5f3cbc4))
+
 ## [6.16.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.16.1...v6.16.2) (2025-10-21)
 
 
