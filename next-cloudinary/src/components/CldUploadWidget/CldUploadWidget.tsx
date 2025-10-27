@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
-import { generateSignatureCallback, generateUploadWidgetResultCallback, getUploadWidgetOptions, UPLOAD_WIDGET_EVENTS } from '@cloudinary-util/url-loader'
+import {
+  generateSignatureCallback,
+  generateUploadWidgetResultCallback,
+  getUploadWidgetOptions,
+  UPLOAD_WIDGET_EVENTS,
+} from '@cloudinary-util/url-loader';
 import {
   CloudinaryUploadWidgetResults,
   CloudinaryUploadWidgetInstanceMethods,
@@ -8,7 +13,7 @@ import {
   CloudinaryUploadWidgetInstanceMethodDestroyOptions,
   CloudinaryUploadWidgetInstanceMethodOpenOptions,
   CloudinaryUploadWidgetSources,
-  CloudinaryUploadWidgetError
+  CloudinaryUploadWidgetError,
 } from '@cloudinary-util/types';
 
 import { triggerOnIdle } from '../../lib/util';
@@ -21,7 +26,7 @@ import {
   CldUploadWidgetWidgetInstance,
 } from './CldUploadWidget.types';
 
-import { getCloudinaryConfig } from "../../lib/cloudinary";
+import { getCloudinaryConfig } from '../../lib/cloudinary';
 
 const CldUploadWidget = ({
   children,
@@ -34,99 +39,115 @@ const CldUploadWidget = ({
   uploadPreset,
   ...props
 }: CldUploadWidgetProps) => {
-  const cloudinary: CldUploadWidgetCloudinaryInstance = useRef();
-  const widget: CldUploadWidgetWidgetInstance = useRef();
+  const cloudinary: CldUploadWidgetCloudinaryInstance = useRef<any>();
+  const widget: CldUploadWidgetWidgetInstance = useRef<any>();
 
   const [error, setError] = useState<CloudinaryUploadWidgetError | undefined>(undefined);
   const [results, setResults] = useState<CloudinaryUploadWidgetResults | undefined>(undefined);
   const [isScriptLoading, setIsScriptLoading] = useState(true);
 
-  // When creating a signed upload, you need to provide both your Cloudinary API Key
-  // as well as a signature generator function that will sign any paramters
-  // either on page load or during the upload process. Read more about signed uploads at:
-  // https://cloudinary.com/documentation/upload_widget#signed_uploads
-
+  // Signed uploads configuration
   const cloudinaryConfig = getCloudinaryConfig(config);
 
-  const uploadSignature = signatureEndpoint && generateSignatureCallback({
-    signatureEndpoint: String(signatureEndpoint),
-    fetch
-  });
+  const uploadSignature =
+    signatureEndpoint &&
+    generateSignatureCallback({
+      signatureEndpoint: String(signatureEndpoint),
+      fetch,
+    });
 
-  const uploadOptions = getUploadWidgetOptions({
-    uploadPreset: uploadPreset || process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
-    uploadSignature,
-    ...options,
-  }, cloudinaryConfig);
+  const uploadOptions = getUploadWidgetOptions(
+    {
+      uploadPreset: uploadPreset || process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+      uploadSignature,
+      ...options,
+    },
+    cloudinaryConfig
+  );
+
+  const instanceMethods: CloudinaryUploadWidgetInstanceMethods = {
+    close,
+    destroy,
+    hide,
+    isDestroyed,
+    isMinimized,
+    isShowing,
+    minimize,
+    open,
+    show,
+    update,
+  };
 
   const resultsCallback = generateUploadWidgetResultCallback({
     onError: (uploadError) => {
       setError(uploadError);
 
-      if ( typeof onError === 'function' ) {
+      if (typeof onError === 'function') {
         onError(uploadError, {
           widget: widget.current,
-          ...instanceMethods
+          ...instanceMethods,
         });
       }
     },
     onResult: (uploadResult) => {
-      if ( typeof uploadResult?.event !== 'string' ) return;
+      if (typeof uploadResult?.event !== 'string') return;
 
       setResults(uploadResult);
 
       const widgetEvent = UPLOAD_WIDGET_EVENTS[uploadResult.event] as keyof typeof props;
 
-      if ( typeof widgetEvent === 'string' && typeof props[widgetEvent] === 'function' ) {
+      if (typeof widgetEvent === 'string' && typeof props[widgetEvent] === 'function') {
         const callback = props[widgetEvent] as CldUploadEventCallback;
         callback(uploadResult, {
           widget: widget.current,
-          ...instanceMethods
+          ...instanceMethods,
         });
       }
 
       const widgetEventAction = `${widgetEvent}Action` as keyof typeof props;
 
-      if ( widgetEventAction && typeof props[widgetEventAction] === 'function' ) {
+      if (widgetEventAction && typeof props[widgetEventAction] === 'function') {
         const action = props[widgetEventAction] as CldUploadEventAction;
         action(uploadResult);
       }
     },
   });
 
-
-  // Handle result states and callbacks
-
+  // Handle result states and deprecated onUpload
   useEffect(() => {
-    if ( typeof results === 'undefined' ) return;
+    if (typeof results === 'undefined') return;
 
     const isSuccess = results.event === 'success';
 
-    if ( isSuccess && typeof onUpload === 'function' ) {
-      if ( process.env.NODE_ENV === 'development' ) {
+    if (isSuccess && typeof onUpload === 'function') {
+      if (process.env.NODE_ENV === 'development') {
         console.warn('The onUpload callback is deprecated. Please use onSuccess instead.');
       }
       onUpload(results, widget.current);
     }
-  }, [results])
+  }, [results]); // eslint-disable-line react-hooks/exhaustive-deps
 
   /**
    * handleOnLoad
-   * @description Stores the Cloudinary window instance to a ref when the widget script loads
+   * Stores the Cloudinary window instance to a ref when the widget script loads.
+   * Guard against double initialization.
    */
-
   function handleOnLoad() {
+    // already wired
+    if ((window as any).cloudinary && cloudinary.current) {
+      setIsScriptLoading(false);
+      return;
+    }
+
     setIsScriptLoading(false);
 
-    if ( !cloudinary.current ) {
+    if (!cloudinary.current) {
       cloudinary.current = (window as any).cloudinary;
     }
 
-    // To help improve load time of the widget on first instance, use requestIdleCallback
-    // to trigger widget creation. Optional.
-
+    // Create the widget during browser idle time to minimize main-thread work.
     triggerOnIdle(() => {
-      if ( !widget.current ) {
+      if (!widget.current) {
         widget.current = createWidget();
       }
     });
@@ -136,28 +157,23 @@ const CldUploadWidget = ({
     return () => {
       widget.current?.destroy();
       widget.current = undefined;
-    }
-  }, [])
+    };
+  }, []);
 
   /**
-   * Instance Methods
-   * Gives the ability to interface directly with the Upload Widget instance methods like open and close
-   * https://cloudinary.com/documentation/upload_widget_reference#instance_methods
+   * Instance method invoker with lazy create
    */
-
-  function invokeInstanceMethod<
-    TMethod extends keyof CloudinaryUploadWidgetInstanceMethods
-  >(
+  function invokeInstanceMethod<TMethod extends keyof CloudinaryUploadWidgetInstanceMethods>(
     method: TMethod,
-    options: Parameters<
+    options: Parameters<CloudinaryUploadWidgetInstanceMethods[TMethod]> = [] as Parameters<
       CloudinaryUploadWidgetInstanceMethods[TMethod]
-    > = [] as Parameters<CloudinaryUploadWidgetInstanceMethods[TMethod]>
+    >
   ) {
     if (!widget.current) {
       widget.current = createWidget();
     }
 
-    if (typeof widget?.current[method] === "function") {
+    if (typeof widget?.current?.[method] === 'function') {
       return widget.current[method](...options);
     }
   }
@@ -193,7 +209,7 @@ const CldUploadWidget = ({
   function open(widgetSource?: CloudinaryUploadWidgetSources, options?: CloudinaryUploadWidgetInstanceMethodOpenOptions) {
     invokeInstanceMethod('open', [widgetSource, options]);
 
-    if ( typeof onOpen === 'function' ) {
+    if (typeof onOpen === 'function') {
       onOpen(widget.current);
     }
   }
@@ -206,43 +222,33 @@ const CldUploadWidget = ({
     invokeInstanceMethod('update');
   }
 
-  const instanceMethods: CloudinaryUploadWidgetInstanceMethods = {
-    close,
-    destroy,
-    hide,
-    isDestroyed,
-    isMinimized,
-    isShowing,
-    minimize,
-    open,
-    show,
-    update,
-  }
-
   /**
    * createWidget
-   * @description Creates a new instance of the Cloudinary widget and stores in a ref
+   * Guard against running before the script is ready.
    */
-
   function createWidget() {
-    return cloudinary.current?.createUploadWidget(uploadOptions, resultsCallback);
+    if (!cloudinary.current?.createUploadWidget) return undefined;
+    return cloudinary.current.createUploadWidget(uploadOptions, resultsCallback);
   }
 
   return (
     <>
-      {typeof children === 'function' && children({
-        cloudinary: cloudinary.current,
-        widget: widget.current,
-        results,
-        error,
-        isLoading: isScriptLoading,
-        ...instanceMethods,
-      })}
+      {typeof children === 'function' &&
+        children({
+          cloudinary: cloudinary.current,
+          widget: widget.current,
+          results,
+          error,
+          isLoading: isScriptLoading,
+          ...instanceMethods,
+        })}
+
       <Script
-        id={`cloudinary-uploadwidget-${Math.floor(Math.random() * 100)}`}
+        id="cloudinary-uploadwidget"
         src="https://upload-widget.cloudinary.com/global/all.js"
+        strategy="lazyOnload" // defer network to idle
         onLoad={handleOnLoad}
-        onError={(e) => console.error(`Failed to load Cloudinary Upload Widget: ${e.message}`)}
+        onError={(e: any) => console.error('Failed to load Cloudinary Upload Widget', e)}
       />
     </>
   );
