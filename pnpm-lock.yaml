@@ -88,11 +88,11 @@ importers:
         specifier: 1.6.0
         version: 1.6.0
       '@cloudinary-util/url-loader':
-        specifier: 6.1.0
-        version: 6.1.0
+        specifier: 6.2.0
+        version: 6.2.0
       '@cloudinary-util/util':
-        specifier: 4.1.0
-        version: 4.1.0
+        specifier: 4.2.0
+        version: 4.2.0
       next:
         specifier: ^12 || ^13 || ^14 || >=15.0.0-rc || ^15
         version: 14.1.0(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
@@ -855,8 +855,14 @@ packages:
   '@cloudinary-util/url-loader@6.1.0':
     resolution: {integrity: sha512-MyPo+u/5ZYAh1e77oN9NK7vBe/1g3ooOUN0fL9R4qD0UybIhG+Ax28srVA9t/ENmPr41uJo68DY51uiFE5L2ew==}
 
+  '@cloudinary-util/url-loader@6.2.0':
+    resolution: {integrity: sha512-dP1eEC/pBb6fwgX/YiuLlCewKCaZohwLqYYzg+vg/QFc9z+QTV2P3170kLEpbMrrF+sx3bgo+WCjRvjXh3Fxwg==}
+
   '@cloudinary-util/util@4.1.0':
     resolution: {integrity: sha512-01k2FWwxhVSauFGi3yJhz20WJ7M/l4ytJDHaBVDTIJlxQLNs36p24kynppgE44jn0dNa1DgYhCXB6BFmqUmfJA==}
+
+  '@cloudinary-util/util@4.2.0':
+    resolution: {integrity: sha512-3qD0+crtnrP1HUjtDoA3JqOesDndzBMqdD6vUSxpyQX6JO2g73DVNUdvK/YFcvT/vnWVTnLM67Im3dQlk4BtlA==}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     resolution: {integrity: sha512-UUb1wS/eWCf4YBThGszoBBzH6kP+frdd5JeJkF0/SOwbX3tkcrdzxD+Srn5GXPCqzf6Gw1nrGrv/3U9hiZP55A==}
@@ -6581,7 +6587,15 @@ snapshots:
       '@cloudinary-util/util': 4.1.0
       '@cloudinary/url-gen': 1.15.0
 
+  '@cloudinary-util/url-loader@6.2.0':
+    dependencies:
+      '@cloudinary-util/types': 1.6.0
+      '@cloudinary-util/util': 4.2.0
+      '@cloudinary/url-gen': 1.15.0
+
   '@cloudinary-util/util@4.1.0': {}
+
+  '@cloudinary-util/util@4.2.0': {}
 
   '@cloudinary/transformation-builder-sdk@1.10.1':
     dependencies:
