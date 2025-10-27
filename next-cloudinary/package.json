@@ -37,8 +37,8 @@
   },
   "dependencies": {
     "@cloudinary-util/types": "1.6.0",
-    "@cloudinary-util/url-loader": "6.1.0",
-    "@cloudinary-util/util": "4.1.0"
+    "@cloudinary-util/url-loader": "6.2.0",
+    "@cloudinary-util/util": "4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
