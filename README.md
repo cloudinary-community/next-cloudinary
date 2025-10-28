@@ -212,6 +212,9 @@ pnpm test
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/SarthakJain29"><img src="https://avatars.githubusercontent.com/u/93116216?v=4?s=100" width="100px;" alt="Sarthak Jain"/><br /><sub><b>Sarthak Jain</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=SarthakJain29" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/HRIDYANSHU054"><img src="https://avatars.githubusercontent.com/u/124202756?v=4?s=100" width="100px;" alt="Hridyanshu"/><br /><sub><b>Hridyanshu</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=HRIDYANSHU054" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://anurag2787.vercel.app/"><img src="https://avatars.githubusercontent.com/u/143180737?v=4?s=100" width="100px;" alt="Anurag Yadav"/><br /><sub><b>Anurag Yadav</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=anurag2787" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
