@@ -1,3 +1,10 @@
+# [6.17.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.16.3...v6.17.0) (2025-10-28)
+
+
+### Features
+
+* add disableRemotePlayback prop ([2ae5b59](https://github.com/cloudinary-community/next-cloudinary/commit/2ae5b59a27a7177be3ee22502b52e8b3af030121))
+
 ## [6.16.3](https://github.com/cloudinary-community/next-cloudinary/compare/v6.16.2...v6.16.3) (2025-10-27)
 
 
