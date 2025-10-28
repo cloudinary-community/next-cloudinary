@@ -390,6 +390,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "anurag2787",
+      "name": "Anurag Yadav",
+      "avatar_url": "https://avatars.githubusercontent.com/u/143180737?v=4",
+      "profile": "https://anurag2787.vercel.app/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
