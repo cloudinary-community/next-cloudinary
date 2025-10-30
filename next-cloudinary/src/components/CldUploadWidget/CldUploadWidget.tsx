@@ -23,6 +23,19 @@ import {
 
 import { getCloudinaryConfig } from "../../lib/cloudinary";
 
+// Stable ID hook with React 18+ useId and React < 18 fallback
+const useUploadWidgetId = (): string => {
+  const reactId = (React as { useId?: () => string }).useId?.() ?? null;
+
+  // Preserve the original random ID behavior for React < 18
+  const fallbackId = React.useRef(Math.floor(Math.random() * 100)).current;
+
+  // Remove colons from React useId() output (e.g., ":r1:" -> "r1") to avoid issues with CSS selectors and HTML IDs
+  const sanitizedId = reactId ? reactId.replace(/:/g, '') : fallbackId;
+
+  return `cloudinary-uploadwidget-${sanitizedId}`;
+};
+
 const CldUploadWidget = ({
   children,
   config,
@@ -34,6 +47,7 @@ const CldUploadWidget = ({
   uploadPreset,
   ...props
 }: CldUploadWidgetProps) => {
+  const uploadWidgetId = useUploadWidgetId();
   const cloudinary: CldUploadWidgetCloudinaryInstance = useRef();
   const widget: CldUploadWidgetWidgetInstance = useRef();
 
@@ -239,7 +253,7 @@ const CldUploadWidget = ({
         ...instanceMethods,
       })}
       <Script
-        id={`cloudinary-uploadwidget-${Math.floor(Math.random() * 100)}`}
+        id={uploadWidgetId}
         src="https://upload-widget.cloudinary.com/global/all.js"
         onLoad={handleOnLoad}
         onError={(e) => console.error(`Failed to load Cloudinary Upload Widget: ${e.message}`)}
