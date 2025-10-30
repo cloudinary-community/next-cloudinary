@@ -1,3 +1,32 @@
+# [6.17.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.16.3...v6.17.0) (2025-10-28)
+
+
+### Features
+
+* add disableRemotePlayback prop ([2ae5b59](https://github.com/cloudinary-community/next-cloudinary/commit/2ae5b59a27a7177be3ee22502b52e8b3af030121))
+
+## [6.16.3](https://github.com/cloudinary-community/next-cloudinary/compare/v6.16.2...v6.16.3) (2025-10-27)
+
+
+### Bug Fixes
+
+* merge pull request [#632](https://github.com/cloudinary-community/next-cloudinary/issues/632) from SarthakJain29/updated_footer ([be68133](https://github.com/cloudinary-community/next-cloudinary/commit/be68133865d723b7e6a20ced3a406941b5f3cbc4))
+
+## [6.16.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.16.1...v6.16.2) (2025-10-21)
+
+
+### Bug Fixes
+
+* resolve CldVideoPlayer fullscreen object-cover issue ([27e2dbb](https://github.com/cloudinary-community/next-cloudinary/commit/27e2dbb45c5d122b1d4ea067d2d565ca0a4a6d61)), closes [#433](https://github.com/cloudinary-community/next-cloudinary/issues/433)
+
+## [6.16.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.16.0...v6.16.1) (2025-10-17)
+
+
+### Bug Fixes
+
+* **typo:** remove colon from Watch & Learn ([43fdeda](https://github.com/cloudinary-community/next-cloudinary/commit/43fdeda2b028dfa3b4194f63ecc56cc173afc035))
+* url ([15179f7](https://github.com/cloudinary-community/next-cloudinary/commit/15179f7d768d4e2f57b207ca6973142adc15320d))
+
 # [6.16.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.15.0...v6.16.0) (2024-10-22)
 
 
