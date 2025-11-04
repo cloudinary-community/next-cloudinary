@@ -214,6 +214,7 @@ pnpm test
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://anurag2787.vercel.app/"><img src="https://avatars.githubusercontent.com/u/143180737?v=4?s=100" width="100px;" alt="Anurag Yadav"/><br /><sub><b>Anurag Yadav</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=anurag2787" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/error9098x"><img src="https://avatars.githubusercontent.com/u/43810146?v=4?s=100" width="100px;" alt="ProCodec"/><br /><sub><b>ProCodec</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=error9098x" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
