@@ -1,3 +1,10 @@
+## [6.17.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.0...v6.17.1) (2025-11-04)
+
+
+### Bug Fixes
+
+* implement useUploadWidgetId with React 18 useId and fallback ([966198c](https://github.com/cloudinary-community/next-cloudinary/commit/966198c01a5a0a4f548f7338f1a539ba7e20fdd2))
+
 # [6.17.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.16.3...v6.17.0) (2025-10-28)
 
 
