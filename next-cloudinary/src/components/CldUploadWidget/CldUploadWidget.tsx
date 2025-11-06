@@ -11,7 +11,7 @@ import {
   CloudinaryUploadWidgetError
 } from '@cloudinary-util/types';
 
-import { triggerOnIdle } from '../../lib/util';
+import { useTriggerOnIdle } from '../../lib/util';
 
 import {
   CldUploadEventAction,
@@ -50,6 +50,7 @@ const CldUploadWidget = ({
   const uploadWidgetId = useUploadWidgetId();
   const cloudinary: CldUploadWidgetCloudinaryInstance = useRef();
   const widget: CldUploadWidgetWidgetInstance = useRef();
+  const triggerOnIdle = useTriggerOnIdle();
 
   const [error, setError] = useState<CloudinaryUploadWidgetError | undefined>(undefined);
   const [results, setResults] = useState<CloudinaryUploadWidgetResults | undefined>(undefined);
