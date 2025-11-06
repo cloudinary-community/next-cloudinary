@@ -1,3 +1,10 @@
+## [6.17.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.1...v6.17.2) (2025-11-06)
+
+
+### Bug Fixes
+
+* **docs:** use Tailwind italic for HeaderImage caption ([b4417f5](https://github.com/cloudinary-community/next-cloudinary/commit/b4417f5d2ce6cf67e562990685e3f5cc1f4f55e2))
+
 ## [6.17.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.0...v6.17.1) (2025-11-04)
 
 
