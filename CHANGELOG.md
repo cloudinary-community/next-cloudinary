@@ -1,3 +1,10 @@
+## [6.17.3](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.2...v6.17.3) (2025-11-06)
+
+
+### Bug Fixes
+
+* correct undefined variable reference in error handler ([d48fb7c](https://github.com/cloudinary-community/next-cloudinary/commit/d48fb7c82c722c8ecb4de4896cbedd4cb655d8b8))
+
 ## [6.17.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.1...v6.17.2) (2025-11-06)
 
 
