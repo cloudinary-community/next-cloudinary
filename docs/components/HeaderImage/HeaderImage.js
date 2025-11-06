@@ -7,7 +7,7 @@ export const HeaderImage = ({ children, layout, caption }) => {
         { children }
       </div>
       {caption && (
-        <p className="mt-4 !-mb-3 text-sm text-center italics">{ caption }</p>
+        <p className="mt-4 !-mb-3 text-sm text-center italic">{ caption }</p>
       )}
     </div>
   );
