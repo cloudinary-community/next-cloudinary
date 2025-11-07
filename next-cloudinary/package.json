@@ -1,6 +1,6 @@
 {
   "name": "next-cloudinary",
-  "version": "6.17.3",
+  "version": "6.17.4",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
