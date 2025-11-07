@@ -11,10 +11,6 @@
 
 # Next Cloudinary
 
-<!-- doc-gen PKGJSON optionOne="hey" -->
-undefined
-<!-- end-doc-gen -->
-
 High-performance image delivery and uploading at scale in Next.js powered by Cloudinary.
 
 <a href="#-features">Features</a> • <a href="#-getting-started">Getting Started</a> • <a href="#%EF%B8%8F-community--support">Community & Support</a> • <a href="#-contributing">Contributing</a>
@@ -210,6 +206,16 @@ pnpm test
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Zaki-Mohd"><img src="https://avatars.githubusercontent.com/u/181067270?v=4?s=100" width="100px;" alt="Mohammad Zaki"/><br /><sub><b>Mohammad Zaki</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=Zaki-Mohd" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/thinkverse"><img src="https://avatars.githubusercontent.com/u/2221746?v=4?s=100" width="100px;" alt="Kim Hallberg"/><br /><sub><b>Kim Hallberg</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=thinkverse" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Waqibsk"><img src="https://avatars.githubusercontent.com/u/162541991?v=4?s=100" width="100px;" alt="Md Waqib Sk"/><br /><sub><b>Md Waqib Sk</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=Waqibsk" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://arjuncodess.is-a.dev/"><img src="https://avatars.githubusercontent.com/u/137415649?v=4?s=100" width="100px;" alt="Arjun Vijay Prakash"/><br /><sub><b>Arjun Vijay Prakash</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=ArjunCodess" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://musaddiq625.carrd.co"><img src="https://avatars.githubusercontent.com/u/37911054?v=4?s=100" width="100px;" alt="Musaddiq Ahmed Khan"/><br /><sub><b>Musaddiq Ahmed Khan</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=Musaddiq625" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/SarthakJain29"><img src="https://avatars.githubusercontent.com/u/93116216?v=4?s=100" width="100px;" alt="Sarthak Jain"/><br /><sub><b>Sarthak Jain</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=SarthakJain29" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/HRIDYANSHU054"><img src="https://avatars.githubusercontent.com/u/124202756?v=4?s=100" width="100px;" alt="Hridyanshu"/><br /><sub><b>Hridyanshu</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=HRIDYANSHU054" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://anurag2787.vercel.app/"><img src="https://avatars.githubusercontent.com/u/143180737?v=4?s=100" width="100px;" alt="Anurag Yadav"/><br /><sub><b>Anurag Yadav</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=anurag2787" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/error9098x"><img src="https://avatars.githubusercontent.com/u/43810146?v=4?s=100" width="100px;" alt="ProCodec"/><br /><sub><b>ProCodec</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=error9098x" title="Code">💻</a> <a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=error9098x" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/dharamghevariya"><img src="https://avatars.githubusercontent.com/u/144807441?v=4?s=100" width="100px;" alt="Dharam Ghevariya"/><br /><sub><b>Dharam Ghevariya</b></sub></a><br /><a href="https://github.com/cloudinary-community/next-cloudinary/commits?author=dharamghevariya" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
