@@ -1,3 +1,17 @@
+## [6.17.4](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.3...v6.17.4) (2025-11-07)
+
+
+### Bug Fixes
+
+* add missing alt text to What's Inside section for accessibility ([8559cdc](https://github.com/cloudinary-community/next-cloudinary/commit/8559cdcdb85a518e9e8051cbbff938fb3ec6a7a8))
+
+## [6.17.3](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.2...v6.17.3) (2025-11-06)
+
+
+### Bug Fixes
+
+* correct undefined variable reference in error handler ([d48fb7c](https://github.com/cloudinary-community/next-cloudinary/commit/d48fb7c82c722c8ecb4de4896cbedd4cb655d8b8))
+
 ## [6.17.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.1...v6.17.2) (2025-11-06)
 
 
