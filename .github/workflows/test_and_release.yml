@@ -29,6 +29,7 @@ jobs:
 
       - run: pnpm test:app
         working-directory: ./next-cloudinary
+        if: matrix.node == '20'
 
   release:
     name: Release

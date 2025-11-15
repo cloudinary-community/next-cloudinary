@@ -44,6 +44,9 @@ importers:
       next:
         specifier: ^14.1.0
         version: 14.2.26(@babel/core@7.26.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.86.1)
+      next-cloudinary:
+        specifier: workspace:*
+        version: link:../next-cloudinary
       nextjs-google-analytics:
         specifier: ^2.3.3
         version: 2.3.7(next@14.2.26(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.86.1))(react@18.3.1)
@@ -91,7 +94,7 @@ importers:
         specifier: 4.0.0
         version: 4.0.0
       next:
-        specifier: ^12 || ^13 || ^14 || >=15.0.0-rc || ^15
+        specifier: ^12 || ^13 || ^14 || >=15.0.0-rc || ^15 || ^16
         version: 14.2.26(@babel/core@7.26.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.86.1)
       react:
         specifier: ^17 || ^18 || >=19.0.0-beta || ^19
