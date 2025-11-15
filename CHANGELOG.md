@@ -1,3 +1,10 @@
+## [6.17.5](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.4...v6.17.5) (2025-11-15)
+
+
+### Bug Fixes
+
+* **docs:** enable muted autoplay for YouTube video in “Watch & Learn” ([5ae810a](https://github.com/cloudinary-community/next-cloudinary/commit/5ae810a82c1c13ca991805c2ac0049af19aae380))
+
 ## [6.17.4](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.3...v6.17.4) (2025-11-07)
 
 
