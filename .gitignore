@@ -4,3 +4,4 @@ node_modules
 next-cloudinary/dist
 .idea
 tsconfig.tsbuildinfo
+.DS_Store

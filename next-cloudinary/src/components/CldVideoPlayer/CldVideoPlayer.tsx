@@ -1,4 +1,4 @@
-import React, {useRef, MutableRefObject, useEffect, useId} from 'react';
+import React, {useRef, MutableRefObject, useEffect, useId, useState} from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import { CloudinaryVideoPlayer } from '@cloudinary-util/types';
@@ -17,6 +17,7 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   const {
     className,
     config,
+    disableRemotePlayback,
     height,
     id,
     onDataLoad,
@@ -29,6 +30,8 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   } = props;
 
   const uniqueId = useId();
+  const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+  const [playerInitialized, setPlayerInitialized] = useState(false);
 
   const cloudinaryConfig = getCloudinaryConfig(config);
   const playerOptions = getVideoPlayerOptions(props, cloudinaryConfig);
@@ -53,15 +56,6 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
     playerClassName = `${playerClassName} ${className}`;
   }
 
-  // Check if the same id is being used for multiple video instances.
-  const checkForMultipleInstance = playerInstances.filter((id) => id === playerId).length > 1
-  if (checkForMultipleInstance) {
-    console.warn(`Multiple instances of the same video detected on the
-     page which may cause some features to not work.
-    Try adding a unique id to each player.`)
-  } else {
-    playerInstances.push(playerId)
-  }
 
   const events: Record<string, Function|undefined> = {
     error: onError,
@@ -86,14 +80,36 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   }
 
   /**
-   * handleOnLoad
-   * @description Stores the Cloudinary window instance to a ref when the widget script loads
+   * disposePlayer
+   * @description Properly dispose of the player instance and clean up
    */
 
-  function handleOnLoad() {
-    if ( 'cloudinary' in window ) {
+  const disposePlayer = () => {
+    if (playerRef.current?.videojs?.cloudinary) {
+      playerRef.current.videojs.cloudinary.dispose();
+    }
+    // remove from global instances array
+    playerInstances = playerInstances.filter((instanceId) => instanceId !== playerId);
+    playerRef.current = null;
+    setPlayerInitialized(false);
+  };
+
+  /**
+   * initializePlayer
+   * @description Initialize the Cloudinary video player
+   */
+
+  const initializePlayer = () => {
+    if (typeof window !== 'undefined' && 'cloudinary' in window && videoRef.current && !playerInitialized) {
       cloudinaryRef.current = window.cloudinary;
+      
+      // dispose any existing player instance first to prevent conflicts
+      if (playerRef.current) {
+        disposePlayer();
+      }
+      
       playerRef.current = cloudinaryRef.current.videoPlayer(videoRef.current, playerOptions);
+      setPlayerInitialized(true);
 
       Object.keys(events).forEach((key) => {
         if ( typeof events[key] === 'function' ) {
@@ -101,15 +117,38 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
         }
       });
     }
+  };
+
+  /**
+   * handleOnLoad
+   * @description Stores the Cloudinary window instance to a ref when the widget script loads
+   */
+
+  function handleOnLoad() {
+    setIsScriptLoaded(true);
+    if ( 'cloudinary' in window ) {
+      initializePlayer();
+    }
   }
 
+  // effect to handle component mounting and cleanup
   useEffect(() => {
+    // initialize player if script is already loaded
+    if (isScriptLoaded && typeof window !== 'undefined' && 'cloudinary' in window) {
+      initializePlayer();
+    }
 
     return () => {
-      playerRef.current?.videojs.cloudinary.dispose();
-      playerInstances = playerInstances.filter((id) => id !== playerId)
-    }
+      disposePlayer();
+    };
   }, []);
+
+  // effect to handle script loading after mount
+  useEffect(() => {
+    if (isScriptLoaded && !playerInitialized && typeof window !== 'undefined' && 'cloudinary' in window) {
+      initializePlayer();
+    }
+  }, [isScriptLoaded, playerInitialized]);
 
   /**
    *getPlayerRefs
@@ -127,13 +166,14 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
       <Head>
         <link href={`https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.min.css`} rel="stylesheet" />
       </Head>
-      <div style={{ width: '100%', aspectRatio: `${width} / ${height}`}}>
+      <div style={{ width: '100%' }}>
         <video
           ref={videoRef}
           id={playerId}
           className={playerClassName}
           width={width}
           height={height}
+          disableRemotePlayback={disableRemotePlayback}
         />
         <Script
           id={`cloudinary-videoplayer-${playerId}`}
