@@ -642,17 +642,11 @@ function emitProps(lines, props, orderedKeys) {
   }
 }
 
-function humanizePublicId(publicId) {
-  var name = publicId.split('/').pop() || publicId;
-  name = name.replace(/[-_]/g, ' ');
-  return name.charAt(0).toUpperCase() + name.slice(1);
-}
-
 function buildCldImageJSX(publicId, props) {
   var lines = ['<CldImage'];
   lines.push('  src="' + publicId + '"');
   emitProps(lines, props, IMAGE_ORDERED_PROPS);
-  lines.push('  alt="' + humanizePublicId(publicId) + '"');
+  lines.push('  alt="Image description"');
   lines.push('/>');
   return lines.join('\n');
 }
