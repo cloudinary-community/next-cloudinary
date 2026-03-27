@@ -5,3 +5,4 @@ next-cloudinary/dist
 .idea
 tsconfig.tsbuildinfo
 .DS_Store
+**/package-lock.json

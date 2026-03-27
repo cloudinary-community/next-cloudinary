@@ -1,9 +1,20 @@
+const path = require('path');
+
 const withNextra = require('nextra')({
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.js'
 });
 
 module.exports = withNextra({
+  webpack: (config) => {
+    // Ensure React resolves to a single version
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'react': path.resolve(__dirname, 'node_modules/react'),
+      'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
+    };
+    return config;
+  },
   env: {
     ASSETS_DIRECTORY: process.env.NEXT_PUBLIC_CLOUDINARY_ASSETS_DIRECTORY || 'assets',
     IMAGES_DIRECTORY: process.env.NEXT_PUBLIC_CLOUDINARY_IMAGES_DIRECTORY || 'images',
