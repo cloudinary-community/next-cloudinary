@@ -1,0 +1,15 @@
+diff --git a/lib/publish.js b/lib/publish.js
+index ac3e6feea8e388d88e77d58538a265f7ab4eac05..3af1b9ff1859dfa463398d9d97fd4c26f37c270c 100644
+--- a/lib/publish.js
++++ b/lib/publish.js
+@@ -22,8 +22,8 @@ export default async function (npmrc, { npmPublish, pkgRoot }, pkg, context) {
+     logger.log(`Publishing version ${version} to npm registry on dist-tag ${distTag}`);
+     const result = execa(
+       "npm",
+-      ["publish", basePath, "--userconfig", npmrc, "--tag", distTag, "--registry", registry],
+-      { cwd, env, preferLocal: true }
++      ["publish", "--userconfig", npmrc, "--tag", distTag, "--registry", registry],
++      { cwd: basePath, env, preferLocal: true }
+     );
+     result.stdout.pipe(stdout, { end: false });
+     result.stderr.pipe(stderr, { end: false });

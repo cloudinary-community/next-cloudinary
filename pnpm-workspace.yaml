@@ -1,3 +1,22 @@
 packages:
-  - "docs"
-  - "next-cloudinary"
+  - docs
+  - next-cloudinary
+patchedDependencies:
+  # Works around a semantic-release/npm bug: `publish.js` runs `npm publish <pkgRoot>`
+  # with cwd left at the repo root instead of <pkgRoot>. That mismatch silently breaks
+  # npm's OIDC/trusted-publishing auto-detection (it fails closed with a plain
+  # ENEEDAUTH/"npm adduser" error, no OIDC-related message at all), which is what we hit
+  # switching this repo to Trusted Publishers.
+  #   Bug:          https://github.com/semantic-release/npm/issues/504
+  #   Unmerged fix: https://github.com/semantic-release/npm/pull/531
+  #
+  # Once a released @semantic-release/npm version includes that fix (or an equivalent
+  # one - check publish.js runs `npm publish` with `cwd` already set to the resolved
+  # pkgRoot path), do all of:
+  #   1. Bump the "@semantic-release/npm" version in package.json to that release.
+  #   2. Delete this patchedDependencies entry and patches/@semantic-release__npm@13.1.5.patch.
+  #   3. Run `pnpm install`.
+  # Step 1 without steps 2-3 will make `pnpm install` fail outright (pnpm errors if a
+  # patchedDependencies entry doesn't match an installed version) - that failure is the
+  # signal to finish the cleanup, not a sign anything else is wrong.
+  '@semantic-release/npm@13.1.5': patches/@semantic-release__npm@13.1.5.patch
