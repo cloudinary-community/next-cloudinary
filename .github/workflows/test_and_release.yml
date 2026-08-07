@@ -47,14 +47,11 @@ jobs:
         with:
           node-version: '22.14.0'
           cache: 'pnpm'
-          # https://github.com/pnpm/pnpm/issues/3141
-          registry-url: 'https://registry.npmjs.org'
-
-      - run: npm install -g npm@11
 
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_CONFIG_LOGLEVEL: silly
 

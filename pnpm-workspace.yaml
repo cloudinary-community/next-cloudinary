@@ -3,16 +3,24 @@ packages:
   - next-cloudinary
 patchedDependencies:
   # Works around a semantic-release/npm bug: `publish.js` runs `npm publish <pkgRoot>`
-  # with cwd left at the repo root instead of <pkgRoot>. That mismatch silently breaks
-  # npm's OIDC/trusted-publishing auto-detection (it fails closed with a plain
-  # ENEEDAUTH/"npm adduser" error, no OIDC-related message at all), which is what we hit
-  # switching this repo to Trusted Publishers.
+  # with cwd left at the repo root instead of <pkgRoot>. That mismatch has been reported
+  # to cause various publish-time failures (wrong version read, 403s, etc.) - in our case
+  # it looked like an npm Trusted Publishers (OIDC) auth failure. Documented upstream,
+  # never merged:
   #   Bug:          https://github.com/semantic-release/npm/issues/504
   #   Unmerged fix: https://github.com/semantic-release/npm/pull/531
   #
-  # Once a released @semantic-release/npm version includes that fix (or an equivalent
-  # one - check publish.js runs `npm publish` with `cwd` already set to the resolved
-  # pkgRoot path), do all of:
+  # We also suspected a second issue (verifyConditions burning the run's one npm OIDC
+  # token-exchange, leaving nothing for the real `npm publish` to use) and patched
+  # around it too, but pulled that part back out deliberately - it was our own
+  # diagnosis, not a documented upstream issue, and we'd rather confirm it's actually
+  # needed (via verbose npm logging - see NPM_CONFIG_LOGLEVEL in the release workflow)
+  # before patching more of this package than necessary. If it turns out to be real,
+  # look for prior art on it before re-patching.
+  #
+  # Once a released @semantic-release/npm version includes an equivalent fix for the
+  # cwd/basePath bug (check whether ENEEDAUTH still reproduces without this patch before
+  # assuming so), do all of:
   #   1. Bump the "@semantic-release/npm" version in package.json to that release.
   #   2. Delete this patchedDependencies entry and patches/@semantic-release__npm@13.1.5.patch.
   #   3. Run `pnpm install`.
