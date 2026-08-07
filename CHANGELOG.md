@@ -1,3 +1,10 @@
+## [6.18.4](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.3...v6.18.4) (2026-08-07)
+
+
+### Bug Fixes
+
+* bump action versions ([bf4544b](https://github.com/cloudinary-community/next-cloudinary/commit/bf4544b31560e020aca0eee6b5dfd02ad7b1fbe0))
+
 ## [6.18.3](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.2...v6.18.3) (2026-08-07)
 
 
