@@ -1,3 +1,11 @@
+## [6.18.7](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.6...v6.18.7) (2026-08-07)
+
+
+### Bug Fixes
+
+* remove unnecessary package-lock.json ([e5b9635](https://github.com/cloudinary-community/next-cloudinary/commit/e5b963537f860d35476374bfbdfc57a030676d41))
+* turn off "silly"logging ([80f5671](https://github.com/cloudinary-community/next-cloudinary/commit/80f5671d3c69b6a5c03b28b80ceac51355991b1f))
+
 ## [6.18.6](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.5...v6.18.6) (2026-08-07)
 
 
