@@ -1,3 +1,10 @@
+## [6.18.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.1...v6.18.2) (2026-08-07)
+
+
+### Bug Fixes
+
+* log more to diagnore Trusted Publishers errors ([5883964](https://github.com/cloudinary-community/next-cloudinary/commit/58839646bf58344640e74c6a653e210c9c77b3f8))
+
 ## [6.18.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.0...v6.18.1) (2026-08-07)
 
 
