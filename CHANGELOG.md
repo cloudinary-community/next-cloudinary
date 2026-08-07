@@ -1,3 +1,10 @@
+# [6.18.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.5...v6.18.0) (2026-08-07)
+
+
+### Features
+
+* create-cloudinary-next analytics ([#655](https://github.com/cloudinary-community/next-cloudinary/issues/655)) ([59de7e5](https://github.com/cloudinary-community/next-cloudinary/commit/59de7e512653b3e6ba0115a3180ffdb06da938ac))
+
 ## [6.17.5](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.4...v6.17.5) (2025-11-15)
 
 
