@@ -31,3 +31,14 @@ Once your Pull Request is successfully merged, feel free to tag yourself using t
 ```
 
 If your Pull Request is merged in and you're not added, please let someone know if you don't want to tag yourself, as we want to recognize everyone for their help.
+
+## Releases
+
+Releases are fully automated with [semantic-release](https://github.com/semantic-release/semantic-release). Every push to `main` (or `beta`, for prereleases) analyzes the commits since the last release, bumps the version, updates `CHANGELOG.md`, publishes to npm, and creates a GitHub release - no manual steps, and no npm token involved (publishing uses npm's [Trusted Publishers](https://docs.npmjs.com/trusted-publishers/) / OIDC).
+
+Because of this, commit messages (including squash-merge commit titles) need to follow the [Angular commit convention](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format) - `fix: ...`, `feat: ...`, `chore: ...`, and so on. The type determines whether a release happens and what kind:
+
+* `fix:` triggers a patch release
+* `feat:` triggers a minor release
+* a `BREAKING CHANGE:` footer triggers a major release
+* other types (`chore:`, `docs:`, `ci:`, etc.) don't trigger a release on their own
