@@ -1,3 +1,10 @@
+## [6.18.8](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.7...v6.18.8) (2026-08-07)
+
+
+### Bug Fixes
+
+* incorrect analytics code ([7345084](https://github.com/cloudinary-community/next-cloudinary/commit/7345084360101ae9bf7a5b9c33a17c17644ba182))
+
 ## [6.18.7](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.6...v6.18.7) (2026-08-07)
 
 
