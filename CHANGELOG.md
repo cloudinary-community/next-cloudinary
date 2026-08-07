@@ -1,3 +1,10 @@
+## [6.18.3](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.2...v6.18.3) (2026-08-07)
+
+
+### Bug Fixes
+
+* add explicit npm install back ([cddc254](https://github.com/cloudinary-community/next-cloudinary/commit/cddc254587f2c2ec5f27a567c23e3fdc9f84d21c))
+
 ## [6.18.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.1...v6.18.2) (2026-08-07)
 
 
