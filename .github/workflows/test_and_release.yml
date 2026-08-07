@@ -48,6 +48,11 @@ jobs:
           node-version: '22.14.0'
           cache: 'pnpm'
 
+      # @semantic-release/npm bundles its own `npm` dependency, but under pnpm's
+      # dependency isolation that copy isn't reachable via execa's `preferLocal` from
+      # other packages - it falls back to whatever `npm` is on PATH. That needs to be
+      # recent enough to support Trusted Publishers (OIDC), hence installing it here
+      # explicitly rather than relying on whatever Node bundles.
       - run: npm install -g npm@11
 
       - run: pnpm install --frozen-lockfile
@@ -55,7 +60,6 @@ jobs:
       - run: pnpm release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_CONFIG_LOGLEVEL: silly
           # Overrides the workflow-level `CI: false` (see top of file) for this step only.
           # npm's OIDC/trusted-publishing detection relies on the `ci-info` package, which
           # treats `CI=false` as "disable all CI detection" and silently never sets
