@@ -1,3 +1,10 @@
+## [6.18.6](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.5...v6.18.6) (2026-08-07)
+
+
+### Bug Fixes
+
+* Add missing repository URL field ([554e2a0](https://github.com/cloudinary-community/next-cloudinary/commit/554e2a0c70baa0d7aa1c4ee258ba281c6db77592))
+
 ## [6.18.5](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.4...v6.18.5) (2026-08-07)
 
 
