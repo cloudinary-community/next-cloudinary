@@ -56,4 +56,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_LOGLEVEL: silly
+          # Overrides the workflow-level `CI: false` (see top of file) for this step only.
+          # npm's OIDC/trusted-publishing detection relies on the `ci-info` package, which
+          # treats `CI=false` as "disable all CI detection" and silently never sets
+          # ciInfo.GITHUB_ACTIONS - which made npm's own OIDC code silently no-op during
+          # the actual `npm publish` call (no log output, straight to a plain ENEEDAUTH),
+          # even though semantic-release/npm's own verifyConditions check (which uses a
+          # different, unaffected library to detect GitHub Actions) succeeded. Confirmed
+          # via the full silly-level publish log, not inferred.
+          CI: true
 
