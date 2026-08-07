@@ -12,8 +12,12 @@ function isCLI(): boolean {
 
 const isCLIDetected = isCLI();
 
-export const NEXT_CLOUDINARY_ANALYTICS_PRODUCT_ID = (isCLIDetected ? 'I' : 'A');
-export const NEXT_CLOUDINARY_ANALYTICS_ID = 'V';
+
+// If the project was spun up using `npx create-cloudinary-next`
+// use the Integrations mode of the analytics string (product = 'B' instead of 'A')
+// and use sdk code 'I' ('Next CLI' integration) instead of 'V' (Next.js sdk)
+export const NEXT_CLOUDINARY_ANALYTICS_PRODUCT_ID = (isCLIDetected ? 'B' : 'A');
+export const NEXT_CLOUDINARY_ANALYTICS_ID = (isCLIDetected ? 'I' : 'V');
 export const NEXT_VERSION = normalizeVersion(nextPkg.version);
 export const NEXT_CLOUDINARY_VERSION = normalizeVersion(pkg.version);
 
