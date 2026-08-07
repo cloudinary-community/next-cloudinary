@@ -48,6 +48,8 @@ jobs:
           node-version: '22.14.0'
           cache: 'pnpm'
 
+      - run: npm install -g npm@11
+
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm release
