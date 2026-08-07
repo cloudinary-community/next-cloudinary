@@ -1,3 +1,11 @@
+## [6.18.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.0...v6.18.1) (2026-08-07)
+
+
+### Bug Fixes
+
+* bump action-setup version ([52c8e95](https://github.com/cloudinary-community/next-cloudinary/commit/52c8e9554c2f006ce92d6834d0aa162733a9bda9))
+* patch semantic-release for Trusted Publishers ([94f92a4](https://github.com/cloudinary-community/next-cloudinary/commit/94f92a4df678bdc6aef9ff49d034873ec5608a7c))
+
 # [6.18.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.17.5...v6.18.0) (2026-08-07)
 
 
