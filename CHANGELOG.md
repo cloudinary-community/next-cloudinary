@@ -1,3 +1,10 @@
+## [6.18.5](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.4...v6.18.5) (2026-08-07)
+
+
+### Bug Fixes
+
+* CI environment variable collision blocked Trusted Publishers ([c334b0f](https://github.com/cloudinary-community/next-cloudinary/commit/c334b0f1ccab4538471f949c32f6c6b9973125fa))
+
 ## [6.18.4](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.3...v6.18.4) (2026-08-07)
 
 
