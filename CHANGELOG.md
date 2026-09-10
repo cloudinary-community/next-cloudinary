@@ -1,3 +1,10 @@
+# [6.19.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.8...v6.19.0) (2026-09-10)
+
+
+### Features
+
+* add Next.js 16 compatibility ([1c1ea9b](https://github.com/cloudinary-community/next-cloudinary/commit/1c1ea9b9c641bd000ba3f823009846a8902e6a47))
+
 ## [6.18.8](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.7...v6.18.8) (2026-08-07)
 
 
