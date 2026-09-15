@@ -1,3 +1,10 @@
+## [6.19.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.19.1...v6.19.2) (2026-09-15)
+
+
+### Bug Fixes
+
+* prevent TypeError when open() called before widget script loads ([8722718](https://github.com/cloudinary-community/next-cloudinary/commit/8722718c7bf3691a7fa434220c242fb3a3c56717))
+
 ## [6.19.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.19.0...v6.19.1) (2026-09-15)
 
 
