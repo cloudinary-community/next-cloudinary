@@ -176,7 +176,7 @@ const CldUploadWidget = ({
       widget.current = createWidget();
     }
 
-    if (typeof widget?.current[method] === "function") {
+    if (typeof widget.current?.[method] === "function") {
       return widget.current[method](...options);
     }
   }
