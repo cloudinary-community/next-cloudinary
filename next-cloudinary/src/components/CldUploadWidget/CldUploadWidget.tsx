@@ -50,6 +50,7 @@ const CldUploadWidget = ({
   const uploadWidgetId = useUploadWidgetId();
   const cloudinary: CldUploadWidgetCloudinaryInstance = useRef();
   const widget: CldUploadWidgetWidgetInstance = useRef();
+  const isMounted = useRef(false);
 
   const [error, setError] = useState<CloudinaryUploadWidgetError | undefined>(undefined);
   const [results, setResults] = useState<CloudinaryUploadWidgetResults | undefined>(undefined);
@@ -130,6 +131,8 @@ const CldUploadWidget = ({
    */
 
   function handleOnLoad() {
+    if ( !isMounted.current ) return;
+
     setIsScriptLoading(false);
 
     if ( !cloudinary.current ) {
@@ -140,14 +143,16 @@ const CldUploadWidget = ({
     // to trigger widget creation. Optional.
 
     triggerOnIdle(() => {
-      if ( !widget.current ) {
+      if ( isMounted.current && !widget.current ) {
         widget.current = createWidget();
       }
     });
   }
 
   useEffect(() => {
+    isMounted.current = true;
     return () => {
+      isMounted.current = false;
       widget.current?.destroy();
       widget.current = undefined;
     }
