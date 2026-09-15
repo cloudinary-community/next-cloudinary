@@ -1,3 +1,10 @@
+## [6.19.1](https://github.com/cloudinary-community/next-cloudinary/compare/v6.19.0...v6.19.1) (2026-09-15)
+
+
+### Bug Fixes
+
+* prevent duplicate iframes on CldUploadWidget unmount/remount ([fd1f4d3](https://github.com/cloudinary-community/next-cloudinary/commit/fd1f4d311af36984897d8842cc66ee2d3681f8ae))
+
 # [6.19.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.18.8...v6.19.0) (2026-09-10)
 
 
