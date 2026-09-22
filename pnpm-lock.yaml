@@ -82,14 +82,14 @@ importers:
   next-cloudinary:
     dependencies:
       '@cloudinary-util/types':
-        specifier: 1.5.10
-        version: 1.5.10
+        specifier: 1.7.0
+        version: 1.7.0
       '@cloudinary-util/url-loader':
-        specifier: 5.10.4
-        version: 5.10.4
+        specifier: 6.3.2
+        version: 6.3.2
       '@cloudinary-util/util':
-        specifier: 4.0.0
-        version: 4.0.0
+        specifier: 4.3.0
+        version: 4.3.0
       next:
         specifier: ^12 || ^13 || ^14 || >=15.0.0-rc || ^15 || ^16
         version: 14.2.26(@babel/core@7.26.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.86.1)
@@ -647,24 +647,24 @@ packages:
   '@cloudinary-util/types@1.5.10':
     resolution: {integrity: sha512-n5lrm7SdAXhgWEbkSJKHZGnaoO9G/g4WYS6HYnq/k4nLj79sYfQZOoKjyR8hF2iyLRdLkT+qlk68RNFFv5tKew==}
 
-  '@cloudinary-util/url-loader@5.10.4':
-    resolution: {integrity: sha512-gHkdvOaV+rlcwuIT7Vqd0ts/H5bsH4+bwFten/gIZ8oRjzdTBvgIY3R6F8bbJt0pFIEfpFEQLe4rPkl0NNqEWg==}
+  '@cloudinary-util/types@1.7.0':
+    resolution: {integrity: sha512-4oz0zVupn1KFpi9BxzmhurYiVX5eek5DXhE1VlVwr+MeKEzrAFzrEkq2BAY0S7LRUnNT2p5UQIKoCE82MNju4g==}
 
   '@cloudinary-util/url-loader@5.7.0':
     resolution: {integrity: sha512-Wt9yOeldVRMAFe1NOHG0fxXbGQ5ZP3f/zaH08PHS4nKVneeq5QWMi25sd9sn3QPwZ8CZ+0YGiQVArYhOY/EvAg==}
 
+  '@cloudinary-util/url-loader@6.3.2':
+    resolution: {integrity: sha512-l/hLdFmTlQu0XCHzOBzXoSzhQKYuu96egPu7+W2Z5wBe7jRDfNHdH+ID4Ase1Jby8HI2xniJX2L83fglJV83+w==}
+
   '@cloudinary-util/util@3.2.0':
     resolution: {integrity: sha512-VJBqAT3W0HQ9kyMagv+EzXkM/VYR9Ks01ewGxsS8T8b2N0NZFPAhYKeU2H9fOXSl6BVrD6aVYjJZAoT8pfQIyA==}
-
-  '@cloudinary-util/util@3.3.2':
-    resolution: {integrity: sha512-Cc0iFxzfl7fcOXuznpeZFGYC885Of/vDgccRDnhTe/8Rf8YKv2PjLtezyo0VgmdA/CpeZy29NCXAsf6liokbwg==}
 
   '@cloudinary-util/util@3.4.0':
     resolution: {integrity: sha512-YLZzBR730PsLKxe+gON4UX/t57EMT996WHWoZlcmj4V7YdcG+6J7cQjsGjIJOzI0g1jOs0lUHfyArdSqe0LU3w==}
     deprecated: this package has been deprecated
 
-  '@cloudinary-util/util@4.0.0':
-    resolution: {integrity: sha512-S4xcou/3A7l5o+bcKlw2VHBNgwups7/0lbVDT/cO5YmtrcEYXgj6LGmwnjvpTm/x571VPVN8x5jWdT3rLZiKJQ==}
+  '@cloudinary-util/util@4.3.0':
+    resolution: {integrity: sha512-oP0HozxMd7XZcnh6VRUri2lXLvJVcT8IDou2470ZEcNXeX+6eeixZR1rAngjLcg+p6lVJsSHvrbJ3hODaYBXxw==}
 
   '@cloudinary/transformation-builder-sdk@1.16.1':
     resolution: {integrity: sha512-Mh1qYMkoDxSAzbt0qY9NJaZrdH/vFBcrpeVWmbTXbPVDZHLaaLyJ2+RDFGger5lycbrehPLoNp2hh22BvhkvbQ==}
@@ -5126,12 +5126,7 @@ snapshots:
 
   '@cloudinary-util/types@1.5.10': {}
 
-  '@cloudinary-util/url-loader@5.10.4':
-    dependencies:
-      '@cloudinary-util/types': 1.5.10
-      '@cloudinary-util/util': 3.3.2
-      '@cloudinary/url-gen': 1.15.0
-      zod: 3.24.2
+  '@cloudinary-util/types@1.7.0': {}
 
   '@cloudinary-util/url-loader@5.7.0':
     dependencies:
@@ -5140,13 +5135,17 @@ snapshots:
       '@cloudinary/url-gen': 1.15.0
       zod: 3.24.2
 
-  '@cloudinary-util/util@3.2.0': {}
+  '@cloudinary-util/url-loader@6.3.2':
+    dependencies:
+      '@cloudinary-util/types': 1.7.0
+      '@cloudinary-util/util': 4.3.0
+      '@cloudinary/url-gen': 1.15.0
 
-  '@cloudinary-util/util@3.3.2': {}
+  '@cloudinary-util/util@3.2.0': {}
 
   '@cloudinary-util/util@3.4.0': {}
 
-  '@cloudinary-util/util@4.0.0': {}
+  '@cloudinary-util/util@4.3.0': {}
 
   '@cloudinary/transformation-builder-sdk@1.16.1':
     dependencies:
