@@ -2,6 +2,10 @@
   "name": "next-cloudinary",
   "version": "7.0.0-beta.11",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloudinary-community/next-cloudinary.git"
+  },
   "main": "dist/next-cloudinary.cjs.js",
   "module": "dist/next-cloudinary.esm.js",
   "exports": {
@@ -56,7 +60,7 @@
     "vitest": "^2.0.5"
   },
   "peerDependencies": {
-    "next": "^12 || ^13 || ^14 || >=15.0.0-rc || ^15",
+    "next": "^12 || ^13 || ^14 || >=15.0.0-rc || ^15 || ^16",
     "react": "^17 || ^18 || >=19.0.0-beta || ^19"
   },
   "preconstruct": {

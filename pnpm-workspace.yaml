@@ -1,4 +1,4 @@
 packages:
-  - "docs"
-  - "next-cloudinary"
+  - docs
+  - next-cloudinary
   - next-cloudinary/tests/nextjs-app

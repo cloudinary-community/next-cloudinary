@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { CldVideoPlayer } from "next-cloudinary";
 
 import OgImage from '../../components/OgImage';
 import Table from '../../components/Table';
@@ -300,6 +301,13 @@ import Table from '../../components/Table';
       example: (<span><strong>Check Cloudinary Video Api Docs</strong></span>)
     },
     {
+      prop: 'disableRemotePlayback',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disable the ability to use remote playback (cast video) on the video element',
+      example: () => (<code>true</code>)
+    },
+    {
       prop: 'loop',
       type: 'boolean',
       default: 'false',
@@ -522,16 +530,18 @@ be loaded from as well as any customization of that track.
 
 **Examples**
 
-```
-textTracks={{
-  captions: {
-      label: 'English',
-      language: 'en',
-      default: true,
-      url: 'https://res.cloudinary.com/<Cloud Name>/raw/upload/<FileName>.vtt'
+```jsx copy
+<CldVideoPlayer
+  textTracks={{
+    captions: {
+        label: 'English',
+        language: 'en',
+        default: true,
+        url: 'https://res.cloudinary.com/<Cloud Name>/raw/upload/<File Name>.vtt'
     }
   }
-}}
+}
+... />
 ```
 
 Learn more on the [Video Player Reference](https://cloudinary.com/documentation/video_player_api_reference#text_tracks) or

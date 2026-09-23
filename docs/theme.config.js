@@ -14,7 +14,7 @@ export default {
     }
   },
   footer: {
-    text: `MIT ${new Date().getFullYear()} © Colby Fayock`,
+    text: `© Cloudinary ${new Date().getFullYear()}`,
   },
   editLink: {
     text: 'Edit this page on GitHub'

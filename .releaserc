@@ -40,10 +40,9 @@
       }
     ],
     [
-      "@colbyfayock/semantic-release-pnpm",
+      "@semantic-release/npm",
       {
-        "pkgRoot": "next-cloudinary",
-        "publishBranch": "main|beta"
+        "pkgRoot": "next-cloudinary"
       }
     ],
     [

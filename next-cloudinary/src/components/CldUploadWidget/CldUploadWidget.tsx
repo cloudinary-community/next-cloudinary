@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { generateSignatureCallback, generateUploadWidgetResultCallback, getUploadWidgetOptions, UPLOAD_WIDGET_EVENTS } from '@cloudinary-util/url-loader'
 import {
@@ -24,6 +24,19 @@ import {
 
 import { getCloudinaryConfig } from "../../lib/cloudinary";
 
+// Stable ID hook with React 18+ useId and React < 18 fallback
+const useUploadWidgetId = (): string => {
+  const reactId = (React as { useId?: () => string }).useId?.() ?? null;
+
+  // Preserve the original random ID behavior for React < 18
+  const fallbackId = React.useRef(Math.floor(Math.random() * 100)).current;
+
+  // Remove colons from React useId() output (e.g., ":r1:" -> "r1") to avoid issues with CSS selectors and HTML IDs
+  const sanitizedId = reactId ? reactId.replace(/:/g, '') : fallbackId;
+
+  return `cloudinary-uploadwidget-${sanitizedId}`;
+};
+
 const CldUploadWidget = ({
   children,
   config,
@@ -35,8 +48,10 @@ const CldUploadWidget = ({
   uploadPreset,
   ...props
 }: CldUploadWidgetProps) => {
+  const uploadWidgetId = useUploadWidgetId();
   const cloudinary: CldUploadWidgetCloudinaryInstance = useRef();
   const widget: CldUploadWidgetWidgetInstance = useRef();
+  const isMounted = useRef(false);
 
   const [error, setError] = useState<CloudinaryUploadWidgetError | undefined>(undefined);
   const [results, setResults] = useState<CloudinaryUploadWidgetResults | undefined>(undefined);
@@ -117,6 +132,8 @@ const CldUploadWidget = ({
    */
 
   function handleOnLoad() {
+    if ( !isMounted.current ) return;
+
     setIsScriptLoading(false);
 
     if ( !cloudinary.current ) {
@@ -127,14 +144,16 @@ const CldUploadWidget = ({
     // to trigger widget creation. Optional.
 
     triggerOnIdle(() => {
-      if ( !widget.current ) {
+      if ( isMounted.current && !widget.current ) {
         widget.current = createWidget();
       }
     });
   }
 
   useEffect(() => {
+    isMounted.current = true;
     return () => {
+      isMounted.current = false;
       widget.current?.destroy();
       widget.current = undefined;
     }
@@ -158,7 +177,7 @@ const CldUploadWidget = ({
       widget.current = createWidget();
     }
 
-    if (typeof widget?.current[method] === "function") {
+    if (typeof widget.current?.[method] === "function") {
       return widget.current[method](...options);
     }
   }
@@ -240,7 +259,7 @@ const CldUploadWidget = ({
         ...instanceMethods,
       })}
       <Script
-        id={`cloudinary-uploadwidget-${Math.floor(Math.random() * 100)}`}
+        id={uploadWidgetId}
         src="https://upload-widget.cloudinary.com/global/all.js"
         onLoad={handleOnLoad}
         onError={(e) => console.error(`Failed to load Cloudinary Upload Widget: ${e.message}`)}

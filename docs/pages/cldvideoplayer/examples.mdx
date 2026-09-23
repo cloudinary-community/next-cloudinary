@@ -111,6 +111,34 @@ Utilizes the browser's Picture-in-Picture API to create a floating video on top 
   ```
 </CodeBlock>
 
+### Disable Remote Playback
+
+Prevents the video from being cast to remote devices by disabling the remote playback feature.
+
+<HeaderImage>
+  <CldVideoPlayer
+    id="disable-remote-playback"
+    width="2048"
+    height="1080"
+    src={`${process.env.VIDEOS_DIRECTORY}/dog-running-snow`}
+    disableRemotePlayback
+  />
+</HeaderImage>
+
+<CodeBlock>
+  ```jsx copy showLineNumbers
+  import { CldVideoPlayer } from 'next-cloudinary';
+
+  <CldVideoPlayer
+    id="disable-remote-playback"
+    width="1620"
+    height="1080"
+    src="<Your Public ID>"
+    disableRemotePlayback
+  />
+  ```
+</CodeBlock>
+
 ## Player Customization
 
 ### Chapters & Selector
