@@ -49,8 +49,8 @@ const CldUploadWidget = ({
   ...props
 }: CldUploadWidgetProps) => {
   const uploadWidgetId = useUploadWidgetId();
-  const cloudinary: CldUploadWidgetCloudinaryInstance = useRef();
-  const widget: CldUploadWidgetWidgetInstance = useRef();
+  const cloudinary: CldUploadWidgetCloudinaryInstance = useRef(undefined);
+  const widget: CldUploadWidgetWidgetInstance = useRef(undefined);
   const isMounted = useRef(false);
 
   const [error, setError] = useState<CloudinaryUploadWidgetError | undefined>(undefined);
