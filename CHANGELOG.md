@@ -1,3 +1,39 @@
+# [7.0.0-beta.12](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.11...v7.0.0-beta.12) (2026-09-25)
+
+
+### Bug Fixes
+
+* add explicit npm install back ([cddc254](https://github.com/cloudinary-community/next-cloudinary/commit/cddc254587f2c2ec5f27a567c23e3fdc9f84d21c))
+* add missing alt text to What's Inside section for accessibility ([8559cdc](https://github.com/cloudinary-community/next-cloudinary/commit/8559cdcdb85a518e9e8051cbbff938fb3ec6a7a8))
+* Add missing repository URL field ([554e2a0](https://github.com/cloudinary-community/next-cloudinary/commit/554e2a0c70baa0d7aa1c4ee258ba281c6db77592))
+* bump action versions ([bf4544b](https://github.com/cloudinary-community/next-cloudinary/commit/bf4544b31560e020aca0eee6b5dfd02ad7b1fbe0))
+* bump action-setup version ([52c8e95](https://github.com/cloudinary-community/next-cloudinary/commit/52c8e9554c2f006ce92d6834d0aa162733a9bda9))
+* CI environment variable collision blocked Trusted Publishers ([c334b0f](https://github.com/cloudinary-community/next-cloudinary/commit/c334b0f1ccab4538471f949c32f6c6b9973125fa))
+* correct undefined variable reference in error handler ([d48fb7c](https://github.com/cloudinary-community/next-cloudinary/commit/d48fb7c82c722c8ecb4de4896cbedd4cb655d8b8))
+* **docs:** enable muted autoplay for YouTube video in “Watch & Learn” ([5ae810a](https://github.com/cloudinary-community/next-cloudinary/commit/5ae810a82c1c13ca991805c2ac0049af19aae380))
+* **docs:** use Tailwind italic for HeaderImage caption ([b4417f5](https://github.com/cloudinary-community/next-cloudinary/commit/b4417f5d2ce6cf67e562990685e3f5cc1f4f55e2))
+* implement useUploadWidgetId with React 18 useId and fallback ([966198c](https://github.com/cloudinary-community/next-cloudinary/commit/966198c01a5a0a4f548f7338f1a539ba7e20fdd2))
+* incorrect analytics code ([7345084](https://github.com/cloudinary-community/next-cloudinary/commit/7345084360101ae9bf7a5b9c33a17c17644ba182))
+* log more to diagnore Trusted Publishers errors ([5883964](https://github.com/cloudinary-community/next-cloudinary/commit/58839646bf58344640e74c6a653e210c9c77b3f8))
+* merge pull request [#632](https://github.com/cloudinary-community/next-cloudinary/issues/632) from SarthakJain29/updated_footer ([be68133](https://github.com/cloudinary-community/next-cloudinary/commit/be68133865d723b7e6a20ced3a406941b5f3cbc4))
+* patch semantic-release for Trusted Publishers ([94f92a4](https://github.com/cloudinary-community/next-cloudinary/commit/94f92a4df678bdc6aef9ff49d034873ec5608a7c))
+* preserve falsy values, stable keys, crash guard, and class typo in Table component ([78624dc](https://github.com/cloudinary-community/next-cloudinary/commit/78624dc4d23502bd0fdfaaa1cb331830bae8cf7a))
+* prevent duplicate iframes on CldUploadWidget unmount/remount ([fd1f4d3](https://github.com/cloudinary-community/next-cloudinary/commit/fd1f4d311af36984897d8842cc66ee2d3681f8ae))
+* prevent TypeError when open() called before widget script loads ([8722718](https://github.com/cloudinary-community/next-cloudinary/commit/8722718c7bf3691a7fa434220c242fb3a3c56717))
+* qualify JSX.Element as React.JSX.Element, typecheck against React 19 ([ecc103d](https://github.com/cloudinary-community/next-cloudinary/commit/ecc103d7ab1213816bdeeacdba8d90d390cd92c6))
+* remove unnecessary package-lock.json ([e5b9635](https://github.com/cloudinary-community/next-cloudinary/commit/e5b963537f860d35476374bfbdfc57a030676d41))
+* resolve CldVideoPlayer fullscreen object-cover issue ([27e2dbb](https://github.com/cloudinary-community/next-cloudinary/commit/27e2dbb45c5d122b1d4ea067d2d565ca0a4a6d61)), closes [#433](https://github.com/cloudinary-community/next-cloudinary/issues/433)
+* turn off "silly"logging ([80f5671](https://github.com/cloudinary-community/next-cloudinary/commit/80f5671d3c69b6a5c03b28b80ceac51355991b1f))
+* **typo:** remove colon from Watch & Learn ([43fdeda](https://github.com/cloudinary-community/next-cloudinary/commit/43fdeda2b028dfa3b4194f63ecc56cc173afc035))
+* url ([15179f7](https://github.com/cloudinary-community/next-cloudinary/commit/15179f7d768d4e2f57b207ca6973142adc15320d))
+
+
+### Features
+
+* add disableRemotePlayback prop ([2ae5b59](https://github.com/cloudinary-community/next-cloudinary/commit/2ae5b59a27a7177be3ee22502b52e8b3af030121))
+* add Next.js 16 compatibility ([1c1ea9b](https://github.com/cloudinary-community/next-cloudinary/commit/1c1ea9b9c641bd000ba3f823009846a8902e6a47))
+* create-cloudinary-next analytics ([#655](https://github.com/cloudinary-community/next-cloudinary/issues/655)) ([59de7e5](https://github.com/cloudinary-community/next-cloudinary/commit/59de7e512653b3e6ba0115a3180ffdb06da938ac))
+
 # [7.0.0-beta.11](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.10...v7.0.0-beta.11) (2025-09-16)
 ## [6.19.3](https://github.com/cloudinary-community/next-cloudinary/compare/v6.19.2...v6.19.3) (2026-09-17)
 
