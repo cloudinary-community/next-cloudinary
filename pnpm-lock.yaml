@@ -95,10 +95,7 @@ importers:
         version: 4.2.0
       next:
         specifier: ^12 || ^13 || ^14 || >=15.0.0-rc || ^15 || ^16
-        version: 14.2.15(@babel/core@7.25.2)(react-dom@19.3.0(react@18.2.0))(react@18.2.0)(sass@1.71.1)
-      react:
-        specifier: ^17 || ^18 || >=19.0.0-beta || ^19
-        version: 18.2.0
+        version: 14.2.15(@babel/core@7.25.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(sass@1.71.1)
     devDependencies:
       '@babel/core':
         specifier: ^7.25.2
@@ -130,6 +127,9 @@ importers:
       mkdirp:
         specifier: ^3.0.1
         version: 3.0.1
+      react:
+        specifier: ^19.2.0
+        version: 19.3.0
       tsx:
         specifier: ^4.19.1
         version: 4.19.1
@@ -11702,7 +11702,7 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  next@14.2.15(@babel/core@7.25.2)(react-dom@19.3.0(react@18.2.0))(react@18.2.0)(sass@1.71.1):
+  next@14.2.15(@babel/core@7.25.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(sass@1.71.1):
     dependencies:
       '@next/env': 14.2.15
       '@swc/helpers': 0.5.5
@@ -11710,9 +11710,9 @@ snapshots:
       caniuse-lite: 1.0.30001664
       graceful-fs: 4.2.11
       postcss: 8.4.31
-      react: 18.2.0
-      react-dom: 19.3.0(react@18.2.0)
-      styled-jsx: 5.1.1(@babel/core@7.25.2)(react@18.2.0)
+      react: 19.3.0
+      react-dom: 19.3.0(react@19.3.0)
+      styled-jsx: 5.1.1(@babel/core@7.25.2)(react@19.3.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.15
       '@next/swc-darwin-x64': 14.2.15
@@ -12249,11 +12249,6 @@ snapshots:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-
-  react-dom@19.3.0(react@18.2.0):
-    dependencies:
-      react: 18.2.0
-      scheduler: 0.28.0
 
   react-dom@19.3.0(react@19.3.0):
     dependencies:
@@ -12958,6 +12953,13 @@ snapshots:
     dependencies:
       client-only: 0.0.1
       react: 18.2.0
+    optionalDependencies:
+      '@babel/core': 7.25.2
+
+  styled-jsx@5.1.1(@babel/core@7.25.2)(react@19.3.0):
+    dependencies:
+      client-only: 0.0.1
+      react: 19.3.0
     optionalDependencies:
       '@babel/core': 7.25.2
 

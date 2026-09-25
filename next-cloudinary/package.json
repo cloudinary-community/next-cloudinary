@@ -55,6 +55,7 @@
     "@types/react-dom": "^19.2.5",
     "dotenv": "^16.4.5",
     "mkdirp": "^3.0.1",
+    "react": "^19.2.0",
     "tsx": "^4.19.1",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
