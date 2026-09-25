@@ -11,7 +11,7 @@ import { getCloudinaryConfig } from "../../lib/cloudinary";
 
 let playerInstances: string[] = [];
 
-const PLAYER_VERSION = '1.11.1';
+const PLAYER_VERSION = '4.1.1';
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
