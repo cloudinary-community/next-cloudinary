@@ -1,3 +1,10 @@
+## [6.19.3](https://github.com/cloudinary-community/next-cloudinary/compare/v6.19.2...v6.19.3) (2026-09-17)
+
+
+### Bug Fixes
+
+* preserve falsy values, stable keys, crash guard, and class typo in Table component ([78624dc](https://github.com/cloudinary-community/next-cloudinary/commit/78624dc4d23502bd0fdfaaa1cb331830bae8cf7a))
+
 ## [6.19.2](https://github.com/cloudinary-community/next-cloudinary/compare/v6.19.1...v6.19.2) (2026-09-15)
 
 
