@@ -42,7 +42,6 @@ const CldUploadWidget = ({
   config,
   onError,
   onOpen,
-  onUpload,
   options,
   signatureEndpoint,
   uploadPreset,
@@ -109,22 +108,6 @@ const CldUploadWidget = ({
       }
     },
   });
-
-
-  // Handle result states and callbacks
-
-  useEffect(() => {
-    if ( typeof results === 'undefined' ) return;
-
-    const isSuccess = results.event === 'success';
-
-    if ( isSuccess && typeof onUpload === 'function' ) {
-      if ( process.env.NODE_ENV === 'development' ) {
-        console.warn('The onUpload callback is deprecated. Please use onSuccess instead.');
-      }
-      onUpload(results, widget.current);
-    }
-  }, [results])
 
   /**
    * handleOnLoad
