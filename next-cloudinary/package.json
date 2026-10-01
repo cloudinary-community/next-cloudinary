@@ -20,11 +20,7 @@
     },
     "./package.json": "./package.json",
     "./cld-video-player.css": "./dist/cld-video-player.css",
-    "./dist/cld-video-player.css": "./dist/cld-video-player.css",
-    "./cloudinary_icon_for_black_bg.svg": "./dist/cloudinary_icon_for_black_bg.svg",
-    "./dist/cloudinary_icon_for_black_bg.svg": "./dist/cloudinary_icon_for_black_bg.svg",
-    "./cloudinary_icon_for_white_bg.svg": "./dist/cloudinary_icon_for_white_bg.svg",
-    "./dist/cloudinary_icon_for_white_bg.svg": "./dist/cloudinary_icon_for_white_bg.svg"
+    "./dist/cld-video-player.css": "./dist/cld-video-player.css"
   },
   "types": "./dist/next-cloudinary.cjs.d.ts",
   "files": [
@@ -70,11 +66,7 @@
       "importConditionDefaultExport": "default",
       "extra": {
         "./cld-video-player.css": "./dist/cld-video-player.css",
-        "./dist/cld-video-player.css": "./dist/cld-video-player.css",
-        "./cloudinary_icon_for_black_bg.svg": "./dist/cloudinary_icon_for_black_bg.svg",
-        "./dist/cloudinary_icon_for_black_bg.svg": "./dist/cloudinary_icon_for_black_bg.svg",
-        "./cloudinary_icon_for_white_bg.svg": "./dist/cloudinary_icon_for_white_bg.svg",
-        "./dist/cloudinary_icon_for_white_bg.svg": "./dist/cloudinary_icon_for_white_bg.svg"
+        "./dist/cld-video-player.css": "./dist/cld-video-player.css"
       }
     },
     "___experimentalFlags_WILL_CHANGE_IN_PATCH": {
