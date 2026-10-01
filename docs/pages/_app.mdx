@@ -9,14 +9,16 @@ export default function Nextra({ Component, pageProps }) {
   return (
     <>
       <GoogleAnalytics trackPageViews />
-      <div className="bg-primary">
+      <header className="bg-primary">
         <Link className="block text-center py-2" href="/changelog">
           <p className="text-white font-semibold text-xs">
             Next Cloudinary v6 now available! <span className="underline underline-offset-2">View Changelog</span>
           </p>
         </Link>
-      </div>
-      <Component {...pageProps} />
+      </header>
+      <main>
+        <Component {...pageProps} />
+      </main>
       <Analytics />
     </>
   );
