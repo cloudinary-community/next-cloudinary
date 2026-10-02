@@ -1,3 +1,15 @@
+# [7.0.0-beta.13](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.12...v7.0.0-beta.13) (2026-10-02)
+
+
+### Features
+
+* upgrade Cloudinary video player from v1 to v4 ([8c2e700](https://github.com/cloudinary-community/next-cloudinary/commit/8c2e7009264024e1c19e6ed9e05251f8e205f1f0)), closes [cloudinary/cloudinary-video-player#1087](https://github.com/cloudinary/cloudinary-video-player/issues/1087)
+
+
+### BREAKING CHANGES
+
+* the video player's default appearance changes.
+
 # [7.0.0-beta.12](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.11...v7.0.0-beta.12) (2026-09-25)
 
 
