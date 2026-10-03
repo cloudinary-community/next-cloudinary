@@ -14,7 +14,6 @@ const CldUploadButton = ({
   onClick,
   onError,
   onOpen,
-  onUpload,
    onAbort,
   onBatchCancelled,
   onClose,
@@ -52,7 +51,6 @@ const CldUploadButton = ({
       <CldUploadWidget
         onError={onError}
         onOpen={onOpen}
-        onUpload={onUpload}
         onAbort={onAbort}
         onBatchCancelled={onBatchCancelled}
         onClose={onClose}
