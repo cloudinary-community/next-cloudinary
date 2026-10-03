@@ -9,13 +9,6 @@ const assets = [
   {
     uri: `https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.min.css`,
     name: 'cld-video-player.css'
-  },
-  {
-    directory: 'fonts',
-    assets: [
-      `https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/fonts/cloudinary_icon_for_black_bg.svg`,
-      `https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/fonts/cloudinary_icon_for_white_bg.svg`,
-    ]
   }
 ];
 
@@ -44,14 +37,6 @@ async function copyAssets() {
       await downloadFile(uri, writePath);
 
       console.log(`Wrote ${uri} to ${writePath}`);
-    } else if ( typeof asset.directory === 'string' ) {
-      await mkdirp(path.join(distPath, asset.directory));
-
-      for ( const dirAsset of asset.assets ) {
-        const writePath = path.join(distPath, asset.directory, path.basename(dirAsset));
-        await downloadFile(dirAsset, writePath);
-        console.log(`Wrote ${dirAsset} to ${writePath}`);
-      }
     }
   }
 
@@ -63,16 +48,27 @@ async function copyAssets() {
  */
 
 function downloadFile(assetUrl: string, writePath: string) {
-  return new Promise<void>((resolve) => {
-    const file = createWriteStream(writePath);
+  return new Promise<void>((resolve, reject) => {
     https.get(assetUrl, function(response) {
+      // Fail instead of writing an error page (e.g. a 404) to disk as the asset
+      if ( response.statusCode !== 200 ) {
+        response.resume();
+        reject(new Error(`Failed to download ${assetUrl}: HTTP ${response.statusCode}`));
+        return;
+      }
+
+      const file = createWriteStream(writePath);
       response.pipe(file);
       file.on('finish', () => {
         file.close();
         resolve();
       });
-    });
+      file.on('error', reject);
+    }).on('error', reject);
   })
 }
 
-copyAssets();
+copyAssets().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
