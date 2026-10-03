@@ -1,3 +1,17 @@
+# [7.0.0-beta.15](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.14...v7.0.0-beta.15) (2026-10-03)
+
+
+* feat!: remove deprecated onUpload callback from CldUploadWidget ([0d08df9](https://github.com/cloudinary-community/next-cloudinary/commit/0d08df9c191e694e3e839534829539c1d12bab43)), closes [#424](https://github.com/cloudinary-community/next-cloudinary/issues/424)
+
+
+### BREAKING CHANGES
+
+* The `onUpload` prop has been removed from
+CldUploadWidget and CldUploadButton. Use `onSuccess` instead. Note that
+the second argument is now an options object:
+`onUpload={(result, widget) => ...}` becomes
+`onSuccess={(result, { widget }) => ...}`.
+
 # [7.0.0-beta.14](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.13...v7.0.0-beta.14) (2026-10-03)
 
 
