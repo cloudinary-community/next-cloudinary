@@ -1,4 +1,5 @@
-import React, {useRef, MutableRefObject, useEffect, useId, useState} from 'react';
+'use client';
+import {useRef, useEffect, useId, useState} from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import { CloudinaryVideoPlayer } from '@cloudinary-util/types';
@@ -10,7 +11,7 @@ import { getCloudinaryConfig } from "../../lib/cloudinary";
 
 let playerInstances: string[] = [];
 
-const PLAYER_VERSION = '1.11.1';
+const PLAYER_VERSION = '4.1.2';
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
@@ -43,10 +44,10 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   // Setup the refs and allow for the caller to pass through their
   // own ref instance
 
-  const cloudinaryRef = useRef<any>();
-  const defaultVideoRef = useRef() as MutableRefObject<HTMLVideoElement | null>;
+  const cloudinaryRef = useRef<any>(undefined);
+  const defaultVideoRef = useRef<HTMLVideoElement | null>(null);
   const videoRef = props.videoRef || defaultVideoRef;
-  const defaultPlayerRef = useRef()as MutableRefObject<CloudinaryVideoPlayer | null>;
+  const defaultPlayerRef = useRef<CloudinaryVideoPlayer | null>(null);
   const playerRef = props.playerRef || defaultPlayerRef;
 
   const playerId = id || `player-${uniqueId.replace(/:/g, '')}`;

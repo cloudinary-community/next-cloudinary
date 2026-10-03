@@ -1,9 +1,10 @@
+'use client';
 import React from 'react';
 import CldUploadWidget, { CldUploadWidgetProps } from '../CldUploadWidget';
 
 export interface CldUploadButtonProps extends Omit<CldUploadWidgetProps, 'children'> {
   className?: string;
-  children?: JSX.Element | string | Array<JSX.Element|string>;
+  children?: React.JSX.Element | string | Array<React.JSX.Element|string>;
   onClick?: Function;
 }
 
@@ -13,7 +14,6 @@ const CldUploadButton = ({
   onClick,
   onError,
   onOpen,
-  onUpload,
    onAbort,
   onBatchCancelled,
   onClose,
@@ -51,7 +51,6 @@ const CldUploadButton = ({
       <CldUploadWidget
         onError={onError}
         onOpen={onOpen}
-        onUpload={onUpload}
         onAbort={onAbort}
         onBatchCancelled={onBatchCancelled}
         onClose={onClose}
