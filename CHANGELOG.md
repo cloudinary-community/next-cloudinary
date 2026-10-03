@@ -1,3 +1,10 @@
+# [7.0.0-beta.14](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.13...v7.0.0-beta.14) (2026-10-03)
+
+
+### Bug Fixes
+
+* remove missing video player icon assets and fail build on download errors ([9eb75a3](https://github.com/cloudinary-community/next-cloudinary/commit/9eb75a36a216a7efe27826c0bed40cfb167421c3))
+
 # [7.0.0-beta.13](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.12...v7.0.0-beta.13) (2026-10-02)
 
 
