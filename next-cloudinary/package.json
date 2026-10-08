@@ -58,8 +58,11 @@
     "vitest": "^2.0.5"
   },
   "peerDependencies": {
-    "next": "^12 || ^13 || ^14 || >=15.0.0-rc || ^15 || ^16",
-    "react": "^17 || ^18 || >=19.0.0-beta || ^19"
+    "next": "^16",
+    "react": "^18.2.0 || ^19"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "preconstruct": {
     "exports": {
