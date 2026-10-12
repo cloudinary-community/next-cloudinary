@@ -1,4 +1,5 @@
-import React, {useRef, MutableRefObject, useEffect, useId, useState} from 'react';
+'use client';
+import {useRef, useEffect, useId, useState} from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import { CloudinaryVideoPlayer } from '@cloudinary-util/types';
@@ -10,7 +11,7 @@ import { getCloudinaryConfig } from "../../lib/cloudinary";
 
 let playerInstances: string[] = [];
 
-const PLAYER_VERSION = '1.11.1';
+const PLAYER_VERSION = '4.1.2';
 
 const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
@@ -43,11 +44,13 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
   // Setup the refs and allow for the caller to pass through their
   // own ref instance
 
-  const cloudinaryRef = useRef<any>();
-  const defaultVideoRef = useRef() as MutableRefObject<HTMLVideoElement | null>;
+  const cloudinaryRef = useRef<any>(undefined);
+  const defaultVideoRef = useRef<HTMLVideoElement | null>(null);
   const videoRef = props.videoRef || defaultVideoRef;
-  const defaultPlayerRef = useRef()as MutableRefObject<CloudinaryVideoPlayer | null>;
+  const defaultPlayerRef = useRef<CloudinaryVideoPlayer | null>(null);
   const playerRef = props.playerRef || defaultPlayerRef;
+  // The <video> element the player was created on (video.js keeps using it inside the player)
+  const playerVideoElementRef = useRef<HTMLVideoElement | null>(null);
 
   const playerId = id || `player-${uniqueId.replace(/:/g, '')}`;
   let playerClassName = 'cld-video-player cld-fluid';
@@ -85,8 +88,14 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
    */
 
   const disposePlayer = () => {
-    if (playerRef.current?.videojs?.cloudinary) {
-      playerRef.current.videojs.cloudinary.dispose();
+    // React Strict Mode runs effect cleanups without removing the DOM, then reuses the same
+    // <video> element. Keep the player in that case; dispose() would remove the element.
+    if (playerVideoElementRef.current?.isConnected) return;
+
+    // dispose() on the player instance also removes it from the video.js registry,
+    // so a remount with the same id creates a new player instead of reusing a stale one
+    if (typeof playerRef.current?.dispose === 'function') {
+      playerRef.current.dispose();
     }
     // remove from global instances array
     playerInstances = playerInstances.filter((instanceId) => instanceId !== playerId);
@@ -100,14 +109,12 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
    */
 
   const initializePlayer = () => {
-    if (typeof window !== 'undefined' && 'cloudinary' in window && videoRef.current && !playerInitialized) {
+    // Check the ref, not the playerInitialized state: onLoad and onReady can both call this
+    // during the same render, and the state value seen there may be stale
+    if (typeof window !== 'undefined' && 'cloudinary' in window && videoRef.current && !playerRef.current) {
       cloudinaryRef.current = window.cloudinary;
-      
-      // dispose any existing player instance first to prevent conflicts
-      if (playerRef.current) {
-        disposePlayer();
-      }
-      
+
+      playerVideoElementRef.current = videoRef.current;
       playerRef.current = cloudinaryRef.current.videoPlayer(videoRef.current, playerOptions);
       setPlayerInitialized(true);
 
@@ -179,6 +186,8 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
           id={`cloudinary-videoplayer-${playerId}`}
           src={`https://unpkg.com/cloudinary-video-player@${PLAYER_VERSION}/dist/cld-video-player.min.js`}
           onLoad={handleOnLoad}
+          // onReady also runs on later mounts with the same script id, where onLoad doesn't fire again
+          onReady={handleOnLoad}
           onError={(e) => console.error(`Failed to load Cloudinary Video Player: ${e.message}`)}
         />
       </div>
