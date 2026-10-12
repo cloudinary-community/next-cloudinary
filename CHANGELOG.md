@@ -1,3 +1,16 @@
+# [7.0.0-beta.17](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.16...v7.0.0-beta.17) (2026-10-12)
+
+
+### chore
+
+* raise minimum supported Next.js, React and Node.js versions ([bc96fc6](https://github.com/cloudinary-community/next-cloudinary/commit/bc96fc63295a4c47ee3a3276a667c2717709a979))
+
+
+### BREAKING CHANGES
+
+* next-cloudinary now requires Next.js 16, React 18.2 or
+19, and Node.js 22 or later. Projects on older versions can stay on v6.
+
 # [7.0.0-beta.16](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.15...v7.0.0-beta.16) (2026-10-12)
 
 
