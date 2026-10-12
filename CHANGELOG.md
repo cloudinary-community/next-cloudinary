@@ -1,3 +1,10 @@
+# [7.0.0-beta.16](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.15...v7.0.0-beta.16) (2026-10-12)
+
+
+### Bug Fixes
+
+* re-initialize CldVideoPlayer after unmount and remount ([4b37a24](https://github.com/cloudinary-community/next-cloudinary/commit/4b37a24ef786ed68cbea0eccb57747913c6666fa))
+
 # [7.0.0-beta.15](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.14...v7.0.0-beta.15) (2026-10-03)
 
 
