@@ -1,3 +1,47 @@
+# [7.0.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.19.3...v7.0.0) (2026-10-26)
+
+
+* feat!: remove deprecated onUpload callback from CldUploadWidget ([0d08df9](https://github.com/cloudinary-community/next-cloudinary/commit/0d08df9c191e694e3e839534829539c1d12bab43)), closes [#424](https://github.com/cloudinary-community/next-cloudinary/issues/424)
+
+
+### Bug Fixes
+
+* add src type to CloudinaryLoaderCldOptions interface ([#552](https://github.com/cloudinary-community/next-cloudinary/issues/552)) ([74e1b96](https://github.com/cloudinary-community/next-cloudinary/commit/74e1b96e8d6f81135628c90a61ac6ac2584c3d4b)), closes [#425](https://github.com/cloudinary-community/next-cloudinary/issues/425)
+* make sure to publish types ([#528](https://github.com/cloudinary-community/next-cloudinary/issues/528)) ([b1d1f61](https://github.com/cloudinary-community/next-cloudinary/commit/b1d1f61ba086959f05d0d3bcd08747c7e2b33abc))
+* oops, pnpm lock ([d2e115e](https://github.com/cloudinary-community/next-cloudinary/commit/d2e115ea51b7ab689c9e730e76a0ff66a5b48c5c))
+* qualify JSX.Element as React.JSX.Element, typecheck against React 19 ([ecc103d](https://github.com/cloudinary-community/next-cloudinary/commit/ecc103d7ab1213816bdeeacdba8d90d390cd92c6))
+* re-initialize CldVideoPlayer after unmount and remount ([4b37a24](https://github.com/cloudinary-community/next-cloudinary/commit/4b37a24ef786ed68cbea0eccb57747913c6666fa))
+* remove missing video player icon assets and fail build on download errors ([9eb75a3](https://github.com/cloudinary-community/next-cloudinary/commit/9eb75a36a216a7efe27826c0bed40cfb167421c3))
+* updating util packages ([56910f1](https://github.com/cloudinary-community/next-cloudinary/commit/56910f17df76f1b061210d1c44d1d32a65679819))
+* upgrading to stable releases for url-loader and util packages ([1b9c160](https://github.com/cloudinary-community/next-cloudinary/commit/1b9c160dca04601d133b83d7dc15b34acccfa54f))
+* upgrading url-loader to new beta ([edeee00](https://github.com/cloudinary-community/next-cloudinary/commit/edeee003fd5d1169fe20ccf54e646bf35467c7a3))
+* upgrading util packages to beta which refactors type system and how props are exported ([08a60de](https://github.com/cloudinary-community/next-cloudinary/commit/08a60de07288a9594efd3f9b4d20a6234dc89446))
+* upgrading util packages, fixing prop definitions ([94e9e87](https://github.com/cloudinary-community/next-cloudinary/commit/94e9e87d69565dccf1c2a7c62617b26ef1c7c6f3))
+
+
+### chore
+
+* raise minimum supported Next.js, React and Node.js versions ([bc96fc6](https://github.com/cloudinary-community/next-cloudinary/commit/bc96fc63295a4c47ee3a3276a667c2717709a979))
+
+
+### Features
+
+* Switch to Preconstruct for library building ([#520](https://github.com/cloudinary-community/next-cloudinary/issues/520)) ([a35a928](https://github.com/cloudinary-community/next-cloudinary/commit/a35a92872dc2e78626060e977b2bf7b1b60856dd))
+* upgrade Cloudinary video player from v1 to v4 ([8c2e700](https://github.com/cloudinary-community/next-cloudinary/commit/8c2e7009264024e1c19e6ed9e05251f8e205f1f0)), closes [cloudinary/cloudinary-video-player#1087](https://github.com/cloudinary/cloudinary-video-player/issues/1087)
+
+
+### BREAKING CHANGES
+
+* next-cloudinary now requires Next.js 16, React 18.2 or
+19, and Node.js 22 or later. Projects on older versions can stay on v6.
+* The `onUpload` prop has been removed from
+CldUploadWidget and CldUploadButton. Use `onSuccess` instead. Note that
+the second argument is now an options object:
+`onUpload={(result, widget) => ...}` becomes
+`onSuccess={(result, { widget }) => ...}`.
+* the video player's default appearance changes.
+* New build tool, no longer requires `use client` directive, marking as breaking for safety
+
 # [7.0.0-beta.17](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0-beta.16...v7.0.0-beta.17) (2026-10-12)
 
 
