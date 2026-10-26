@@ -43,7 +43,7 @@ export const UnsignedUpload = () => {
     <>
       <CldUploadButton
         className={styles.button}
-        onUpload={(result, widget) => {
+        onSuccess={(result, { widget }) => {
           setResource(result?.info);
           widget.close();
         }}

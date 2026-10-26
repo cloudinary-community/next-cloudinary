@@ -33,7 +33,7 @@ export const SignedUpload = () => {
     <>
       <CldUploadButton
         className={styles.button}
-        onUpload={(error, result, widget) => {
+        onSuccess={(result, { widget }) => {
           setResource(result?.info);
           widget.close();
         }}
@@ -64,7 +64,7 @@ const [resource, setResource] = useState();
 
 <CldUploadButton
   className={styles.button}
-  onUpload={(error, result, widget) => {
+  onSuccess={(result, { widget }) => {
     setResource(result?.info);  // { public_id, secure_url, etc }
     widget.close();
   }}
