@@ -1,3 +1,10 @@
+# [7.1.0](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0...v7.1.0) (2026-11-12)
+
+
+### Features
+
+* load CldVideoPlayer posters when aspectRatio is set ([4a69d6e](https://github.com/cloudinary-community/next-cloudinary/commit/4a69d6e7da71c0bf4fb8d62f5c7c5d39f804074e))
+
 # [7.0.0](https://github.com/cloudinary-community/next-cloudinary/compare/v6.19.3...v7.0.0) (2026-10-26)
 
 
