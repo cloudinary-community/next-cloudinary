@@ -6,6 +6,7 @@ import { CloudinaryVideoPlayer } from '@cloudinary-util/types';
 import { getVideoPlayerOptions } from '@cloudinary-util/url-loader';
 
 import { CldVideoPlayerProps } from './CldVideoPlayer.types';
+import { getPlayerTransformation } from './getPlayerTransformation';
 
 import { getCloudinaryConfig } from "../../lib/cloudinary";
 
@@ -36,6 +37,8 @@ const CldVideoPlayer = (props: CldVideoPlayerProps) => {
 
   const cloudinaryConfig = getCloudinaryConfig(config);
   const playerOptions = getVideoPlayerOptions(props, cloudinaryConfig);
+  playerOptions.transformation = getPlayerTransformation(props, playerOptions.transformation);
+
   const { publicId } = playerOptions;
   if ( typeof publicId === 'undefined' ) {
     throw new Error('Video Player requires a Public ID or Cloudinary URL - please specify a src prop');
