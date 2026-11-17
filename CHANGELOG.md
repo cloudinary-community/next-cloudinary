@@ -1,3 +1,10 @@
+## [7.1.1](https://github.com/cloudinary-community/next-cloudinary/compare/v7.1.0...v7.1.1) (2026-11-17)
+
+
+### Bug Fixes
+
+* keep 7.0.0 CldVideoPlayer URLs when aspectRatio is used with a transformation or cropMode ([83c7cf7](https://github.com/cloudinary-community/next-cloudinary/commit/83c7cf7f9ee7d8b6af0044e280d51d4956600bc4))
+
 # [7.1.0](https://github.com/cloudinary-community/next-cloudinary/compare/v7.0.0...v7.1.0) (2026-11-12)
 
 
