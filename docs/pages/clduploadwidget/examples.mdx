@@ -117,6 +117,7 @@ export const UnsignedUpload = ({ options }) => {
 
   <CldUploadWidget
     signatureEndpoint="/api/sign-cloudinary-params"
+    uploadPreset="<Your Signed Upload Preset>"
     onSuccess={(result, { widget }) => {
       setResource(result?.info);  // { public_id, secure_url, etc }
     }}
@@ -160,6 +161,7 @@ Controls which sources files can be selected from.
   <CldUploadWidget
     options={{ sources: ['local', 'url', 'unsplash'] }}
     signatureEndpoint="/api/sign-cloudinary-params"
+    uploadPreset="<Your Signed Upload Preset>"
     onSuccess={(result, { widget }) => {
       setResource(result?.info);  // { public_id, secure_url, etc }
     }}

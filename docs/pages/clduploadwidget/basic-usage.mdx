@@ -121,7 +121,10 @@ Use the following to generate an signed upload widget:
   ```jsx copy showLineNumbers
   import { CldUploadWidget } from 'next-cloudinary';
 
-  <CldUploadWidget signatureEndpoint="<API Endpoint (ex: /api/sign-cloudinary-params)>">
+  <CldUploadWidget
+    signatureEndpoint="<API Endpoint (ex: /api/sign-cloudinary-params)>"
+    uploadPreset="<Your Signed Upload Preset>"
+  >
     {({ open }) => {
       return (
         <button onClick={() => open()}>
@@ -183,22 +186,10 @@ export const SignedUpload = ({ options }) => {
   </div>
 </HeaderImage>
 
-Here's an example of how you could process the signature in an API endpoint that signs a request:
+The `signatureEndpoint` is a Node-based API route that signs the request. It should only sign the
+parameters your uploads need, not anything the browser sends.
 
-```js copy
-import { v2 as cloudinary } from 'cloudinary';
-// const cloudinary = require('cloudinary').v2;
-
-const signature = cloudinary.utils.api_sign_request(body.paramsToSign, process.env.CLOUDINARY_API_SECRET);
-
-res.status(200).json({
-  signature,
-});
-```
-
-To use the above, create a Node-based API route, add the snippet, and use that endpoint as the `signatureEndpoint` prop.
-
-[Learn more about signing uploads](/clduploadwidget/signed-uploads).
+[See how to create the API endpoint in Signing Uploads](/clduploadwidget/signed-uploads).
 
 Or see a full example of an API endpoint used with the Next Cloudinary docs in the Pages Router: https://github.com/cloudinary-community/next-cloudinary/blob/main/docs/pages/api/sign-cloudinary-params.js
 

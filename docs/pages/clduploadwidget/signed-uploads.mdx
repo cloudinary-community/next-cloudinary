@@ -28,7 +28,10 @@ Setting up CldUploadWidget to sign uploads is as simple as passing an API endpoi
   ```jsx copy showLineNumbers
   import { CldUploadWidget } from 'next-cloudinary';
 
-  <CldUploadWidget signatureEndpoint="<API Endpoint (ex: /api/sign-cloudinary-params)>">
+  <CldUploadWidget
+    signatureEndpoint="<API Endpoint (ex: /api/sign-cloudinary-params)>"
+    uploadPreset="<Your Signed Upload Preset>"
+  >
     {({ open }) => {
       return (
         <button onClick={() => open()}>
@@ -83,9 +86,23 @@ the App Router or Pages router.
         api_secret: process.env.CLOUDINARY_API_SECRET,
       });
 
+      // Only sign the parameters your uploads need. Signing anything the browser sends
+      // would let anyone sign other requests to your Cloudinary account, such as deletes.
+      const ALLOWED_PARAMS = ["timestamp", "source", "upload_preset"];
+      const UPLOAD_PRESET = "<Your Signed Upload Preset>";
+
       export async function POST(request: Request) {
         const body = await request.json();
-        const { paramsToSign } = body;
+        const { paramsToSign } = body || {};
+
+        if (
+          !paramsToSign ||
+          typeof paramsToSign !== "object" ||
+          Object.keys(paramsToSign).some((key) => !ALLOWED_PARAMS.includes(key)) ||
+          paramsToSign.upload_preset !== UPLOAD_PRESET
+        ) {
+          return Response.json({ error: "Invalid parameters" }, { status: 400 });
+        }
 
         const signature = cloudinary.utils.api_sign_request(paramsToSign, process.env.CLOUDINARY_API_SECRET);
         
@@ -113,8 +130,22 @@ the App Router or Pages router.
         api_secret: process.env.CLOUDINARY_API_SECRET,
       });
 
+      // Only sign the parameters your uploads need. Signing anything the browser sends
+      // would let anyone sign other requests to your Cloudinary account, such as deletes.
+      const ALLOWED_PARAMS = ["timestamp", "source", "upload_preset"];
+      const UPLOAD_PRESET = "<Your Signed Upload Preset>";
+
       export default async function handler(req, res) {
-        const { paramsToSign } = req.body;
+        const { paramsToSign } = req.body || {};
+
+        if (
+          !paramsToSign ||
+          typeof paramsToSign !== "object" ||
+          Object.keys(paramsToSign).some((key) => !ALLOWED_PARAMS.includes(key)) ||
+          paramsToSign.upload_preset !== UPLOAD_PRESET
+        ) {
+          return res.status(400).json({ error: "Invalid parameters" });
+        }
 
         const signature = cloudinary.utils.api_sign_request(paramsToSign, process.env.CLOUDINARY_API_SECRET);
 
@@ -125,3 +156,10 @@ the App Router or Pages router.
 
   </Tab>
 </Tabs>
+
+The endpoint only signs uploads that use your signed upload preset, so the preset's settings
+control how files are stored. If your widget uses options such as `folder`, `tags` or `cropping`,
+add the parameters it sends for them (`folder`, `tags` and `custom_coordinates`) to `ALLOWED_PARAMS`.
+
+Also make sure that only users who are allowed to upload can call this endpoint, for example by
+checking that they're signed in.
