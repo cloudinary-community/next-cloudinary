@@ -118,6 +118,29 @@ describe('docs/pages/api/sign-cloudinary-params', () => {
     });
   });
 
+  describe('rejects values that could add a parameter to the signed string', () => {
+    it.each([
+      ['an & in source', upload({ source: 'uw&tags=smug' })],
+      ['an = in source', upload({ source: 'uw=1' })],
+      ['a boolean source', upload({ source: true })],
+      ['a null source', upload({ source: null })],
+      ['an object source', upload({ source: { a: 1 } })],
+      ['a null timestamp', upload({ timestamp: null })],
+    ])('%s', async (_name, paramsToSign) => {
+      const res = await call({ paramsToSign });
+
+      expect(res.statusCode).toBe(400);
+      expect(res.body).toEqual({ error: 'Invalid parameter value' });
+    });
+
+    it('an & after the expected preset', async () => {
+      const res = await call({ paramsToSign: upload({ upload_preset: `${PRESET}&x=1` }) });
+
+      expect(res.statusCode).toBe(400);
+      expect(res.body).toEqual({ error: 'Invalid parameters' });
+    });
+  });
+
   describe('rejects timestamps outside the window', () => {
     it.each([
       ['just past the window in the future', NOW + 301],
@@ -126,7 +149,6 @@ describe('docs/pages/api/sign-cloudinary-params', () => {
       ['just past the window in the past', NOW - 301],
       ['a day in the past', NOW - 86400],
       ['a numeric string', String(NOW)],
-      ['null', null],
       ['NaN', NaN],
       ['Infinity', Infinity],
     ])('%s', async (_name, timestamp) => {
