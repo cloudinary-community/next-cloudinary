@@ -6,6 +6,11 @@ import { v2 as cloudinary } from "cloudinary";
 const ALLOWED_PARAMS = ['timestamp', 'source', 'upload_preset'];
 const UPLOAD_PRESET = 'next-cloudinary-signed';
 
+// Cloudinary rejects timestamps more than an hour old but accepts any future
+// one, so a far-future timestamp would make a signature usable for much longer
+// than intended. Only sign timestamps close to the server's clock.
+const TIMESTAMP_WINDOW_SECONDS = 5 * 60;
+
 export default async function handler(req, res) {
   const { paramsToSign } = req.body || {};
 
@@ -16,6 +21,30 @@ export default async function handler(req, res) {
     paramsToSign.upload_preset !== UPLOAD_PRESET
   ) {
     return res.status(400).json({ error: 'Invalid parameters' });
+  }
+
+  // Older Cloudinary signature versions join name=value pairs with & without
+  // escaping them, so a value containing & or = could add a parameter that
+  // was never checked above.
+  const hasUnsafeValue = Object.values(paramsToSign).some((value) => {
+    if (typeof value === 'number') return false;
+    if (typeof value !== 'string') return true;
+    return /[&=]/.test(value);
+  });
+
+  if (hasUnsafeValue) {
+    return res.status(400).json({ error: 'Invalid parameter value' });
+  }
+
+  const { timestamp } = paramsToSign;
+  const now = Math.floor(Date.now() / 1000);
+
+  if (
+    typeof timestamp !== 'number' ||
+    !Number.isFinite(timestamp) ||
+    Math.abs(now - timestamp) > TIMESTAMP_WINDOW_SECONDS
+  ) {
+    return res.status(400).json({ error: 'Invalid timestamp' });
   }
 
   try {
