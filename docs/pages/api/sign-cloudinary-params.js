@@ -23,6 +23,19 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid parameters' });
   }
 
+  // Older Cloudinary signature versions join name=value pairs with & without
+  // escaping them, so a value containing & or = could add a parameter that
+  // was never checked above.
+  const hasUnsafeValue = Object.values(paramsToSign).some((value) => {
+    if (typeof value === 'number') return false;
+    if (typeof value !== 'string') return true;
+    return /[&=]/.test(value);
+  });
+
+  if (hasUnsafeValue) {
+    return res.status(400).json({ error: 'Invalid parameter value' });
+  }
+
   const { timestamp } = paramsToSign;
   const now = Math.floor(Date.now() / 1000);
 
